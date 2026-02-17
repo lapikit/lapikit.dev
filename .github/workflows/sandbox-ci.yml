@@ -164,11 +164,65 @@ jobs:
       - name: Verify site-kit build
         run: test -d packages/site-kit/dist
 
+      - name: Upload site-kit build
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-kit-dist
+          path: packages/site-kit/dist
+
+  lapikit-build:
+    name: Build lapikit
+    needs:
+      - dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout lapikit package
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.LAPIKIT_REPOSITORY }}
+          ref: ${{ env.LAPIKIT_REF }}
+          path: packages/lapikit
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Restore Bun dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build lapikit
+        run: bun --cwd packages/lapikit build
+
+      - name: Verify lapikit build
+        run: test -d packages/lapikit/dist
+
+      - name: Upload lapikit build
+        uses: actions/upload-artifact@v4
+        with:
+          name: lapikit-dist
+          path: packages/lapikit/dist
+
   website:
     name: Build website
     runs-on: ubuntu-latest
     needs:
       - site-kit-build
+      - lapikit-build
     timeout-minutes: 10
 
     steps:
@@ -199,6 +253,18 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Download site-kit build
+        uses: actions/download-artifact@v4
+        with:
+          name: site-kit-dist
+          path: packages/site-kit/dist
+
+      - name: Download lapikit build
+        uses: actions/download-artifact@v4
+        with:
+          name: lapikit-dist
+          path: packages/lapikit/dist
+
       - name: Create .env file
         run: |
           cd apps/website
@@ -214,8 +280,6 @@ jobs:
 
       - name: Build website
         run: |
-          bun --cwd packages/site-kit build
-          bun --cwd packages/lapikit build
           cd apps/website
           bun run prepare
           bun initialize
