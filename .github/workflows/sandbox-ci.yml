@@ -214,7 +214,9 @@ jobs:
 
       - name: Build website
         run: |
+          bun --cwd packages/site-kit build
           bun --cwd packages/lapikit build
           cd apps/website
+          bun run prepare
           bun initialize
           bun run build
