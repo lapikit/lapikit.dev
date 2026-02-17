@@ -45,7 +45,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.bun-cache.outputs.cache-hit != 'true'
-        run: bun install --frozen-lockfile
+        run: bun install
 
   site-kit-vitest:
     name: Site-Kit vitest
@@ -80,7 +80,7 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Test site-kit with vitest
         run: bun --cwd packages/site-kit test
@@ -118,7 +118,7 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Run linter on site-kit
         run: bun --cwd packages/site-kit lint
@@ -156,7 +156,7 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Build site-kit
         run: bun --cwd packages/site-kit build
@@ -197,7 +197,7 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Create .env file
         run: |
