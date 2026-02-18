@@ -284,3 +284,13 @@ jobs:
           bun run prepare
           bun initialize
           bun run build
+
+  deploy-alpha:
+    name: Deploy Alpha
+    needs: website
+    if: github.ref != 'refs/heads/main'
+    permissions:
+      id-token: write
+      contents: read
+    uses: ./.github/workflows/ci-alpha.yml
+    secrets: inherit
