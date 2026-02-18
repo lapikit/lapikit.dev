@@ -1,4 +1,4 @@
-name: Sandbox CI
+name: Integrations test
 
 on:
   push:
@@ -293,4 +293,14 @@ jobs:
       id-token: write
       contents: read
     uses: ./.github/workflows/ci-alpha.yml
+    secrets: inherit
+
+  deploy-production:
+    name: Deploy Production
+    needs: website
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      id-token: write
+      contents: read
+    uses: ./.github/workflows/ci-production.yml
     secrets: inherit
