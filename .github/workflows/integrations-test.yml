@@ -302,5 +302,5 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    uses: ./.github/workflows/ci-production.yml
+    uses: ./.github/workflows/ci-current.yml
     secrets: inherit
