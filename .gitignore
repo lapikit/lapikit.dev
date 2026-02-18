@@ -36,3 +36,8 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Docker
 docker-compose.yml
 Dockerfile
+
+# monorepo packages
+packages/*
+!packages/site-kit/
+!packages/site-kit/**

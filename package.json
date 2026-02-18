@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "clone:packages": "node scripts/clone.js",
     "build": "npm run build:packages && npm run build:website",
     "build:website": "cd ./apps/website && npm run build",
     "build:packages": "npm run build:packages:site-kit",
@@ -11,7 +12,8 @@
     "build:types": "tsc --build --force",
     "clean:types": "tsc --build --clean",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "sync": "node scripts/clone.js"
   },
   "workspaces": [
     "packages/*",
