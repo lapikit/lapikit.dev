@@ -16,11 +16,10 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          passphrase: ${{ secrets.DEPLOY_KEY_PASSPHRASE }}
+          key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/${{ secrets.DEPLOY_PATH_ALPHA }}
+            cd ~/${{ secrets.PATH_ALPHA }}
             git pull origin develop
             docker compose build
             docker compose up -d
