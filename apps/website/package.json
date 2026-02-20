@@ -48,6 +48,7 @@
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"remark-extract-toc": "^1.1.0",
 		"site-kit": "*",
+		"logos": "*",
 		"svelte": "^5.43.4",
 		"svelte-check": "^4.3.3",
 		"tailwindcss": "^4.1.17",

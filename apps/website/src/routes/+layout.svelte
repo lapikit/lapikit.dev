@@ -17,6 +17,7 @@
 	import Banner from '$components/banner.svelte';
 	import ConsentModal from '$components/consent-modal.svelte';
 
+
 	// TEMPS
 	import Gtm from '$components/gtm.svelte';
 
@@ -52,6 +53,7 @@
 </svelte:head>
 
 <Gtm gtm={PUBLIC_GOOGLE_TAG_MANAGER_ENABLED} gtmID={PUBLIC_GOOGLE_TAG_MANAGER_ID} />
+
 
 <App dark={page.url.pathname === '/'}>
 	<Banner banner={data.banner} />

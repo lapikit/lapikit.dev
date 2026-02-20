@@ -41,3 +41,5 @@ Dockerfile
 packages/*
 !packages/site-kit/
 !packages/site-kit/**
+!packages/logos/
+!packages/logos/**
