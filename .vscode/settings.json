@@ -22,10 +22,22 @@
   "typescript.disableAutomaticTypeAcquisition": false,
 
   // Editor improvements
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "always"
   },
+  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "prettier.prettierPath": "./node_modules/prettier",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
 

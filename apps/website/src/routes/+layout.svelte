@@ -17,9 +17,6 @@
 	import Banner from '$components/banner.svelte';
 	import ConsentModal from '$components/consent-modal.svelte';
 
-	import {lapikitWebp} from "logos";
-
-
 	// TEMPS
 	import Gtm from '$components/gtm.svelte';
 
@@ -55,8 +52,6 @@
 </svelte:head>
 
 <Gtm gtm={PUBLIC_GOOGLE_TAG_MANAGER_ENABLED} gtmID={PUBLIC_GOOGLE_TAG_MANAGER_ID} />
-
-<img src={lapikitWebp} alt="lapikit logo"/>
 
 <App dark={page.url.pathname === '/'}>
 	<Banner banner={data.banner} />

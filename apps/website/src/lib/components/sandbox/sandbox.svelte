@@ -54,7 +54,11 @@
 				{actions}
 			/>
 
-			<div style:height="fit-content" style:max-height={expanded ? 'fit-content' : '300px'} style:min-height={expanded ? 'fit-content' : '48px'}>
+			<div
+				style:height="fit-content"
+				style:max-height={expanded ? 'fit-content' : '300px'}
+				style:min-height={expanded ? 'fit-content' : '48px'}
+			>
 				<SandboxCode bind:expanded {code} {noCopy} />
 			</div>
 		{/if}
