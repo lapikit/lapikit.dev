@@ -1,2 +1,2 @@
-declare const svg: string;
-export default svg;
+declare const asset: string;
+export default asset;

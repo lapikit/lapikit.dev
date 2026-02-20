@@ -1,1 +1,2 @@
-export const lapikit: string;
+export const lapikitSvg: string;
+export const lapikitWebp: string;
