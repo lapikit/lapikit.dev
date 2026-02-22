@@ -6,7 +6,7 @@ on:
       - "**"
 
 env:
-  NODE_VERSION: "lts/*"
+  NODE_VERSION: "22.x"
   BUN_VERSION: "latest"
   LAPIKIT_REPOSITORY: "lapikit/lapikit"
   LAPIKIT_REF: ${{ github.ref == 'refs/heads/main' && 'main' || 'develop' }}

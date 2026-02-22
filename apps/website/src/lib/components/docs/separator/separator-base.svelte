@@ -2,4 +2,4 @@
 	import { Separator } from 'lapikit/components';
 </script>
 
-<Separator/>
+<Separator />

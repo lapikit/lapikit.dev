@@ -25,25 +25,31 @@
 		color="white"
 		rounded="0"
 	>
-	 {#if banner?.href}
-		<a href={banner?.href} target={!banner?.href.includes('lapikit') && '_blank'} class="flex items-center">
-			<div class="text-sm">
-				<span class="max-md:hidden">{banner.content.lg}</span>
-				<span class="min-md:hidden">{banner.content.sm}</span>
-			</div>
-			<Button
-				icon
-				density="compact"
-				href={banner.href}
-				target={!banner.href.includes('lapikit') && '_blank'}
-				rounded="full"
-				variant="text"
-				size="sm"
-				class="ml-2"
+		{#if banner?.href}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
+			<a
+				href={banner?.href}
+				target={!banner?.href.includes('lapikit') && '_blank'}
+				class="flex items-center"
 			>
-				<Icon icon="mgc_arrow_right_fill" />
-			</Button>
-		</a>
+				<div class="text-sm">
+					<span class="max-md:hidden">{banner.content.lg}</span>
+					<span class="min-md:hidden">{banner.content.sm}</span>
+				</div>
+				<Button
+					icon
+					density="compact"
+					href={banner.href}
+					target={!banner.href.includes('lapikit') && '_blank'}
+					rounded="full"
+					variant="text"
+					size="sm"
+					class="ml-2"
+				>
+					<Icon icon="mgc_arrow_right_fill" />
+				</Button>
+			</a>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		{:else}
 			<div class="text-sm">
 				<span class="max-md:hidden">{banner.content.lg}</span>
