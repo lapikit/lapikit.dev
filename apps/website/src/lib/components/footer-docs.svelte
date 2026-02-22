@@ -40,7 +40,7 @@
 				<span class="mr-1">Developed by</span>
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a href={url.nycolaide.website} target="_blank" style:color="var(--kit-service-svelte)">
-					Nycolaide
+					Nycolaide (lolo)
 				</a>
 			</span>
 		</div>
