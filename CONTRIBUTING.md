@@ -86,7 +86,7 @@ We encourage contributions via pull requests (PRs)! Here's the process:
 
 To get started with development:
 
-1.  **Clone the Repository:** `git clone https://github.com/nycolaide/lapikit.git`
+1.  **Clone the Repository:** `git clone https://github.com/lapikit/lapikit.git`
 2.  **Install Dependencies:** `bun install`
 3.  **Run the Development Server:** `bun dev` (this will start the docs development server, as well as watch/build the library when changes are made)
 
@@ -116,7 +116,7 @@ The title of your pull request should be prefixed with one of the following, ind
 
 ## 9. Issue and Feature Request Policy
 
-Please refer to our [Issue and Feature Request Policy](https://google.com) for detailed information on how we handle issues and feature requests. This is crucial for keeping our development process organized.
+Please refer to our [Issue and Feature Request Policy](./CODE_OF_CONDUCT.md) for detailed information on how we handle issues and feature requests. This is crucial for keeping our development process organized.
 
 ---
 
