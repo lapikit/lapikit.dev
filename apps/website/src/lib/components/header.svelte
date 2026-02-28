@@ -111,6 +111,7 @@
 	</div>
 
 	<div class="flex items-center justify-end gap-2">
+		<kit:btn>Demo</kit:btn>
 		{#if $viewport.innerWidth >= $breakpoints.lg}
 			<Button
 				onclick={() => search.set(!$search)}
