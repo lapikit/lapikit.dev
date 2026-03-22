@@ -1,1 +1,0 @@
-Launch install Lapikit on your project? (Yes / No)

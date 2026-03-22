@@ -2,13 +2,13 @@ name: Integrations test
 
 on:
   push:
-    branches:
-      - "**"
+    branches-ignore:
+      - next
 
 env:
-  NODE_VERSION: "22.x"
-  BUN_VERSION: "latest"
-  LAPIKIT_REPOSITORY: "lapikit/lapikit"
+  NODE_VERSION: '22.x'
+  BUN_VERSION: 'latest'
+  LAPIKIT_REPOSITORY: 'lapikit/lapikit'
   LAPIKIT_REF: ${{ github.ref == 'refs/heads/main' && 'main' || 'develop' }}
 
 jobs:
