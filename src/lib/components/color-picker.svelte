@@ -11,9 +11,7 @@
 
 	import { tailwindColors } from '$lib/assets';
 
-	type ThemeTokenList = Array<[string, string]>;
-
-	let { color = $bindable(), handleClick, list = [] as ThemeTokenList } = $props();
+	let { color = $bindable(), handleClick } = $props();
 
 	const formats: ColorFormat[] = ['oklch', 'hex', 'rgb', 'hsl'];
 	const colorFamilies = Object.entries(tailwindColors);
@@ -33,32 +31,6 @@
 			selectedRgb = cssColorToRgb(color.value);
 		}
 	});
-
-	function getTokenInitials(tokenName: string) {
-		return tokenName
-			.split('-')
-			.map((part) => part[0] ?? '')
-			.join('');
-	}
-
-	function normalizeColorValue(value: string) {
-		const parsedOklch = parseOklch(value);
-		if (parsedOklch) {
-			return `oklch(${parsedOklch.l}-${parsedOklch.c}-${parsedOklch.h})`;
-		}
-
-		return value.trim().toLowerCase();
-	}
-
-	function getListLabelByColor(value: string) {
-		const normalizedValue = value.includes('oklch') ? value : normalizeColorValue(value);
-		const matchedToken = list?.find(([, tokenValue]) => tokenValue === normalizedValue);
-
-		console.log('GW1 normalizedValue', normalizedValue);
-		if (!matchedToken) return '';
-
-		return getTokenInitials(matchedToken[0]);
-	}
 
 	function getTokenInitialsColor(value: string) {
 		const rgb = cssColorToRgb(value);
@@ -139,6 +111,7 @@
 
 {#if color}
 	<div id="modal-color-picker">
+		<p>{color?.key}</p>
 		<button onclick={() => (color = undefined)}>close</button>
 		<div class="color-picker">
 			{#each colorFamilies as [familyName, shades] (familyName)}
@@ -153,7 +126,6 @@
 							aria-label={`${familyName}-${shade} ${value}`}
 							onclick={() => selectColor(value)}
 						>
-							{getListLabelByColor(value)}
 						</button>
 					{/each}
 				</div>

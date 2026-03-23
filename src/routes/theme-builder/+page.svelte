@@ -24,10 +24,6 @@
 	};
 </script>
 
-<svelte:head>
-	<title>LapiKit — Theme Builder</title>
-</svelte:head>
-
 <div>
 	{#each newThemeLightEntries as [keyColor, valueColor] (keyColor)}
 		<button
@@ -38,9 +34,5 @@
 		</button>
 	{/each}
 
-	<ColorPicker
-		bind:color={valueColorPicker}
-		handleClick={handleColor}
-		list={newThemeLightEntries}
-	/>
+	<ColorPicker bind:color={valueColorPicker} handleClick={handleColor} />
 </div>
