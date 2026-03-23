@@ -12,5 +12,6 @@
 	<a href={resolve('/')}>home</a>
 	<a href={resolve('/sitemap.xml')} target="_blank">sitemap.xml</a>
 	<a href={resolve('/terms')}>terms</a>
+	<a href={resolve('/theme-builder')}>theme builder</a>
 </nav>
 {@render children()}
