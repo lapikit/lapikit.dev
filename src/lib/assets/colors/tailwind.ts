@@ -1,7 +1,7 @@
 export type TailwindShade = `${50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950}`;
 export type TailwindScale = Record<TailwindShade, string>;
 
-const tailwind: Record<string, TailwindScale> = {
+export const tailwindColors: Record<string, TailwindScale> = {
 	red: {
 		'50': 'oklch(97.1% 0.013 17.38)',
 		'100': 'oklch(93.6% 0.032 17.717)',
@@ -341,5 +341,3 @@ const tailwind: Record<string, TailwindScale> = {
 		'950': 'oklch(15.3% 0.006 107.1)'
 	}
 };
-
-export default tailwind;

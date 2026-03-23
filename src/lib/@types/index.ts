@@ -1,3 +1,5 @@
+export * from './colors';
+
 export type SitemapEntry = {
 	url: string;
 	lastmod?: string;

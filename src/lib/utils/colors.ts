@@ -1,22 +1,4 @@
-type OklchColor = {
-	l: number;
-	c: number;
-	h: number;
-};
-
-type OklabColor = {
-	L: number;
-	a: number;
-	b: number;
-};
-
-export type RgbColor = {
-	r: number;
-	g: number;
-	b: number;
-};
-
-export type ColorFormat = 'oklch' | 'hex' | 'rgb' | 'hsl';
+import type { ColorFormat, OklabColor, OklchColor, RgbColor } from '$lib/@types';
 
 function clamp01(value: number) {
 	return Math.min(1, Math.max(0, value));
@@ -144,9 +126,7 @@ export function rgbToHsl({ r, g, b }: RgbColor) {
 	}
 
 	const saturation =
-		lightness === 0 || lightness === 1
-			? 0
-			: (max - lightness) / Math.min(lightness, 1 - lightness);
+		lightness === 0 || lightness === 1 ? 0 : (max - lightness) / Math.min(lightness, 1 - lightness);
 
 	let hue = 0;
 
