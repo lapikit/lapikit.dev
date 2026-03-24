@@ -1,4 +1,4 @@
-import type { ColorFormat, OklabColor, OklchColor, RgbColor } from '$lib/@types';
+import type { ColorFormat, ColorPalette, OklabColor, OklchColor, RgbColor } from '$lib/@types';
 
 function clamp01(value: number) {
 	return Math.min(1, Math.max(0, value));
@@ -25,14 +25,16 @@ function channelToLinear(value: number) {
 }
 
 export function parseOklch(str: string) {
-	const match = str.match(/oklch\(\s*([\d.]+)%\s+([\d.]+)\s+([\d.]+)\s*\)/i);
+	const match = str.match(/oklch\(\s*([\d.]+)(%)?\s+([\d.]+)\s+([\d.]+)\s*\)/i);
 
 	if (!match) return null;
 
+	const lightness = Number(match[1]);
+
 	return {
-		l: Number(match[1]) / 100,
-		c: Number(match[2]),
-		h: Number(match[3])
+		l: match[2] ? lightness / 100 : lightness,
+		c: Number(match[3]),
+		h: Number(match[4])
 	};
 }
 
@@ -215,7 +217,7 @@ export function getContrastLevel(ratio: number) {
 
 export function findColorName(
 	selectedColor: string | undefined,
-	colors: Record<string, Record<string, string>>
+	colors: ColorPalette
 ): string | null {
 	if (!selectedColor) return null;
 
@@ -232,7 +234,7 @@ export function findColorName(
 
 export function findColorNameByRgb(
 	selectedColor: RgbColor | null,
-	colors: Record<string, Record<string, string>>
+	colors: ColorPalette
 ): string | null {
 	if (!selectedColor) return null;
 
@@ -253,4 +255,50 @@ export function findColorNameByRgb(
 	}
 
 	return null;
+}
+
+export function getTokenInitialsColor(value: string) {
+	const rgb = cssColorToRgb(value);
+	if (!rgb) return '#111';
+
+	const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+	return brightness < 140 ? '#fff' : '#111';
+}
+
+export function detectColorFormat(value: string): ColorFormat {
+	const normalizedValue = value.trim().toLowerCase();
+
+	if (normalizedValue.startsWith('oklch(')) return 'oklch';
+	if (normalizedValue.startsWith('#')) return 'hex';
+	if (normalizedValue.startsWith('rgb(') || normalizedValue.startsWith('rgba(')) return 'rgb';
+	if (normalizedValue.startsWith('hsl(') || normalizedValue.startsWith('hsla(')) return 'hsl';
+
+	return 'oklch';
+}
+
+export function cssColorToRgb(value: string): RgbColor | null {
+	if (!value) return null;
+
+	const parsedOklch = parseOklch(value);
+	if (parsedOklch) {
+		return oklchToRgb(parsedOklch);
+	}
+
+	if (typeof window === 'undefined' || !CSS.supports('color', value)) return null;
+
+	const probe = document.createElement('div');
+	probe.style.color = value;
+	document.body.appendChild(probe);
+
+	const computedColor = getComputedStyle(probe).color;
+	probe.remove();
+
+	const match = computedColor.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)/i);
+	if (!match) return null;
+
+	return {
+		r: Math.round(Number(match[1])),
+		g: Math.round(Number(match[2])),
+		b: Math.round(Number(match[3]))
+	};
 }

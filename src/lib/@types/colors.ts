@@ -17,3 +17,7 @@ export type RgbColor = {
 };
 
 export type ColorFormat = 'oklch' | 'hex' | 'rgb' | 'hsl';
+
+export type ColorScale = Record<string, string>;
+export type ColorPalette = Record<string, ColorScale>;
+export type ColorPaletteName = string;
