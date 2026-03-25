@@ -112,6 +112,18 @@
 	}
 </script>
 
+<section aria-labelledby="theme-builder-title">
+	<h1 id="theme-builder-title">Lapikit theme builder</h1>
+	<p>
+		Use this tool to compose light and dark theme tokens, preview exported CSS variables and copy
+		the result for your own design system.
+	</p>
+	<p>
+		The page is interactive, but the rest of the documentation stays available as prerendered HTML
+		for faster loading and easier indexing.
+	</p>
+</section>
+
 <div style:background={activeTheme.base} style:color={activeTheme.content}>
 	<div>
 		<div>
@@ -137,8 +149,8 @@
 
 	<div>
 		<p>export</p>
-		<p>{exportState.message}</p>
-		<p>palette active: {palette} - theme edite: {theme} - default: {defaultTheme}</p>
+		<p aria-live="polite">{exportState.message}</p>
+		<p>palette active: {palette} - theme edited: {theme} - default: {defaultTheme}</p>
 	</div>
 
 	<div class="token-grid">

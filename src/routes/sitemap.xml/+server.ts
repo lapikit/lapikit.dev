@@ -1,23 +1,22 @@
 import { PUBLIC_BASE_URL } from '$env/static/public';
+import { siteDefaultUrl } from '$lib/constants';
 
 export const prerender = true;
 
 const pageModules = import.meta.glob('/src/routes/**/+page.svelte');
-const markdownModules = import.meta.glob('/src/routes/**/*.md');
+const markdownModules = import.meta.glob('/src/routes/**/+page.md');
 
 function toUrl(path: string) {
-	return (
-		path
-			.replace('/src/routes', '')
-			.replace('/+page.svelte', '')
-			.replace(/\/index\.md$/, '')
-			.replace(/\.md$/, '')
-			.replace(/\/$/, '') || '/'
-	);
+	const route = path
+		.replace('/src/routes', '')
+		.replace(/\/\+page\.(svelte|md)$/, '')
+		.replace(/\/$/, '');
+
+	return route || '/';
 }
 
 export async function GET() {
-	const baseUrl = PUBLIC_BASE_URL;
+	const baseUrl = (PUBLIC_BASE_URL || siteDefaultUrl).replace(/\/$/, '');
 
 	const routes = [...Object.keys(pageModules), ...Object.keys(markdownModules)]
 		.map(toUrl)
@@ -39,7 +38,7 @@ ${uniqueRoutes
 
 	return new Response(body, {
 		headers: {
-			'Content-Type': 'application/xml'
+			'Content-Type': 'application/xml; charset=utf-8'
 		}
 	});
 }

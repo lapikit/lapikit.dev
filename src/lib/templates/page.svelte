@@ -2,6 +2,6 @@
 	let { children } = $props();
 </script>
 
-<p>Templates page.svelte</p>
-
-{@render children?.()}
+<article>
+	{@render children?.()}
+</article>
