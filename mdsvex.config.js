@@ -6,6 +6,7 @@ import { dirname } from 'node:path';
 export const mdsvexOptions = {
 	extensions: ['.md'],
 	layout: {
-		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.svelte'
+		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.svelte',
+		docs: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/doc.svelte'
 	}
 };
