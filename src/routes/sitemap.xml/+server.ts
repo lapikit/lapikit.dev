@@ -1,5 +1,6 @@
 import { PUBLIC_BASE_URL } from '$env/static/public';
 import { siteDefaultUrl } from '$lib/constants';
+import { docsPaths } from '$lib/registry';
 
 export const prerender = true;
 
@@ -21,7 +22,8 @@ export async function GET() {
 	const routes = [...Object.keys(pageModules), ...Object.keys(markdownModules)]
 		.map(toUrl)
 		.filter((route) => !route.includes('['))
-		.filter((route) => !route.includes('('));
+		.filter((route) => !route.includes('('))
+		.concat(docsPaths);
 
 	const uniqueRoutes = [...new Set(routes)].sort();
 

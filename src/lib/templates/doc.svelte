@@ -4,6 +4,8 @@
 	let { children } = $props();
 </script>
 
+<p style:color="red">template mdsvex doc.svelte</p>
+
 <article>
 	<nav aria-label="Documentation navigation">
 		<ul>
@@ -14,5 +16,7 @@
 		</ul>
 	</nav>
 
-	{@render children?.()}
+	<div style:background="gray">
+		{@render children?.()}
+	</div>
 </article>

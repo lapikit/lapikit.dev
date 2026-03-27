@@ -1,4 +1,5 @@
 export * from './colors';
+export * from './mdsvex';
 
 export type SitemapEntry = {
 	url: string;

@@ -4,6 +4,7 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { docsSeoByPath } from '$lib';
 	import {
 		defaultSeo,
 		navigationLinks,
@@ -12,14 +13,14 @@
 		siteDescription,
 		siteDomain,
 		siteName
-	} from '$lib/constants';
+	} from '$lib';
 
 	let { children } = $props();
 
 	const normalizedPath = $derived(
 		page.url.pathname === '/' ? '/' : page.url.pathname.replace(/\/$/, '')
 	);
-	const seo = $derived(seoByPath[normalizedPath] ?? defaultSeo);
+	const seo = $derived(docsSeoByPath[normalizedPath] ?? seoByPath[normalizedPath] ?? defaultSeo);
 	const siteUrl = $derived(
 		(PUBLIC_BASE_URL || page.url.origin || siteDefaultUrl).replace(/\/$/, '')
 	);
