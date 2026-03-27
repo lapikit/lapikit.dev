@@ -1,15 +1,22 @@
 import type { ComponentType, SvelteComponent } from 'svelte';
 
+export type DocMetadataValue =
+	| string
+	| number
+	| boolean
+	| null
+	| DocMetadataValue[]
+	| { [key: string]: DocMetadataValue };
+
 export type DocFrontmatter = {
-	title?: string;
-	description?: string;
+	title: string;
+	[key: string]: DocMetadataValue;
 };
 
 export type DocSummary = {
 	id: string;
 	sourcePath: string;
-	title: string;
-	description?: string;
+	metadata: DocFrontmatter;
 	slug: string;
 	path: string;
 	section?: string;
