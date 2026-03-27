@@ -1,36 +1,43 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
+	import type { ComponentType } from 'svelte';
 
-	let { loader } = $props();
+	let { loader, fallback = 'Chargement de la démo…' } = $props<{
+		loader: () => Promise<{ default: ComponentType }>;
+		fallback?: string;
+	}>();
 
-	let component = $state(null);
-	let error = $state(null);
-	let debug = $state(null);
+	let Component = $state<ComponentType | null>(null);
+	let loading = $state<boolean>(true);
+	let error = $state<Error | null>(null);
 
 	onMount(async () => {
 		try {
-			debug = 'onMount démarré';
-
 			const mod = await loader();
-			debug = mod;
 
-			component = mod?.default ?? null;
-
-			if (!component) {
-				error = new Error('Le module chargé n’a pas de export default');
+			if (!mod?.default) {
+				throw new Error('The loaded module does not have a default export');
 			}
+
+			Component = mod.default;
 		} catch (err) {
-			error = err;
+			error = err instanceof Error ? err : new Error('Error');
 			console.error('LazyDemo error:', err);
+		} finally {
+			loading = false;
 		}
 	});
 </script>
 
 {#if error}
-	<pre>{error?.message}</pre>
-{:else if component}
-	<svelte:component this={component} />
-{:else}
-	<div>Chargement en cours…</div>
-	<pre>{JSON.stringify(debug, null, 2)}</pre>
+	<div class="lazy-demo lazy-demo--error">
+		<strong>Unable to load the component</strong>
+		<pre>{error.message}</pre>
+	</div>
+{:else if loading}
+	<div class="lazy-demo lazy-demo--loading">
+		{fallback}
+	</div>
+{:else if Component}
+	<Component />
 {/if}
