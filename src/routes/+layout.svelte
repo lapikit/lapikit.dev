@@ -4,9 +4,12 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { Breadcrumbs } from '$lib/components';
 	import { docsSeoByPath } from '$lib';
 	import {
 		defaultSeo,
+		getBreadcrumbStructuredData,
+		getBreadcrumbs,
 		navigationLinks,
 		seoByPath,
 		siteDefaultUrl,
@@ -28,6 +31,16 @@
 	const pageTitle = $derived(
 		normalizedPath === '/' ? `${siteName} | ${seo.title}` : `${seo.title} | ${siteName}`
 	);
+	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
+	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, siteUrl));
+	const breadcrumbSchemaTag = $derived(breadcrumbSchema ? toJsonLdScriptTag(breadcrumbSchema) : '');
+
+	function toJsonLdScriptTag(data: unknown) {
+		const json = JSON.stringify(data).replace(/</g, '\\u003c');
+
+		// eslint-disable-next-line no-useless-escape
+		return `<script type="application/ld+json">${json}<\/script>`;
+	}
 </script>
 
 <svelte:head>
@@ -51,6 +64,8 @@
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={seo.description} />
+
+	{@html breadcrumbSchemaTag}
 </svelte:head>
 
 <a href="#content">Skip to content</a>
@@ -70,6 +85,7 @@
 </header>
 
 <main id="content">
+	<Breadcrumbs items={breadcrumbs} />
 	{@render children()}
 </main>
 
