@@ -183,7 +183,7 @@
 	</div>
 {/if}
 
-<style>
+<style scoped>
 	#modal-color-picker {
 		background: white;
 		color: black;
