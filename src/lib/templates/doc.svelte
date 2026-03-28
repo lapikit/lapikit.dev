@@ -1,22 +1,21 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import type { Snippet } from 'svelte';
+	import type { MarkdownHeading } from '$lib/@types';
 
-	let { children } = $props();
+	// Components
+	import TableOfContent from '$lib/components/table-of-content.svelte';
+
+	let {
+		children,
+		summary = []
+	}: {
+		children?: Snippet;
+		summary?: MarkdownHeading[];
+	} = $props();
 </script>
 
-<p style:color="red">template mdsvex doc.svelte</p>
+<TableOfContent {summary} />
 
 <article>
-	<nav aria-label="Documentation navigation">
-		<ul>
-			<li><a href={resolve('/docs')}>Documentation home</a></li>
-			<li><a href={resolve('/docs/components')}>Components</a></li>
-			<li><a href={resolve('/docs/hooks')}>Hooks</a></li>
-			<li><a href={resolve('/theme-builder')}>Theme builder</a></li>
-		</ul>
-	</nav>
-
-	<div style:background="gray">
-		{@render children?.()}
-	</div>
+	{@render children?.()}
 </article>

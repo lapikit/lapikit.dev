@@ -13,6 +13,12 @@ export type DocFrontmatter = {
 	[key: string]: DocMetadataValue;
 };
 
+export type MarkdownHeading = {
+	depth: 1 | 2 | 3;
+	slug: string;
+	value: string;
+};
+
 export type DocSummary = {
 	id: string;
 	sourcePath: string;

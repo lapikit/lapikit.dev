@@ -1,9 +1,20 @@
 <script lang="ts">
-	let { children } = $props();
+	import type { Snippet } from 'svelte';
+	import type { MarkdownHeading } from '$lib/@types';
+
+	// Components
+	import TableOfContent from '$lib/components/table-of-content.svelte';
+
+	let {
+		children,
+		summary = []
+	}: {
+		children?: Snippet;
+		summary?: MarkdownHeading[];
+	} = $props();
 </script>
 
-<p style:color="red">template mdsvex page.svelte</p>
-
 <article>
+	<TableOfContent {summary} />
 	{@render children?.()}
 </article>
