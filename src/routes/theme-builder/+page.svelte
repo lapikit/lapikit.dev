@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ColorPicker } from '$lib/components';
+	import ColorPicker from '$lib/components/color-picker.svelte';
 	import {
 		materialColors,
 		tailwindColors,

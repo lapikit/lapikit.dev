@@ -4,7 +4,7 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { Breadcrumbs } from '$lib/components';
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import { docsSeoByPath } from '$lib';
 	import {
 		defaultSeo,
