@@ -6,6 +6,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import ConsentMode from '$lib/components/consent-mode.svelte';
+	import Search from '$lib/components/search.svelte';
 	import { docsSeoByPath } from '$lib';
 	import {
 		defaultSeo,
@@ -87,6 +88,7 @@
 
 <main id="content">
 	<Breadcrumbs items={breadcrumbs} />
+	<Search />
 	{@render children()}
 </main>
 
