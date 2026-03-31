@@ -7,7 +7,7 @@ description: Legal notices, hosting information and privacy details for the Lapi
 
 Lapikit
 
-Updated to 23/03/2026
+Updated to 31/03/2026
 
 ## Website publisher
 

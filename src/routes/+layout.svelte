@@ -70,8 +70,6 @@
 	{@html breadcrumbSchemaTag}
 </svelte:head>
 
-<a href="#content">Skip to content</a>
-
 <header>
 	<p><a href={resolve('/')}>{siteName}</a></p>
 	<p>{siteDescription}</p>
