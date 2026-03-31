@@ -5,6 +5,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
+	import ConsentMode from '$lib/components/consent-mode.svelte';
 	import { docsSeoByPath } from '$lib';
 	import {
 		defaultSeo,
@@ -88,6 +89,8 @@
 	<Breadcrumbs items={breadcrumbs} />
 	{@render children()}
 </main>
+
+<ConsentMode />
 
 <footer>
 	<p>

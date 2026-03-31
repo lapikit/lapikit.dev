@@ -10,6 +10,9 @@ export const siteDefaultUrl = 'https://lapikit.dev';
 export const siteDescription =
 	'Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability.';
 
+// cookies
+export const consent_cookie = '_lapikit_consent';
+
 export const navigationLinks = [
 	{ href: '/', label: 'Home' },
 	{ href: '/docs', label: 'Documentation' },

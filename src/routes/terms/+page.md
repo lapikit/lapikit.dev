@@ -51,7 +51,10 @@ To exercise these rights, you can write to: [contact@lapikit.dev](mailto:contact
 
 ### Cookies & audience measurement
 
-The site uses cookies and trackers for audience measurement and to improve the user experience.
+The site uses:
+
+- **Necessary cookies**, required for the proper functioning of the site and for saving your privacy choices.
+- **Audience measurement cookies**, used to understand site traffic and improve the documentation experience.
 
 In particular:
 
@@ -63,6 +66,6 @@ These cookies are only placed after your explicit consent, collected via the inf
 You can at any time:
 
 - Accept or refuse the use of these cookies.
-- Change your preferences via the consent manager on the site or via your browser settings.
+- Change your preferences via the `Cookie settings` button on the site or via your browser settings.
 
 Certain data (including your IP address and browsing information) may be transferred and stored by Google on servers located outside the European Union.
