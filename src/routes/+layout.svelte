@@ -12,11 +12,9 @@
 		defaultSeo,
 		getBreadcrumbStructuredData,
 		getBreadcrumbs,
-		navigationLinks,
 		seoByPath,
 		siteDefaultUrl,
 		siteDescription,
-		siteDomain,
 		siteName
 	} from '$lib';
 
@@ -73,15 +71,6 @@
 <header>
 	<p><a href={resolve('/')}>{siteName}</a></p>
 	<p>{siteDescription}</p>
-
-	<nav aria-label="Primary navigation">
-		<ul>
-			{#each navigationLinks as link (link.href)}
-				<li><a href={resolve(link.href)}>{link.label}</a></li>
-			{/each}
-			<li><a href={resolve('/sitemap.xml')}>XML sitemap</a></li>
-		</ul>
-	</nav>
 </header>
 
 <main id="content">
@@ -91,18 +80,3 @@
 </main>
 
 <ConsentMode />
-
-<footer>
-	<p>
-		{siteName} is a Svelte component library and documentation website available on {siteDomain}.
-	</p>
-	<nav aria-label="Footer navigation">
-		<ul>
-			<li><a href={resolve('/')}>Home</a></li>
-			<li><a href={resolve('/docs')}>Documentation</a></li>
-			<li><a href={resolve('/theme-builder')}>Theme builder</a></li>
-			<li><a href={resolve('/terms')}>Legal notices</a></li>
-			<li><a href={resolve('/sitemap.xml')}>Sitemap</a></li>
-		</ul>
-	</nav>
-</footer>
