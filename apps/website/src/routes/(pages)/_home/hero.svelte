@@ -42,7 +42,7 @@
 						><span class="px-2">New 🎉</span></Chip
 					>
 				{/snippet}
-				Lapikit v0.4 is ready
+				Lapikit v0.5 is up!
 				{#snippet append()}
 					<Icon size="xl" icon="mgc_arrow_right_line" />
 				{/snippet}
