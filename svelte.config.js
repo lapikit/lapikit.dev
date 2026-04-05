@@ -1,6 +1,7 @@
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-node';
 import { mdsvexOptions } from './mdsvex.config.js';
+import { lapikitPreprocess } from 'lapikit/labs/preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +12,7 @@ const config = {
 			envPrefix: ''
 		})
 	},
-	preprocess: [mdsvex(mdsvexOptions)],
+	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess()],
 	extensions: ['.svelte', '.svx', '.md']
 };
 

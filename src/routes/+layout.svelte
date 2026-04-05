@@ -65,4 +65,6 @@
 	{@html breadcrumbSchemaTag}
 </svelte:head>
 
-{@render children()}
+<kit:app>
+	{@render children()}
+</kit:app>
