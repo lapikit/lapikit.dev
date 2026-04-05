@@ -82,9 +82,11 @@
 			<span>Lapikit</span>
 		</a>
 
-		{#each primaryNavigation as { href, label } (label)}
-			<a href={resolve(href)}>{label}</a>
-		{/each}
+		<nav aria-label="Primary navigation">
+			{#each primaryNavigation as { href, label } (label)}
+				<a href={resolve(href)} aria-current={normalizedPath.startsWith(href) ? 'page' : undefined}>{label}</a>
+			{/each}
+		</nav>
 	</kit:appbar>
 
 	<main>
