@@ -66,5 +66,7 @@
 </svelte:head>
 
 <kit:app>
-	{@render children()}
+	<main>
+		{@render children()}
+	</main>
 </kit:app>
