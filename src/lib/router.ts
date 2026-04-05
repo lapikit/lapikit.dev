@@ -1,3 +1,9 @@
+export const primaryNavigation = [
+	{ href: '/docs', label: 'Documentation' },
+	{ href: '/docs/components', label: 'Components' },
+	{ href: '/docs/hooks', label: 'Hooks' }
+] as const;
+
 export const navigationRouteLinks = [
 	{
 		label: 'Environnement',

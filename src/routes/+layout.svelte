@@ -7,7 +7,7 @@
 	// images
 	import favicon from '$lib/assets/favicon.svg';
 
-	import { docsSeoByPath } from '$lib';
+	import { docsSeoByPath, primaryNavigation } from '$lib';
 	import {
 		defaultSeo,
 		getBreadcrumbStructuredData,
@@ -72,14 +72,19 @@
 	<kit:appbar>
 		<a href={resolve('/')} class="header-lapikit">
 			<enhanced:img
-				src="$lib/assets/images/lapikit.webp"
+				src="$lib/assets/images/lapikit.webp?w=36;72"
 				alt=""
-				sizes="(max-width: 768px) 32px, 40px"
+				class="logo-img"
+				sizes="36px"
 				fetchpriority="high"
 				loading="eager"
 			/>
 			<span>Lapikit</span>
 		</a>
+
+		{#each primaryNavigation as { href, label } (label)}
+			<a href={resolve(href)}>{label}</a>
+		{/each}
 	</kit:appbar>
 
 	<main>
@@ -92,5 +97,10 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.logo-img {
+		height: 2.25rem;
+		width: auto;
 	}
 </style>
