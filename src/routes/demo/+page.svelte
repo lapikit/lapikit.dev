@@ -4,8 +4,6 @@
 	//import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import ConsentMode from '$lib/components/consent-mode.svelte';
 	import Search from '$lib/components/search.svelte';
-
-	let { children } = $props();
 </script>
 
 <header>
@@ -24,8 +22,6 @@
 		fetchpriority="high"
 		loading="eager"
 	/>
-
-	{@render children()}
 </main>
 
 <ConsentMode />
