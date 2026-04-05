@@ -3,6 +3,8 @@
 	import { page } from '$app/state';
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import './layout.css';
+
+	// images
 	import favicon from '$lib/assets/favicon.svg';
 
 	import { docsSeoByPath } from '$lib';
@@ -14,6 +16,7 @@
 		siteDefaultUrl,
 		siteName
 	} from '$lib';
+	import { resolve } from '$app/paths';
 
 	let { children } = $props();
 
@@ -66,7 +69,28 @@
 </svelte:head>
 
 <kit:app>
+	<kit:appbar>
+		<a href={resolve('/')} class="header-lapikit">
+			<enhanced:img
+				src="$lib/assets/images/lapikit.webp"
+				alt=""
+				sizes="(max-width: 768px) 32px, 40px"
+				fetchpriority="high"
+				loading="eager"
+			/>
+			<span>Lapikit</span>
+		</a>
+	</kit:appbar>
+
 	<main>
 		{@render children()}
 	</main>
 </kit:app>
+
+<style>
+	.header-lapikit {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+</style>
