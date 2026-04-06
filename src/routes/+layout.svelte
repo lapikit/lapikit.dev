@@ -7,6 +7,7 @@
 	// images
 	import favicon from '$lib/assets/favicon.svg';
 
+	import { House } from 'lucide-svelte';
 	import { docsSeoByPath, primaryNavigation } from '$lib';
 	import {
 		defaultSeo,
@@ -70,7 +71,9 @@
 
 <kit:app>
 	<kit:appbar>
-		<a href={resolve('/')} class="header-lapikit">
+		<a href={resolve('/')} class="header-lapikit" aria-label="Home">
+			<House size={20} />
+
 			<enhanced:img
 				src="$lib/assets/images/lapikit.webp?w=36;72"
 				alt=""
@@ -84,9 +87,20 @@
 
 		<nav aria-label="Primary navigation">
 			{#each primaryNavigation as { href, label } (label)}
-				<a href={resolve(href)} aria-current={normalizedPath.startsWith(href) ? 'page' : undefined}>{label}</a>
+				<kit:btn
+					href={resolve(href)}
+					aria-current={normalizedPath.startsWith(href) ? 'page' : undefined}
+				>
+					{label}
+				</kit:btn>
 			{/each}
 		</nav>
+		<kit:btn
+			href={resolve('/docs')}
+			aria-current={normalizedPath.startsWith('/docs') ? 'page' : undefined}
+		>
+			Documentation
+		</kit:btn>
 	</kit:appbar>
 
 	<main>
