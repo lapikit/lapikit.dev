@@ -61,3 +61,13 @@ export const seoByPath: Record<string, SeoEntry> = {
 		type: 'article'
 	}
 };
+
+import githubIcon from '$lib/assets/icons/github.svg?raw';
+import xIcon from '$lib/assets/icons/x.svg?raw';
+import discordIcon from '$lib/assets/icons/discord.svg?raw';
+
+export const socialMediaLinks = [
+	{ label: 'Twitter', url: 'https://x.com/lapikit', icon: xIcon },
+	{ label: 'GitHub', url: 'https://github.com/lapikit', icon: githubIcon },
+	{ label: 'Discord', url: 'https://discord.gg/lapikit', icon: discordIcon }
+];

@@ -8,7 +8,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 
 	import { House } from 'lucide-svelte';
-	import { docsSeoByPath, primaryNavigation } from '$lib';
+	import { docsSeoByPath, primaryNavigation, socialMediaLinks } from '$lib';
 	import {
 		defaultSeo,
 		getBreadcrumbStructuredData,
@@ -18,6 +18,8 @@
 		siteName
 	} from '$lib';
 	import { resolve } from '$app/paths';
+
+	import type { ModelDropdownProps } from 'lapikit/labs/types';
 
 	let { children } = $props();
 
@@ -106,6 +108,80 @@
 	<main>
 		{@render children()}
 	</main>
+
+	<footer>
+		<div>
+			<p>Theme</p>
+			<div>
+				<kit:dropdown closeOnClick>
+					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+					{#snippet activator({
+						toggle,
+						open
+					}: {
+						toggle: (el: HTMLElement | PointerEvent | null) => void;
+						open: boolean;
+						close: () => void;
+					})}
+						<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+							>{String(open)}</kit:btn
+						>
+					{/snippet}
+					<kit:list>
+						<kit:listitem>Light</kit:listitem>
+						<kit:listitem>Dark</kit:listitem>
+						<kit:listitem>System</kit:listitem>
+					</kit:list>
+				</kit:dropdown>
+				<kit:dropdown closeOnClick>
+					{#snippet activator({ toggle, open })}
+						<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+							>{String(open)}</kit:btn
+						>
+					{/snippet}
+					<kit:list>
+						<kit:listitem>Light</kit:listitem>
+						<kit:listitem>Dark</kit:listitem>
+						<kit:listitem>System</kit:listitem>
+					</kit:list>
+				</kit:dropdown>
+			</div>
+		</div>
+		<div>
+			<p>Social</p>
+			<div class="social-links">
+				{#each socialMediaLinks as { label, url, icon } (icon)}
+					<a
+						href={url}
+						target="_blank"
+						rel="external noopener noreferrer"
+						aria-label={label}
+						class="social-link"
+					>
+						{@html icon}
+					</a>
+				{/each}
+			</div>
+		</div>
+		<div>
+			<enhanced:img
+				src="$lib/assets/images/lapikit-footer.webp?w=320;640;1024;1280;1920;2560"
+				alt="lapikit"
+				aria-label="Lapikit"
+				class="footer-img"
+				sizes="100vw"
+				loading="lazy"
+			/>
+		</div>
+		<div>
+			Copyright © 2025 - 2026 Lapikit -
+			<a
+				href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
+				target="_blank"
+				rel="noopener noreferrer">MIT License</a
+			>
+		</div>
+	</footer>
 </kit:app>
 
 <style>
@@ -118,5 +194,22 @@
 	.logo-img {
 		height: 2.25rem;
 		width: auto;
+	}
+
+	.footer-img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.social-links {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.social-link {
+		display: flex;
+		align-items: center;
+		color: currentColor;
 	}
 </style>
