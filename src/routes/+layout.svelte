@@ -19,7 +19,7 @@
 	} from '$lib';
 	import { resolve } from '$app/paths';
 
-	import type { ModelDropdownProps } from 'lapikit/labs/types';
+	import type { ModelDropdownProps } from 'lapikit/labs/components';
 
 	let { children } = $props();
 
@@ -114,7 +114,6 @@
 			<p>Theme</p>
 			<div>
 				<kit:dropdown closeOnClick>
-					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 					{#snippet activator({
 						toggle,
 						open
@@ -134,7 +133,7 @@
 					</kit:list>
 				</kit:dropdown>
 				<kit:dropdown closeOnClick>
-					{#snippet activator({ toggle, open })}
+					{#snippet activator({ toggle, open }: ModelDropdownProps)}
 						<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
 							>{String(open)}</kit:btn
 						>
