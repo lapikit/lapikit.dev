@@ -7,7 +7,6 @@
 	// images
 	import favicon from '$lib/assets/favicon.svg';
 
-	import { House } from 'lucide-svelte';
 	import { docsSeoByPath, primaryNavigation, socialMediaLinks } from '$lib';
 	import {
 		defaultSeo,
@@ -18,8 +17,6 @@
 		siteName
 	} from '$lib';
 	import { resolve } from '$app/paths';
-
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
 
 	let { children } = $props();
 
@@ -72,38 +69,22 @@
 </svelte:head>
 
 <kit:app>
-	<kit:appbar>
-		<a href={resolve('/')} class="header-lapikit" aria-label="Home">
-			<House size={20} />
-
-			<enhanced:img
-				src="$lib/assets/images/lapikit.webp?w=36;72"
-				alt=""
-				class="logo-img"
-				sizes="36px"
-				fetchpriority="high"
-				loading="eager"
-			/>
-			<span>Lapikit</span>
-		</a>
-
+	<header>
+		<a href={resolve('/')} aria-label="Home">home</a>
 		<nav aria-label="Primary navigation">
 			{#each primaryNavigation as { href, label } (label)}
-				<kit:btn
-					href={resolve(href)}
-					aria-current={normalizedPath.startsWith(href) ? 'page' : undefined}
-				>
+				<a href={resolve(href)} aria-current={normalizedPath.startsWith(href) ? 'page' : undefined}>
 					{label}
-				</kit:btn>
+				</a>
 			{/each}
+			<a
+				href={resolve('/docs')}
+				aria-current={normalizedPath.startsWith('/docs') ? 'page' : undefined}
+			>
+				documentation
+			</a>
 		</nav>
-		<kit:btn
-			href={resolve('/docs')}
-			aria-current={normalizedPath.startsWith('/docs') ? 'page' : undefined}
-		>
-			Documentation
-		</kit:btn>
-	</kit:appbar>
+	</header>
 
 	<main>
 		{@render children()}
@@ -111,52 +92,20 @@
 
 	<footer>
 		<div>
-			<p>Theme</p>
+			<p>theme</p>
 			<div>
-				<kit:dropdown closeOnClick>
-					{#snippet activator({
-						toggle,
-						open
-					}: {
-						toggle: (el: HTMLElement | PointerEvent | null) => void;
-						open: boolean;
-						close: () => void;
-					})}
-						<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-							>{String(open)}</kit:btn
-						>
-					{/snippet}
-					<kit:list>
-						<kit:listitem>Light</kit:listitem>
-						<kit:listitem>Dark</kit:listitem>
-						<kit:listitem>System</kit:listitem>
-					</kit:list>
-				</kit:dropdown>
-				<kit:dropdown closeOnClick>
-					{#snippet activator({ toggle, open }: ModelDropdownProps)}
-						<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-							>{String(open)}</kit:btn
-						>
-					{/snippet}
-					<kit:list>
-						<kit:listitem>Light</kit:listitem>
-						<kit:listitem>Dark</kit:listitem>
-						<kit:listitem>System</kit:listitem>
-					</kit:list>
-				</kit:dropdown>
+				<ul>
+					<li>light</li>
+					<li>dark</li>
+					<li>system</li>
+				</ul>
 			</div>
 		</div>
 		<div>
-			<p>Social</p>
-			<div class="social-links">
+			<p>social</p>
+			<div>
 				{#each socialMediaLinks as { label, url, icon } (icon)}
-					<a
-						href={url}
-						target="_blank"
-						rel="external noopener noreferrer"
-						aria-label={label}
-						class="social-link"
-					>
+					<a href={url} target="_blank" rel="external noopener noreferrer" aria-label={label}>
 						{@html icon}
 					</a>
 				{/each}
@@ -173,42 +122,14 @@
 			/>
 		</div>
 		<div>
-			Copyright © 2025 - 2026 Lapikit -
+			copyright © 2025 - 2026 lapikit -
 			<a
 				href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
 				target="_blank"
-				rel="noopener noreferrer">MIT License</a
+				rel="noopener noreferrer"
 			>
+				mit license
+			</a>
 		</div>
 	</footer>
 </kit:app>
-
-<style>
-	.header-lapikit {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.logo-img {
-		height: 2.25rem;
-		width: auto;
-	}
-
-	.footer-img {
-		width: 100%;
-		height: auto;
-		display: block;
-	}
-
-	.social-links {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.social-link {
-		display: flex;
-		align-items: center;
-		color: currentColor;
-	}
-</style>
