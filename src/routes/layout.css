@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/outfit';
 @import '@fontsource-variable/jetbrains-mono';
+@import './md.css';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 

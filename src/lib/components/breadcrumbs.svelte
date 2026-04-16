@@ -7,7 +7,7 @@
 
 {#if items.length > 1}
 	<nav aria-label="Breadcrumb">
-		<ol>
+		<ol class="flex flex-wrap items-center gap-2 text-sm">
 			{#each items as item, index (`${item.href ?? item.label}-${index}`)}
 				<li>
 					{#if index === items.length - 1}

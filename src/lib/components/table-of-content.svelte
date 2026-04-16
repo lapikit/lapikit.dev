@@ -8,14 +8,16 @@
 
 {#if summaryItems.length > 0}
 	<nav aria-label="Table of contents">
-		<p>On this page</p>
+		<kit:list>
+			<kit:list-item>
+				<span class="font-semibold">On this page</span>
+			</kit:list-item>
+		</kit:list>
 
-		<ul>
-			{#each summaryItems as item (item.slug)}
-				<li class={`depth-${item.depth}`}>
-					<a href={`#${item.slug}`}>{item.value}</a>
-				</li>
-			{/each}
-		</ul>
+		{#each summaryItems as item (item.slug)}
+			<kit:list-item href={`#${item.slug}`} class={`depth-${item.depth}`}>
+				{item.value}
+			</kit:list-item>
+		{/each}
 	</nav>
 {/if}

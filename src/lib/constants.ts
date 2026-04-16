@@ -71,3 +71,68 @@ export const socialMediaLinks = [
 	{ label: 'GitHub', url: 'https://github.com/lapikit', icon: githubIcon },
 	{ label: 'Discord', url: 'https://discord.gg/lapikit', icon: discordIcon }
 ];
+
+export const docsNavigation = [
+	{
+		label: 'Getting Started',
+		icon: xIcon,
+		pages: [
+			{ label: 'Introduction', url: '/docs/introduction' },
+			{ label: 'Quick Start', url: '/docs/quick-start' }
+		]
+	},
+	{
+		label: 'Essentials',
+		icon: xIcon,
+		pages: [
+			{ label: 'Customization', url: '/docs/customization' },
+			{ label: 'Initialize application', url: '/docs/essentials/initialize-application' },
+			{ label: 'Template syntax', url: '/docs/essentials/template-syntax' },
+			{ label: 'Classes & Styles', url: '/docs/essentials/class-and-style' }
+		]
+	},
+	{
+		label: 'Components',
+		icon: xIcon,
+		pages: [
+			{ label: 'Application', url: '/docs/components/application' },
+			{ label: 'Accordion' },
+			{ label: 'Alert' },
+			{ label: 'Appbar' },
+			{ label: 'Aspect ratio' },
+			{ label: 'Avatar' },
+			{ label: 'Button', url: '/docs/components/button' },
+			{ label: 'Card', url: '/docs/components/card' },
+			{ label: 'Chip', url: '/docs/components/chip' },
+			{ label: 'Dialog' },
+			{ label: 'Dropdown' },
+			{ label: 'Icon' },
+			{ label: 'List' },
+			{ label: 'Modal' },
+			{ label: 'Popover' },
+			{ label: 'Separator' },
+			{ label: 'Textfield' },
+			{ label: 'Toolbar' },
+			{ label: 'Tooltip' }
+		]
+	},
+	{
+		label: 'Stores & Hooks',
+		icon: xIcon,
+		pages: [
+			{ label: '$breakpoints' },
+			{ label: '$devices' },
+			{ label: '$theme' },
+			{ label: 'useAccordion' },
+			{ label: 'useTheme' }
+		]
+	},
+	{
+		label: 'Extra Topics',
+		icon: xIcon,
+		pages: [
+			{ label: 'Migration Guide', url: '/docs/migration-guide' },
+			{ label: 'Typescripts & Linter', url: '/docs/environments' }
+		]
+	}
+] as const;

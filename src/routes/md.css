@@ -1,0 +1,458 @@
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+	--md-font-sans: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+	--md-font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', Consolas, monospace;
+	--md-font-size: 16px;
+	--md-line-height: 1.75;
+	--md-max-width: 720px;
+
+	/* Couleurs */
+	--md-color-text: #1a1a1a;
+	--md-color-muted: #555;
+	--md-color-link: #0969da;
+	--md-color-link-hover: #0550ae;
+	--md-color-border: #d0d7de;
+	--md-color-bg: #ffffff;
+	--md-color-surface: #f6f8fa;
+	--md-color-code-bg: #f0f2f5;
+	--md-color-code-text: #c7254e;
+	--md-color-blockquote: #57606a;
+	--md-color-blockquote-border: #0969da;
+	--md-color-mark: #fff3b0;
+	--md-color-ins: #d4f8d4;
+	--md-color-del: #ffd7d7;
+
+	/* Espacements */
+	--md-space-xs: 0.25rem;
+	--md-space-sm: 0.5rem;
+	--md-space-md: 1rem;
+	--md-space-lg: 1.5rem;
+	--md-space-xl: 2rem;
+	--md-space-2xl: 2.5rem;
+
+	/* Tableaux */
+	--md-table-head-bg: #f6f8fa;
+	--md-table-stripe-bg: #fafafa;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--md-color-text: #e6edf3;
+		--md-color-muted: #8b949e;
+		--md-color-link: #58a6ff;
+		--md-color-link-hover: #79c0ff;
+		--md-color-border: #30363d;
+		--md-color-bg: #0d1117;
+		--md-color-surface: #161b22;
+		--md-color-code-bg: #161b22;
+		--md-color-code-text: #ff7b72;
+		--md-color-blockquote: #8b949e;
+		--md-color-blockquote-border: #388bfd;
+		--md-color-mark: #4a3c00;
+		--md-color-ins: #0f3d0f;
+		--md-color-del: #4a0f0f;
+		--md-table-head-bg: #161b22;
+		--md-table-stripe-bg: #0d1117;
+	}
+}
+
+/* ── Container ────────────────────────────────────── */
+.kit-prose {
+	font-family: var(--md-font-sans);
+	font-size: var(--md-font-size);
+	line-height: var(--md-line-height);
+	color: var(--md-color-text);
+	background: var(--md-color-bg);
+	max-width: var(--md-max-width);
+	margin: 0 auto;
+	padding: var(--md-space-xl) var(--md-space-lg);
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* ── Reset  ──────────────────────────────────────────── */
+.kit-prose * {
+	box-sizing: border-box;
+}
+
+.kit-prose > *:first-child {
+	margin-top: 0;
+}
+.kit-prose > *:last-child {
+	margin-bottom: 0;
+}
+
+/* ── Title h1 – h6 ─────────────────────────────────────────── */
+.kit-prose h1,
+.kit-prose h2,
+.kit-prose h3,
+.kit-prose h4,
+.kit-prose h5,
+.kit-prose h6 {
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--md-color-text);
+	margin-top: var(--md-space-xl);
+	margin-bottom: var(--md-space-sm);
+}
+
+.kit-prose h1 {
+	font-size: 2rem;
+	border-bottom: 2px solid var(--md-color-border);
+	padding-bottom: var(--md-space-sm);
+}
+.kit-prose h2 {
+	font-size: 1.5rem;
+	border-bottom: 1px solid var(--md-color-border);
+	padding-bottom: var(--md-space-xs);
+}
+.kit-prose h3 {
+	font-size: 1.25rem;
+}
+.kit-prose h4 {
+	font-size: 1rem;
+	font-weight: 600;
+}
+.kit-prose h5 {
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+.kit-prose h6 {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--md-color-muted);
+}
+
+/* Anchor and Heading (optional) */
+.kit-prose h1 .anchor,
+.kit-prose h2 .anchor,
+.kit-prose h3 .anchor,
+.kit-prose h4 .anchor {
+	opacity: 0;
+	transition: opacity 0.15s;
+	margin-left: 0.4em;
+	font-weight: 400;
+	text-decoration: none;
+	color: var(--md-color-muted);
+}
+.kit-prose h1:hover .anchor,
+.kit-prose h2:hover .anchor,
+.kit-prose h3:hover .anchor,
+.kit-prose h4:hover .anchor {
+	opacity: 1;
+}
+
+/* ── Paragraphes ─────────────────────────────────────────────── */
+.kit-prose p {
+	margin-top: 0;
+	margin-bottom: var(--md-space-md);
+}
+
+/* ── Links ──────────────────────────────────────────────────── */
+.kit-prose a {
+	color: var(--md-color-link);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	transition: color 0.15s;
+}
+
+.kit-prose a:hover {
+	color: var(--md-color-link-hover);
+	text-decoration-thickness: 2px;
+}
+
+.kit-prose a:visited {
+	color: #6f42c1;
+}
+
+/* ── List ─────────────────────────────────────────────────── */
+.kit-prose ul,
+.kit-prose ol {
+	margin-top: 0;
+	margin-bottom: var(--md-space-md);
+	padding-left: var(--md-space-xl);
+}
+
+.kit-prose ul {
+	list-style-type: disc;
+}
+.kit-prose ol {
+	list-style-type: decimal;
+}
+
+/* Levels */
+.kit-prose ul ul {
+	list-style-type: circle;
+}
+.kit-prose ul ul ul {
+	list-style-type: square;
+}
+.kit-prose ol ol {
+	list-style-type: lower-alpha;
+}
+.kit-prose ol ol ol {
+	list-style-type: lower-roman;
+}
+
+.kit-prose li {
+	margin-bottom: var(--md-space-xs);
+	line-height: var(--md-line-height);
+}
+
+.kit-prose li > p {
+	margin-bottom: var(--md-space-xs);
+}
+
+/* Lists advanced */
+.kit-prose li > ul,
+.kit-prose li > ol {
+	margin-top: var(--md-space-xs);
+	margin-bottom: 0;
+}
+
+/* ── Code inline ─────────────────────────────────────────────── */
+.kit-prose code {
+	font-family: var(--md-font-mono);
+	font-size: 0.875em;
+	color: var(--md-color-code-text);
+	background-color: var(--md-color-code-bg);
+	border: 1px solid var(--md-color-border);
+	border-radius: 4px;
+	padding: 0.1em 0.35em;
+	white-space: nowrap;
+}
+
+/* ── Block of code (pre > code) ─────────────────────────────── */
+.kit-prose pre {
+	font-family: var(--md-font-mono);
+	font-size: 0.875rem;
+	line-height: 1.6;
+	background-color: var(--md-color-surface);
+	border: 1px solid var(--md-color-border);
+	border-radius: 8px;
+	padding: var(--md-space-md) var(--md-space-lg);
+	overflow-x: auto;
+	margin-top: 0;
+	margin-bottom: var(--md-space-md);
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Reset code */
+.kit-prose pre code {
+	font-family: inherit;
+	font-size: inherit;
+	color: var(--md-color-text);
+	background: none;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	white-space: pre;
+}
+
+/* ── Blockquote ─────────────────────────────────────────────── */
+.kit-prose blockquote {
+	margin: 0 0 var(--md-space-md) 0;
+	padding: var(--md-space-sm) var(--md-space-md);
+	border-left: 4px solid var(--md-color-blockquote-border);
+	background: var(--md-color-surface);
+	border-radius: 0 4px 4px 0;
+	color: var(--md-color-blockquote);
+}
+
+.kit-prose blockquote > p:last-child {
+	margin-bottom: 0;
+}
+
+/* Nested blockquotes */
+.kit-prose blockquote blockquote {
+	margin-top: var(--md-space-sm);
+	border-left-color: var(--md-color-border);
+}
+
+/* ── Divider horizontal ──────────────────────────────────── */
+.kit-prose hr {
+	border: none;
+	border-top: 2px solid var(--md-color-border);
+	margin: var(--md-space-xl) 0;
+}
+
+/* ── Table ─────────────────────────────────────────────────── */
+.kit-prose table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-bottom: var(--md-space-md);
+	font-size: 0.9em;
+	overflow-x: auto;
+	display: block;
+	max-width: 100%;
+}
+
+.kit-prose thead {
+	background-color: var(--md-table-head-bg);
+}
+
+.kit-prose th,
+.kit-prose td {
+	border: 1px solid var(--md-color-border);
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+	line-height: 1.5;
+}
+
+.kit-prose th {
+	font-weight: 600;
+}
+
+/* Lines (zebra striping) */
+.kit-prose tbody tr:nth-child(even) {
+	background-color: var(--md-table-stripe-bg);
+}
+
+.kit-prose tbody tr:hover {
+	background-color: var(--md-color-surface);
+}
+
+/* ── Pictures ─────────────────────────────────────────────────── */
+.kit-prose img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 4px;
+	border: 1px solid var(--md-color-border);
+	display: block;
+	margin: var(--md-space-sm) 0;
+}
+
+/* Figure & figcaption */
+.kit-prose figure {
+	margin: 0 0 var(--md-space-md) 0;
+}
+
+.kit-prose figcaption {
+	font-size: 0.85em;
+	color: var(--md-color-muted);
+	text-align: center;
+	margin-top: var(--md-space-xs);
+	font-style: italic;
+}
+
+/* ── Typography inline ─────────────────────────────────────── */
+.kit-prose strong {
+	font-weight: 700;
+}
+.kit-prose em {
+	font-style: italic;
+}
+.kit-prose s,
+.kit-prose del {
+	text-decoration: line-through;
+	color: var(--md-color-muted);
+}
+.kit-prose ins {
+	text-decoration: underline;
+	background-color: var(--md-color-ins);
+	padding: 0 2px;
+}
+.kit-prose mark {
+	background-color: var(--md-color-mark);
+	border-radius: 2px;
+	padding: 0 2px;
+}
+.kit-prose sub {
+	font-size: 0.75em;
+	vertical-align: sub;
+}
+.kit-prose sup {
+	font-size: 0.75em;
+	vertical-align: super;
+}
+.kit-prose abbr {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+.kit-prose kbd {
+	font-family: var(--md-font-mono);
+	font-size: 0.8em;
+	background: var(--md-color-surface);
+	border: 1px solid var(--md-color-border);
+	border-bottom: 2px solid var(--md-color-border);
+	border-radius: 4px;
+	padding: 0.1em 0.4em;
+}
+
+/* ── Details / Summary ──────────────────────────────────────── */
+.kit-prose details {
+	border: 1px solid var(--md-color-border);
+	border-radius: 6px;
+	padding: var(--md-space-sm) var(--md-space-md);
+	margin-bottom: var(--md-space-md);
+	background: var(--md-color-surface);
+}
+
+.kit-prose summary {
+	font-weight: 600;
+	cursor: pointer;
+	user-select: none;
+	padding: var(--md-space-xs) 0;
+}
+
+.kit-prose details[open] summary {
+	margin-bottom: var(--md-space-sm);
+	border-bottom: 1px solid var(--md-color-border);
+	padding-bottom: var(--md-space-sm);
+}
+
+/* ── Task list (GFM) ─────────────────────────────────────────── */
+.kit-prose input[type='checkbox'] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+	accent-color: var(--md-color-link);
+}
+
+.kit-prose .task-list-item {
+	list-style-type: none;
+	margin-left: -1.5em;
+	padding-left: 1.5em;
+}
+
+/* ── Footnotes ──────────────────────────────────────────────── */
+.kit-prose .footnotes {
+	border-top: 1px solid var(--md-color-border);
+	margin-top: var(--md-space-xl);
+	padding-top: var(--md-space-md);
+	font-size: 0.875em;
+	color: var(--md-color-muted);
+}
+
+/* ── Margins within blocks ───────────────────── */
+.kit-prose h1 + p,
+.kit-prose h2 + p,
+.kit-prose h3 + p {
+	margin-top: var(--md-space-xs);
+}
+
+.kit-prose p + ul,
+.kit-prose p + ol {
+	margin-top: calc(-1 * var(--md-space-xs));
+}
+
+/* ── Print ──────────────────────────────────────────────────── */
+@media print {
+	.kit-prose {
+		max-width: 100%;
+		font-size: 12pt;
+		color: #000;
+		background: #fff;
+	}
+	.kit-prose a {
+		color: #000;
+		text-decoration: underline;
+	}
+	.kit-prose pre,
+	.kit-prose code {
+		border: 1px solid #ccc;
+	}
+}
