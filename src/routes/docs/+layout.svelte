@@ -7,7 +7,7 @@
 	let { children } = $props();
 </script>
 
-<kit:appbar classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
+<kit:appbar class="sticky! top-0 z-50" classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
 	<a href={resolve('/')} class="flex items-center gap-2" aria-label="Lapikit Home">
 		<enhanced:img
 			src="$lib/assets/images/lapikit.webp?w=38"

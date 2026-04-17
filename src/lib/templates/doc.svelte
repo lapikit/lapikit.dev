@@ -33,7 +33,7 @@
 	<Drawer bind:open={navOpen} side="left">
 		<nav>
 			{#each docsNavigation as { label, icon, pages } (label)}
-				<kit:list density="compact" nav>
+				<kit:list density="compact" size="sm" nav>
 					<kit:list-item>
 						{#snippet prepend()}
 							<kit:icon>
@@ -60,7 +60,7 @@
 	</Drawer>
 
 	<div>
-		<kit:toolbar>
+		<kit:toolbar class="sticky! top-16 z-50">
 			<kit:btn onclick={() => (navOpen = true)} aria-label="open navigation">
 				{#snippet prepend()}
 					<kit:icon>
@@ -116,7 +116,7 @@
 		</article>
 	</div>
 
-	<div>
+	<div class="md:sticky md:top-16 md:z-auto md:h-[calc(100vh-64px)] md:overflow-y-auto">
 		<TableOfContent {summary} />
 	</div>
 </div>

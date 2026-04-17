@@ -26,7 +26,7 @@
 <div
 	class={[
 		'fixed top-0 z-50 h-full overflow-y-auto transition-transform duration-300',
-		'md:static md:z-auto md:h-auto md:translate-x-0 md:overflow-visible md:transition-none',
+		'md:sticky md:top-16 md:z-auto md:h-[calc(100vh-64px)] md:translate-x-0 md:overflow-y-auto md:transition-none',
 		side === 'left' ? 'left-0' : 'right-0',
 		side === 'left'
 			? open
