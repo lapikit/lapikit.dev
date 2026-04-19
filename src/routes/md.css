@@ -240,7 +240,7 @@
 	-webkit-overflow-scrolling: touch;
 }
 
-/* Reset code */
+/* Reset code inside pre */
 .kit-prose pre code {
 	font-family: inherit;
 	font-size: inherit;
@@ -250,6 +250,34 @@
 	border-radius: 0;
 	padding: 0;
 	white-space: pre;
+}
+
+/* ── Exclude kit-repl ────────────────────────────────────────── */
+.kit-prose .kit-repl code,
+.kit-prose .kit-repl pre code {
+	font-family: revert;
+	font-size: revert;
+	color: revert;
+	background-color: revert;
+	background: revert;
+	border: revert;
+	border-radius: revert;
+	padding: revert;
+	white-space: revert;
+}
+
+.kit-prose .kit-repl pre {
+	font-family: revert;
+	font-size: revert;
+	line-height: revert;
+	background-color: revert;
+	border: revert;
+	border-radius: revert;
+	padding: revert;
+	overflow-x: revert;
+	margin-top: revert;
+	margin-bottom: revert;
+	-webkit-overflow-scrolling: revert;
 }
 
 /* ── Blockquote ─────────────────────────────────────────────── */
@@ -373,7 +401,7 @@
 	text-decoration: underline dotted;
 	cursor: help;
 }
-.kit-prose kbd {
+.kit-prose :not(.kit-repl) kbd {
 	font-family: var(--md-font-mono);
 	font-size: 0.8em;
 	background: var(--md-color-surface);

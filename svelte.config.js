@@ -12,7 +12,7 @@ const config = {
 			envPrefix: ''
 		})
 	},
-	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess()],
+	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] })],
 	extensions: ['.svelte', '.svx', '.md']
 };
 

@@ -147,4 +147,11 @@
 		margin: 0 auto;
 		padding: var(--md-space-xl) var(--md-space-lg);
 	}
+
+	@media (min-width: 1407px) {
+		:global(.kit-repl) {
+			width: 120%;
+			margin-left: -10%;
+		}
+	}
 </style>

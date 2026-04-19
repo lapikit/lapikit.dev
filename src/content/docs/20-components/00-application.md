@@ -4,6 +4,7 @@ title: "Application"
 
 <script>
 	import LazyDemo from '$lib/components/lazy-demo.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 </script>
 <!--
 <script>
@@ -21,6 +22,8 @@ Page component application markdown
 ## My component is your component
 
 Lorem is Lorem
+
+<LazyRepl content="console.log('hello')" />
 
 ### Sub title 1
 

@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
 		"@eslint/js": "^9.39.2",
+		"@lapikit/repl": "^0.0.0-insiders.ab10c58",
 		"@sveltejs/adapter-node": "^5.5.2",
 		"@sveltejs/enhanced-img": "^0.10.4",
 		"@sveltejs/kit": "^2.50.2",
