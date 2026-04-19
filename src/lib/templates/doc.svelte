@@ -11,7 +11,7 @@
 	import TableOfContent from '$lib/components/table-of-content.svelte';
 	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import Drawer from '$lib/components/drawer.svelte';
-	import { ChevronDown, ChevronRight, Menu } from 'lucide-svelte';
+	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
 
 	let navOpen = $state(false);
 
@@ -29,7 +29,7 @@
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
 </script>
 
-<div class="grid md:grid-cols-[250px_1fr_250px]">
+<div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[250px_1fr_250px]">
 	<Drawer bind:open={navOpen} side="left">
 		<nav>
 			{#each docsNavigation as { label, icon, pages } (label)}
@@ -45,7 +45,11 @@
 
 					{#each pages as page (page.label)}
 						{#if 'url' in page}
-							<kit:list-item href={resolve(page.url)} onclick={() => (navOpen = false)}>
+							<kit:list-item
+								href={resolve(page.url)}
+								onclick={() => (navOpen = false)}
+								active={normalizedPath === page.url}
+							>
 								{page.label}
 							</kit:list-item>
 						{:else}
@@ -59,9 +63,9 @@
 		</nav>
 	</Drawer>
 
-	<div>
-		<kit:toolbar class="sticky! top-16 z-50">
-			<kit:btn onclick={() => (navOpen = true)} aria-label="open navigation">
+	<div class="min-w-0">
+		<kit:toolbar class="sticky! top-16 z-50 lg:hidden!">
+			<kit:btn class="md:hidden!" onclick={() => (navOpen = true)} aria-label="open navigation">
 				{#snippet prepend()}
 					<kit:icon>
 						<Menu />
@@ -92,31 +96,55 @@
 				<TableOfContent {summary} />
 			</kit:dropdown>
 		</kit:toolbar>
-		<Breadcrumbs items={breadcrumbs} />
+
 		<article>
+			<Breadcrumbs items={breadcrumbs} />
+
 			<div class="kit-prose">
 				{@render children?.()}
 			</div>
 
-			<kit:toolbar>
+			<kit:toolbar classContent="pagination-docs">
 				{#if data.prevDoc}
-					<a href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
-						<span>Previous</span>
-						<span>← {data.prevDoc.title}</span>
-					</a>
+					<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
+						{#snippet prepend()}
+							<kit:icon>
+								<ChevronLeft />
+							</kit:icon>
+						{/snippet}
+						{data.prevDoc.title}
+					</kit:btn>
 				{/if}
 				<kit:spacer />
 				{#if data.nextDoc}
-					<a href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
-						<span>Next</span>
-						<span>{data.nextDoc.title} →</span>
-					</a>
+					<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
+						{#snippet append()}
+							<kit:icon>
+								<ChevronRight />
+							</kit:icon>
+						{/snippet}
+						{data.nextDoc.title}
+					</kit:btn>
 				{/if}
 			</kit:toolbar>
 		</article>
 	</div>
 
-	<div class="md:sticky md:top-16 md:z-auto md:h-[calc(100vh-64px)] md:overflow-y-auto">
+	<div
+		class="hidden lg:sticky lg:top-16 lg:z-auto lg:block lg:h-[calc(100vh-64px)] lg:overflow-y-auto"
+	>
 		<TableOfContent {summary} />
 	</div>
 </div>
+
+<style>
+	:global(.pagination-docs) {
+		--md-max-width: 720px;
+		--md-space-xl: 2rem;
+		--md-space-lg: 1.5rem;
+
+		max-width: var(--md-max-width);
+		margin: 0 auto;
+		padding: var(--md-space-xl) var(--md-space-lg);
+	}
+</style>
