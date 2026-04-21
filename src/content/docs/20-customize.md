@@ -1,15 +1,15 @@
 ---
-title: "Customize"
+title: 'Customize'
 keywords:
-  - "customize"
-  - "theming"
-  - "css variables"
-  - "design tokens"
+  - 'customize'
+  - 'theming'
+  - 'css variables'
+  - 'design tokens'
 ---
 
 ## Customize
 
-Lapikit is built entirely on CSS custom properties. Every visual aspect of every component — colors, surfaces, spacing, radius, typography — is driven by `--kit-*` variables. Overriding them is all you need to make Lapikit match your design system.
+Lapikit is built entirely on CSS custom properties. Every visual aspect of every component - colors, surfaces, spacing, radius, typography - is driven by `--kit-*` variables. Overriding them is all you need to make Lapikit match your design system.
 
 ---
 
@@ -21,7 +21,7 @@ Lapikit ships with a light theme applied at `:root`. These are all the variables
 :root {
 	color-scheme: light;
 
-	/* Semantic hue values — used to derive status colors */
+	/* Semantic hue values - used to derive status colors */
 	--kit-h-neutral: 220;
 	--kit-h-success: 145;
 	--kit-h-warning: 35;
@@ -60,12 +60,13 @@ Lapikit ships with a light theme applied at `:root`. These are all the variables
 	--kit-disabled-opacity: 0.55;
 
 	/* Typography */
-	--kit-font: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol', 'Noto Color Emoji';
+	--kit-font:
+		ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
 }
 ```
 
-To apply your own values, override any of these in your global stylesheet — no build step needed.
+To apply your own values, override any of these in your global stylesheet - no build step needed.
 
 ```css
 /* app.css */
@@ -129,18 +130,18 @@ Each component's documentation lists the variables it exposes.
 
 ### Variable reference
 
-| Variable | Role |
-|---|---|
-| `--kit-bg` | Page background |
-| `--kit-fg` | Primary text color |
-| `--kit-muted` | Secondary / subdued text |
-| `--kit-surface-1/2/3` | Layered surface backgrounds |
-| `--kit-border` | Default border color |
-| `--kit-accent` | Primary accent / brand color |
-| `--kit-radius-1` | Tight border radius (inputs, chips…) |
-| `--kit-radius-2` | Loose border radius (cards, modals…) |
-| `--kit-space-1/2/3` | Internal spacing scale |
-| `--kit-focus` | Focus ring color |
-| `--kit-disabled-opacity` | Opacity applied to disabled elements |
-| `--kit-font` | Base font stack |
-| `--kit-h-neutral/success/warning/danger/info` | Hue values for semantic colors |
+| Variable                                      | Role                                 |
+| --------------------------------------------- | ------------------------------------ |
+| `--kit-bg`                                    | Page background                      |
+| `--kit-fg`                                    | Primary text color                   |
+| `--kit-muted`                                 | Secondary / subdued text             |
+| `--kit-surface-1/2/3`                         | Layered surface backgrounds          |
+| `--kit-border`                                | Default border color                 |
+| `--kit-accent`                                | Primary accent / brand color         |
+| `--kit-radius-1`                              | Tight border radius (inputs, chips…) |
+| `--kit-radius-2`                              | Loose border radius (cards, modals…) |
+| `--kit-space-1/2/3`                           | Internal spacing scale               |
+| `--kit-focus`                                 | Focus ring color                     |
+| `--kit-disabled-opacity`                      | Opacity applied to disabled elements |
+| `--kit-font`                                  | Base font stack                      |
+| `--kit-h-neutral/success/warning/danger/info` | Hue values for semantic colors       |

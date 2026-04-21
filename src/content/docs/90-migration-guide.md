@@ -1,10 +1,10 @@
 ---
-title: "Migration Guide"
+title: 'Migration Guide'
 keywords:
-  - "migration"
-  - "upgrade"
-  - "changelog"
-  - "breaking changes"
+  - 'migration'
+  - 'upgrade'
+  - 'changelog'
+  - 'breaking changes'
 ---
 
 ## Migration Guide
@@ -17,7 +17,7 @@ Learn how to migrate from older Lapikit versions to the latest release.
 
 Lapikit v0.5 introduces several breaking changes that affect the preprocessor, component syntax, and how styles are loaded. This guide walks through each change and how to update your setup.
 
-### Preprocessor — from Vite to Svelte
+### Preprocessor - from Vite to Svelte
 
 Lapikit no longer ships a Vite plugin. The preprocessor is now a **Svelte preprocessor**, configured directly in `svelte.config.js`.
 
@@ -56,7 +56,7 @@ Remove any Lapikit-related entries from your `vite.config.js`. After updating, r
 
 ---
 
-### Component syntax — `<kit:*>`
+### Component syntax - `<kit:*>`
 
 Components are no longer imported manually. Lapikit v0.5 introduces the `<kit:*>` template syntax, powered by the Svelte preprocessor. Imports are injected automatically at compile time.
 
@@ -76,7 +76,7 @@ Components are no longer imported manually. Lapikit v0.5 introduces the `<kit:*>
 <kit:btn>Click me</kit:btn>
 ```
 
-The preprocessor resolves `<kit:btn>` to the correct component and injects the import automatically. You can still use manual imports when needed — for example, to alias a component or use it conditionally. Both approaches are compatible.
+The preprocessor resolves `<kit:btn>` to the correct component and injects the import automatically. You can still use manual imports when needed - for example, to alias a component or use it conditionally. Both approaches are compatible.
 
 Here is a more complete example:
 
@@ -116,7 +116,7 @@ If you were customizing component styles via global overrides, you will need to 
 
 ---
 
-### Breakpoints and theming — from JS config to CSS variables
+### Breakpoints and theming - from JS config to CSS variables
 
 In v0.5, `createLapikit()` has been removed entirely. There is no longer a JS/TS configuration file for Lapikit. Breakpoints, themes, colors, and design tokens are now defined directly via **CSS custom properties** in your project's global stylesheet.
 
@@ -146,9 +146,9 @@ export default createLapikit({
 
 **After (≥ 0.5)**
 
-Delete `src/plugins/lapikit.ts` (or `lapikit.js`) entirely. All customization now lives in your CSS via Lapikit's CSS custom properties — colors, backgrounds, radius, and more are all exposed as `--kit-*` variables that you can override in your global stylesheet.
+Delete `src/plugins/lapikit.ts` (or `lapikit.js`) entirely. All customization now lives in your CSS via Lapikit's CSS custom properties - colors, backgrounds, radius, and more are all exposed as `--kit-*` variables that you can override in your global stylesheet.
 
-Breakpoint logic should be handled with standard CSS media queries or any responsive utility (Tailwind, etc.) — Lapikit no longer owns that responsibility.
+Breakpoint logic should be handled with standard CSS media queries or any responsive utility (Tailwind, etc.) - Lapikit no longer owns that responsibility.
 
 For the full list of available variables and how to customize them, see the [Customize](/docs/customize) page.
 
@@ -159,8 +159,8 @@ For the full list of available variables and how to customize them, see the [Cus
 1. Remove the Lapikit Vite plugin from `vite.config.js`.
 2. Add `lapikitPreprocess()` to `svelte.config.js`.
 3. Replace component imports and `<KitBtn>` usage with `<kit:btn>` syntax.
-4. Remove any global Lapikit stylesheet imports — scoped styles are now automatic.
-5. Delete `src/plugins/lapikit.(js|ts)` — `createLapikit()` no longer exists.
+4. Remove any global Lapikit stylesheet imports - scoped styles are now automatic.
+5. Delete `src/plugins/lapikit.(js|ts)` - `createLapikit()` no longer exists.
 6. Move your theme colors, tokens, and design values to CSS custom properties in your global stylesheet (`:root { --kit-* }`).
 7. Handle breakpoints with standard CSS media queries or a utility of your choice.
 8. Restart your dev server.
@@ -173,8 +173,8 @@ For the full list of available variables and how to customize them, see the [Cus
 | Component usage    | Manual import + `<KitBtn>`     | `<kit:btn>` (auto-imported)                 |
 | Stylesheet loading | Global import at app entry     | Scoped per component, automatic             |
 | Theme & colors     | `createLapikit()` JS config    | CSS custom properties (`:root { --kit-* }`) |
-| Breakpoints        | Built into `createLapikit()`   | Removed — handle with CSS media queries     |
-| JS config file     | `src/plugins/lapikit.(js\|ts)` | No longer needed — delete it                |
+| Breakpoints        | Built into `createLapikit()`   | Removed - handle with CSS media queries     |
+| JS config file     | `src/plugins/lapikit.(js\|ts)` | No longer needed - delete it                |
 
 ---
 

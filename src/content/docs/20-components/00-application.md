@@ -1,5 +1,5 @@
 ---
-title: 'Application'
+title: "Application"
 ---
 
 <script>
@@ -10,8 +10,6 @@ title: 'Application'
 </script>
 
 # Application component
-
-Application
 
 The `kit:app` component is an root layout for all component Lapikit. It acts as a global provider, initializing and centralizing everything Lapikit needs to function properly.
 
@@ -38,13 +36,11 @@ To get started or continue your project with Lapikit, define the entry point whe
 
 <LazyRepl lang="svelte" content={() => import('../../../content/examples/components/application/root.svelte?raw')} />
 
-### Whitout preprocess Lapikit
+### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, you can import it the usual way with:
 
-<LazyRepl lang="js" content={"import { App } from 'lapikit/components';"} />
-
-To use it in your project `<App>`
+<LazyRepl lang="svelte" content={() => import('../../../content/examples/components/application/with-classic-import.svelte?raw')} />
 
 ## API References
 

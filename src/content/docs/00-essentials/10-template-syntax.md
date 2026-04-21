@@ -1,5 +1,5 @@
 ---
-title: "Template Syntax"
+title: 'Template Syntax'
 ---
 
 ## Template Syntax
@@ -24,7 +24,7 @@ Instead of importing and using components manually, you can use the `<kit:name>`
 <kit:btn>Click me</kit:btn>
 ```
 
-Both are equivalent. The preprocessor transforms `<kit:btn>` into `<KitBtn>` and injects the import into your `<script>` block — or creates one if it doesn't exist.
+Both are equivalent. The preprocessor transforms `<kit:btn>` into `<KitBtn>` and injects the import into your `<script>` block - or creates one if it doesn't exist.
 
 **Available components** use the `kit:` prefix followed by the component short name:
 
@@ -43,7 +43,7 @@ Both are equivalent. The preprocessor transforms `<kit:btn>` into `<KitBtn>` and
 
 #### Using regular imports alongside `kit:` syntax
 
-You can still import components manually when needed — for example, to alias them, use them conditionally, or work with components outside the `kit:` registry.
+You can still import components manually when needed - for example, to alias them, use them conditionally, or work with components outside the `kit:` registry.
 
 ```svelte
 <script>
@@ -60,7 +60,7 @@ You can still import components manually when needed — for example, to alias t
 
 ### Styling components
 
-Lapikit provides two dedicated props — `s-class` and `s-style` — for binding classes and inline styles dynamically on any component. They are designed to mirror Svelte's `class:` and `style:` directives as closely as possible, within the limits of what Svelte's parser allows on components.
+Lapikit provides two dedicated props - `s-class` and `s-style` - for binding classes and inline styles dynamically on any component. They are designed to mirror Svelte's `class:` and `style:` directives as closely as possible, within the limits of what Svelte's parser allows on components.
 
 - **`s-class`** accepts a string, an array, or a conditional object to apply class names dynamically.
 - **`s-style`** accepts a CSS property object to apply inline styles dynamically.

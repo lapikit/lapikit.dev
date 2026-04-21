@@ -1,5 +1,5 @@
 ---
-title: "environments"
+title: 'environments'
 ---
 
 # Editor Setup
@@ -49,7 +49,7 @@ This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-spe
 
 ## Known False Positives
 
-### `ts(6133)` — snippet declared but never read
+### `ts(6133)` - snippet declared but never read
 
 When using lapikit snippets like `activator`, your IDE may display the following warning:
 
@@ -59,7 +59,7 @@ When using lapikit snippets like `activator`, your IDE may display the following
 
 This is a **known false positive**. Lapikit's `<kit:*>` syntax is transformed into standard Svelte components by its preprocessor at build time, but IDE language servers analyze your source files directly without running the preprocessor. As a result, they cannot determine that snippets like `activator` are consumed by the transformed component.
 
-Your code is correct and will work as expected — this warning can be safely ignored.
+Your code is correct and will work as expected - this warning can be safely ignored.
 
 To suppress it, set `noUnusedLocals` to `false` in your `tsconfig.json`:
 
@@ -98,4 +98,4 @@ If the false positives are a blocker for your workflow, you can use lapikit comp
 
 Your IDE will fully understand this syntax and the `ts(6133)` warning will no longer appear.
 
-> **Keep in mind:** By skipping the preprocessor, you lose the main benefits of the `<kit:*>` syntax — automatic imports, shorter and more readable markup, and the full integration optimizations that lapikit is designed around. We recommend sticking with the preprocessor and suppressing the warning via `noUnusedLocals: false`.
+> **Keep in mind:** By skipping the preprocessor, you lose the main benefits of the `<kit:*>` syntax - automatic imports, shorter and more readable markup, and the full integration optimizations that lapikit is designed around. We recommend sticking with the preprocessor and suppressing the warning via `noUnusedLocals: false`.

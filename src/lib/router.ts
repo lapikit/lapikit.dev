@@ -16,8 +16,9 @@ export const navigationRouteLinks = [
 	{
 		label: 'Components',
 		items: [
+			{ label: 'All', path: '/docs/components' },
 			{ label: 'Application', path: '/docs/components/application' },
-			{ label: 'All', path: '/docs/components' }
+			{ label: 'Accordion', path: '/docs/components/accordion' }
 		]
 	},
 	{

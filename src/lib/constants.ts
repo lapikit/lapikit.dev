@@ -96,7 +96,7 @@ export const docsNavigation = [
 		icon: xIcon,
 		pages: [
 			{ label: 'Application', url: '/docs/components/application' },
-			{ label: 'Accordion' },
+			{ label: 'Accordion', url: '/docs/components/accordion' },
 			{ label: 'Alert' },
 			{ label: 'Appbar' },
 			{ label: 'Aspect ratio' },
@@ -123,7 +123,7 @@ export const docsNavigation = [
 			{ label: '$breakpoints' },
 			{ label: '$devices' },
 			{ label: '$theme' },
-			{ label: 'useAccordion' },
+			{ label: 'useAccordion', url: '/docs/hooks/actions/use-accordion' },
 			{ label: 'useTheme' }
 		]
 	},

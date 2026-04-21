@@ -66,7 +66,13 @@
 <div bind:this={container} class="lazy-repl">
 	{#if loaded}
 		{#if children}
-			<kit:repl content={resolvedContent} {presentation} {title} {lang}>
+			<kit:repl
+				content={{
+					Root: { code: resolvedContent, lang: lang }
+				}}
+				{presentation}
+				{title}
+			>
 				{@render children()}
 			</kit:repl>
 		{:else}
@@ -76,7 +82,6 @@
 				}}
 				{presentation}
 				{title}
-				{lang}
 			/>
 		{/if}
 	{:else}

@@ -1,20 +1,20 @@
 ---
-title: "Class & Style"
+title: 'Class & Style'
 ---
 
 ## Class & Style binding
 
-Lapikit components expose two dedicated props — `s-class` and `s-style` — for dynamically binding class names and inline styles. They are designed to be as close as possible to Svelte's native `class:` and `style:` directives, within the limits of what Svelte's parser allows on components.
+Lapikit components expose two dedicated props - `s-class` and `s-style` - for dynamically binding class names and inline styles. They are designed to be as close as possible to Svelte's native `class:` and `style:` directives, within the limits of what Svelte's parser allows on components.
 
 > Svelte reserves `class:foo={...}` and `style:property={...}` for native HTML elements. Lapikit uses `s-class` and `s-style` as the equivalent for its own components.
 
 ---
 
-### `s-class` — Dynamic class binding
+### `s-class` - Dynamic class binding
 
 #### String
 
-The simplest form — adds a static class name:
+The simplest form - adds a static class name:
 
 ```svelte
 <kit:btn s-class="my-button">Click</kit:btn>
@@ -51,14 +51,14 @@ Use an object to conditionally apply class names. When a key's value is `true`, 
 
 For per-class control, use the `s-class_` directive. The part after the underscore is the base class name.
 
-**Boolean toggle** — adds the class name when `true`:
+**Boolean toggle** - adds the class name when `true`:
 
 ```svelte
 <!-- Adds class "rounded" when isRounded is true -->
 <kit:btn s-class_rounded={isRounded}>Click</kit:btn>
 ```
 
-**String modifier** — appends the value to the base name:
+**String modifier** - appends the value to the base name:
 
 ```svelte
 <!-- Adds class "theme--dark" -->
@@ -72,7 +72,7 @@ This is useful for BEM modifier patterns (`block--modifier`).
 
 ---
 
-### `s-style` — Dynamic inline styles
+### `s-style` - Dynamic inline styles
 
 #### Object
 

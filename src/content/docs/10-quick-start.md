@@ -1,5 +1,5 @@
 ---
-title: "quick start"
+title: 'quick start'
 ---
 
 ## Install Lapikit in your project
@@ -11,7 +11,7 @@ title: "quick start"
 
 SvelteKit is recommended for the best experience, but Lapikit works with any Svelte project.
 
-Lapikit is written in TypeScript and fully supports TypeScript projects. It is also compatible with JavaScript — you can simply ignore type annotations and type errors. That said, using TypeScript is recommended for a better developer experience, as some advanced features may be harder to use without types.
+Lapikit is written in TypeScript and fully supports TypeScript projects. It is also compatible with JavaScript - you can simply ignore type annotations and type errors. That said, using TypeScript is recommended for a better developer experience, as some advanced features may be harder to use without types.
 
 To install Lapikit, run the following command in your project directory:
 
@@ -74,7 +74,7 @@ Check out the customization section to learn more about styling Lapikit and inte
 
 ### Using Lapikit components
 
-Lapikit provides a wide range of ready-to-use components — from buttons and dropdowns to modals and tooltips. Each component is designed to be easy to use and customize, with simple and intuitive APIs.
+Lapikit provides a wide range of ready-to-use components - from buttons and dropdowns to modals and tooltips. Each component is designed to be easy to use and customize, with simple and intuitive APIs.
 
 The first component you should get familiar with is `kit:app`, which acts as the main wrapper for your application. It provides a base structure and default styles for your project, while allowing you to control the look and behavior of your app.
 

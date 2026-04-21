@@ -12,7 +12,7 @@
 	} = $props();
 </script>
 
-<!-- Backdrop — mobile/tablet only -->
+<!-- Backdrop - mobile/tablet only -->
 {#if open}
 	<div
 		class="fixed inset-0 z-90 bg-black/50 md:hidden"

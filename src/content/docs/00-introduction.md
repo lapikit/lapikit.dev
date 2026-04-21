@@ -1,10 +1,10 @@
 ---
-title: "introduction"
+title: 'introduction'
 keywords:
-  - "why lapikit"
-  - "acknowledgements"
-  - "discover"
-  - "lapikit"
+  - 'why lapikit'
+  - 'acknowledgements'
+  - 'discover'
+  - 'lapikit'
 ---
 
 <script>
@@ -13,7 +13,7 @@ keywords:
 
 ## What is Lapikit?
 
-Lapikit is a blend of the French word for rabbit (_lapin_), lapis lazuli — a precious blue stone — and the word _kit_, referring to a development toolkit. It's a Svelte component library focused on developer experience, ease of integration, and full customization of every component. Use it to build accessible, high-performance user interfaces without compromising on flexibility or performance.
+Lapikit is a blend of the French word for rabbit (_lapin_), lapis lazuli - a precious blue stone - and the word _kit_, referring to a development toolkit. It's a Svelte component library focused on developer experience, ease of integration, and full customization of every component. Use it to build accessible, high-performance user interfaces without compromising on flexibility or performance.
 
 Here is a minimal example:
 
@@ -29,7 +29,7 @@ This example showcases one of Lapikit's core features.
 
 ### Prerequisites
 
-The rest of this documentation assumes you have a basic understanding of HTML, CSS, and JavaScript. A basic knowledge of Svelte is also recommended — while we aim to make the documentation as accessible as possible, going through it without any Svelte experience may make some concepts harder to follow.
+The rest of this documentation assumes you have a basic understanding of HTML, CSS, and JavaScript. A basic knowledge of Svelte is also recommended - while we aim to make the documentation as accessible as possible, going through it without any Svelte experience may make some concepts harder to follow.
 
 ## Natural and Intuitive Library
 
@@ -44,9 +44,9 @@ Each component ships with a default style and can be fully customized. A theme m
 
 ### HTML-like Styling Props
 
-Svelte natively offers `class:name={condition}` and `style:property={value}` directives on HTML elements — but not on components. Lapikit bridges that gap by pre-integrating two equivalent props on every component:
+Svelte natively offers `class:name={condition}` and `style:property={value}` directives on HTML elements - but not on components. Lapikit bridges that gap by pre-integrating two equivalent props on every component:
 
-- **`s-class`** — conditionally apply classes, just like `class:name={condition}`:
+- **`s-class`** - conditionally apply classes, just like `class:name={condition}`:
 
 ```svelte
 <!-- Native Svelte on HTML elements -->
@@ -56,7 +56,7 @@ Svelte natively offers `class:name={condition}` and `style:property={value}` dir
 <kit:btn s-class={{ active: isActive, hidden: !visible }}>...</kit:btn>
 ```
 
-- **`s-style`** — conditionally apply inline styles, just like `style:property={value}`:
+- **`s-style`** - conditionally apply inline styles, just like `style:property={value}`:
 
 ```svelte
 <!-- Native Svelte on HTML elements -->
@@ -70,7 +70,7 @@ Both props also accept a plain `string` or `string[]` when no conditions are nee
 
 ### Minimal Dependencies
 
-Lapikit is built to be lightweight and fast, with as few dependencies as possible. We deliberately avoid external dependencies for core functionality — this keeps Lapikit quick to install, easy to integrate into any Svelte project, and free from third-party compatibility issues.
+Lapikit is built to be lightweight and fast, with as few dependencies as possible. We deliberately avoid external dependencies for core functionality - this keeps Lapikit quick to install, easy to integrate into any Svelte project, and free from third-party compatibility issues.
 
 Staying lean also means we move fast. We control the styles, components, and plugins, which ensures long-term stability and lets us ship improvements without being blocked by upstream changes.
 
