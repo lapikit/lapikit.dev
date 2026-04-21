@@ -2,28 +2,44 @@
 	import { onMount, type Snippet } from 'svelte';
 
 	type FileContent = { code: string; lang?: string };
-	type ContentType = string | Record<string, string | FileContent>;
+	type ContentLoader = () => Promise<{ default: string }>;
+	type ContentType = string | Record<string, string | FileContent> | ContentLoader;
 
 	let {
 		content = '' as ContentType,
 		presentation = false,
 		title = '',
-		children
+		children,
+		lang = 'sh'
 	}: {
 		content?: ContentType;
 		presentation?: boolean;
 		title?: string;
 		children?: Snippet;
+		lang?: 'sh' | 'svelte' | 'js' | 'html' | 'css' | 'json' | 'bash';
 	} = $props();
 
+	let resolvedContent = $state<string | Record<string, string | FileContent>>('');
 	let container = $state<HTMLElement | null>(null);
 	let loaded = $state(false);
 
+	// Résout le loader si c'est une fonction
+	$effect(() => {
+		if (typeof content === 'function') {
+			(content as ContentLoader)().then((m) => {
+				resolvedContent = m.default;
+			});
+		} else {
+			resolvedContent = content;
+		}
+	});
+
 	// Flatten content to plain text for SEO (rendered during SSR, indexed by crawlers)
+	// Utilise resolvedContent partout à la place de content
 	const staticCode = $derived(
-		typeof content === 'string'
-			? content
-			: Object.entries(content as Record<string, string | FileContent>)
+		typeof resolvedContent === 'string'
+			? resolvedContent
+			: Object.entries(resolvedContent as Record<string, string | FileContent>)
 					.map(([name, file]) => {
 						const code = typeof file === 'string' ? file : file.code;
 						return `// ${name}\n${code}`;
@@ -50,11 +66,18 @@
 <div bind:this={container} class="lazy-repl">
 	{#if loaded}
 		{#if children}
-			<kit:repl {content} {presentation} {title}>
+			<kit:repl content={resolvedContent} {presentation} {title} {lang}>
 				{@render children()}
 			</kit:repl>
 		{:else}
-			<kit:repl {content} {presentation} {title} />
+			<kit:repl
+				content={{
+					Root: { code: resolvedContent, lang: lang }
+				}}
+				{presentation}
+				{title}
+				{lang}
+			/>
 		{/if}
 	{:else}
 		<!--

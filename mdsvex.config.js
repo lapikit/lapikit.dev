@@ -26,7 +26,7 @@ function highlighter(code, lang) {
 
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
-	extensions: ['.md'],
+	extensions: ['.md', '.svx'],
 	remarkPlugins: [remarkHeadings],
 	highlight: { highlighter },
 	layout: {
