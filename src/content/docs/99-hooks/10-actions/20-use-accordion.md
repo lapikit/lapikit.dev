@@ -1,5 +1,5 @@
 ---
-title: 'useAccordion'
+title: "useAccordion"
 ---
 
 <script>

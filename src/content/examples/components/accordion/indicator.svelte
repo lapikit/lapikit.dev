@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Anvil, BadgeMinus, BadgePlus, ChessRook } from 'lucide-svelte';
 	import { useAccordion } from 'lapikit/actions';
+	import type { ModelAccordionItemProps } from 'lapikit/labs/components';
 
 	const accordion = useAccordion();
 </script>
@@ -12,7 +13,7 @@
 		open={accordion.values.includes(0)}
 		toggle={accordion.toggle}
 	>
-		{#snippet indicator({ open })}
+		{#snippet indicator({ open }: ModelAccordionItemProps)}
 			<kit:icon>
 				{#if open}
 					<BadgeMinus />
@@ -31,7 +32,7 @@
 		open={accordion.values.includes(1)}
 		toggle={accordion.toggle}
 	>
-		{#snippet indicator({ open })}
+		{#snippet indicator({ open }: ModelAccordionItemProps)}
 			<kit:icon>
 				{#if open}
 					<Anvil />

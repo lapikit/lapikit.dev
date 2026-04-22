@@ -1,5 +1,5 @@
 ---
-title: 'Class & Style'
+title: "Class & Style"
 ---
 
 ## Class & Style binding

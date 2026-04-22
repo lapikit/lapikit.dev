@@ -1,10 +1,10 @@
 ---
-title: 'Customize'
+title: "Customize"
 keywords:
-  - 'customize'
-  - 'theming'
-  - 'css variables'
-  - 'design tokens'
+  - "customize"
+  - "theming"
+  - "css variables"
+  - "design tokens"
 ---
 
 ## Customize

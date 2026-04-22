@@ -97,7 +97,7 @@ export const docsNavigation = [
 		pages: [
 			{ label: 'Application', url: '/docs/components/application' },
 			{ label: 'Accordion', url: '/docs/components/accordion' },
-			{ label: 'Alert' },
+			{ label: 'Alert', url: '/docs/components/alert' },
 			{ label: 'Appbar' },
 			{ label: 'Aspect ratio' },
 			{ label: 'Avatar' },

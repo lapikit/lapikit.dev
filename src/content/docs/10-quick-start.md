@@ -1,5 +1,5 @@
 ---
-title: 'quick start'
+title: "quick start"
 ---
 
 ## Install Lapikit in your project
