@@ -85,7 +85,7 @@ export const docsNavigation = [
 		label: 'Essentials',
 		icon: xIcon,
 		pages: [
-			{ label: 'Customization', url: '/docs/customization' },
+			{ label: 'Customization', url: '/docs/customize' },
 			{ label: 'Initialize application', url: '/docs/essentials/initialize-application' },
 			{ label: 'Template syntax', url: '/docs/essentials/template-syntax' },
 			{ label: 'Classes & Styles', url: '/docs/essentials/class-and-style' }
@@ -98,34 +98,28 @@ export const docsNavigation = [
 			{ label: 'Application', url: '/docs/components/application' },
 			{ label: 'Accordion', url: '/docs/components/accordion' },
 			{ label: 'Alert', url: '/docs/components/alert' },
-			{ label: 'Appbar' },
-			{ label: 'Aspect ratio' },
-			{ label: 'Avatar' },
+			{ label: 'Appbar', url: '/docs/components/appbar' },
+			{ label: 'Aspect ratio', url: '/docs/components/aspect-ratio' },
+			{ label: 'Avatar', url: '/docs/components/avatar' },
 			{ label: 'Button', url: '/docs/components/button' },
 			{ label: 'Card', url: '/docs/components/card' },
 			{ label: 'Chip', url: '/docs/components/chip' },
-			{ label: 'Dialog' },
-			{ label: 'Dropdown' },
-			{ label: 'Icon' },
-			{ label: 'List' },
-			{ label: 'Modal' },
-			{ label: 'Popover' },
-			{ label: 'Separator' },
-			{ label: 'Textfield' },
-			{ label: 'Toolbar' },
-			{ label: 'Tooltip' }
+			{ label: 'Dialog', url: '/docs/components/dialog' },
+			{ label: 'Dropdown', url: '/docs/components/dropdown' },
+			{ label: 'Icon', url: '/docs/components/icon' },
+			{ label: 'List', url: '/docs/components/list' },
+			{ label: 'Modal', url: '/docs/components/modal' },
+			{ label: 'Popover', url: '/docs/components/popover' },
+			{ label: 'Separator', url: '/docs/components/separator' },
+			{ label: 'Textfield', url: '/docs/components/textfield' },
+			{ label: 'Toolbar', url: '/docs/components/toolbar' },
+			{ label: 'Tooltip', url: '/docs/components/tooltip' }
 		]
 	},
 	{
 		label: 'Stores & Hooks',
 		icon: xIcon,
-		pages: [
-			{ label: '$breakpoints' },
-			{ label: '$devices' },
-			{ label: '$theme' },
-			{ label: 'useAccordion', url: '/docs/hooks/actions/use-accordion' },
-			{ label: 'useTheme' }
-		]
+		pages: [{ label: 'useAccordion', url: '/docs/hooks/actions/use-accordion' }]
 	},
 	{
 		label: 'Extra Topics',

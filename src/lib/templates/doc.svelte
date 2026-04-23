@@ -44,19 +44,13 @@
 					</kit:list-item>
 
 					{#each pages as page (page.label)}
-						{#if 'url' in page}
-							<kit:list-item
-								href={resolve(page.url)}
-								onclick={() => (navOpen = false)}
-								active={normalizedPath === page.url}
-							>
-								{page.label}
-							</kit:list-item>
-						{:else}
-							<kit:list-item onclick={() => (navOpen = false)}>
-								{page.label}
-							</kit:list-item>
-						{/if}
+						<kit:list-item
+							href={page.url}
+							onclick={() => (navOpen = false)}
+							active={normalizedPath === page.url}
+						>
+							{page.label}
+						</kit:list-item>
 					{/each}
 				</kit:list>
 			{/each}

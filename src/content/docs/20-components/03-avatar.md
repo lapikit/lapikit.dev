@@ -1,0 +1,105 @@
+---
+title: "Avatar"
+---
+
+<script>
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+
+	import Preview from '../../../content/examples/components/avatar/preview.svelte';
+	import Label from '../../../content/examples/components/avatar/label.svelte';
+	import Image from '../../../content/examples/components/avatar/image.svelte';
+	import Size from '../../../content/examples/components/avatar/size.svelte';
+	import Density from '../../../content/examples/components/avatar/density.svelte';
+</script>
+
+# Avatar component
+
+The `kit:avatar` component displays a user representation — either as initials via the `label` prop, or as an image passed through `children`.
+
+<LazyRepl title="avatar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/avatar/preview.svelte?raw')}>
+<Preview/>
+</LazyRepl>
+
+## Guide
+
+`kit:avatar` has two rendering modes:
+
+- **Label mode** — when `label` is set, the text is displayed uppercase and centered. `size` and `density` scale the avatar in this mode.
+- **Image mode** — when `children` is provided instead, the content (typically an `<img>`) fills the circle. `size` and `density` have no effect in this mode.
+
+## Usage
+
+### label
+
+Pass a string to `label` to display initials or short text. The value is trimmed and uppercased automatically.
+
+| prop  | type     | description                        |
+| ----- | -------- | ---------------------------------- |
+| label | `string` | Text displayed inside the avatar.  |
+
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/label.svelte?raw')}>
+<Label/>
+</LazyRepl>
+
+### Image
+
+Without `label`, pass an `<img>` (or any element) as `children`. The image fills the circle via `object-fit: cover`.
+
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/image.svelte?raw')}>
+<Image/>
+</LazyRepl>
+
+### size
+
+Controls the diameter and font size in label mode.
+
+| prop | type                                   | default |
+| ---- | -------------------------------------- | ------- |
+| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  |
+
+| value | diameter  |
+| ----- | --------- |
+| `xs`  | `1.75rem` |
+| `sm`  | `2rem`    |
+| `md`  | `2.25rem` |
+| `lg`  | `2.5rem`  |
+| `xl`  | `2.75rem` |
+
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/size.svelte?raw')}>
+<Size/>
+</LazyRepl>
+
+### density
+
+Scales the diameter by a multiplier on top of `size`, in label mode only.
+
+| prop    | type                                      | default     |
+| ------- | ----------------------------------------- | ----------- |
+| density | `'compact' \| 'default' \| 'comfortable'` | `'default'` |
+
+| value         | scale  |
+| ------------- | ------ |
+| `compact`     | `0.9×` |
+| `default`     | `1×`   |
+| `comfortable` | `1.1×` |
+
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/density.svelte?raw')}>
+<Density/>
+</LazyRepl>
+
+### Without preprocess Lapikit
+
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
+
+<LazyRepl lang="js" content={"import { Avatar } from 'lapikit/labs/components';"} />
+
+## API Reference
+
+**`kit:avatar`**
+
+| props    | type                                      | description                                            | default   |
+| -------- | ----------------------------------------- | ------------------------------------------------------ | --------- |
+| label    | `string`                                  | Text displayed inside the avatar (uppercased).         |           |
+| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Diameter and font size. Label mode only.               | `'md'`    |
+| density  | `'compact' \| 'default' \| 'comfortable'` | Size multiplier applied on top of `size`. Label only.  | `'default'` |
+| children | `Snippet`                                 | Content when `label` is not set (typically an `<img>`).|           |

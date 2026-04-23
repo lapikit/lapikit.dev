@@ -280,6 +280,15 @@
 	-webkit-overflow-scrolling: revert;
 }
 
+.kit-prose .kit-repl img {
+	max-width: revert;
+	height: revert;
+	border-radius: revert;
+	border: revert;
+	display: revert;
+	margin: revert;
+}
+
 /* ── Blockquote ─────────────────────────────────────────────── */
 .kit-prose blockquote {
 	margin: 0 0 var(--md-space-md) 0;
