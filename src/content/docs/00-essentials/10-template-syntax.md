@@ -1,5 +1,5 @@
 ---
-title: "Template Syntax"
+title: 'Template Syntax'
 ---
 
 ## Template Syntax
@@ -66,4 +66,4 @@ Lapikit provides two dedicated props - `s-class` and `s-style` - for binding cla
 - **`s-style`** accepts a CSS property object to apply inline styles dynamically.
 - Both also have a directive shorthand (`s-class_*`, `s-style_*`) for per-property control.
 
-For the full reference with all forms and examples, see the [Class & Style binding](./20-class-and-style) page.
+For the full reference with all forms and examples, see the [Class & Style binding](/docs/essentials/class-and-style) page.
