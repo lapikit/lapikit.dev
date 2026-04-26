@@ -8,6 +8,6 @@
 	</kit:alert>
 
 	{#if !open}
-		<button onclick={() => (open = true)}>Restore alert</button>
+		<kit:btn onclick={() => (open = true)}>Restore alert</kit:btn>
 	{/if}
 </div>

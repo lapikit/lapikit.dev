@@ -1,5 +1,5 @@
 ---
-title: "Modal"
+title: 'Modal'
 ---
 
 <script>
@@ -31,9 +31,7 @@ The `kit:modal` component renders a floating content panel controlled by a binda
 
 Controls the vertical alignment of the content panel.
 
-| prop     | type                              | default    |
-| -------- | --------------------------------- | ---------- |
-| position | `'top' \| 'center' \| 'bottom'`   | `'center'` |
+- **position**: `'top' | 'center' | 'bottom'` = `'center'`
 
 <LazyRepl title="modal.svelte" lang="svelte" content={() => import('../../../content/examples/components/modal/position.svelte?raw')}>
 <Position/>
@@ -43,18 +41,7 @@ Controls the vertical alignment of the content panel.
 
 Controls the max-width of the content panel. `'full'` renders as a bottom sheet spanning the full viewport width.
 
-| prop | type                                             | default |
-| ---- | ------------------------------------------------ | ------- |
-| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'md'`  |
-
-| value  | max-width  |
-| ------ | ---------- |
-| `xs`   | `20rem`    |
-| `sm`   | `24rem`    |
-| `md`   | `32rem`    |
-| `lg`   | `42rem`    |
-| `xl`   | `56rem`    |
-| `full` | bottom sheet |
+- **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'` = `'md'`
 
 <LazyRepl title="modal.svelte" lang="svelte" content={() => import('../../../content/examples/components/modal/size.svelte?raw')}>
 <Size/>
@@ -64,9 +51,7 @@ Controls the max-width of the content panel. `'full'` renders as a bottom sheet 
 
 When `persistent` is set, pressing Escape does not close the modal. The user must interact with the content to dismiss it.
 
-| prop       | type      | default |
-| ---------- | --------- | ------- |
-| persistent | `boolean` | `false` |
+- **persitent**: `boolean` = `false`
 
 <LazyRepl title="modal.svelte" lang="svelte" content={() => import('../../../content/examples/components/modal/persistent.svelte?raw')}>
 <Persistent/>
@@ -80,17 +65,17 @@ When `persistent` is set, pressing Escape does not close the modal. The user mus
 
 **`kit:modal`**
 
-| props        | type                                             | description                                              | default    |
-| ------------ | ------------------------------------------------ | -------------------------------------------------------- | ---------- |
-| open         | `boolean`                                        | Controls visibility. Bindable.                           | `false`    |
-| persistent   | `boolean`                                        | Prevents closing on Escape.                              | `false`    |
-| contain      | `boolean`                                        | Positions relative to parent instead of viewport.        | `false`    |
-| closeWithEsc | `boolean`                                        | Closes on Escape key.                                    | `true`     |
-| size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Max-width of the content panel.                        | `'md'`     |
-| position     | `'top' \| 'center' \| 'bottom'`                  | Vertical alignment on the viewport.                      | `'center'` |
-| density      | `'compact' \| 'default' \| 'comfortable'`        | Padding inside the content panel.                        | `'default'`|
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`     | Border radius of the content panel.                      | `'md'`     |
-| classContent | `string \| string[]`                             | Class(es) applied to the inner content panel.            |            |
-| color        | `string`                                         | Foreground color override (`--kit-modal-fg`).            |            |
-| background   | `string`                                         | Background color override (`--kit-modal-bg`).            |            |
-| children     | `Snippet`                                        | Modal content.                                           |            |
+| props        | type                                             | description                                       | default     |
+| ------------ | ------------------------------------------------ | ------------------------------------------------- | ----------- |
+| open         | `boolean`                                        | Controls visibility. Bindable.                    | `false`     |
+| persistent   | `boolean`                                        | Prevents closing on Escape.                       | `false`     |
+| contain      | `boolean`                                        | Positions relative to parent instead of viewport. | `false`     |
+| closeWithEsc | `boolean`                                        | Closes on Escape key.                             | `true`      |
+| size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Max-width of the content panel.                   | `'md'`      |
+| position     | `'top' \| 'center' \| 'bottom'`                  | Vertical alignment on the viewport.               | `'center'`  |
+| density      | `'compact' \| 'default' \| 'comfortable'`        | Padding inside the content panel.                 | `'default'` |
+| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Border radius of the content panel.               | `'md'`      |
+| classContent | `string \| string[]`                             | Class(es) applied to the inner content panel.     |             |
+| color        | `string`                                         | Foreground color override (`--kit-modal-fg`).     |             |
+| background   | `string`                                         | Background color override (`--kit-modal-bg`).     |             |
+| children     | `Snippet`                                        | Modal content.                                    |             |

@@ -1,12 +1,18 @@
-<div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; padding: 3rem 0;">
-	{#each ['top', 'bottom', 'left', 'right'] as pos}
+<script lang="ts">
+	import type { ModelDropdownProps } from 'lapikit/labs/components';
+</script>
+
+<div
+	style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; padding: 3rem 0;"
+>
+	{#each ['top', 'bottom', 'left', 'right'] as pos (pos)}
 		<kit:dropdown position={pos} closeOnClick>
-			{#snippet activator(model)}
+			{#snippet activator({ open, toggle }: ModelDropdownProps)}
 				<kit:btn
 					variant="outline"
 					is="button"
-					active={model.open}
-					onclick={(e) => model.toggle(e.currentTarget)}
+					active={open}
+					onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
 				>
 					{pos}
 				</kit:btn>

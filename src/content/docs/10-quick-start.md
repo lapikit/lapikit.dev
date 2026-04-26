@@ -2,6 +2,10 @@
 title: "quick start"
 ---
 
+<script>
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+</script>
+
 ## Install Lapikit in your project
 
 **Prerequisites**
@@ -15,15 +19,11 @@ Lapikit is written in TypeScript and fully supports TypeScript projects. It is a
 
 To install Lapikit, run the following command in your project directory:
 
-```bash
-npm install -save-dev lapikit
-```
+<LazyRepl lang="sh" content={"npm install -save-dev lapikit"} />
 
 Once installed, use the setup CLI to automatically add the required preprocessor to your project:
 
-```bash
-npx lapikit
-```
+<LazyRepl lang="sh" content={"npx lapikit"} />
 
 **Note: If you are using SvelteKit, the CLI will automatically detect it and configure the preprocessor. For other setups, follow the manual configuration steps below.**
 
@@ -33,34 +33,17 @@ To configure the preprocessor manually:
 
 1. Install Lapikit:
 
-```bash
-npm install -save-dev lapikit
-```
+<LazyRepl lang="sh" content={"npm install -save-dev lapikit"} />
 
 2. Update your `svelte.config.js` to include the Lapikit preprocessor:
 
-```javascript
-import adapter from '@sveltejs/adapter-node';
-import { lapikitPreprocess } from 'lapikit/labs/preprocess';
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-	preprocess: lapikitPreprocess(),
-	extensions: ['.svelte', '.svx', '.md']
-};
-
-export default config;
-```
+<LazyRepl lang="js" title="svelte.config.js" content={() => import('../../content/examples/started/svelte-config-js.js?raw')} />
 
 3. Restart your development server to apply the changes.
 
 You can now start using Lapikit components in your Svelte project. For example:
 
-```svelte
-<kit:app>
-	<kit:btn onclick={() => counter++}>Count is: {counter}</kit:btn>
-</kit:app>
-```
+<LazyRepl lang="svelte" title="+layout.svelte" content={() => import('../../content/examples/started/start-your-project-with-lapikit.svelte?raw')} />
 
 ## Explore the documentation
 
@@ -78,4 +61,4 @@ Lapikit provides a wide range of ready-to-use components - from buttons and drop
 
 The first component you should get familiar with is `kit:app`, which acts as the main wrapper for your application. It provides a base structure and default styles for your project, while allowing you to control the look and behavior of your app.
 
-See the `kit:app` component documentation to learn more about its usage and features.
+See the [`kit:app` component documentation](components/application) to learn more about its usage and features.

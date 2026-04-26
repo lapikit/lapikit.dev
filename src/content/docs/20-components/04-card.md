@@ -1,5 +1,5 @@
 ---
-title: "Card"
+title: 'Card'
 ---
 
 <script>
@@ -24,14 +24,14 @@ The `kit:card` component is a flexible container for grouped content. It renders
 
 `kit:card` is a layout container — it adds no heading or structure on its own. Use the utility classes below inside it to organise content consistently.
 
-| class                    | description                                                     |
-| ------------------------ | --------------------------------------------------------------- |
-| `kit-card__media`        | Wraps media (image, video). Clips overflow to the card radius.  |
-| `kit-card__header`       | Bold title. `font-weight: 600`, tight line-height.              |
-| `kit-card__body`         | Main text content.                                              |
-| `kit-card__footer`       | Flex row between footer text and actions.                       |
-| `kit-card__footer-content` | Muted text (date, meta) inside the footer.                    |
-| `kit-card__actions`      | Inline action buttons inside the footer.                        |
+| class                      | description                                                    |
+| -------------------------- | -------------------------------------------------------------- |
+| `kit-card__media`          | Wraps media (image, video). Clips overflow to the card radius. |
+| `kit-card__header`         | Bold title. `font-weight: 600`, tight line-height.             |
+| `kit-card__body`           | Main text content.                                             |
+| `kit-card__footer`         | Flex row between footer text and actions.                      |
+| `kit-card__footer-content` | Muted text (date, meta) inside the footer.                     |
+| `kit-card__actions`        | Inline action buttons inside the footer.                       |
 
 <LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/structure.svelte?raw')}>
 <Structure/>
@@ -41,9 +41,7 @@ The `kit:card` component is a flexible container for grouped content. It renders
 
 ### Variants
 
-| prop    | type                              | default    |
-| ------- | --------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text'` | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
 - `filled` — accent background, white text.
 - `outline` — transparent background with accent border.
@@ -57,9 +55,7 @@ The `kit:card` component is a flexible container for grouped content. It renders
 
 `density` adjusts the internal padding.
 
-| prop    | type                                      | default     |
-| ------- | ----------------------------------------- | ----------- |
-| density | `'compact' \| 'default' \| 'comfortable'` | `'default'` |
+- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/density.svelte?raw')}>
 <Density/>
@@ -69,13 +65,11 @@ The `kit:card` component is a flexible container for grouped content. It renders
 
 An interactive card lifts on hover and shows a ripple on click. This behaviour is automatic when `href` is set or an `onclick` handler is attached. Use `interactive` to enable it on a plain `<div>` without changing the element.
 
-| prop        | type      | default |
-| ----------- | --------- | ------- |
-| interactive | `boolean` | `false` |
-| href        | `string`  |         |
-| active      | `boolean` | `false` |
-| disabled    | `boolean` | `false` |
-| noRipple    | `boolean` |         |
+- **interactive**: `boolean` = `false`
+- **href**: `string | undefined` = `undefined`
+- **active**: `boolean` = `false`
+- **disabled**: `boolean` = `false`
+- **noRipple**: `boolean` = `false`
 
 > When `disabled` is `true` on an `<a>` card, `href` is removed and `tabindex="-1"` is set.
 
@@ -93,15 +87,15 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:card`**
 
-| props       | type                                                          | description                                              | default    |
-| ----------- | ------------------------------------------------------------- | -------------------------------------------------------- | ---------- |
-| is          | `'div' \| 'article' \| 'section' \| 'aside' \| 'a' \| 'button'` | HTML element to render. Overridden by `href`.        | `'div'`    |
-| variant     | `'filled' \| 'outline' \| 'text'`                            | Visual style.                                            | `'filled'` |
-| density     | `'compact' \| 'default' \| 'comfortable'`                    | Internal padding.                                        | `'default'`|
-| rounded     | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                  | Border radius.                                           | `'md'`     |
-| href        | `string`                                                      | Renders as `<a>`. Enables interactive mode.              |            |
-| interactive | `boolean`                                                     | Enables hover lift and ripple without changing the tag.  | `false`    |
-| active      | `boolean`                                                     | Applies the pressed background.                          | `false`    |
-| disabled    | `boolean`                                                     | Dims and disables interaction.                           | `false`    |
-| noRipple    | `boolean`                                                     | Disables the ripple animation on click.                  |            |
-| children    | `Snippet`                                                     | Card content.                                            |            |
+| props       | type                                                            | description                                             | default     |
+| ----------- | --------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| is          | `'div' \| 'article' \| 'section' \| 'aside' \| 'a' \| 'button'` | HTML element to render. Overridden by `href`.           | `'div'`     |
+| variant     | `'filled' \| 'outline' \| 'text'`                               | Visual style.                                           | `'filled'`  |
+| density     | `'compact' \| 'default' \| 'comfortable'`                       | Internal padding.                                       | `'default'` |
+| rounded     | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Border radius.                                          | `'md'`      |
+| href        | `string`                                                        | Renders as `<a>`. Enables interactive mode.             |             |
+| interactive | `boolean`                                                       | Enables hover lift and ripple without changing the tag. | `false`     |
+| active      | `boolean`                                                       | Applies the pressed background.                         | `false`     |
+| disabled    | `boolean`                                                       | Dims and disables interaction.                          | `false`     |
+| noRipple    | `boolean`                                                       | Disables the ripple animation on click.                 |             |
+| children    | `Snippet`                                                       | Card content.                                           |             |

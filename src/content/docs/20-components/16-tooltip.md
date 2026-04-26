@@ -1,5 +1,5 @@
 ---
-title: "Tooltip"
+title: 'Tooltip'
 ---
 
 <script>
@@ -27,9 +27,7 @@ The `kit:tooltip` component shows a small floating label when the user hovers or
 
 ### location
 
-| prop     | type                                        | default    |
-| -------- | ------------------------------------------- | ---------- |
-| location | `'top' \| 'bottom' \| 'left' \| 'right'`   | `'bottom'` |
+- **location**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
 <LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('../../../content/examples/components/tooltip/location.svelte?raw')}>
 <Location/>
@@ -39,9 +37,7 @@ The `kit:tooltip` component shows a small floating label when the user hovers or
 
 Add `variant="arrow"` to render a directional arrow on the tooltip panel.
 
-| prop    | type       | default |
-| ------- | ---------- | ------- |
-| variant | `'arrow'`  |         |
+- **variant**: `'arrow' | undefined` = `''`
 
 <LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('../../../content/examples/components/tooltip/arrow.svelte?raw')}>
 <Arrow/>
@@ -51,9 +47,7 @@ Add `variant="arrow"` to render a directional arrow on the tooltip panel.
 
 Use the `tooltip` snippet to render any content inside the tooltip panel. When `tooltip` is set, `forceMount` is enabled automatically and `label` is ignored.
 
-| prop    | type      | description                          |
-| ------- | --------- | ------------------------------------ |
-| tooltip | `Snippet` | Rich content rendered in the panel.  |
+- **tooltip**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('../../../content/examples/components/tooltip/custom.svelte?raw')}>
 <Custom/>
@@ -67,19 +61,19 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 **`kit:tooltip`**
 
-| props           | type                                        | description                                              | default    |
-| --------------- | ------------------------------------------- | -------------------------------------------------------- | ---------- |
-| label           | `string`                                    | Plain text content of the tooltip.                       |            |
-| location        | `'top' \| 'bottom' \| 'left' \| 'right'`   | Preferred position relative to the trigger.              | `'bottom'` |
-| variant         | `'arrow'`                                   | Renders a directional arrow on the tooltip panel.        |            |
-| delayDuration   | `number`                                    | Hover delay before the tooltip appears (ms).             | `850`      |
-| open            | `boolean`                                   | Controls visibility. Bindable.                           | `false`    |
-| disabled        | `boolean`                                   | Prevents the tooltip from showing.                       | `false`    |
-| forceMount      | `boolean`                                   | Keeps the tooltip in the DOM when closed.                | `false`    |
-| avoidCollisions | `boolean`                                   | Flips position to stay within the viewport.              | `true`     |
-| density         | `'compact' \| 'default' \| 'comfortable'`   | Padding density.                                         | `'default'`|
-| rounded         | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                         |            |
-| color           | `string`                                    | Foreground color override (`--kit-tooltip-fg`).          |            |
-| background      | `string`                                    | Background color override (`--kit-tooltip-bg`).          |            |
-| tooltip         | `Snippet`                                   | Rich content rendered inside the tooltip panel.          |            |
-| children        | `Snippet`                                   | The trigger element.                                     |            |
+| props           | type                                        | description                                       | default     |
+| --------------- | ------------------------------------------- | ------------------------------------------------- | ----------- |
+| label           | `string`                                    | Plain text content of the tooltip.                |             |
+| location        | `'top' \| 'bottom' \| 'left' \| 'right'`    | Preferred position relative to the trigger.       | `'bottom'`  |
+| variant         | `'arrow'`                                   | Renders a directional arrow on the tooltip panel. |             |
+| delayDuration   | `number`                                    | Hover delay before the tooltip appears (ms).      | `850`       |
+| open            | `boolean`                                   | Controls visibility. Bindable.                    | `false`     |
+| disabled        | `boolean`                                   | Prevents the tooltip from showing.                | `false`     |
+| forceMount      | `boolean`                                   | Keeps the tooltip in the DOM when closed.         | `false`     |
+| avoidCollisions | `boolean`                                   | Flips position to stay within the viewport.       | `true`      |
+| density         | `'compact' \| 'default' \| 'comfortable'`   | Padding density.                                  | `'default'` |
+| rounded         | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                    |             |
+| color           | `string`                                    | Foreground color override (`--kit-tooltip-fg`).   |             |
+| background      | `string`                                    | Background color override (`--kit-tooltip-bg`).   |             |
+| tooltip         | `Snippet`                                   | Rich content rendered inside the tooltip panel.   |             |
+| children        | `Snippet`                                   | The trigger element.                              |             |

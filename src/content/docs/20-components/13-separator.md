@@ -1,5 +1,5 @@
 ---
-title: "Separator"
+title: 'Separator'
 ---
 
 <script>
@@ -26,9 +26,7 @@ The `kit:separator` component renders a thin horizontal or vertical dividing lin
 
 ### orientation
 
-| prop        | type                              | default        |
-| ----------- | --------------------------------- | -------------- |
-| orientation | `'horizontal' \| 'vertical'`      | `'horizontal'` |
+- **orientation**: `'horizontal' | 'vertical'` = `'horizontal'`
 
 Vertical separators are inline-flex and stretch to fill their container's height.
 
@@ -40,9 +38,7 @@ Vertical separators are inline-flex and stretch to fill their container's height
 
 Adds a leading margin to indent the separator from the left edge — useful inside lists.
 
-| prop  | type      | default |
-| ----- | --------- | ------- |
-| inset | `boolean` | `false` |
+- **inset**: `boolean` = `false`
 
 <LazyRepl title="separator.svelte" lang="svelte" content={() => import('../../../content/examples/components/separator/inset.svelte?raw')}>
 <Inset/>
@@ -56,11 +52,11 @@ Adds a leading margin to indent the separator from the left edge — useful insi
 
 **`kit:separator`**
 
-| props       | type                              | description                                              | default        |
-| ----------- | --------------------------------- | -------------------------------------------------------- | -------------- |
-| is          | `'div' \| 'hr'`                   | HTML element to render.                                  | `'hr'`         |
-| orientation | `'horizontal' \| 'vertical'`      | Direction of the separator.                              | `'horizontal'` |
-| inset       | `boolean`                         | Adds a leading indent.                                   | `false`        |
-| thickness   | `string \| number`                | Border width override (px number or CSS string).         |                |
-| opacity     | `string \| number`                | Opacity override.                                        | `0.12`         |
-| color       | `string`                          | Color override (`--kit-separator-color`).                |                |
+| props       | type                         | description                                      | default        |
+| ----------- | ---------------------------- | ------------------------------------------------ | -------------- |
+| is          | `'div' \| 'hr'`              | HTML element to render.                          | `'hr'`         |
+| orientation | `'horizontal' \| 'vertical'` | Direction of the separator.                      | `'horizontal'` |
+| inset       | `boolean`                    | Adds a leading indent.                           | `false`        |
+| thickness   | `string \| number`           | Border width override (px number or CSS string). |                |
+| opacity     | `string \| number`           | Opacity override.                                | `0.12`         |
+| color       | `string`                     | Color override (`--kit-separator-color`).        |                |

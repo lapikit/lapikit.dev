@@ -1,5 +1,5 @@
 ---
-title: "Button"
+title: 'Button'
 ---
 
 <script>
@@ -27,9 +27,7 @@ The `kit:btn` component is a flexible interactive element. It renders as a `<but
 
 ### Variants
 
-| prop    | type                                          | default    |
-| ------- | --------------------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text' \| 'link'`  | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text' | 'link'` = `'filled'`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/variants.svelte?raw')}>
 <Variants/>
@@ -37,9 +35,7 @@ The `kit:btn` component is a flexible interactive element. It renders as a `<but
 
 ### size
 
-| prop | type                                   | default |
-| ---- | -------------------------------------- | ------- |
-| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  |
+- **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/size.svelte?raw')}>
 <Size/>
@@ -53,6 +49,8 @@ Add `icon` to render a square button — width equals height. Useful for icon-on
 | ---- | --------- | ------- |
 | icon | `boolean` | `false` |
 
+- **icon**: `boolean` = `false`
+
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/icon.svelte?raw')}>
 <Icon/>
 </LazyRepl>
@@ -61,10 +59,13 @@ Add `icon` to render a square button — width equals height. Useful for icon-on
 
 Use `prepend` and `append` to place icons or elements on either side of the label.
 
-| prop    | type      | description                         |
-| ------- | --------- | ----------------------------------- |
-| prepend | `Snippet` | Content rendered before the label.  |
-| append  | `Snippet` | Content rendered after the label.   |
+| prop    | type      | description                        |
+| ------- | --------- | ---------------------------------- |
+| prepend | `Snippet` | Content rendered before the label. |
+| append  | `Snippet` | Content rendered after the label.  |
+
+- **prepend**: `Snippet | undefined` = `undefined`
+- **append**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/prepend-append.svelte?raw')}>
 <PrependAppend/>
@@ -80,24 +81,24 @@ Use `prepend` and `append` to place icons or elements on either side of the labe
 | loading  | `boolean` |         |
 | active   | `boolean` | `false` |
 
+- **disabled**: `boolean` = `false`
+- **loading**: `boolean` = `false`
+- **active**: `boolean` = `false`
+
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/states.svelte?raw')}>
 <States/>
 </LazyRepl>
 
 Use the `load` snippet to replace the default `...` spinner with custom content.
 
-| prop | type      | description                         |
-| ---- | --------- | ----------------------------------- |
-| load | `Snippet` | Custom content shown while loading. |
+- **load**: `Snippet | undefined` = `undefined`
 
 ### block and wide
 
 `block` makes the button stretch to its container's full width. `wide` caps it at `16rem` and is intended to be centered.
 
-| prop  | type      | default |
-| ----- | --------- | ------- |
-| block | `boolean` |         |
-| wide  | `boolean` |         |
+- **block**: `boolean` = `false`
+- **wide**: `boolean` = `false`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/block.svelte?raw')}>
 <Block/>
@@ -107,9 +108,7 @@ Use the `load` snippet to replace the default `...` spinner with custom content.
 
 Pass `href` to render the button as an `<a>` element. The `disabled` prop removes `href` automatically.
 
-| prop | type     | description                               |
-| ---- | -------- | ----------------------------------------- |
-| href | `string` | Renders as `<a href="...">` when set.     |
+- **href**: `string | undefined` = `undefined`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/as-link.svelte?raw')}>
 <AsLink/>
@@ -125,22 +124,22 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:btn`**
 
-| props    | type                                          | description                                              | default    |
-| -------- | --------------------------------------------- | -------------------------------------------------------- | ---------- |
-| is       | `'button' \| 'a' \| 'input'`                  | HTML element to render. Overridden by `href` or `input`. | `'button'` |
-| variant  | `'filled' \| 'outline' \| 'text' \| 'link'`  | Visual style.                                            | `'filled'` |
-| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`       | Height and font size.                                    | `'md'`     |
-| density  | `'compact' \| 'default' \| 'comfortable'`     | Padding and height multiplier.                           | `'default'`|
-| rounded  | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`  | Border radius.                                           |            |
-| href     | `string`                                      | Renders as `<a>`. Cleared when `disabled`.               |            |
-| disabled | `boolean`                                     | Prevents interaction, dims the button.                   | `false`    |
-| loading  | `boolean`                                     | Shows a spinner, hides content.                          |            |
-| active   | `boolean`                                     | Applies the pressed background.                          | `false`    |
-| icon     | `boolean`                                     | Makes width equal height for icon-only buttons.          |            |
-| block    | `boolean`                                     | Stretches to full container width.                       |            |
-| wide     | `boolean`                                     | Caps width at `16rem`.                                   |            |
-| noRipple | `boolean`                                     | Disables the ripple animation on click.                  |            |
-| prepend  | `Snippet`                                     | Content before the label.                                |            |
-| append   | `Snippet`                                     | Content after the label.                                 |            |
-| load     | `Snippet`                                     | Custom spinner content shown while loading.              |            |
-| children | `Snippet`                                     | Button label.                                            |            |
+| props    | type                                        | description                                              | default     |
+| -------- | ------------------------------------------- | -------------------------------------------------------- | ----------- |
+| is       | `'button' \| 'a' \| 'input'`                | HTML element to render. Overridden by `href` or `input`. | `'button'`  |
+| variant  | `'filled' \| 'outline' \| 'text' \| 'link'` | Visual style.                                            | `'filled'`  |
+| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Height and font size.                                    | `'md'`      |
+| density  | `'compact' \| 'default' \| 'comfortable'`   | Padding and height multiplier.                           | `'default'` |
+| rounded  | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                           |             |
+| href     | `string`                                    | Renders as `<a>`. Cleared when `disabled`.               |             |
+| disabled | `boolean`                                   | Prevents interaction, dims the button.                   | `false`     |
+| loading  | `boolean`                                   | Shows a spinner, hides content.                          |             |
+| active   | `boolean`                                   | Applies the pressed background.                          | `false`     |
+| icon     | `boolean`                                   | Makes width equal height for icon-only buttons.          |             |
+| block    | `boolean`                                   | Stretches to full container width.                       |             |
+| wide     | `boolean`                                   | Caps width at `16rem`.                                   |             |
+| noRipple | `boolean`                                   | Disables the ripple animation on click.                  |             |
+| prepend  | `Snippet`                                   | Content before the label.                                |             |
+| append   | `Snippet`                                   | Content after the label.                                 |             |
+| load     | `Snippet`                                   | Custom spinner content shown while loading.              |             |
+| children | `Snippet`                                   | Button label.                                            |             |

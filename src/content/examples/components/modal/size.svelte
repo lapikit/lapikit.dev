@@ -12,7 +12,7 @@
 </script>
 
 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-	{#each sizes as s}
+	{#each sizes as s (s)}
 		<kit:btn onclick={() => show(s)}>{s}</kit:btn>
 	{/each}
 </div>

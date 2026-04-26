@@ -1,25 +1,32 @@
 <script lang="ts">
-	import { Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from 'lucide-svelte';
+	import {
+		Bold,
+		Italic,
+		Underline,
+		TextAlignStart,
+		TextAlignEnd,
+		TextAlignCenter
+	} from 'lucide-svelte';
 </script>
 
 <kit:toolbar>
-	<kit:btn variant="text" size="sm">
+	<kit:btn variant="text" size="sm" icon>
 		{#snippet prepend()}<kit:icon><Bold /></kit:icon>{/snippet}
 	</kit:btn>
-	<kit:btn variant="text" size="sm">
+	<kit:btn variant="text" size="sm" icon>
 		{#snippet prepend()}<kit:icon><Italic /></kit:icon>{/snippet}
 	</kit:btn>
-	<kit:btn variant="text" size="sm">
+	<kit:btn variant="text" size="sm" icon>
 		{#snippet prepend()}<kit:icon><Underline /></kit:icon>{/snippet}
 	</kit:btn>
 	<kit:separator orientation="vertical" />
-	<kit:btn variant="text" size="sm">
-		{#snippet prepend()}<kit:icon><AlignLeft /></kit:icon>{/snippet}
+	<kit:btn variant="text" size="sm" icon>
+		{#snippet prepend()}<kit:icon><TextAlignStart /></kit:icon>{/snippet}
 	</kit:btn>
-	<kit:btn variant="text" size="sm">
-		{#snippet prepend()}<kit:icon><AlignCenter /></kit:icon>{/snippet}
+	<kit:btn variant="text" size="sm" icon>
+		{#snippet prepend()}<kit:icon><TextAlignCenter /></kit:icon>{/snippet}
 	</kit:btn>
-	<kit:btn variant="text" size="sm">
-		{#snippet prepend()}<kit:icon><AlignRight /></kit:icon>{/snippet}
+	<kit:btn variant="text" size="sm" icon>
+		{#snippet prepend()}<kit:icon><TextAlignEnd /></kit:icon>{/snippet}
 	</kit:btn>
 </kit:toolbar>

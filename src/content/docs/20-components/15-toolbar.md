@@ -1,5 +1,5 @@
 ---
-title: "Toolbar"
+title: 'Toolbar'
 ---
 
 <script>
@@ -27,9 +27,7 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 
 ### Variants
 
-| prop    | type                                          | default    |
-| ------- | --------------------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text' \| 'dash'`   | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text' | 'dash'` = `'filled'`
 
 <LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/variants.svelte?raw')}>
 <Variants/>
@@ -37,9 +35,7 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 
 ### density
 
-| prop    | type                                      | default     |
-| ------- | ----------------------------------------- | ----------- |
-| density | `'compact' \| 'default' \| 'comfortable'` | `'default'` |
+- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/density.svelte?raw')}>
 <Density/>
@@ -47,9 +43,7 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 
 ### orientation
 
-| prop        | type                              | default        |
-| ----------- | --------------------------------- | -------------- |
-| orientation | `'horizontal' \| 'vertical'`      | `'horizontal'` |
+- **orientation**: `'horizontal' | 'vertical'` = `'horizontal'`
 
 <LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/orientation.svelte?raw')}>
 <Orientation/>
@@ -59,9 +53,11 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 
 Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge (`position: fixed`). This is intended for app-level toolbars like a top navigation bar or a bottom action bar.
 
-| prop     | type                    | description                              |
-| -------- | ----------------------- | ---------------------------------------- |
-| location | `'top' \| 'bottom'`     | Pins the toolbar to the viewport edge.   |
+| prop     | type                | description                            |
+| -------- | ------------------- | -------------------------------------- |
+| location | `'top' \| 'bottom'` | Pins the toolbar to the viewport edge. |
+
+- **location**: `'top' | 'bottom' | undefined` = `undefined`
 
 ### Without preprocess Lapikit
 
@@ -71,15 +67,15 @@ Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge 
 
 **`kit:toolbar`**
 
-| props        | type                                          | description                                              | default        |
-| ------------ | --------------------------------------------- | -------------------------------------------------------- | -------------- |
-| is           | `'div' \| 'header' \| 'nav'`                  | HTML element to render.                                  | `'div'`        |
-| variant      | `'filled' \| 'outline' \| 'text' \| 'dash'`   | Visual style.                                            | `'filled'`     |
-| density      | `'compact' \| 'default' \| 'comfortable'`     | Padding and size density.                                | `'default'`    |
-| orientation  | `'horizontal' \| 'vertical'`                  | Layout direction.                                        | `'horizontal'` |
-| location     | `'top' \| 'bottom'`                           | Pins to viewport edge (`position: fixed`).               |                |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`  | Border radius.                                           | `'xl'` (1rem)  |
-| classContent | `string \| string[]`                          | Class(es) applied to the inner wrapper.                  |                |
-| color        | `string`                                      | Foreground color override (`--kit-toolbar-fg`).          |                |
-| background   | `string`                                      | Background color override (`--kit-toolbar-bg`).          |                |
-| children     | `Snippet`                                     | Toolbar content.                                         |                |
+| props        | type                                        | description                                     | default        |
+| ------------ | ------------------------------------------- | ----------------------------------------------- | -------------- |
+| is           | `'div' \| 'header' \| 'nav'`                | HTML element to render.                         | `'div'`        |
+| variant      | `'filled' \| 'outline' \| 'text' \| 'dash'` | Visual style.                                   | `'filled'`     |
+| density      | `'compact' \| 'default' \| 'comfortable'`   | Padding and size density.                       | `'default'`    |
+| orientation  | `'horizontal' \| 'vertical'`                | Layout direction.                               | `'horizontal'` |
+| location     | `'top' \| 'bottom'`                         | Pins to viewport edge (`position: fixed`).      |                |
+| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                  | `'xl'` (1rem)  |
+| classContent | `string \| string[]`                        | Class(es) applied to the inner wrapper.         |                |
+| color        | `string`                                    | Foreground color override (`--kit-toolbar-fg`). |                |
+| background   | `string`                                    | Background color override (`--kit-toolbar-bg`). |                |
+| children     | `Snippet`                                   | Toolbar content.                                |                |

@@ -4,7 +4,7 @@
 </script>
 
 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-	{#each filters as f}
+	{#each filters as f (f)}
 		<kit:chip
 			is="button"
 			variant={active === f ? 'filled' : 'outline'}

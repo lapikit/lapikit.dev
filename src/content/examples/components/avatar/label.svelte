@@ -2,5 +2,5 @@
 	<kit:avatar label="A" />
 	<kit:avatar label="AB" />
 	<kit:avatar label="CD" />
-	<kit:avatar label="John Doe" />
+	<kit:avatar label="Nycolaide" />
 </div>

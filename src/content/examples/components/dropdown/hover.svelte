@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { ChevronDown } from 'lucide-svelte';
+
+	import type { ModelDropdownProps, ModelDropdownHandleProps } from 'lapikit/labs/components';
 </script>
 
 <kit:dropdown openOnHover closeOnClick>
-	{#snippet activator(model, handleMouse)}
+	{#snippet activator({ open, toggle }: ModelDropdownProps, handleMouse: ModelDropdownHandleProps)}
 		<kit:btn
 			variant="outline"
 			is="button"
-			active={model.open}
-			onclick={(e) => model.toggle(e.currentTarget)}
-			onmouseenter={(e) => handleMouse('open', e.currentTarget)}
+			active={open}
+			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+			onmouseenter={(e: MouseEvent) => handleMouse('open', e.currentTarget as HTMLElement)}
 			onmouseleave={() => handleMouse('close', null)}
 		>
 			Hover me

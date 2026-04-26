@@ -8,7 +8,10 @@ keywords:
 ---
 
 <script>
-	import LazyDemo from '$lib/components/lazy-demo.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+
+  // examples
+  import IntroductionLapikit from '../../content/examples/started/introduction-lapikit.svelte';
 </script>
 
 ## What is Lapikit?
@@ -17,13 +20,14 @@ Lapikit is a blend of the French word for rabbit (_lapin_), lapis lazuli - a pre
 
 Here is a minimal example:
 
-```svelte
-<kit:btn onclick={() => counter++}>Count is: {counter}</kit:btn>
-```
+<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('../../content/examples/started/introduction-lapikit.svelte?raw')}>
+</LazyRepl>
 
 **Result**
 
-<LazyDemo loader={() => import('../../content/examples/introduction-demo.svelte')} />
+<LazyRepl title="lapikit.svelte" lang="svelte">
+<IntroductionLapikit/>
+</LazyRepl>
 
 This example showcases one of Lapikit's core features.
 
@@ -44,27 +48,17 @@ Each component ships with a default style and can be fully customized. A theme m
 
 ### HTML-like Styling Props
 
-Svelte natively offers `class:name={condition}` and `style:property={value}` directives on HTML elements - but not on components. Lapikit bridges that gap by pre-integrating two equivalent props on every component:
+Svelte natively offers `class_name={condition}` and `style_property={value}` directives on HTML elements - but not on components. Lapikit bridges that gap by pre-integrating two equivalent props on every component:
 
 - **`s-class`** - conditionally apply classes, just like `class:name={condition}`:
 
-```svelte
-<!-- Native Svelte on HTML elements -->
-<div class:active={isActive} class:hidden={!visible}>...</div>
-
-<!-- Lapikit equivalent on components -->
-<kit:btn s-class={{ active: isActive, hidden: !visible }}>...</kit:btn>
-```
+<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('../../content/examples/started/s-class-preprocessor.svelte?raw')}>
+</LazyRepl>
 
 - **`s-style`** - conditionally apply inline styles, just like `style:property={value}`:
 
-```svelte
-<!-- Native Svelte on HTML elements -->
-<div style:color={brandColor} style:font-size="1rem">...</div>
-
-<!-- Lapikit equivalent on components -->
-<kit:btn s-style={{ color: brandColor, 'font-size': '1rem' }}>...</kit:btn>
-```
+<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('../../content/examples/started/s-style-preprocessor.svelte?raw')}>
+</LazyRepl>
 
 Both props also accept a plain `string` or `string[]` when no conditions are needed.
 

@@ -2,6 +2,10 @@
 title: "Template Syntax"
 ---
 
+<script>
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+</script>
+
 ## Template Syntax
 
 Lapikit comes with a preprocessor that extends Svelte's template syntax with a set of shorthands designed to make working with Lapikit components feel as native as possible.
@@ -10,51 +14,21 @@ Lapikit comes with a preprocessor that extends Svelte's template syntax with a s
 
 Instead of importing and using components manually, you can use the `<kit:name>` syntax directly in your templates. The preprocessor handles the import automatically at compile time.
 
-```svelte
-<!-- Without the preprocessor -->
-<script>
-	import { KitBtn } from 'lapikit/labs/components';
-</script>
+<LazyRepl lang="svelte" title="without preprocessor lapikit" content={() => import('../../../content/examples/essentials/use-component-without-preprocessor.svelte?raw')} />
 
-<KitBtn>Click me</KitBtn>
-```
-
-```svelte
-<!-- With the preprocessor -->
-<kit:btn>Click me</kit:btn>
-```
+<LazyRepl lang="svelte" title="with preprocessor lapikit" content={() => import('../../../content/examples/essentials/use-component-with-preprocessor.svelte?raw')} />
 
 Both are equivalent. The preprocessor transforms `<kit:btn>` into `<KitBtn>` and injects the import into your `<script>` block - or creates one if it doesn't exist.
 
 **Available components** use the `kit:` prefix followed by the component short name:
 
-```svelte
-<kit:app>
-	<kit:appbar>
-		<kit:btn variant="text">Menu</kit:btn>
-	</kit:appbar>
-
-	<kit:card>
-		<kit:chip>New</kit:chip>
-		Hello world
-	</kit:card>
-</kit:app>
-```
+<LazyRepl lang="svelte" title="+page.svelte" content={() => import('../../../content/examples/essentials/use-components.svelte?raw')} />
 
 #### Using regular imports alongside `kit:` syntax
 
 You can still import components manually when needed - for example, to alias them, use them conditionally, or work with components outside the `kit:` registry.
 
-```svelte
-<script>
-	import { KitBtn } from 'lapikit/labs/components';
-	import MyCustomButton from '$lib/components/my-button.svelte';
-</script>
-
-<kit:btn>Auto-imported button</kit:btn>
-<KitBtn>Manually imported button</KitBtn>
-<MyCustomButton>Custom component</MyCustomButton>
-```
+<LazyRepl lang="svelte" title="+page.svelte" content={() => import('../../../content/examples/essentials/regular-import-components.svelte?raw')} />
 
 ---
 

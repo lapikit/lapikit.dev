@@ -64,10 +64,10 @@ Components are no longer imported manually. Lapikit v0.5 introduces the `<kit:*>
 
 ```svelte
 <script>
-	import { KitBtn } from 'lapikit';
+	import { Button } from 'lapikit';
 </script>
 
-<KitBtn>Click me</KitBtn>
+<Button>Click me</Button>
 ```
 
 **After (≥ 0.5)**

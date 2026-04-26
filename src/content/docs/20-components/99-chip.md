@@ -1,5 +1,5 @@
 ---
-title: "Chip"
+title: 'Chip'
 ---
 
 <script>
@@ -29,9 +29,7 @@ The `kit:chip` component is a compact, pill-shaped element used for tags, filter
 
 ### Variants
 
-| prop    | type                                         | default    |
-| ------- | -------------------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text' \| 'link'` | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text' | 'link` = `'filled'`
 
 <LazyRepl title="chip.svelte" lang="svelte" content={() => import('../../../content/examples/components/chip/variants.svelte?raw')}>
 <Variants/>
@@ -39,9 +37,7 @@ The `kit:chip` component is a compact, pill-shaped element used for tags, filter
 
 ### size
 
-| prop | type                                    | default |
-| ---- | --------------------------------------- | ------- |
-| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  |
+- **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
 <LazyRepl title="chip.svelte" lang="svelte" content={() => import('../../../content/examples/components/chip/size.svelte?raw')}>
 <Size/>
@@ -51,10 +47,8 @@ The `kit:chip` component is a compact, pill-shaped element used for tags, filter
 
 Use `prepend` for an icon before the label, and `append` for an action — typically a remove button.
 
-| prop    | type      | description                         |
-| ------- | --------- | ----------------------------------- |
-| prepend | `Snippet` | Content rendered before the label.  |
-| append  | `Snippet` | Content rendered after the label.   |
+- **prepend**: `Snippet | undefined` = `undefined`
+- **append**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="chip.svelte" lang="svelte" content={() => import('../../../content/examples/components/chip/prepend-append.svelte?raw')}>
 <PrependAppend/>
@@ -64,11 +58,9 @@ Use `prepend` for an icon before the label, and `append` for an action — typic
 
 `disabled` dims and blocks interaction. `readonly` blocks interaction without the dim. `active` applies the pressed background — useful for toggled filter chips.
 
-| prop     | type      | default |
-| -------- | --------- | ------- |
-| active   | `boolean` | `false` |
-| disabled | `boolean` | `false` |
-| readonly | `boolean` | `false` |
+- **active**: `boolean` = `false`
+- **disabled**: `boolean` = `false`
+- **readonly**: `boolean` = `false`
 
 <LazyRepl title="chip.svelte" lang="svelte" content={() => import('../../../content/examples/components/chip/states.svelte?raw')}>
 <States/>
@@ -78,9 +70,7 @@ Use `prepend` for an icon before the label, and `append` for an action — typic
 
 `labelStyle` applies uppercase, bold, and slight letter-spacing — suited for category or status badges.
 
-| prop       | type      | default |
-| ---------- | --------- | ------- |
-| labelStyle | `boolean` | `false` |
+- **labelStyle**: `labelStyle` = `false`
 
 <LazyRepl title="chip.svelte" lang="svelte" content={() => import('../../../content/examples/components/chip/label-style.svelte?raw')}>
 <LabelStyle/>
@@ -96,20 +86,20 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:chip`**
 
-| props      | type                                         | description                                                   | default    |
-| ---------- | -------------------------------------------- | ------------------------------------------------------------- | ---------- |
-| is         | `'div' \| 'a' \| 'button' \| 'input'`        | HTML element. Overridden by `href` or event handlers.         | `'div'`    |
-| variant    | `'filled' \| 'outline' \| 'text' \| 'link'` | Visual style.                                                 | `'filled'` |
-| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Height and font size.                                         | `'md'`     |
-| density    | `'compact' \| 'default' \| 'comfortable'`    | Padding and height multiplier.                                | `'default'`|
-| href       | `string`                                     | Renders as `<a>`. Cleared when `disabled` or `readonly`.      |            |
-| active     | `boolean`                                    | Applies the pressed background.                               | `false`    |
-| disabled   | `boolean`                                    | Dims and blocks all interaction.                              | `false`    |
-| readonly   | `boolean`                                    | Blocks interaction without disabled styling.                  | `false`    |
-| labelStyle | `boolean`                                    | Uppercase, bold, letter-spacing — for badges and categories.  | `false`    |
-| loading    | `boolean`                                    | Shows a spinner, hides content.                               |            |
-| noRipple   | `boolean`                                    | Disables the ripple animation on click.                       |            |
-| prepend    | `Snippet`                                    | Content before the label.                                     |            |
-| append     | `Snippet`                                    | Content after the label.                                      |            |
-| load       | `Snippet`                                    | Custom spinner content shown while loading.                   |            |
-| children   | `Snippet`                                    | Chip label.                                                   |            |
+| props      | type                                        | description                                                  | default     |
+| ---------- | ------------------------------------------- | ------------------------------------------------------------ | ----------- |
+| is         | `'div' \| 'a' \| 'button' \| 'input'`       | HTML element. Overridden by `href` or event handlers.        | `'div'`     |
+| variant    | `'filled' \| 'outline' \| 'text' \| 'link'` | Visual style.                                                | `'filled'`  |
+| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Height and font size.                                        | `'md'`      |
+| density    | `'compact' \| 'default' \| 'comfortable'`   | Padding and height multiplier.                               | `'default'` |
+| href       | `string`                                    | Renders as `<a>`. Cleared when `disabled` or `readonly`.     |             |
+| active     | `boolean`                                   | Applies the pressed background.                              | `false`     |
+| disabled   | `boolean`                                   | Dims and blocks all interaction.                             | `false`     |
+| readonly   | `boolean`                                   | Blocks interaction without disabled styling.                 | `false`     |
+| labelStyle | `boolean`                                   | Uppercase, bold, letter-spacing — for badges and categories. | `false`     |
+| loading    | `boolean`                                   | Shows a spinner, hides content.                              |             |
+| noRipple   | `boolean`                                   | Disables the ripple animation on click.                      |             |
+| prepend    | `Snippet`                                   | Content before the label.                                    |             |
+| append     | `Snippet`                                   | Content after the label.                                     |             |
+| load       | `Snippet`                                   | Custom spinner content shown while loading.                  |             |
+| children   | `Snippet`                                   | Chip label.                                                  |             |

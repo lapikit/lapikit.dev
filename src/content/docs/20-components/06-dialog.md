@@ -1,5 +1,5 @@
 ---
-title: "Dialog"
+title: 'Dialog'
 ---
 
 <script>
@@ -31,9 +31,7 @@ The `kit:dialog` component wraps the native `<dialog>` element. It is controlled
 
 Controls the vertical alignment of the dialog on the viewport.
 
-| prop     | type                              | default    |
-| -------- | --------------------------------- | ---------- |
-| position | `'top' \| 'center' \| 'bottom'`   | `'center'` |
+- **position**: `'top' | 'center' | 'bottom'` = `'center'`
 
 <LazyRepl title="dialog.svelte" lang="svelte" content={() => import('../../../content/examples/components/dialog/position.svelte?raw')}>
 <Position/>
@@ -43,17 +41,7 @@ Controls the vertical alignment of the dialog on the viewport.
 
 Controls the max-width of the dialog content panel.
 
-| prop | type                                   | default |
-| ---- | -------------------------------------- | ------- |
-| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  |
-
-| value | max-width |
-| ----- | --------- |
-| `xs`  | `20rem`   |
-| `sm`  | `24rem`   |
-| `md`  | `32rem`   |
-| `lg`  | `42rem`   |
-| `xl`  | `56rem`   |
+- **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
 <LazyRepl title="dialog.svelte" lang="svelte" content={() => import('../../../content/examples/components/dialog/size.svelte?raw')}>
 <Size/>
@@ -63,9 +51,7 @@ Controls the max-width of the dialog content panel.
 
 When `persistent` is set, clicking the backdrop or pressing Escape does not close the dialog. The user must interact with the content to dismiss it.
 
-| prop       | type      | default |
-| ---------- | --------- | ------- |
-| persistent | `boolean` | `false` |
+- **persistent**: `boolean` = `false`
 
 <LazyRepl title="dialog.svelte" lang="svelte" content={() => import('../../../content/examples/components/dialog/persistent.svelte?raw')}>
 <Persistent/>
@@ -79,15 +65,15 @@ When `persistent` is set, clicking the backdrop or pressing Escape does not clos
 
 **`kit:dialog`**
 
-| props        | type                                      | description                                              | default    |
-| ------------ | ----------------------------------------- | -------------------------------------------------------- | ---------- |
-| open         | `boolean`                                 | Controls visibility. Bindable.                           | `false`    |
-| persistent   | `boolean`                                 | Prevents closing on backdrop click or Escape.            | `false`    |
-| size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Max-width of the content panel.                          | `'md'`     |
-| position     | `'top' \| 'center' \| 'bottom'`           | Vertical alignment on the viewport.                      | `'center'` |
-| density      | `'compact' \| 'default' \| 'comfortable'` | Padding inside the content panel.                        | `'default'`|
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius of the content panel.                  | `'md'`     |
-| classContent | `string \| string[]`                      | Class(es) applied to the inner content panel.            |            |
-| color        | `string`                                  | Foreground color override (`--kit-dialog-fg`).           |            |
-| background   | `string`                                  | Background color override (`--kit-dialog-bg`).           |            |
-| children     | `Snippet`                                 | Dialog content.                                          |            |
+| props        | type                                        | description                                    | default     |
+| ------------ | ------------------------------------------- | ---------------------------------------------- | ----------- |
+| open         | `boolean`                                   | Controls visibility. Bindable.                 | `false`     |
+| persistent   | `boolean`                                   | Prevents closing on backdrop click or Escape.  | `false`     |
+| size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Max-width of the content panel.                | `'md'`      |
+| position     | `'top' \| 'center' \| 'bottom'`             | Vertical alignment on the viewport.            | `'center'`  |
+| density      | `'compact' \| 'default' \| 'comfortable'`   | Padding inside the content panel.              | `'default'` |
+| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius of the content panel.            | `'md'`      |
+| classContent | `string \| string[]`                        | Class(es) applied to the inner content panel.  |             |
+| color        | `string`                                    | Foreground color override (`--kit-dialog-fg`). |             |
+| background   | `string`                                    | Background color override (`--kit-dialog-bg`). |             |
+| children     | `Snippet`                                   | Dialog content.                                |             |

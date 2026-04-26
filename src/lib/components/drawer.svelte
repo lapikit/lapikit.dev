@@ -4,11 +4,13 @@
 	let {
 		children,
 		open = $bindable(false),
-		side = 'left'
+		side = 'left',
+		el = $bindable(undefined as HTMLDivElement | undefined)
 	}: {
 		children?: Snippet;
 		open?: boolean;
 		side?: 'left' | 'right';
+		el?: HTMLDivElement;
 	} = $props();
 </script>
 
@@ -24,6 +26,7 @@
 
 <!-- Drawer -->
 <div
+	bind:this={el}
 	class={[
 		'fixed top-0 z-100 h-full w-62.5 overflow-y-auto transition-transform duration-300',
 		'md:sticky md:top-16 md:z-auto md:h-[calc(100vh-64px)] md:translate-x-0 md:overflow-y-auto md:transition-none',

@@ -9,7 +9,7 @@
 </script>
 
 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-	{#each ['top', 'center', 'bottom'] as p}
+	{#each ['top', 'center', 'bottom'] as p (p)}
 		<kit:btn variant="outline" onclick={() => show(p as 'top' | 'center' | 'bottom')}>
 			{p}
 		</kit:btn>

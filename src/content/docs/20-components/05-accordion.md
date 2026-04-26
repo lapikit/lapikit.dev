@@ -1,5 +1,5 @@
 ---
-title: "Accordion"
+title: 'Accordion'
 ---
 
 <script>
@@ -46,9 +46,7 @@ Each `kit:accordion-item` requires a unique `index` (string or number).
 
 The `spacer` prop adds a gap between items, useful when items have a `rounded` radius and need visual separation.
 
-| prop   | type      | default |
-| ------ | --------- | ------- |
-| spacer | `boolean` | `false` |
+- **spacer**: `boolean` = `false`
 
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/spacer.svelte?raw')}>
 <Spacer/>
@@ -62,6 +60,8 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/actions/use-accordion)
 | -------- | --------- | ------- |
 | multiple | `boolean` | `false` |
 
+- **multiple**: `boolean` = `false`
+
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/multiple.svelte?raw')}>
 <Multiple/>
 </LazyRepl>
@@ -70,10 +70,8 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/actions/use-accordion)
 
 `readOnly` locks an item in its current state without applying disabled styling. `disabled` prevents interaction and visually dims the item.
 
-| prop     | type      | default |
-| -------- | --------- | ------- |
-| readOnly | `boolean` | `false` |
-| disabled | `boolean` | `false` |
+- **readOnly**: `boolean` = `false`
+- **disabled**: `boolean` = `false`
 
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/read-only.svelte?raw')}>
 <ReadOnly/>
@@ -83,9 +81,7 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/actions/use-accordion)
 
 The `hideIcon` prop on `kit:accordion` hides the chevron indicator on all child items via a CSS rule on the container.
 
-| prop     | type      | default |
-| -------- | --------- | ------- |
-| hideIcon | `boolean` | `false` |
+- **hideIcon**: `boolean` = `false`
 
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/hide-icon.svelte?raw')}>
 <HideIcon/>
@@ -95,9 +91,7 @@ The `hideIcon` prop on `kit:accordion` hides the chevron indicator on all child 
 
 Use the `activator` snippet to fully customize the trigger content - replaces the `text` prop. It receives no arguments.
 
-| prop      | type      | description                               |
-| --------- | --------- | ----------------------------------------- |
-| activator | `Snippet` | Custom trigger content - replaces `text`. |
+- **activator**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/activator.svelte?raw')}>
 <Activator/>
@@ -110,6 +104,8 @@ Use the `indicator` snippet to replace the default chevron with a custom element
 | prop      | type                           | description                                           |
 | --------- | ------------------------------ | ----------------------------------------------------- |
 | indicator | `Snippet<[{ open: boolean }]>` | Custom indicator - replaces the default chevron icon. |
+
+- **indicator**: `Snippet<[{ open: boolean }]> | undefined` = `undefined`
 
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/indicator.svelte?raw')}>
 <Indicator/>

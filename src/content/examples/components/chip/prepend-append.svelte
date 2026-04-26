@@ -23,7 +23,7 @@
 		Verified
 	</kit:chip>
 
-	{#each tags as tag}
+	{#each tags as tag (tag)}
 		<kit:chip variant="outline">
 			{tag}
 			{#snippet append()}

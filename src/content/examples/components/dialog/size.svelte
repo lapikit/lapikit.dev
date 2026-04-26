@@ -9,7 +9,7 @@
 </script>
 
 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-	{#each ['xs', 'sm', 'md', 'lg', 'xl'] as s}
+	{#each ['xs', 'sm', 'md', 'lg', 'xl'] as s (s)}
 		<kit:btn variant="outline" onclick={() => show(s as 'xs' | 'sm' | 'md' | 'lg' | 'xl')}>
 			{s}
 		</kit:btn>

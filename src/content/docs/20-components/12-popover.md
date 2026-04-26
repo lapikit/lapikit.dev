@@ -1,5 +1,5 @@
 ---
-title: "Popover"
+title: 'Popover'
 ---
 
 <script>
@@ -27,17 +27,13 @@ The `activator` snippet receives one argument:
 activator(model: ModelPopoverProps)
 ```
 
-| argument       | type                              | description                                     |
-| -------------- | --------------------------------- | ----------------------------------------------- |
-| `model.toggle` | `(element: HTMLElement) => void`  | Toggles the popover, anchored to the element.   |
+- **model.toggle**: `(element: HTMLElement) => void`
 
 ## Usage
 
 ### position
 
-| prop     | type                                        | default    |
-| -------- | ------------------------------------------- | ---------- |
-| position | `'top' \| 'bottom' \| 'left' \| 'right'`   | `'bottom'` |
+- **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
 <LazyRepl title="popover.svelte" lang="svelte" content={() => import('../../../content/examples/components/popover/position.svelte?raw')}>
 <Position/>
@@ -51,12 +47,12 @@ activator(model: ModelPopoverProps)
 
 **`kit:popover`**
 
-| props      | type                                                  | description                                              | default    |
-| ---------- | ----------------------------------------------------- | -------------------------------------------------------- | ---------- |
-| open       | `boolean`                                             | Controls visibility. Bindable.                           | `false`    |
-| position   | `'top' \| 'bottom' \| 'left' \| 'right'`             | Preferred position relative to the activator.            | `'bottom'` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius of the floating panel.                   |            |
-| color      | `string`                                              | Foreground color override (`--kit-popover-fg`).          |            |
-| background | `string`                                              | Background color override (`--kit-popover-bg`).          |            |
-| activator  | `Snippet<[model]>`                                    | Trigger element. Receives model with `toggle`.           |            |
-| children   | `Snippet`                                             | Floating panel content.                                  |            |
+| props      | type                                                  | description                                     | default    |
+| ---------- | ----------------------------------------------------- | ----------------------------------------------- | ---------- |
+| open       | `boolean`                                             | Controls visibility. Bindable.                  | `false`    |
+| position   | `'top' \| 'bottom' \| 'left' \| 'right'`              | Preferred position relative to the activator.   | `'bottom'` |
+| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius of the floating panel.            |            |
+| color      | `string`                                              | Foreground color override (`--kit-popover-fg`). |            |
+| background | `string`                                              | Background color override (`--kit-popover-bg`). |            |
+| activator  | `Snippet<[model]>`                                    | Trigger element. Receives model with `toggle`.  |            |
+| children   | `Snippet`                                             | Floating panel content.                         |            |

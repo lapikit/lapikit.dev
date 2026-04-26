@@ -1,5 +1,5 @@
 ---
-title: "List"
+title: 'List'
 ---
 
 <script>
@@ -27,9 +27,7 @@ The `kit:list` + `kit:list-item` components render structured vertical lists. It
 
 ### Variants
 
-| prop    | type                              | default    |
-| ------- | --------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text'` | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
 <LazyRepl title="list.svelte" lang="svelte" content={() => import('../../../content/examples/components/list/variants.svelte?raw')}>
 <Variants/>
@@ -39,10 +37,13 @@ The `kit:list` + `kit:list-item` components render structured vertical lists. It
 
 `kit:list-item` supports `prepend` and `append` snippets for icons, avatars, badges, or any inline content.
 
-| prop    | type      | description                          |
-| ------- | --------- | ------------------------------------ |
-| prepend | `Snippet` | Content before the item label.       |
-| append  | `Snippet` | Content after the item label.        |
+| prop    | type      | description                    |
+| ------- | --------- | ------------------------------ |
+| prepend | `Snippet` | Content before the item label. |
+| append  | `Snippet` | Content after the item label.  |
+
+- **prepend**: `Snippet | undefined` = `undefined`
+- **append**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="list.svelte" lang="svelte" content={() => import('../../../content/examples/components/list/prepend-append.svelte?raw')}>
 <PrependAppend/>
@@ -52,11 +53,10 @@ The `kit:list` + `kit:list-item` components render structured vertical lists. It
 
 Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases padding and sets `role="navigation"` on the container.
 
-| prop | type      | default |
-| ---- | --------- | ------- |
-| nav  | `boolean` | `false` |
+- **nav**: `boolean` = `false`
 
 <LazyRepl title="list.svelte" lang="svelte" content={() => import('../../../content/examples/components/list/nav.svelte?raw')}>
+
 <Nav/>
 </LazyRepl>
 
@@ -68,30 +68,30 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 
 **`kit:list`**
 
-| props      | type                                      | description                                           | default    |
-| ---------- | ----------------------------------------- | ----------------------------------------------------- | ---------- |
-| is         | `'div' \| 'nav' \| 'ul'`                  | HTML element to render.                               | `'div'`    |
-| variant    | `'filled' \| 'outline' \| 'text'`         | Visual style.                                         | `'filled'` |
-| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Item height, padding, and font size tokens.           | `'md'`     |
-| density    | `'compact' \| 'default' \| 'comfortable'` | Vertical density offset applied to item height.       | `'default'`|
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                    | `'md'`     |
-| nav        | `boolean`                                 | Navigation mode — more padding, `role="navigation"`.  | `false`    |
-| color      | `string`                                  | Foreground color override (`--kit-list-fg`).          |            |
-| background | `string`                                  | Background color override (`--kit-list-bg`).          |            |
-| children   | `Snippet`                                 | List items.                                           |            |
+| props      | type                                        | description                                          | default     |
+| ---------- | ------------------------------------------- | ---------------------------------------------------- | ----------- |
+| is         | `'div' \| 'nav' \| 'ul'`                    | HTML element to render.                              | `'div'`     |
+| variant    | `'filled' \| 'outline' \| 'text'`           | Visual style.                                        | `'filled'`  |
+| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Item height, padding, and font size tokens.          | `'md'`      |
+| density    | `'compact' \| 'default' \| 'comfortable'`   | Vertical density offset applied to item height.      | `'default'` |
+| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                       | `'md'`      |
+| nav        | `boolean`                                   | Navigation mode — more padding, `role="navigation"`. | `false`     |
+| color      | `string`                                    | Foreground color override (`--kit-list-fg`).         |             |
+| background | `string`                                    | Background color override (`--kit-list-bg`).         |             |
+| children   | `Snippet`                                   | List items.                                          |             |
 
 **`kit:list-item`**
 
-| props    | type                                      | description                                                   | default  |
-| -------- | ----------------------------------------- | ------------------------------------------------------------- | -------- |
-| is       | `'div' \| 'a' \| 'button' \| 'li'`        | HTML element. Overridden by `href` or `onclick`.              | `'div'`  |
-| href     | `string`                                  | Renders as `<a>`. Cleared when `disabled`.                    |          |
-| active   | `boolean`                                 | Applies the active background.                                | `false`  |
-| disabled | `boolean`                                 | Dims and blocks interaction.                                  | `false`  |
-| rounded  | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Per-item border radius override.                          | `'sm'`   |
-| noRipple | `boolean`                                 | Disables the ripple animation.                                | `false`  |
-| color    | `string`                                  | Foreground color override (`--kit-list-item-fg`).             |          |
-| background | `string`                                | Background color override (`--kit-list-item-bg`).             |          |
-| prepend  | `Snippet`                                 | Content before the label.                                     |          |
-| append   | `Snippet`                                 | Content after the label.                                      |          |
-| children | `Snippet`                                 | Item label.                                                   |          |
+| props      | type                                        | description                                       | default |
+| ---------- | ------------------------------------------- | ------------------------------------------------- | ------- |
+| is         | `'div' \| 'a' \| 'button' \| 'li'`          | HTML element. Overridden by `href` or `onclick`.  | `'div'` |
+| href       | `string`                                    | Renders as `<a>`. Cleared when `disabled`.        |         |
+| active     | `boolean`                                   | Applies the active background.                    | `false` |
+| disabled   | `boolean`                                   | Dims and blocks interaction.                      | `false` |
+| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Per-item border radius override.                  | `'sm'`  |
+| noRipple   | `boolean`                                   | Disables the ripple animation.                    | `false` |
+| color      | `string`                                    | Foreground color override (`--kit-list-item-fg`). |         |
+| background | `string`                                    | Background color override (`--kit-list-item-bg`). |         |
+| prepend    | `Snippet`                                   | Content before the label.                         |         |
+| append     | `Snippet`                                   | Content after the label.                          |         |
+| children   | `Snippet`                                   | Item label.                                       |         |

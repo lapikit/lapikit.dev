@@ -1,5 +1,5 @@
 ---
-title: "Aspect Ratio"
+title: 'Aspect Ratio'
 ---
 
 <script>
@@ -31,10 +31,10 @@ The `kit:aspect-ratio` component constrains its content to a fixed ratio. It wor
 
 Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
-| prop        | type               | default  |
-| ----------- | ------------------ | -------- |
-| ratio       | `string \| number` | `16/9`   |
-| aspectRatio | `string \| number` | `16/9`   |
+| prop        | type               | default |
+| ----------- | ------------------ | ------- |
+| ratio       | `string \| number` | `16/9`  |
+| aspectRatio | `string \| number` | `16/9`  |
 
 <LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('../../../content/examples/components/aspect-ratio/ratios.svelte?raw')}>
 <Ratios/>
@@ -44,9 +44,7 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
 `fit` controls the `object-fit` applied to child media elements.
 
-| prop | type                          | default   |
-| ---- | ----------------------------- | --------- |
-| fit  | `'cover' \| 'contain' \| 'fill'` | `'cover'` |
+- **fit**: `'cover' | 'contain' | 'fill'` = `'cover'`
 
 <LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('../../../content/examples/components/aspect-ratio/fit.svelte?raw')}>
 <Fit/>
@@ -56,9 +54,7 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
 `inline` switches the container from `block` to `inline-block`, letting it sit inside text flow. Width is no longer 100% — set it manually via `style`.
 
-| prop   | type      | default |
-| ------ | --------- | ------- |
-| inline | `boolean` | `false` |
+- **inline**: `boolean` = `false`
 
 <LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('../../../content/examples/components/aspect-ratio/inline.svelte?raw')}>
 <Inline/>
@@ -74,11 +70,11 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:aspect-ratio`**
 
-| props       | type                                                      | description                                           | default   |
-| ----------- | --------------------------------------------------------- | ----------------------------------------------------- | --------- |
-| is          | `'div' \| 'span' \| 'figure' \| 'section' \| 'article'`  | HTML element to render.                               | `'div'`   |
-| ratio       | `string \| number`                                        | Aspect ratio. Accepts `"w/h"`, `"w:h"`, or a number. | `16/9`    |
-| aspectRatio | `string \| number`                                        | Alias for `ratio`.                                    | `16/9`    |
-| fit         | `'cover' \| 'contain' \| 'fill'`                         | `object-fit` applied to child media elements.         | `'cover'` |
-| inline      | `boolean`                                                 | Renders as `inline-block` with `width: auto`.         | `false`   |
-| children    | `Snippet`                                                 | Content to constrain.                                 |           |
+| props       | type                                                    | description                                          | default   |
+| ----------- | ------------------------------------------------------- | ---------------------------------------------------- | --------- |
+| is          | `'div' \| 'span' \| 'figure' \| 'section' \| 'article'` | HTML element to render.                              | `'div'`   |
+| ratio       | `string \| number`                                      | Aspect ratio. Accepts `"w/h"`, `"w:h"`, or a number. | `16/9`    |
+| aspectRatio | `string \| number`                                      | Alias for `ratio`.                                   | `16/9`    |
+| fit         | `'cover' \| 'contain' \| 'fill'`                        | `object-fit` applied to child media elements.        | `'cover'` |
+| inline      | `boolean`                                               | Renders as `inline-block` with `width: auto`.        | `false`   |
+| children    | `Snippet`                                               | Content to constrain.                                |           |

@@ -2,15 +2,15 @@
 title: "Initialize Application"
 ---
 
+<script>
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+</script>
+
 ## Initialize Lapikit Application Context
 
 Lapikit provides a global application context that can be accessed by all components. To initialize this context, wrap your application in the `<kit:app>` component:
 
-```svelte
-<kit:app>
-	<!-- Your application content goes here -->
-</kit:app>
-```
+<LazyRepl lang="svelte" title="+layout.svelte" content={() => import('../../../content/examples/essentials/use-app-component.svelte?raw')} />
 
 The `<kit:app>` component sets up the necessary context for Lapikit components to function properly. It also provides default styles and structure for your application, which you can customize as needed.
 

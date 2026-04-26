@@ -1,5 +1,5 @@
 ---
-title: "Appbar"
+title: 'Appbar'
 ---
 
 <script>
@@ -29,9 +29,7 @@ The `kit:appbar` component is a horizontal bar used as a top navigation or page 
 
 The `variant` prop controls the background and border style.
 
-| prop    | type                              | default    |
-| ------- | --------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text'` | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
 <LazyRepl title="appbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/appbar/variants.svelte?raw')}>
 <Variants/>
@@ -41,9 +39,7 @@ The `variant` prop controls the background and border style.
 
 `density` adjusts the height and horizontal padding of the appbar.
 
-| prop    | type                                      | default     |
-| ------- | ----------------------------------------- | ----------- |
-| density | `'compact' \| 'default' \| 'comfortable'` | `'default'` |
+- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="appbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/appbar/density.svelte?raw')}>
 <Density/>
@@ -53,9 +49,11 @@ The `variant` prop controls the background and border style.
 
 `classContent` applies a CSS class to the inner content wrapper. Use it to constrain the max-width of the content while the appbar background spans the full width.
 
-| prop         | type                    | description                                  |
-| ------------ | ----------------------- | -------------------------------------------- |
-| classContent | `string \| string[]`    | Class(es) applied to the inner wrapper div.  |
+| prop         | type                 | description                                 |
+| ------------ | -------------------- | ------------------------------------------- |
+| classContent | `string \| string[]` | Class(es) applied to the inner wrapper div. |
+
+- **classContent**: `string | string[]` = `''`
 
 <LazyRepl title="appbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/appbar/class-content.svelte?raw')}>
 <ClassContent/>
@@ -71,13 +69,13 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:appbar`**
 
-| props        | type                                          | description                                         | default    |
-| ------------ | --------------------------------------------- | --------------------------------------------------- | ---------- |
-| is           | `'div' \| 'header' \| 'nav'`                  | HTML element to render.                             | `'header'` |
-| variant      | `'filled' \| 'outline' \| 'text'`             | Visual style of the appbar.                         | `'filled'` |
-| density      | `'compact' \| 'default' \| 'comfortable'`     | Height and horizontal padding.                      | `'default'`|
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius. Accepts a custom `px` value. | `0`        |
-| color        | `string`                                      | Foreground color override (`--kit-appbar-fg`).      |            |
-| background   | `string`                                      | Background color override (`--kit-appbar-bg`).      |            |
-| classContent | `string \| string[]`                          | Class(es) applied to the inner content wrapper.     |            |
-| children     | `Snippet`                                     | Appbar content.                                     |            |
+| props        | type                                                  | description                                     | default     |
+| ------------ | ----------------------------------------------------- | ----------------------------------------------- | ----------- |
+| is           | `'div' \| 'header' \| 'nav'`                          | HTML element to render.                         | `'header'`  |
+| variant      | `'filled' \| 'outline' \| 'text'`                     | Visual style of the appbar.                     | `'filled'`  |
+| density      | `'compact' \| 'default' \| 'comfortable'`             | Height and horizontal padding.                  | `'default'` |
+| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius. Accepts a custom `px` value.     | `0`         |
+| color        | `string`                                              | Foreground color override (`--kit-appbar-fg`).  |             |
+| background   | `string`                                              | Background color override (`--kit-appbar-bg`).  |             |
+| classContent | `string \| string[]`                                  | Class(es) applied to the inner content wrapper. |             |
+| children     | `Snippet`                                             | Appbar content.                                 |             |

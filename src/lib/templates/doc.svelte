@@ -1,6 +1,12 @@
+<script lang="ts" module>
+	let sidebarScrollTop = 0;
+</script>
+
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
+	import { beforeNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../../routes/docs/[...slug]/$types';
@@ -14,6 +20,15 @@
 	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
 
 	let navOpen = $state(false);
+	let sidebarEl: HTMLDivElement | undefined = $state();
+
+	onMount(() => {
+		if (sidebarEl) sidebarEl.scrollTop = sidebarScrollTop;
+	});
+
+	beforeNavigate(() => {
+		if (sidebarEl) sidebarScrollTop = sidebarEl.scrollTop;
+	});
 
 	let {
 		children,
@@ -30,7 +45,7 @@
 </script>
 
 <div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[250px_1fr_250px]">
-	<Drawer bind:open={navOpen} side="left">
+	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
 		<nav>
 			{#each docsNavigation as { label, icon, pages } (label)}
 				<kit:list density="compact" size="sm" nav>

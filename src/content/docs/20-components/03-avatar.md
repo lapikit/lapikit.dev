@@ -1,5 +1,5 @@
 ---
-title: "Avatar"
+title: 'Avatar'
 ---
 
 <script>
@@ -33,9 +33,11 @@ The `kit:avatar` component displays a user representation — either as initials
 
 Pass a string to `label` to display initials or short text. The value is trimmed and uppercased automatically.
 
-| prop  | type     | description                        |
-| ----- | -------- | ---------------------------------- |
-| label | `string` | Text displayed inside the avatar.  |
+| prop  | type     | description                       |
+| ----- | -------- | --------------------------------- |
+| label | `string` | Text displayed inside the avatar. |
+
+- **label**: `string | undefined` = `undefined`
 
 <LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/label.svelte?raw')}>
 <Label/>
@@ -53,17 +55,7 @@ Without `label`, pass an `<img>` (or any element) as `children`. The image fills
 
 Controls the diameter and font size in label mode.
 
-| prop | type                                   | default |
-| ---- | -------------------------------------- | ------- |
-| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  |
-
-| value | diameter  |
-| ----- | --------- |
-| `xs`  | `1.75rem` |
-| `sm`  | `2rem`    |
-| `md`  | `2.25rem` |
-| `lg`  | `2.5rem`  |
-| `xl`  | `2.75rem` |
+- **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
 <LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/size.svelte?raw')}>
 <Size/>
@@ -73,15 +65,7 @@ Controls the diameter and font size in label mode.
 
 Scales the diameter by a multiplier on top of `size`, in label mode only.
 
-| prop    | type                                      | default     |
-| ------- | ----------------------------------------- | ----------- |
-| density | `'compact' \| 'default' \| 'comfortable'` | `'default'` |
-
-| value         | scale  |
-| ------------- | ------ |
-| `compact`     | `0.9×` |
-| `default`     | `1×`   |
-| `comfortable` | `1.1×` |
+- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/density.svelte?raw')}>
 <Density/>
@@ -97,9 +81,9 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:avatar`**
 
-| props    | type                                      | description                                            | default   |
-| -------- | ----------------------------------------- | ------------------------------------------------------ | --------- |
-| label    | `string`                                  | Text displayed inside the avatar (uppercased).         |           |
-| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Diameter and font size. Label mode only.               | `'md'`    |
-| density  | `'compact' \| 'default' \| 'comfortable'` | Size multiplier applied on top of `size`. Label only.  | `'default'` |
-| children | `Snippet`                                 | Content when `label` is not set (typically an `<img>`).|           |
+| props    | type                                      | description                                             | default     |
+| -------- | ----------------------------------------- | ------------------------------------------------------- | ----------- |
+| label    | `string`                                  | Text displayed inside the avatar (uppercased).          |             |
+| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`    | Diameter and font size. Label mode only.                | `'md'`      |
+| density  | `'compact' \| 'default' \| 'comfortable'` | Size multiplier applied on top of `size`. Label only.   | `'default'` |
+| children | `Snippet`                                 | Content when `label` is not set (typically an `<img>`). |             |

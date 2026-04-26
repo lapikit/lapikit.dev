@@ -1,5 +1,5 @@
 ---
-title: "Dropdown"
+title: 'Dropdown'
 ---
 
 <script>
@@ -25,23 +25,19 @@ The `kit:dropdown` component positions a floating panel relative to a trigger el
 The `activator` snippet receives two arguments:
 
 ```ts
-activator(model: ModelDropdownProps, handleMouse: (state, element) => void)
+activator(model: ModelDropdownProps, handleMouse: ModelDropdownHandleProps)
 ```
 
-| argument      | type                                                           | description                                    |
-| ------------- | -------------------------------------------------------------- | ---------------------------------------------- |
-| `model.open`  | `boolean`                                                      | Whether the dropdown is currently open.        |
-| `model.close` | `() => void`                                                   | Closes the dropdown.                           |
-| `model.toggle`| `(element: HTMLElement \| PointerEvent \| null) => void`       | Toggles open/close, anchored to the element.   |
-| `handleMouse` | `(state: 'open' \| 'close', element) => void`                  | Used for hover — pass to `onmouseenter/leave`. |
+- **model.open**: `boolean`
+- **model.close**: `() => void`
+- **model.toogle**: `(element: HTMLElement | PointerEvent | null) => void`
+- **handleMouse**: `(state: 'open' | 'close', element) => void`
 
 ## Usage
 
 ### position
 
-| prop     | type                                        | default    |
-| -------- | ------------------------------------------- | ---------- |
-| position | `'top' \| 'bottom' \| 'left' \| 'right'`   | `'bottom'` |
+- **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
 <LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('../../../content/examples/components/dropdown/position.svelte?raw')}>
 <Position/>
@@ -51,9 +47,7 @@ activator(model: ModelDropdownProps, handleMouse: (state, element) => void)
 
 When `openOnHover` is set, wire `handleMouse` to `onmouseenter` and `onmouseleave` on the activator. The dropdown stays open for 150ms after the mouse leaves to allow moving to the panel.
 
-| prop        | type      | default |
-| ----------- | --------- | ------- |
-| openOnHover | `boolean` | `false` |
+- **openOnHover**: `boolean` = `false`
 
 <LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('../../../content/examples/components/dropdown/hover.svelte?raw')}>
 <Hover/>
@@ -63,9 +57,7 @@ When `openOnHover` is set, wire `handleMouse` to `onmouseenter` and `onmouseleav
 
 Closes the dropdown automatically when any element inside the panel is clicked.
 
-| prop         | type      | default |
-| ------------ | --------- | ------- |
-| closeOnClick | `boolean` | `false` |
+- **closeOnClick**: `boolean` = `false`
 
 ### Without preprocess Lapikit
 
@@ -75,13 +67,13 @@ Closes the dropdown automatically when any element inside the panel is clicked.
 
 **`kit:dropdown`**
 
-| props        | type                                                  | description                                              | default    |
-| ------------ | ----------------------------------------------------- | -------------------------------------------------------- | ---------- |
-| position     | `'top' \| 'bottom' \| 'left' \| 'right'`             | Preferred position relative to the activator.            | `'bottom'` |
-| openOnHover  | `boolean`                                             | Opens on mouse enter — wire `handleMouse` on activator.  | `false`    |
-| closeOnClick | `boolean`                                             | Closes when content inside the panel is clicked.         | `false`    |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius of the floating panel.                   |            |
-| color        | `string`                                              | Foreground color override (`--kit-dropdown-fg`).         |            |
-| background   | `string`                                              | Background color override (`--kit-dropdown-bg`).         |            |
-| activator    | `Snippet<[model, handleMouse]>`                       | Trigger element. Receives model and mouse handler.       |            |
-| children     | `Snippet`                                             | Floating panel content.                                  |            |
+| props        | type                                                  | description                                             | default    |
+| ------------ | ----------------------------------------------------- | ------------------------------------------------------- | ---------- |
+| position     | `'top' \| 'bottom' \| 'left' \| 'right'`              | Preferred position relative to the activator.           | `'bottom'` |
+| openOnHover  | `boolean`                                             | Opens on mouse enter — wire `handleMouse` on activator. | `false`    |
+| closeOnClick | `boolean`                                             | Closes when content inside the panel is clicked.        | `false`    |
+| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius of the floating panel.                    |            |
+| color        | `string`                                              | Foreground color override (`--kit-dropdown-fg`).        |            |
+| background   | `string`                                              | Background color override (`--kit-dropdown-bg`).        |            |
+| activator    | `Snippet<[model, handleMouse]>`                       | Trigger element. Receives model and mouse handler.      |            |
+| children     | `Snippet`                                             | Floating panel content.                                 |            |

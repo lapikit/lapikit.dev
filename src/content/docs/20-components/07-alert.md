@@ -1,5 +1,5 @@
 ---
-title: "Alert"
+title: 'Alert'
 ---
 
 <script>
@@ -34,9 +34,7 @@ The tone can be set via the `tone` prop or using the boolean shorthand props `in
 
 Use the `tone` prop to communicate the nature of the message.
 
-| prop | type                                                          | default     |
-| ---- | ------------------------------------------------------------- | ----------- |
-| tone | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'`   | `'default'` |
+- **tone**: `'default' | 'info' | 'success' | 'warning' | 'error'` = `'default'`
 
 <LazyRepl title="alert.svelte" lang="svelte" content={() => import('../../../content/examples/components/alert/tones.svelte?raw')}>
 <Tones/>
@@ -46,9 +44,7 @@ Use the `tone` prop to communicate the nature of the message.
 
 The `variant` prop controls the visual style of the alert.
 
-| prop    | type                              | default    |
-| ------- | --------------------------------- | ---------- |
-| variant | `'filled' \| 'outline' \| 'text'` | `'filled'` |
+- **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
 <LazyRepl title="alert.svelte" lang="svelte" content={() => import('../../../content/examples/components/alert/variants.svelte?raw')}>
 <Variants/>
@@ -58,9 +54,7 @@ The `variant` prop controls the visual style of the alert.
 
 `density` adjusts the padding and spacing inside the alert.
 
-| prop    | type                                      | default     |
-| ------- | ----------------------------------------- | ----------- |
-| density | `'compact' \| 'default' \| 'comfortable'` | `'default'` |
+- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="alert.svelte" lang="svelte" content={() => import('../../../content/examples/components/alert/density.svelte?raw')}>
 <Density/>
@@ -70,10 +64,8 @@ The `variant` prop controls the visual style of the alert.
 
 Add `closable` to display a close button. The `open` prop is bindable so you can react to the dismissal externally.
 
-| prop    | type      | default |
-| ------- | --------- | ------- |
-| closable | `boolean` | `false` |
-| open    | `boolean` | `true`  |
+- **open**: `boolean` = `true`
+- **closable**: `boolean` = `'false'`
 
 <LazyRepl title="alert.svelte" lang="svelte" content={() => import('../../../content/examples/components/alert/closable.svelte?raw')}>
 <Closable/>
@@ -83,10 +75,13 @@ Add `closable` to display a close button. The `open` prop is bindable so you can
 
 Use `prepend` to add an icon or element before the content, and `append` to add one after — for example a link or action button.
 
-| prop    | type      | description                        |
-| ------- | --------- | ---------------------------------- |
-| prepend | `Snippet` | Content rendered before the text.  |
-| append  | `Snippet` | Content rendered after the text.   |
+| prop    | type      | description                       |
+| ------- | --------- | --------------------------------- |
+| prepend | `Snippet` | Content rendered before the text. |
+| append  | `Snippet` | Content rendered after the text.  |
+
+- **prepend**: `Snippet | undefined` = `undefined`
+- **append**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="alert.svelte" lang="svelte" content={() => import('../../../content/examples/components/alert/prepend-append.svelte?raw')}>
 <PrependAppend/>
@@ -96,9 +91,7 @@ Use `prepend` to add an icon or element before the content, and `append` to add 
 
 Use the `close` snippet to replace the default `×` character with a custom close element.
 
-| prop  | type      | description                             |
-| ----- | --------- | --------------------------------------- |
-| close | `Snippet` | Custom content inside the close button. |
+- **close**: `Snippet | undefined` = `undefined`
 
 <LazyRepl title="alert.svelte" lang="svelte" content={() => import('../../../content/examples/components/alert/close.svelte?raw')}>
 <Close/>
@@ -114,18 +107,18 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:alert`**
 
-| props      | type                                                           | description                                          | default     |
-| ---------- | -------------------------------------------------------------- | ---------------------------------------------------- | ----------- |
-| is         | `'div' \| 'section' \| 'aside' \| 'article'`                  | HTML element to render.                              | `'div'`     |
-| open       | `boolean`                                                      | Controls visibility. Bindable.                       | `true`      |
-| closable   | `boolean`                                                      | Adds a close button that sets `open` to `false`.     | `false`     |
-| variant    | `'filled' \| 'outline' \| 'text'`                             | Visual style of the alert.                           | `'filled'`  |
-| density    | `'compact' \| 'default' \| 'comfortable'`                     | Spacing inside the alert.                            | `'default'` |
-| tone       | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'`   | Semantic color tone.                                 | `'default'` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                  | Border radius.                                       | `'md'`      |
-| color      | `string`                                                       | Foreground color override (`--kit-alert-fg`).        |             |
-| background | `string`                                                       | Background color override (`--kit-alert-bg`).        |             |
-| prepend    | `Snippet`                                                      | Content rendered before the main text.               |             |
-| append     | `Snippet`                                                      | Content rendered after the main text.                |             |
-| close      | `Snippet`                                                      | Custom content inside the close button.              |             |
-| children   | `Snippet`                                                      | Main alert content.                                  |             |
+| props      | type                                                       | description                                      | default     |
+| ---------- | ---------------------------------------------------------- | ------------------------------------------------ | ----------- |
+| is         | `'div' \| 'section' \| 'aside' \| 'article'`               | HTML element to render.                          | `'div'`     |
+| open       | `boolean`                                                  | Controls visibility. Bindable.                   | `true`      |
+| closable   | `boolean`                                                  | Adds a close button that sets `open` to `false`. | `false`     |
+| variant    | `'filled' \| 'outline' \| 'text'`                          | Visual style of the alert.                       | `'filled'`  |
+| density    | `'compact' \| 'default' \| 'comfortable'`                  | Spacing inside the alert.                        | `'default'` |
+| tone       | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'` | Semantic color tone.                             | `'default'` |
+| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Border radius.                                   | `'md'`      |
+| color      | `string`                                                   | Foreground color override (`--kit-alert-fg`).    |             |
+| background | `string`                                                   | Background color override (`--kit-alert-bg`).    |             |
+| prepend    | `Snippet`                                                  | Content rendered before the main text.           |             |
+| append     | `Snippet`                                                  | Content rendered after the main text.            |             |
+| close      | `Snippet`                                                  | Custom content inside the close button.          |             |
+| children   | `Snippet`                                                  | Main alert content.                              |             |

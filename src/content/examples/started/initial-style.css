@@ -1,0 +1,46 @@
+:root {
+	color-scheme: light;
+
+	/* Semantic hue values - used to derive status colors */
+	--kit-h-neutral: 220;
+	--kit-h-success: 145;
+	--kit-h-warning: 35;
+	--kit-h-danger: 5;
+	--kit-h-info: 205;
+
+	/* Base colors */
+	--kit-bg: hsl(0 0% 100%);
+	--kit-fg: hsl(222 20% 10%);
+	--kit-muted: hsl(220 10% 45%);
+
+	/* Surface layers */
+	--kit-surface-1: hsl(0 0% 100%);
+	--kit-surface-2: hsl(220 20% 98%);
+	--kit-surface-3: hsl(220 18% 94%);
+
+	/* Border */
+	--kit-border: hsl(220 16% 88%);
+
+	/* Accent */
+	--kit-accent: hsl(220 90% 56%);
+
+	/* Shape */
+	--kit-radius-1: 8px;
+	--kit-radius-2: 12px;
+
+	/* Spacing */
+	--kit-space-1: 6px;
+	--kit-space-2: 10px;
+	--kit-space-3: 14px;
+
+	/* Focus ring */
+	--kit-focus: hsl(35, 90%, 56%);
+
+	/* Disabled state */
+	--kit-disabled-opacity: 0.55;
+
+	/* Typography */
+	--kit-font:
+		ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
+}
