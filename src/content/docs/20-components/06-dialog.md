@@ -1,5 +1,6 @@
 ---
-title: 'Dialog'
+title: "Dialog"
+description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
 ---
 
 <script>

@@ -1,5 +1,6 @@
 ---
-title: 'Appbar'
+title: "Appbar"
+description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
 ---
 
 <script>
@@ -48,10 +49,6 @@ The `variant` prop controls the background and border style.
 ### classContent
 
 `classContent` applies a CSS class to the inner content wrapper. Use it to constrain the max-width of the content while the appbar background spans the full width.
-
-| prop         | type                 | description                                 |
-| ------------ | -------------------- | ------------------------------------------- |
-| classContent | `string \| string[]` | Class(es) applied to the inner wrapper div. |
 
 - **classContent**: `string | string[]` = `''`
 

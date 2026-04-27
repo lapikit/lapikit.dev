@@ -1,5 +1,6 @@
 ---
 title: "Customize"
+description: "Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed."
 keywords:
   - "customize"
   - "theming"

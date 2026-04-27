@@ -1,5 +1,12 @@
 ---
-title: "Components"
+title: 'Components'
+layout: 'section'
 ---
 
-Page Components Summary markdown
+<script>
+    import ListComponents from "$lib/components/list-components.svelte";
+</script>
+
+Page Components Summary markdown demo
+
+<ListComponents/>

@@ -1,5 +1,6 @@
 ---
 title: "introduction"
+description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
 keywords:
   - "why lapikit"
   - "acknowledgements"

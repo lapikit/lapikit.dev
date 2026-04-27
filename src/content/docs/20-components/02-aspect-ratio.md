@@ -1,5 +1,6 @@
 ---
-title: 'Aspect Ratio'
+title: "Aspect Ratio"
+description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
 ---
 
 <script>
@@ -31,10 +32,8 @@ The `kit:aspect-ratio` component constrains its content to a fixed ratio. It wor
 
 Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
-| prop        | type               | default |
-| ----------- | ------------------ | ------- |
-| ratio       | `string \| number` | `16/9`  |
-| aspectRatio | `string \| number` | `16/9`  |
+- **ratio**: `string | number` = `'16/9'`
+- **aspectRatio**: `string | number` = `'16/9'`
 
 <LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('../../../content/examples/components/aspect-ratio/ratios.svelte?raw')}>
 <Ratios/>

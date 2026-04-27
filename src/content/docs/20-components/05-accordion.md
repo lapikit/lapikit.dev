@@ -1,5 +1,5 @@
 ---
-title: 'Accordion'
+title: "Accordion"
 ---
 
 <script>
@@ -56,10 +56,6 @@ The `spacer` prop adds a gap between items, useful when items have a `rounded` r
 
 Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/actions/use-accordion) to allow several items to be expanded at the same time.
 
-| option   | type      | default |
-| -------- | --------- | ------- |
-| multiple | `boolean` | `false` |
-
 - **multiple**: `boolean` = `false`
 
 <LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/multiple.svelte?raw')}>
@@ -100,10 +96,6 @@ Use the `activator` snippet to fully customize the trigger content - replaces th
 ### indicator snippet
 
 Use the `indicator` snippet to replace the default chevron with a custom element. It receives `{ open: boolean }` so you can adapt the rendering to the item's state.
-
-| prop      | type                           | description                                           |
-| --------- | ------------------------------ | ----------------------------------------------------- |
-| indicator | `Snippet<[{ open: boolean }]>` | Custom indicator - replaces the default chevron icon. |
 
 - **indicator**: `Snippet<[{ open: boolean }]> | undefined` = `undefined`
 

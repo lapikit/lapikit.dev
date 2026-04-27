@@ -1,5 +1,6 @@
 ---
-title: 'Card'
+title: "Card"
+description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
 ---
 
 <script>

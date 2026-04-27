@@ -1,5 +1,6 @@
 ---
-title: 'List'
+title: "List"
+description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
 ---
 
 <script>
@@ -36,11 +37,6 @@ The `kit:list` + `kit:list-item` components render structured vertical lists. It
 ### prepend and append
 
 `kit:list-item` supports `prepend` and `append` snippets for icons, avatars, badges, or any inline content.
-
-| prop    | type      | description                    |
-| ------- | --------- | ------------------------------ |
-| prepend | `Snippet` | Content before the item label. |
-| append  | `Snippet` | Content after the item label.  |
 
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`

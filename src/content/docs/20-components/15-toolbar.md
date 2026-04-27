@@ -1,5 +1,6 @@
 ---
-title: 'Toolbar'
+title: "Toolbar"
+description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
 ---
 
 <script>
@@ -52,10 +53,6 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 ### location
 
 Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge (`position: fixed`). This is intended for app-level toolbars like a top navigation bar or a bottom action bar.
-
-| prop     | type                | description                            |
-| -------- | ------------------- | -------------------------------------- |
-| location | `'top' \| 'bottom'` | Pins the toolbar to the viewport edge. |
 
 - **location**: `'top' | 'bottom' | undefined` = `undefined`
 

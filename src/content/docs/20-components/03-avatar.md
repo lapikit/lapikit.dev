@@ -1,5 +1,6 @@
 ---
-title: 'Avatar'
+title: "Avatar"
+description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
 ---
 
 <script>
@@ -32,10 +33,6 @@ The `kit:avatar` component displays a user representation — either as initials
 ### label
 
 Pass a string to `label` to display initials or short text. The value is trimmed and uppercased automatically.
-
-| prop  | type     | description                       |
-| ----- | -------- | --------------------------------- |
-| label | `string` | Text displayed inside the avatar. |
 
 - **label**: `string | undefined` = `undefined`
 

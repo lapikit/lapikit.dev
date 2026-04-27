@@ -1,5 +1,6 @@
 ---
-title: 'Textfield'
+title: "Textfield"
+description: "Capture user input with flexible, accessible text fields. Support various types, validation, and enhanced features."
 ---
 
 <script>

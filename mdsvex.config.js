@@ -31,6 +31,7 @@ export const mdsvexOptions = {
 	highlight: { highlighter },
 	layout: {
 		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.svelte',
-		docs: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/doc.svelte'
+		docs: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/doc.svelte',
+		section: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/section.svelte'
 	}
 };

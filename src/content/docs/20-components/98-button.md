@@ -1,5 +1,6 @@
 ---
-title: 'Button'
+title: "Button"
+description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 ---
 
 <script>
@@ -45,10 +46,6 @@ The `kit:btn` component is a flexible interactive element. It renders as a `<but
 
 Add `icon` to render a square button — width equals height. Useful for icon-only actions.
 
-| prop | type      | default |
-| ---- | --------- | ------- |
-| icon | `boolean` | `false` |
-
 - **icon**: `boolean` = `false`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/icon.svelte?raw')}>
@@ -58,11 +55,6 @@ Add `icon` to render a square button — width equals height. Useful for icon-on
 ### prepend and append snippets
 
 Use `prepend` and `append` to place icons or elements on either side of the label.
-
-| prop    | type      | description                        |
-| ------- | --------- | ---------------------------------- |
-| prepend | `Snippet` | Content rendered before the label. |
-| append  | `Snippet` | Content rendered after the label.  |
 
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
@@ -74,12 +66,6 @@ Use `prepend` and `append` to place icons or elements on either side of the labe
 ### States
 
 `disabled` prevents interaction and dims the button. `loading` hides the content and shows a spinner overlay. `active` applies the pressed background.
-
-| prop     | type      | default |
-| -------- | --------- | ------- |
-| disabled | `boolean` | `false` |
-| loading  | `boolean` |         |
-| active   | `boolean` | `false` |
 
 - **disabled**: `boolean` = `false`
 - **loading**: `boolean` = `false`

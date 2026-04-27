@@ -1,5 +1,6 @@
 ---
-title: 'Alert'
+title: "Alert"
+description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
 ---
 
 <script>
@@ -74,11 +75,6 @@ Add `closable` to display a close button. The `open` prop is bindable so you can
 ### prepend and append snippets
 
 Use `prepend` to add an icon or element before the content, and `append` to add one after — for example a link or action button.
-
-| prop    | type      | description                       |
-| ------- | --------- | --------------------------------- |
-| prepend | `Snippet` | Content rendered before the text. |
-| append  | `Snippet` | Content rendered after the text.  |
 
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`

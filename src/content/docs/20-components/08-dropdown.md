@@ -1,5 +1,6 @@
 ---
-title: 'Dropdown'
+title: "Dropdown"
+description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
 ---
 
 <script>

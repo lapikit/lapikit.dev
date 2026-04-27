@@ -57,6 +57,8 @@
 	}
 }
 
+@layer kit-prose {
+
 /* ── Container ────────────────────────────────────── */
 .kit-prose {
 	font-family: var(--md-font-sans);
@@ -250,43 +252,6 @@
 	border-radius: 0;
 	padding: 0;
 	white-space: pre;
-}
-
-/* ── Exclude kit-repl ────────────────────────────────────────── */
-.kit-prose .kit-repl code,
-.kit-prose .kit-repl pre code {
-	font-family: revert;
-	font-size: revert;
-	color: revert;
-	background-color: revert;
-	background: revert;
-	border: revert;
-	border-radius: revert;
-	padding: revert;
-	white-space: revert;
-}
-
-.kit-prose .kit-repl pre {
-	font-family: revert;
-	font-size: revert;
-	line-height: revert;
-	background-color: revert;
-	border: revert;
-	border-radius: revert;
-	padding: revert;
-	overflow-x: revert;
-	margin-top: revert;
-	margin-bottom: revert;
-	-webkit-overflow-scrolling: revert;
-}
-
-.kit-prose .kit-repl img {
-	max-width: revert;
-	height: revert;
-	border-radius: revert;
-	border: revert;
-	display: revert;
-	margin: revert;
 }
 
 /* ── Blockquote ─────────────────────────────────────────────── */
@@ -493,3 +458,5 @@
 		border: 1px solid #ccc;
 	}
 }
+
+} /* end @layer kit-prose */
