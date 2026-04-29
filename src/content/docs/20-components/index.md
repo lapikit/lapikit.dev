@@ -1,6 +1,5 @@
 ---
-title: 'Components'
-layout: 'section'
+title: "Components"
 ---
 
 <script>

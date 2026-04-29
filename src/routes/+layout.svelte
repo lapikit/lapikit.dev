@@ -16,6 +16,7 @@
 		siteDefaultUrl,
 		siteName
 	} from '$lib';
+	import { capitalize } from '$lib/utils';
 
 	let { children } = $props();
 
@@ -28,7 +29,9 @@
 	);
 	const canonicalUrl = $derived(`${siteUrl}${normalizedPath === '/' ? '' : normalizedPath}`);
 	const pageTitle = $derived(
-		normalizedPath === '/' ? `${siteName} | ${seo.title}` : `${seo.title} | ${siteName}`
+		normalizedPath === '/'
+			? `${siteName} • Svelte Components Library`
+			: `${capitalize(seo.title)} • Lapikit Svelte Components`
 	);
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
 	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, siteUrl));
@@ -46,6 +49,7 @@
 	<title>{pageTitle}</title>
 	<link rel="icon" href={favicon} />
 	<link rel="canonical" href={canonicalUrl} />
+	<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 	<meta name="description" content={seo.description} />
 	<meta
 		name="robots"
@@ -63,6 +67,8 @@
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={seo.description} />
+
+	<meta name="color-scheme" content="light dark" />
 
 	{@html breadcrumbSchemaTag}
 </svelte:head>
