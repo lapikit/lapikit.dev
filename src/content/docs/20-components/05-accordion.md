@@ -1,5 +1,5 @@
 ---
-title: "Accordion"
+title: 'Accordion'
 ---
 
 <script>
@@ -34,7 +34,7 @@ The `kit:accordion` component is a vertically stacked set of expandable sections
 
 `kit:accordion` is a controlled component: it has no internal state. You manage open/close externally and pass two props to each item - `open` (boolean) and `toggle` (function called with the item's `index` on click).
 
-The recommended way is the [`useAccordion`](/docs/hooks/actions/use-accordion) hook from `lapikit/actions`, which handles the reactive state for you.
+The recommended way is the [`useAccordion`](/docs/hooks/use-accordion) hook from `lapikit/actions`, which handles the reactive state for you.
 
 Each `kit:accordion-item` requires a unique `index` (string or number).
 
@@ -54,7 +54,7 @@ The `spacer` prop adds a gap between items, useful when items have a `rounded` r
 
 ### Multiple items open
 
-Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/actions/use-accordion) to allow several items to be expanded at the same time.
+Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/use-accordion) to allow several items to be expanded at the same time.
 
 - **multiple**: `boolean` = `false`
 
@@ -140,4 +140,4 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | background | `string`                                    | Background color override (`--kit-accordion-item-bg`).           |         |
 | children   | `Snippet`                                   | Content revealed when the item is open.                          |         |
 
-For the state hook API, see the dedicated [`useAccordion`](/docs/hooks/actions/use-accordion) page.
+For the state hook API, see the dedicated [`useAccordion`](/docs/hooks/use-accordion) page.

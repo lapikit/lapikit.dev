@@ -1,11 +1,12 @@
 ---
-title: "useAccordion"
+title: 'useAccordion'
+description: 'Learn how to use the useAccordion action in Lapikit for managing accordion state.'
 ---
 
 <script>
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
-	import Multiple from '../../../../content/examples/components/accordion/multiple.svelte';
+	import Multiple from '../../../content/examples/components/accordion/multiple.svelte';
 </script>
 
 # useAccordion
@@ -47,7 +48,7 @@ Pass `accordion.values.includes(index)` to each item's `open` prop, and `accordi
 
 ### Multiple mode
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../../content/examples/components/accordion/multiple.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/multiple.svelte?raw')}>
 <Multiple/>
 </LazyRepl>
 

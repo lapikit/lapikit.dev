@@ -15,8 +15,22 @@ export function load({ params }) {
 	}
 
 	const index = docs.findIndex((d) => d.slug === doc.slug);
-	const prevDoc = index > 0 ? { slug: docs[index - 1].slug, title: docs[index - 1].metadata.title, path: docs[index - 1].path } : null;
-	const nextDoc = index < docs.length - 1 ? { slug: docs[index + 1].slug, title: docs[index + 1].metadata.title, path: docs[index + 1].path } : null;
+	const prevDoc =
+		index > 0
+			? {
+					slug: docs[index - 1].slug,
+					title: docs[index - 1].metadata.title,
+					path: docs[index - 1].path
+				}
+			: null;
+	const nextDoc =
+		index < docs.length - 1
+			? {
+					slug: docs[index + 1].slug,
+					title: docs[index + 1].metadata.title,
+					path: docs[index + 1].path
+				}
+			: null;
 
 	return { doc, prevDoc, nextDoc };
 }

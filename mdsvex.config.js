@@ -32,6 +32,7 @@ export const mdsvexOptions = {
 	layout: {
 		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.svelte',
 		docs: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/doc.svelte',
-		section: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/section.svelte'
+		section: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/section.svelte',
+		legacy: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/legacy.svelte'
 	}
 };

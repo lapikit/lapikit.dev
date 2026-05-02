@@ -4,6 +4,13 @@ export const primaryNavigation = [
 	{ href: '/docs/hooks', label: 'hooks' }
 ] as const;
 
+export const legacyRoutes = [
+	'breakpoints',
+	'hooks/store-theme',
+	'hooks/store-devices',
+	'hooks/store-theme'
+] as const;
+
 export const navigationRouteLinks = [
 	{
 		label: 'Environnement',
