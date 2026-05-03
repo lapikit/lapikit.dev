@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
+	// components
+	import Search from '$lib/components/search.svelte';
+
 	// svg
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
 
@@ -22,6 +25,7 @@
 	<kit:spacer />
 
 	<div class="flex items-center gap-2">
+		<Search />
 		<kit:btn href={resolve('/docs')} size="lg">Documentation</kit:btn>
 		<kit:btn
 			icon

@@ -1,6 +1,6 @@
 ---
-title: 'useAccordion'
-description: 'Learn how to use the useAccordion action in Lapikit for managing accordion state.'
+title: "useAccordion"
+description: "Learn how to use the useAccordion action in Lapikit for managing accordion state."
 ---
 
 <script>
