@@ -102,7 +102,7 @@ export const docsNavigation: NavSection[] = [
 			{ label: 'Customization', url: '/docs/customize' },
 			{ label: 'Initialize application', url: '/docs/essentials/initialize-application' },
 			{ label: 'Template syntax', url: '/docs/essentials/template-syntax' },
-			{ label: 'Classes & Styles', url: '/docs/essentials/class-and-style' }
+			{ label: 'Classes and Styles', url: '/docs/essentials/class-and-style' }
 		]
 	},
 	{
@@ -208,7 +208,7 @@ export const docsNavigation: NavSection[] = [
 		]
 	},
 	{
-		label: 'Stores & Hooks',
+		label: 'Stores and Hooks',
 		icon: xIcon,
 		pages: [{ label: 'useAccordion', url: '/docs/hooks/use-accordion' }]
 	},
@@ -217,7 +217,7 @@ export const docsNavigation: NavSection[] = [
 		icon: xIcon,
 		pages: [
 			{ label: 'Migration Guide', url: '/docs/migration-guide' },
-			{ label: 'Typescripts & Linter', url: '/docs/environments' }
+			{ label: 'Typescripts and Linter', url: '/docs/environments' }
 		]
 	}
 ];

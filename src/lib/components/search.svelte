@@ -3,8 +3,9 @@
 	import { page } from '$app/state';
 	import type { SearchEntry } from '$lib/@types';
 	import { docsMetadata } from '$lib/registry';
+	import { capitalize } from '$lib/utils';
 	import type { ModelPopoverProps } from 'lapikit/labs/components';
-	import { BookXIcon, ChevronRight, Search } from 'lucide-svelte';
+	import { XIcon, ChevronRight, Search } from 'lucide-svelte';
 
 	const searchEntries: SearchEntry[] = docsMetadata.map((doc, index) => {
 		const title = doc.metadata.title;
@@ -132,12 +133,12 @@
 							active={normalizedPath === result.path}
 						>
 							{#snippet prepend()}
-								{@const Icon = result.section === 'Components' ? BookXIcon : undefined}
+								{@const Icon = result.section === 'Components' ? XIcon : XIcon}
 								<kit:icon><Icon /></kit:icon>
 							{/snippet}
-							<div class="flex flex-col">
-								<strong>{result.title}</strong>
-								<span>{result.description}</span>
+							<div class="flex flex-col truncate">
+								<strong>{capitalize(result.title)}</strong>
+								<span class="truncate">{capitalize(result.description)}</span>
 							</div>
 
 							{#snippet append()}

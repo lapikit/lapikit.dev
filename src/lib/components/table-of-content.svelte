@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { MarkdownHeading } from '$lib/@types';
 	import { TextQuote } from 'lucide-svelte';
+	import { capitalize } from '$lib/utils';
 
 	let { summary = [] }: { summary?: MarkdownHeading[] } = $props();
 
@@ -46,7 +47,7 @@
 						href={`#${item.slug}`}
 						class={`depth-${item.depth} ${activeSlug === item.slug ? 'underline!' : ''}`}
 					>
-						<span class="truncate">{item.value}</span>
+						<span class="truncate">{capitalize(item.value)}</span>
 					</kit:list-item>
 				</kit:tooltip>
 			{/each}
