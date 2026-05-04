@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import type { SearchEntry } from '$lib/@types';
 	import { docsMetadata } from '$lib/registry';
+	import type { ModelPopoverProps } from 'lapikit/labs/components';
+	import { BookXIcon, ChevronRight, Search } from 'lucide-svelte';
 
 	const searchEntries: SearchEntry[] = docsMetadata.map((doc, index) => {
 		const title = doc.metadata.title;
@@ -45,25 +46,9 @@
 			.map((candidate) => candidate.entry)
 			.slice(0, 8);
 	});
-	const bestMatch = $derived(results[0]);
 	const resultCountLabel = $derived(
 		results.length === 1 ? '1 element' : `${results.length} elements`
 	);
-
-	async function handleSubmit(event: SubmitEvent) {
-		event.preventDefault();
-
-		if (!bestMatch) {
-			return;
-		}
-
-		query = '';
-		await goto(resolve('/docs/[...slug]', { slug: bestMatch.slug }));
-	}
-
-	function clearQuery() {
-		query = '';
-	}
 
 	function getScore(entry: SearchEntry, value: string, terms: string[]) {
 		if (!terms.every((term) => entry.normalizedKeywords.includes(term))) {
@@ -110,55 +95,68 @@
 			.map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
 			.join(' ');
 	}
+
+	$effect(() => {});
 </script>
 
-<section aria-labelledby="docs-search-title">
-	<form role="search" onsubmit={handleSubmit}>
-		<label for="docs-search-input">Search</label>
+<kit:popover closeOnClick>
+	{#snippet activator({ toggle }: ModelPopoverProps)}
+		<kit:textfield
+			id="docs-search-input"
+			class="docs-search-input"
+			name="q"
+			type="search"
+			bind:value={query}
+			placeholder="Ex. button, hooks, creating a project"
+			autocomplete="off"
+			enterkeyhint="go"
+			style="width: 300px;"
+			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+		>
+			{#snippet prependInner()}
+				<kit:icon><Search /></kit:icon>
+			{/snippet}
+		</kit:textfield>
+	{/snippet}
 
-		<div>
-			<input
-				id="docs-search-input"
-				name="q"
-				type="search"
-				bind:value={query}
-				placeholder="Ex. button, hooks, creating a project"
-				autocomplete="off"
-				enterkeyhint="go"
-			/>
-
-			{#if query}
-				<button type="button" onclick={clearQuery}>Clear</button>
-			{/if}
-
-			<button type="submit" disabled={!bestMatch}>Open</button>
-		</div>
-	</form>
-
-	{#if query}
-		<div aria-live="polite">
+	<div class="md:min-w-md">
+		{#if query}
 			{#if results.length > 0}
 				<p>{resultCountLabel}</p>
 
-				<ul>
+				<kit:list>
 					{#each results as result (result.path)}
-						<li>
-							<a
-								href={resolve('/docs/[...slug]', { slug: result.slug })}
-								class:active={normalizedPath === result.path}
-								aria-current={normalizedPath === result.path ? 'page' : undefined}
-							>
-								<span>{result.section}</span>
+						<kit:list-item
+							nav
+							href={resolve('/docs/[...slug]', { slug: result.slug })}
+							active={normalizedPath === result.path}
+						>
+							{#snippet prepend()}
+								{@const Icon = result.section === 'Components' ? BookXIcon : undefined}
+								<kit:icon><Icon /></kit:icon>
+							{/snippet}
+							<div class="flex flex-col">
 								<strong>{result.title}</strong>
 								<span>{result.description}</span>
-								<code>{result.path}</code>
-							</a>
-						</li>
+							</div>
+
+							{#snippet append()}
+								<kit:icon><ChevronRight /></kit:icon>
+							{/snippet}
+						</kit:list-item>
 					{/each}
-				</ul>
+				</kit:list>
 			{:else}
-				<p>No pages match this search.</p>
+				<p>No results found.</p>
 			{/if}
-		</div>
-	{/if}
-</section>
+		{:else}
+			<p>Search in documentation...</p>
+		{/if}
+	</div>
+</kit:popover>
+
+<style>
+	:global(.docs-search-input .kit-textfield__message) {
+		display: none !important;
+	}
+</style>
