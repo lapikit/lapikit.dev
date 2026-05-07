@@ -12,7 +12,7 @@ export default defineConfig(({ command }) => ({
 		tailwindcss(),
 		enhancedImages(),
 		sveltekit(),
-		lapikit(), //legacy
+		lapikit({ config: 'src/plugins/lapikit.ts' }), //legacy
 		...(command === 'serve' ? [devtoolsJson()] : [])
 	]
 }));

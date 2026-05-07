@@ -15,7 +15,7 @@
 	import NycolaideAvatar from '$lib/@legacy/images/nycolaide.webp?enhanced';
 	import LapikitLikeYou from '$lib/@legacy/images/lapinosaure-like-you.webp?enhanced';
 
-	import 'lapikit/styles';
+	import '../plugins/lapikit.ts';
 
 	// states
 	let stepCode: number = $state(0);
