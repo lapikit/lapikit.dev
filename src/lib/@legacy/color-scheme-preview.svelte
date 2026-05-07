@@ -60,8 +60,8 @@
 		}
 	}
 
-	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?enhanced';
-	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?enhanced';
+	import CarrotMailLight from '$lib/@legacy/images/carrot-mail-light.webp?enhanced';
+	import CarrotMailDark from '$lib/@legacy/images/carrot-mail-dark.webp?enhanced';
 </script>
 
 <div id="color-scheme-preview" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
