@@ -1,6 +1,6 @@
 ---
-title: "Toolbar"
-description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
+title: 'Toolbar'
+description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
 ---
 
 <script>
@@ -14,19 +14,24 @@ description: "Group actions in a compact, coherent space. Ideal for headers, lis
 
 # Toolbar component
 
-The `kit:toolbar` component is a container for grouped action buttons or controls. It supports four visual variants, density control, and horizontal or vertical orientation.
+The `kit:toolbar` component creates a flexible, customizable toolbar, ideal for organizing actions, titles, filters or other navigation content. It is designed to adapt to different contexts thanks to its layout, style and density options.
 
 <LazyRepl title="toolbar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/toolbar/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
+`kit:toolbar` renders as a `<div>` by default but can be changed to `<header>` or `<nav>`. It sets `role="toolbar"` automatically. Place [`kit:btn`](/docs/components/button), [`kit:separator`](/docs/components/separator), or any other element as children.
 
-`kit:toolbar` renders as a `<div>` by default but can be changed to `<header>` or `<nav>`. It sets `role="toolbar"` automatically. Place `kit:btn`, `kit:separator`, or any other element as children.
-
-## Usage
+## Examples of toolbar
 
 ### Variants
+
+Demonstrates the use of visual variants: **filled**, **outline**, **text** or **dash** to adapt the style of the bar to different UI contexts.
+
+- **filled** (default): solid background.
+- **outline**: visible border.
+- **text** : transparent background.
+- **dash** : dashed border.
 
 - **variant**: `'filled' | 'outline' | 'text' | 'dash'` = `'filled'`
 
@@ -36,6 +41,12 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 
 ### density
 
+Shows how to adjust density (`compact`, `comfortable`, `default`) to manage vertical spacing within the bar. Useful for optimizing the interface according to available space.
+
+- **compact**: reduced margins and padding, useful for lists or tables.
+- **comfortable**: a visual compromise.
+- **default**: standard spacing.
+
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/density.svelte?raw')}>
@@ -43,6 +54,8 @@ The `kit:toolbar` component is a container for grouped action buttons or control
 </LazyRepl>
 
 ### orientation
+
+The toolbar can be displayed horizontally (default) or vertically. This example illustrates the use of the orientation="vertical" option to stack elements from top to bottom.
 
 - **orientation**: `'horizontal' | 'vertical'` = `'horizontal'`
 
@@ -57,6 +70,8 @@ Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge 
 - **location**: `'top' | 'bottom' | undefined` = `undefined`
 
 ### Without preprocess Lapikit
+
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
 <LazyRepl lang="js" content={"import { Toolbar } from 'lapikit/labs/components';"} />
 
@@ -76,3 +91,5 @@ Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge 
 | color        | `string`                                    | Foreground color override (`--kit-toolbar-fg`). |                |
 | background   | `string`                                    | Background color override (`--kit-toolbar-bg`). |                |
 | children     | `Snippet`                                   | Toolbar content.                                |                |
+
+`kit:toolbar` is the right place to group [Buttons](/docs/components/button), [Chips](/docs/components/chip) and [Icons](/docs/components/icon) in a coherent space.

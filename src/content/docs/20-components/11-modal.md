@@ -1,6 +1,6 @@
 ---
-title: "Modal"
-description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
+title: 'Modal'
+description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
 ---
 
 <script>
@@ -14,19 +14,19 @@ description: "Display stacked content in a responsive modal window. Manages posi
 
 # Modal component
 
-The `kit:modal` component renders a floating content panel controlled by a bindable `open` prop. It closes on Escape by default and supports a `contain` mode for embedding within a parent element.
+The `kit:modal` component displays an overlay panel above the main content. It is designed for dialogs, contextual messages, forms or alerts requiring direct interaction.
+
+The modal can be centered, fixed at the top or bottom of the screen, and closes in different ways depending on the options activated (outside click, Escape key, etc.). It is a flexible alternative to [`kit:dialog`](/docs/components/dialog) when you need more control over the structure, behavior or styling of the modal content, or when you want to manage the backdrop at the application level.
 
 <LazyRepl title="modal.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/modal/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
+`kit:modal` is a div-based overlay positioned fixed over the viewport. Unlike `kit:dialog`, it does not use the native `<dialog>` element and has no built-in backdrop a global backdrop is typically managed at the application level. Use `contain` to embed the modal relative to its parent instead.
 
-`kit:modal` is a div-based overlay positioned fixed over the viewport. Unlike `kit:dialog`, it does not use the native `<dialog>` element and has no built-in backdrop — a global backdrop is typically managed at the application level. Use `contain` to embed the modal relative to its parent instead.
+> `open` is bindable set it to `true` to open, `false` to close, or bind it to react to closes.
 
-> `open` is bindable — set it to `true` to open, `false` to close, or bind it to react to closes.
-
-## Usage
+## Examples of modal
 
 ### position
 
@@ -60,6 +60,8 @@ When `persistent` is set, pressing Escape does not close the modal. The user mus
 
 ### Without preprocess Lapikit
 
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
+
 <LazyRepl lang="js" content={"import { Modal } from 'lapikit/labs/components';"} />
 
 ## API Reference
@@ -80,3 +82,5 @@ When `persistent` is set, pressing Escape does not close the modal. The user mus
 | color        | `string`                                         | Foreground color override (`--kit-modal-fg`).     |             |
 | background   | `string`                                         | Background color override (`--kit-modal-bg`).     |             |
 | children     | `Snippet`                                        | Modal content.                                    |             |
+
+Complement the use of `kit:modal` with [Dialog](/docs/components/dialog) for confirmations or [Popover](/docs/components/popover) for light details.

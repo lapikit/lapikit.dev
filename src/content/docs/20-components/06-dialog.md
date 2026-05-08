@@ -1,6 +1,6 @@
 ---
-title: "Dialog"
-description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
+title: 'Dialog'
+description: 'Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management.'
 ---
 
 <script>
@@ -14,19 +14,19 @@ description: "Create modal dialogs with a fluid UX. Integrated focus, size, dens
 
 # Dialog component
 
-The `kit:dialog` component wraps the native `<dialog>` element. It is controlled via the bindable `open` prop and closes on backdrop click by default.
+The `kit:dialog` component is a modal window based on the native HTML element `<dialog>`. Thanks to this foundation, it benefits from accessible and semantic features by default, such as focus management, closing with the Escape key or clicking outside the box (unless persistent is enabled).
+
+It can be used to display temporary content above the main interface: messages, forms, confirmations, etc. It is controlled via the prop bindable open, can be customized in position, size, density and style, and adapts easily to all usage contexts.
 
 <LazyRepl title="dialog.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/dialog/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
+`kit:dialog` calls `showModal()` / `close()` on the native `<dialog>` element in reaction to `open`. The backdrop blocks page interaction and closes the dialog when clicked unless `persistent` is set. Scrolling the page while a dialog is open is disabled automatically.
 
-`kit:dialog` calls `showModal()` / `close()` on the native `<dialog>` element in reaction to `open`. The backdrop blocks page interaction and closes the dialog when clicked — unless `persistent` is set. Scrolling the page while a dialog is open is disabled automatically.
+> `open` is bindable set it to `true` to open, `false` to close, or bind it to react to user-initiated closes.
 
-> `open` is bindable — set it to `true` to open, `false` to close, or bind it to react to user-initiated closes.
-
-## Usage
+## Examples of dialog
 
 ### position
 
@@ -60,6 +60,8 @@ When `persistent` is set, clicking the backdrop or pressing Escape does not clos
 
 ### Without preprocess Lapikit
 
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
+
 <LazyRepl lang="js" content={"import { Dialog } from 'lapikit/labs/components';"} />
 
 ## API Reference
@@ -78,3 +80,5 @@ When `persistent` is set, clicking the backdrop or pressing Escape does not clos
 | color        | `string`                                    | Foreground color override (`--kit-dialog-fg`). |             |
 | background   | `string`                                    | Background color override (`--kit-dialog-bg`). |             |
 | children     | `Snippet`                                   | Dialog content.                                |             |
+
+Remember to follow up with [Modal](/docs/components/modal) or [Popover](/docs/components/popover) to create complete user paths.

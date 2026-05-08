@@ -1,6 +1,6 @@
 ---
-title: "Card"
-description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+title: 'Card'
+description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
 ---
 
 <script>
@@ -15,15 +15,13 @@ description: "Organize and display content in visually coherent blocks. The Lapi
 
 # Card component
 
-The `kit:card` component is a flexible container for grouped content. It renders as a `<div>` by default and switches to `<a>` automatically when `href` is provided.
+The `kit:card` component is a versatile container used to group together information or actions in a user interface. It can be used to display content, images, buttons or links, while offering advanced customization to suit various styles and contexts.
 
 <LazyRepl title="card.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/card/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
-
-`kit:card` is a layout container — it adds no heading or structure on its own. Use the utility classes below inside it to organise content consistently.
+`kit:card` is a layout container, it adds no heading or structure on its own. Use the utility classes below inside it to organise content consistently.
 
 | class                      | description                                                    |
 | -------------------------- | -------------------------------------------------------------- |
@@ -38,15 +36,15 @@ The `kit:card` component is a flexible container for grouped content. It renders
 <Structure/>
 </LazyRepl>
 
-## Usage
+## Examples of card
 
 ### Variants
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
-- `filled` — accent background, white text.
-- `outline` — transparent background with accent border.
-- `text` — no background or border, accent text color.
+- `filled` - accent background, white text.
+- `outline` - transparent background with accent border.
+- `text` - no background or border, accent text color.
 
 <LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/variants.svelte?raw')}>
 <Variants/>
@@ -100,3 +98,5 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | disabled    | `boolean`                                                       | Dims and disables interaction.                          | `false`     |
 | noRipple    | `boolean`                                                       | Disables the ripple animation on click.                 |             |
 | children    | `Snippet`                                                       | Card content.                                           |             |
+
+For better structure, combine your [Cards](/docs/components/card) with [Avatars](/docs/components/avatar) and clear [Buttons](/docs/components/button).

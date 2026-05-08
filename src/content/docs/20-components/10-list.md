@@ -1,6 +1,6 @@
 ---
-title: "List"
-description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
+title: 'List'
+description: 'Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements.'
 ---
 
 <script>
@@ -14,19 +14,23 @@ description: "Structure your data with a stylized list. Ideal for menus, hierarc
 
 # List component
 
-The `kit:list` + `kit:list-item` components render structured vertical lists. Items are interactive automatically when `onclick` is attached or `href` is set.
+The `kit:list` and `kit:list-item` components render structured vertical lists. Items are interactive automatically when `onclick` is attached or `href` is set.
 
 <LazyRepl title="list.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/list/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:list` is a layout container that sets size tokens consumed by its `kit:list-item` children. `kit:list-item` detects its tag automatically: it renders as `<a>` when `href` is set, `<button>` when an `onclick` is attached, or `<div>` otherwise.
 
-## Usage
+## Examples of list
 
 ### Variants
+
+Shows visual variants (**filled**, **text**, **outline**) to adapt the overall appearance of the list to graphic needs.
+
+- **filled** (default): solid background.
+- **outline**: visible border.
+- **text** : transparent background.
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
@@ -58,23 +62,25 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 
 ### Without preprocess Lapikit
 
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
+
 <LazyRepl lang="js" content={"import { List, ListItem } from 'lapikit/labs/components';"} />
 
 ## API Reference
 
 **`kit:list`**
 
-| props      | type                                        | description                                          | default     |
-| ---------- | ------------------------------------------- | ---------------------------------------------------- | ----------- |
-| is         | `'div' \| 'nav' \| 'ul'`                    | HTML element to render.                              | `'div'`     |
-| variant    | `'filled' \| 'outline' \| 'text'`           | Visual style.                                        | `'filled'`  |
-| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Item height, padding, and font size tokens.          | `'md'`      |
-| density    | `'compact' \| 'default' \| 'comfortable'`   | Vertical density offset applied to item height.      | `'default'` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                       | `'md'`      |
-| nav        | `boolean`                                   | Navigation mode — more padding, `role="navigation"`. | `false`     |
-| color      | `string`                                    | Foreground color override (`--kit-list-fg`).         |             |
-| background | `string`                                    | Background color override (`--kit-list-bg`).         |             |
-| children   | `Snippet`                                   | List items.                                          |             |
+| props      | type                                        | description                                        | default     |
+| ---------- | ------------------------------------------- | -------------------------------------------------- | ----------- |
+| is         | `'div' \| 'nav' \| 'ul'`                    | HTML element to render.                            | `'div'`     |
+| variant    | `'filled' \| 'outline' \| 'text'`           | Visual style.                                      | `'filled'`  |
+| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Item height, padding, and font size tokens.        | `'md'`      |
+| density    | `'compact' \| 'default' \| 'comfortable'`   | Vertical density offset applied to item height.    | `'default'` |
+| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                     | `'md'`      |
+| nav        | `boolean`                                   | Navigation mode more padding, `role="navigation"`. | `false`     |
+| color      | `string`                                    | Foreground color override (`--kit-list-fg`).       |             |
+| background | `string`                                    | Background color override (`--kit-list-bg`).       |             |
+| children   | `Snippet`                                   | List items.                                        |             |
 
 **`kit:list-item`**
 
@@ -91,3 +97,5 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 | prepend    | `Snippet`                                   | Content before the label.                         |         |
 | append     | `Snippet`                                   | Content after the label.                          |         |
 | children   | `Snippet`                                   | Item label.                                       |         |
+
+A well-structured `kit:list` can easily be enriched with [Separators](/docs/components/separator) or elements in a [Card](/docs/components/card).

@@ -1,6 +1,6 @@
 ---
-title: "Appbar"
-description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
+title: 'Appbar'
+description: 'Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones.'
 ---
 
 <script>
@@ -14,19 +14,17 @@ description: "Add an elegant, responsive application bar to your interfaces. Per
 
 # Appbar component
 
-The `kit:appbar` component is a horizontal bar used as a top navigation or page header. It handles layout, sizing, and visual style — content is fully up to you via `children`.
+The `kit:appbar` is an essential component for structuring an application's header. It provides a dedicated space for displaying elements such as titles, icons, buttons or menus. Thanks to its many customization options, the `kit:appbar` integrates perfectly into a variety of designs, from minimalist to complex.
 
 <LazyRepl title="appbar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/appbar/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
+`kit:appbar` renders as a `<header>` by default. It wraps your content in an inner `kit-appbar__wrapper` div that fills the full width and aligns items in a row. Use `classContent` to apply a class to that wrapper typically to constrain the max-width of the content while the background spans the full width.
 
-`kit:appbar` renders as a `<header>` by default. It wraps your content in an inner `kit-appbar__wrapper` div that fills the full width and aligns items in a row. Use `classContent` to apply a class to that wrapper — typically to constrain the max-width of the content while the background spans the full width.
+## Examples of app bar
 
-## Usage
-
-### Variants
+### Base
 
 The `variant` prop controls the background and border style.
 
@@ -76,3 +74,5 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | background   | `string`                                              | Background color override (`--kit-appbar-bg`).  |             |
 | classContent | `string \| string[]`                                  | Class(es) applied to the inner content wrapper. |             |
 | children     | `Snippet`                                             | Appbar content.                                 |             |
+
+An effective `kit:appbar` goes well with [Dropdown](/docs/components/dropdown) for menus and [Avatars](/docs/components/avatar) for identification.

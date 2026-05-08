@@ -1,6 +1,6 @@
 ---
-title: "Separator"
-description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
+title: 'Separator'
+description: 'Visually separate your UI blocks with customizable lines in size, color, orientation and opacity.'
 ---
 
 <script>
@@ -19,11 +19,9 @@ The `kit:separator` component renders a thin horizontal or vertical dividing lin
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:separator` renders as `<hr>` by default. It sets `role="separator"` and `aria-orientation` automatically. The color and opacity are token-based and can be overridden per-instance.
 
-## Usage
+## Examples of separator
 
 ### orientation
 
@@ -37,7 +35,7 @@ Vertical separators are inline-flex and stretch to fill their container's height
 
 ### inset
 
-Adds a leading margin to indent the separator from the left edge — useful inside lists.
+Adds a leading margin to indent the separator from the left edge useful inside lists.
 
 - **inset**: `boolean` = `false`
 
@@ -46,6 +44,8 @@ Adds a leading margin to indent the separator from the left edge — useful insi
 </LazyRepl>
 
 ### Without preprocess Lapikit
+
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
 <LazyRepl lang="js" content={"import { Separator } from 'lapikit/labs/components';"} />
 
@@ -61,3 +61,5 @@ Adds a leading margin to indent the separator from the left edge — useful insi
 | thickness   | `string \| number`           | Border width override (px number or CSS string). |                |
 | opacity     | `string \| number`           | Opacity override.                                | `0.12`         |
 | color       | `string`                     | Color override (`--kit-separator-color`).        |                |
+
+To organize your data, combine Separators with [List](/docs/components/list) for greater legibility.

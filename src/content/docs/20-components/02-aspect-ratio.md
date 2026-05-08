@@ -1,6 +1,6 @@
 ---
-title: "Aspect Ratio"
-description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
+title: 'Aspect Ratio'
+description: 'Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component.'
 ---
 
 <script>
@@ -14,19 +14,17 @@ description: "Manage the ratios of your images, videos or blocks easily with thi
 
 # Aspect Ratio component
 
-The `kit:aspect-ratio` component constrains its content to a fixed ratio. It works with any media — images, videos, iframes, or arbitrary content.
+The `kit:aspect-ratio` component maintains a constant aspect ratio for an element, whatever its content. It is particularly useful for videos, images or any other content requiring a proportional layout. Thanks to its flexible options, it can be easily integrated into different design contexts
 
 <LazyRepl title="aspect-ratio.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/aspect-ratio/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:aspect-ratio` sets `aspect-ratio` on the container and stretches child media elements (`img`, `video`, `iframe`, `canvas`, `svg`) to fill it via `object-fit`. The `ratio` prop accepts a number, a `/`-separated string (`"16/9"`), or a `:`-separated string (`"16:9"`). It falls back to `16/9` if the value is invalid.
 
-> `aspectRatio` is an alias for `ratio` — both are equivalent.
+> `aspectRatio` is an alias for `ratio` both are equivalent.
 
-## Usage
+## Examples of aspect ratio
 
 ### ratio
 
@@ -51,7 +49,7 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
 ### inline
 
-`inline` switches the container from `block` to `inline-block`, letting it sit inside text flow. Width is no longer 100% — set it manually via `style`.
+The `inline` property displays the component in the text flow, as an inline element. This can be useful for integrating proportional elements into paragraphs or `blocks` of text. Width is no longer 100% set it manually via `style`.
 
 - **inline**: `boolean` = `false`
 
@@ -77,3 +75,5 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | fit         | `'cover' \| 'contain' \| 'fill'`                        | `object-fit` applied to child media elements.        | `'cover'` |
 | inline      | `boolean`                                               | Renders as `inline-block` with `width: auto`.        | `false`   |
 | children    | `Snippet`                                               | Content to constrain.                                |           |
+
+Use `kit:aspect-ratio` on [Icon](/docs/components/icon) to visually structure your media components in a [Card](/docs/components/card).

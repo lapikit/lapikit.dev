@@ -1,6 +1,6 @@
 ---
-title: "Alert"
-description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
+title: 'Alert'
+description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
 ---
 
 <script>
@@ -17,7 +17,7 @@ description: "Display alert or status messages. Manage variants, densities and i
 
 # Alert component
 
-The `kit:alert` component displays a contextual message to the user. It supports multiple tones, visual variants, and optional slots for custom prepend, append, and close content.
+The `kit:alert` component displays a contextual message to the user. It supports multiple tones, visual variants, and optional snippets for custom prepend, append, and close content. It is ideal for providing feedback, warnings, or important information in a way that stands out from the rest of the interface.
 
 <LazyRepl title="alert.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/alert/preview.svelte?raw')}>
 <Preview/>
@@ -25,15 +25,16 @@ The `kit:alert` component displays a contextual message to the user. It supports
 
 ## Guide
 
-`kit:alert` renders as a `<div role="alert">` by default. It has no internal logic beyond visibility — the `open` prop controls whether it is rendered, and `closable` adds a close button that sets `open` to `false`.
+`kit:alert` renders as a `<div role="alert">` by default. It has no internal logic beyond visibility the `open` prop controls whether it is rendered, and `closable` adds a close button that sets `open` to `false`.
 
 The tone can be set via the `tone` prop or using the boolean shorthand props `info`, `success`, `warning`, and `error`.
 
-## Usage
+## Examples of alert
 
 ### Tones
 
-Use the `tone` prop to communicate the nature of the message.
+For greater expressiveness, an alert can be marked by a status: `info`, `success`, `warning`, `error`.
+Each state applies a color and a contextual icon to convey the right signal to the user.
 
 - **tone**: `'default' | 'info' | 'success' | 'warning' | 'error'` = `'default'`
 
@@ -43,7 +44,13 @@ Use the `tone` prop to communicate the nature of the message.
 
 ### Variants
 
-The `variant` prop controls the visual style of the alert.
+The `kit:alert` can adopt different visual styles via the props `variant`:
+
+- **filled** (default): solid background.
+- **outline**: visible border.
+- **text** : transparent background.
+
+These variants can be adapted to different visual contexts or levels of importance.
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
@@ -53,7 +60,13 @@ The `variant` prop controls the visual style of the alert.
 
 ### Density
 
-`density` adjusts the padding and spacing inside the alert.
+Props `density` lets you control the vertical size of the alert:
+
+- **compact**: reduced margins and padding, useful for lists or tables.
+- **comfortable**: a visual compromise.
+- **default**: standard spacing.
+
+Ideal for adapting alerts to different levels of hierarchy or UI density.
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
@@ -74,7 +87,7 @@ Add `closable` to display a close button. The `open` prop is bindable so you can
 
 ### prepend and append snippets
 
-Use `prepend` to add an icon or element before the content, and `append` to add one after — for example a link or action button.
+Use `prepend` to add an icon or element before the content, and `append` to add one after for example a link or action button.
 
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
@@ -118,3 +131,5 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | append     | `Snippet`                                                  | Content rendered after the main text.            |             |
 | close      | `Snippet`                                                  | Custom content inside the close button.          |             |
 | children   | `Snippet`                                                  | Main alert content.                              |             |
+
+To enhance your `kit:alert`, think of [Icon](/docs/components/icon) for legibility, or [Button](/docs/components/button) for integrated actions.

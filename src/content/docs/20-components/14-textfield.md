@@ -1,6 +1,6 @@
 ---
-title: "Textfield"
-description: "Capture user input with flexible, accessible text fields. Support various types, validation, and enhanced features."
+title: 'Textfield'
+description: 'Capture user input with flexible, accessible text fields. Support various types, validation, and enhanced features.'
 ---
 
 <script>
@@ -15,19 +15,25 @@ description: "Capture user input with flexible, accessible text fields. Support 
 
 # Textfield component
 
-The `kit:textfield` component is a feature-rich text input with variants, validation messages, inner icons, counter, and clear button.
+The `kit:textfield` component provides a versatile input solution for capturing user data. It supports various input types, validation states, and enhanced features like character counting and clearable functionality. Designed for i increase accessibility and user experience in mind in your interphase.
+
+Instead of reinventing textfield logic, Lapikit Textfield enables you to focus on behavior and data flow.
 
 <LazyRepl title="textfield.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/textfield/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:textfield` wraps a native `<input>` inside a styled container. It uses a grid layout to slot `prepend`/`append` (outside the field) and `prependInner`/`appendInner` (inside the field border). The `value` prop is bindable.
 
-## Usage
+## Examples of textfield
 
 ### Variants
+
+Shows visual variants of the textfield: **outlined**, **filled**, or **text** to match different design systems and UI contexts.
+
+- **filled** (default): solid background.
+- **outline**: visible border.
+- **text** : transparent background.
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
@@ -76,6 +82,8 @@ Adds a clear button that appears when the field has a value.
 
 ### Without preprocess Lapikit
 
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
+
 <LazyRepl lang="js" content={"import { Textfield } from 'lapikit/labs/components';"} />
 
 ## API Reference
@@ -117,3 +125,5 @@ Adds a clear button that appears when the field has a value.
 | append            | `Snippet`                                     | Content outside the field, after it.               |             |
 | prependInner      | `Snippet`                                     | Content inside the field border, before the input. |             |
 | appendInner       | `Snippet`                                     | Content inside the field border, after the input.  |             |
+
+`kit:textfield` works great with Form validation and can be enhanced with [Icons](/docs/components/icon) and [Buttons](/docs/components/button) using snippets.

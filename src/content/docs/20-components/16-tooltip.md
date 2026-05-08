@@ -1,6 +1,6 @@
 ---
-title: "Tooltip"
-description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
+title: 'Tooltip'
+description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
 ---
 
 <script>
@@ -14,19 +14,24 @@ description: "Provide additional info without cluttering the UI. Display on hove
 
 # Tooltip component
 
-The `kit:tooltip` component shows a small floating label when the user hovers or focuses the trigger element.
+Display elegant tooltips with `kit:tooltip`. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components
+The `kit:tooltip` component can be used to display a tooltip on hover, focus or via a controlled opening. It's designed to provide a simple, accessible way of delivering contextual information to the user, without cluttering up the interface.
+
+`kit:tooltip` can be used with simple text using the label prop, or with richer HTML content using the tooltip slot.
+
+It is particularly useful for enhancing the user experience by explaining icons, specifying actions or providing secondary details.
 
 <LazyRepl title="tooltip.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/tooltip/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:tooltip` wraps its `children` in a `<span>` that listens for `mouseenter`, `mouseleave`, `focusin`, and `focusout`. The tooltip appears after `delayDuration` milliseconds (default 850ms) and is positioned fixed via a separate element. Set `label` for a plain text tooltip, or use the `tooltip` snippet for rich content.
 
-## Usage
+## Examples of tooltip
 
 ### location
+
+The tooltip can be positioned in four directions relative to the trigger element: top, bottom, left or right. The component will attempt to keep the tooltip within the viewport by flipping its position if necessary (this can be disabled with `avoidCollisions`).
 
 - **location**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
@@ -56,6 +61,8 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 ### Without preprocess Lapikit
 
+If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
+
 <LazyRepl lang="js" content={"import { Tooltip } from 'lapikit/labs/components';"} />
 
 ## API Reference
@@ -78,3 +85,5 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 | background      | `string`                                    | Background color override (`--kit-tooltip-bg`).   |             |
 | tooltip         | `Snippet`                                   | Rich content rendered inside the tooltip panel.   |             |
 | children        | `Snippet`                                   | The trigger element.                              |             |
+
+Tooltips complement your [Buttons](/docs/components/button) or [Icons](/docs/components/icon) by providing discreet but useful context for users.

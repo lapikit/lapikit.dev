@@ -1,6 +1,6 @@
 ---
-title: "Avatar"
-description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
+title: 'Avatar'
+description: 'Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards.'
 ---
 
 <script>
@@ -15,20 +15,18 @@ description: "Display profile images, icons or initials in a variety of formats.
 
 # Avatar component
 
-The `kit:avatar` component displays a user representation — either as initials via the `label` prop, or as an image passed through `children`.
+The `kit:avatar` component is used to display images, icons or initials representing a person or object. It is often used in user interfaces to identify users, profiles or entities. Thanks to its many customization options, the `kit:avatar` component adapts easily to different styles and contexts.
 
 <LazyRepl title="avatar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/avatar/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:avatar` has two rendering modes:
 
-- **Label mode** — when `label` is set, the text is displayed uppercase and centered. `size` and `density` scale the avatar in this mode.
-- **Image mode** — when `children` is provided instead, the content (typically an `<img>`) fills the circle. `size` and `density` have no effect in this mode.
+- **Label mode** - when `label` is set, the text is displayed uppercase and centered. `size` and `density` scale the avatar in this mode.
+- **Image mode** - when `children` is provided instead, the content (typically an `<img>`) fills the circle. `size` and `density` have no effect in this mode.
 
-## Usage
+## Examples of avatar
 
 ### label
 
@@ -84,3 +82,5 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`    | Diameter and font size. Label mode only.                | `'md'`      |
 | density  | `'compact' \| 'default' \| 'comfortable'` | Size multiplier applied on top of `size`. Label only.   | `'default'` |
 | children | `Snippet`                                 | Content when `label` is not set (typically an `<img>`). |             |
+
+Associate `kit:avatar` with user [Cards](/docs/components/card) or [Chips](/docs/components/chip) to display roles or status.

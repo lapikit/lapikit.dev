@@ -1,5 +1,5 @@
 ---
-title: "Button"
+title: 'Button'
 description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 ---
 
@@ -18,15 +18,24 @@ description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons
 
 # Button component
 
-The `kit:btn` component is a flexible interactive element. It renders as a `<button>` by default and switches to `<a>` automatically when `href` is provided.
+The `kit:btn` component is a central component of Lapikit. It allows you to create buttons that are adaptable, accessible and easily customized, either via props or CSS variables.
+
+It automatically manages variants, states (`active`, `loading`, etc.), accessibility, colors, sizes, and integrates with icons or additional content (`prepend`, `append`, `load`).
 
 <LazyRepl title="button.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/btn/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
-## Usage
+## Examples of button
 
 ### Variants
+
+Variants control the overall style of the button. They enable adaptation to different interface contexts, while maintaining visual consistency.
+
+- **filled** (default): solid button, generally used for main actions.
+- **outline**: button with outline, often used for secondary actions.
+- **text**: discreet button with no background or border, perfect for actions in a text flow.
+- **link**: styled as a hyperlink, ideal for navigation or less prominent actions.
 
 - **variant**: `'filled' | 'outline' | 'text' | 'link'` = `'filled'`
 
@@ -36,6 +45,8 @@ The `kit:btn` component is a flexible interactive element. It renders as a `<but
 
 ### size
 
+The `size` prop adjusts the button's height and font size. It allows you to create buttons that fit different contexts, from compact icon buttons to large call-to-action buttons.
+
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/size.svelte?raw')}>
@@ -44,7 +55,7 @@ The `kit:btn` component is a flexible interactive element. It renders as a `<but
 
 ### icon
 
-Add `icon` to render a square button — width equals height. Useful for icon-only actions.
+Add `icon` to render a square button width equals height. Useful for icon-only actions.
 
 - **icon**: `boolean` = `false`
 
@@ -65,11 +76,15 @@ Use `prepend` and `append` to place icons or elements on either side of the labe
 
 ### States
 
-`disabled` prevents interaction and dims the button. `loading` hides the content and shows a spinner overlay. `active` applies the pressed background.
+The `kit:btn` component can reflect several visual or functional states, useful for informing the user or managing interaction. These states can be combined in certain cases (e.g. loading + success), but some, such as disabled, take precedence over all.
+
+Here are the main states available:
 
 - **disabled**: `boolean` = `false`
 - **loading**: `boolean` = `false`
 - **active**: `boolean` = `false`
+
+Each state can be styled automatically via Lapikit themes or customized via CSS classes or variables.
 
 <LazyRepl title="button.svelte" lang="svelte" content={() => import('../../../content/examples/components/btn/states.svelte?raw')}>
 <States/>
@@ -129,3 +144,5 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | append   | `Snippet`                                   | Content after the label.                                 |             |
 | load     | `Snippet`                                   | Custom spinner content shown while loading.              |             |
 | children | `Snippet`                                   | Button label.                                            |             |
+
+`kit:btn` become more effective with [Tooltips](/docs/components/tooltip), a [Toolbar](/docs/components/toolbar) or [Popover](/docs/components/popover) interactions.

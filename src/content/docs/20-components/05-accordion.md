@@ -1,5 +1,5 @@
 ---
-title: "Accordion"
+title: 'Accordion'
 ---
 
 <script>
@@ -17,7 +17,7 @@ title: "Accordion"
 
 # Accordion component
 
-The `kit:accordion` component is a vertically stacked set of expandable sections. It is composed of two parts: `kit:accordion` as the container and `kit:accordion-item` for each collapsible entry.
+An `kit:accordion` lets you group content into collapsible sections. It improves legibility and saves space in an interface, while offering precise control over the display of information. It is composed of two parts: `kit:accordion` as the container and `kit:accordion-item` for each collapsible entry.
 
 **Role of the Accordion component**
 
@@ -30,8 +30,6 @@ The `kit:accordion` component is a vertically stacked set of expandable sections
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:accordion` is a controlled component: it has no internal state. You manage open/close externally and pass two props to each item - `open` (boolean) and `toggle` (function called with the item's `index` on click).
 
 The recommended way is the [`useAccordion`](/docs/hooks/use-accordion) hook from `lapikit/actions`, which handles the reactive state for you.
@@ -40,7 +38,7 @@ Each `kit:accordion-item` requires a unique `index` (string or number).
 
 > `kit:accordion-item` does nothing without a `toggle` function - state is always external.
 
-## Usage
+## Examples of accordion
 
 ### Spacer
 
@@ -140,4 +138,4 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | background | `string`                                    | Background color override (`--kit-accordion-item-bg`).           |         |
 | children   | `Snippet`                                   | Content revealed when the item is open.                          |         |
 
-For the state hook API, see the dedicated [`useAccordion`](/docs/hooks/use-accordion) page.
+For the state hook API, see the dedicated [`useAccordion`](/docs/hooks/use-accordion) page and for complete your `kit:accordion` interface, consider the [Icon](/docs/components/icon) and [Chip](/docs/components/chip) components for dynamic content.
