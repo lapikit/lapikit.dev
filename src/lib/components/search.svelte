@@ -29,6 +29,7 @@
 		};
 	});
 
+	let openModal = $state(false);
 	let query = $state('');
 	const normalizedPath = $derived(
 		page.url.pathname === '/' ? '/' : page.url.pathname.replace(/\/$/, '')
@@ -100,15 +101,25 @@
 	$effect(() => {});
 </script>
 
+<kit:btn
+	class="md:hidden!"
+	onclick={() => (openModal = true)}
+	size="lg"
+	aria-label="Search in documentation"
+	icon
+>
+	<kit:icon><Search /></kit:icon>
+</kit:btn>
+
 <kit:popover closeOnClick>
 	{#snippet activator({ toggle }: ModelPopoverProps)}
 		<kit:textfield
 			id="docs-search-input"
-			class="docs-search-input"
+			class="docs-search-input hidden! md:block!"
 			name="q"
 			type="search"
 			bind:value={query}
-			placeholder="Ex. button, hooks, creating a project"
+			placeholder="Search..."
 			autocomplete="off"
 			enterkeyhint="go"
 			style="width: 300px;"
@@ -155,6 +166,57 @@
 		{/if}
 	</div>
 </kit:popover>
+
+<kit:modal bind:open={openModal} size="md" closeOnEsc closeOnClick position="top">
+	<kit:textfield
+		id="docs-search-input"
+		class="docs-search-input"
+		name="q"
+		type="search"
+		bind:value={query}
+		placeholder="Search..."
+		autocomplete="off"
+		enterkeyhint="go"
+	>
+		{#snippet prependInner()}
+			<kit:icon><Search /></kit:icon>
+		{/snippet}
+	</kit:textfield>
+	<div>
+		{#if query}
+			{#if results.length > 0}
+				<p>{resultCountLabel}</p>
+
+				<kit:list>
+					{#each results as result (result.path)}
+						<kit:list-item
+							nav
+							href={resolve('/docs/[...slug]', { slug: result.slug })}
+							active={normalizedPath === result.path}
+						>
+							{#snippet prepend()}
+								{@const Icon = result.section === 'Components' ? XIcon : XIcon}
+								<kit:icon><Icon /></kit:icon>
+							{/snippet}
+							<div class="flex flex-col truncate">
+								<strong>{capitalize(result.title)}</strong>
+								<span class="truncate">{capitalize(result.description)}</span>
+							</div>
+
+							{#snippet append()}
+								<kit:icon><ChevronRight /></kit:icon>
+							{/snippet}
+						</kit:list-item>
+					{/each}
+				</kit:list>
+			{:else}
+				<p>No results found.</p>
+			{/if}
+		{:else}
+			<p>Search in documentation...</p>
+		{/if}
+	</div>
+</kit:modal>
 
 <style>
 	:global(.docs-search-input .kit-textfield__message) {

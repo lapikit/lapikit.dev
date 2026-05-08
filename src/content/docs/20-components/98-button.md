@@ -1,5 +1,5 @@
 ---
-title: 'Button'
+title: "Button"
 description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 ---
 

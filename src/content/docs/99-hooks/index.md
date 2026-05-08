@@ -1,6 +1,6 @@
 ---
-title: 'Hooks stores and actions'
-descriptions: 'Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluently.'
+title: "Hooks stores and actions"
+descriptions: "Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluently."
 ---
 
 # Discover the Lapikit hooks

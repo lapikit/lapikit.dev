@@ -97,6 +97,20 @@
 	color: var(--md-color-text);
 	margin-top: var(--md-space-xl);
 	margin-bottom: var(--md-space-sm);
+	/* appbar (4rem) + small buffer */
+	scroll-margin-top: 5rem;
+}
+
+/* appbar (4rem) + toolbar (3rem) + small buffer */
+@media (max-width: 1023px) {
+	.kit-prose h1,
+	.kit-prose h2,
+	.kit-prose h3,
+	.kit-prose h4,
+	.kit-prose h5,
+	.kit-prose h6 {
+		scroll-margin-top: 8rem;
+	}
 }
 
 .kit-prose h1 {

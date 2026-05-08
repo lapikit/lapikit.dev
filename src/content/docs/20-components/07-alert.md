@@ -23,8 +23,6 @@ The `kit:alert` component displays a contextual message to the user. It supports
 <Preview/>
 </LazyRepl>
 
-## Guide
-
 `kit:alert` renders as a `<div role="alert">` by default. It has no internal logic beyond visibility the `open` prop controls whether it is rendered, and `closable` adds a close button that sets `open` to `false`.
 
 The tone can be set via the `tone` prop or using the boolean shorthand props `info`, `success`, `warning`, and `error`.

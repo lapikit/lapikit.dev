@@ -21,8 +21,6 @@ The `kit:app` component is an root layout for all component Lapikit. It acts as 
 - Applies global CSS (theme, reset, normalize, etc.)
 - Ensures proper contextual operation of Lapikit components
 
-## Guide
-
 In Lapikit, the `kit:app` component serves as the entry point for all Lapikit child components. It operates on the principle of inheritance and ensures a simple and, above all, comprehensive layout across all components. Effects (overlays, multi-modal, etc.) are managed exclusively by `kit:app` to ensure the correct positioning of each element in your window and to avoid potential conflicts during the creation of your application.
 
 > The `kit:app` component cannot itself be a child of another `kit:app`
@@ -31,7 +29,7 @@ If you're using SvelteKit, you can rely on the layout system. Each main layout c
 
 <img src={picture} alt="apply kit:app on your project" />
 
-## Usage
+## Example to use `kit:app`
 
 To get started or continue your project with Lapikit, define the entry point where Lapikit components will be used. The most common approach is to initialize them directly in your project's root `+layout.svelte` file.
 
