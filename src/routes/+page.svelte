@@ -27,7 +27,7 @@
 		{
 			title: 'Install Lapikit.',
 			description:
-				'Add Lapikit to your SvelteKit project in minutes. Read the <a href="/docs/getting-started">Getting Started</a> guide',
+				'Add Lapikit to your SvelteKit project in minutes. Read the <a href="/docs/quick-start">Quick Start</a> guide',
 			icon: 'mgc_rocket_line'
 		},
 		{
@@ -172,7 +172,7 @@
 				<div>
 					<div class="flex justify-center gap-3 sm:gap-6">
 						<Button
-							href="/docs/getting-started"
+							href="/docs/quick-start"
 							background="accent-primary"
 							color="white"
 							size={{ base: 'md', md: 'lg' }}
