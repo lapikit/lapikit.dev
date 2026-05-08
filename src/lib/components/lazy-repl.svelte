@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount, type Snippet } from 'svelte';
 
-	type FileContent = { code: string; lang?: string };
+	type FileContent = { code: string | ContentLoader; lang?: string };
 	type ContentLoader = () => Promise<{ default: string }>;
-	type ContentType = string | Record<string, string | FileContent> | ContentLoader;
+	type ContentMap = Record<string, string | FileContent>;
+	type ContentType = string | ContentMap | ContentLoader;
 
 	let {
 		content = '' as ContentType,
@@ -19,18 +20,31 @@
 		lang?: 'sh' | 'svelte' | 'js' | 'html' | 'css' | 'json' | 'bash';
 	} = $props();
 
-	let resolvedContent = $state<string | Record<string, string | FileContent>>('');
+	let resolvedContent = $state<string | ContentMap>('');
 	let container = $state<HTMLElement | null>(null);
 	let loaded = $state(false);
 
-	// Résout le loader si c'est une fonction
 	$effect(() => {
 		if (typeof content === 'function') {
 			(content as ContentLoader)().then((m) => {
 				resolvedContent = m.default;
 			});
+		} else if (content !== null && typeof content === 'object') {
+			const entries = Object.entries(content as ContentMap);
+			Promise.all(
+				entries.map(async ([name, val]) => {
+					if (typeof val === 'string') return [name, val] as const;
+					if (typeof val.code === 'function') {
+						const m = await (val.code as ContentLoader)();
+						return [name, { code: m.default, lang: val.lang }] as const;
+					}
+					return [name, val] as const;
+				})
+			).then((resolved) => {
+				resolvedContent = Object.fromEntries(resolved);
+			});
 		} else {
-			resolvedContent = content;
+			resolvedContent = content as string;
 		}
 	});
 
@@ -65,24 +79,16 @@
 
 <div bind:this={container} class="lazy-repl">
 	{#if loaded}
+		{@const replContent =
+			typeof resolvedContent === 'string'
+				? { Root: { code: resolvedContent, lang: lang } }
+				: resolvedContent}
 		{#if children}
-			<kit:repl
-				content={{
-					Root: { code: resolvedContent, lang: lang }
-				}}
-				{presentation}
-				{title}
-			>
+			<kit:repl content={replContent} {presentation} {title}>
 				{@render children()}
 			</kit:repl>
 		{:else}
-			<kit:repl
-				content={{
-					Root: { code: resolvedContent, lang: lang }
-				}}
-				{presentation}
-				{title}
-			/>
+			<kit:repl content={replContent} {presentation} {title} />
 		{/if}
 	{:else}
 		<!--

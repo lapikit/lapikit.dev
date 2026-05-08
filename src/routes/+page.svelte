@@ -4,7 +4,21 @@
 	import LapinosaureExpertLapikit from '$lib/@legacy/images/lapinosaure-expert-lapikit.webp?enhanced';
 	import StarMedium from '$lib/@legacy/images/star-medium.webp?enhanced';
 	import { Button, Card, Chip, Toolbar } from 'lapikit/components';
-	import { ChevronRight, Copy } from 'lucide-svelte';
+	import {
+		ArrowRight,
+		Box,
+		ChartSpline,
+		ChevronRight,
+		CircleCheck,
+		Copy,
+		Images,
+		Package,
+		PencilRuler,
+		Quote,
+		Rocket,
+		Sparkles,
+		SwatchBook
+	} from 'lucide-svelte';
 	import { capitalize, copyToClipboard } from '$lib/utils';
 	import EarthMoonLapikit from '$lib/@legacy/earth-moon-lapikit.svelte';
 	import { scrollAnimation } from '$lib/assets/animations/scroll-animation';
@@ -16,10 +30,12 @@
 	import LapikitLikeYou from '$lib/@legacy/images/lapinosaure-like-you.webp?enhanced';
 
 	import '../plugins/lapikit.ts';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import TypeScriptIcon from '$lib/assets/icons/typescript.svg?raw';
+	import SvelteIcon from '$lib/assets/icons/svelte.svg?raw';
 
 	// states
 	let stepCode: number = $state(0);
-	let displayCode: string = $state('lapikit');
 	let counter: number = $state(19); // API GITHUB
 	let stepTimeline: number = $state(0);
 
@@ -28,25 +44,25 @@
 			title: 'Install Lapikit.',
 			description:
 				'Add Lapikit to your SvelteKit project in minutes. Read the <a href="/docs/quick-start">Quick Start</a> guide',
-			icon: 'mgc_rocket_line'
+			icon: Rocket
 		},
 		{
 			title: 'Add components.',
 			description:
-				'Choose from around {{componentCount}} components in an accessible and customizable Svelte library',
-			icon: 'mgc_package_line'
+				'Choose from around {{counter}} components in an accessible and customizable Svelte library',
+			icon: Package
 		},
 		{
 			title: 'Adapt to your design.',
 			description:
 				'Adjust spacing, colors, variants, or density to match your brand. Lapikit is fully style-aware',
-			icon: 'mgc_paint_brush_ai_line'
+			icon: PencilRuler
 		}
 	];
 
 	const enableFeatures = [
 		{
-			icon: 'mgc_sparkles_line',
+			icon: Sparkles,
 			title: {
 				en: 'Lightweight and fast'
 			},
@@ -55,7 +71,7 @@
 			}
 		},
 		{
-			icon: 'mgc_ease_in_out_control_point_line',
+			icon: ChartSpline,
 			title: {
 				en: 'Transition and animations'
 			},
@@ -64,7 +80,7 @@
 			}
 		},
 		{
-			icon: 'mgc_pic_ai_line',
+			icon: Images,
 			title: {
 				en: 'Scoped styles'
 			},
@@ -73,7 +89,7 @@
 			}
 		},
 		{
-			icon: 'mgc_package_2_line',
+			icon: Box,
 			title: {
 				en: 'Reusable components'
 			},
@@ -82,7 +98,7 @@
 			}
 		},
 		{
-			icon: 'mgc_palette_2_line',
+			icon: SwatchBook,
 			title: {
 				en: 'Customizable themes'
 			},
@@ -91,8 +107,7 @@
 			}
 		},
 		{
-			icon: '/icons/typescript-primary.svg',
-			altIcon: 'TypeScript Logo',
+			icon: TypeScriptIcon,
 			title: {
 				en: 'Typescript support'
 			},
@@ -101,13 +116,12 @@
 			}
 		},
 		{
-			icon: '/icons/svelte-primary.svg',
-			altIcon: 'Svelte Logo',
+			icon: SvelteIcon,
 			title: {
 				en: 'SvelteKit friendly'
 			},
 			description: {
-				en: 'Lapikit is built on SvelteKit and fully supports it’s capabilities such as routing, server-side rendering, and static site generation'
+				en: 'Lapikit is built on SvelteKit and fully supports its capabilities such as routing, server-side rendering, and static site generation'
 			}
 		}
 	];
@@ -219,7 +233,7 @@
 		class="relative z-1"
 	>
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-32 md:py-40 lg:grid lg:px-8 lg:py-42"
 		>
 			<div>
 				<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Build faster, write cleaner code</h2>
@@ -240,11 +254,20 @@
 						</p>
 						<p class="mt-6">With Lapikit, you write less but build more:</p>
 						<ul class="mt-6!">
-							<li>Your code will be cleaner, with simpler and more legible syntax</li>
-							<li>Faster, thanks to reuse components and uniform styling</li>
-							<li>More consistently, with pre-optimized Svelte + TypeScript integration</li>
-							<li>
-								Stop copying and duplicating CSS classes and start shipping better user interfaces
+							<li class="mb-2 flex gap-2">
+								<CircleCheck color="#30d158" /> Your code will be cleaner, with simpler and more legible
+								syntax
+							</li>
+							<li class="mb-2 flex gap-2">
+								<CircleCheck color="#30d158" /> Faster, thanks to reuse components and uniform styling
+							</li>
+							<li class="mb-2 flex gap-2">
+								<CircleCheck color="#30d158" /> More consistently, with pre-optimized Svelte + TypeScript
+								integration
+							</li>
+							<li class="mb-2 flex gap-2">
+								<CircleCheck color="#30d158" /> Stop copying and duplicating CSS classes and start shipping
+								better user interfaces
 							</li>
 						</ul>
 						<p class="mt-6 italic md:mb-10">
@@ -288,63 +311,61 @@
 						</Toolbar>
 					</div>
 					<div>
-						<!-- <Sandbox
-					name="preview-lapikit"
-					code={displayCode === 'lapikit'
-						? stepCode === 2
-							? HomepageModalLapikit
-							: stepCode === 1
-								? HomepageCardLapikit
-								: HomepageButtonLapikit
-						: displayCode === 'tailwindcss'
-							? stepCode === 2
-								? HomepageModalTailwind
-								: stepCode === 1
-									? HomepageCardTailwind
-									: HomepageButtonTailwind
-							: stepCode === 2
-								? HomepageModalSvelte
-								: stepCode === 1
-									? HomepageCardSvelte
-									: HomepageButtonSvelte}
-					noExpandedButton
-					noCopy
-				>
-					{#snippet actions()}
-						<div class="ml-2 flex gap-2">
-							<Button onclick={() => (displayCode = 'lapikit')} active={displayCode === 'lapikit'}>
-								<enhanced:img
-									src={SvelteLapikitIcon}
-									alt="Lapikit Logo"
-									width="55"
-									height="28.51"
-									class="no-select"
-								/>
-							</Button>
-							<Button
-								onclick={() => (displayCode = 'tailwindcss')}
-								active={displayCode === 'tailwindcss'}
-							>
-								<enhanced:img
-									src={SvelteTailwindIcon}
-									alt="TailwindCSS Logo"
-									width="55"
-									height="21.79"
-									class="no-select"
-								/>
-							</Button>
-							<Button onclick={() => (displayCode = 'svelte')} active={displayCode === 'svelte'}>
-								<enhanced:img
-									src={SvelteIcon}
-									alt="Svelte Logo"
-									width="20"
-									height="24"
-									class="no-select"
-								/>
-							</Button>
-						</div>
-					{/snippet}
-				</Sandbox> -->
+						{#if stepCode === 0}
+							<LazyRepl
+								title="Button"
+								content={{
+									Lapikit: {
+										code: () => import('../content/examples/home/btn-lapikit.svelte?raw'),
+										lang: 'svelte'
+									},
+									Tailwind: {
+										code: () => import('../content/examples/home/btn-tailwind.svelte?raw'),
+										lang: 'svelte'
+									},
+									Native: {
+										code: () => import('../content/examples/home/btn.svelte?raw'),
+										lang: 'svelte'
+									}
+								}}
+							/>
+						{:else if stepCode === 1}
+							<LazyRepl
+								title="Card"
+								content={{
+									Lapikit: {
+										code: () => import('../content/examples/home/card-lapikit.svelte?raw'),
+										lang: 'svelte'
+									},
+									Tailwind: {
+										code: () => import('../content/examples/home/card-tailwind.svelte?raw'),
+										lang: 'svelte'
+									},
+									Native: {
+										code: () => import('../content/examples/home/card.svelte?raw'),
+										lang: 'svelte'
+									}
+								}}
+							/>
+						{:else if stepCode === 2}
+							<LazyRepl
+								title="Modal"
+								content={{
+									Lapikit: {
+										code: () => import('../content/examples/home/modal-lapikit.svelte?raw'),
+										lang: 'svelte'
+									},
+									Tailwind: {
+										code: () => import('../content/examples/home/modal-tailwind.svelte?raw'),
+										lang: 'svelte'
+									},
+									Native: {
+										code: () => import('../content/examples/home/modal.svelte?raw'),
+										lang: 'svelte'
+									}
+								}}
+							/>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -407,6 +428,7 @@
 				<div class="timeline flex items-center justify-center">
 					<div class="absolute flex gap-7 lg:hidden">
 						{#each stepperToUseComponent as step, index (step)}
+							{@const StepIcon = step.icon}
 							<Button
 								rounded="full"
 								active={stepTimeline === index}
@@ -416,13 +438,14 @@
 								color="white"
 								icon
 							>
-								<!-- <Icon icon={step.icon} /> -->
+								<StepIcon />
 							</Button>
 						{/each}
 					</div>
 				</div>
 				<ul class="align-items-center flex justify-center lg:flex-col lg:gap-14">
 					{#each stepperToUseComponent as step, index (step)}
+						{@const StepIcon = step.icon}
 						<li class="align-center flex justify-center lg:flex-col">
 							<Button
 								class="absolute! -mt-[85px]! hidden! lg:mt-0! lg:-ml-[85px]! lg:inline-flex!"
@@ -434,7 +457,7 @@
 								color="white"
 								icon
 							>
-								<!-- <Icon icon={step.icon} /> -->
+								<StepIcon />
 							</Button>
 							<p
 								class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto lg:text-start"
@@ -511,11 +534,17 @@
 				</div>
 				<div class="mt-16">
 					<ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
-						{#each enableFeatures as { title, description, icon, altIcon } (title)}
+						{#each enableFeatures as { title, description, icon } (title)}
 							<li>
 								<div>
-									<div>
-										<!-- <Icon {icon} size="xl" color="accent-primary" class="no-select" alt={altIcon} /> -->
+									<div class="icon-md">
+										{#if typeof icon === 'string'}
+											{@html icon}
+										{:else}
+											{@const FeatureIcon = icon}
+
+											<FeatureIcon />
+										{/if}
 									</div>
 									<div>
 										<p class="my-1 font-semibold">{title['en']}</p>
@@ -539,7 +568,7 @@
 							{capitalize(`It's not over yet!`)}
 
 							{#snippet append()}
-								<!-- <Icon size="xl" icon="mgc_arrow_right_line" /> -->
+								<ArrowRight />
 							{/snippet}
 						</Button>
 					</div>
@@ -557,11 +586,7 @@
 		>
 			<div class="flex items-center gap-4">
 				<div>
-					<!-- <Icon
-						icon="mgc_quote_left_fill"
-						style="--icon-multiplier-size: 16"
-						color="accent-primary"
-					/> -->
+					<Quote style="transform: rotate(180deg);" />
 				</div>
 				<p class="max-w-[780px] text-center md:text-lg">
 					Lapikit is designed to simplify and streamline the work of front-end developers by
@@ -569,11 +594,7 @@
 					features.
 				</p>
 				<div>
-					<!-- <Icon
-						icon="mgc_quote_right_fill"
-						style="--icon-multiplier-size: 16"
-						color="accent-primary"
-					/> -->
+					<Quote />
 				</div>
 			</div>
 
@@ -984,4 +1005,9 @@
 	/* @layer components { */
 	/* @import 'lapikit/styles'; */
 	/* } */
+
+	.icon-md :global(svg) {
+		width: 24px;
+		height: 24px;
+	}
 </style>
