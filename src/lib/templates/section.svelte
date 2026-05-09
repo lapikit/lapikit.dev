@@ -33,6 +33,7 @@
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
+	let year: number = new Date().getFullYear();
 </script>
 
 <div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[250px_1fr]">
@@ -90,6 +91,17 @@
 				{@render children?.()}
 			</div>
 		</article>
+
+		<footer>
+			Copyright © 2025 - {year} Lapikit -
+			<a
+				href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
+				target="_blank"
+				style="color: var(--kit-accent)">MIT License</a
+			>
+			- Developed by
+			<a href="https://nycolaide.dev" target="_blank" style="color: var(--kit-accent)">Nycolaide</a>
+		</footer>
 	</div>
 </div>
 
@@ -97,5 +109,11 @@
 	article .kit-prose,
 	article :global(> nav) {
 		max-width: calc(var(--md-max-width) + 250px);
+	}
+
+	footer {
+		max-width: calc(var(--md-max-width) + 250px);
+		margin: 0 auto;
+		padding: 2rem 1.5rem;
 	}
 </style>

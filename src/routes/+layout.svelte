@@ -4,6 +4,9 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import './layout.css';
 
+	// components
+	import ConsentMode from '$lib/components/consent-mode.svelte';
+
 	// images
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -77,4 +80,6 @@
 	<main>
 		{@render children()}
 	</main>
+
+	<ConsentMode />
 </kit:app>

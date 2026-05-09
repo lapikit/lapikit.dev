@@ -87,7 +87,7 @@
 		{
 			title: 'Add components.',
 			description:
-				'Choose from around {{counter}} components in an accessible and customizable Svelte library',
+				'Choose from around 19 components in an accessible and customizable Svelte library',
 			icon: Package
 		},
 		{
@@ -1331,5 +1331,6 @@
 	.home {
 		background-color: var(--kit-background-primary);
 		color: var(--kit-label-primary);
+		font-family: 'Roboto Variable', sans-serif;
 	}
 </style>

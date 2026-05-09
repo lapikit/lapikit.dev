@@ -1,11 +1,11 @@
 ---
-title: "introduction"
-description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
+title: 'introduction'
+description: 'Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte.'
 keywords:
-  - "why lapikit"
-  - "acknowledgements"
-  - "discover"
-  - "lapikit"
+  - 'why lapikit'
+  - 'acknowledgements'
+  - 'discover'
+  - 'lapikit'
 ---
 
 <script>
@@ -15,9 +15,19 @@ keywords:
   import IntroductionLapikit from '../../content/examples/started/introduction-lapikit.svelte';
 </script>
 
+# More about Lapikit Svelte Library
+
 ## What is Lapikit?
 
-Lapikit is a blend of the French word for rabbit (_lapin_), lapis lazuli - a precious blue stone - and the word _kit_, referring to a development toolkit. It's a Svelte component library focused on developer experience, ease of integration, and full customization of every component. Use it to build accessible, high-performance user interfaces without compromising on flexibility or performance.
+Lapikit is a mix of the French word lapin (rabbit), lapis lazuli - a deep blue stone - and the word kit, referring to a development toolkit.
+It is a Svelte component library focused on developer experience, simple integration, and full component customization.
+
+The goal is straightforward: help developers build accessible and performant interfaces without sacrificing flexibility.
+The Lapinausore mascot was created as a mix between a rabbit and a dragon.
+
+If you're asking yourself why? Because it combines two opposite ideas: the calm and simplicity of a rabbit with the strength and imagination often associated with dragons. A mysterious creature, but a good representation of Lapikit itself: simple on the surface, powerful underneath.
+
+<!-- Lapikit is a blend of the French word for rabbit (_lapin_), lapis lazuli - a precious blue stone - and the word _kit_, referring to a development toolkit. It's a Svelte component library focused on developer experience, ease of integration, and full customization of every component. Use it to build accessible, high-performance user interfaces without compromising on flexibility or performance. -->
 
 Here is a minimal example:
 

@@ -11,7 +11,6 @@ Lapikit documentation is organized as simple HTML pages so search engines and us
 
 - [Components](/docs/components)
 - [Hooks](/docs/hooks)
-- [Theme builder](/theme-builder)
 
 ## Start here
 
