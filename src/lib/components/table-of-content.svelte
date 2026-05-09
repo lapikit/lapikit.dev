@@ -3,10 +3,14 @@
 	import type { MarkdownHeading } from '$lib/@types';
 	import { TextQuote } from 'lucide-svelte';
 	import { capitalize } from '$lib/utils';
+	import { page } from '$app/state';
 
 	let { summary = [] }: { summary?: MarkdownHeading[] } = $props();
 
-	const summaryItems = $derived(summary.filter((item) => item.depth >= 1 && item.depth <= 3));
+	const isChangelog = $derived(page.url.pathname.includes('changelog'));
+	const summaryItems = $derived(
+		summary.filter((item) => item.depth >= 1 && item.depth <= (isChangelog ? 2 : 3))
+	);
 
 	let activeSlug = $state<string | null>(null);
 
