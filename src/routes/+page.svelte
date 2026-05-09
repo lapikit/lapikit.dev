@@ -33,6 +33,11 @@
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
 	import TypeScriptIcon from '$lib/assets/icons/typescript.svg?raw';
 	import SvelteIcon from '$lib/assets/icons/svelte.svg?raw';
+	import githubIcon from '$lib/assets/icons/github.svg?raw';
+	import npmIcon from '$lib/assets/icons/npm.svg?raw';
+	import instagramIcon from '$lib/assets/icons/instagram.svg?raw';
+	import discordIcon from '$lib/assets/icons/discord.svg?raw';
+	import buymeacoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
 
 	// states
 	let stepCode: number = $state(0);
@@ -626,14 +631,9 @@
 						class="flex flex-1 justify-center"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<!-- <Icon
-								icon="/icons/npm-color.svg"
-								size="xl"
-								style="--icon-multiplier-size: 16"
-								color="red"
-								class="no-select"
-								alt="NPM Logo"
-							/> -->
+							<div class="icon-size-xl" style="color: var(--kit-service-npm)">
+								{@html npmIcon}
+							</div>
 							<div>
 								<span class="text-highlighted text-xl font-semibold">46.4k</span>
 								<p class="text-sm">Monthly downloads</p>
@@ -648,12 +648,10 @@
 						class="flex flex-1 justify-center"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<!-- <Icon
-								icon="mgc_github_line"
-								size="xl"
-								style="--icon-multiplier-size: 16"
-								color="service-github"
-							/> -->
+							<div class="icon-size-xl">
+								{@html githubIcon}
+							</div>
+
 							<div>
 								<span class="text-highlighted text-xl font-semibold">2</span>
 								<p class="text-sm">GitHub Stars</p>
@@ -687,7 +685,7 @@
 							>
 								Contribute to Lapikit on GitHub
 								{#snippet append()}
-									<!-- <Icon icon="mgc_github_line" /> -->
+									{@html githubIcon}
 								{/snippet}
 							</Button>
 						</div>
@@ -707,12 +705,9 @@
 									class="inline-flex h-fit items-center justify-center"
 									style="background: var(--kit-service-instagram); border-radius: 8px;"
 								>
-									<!-- <Icon
-										icon="mgc_instagram_line"
-										size="xl"
-										style="--icon-multiplier-size: 16"
-										color="service-on-instagram"
-									/> -->
+									<div class="icon-size-xl" style="color: var(--kit-service-instagram)">
+										{@html instagramIcon}
+									</div>
 								</div>
 							</div>
 
@@ -730,12 +725,9 @@
 						class="flex flex-1 justify-center"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<!-- <Icon
-								icon="mgc_discord_fill"
-								size="xl"
-								style="--icon-multiplier-size: 16"
-								color="service-discord"
-							/> -->
+							<div class="icon-size-xl" style="color: var(--kit-service-discord)">
+								{@html discordIcon}
+							</div>
 							<div>
 								<span class="text-highlighted text-xl font-semibold">2</span>
 								<p class="text-sm">Members</p>
@@ -765,7 +757,7 @@
 								<p>Learn how to install and use Lapikit in your project</p>
 							</div>
 							<div>
-								<!-- <Icon size="xl" icon="mgc_arrow_right_line" /> -->
+								<ArrowRight />
 							</div>
 						</div>
 					</Card>
@@ -782,7 +774,7 @@
 								</p>
 							</div>
 							<div>
-								<!-- <Icon size="xl" icon="mgc_arrow_right_line" /> -->
+								<ArrowRight />
 							</div>
 						</div>
 					</Card>
@@ -793,7 +785,7 @@
 								<p>Become a sponsor to help Lapikit create a strong community</p>
 							</div>
 							<div>
-								<!-- <Icon size="xl" icon="mgc_arrow_right_line" /> -->
+								<ArrowRight />
 							</div>
 						</div>
 					</Card>
@@ -841,12 +833,10 @@
 							disabled
 						>
 							{#snippet prepend()}
-								<!-- <Icon icon="mgc_github_line" /> -->
+								{@html githubIcon}
 							{/snippet}
 							Github Sponsors
 							{#snippet append()}
-								<!-- <Icon color="red" icon="mgc_heart_fill" /> -->
-
 								<Chip
 									background="accent-primary"
 									color="white"
@@ -867,7 +857,9 @@
 							class="px-4!"
 						>
 							{#snippet prepend()}
-								<!-- <Icon icon="/icons/buymeacoffee.svg" class="no-select" alt="Buy me a coffee icon" /> -->
+								<div class="icon-md">
+									{@html buymeacoffeeIcon}
+								</div>
 							{/snippet}
 							Buy me a coffee
 						</Button>
@@ -915,7 +907,7 @@
 				>
 					Discover the components
 					{#snippet append()}
-						<!-- <Icon size="xl" icon="mgc_arrow_right_fill" /> -->
+						<ArrowRight />
 					{/snippet}
 				</Button>
 			</div>
@@ -1009,5 +1001,25 @@
 	.icon-md :global(svg) {
 		width: 24px;
 		height: 24px;
+	}
+
+	.icon-size-xl {
+		align-items: center;
+		display: flex;
+	}
+	.icon-size-xl :global(svg) {
+		width: 32px;
+		height: 32px;
+	}
+
+	@media (min-width: 1407px) {
+		.home :global(.kit-repl) {
+			width: 100% !important;
+			margin-left: 0 !important;
+		}
+	}
+
+	:root {
+		--ui-container: 90rem;
 	}
 </style>
