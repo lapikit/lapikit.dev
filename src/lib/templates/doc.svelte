@@ -19,6 +19,7 @@
 	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import Drawer from '$lib/components/drawer.svelte';
 	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
+	import { capitalize } from '$lib/utils';
 
 	function enhanceEnumChips(node: HTMLElement) {
 		const chips = node.querySelectorAll<HTMLElement>('.enum-chip[data-values]');
@@ -149,7 +150,7 @@
 								<ChevronLeft />
 							</kit:icon>
 						{/snippet}
-						{data.prevDoc.title}
+						{capitalize(data.prevDoc.title)}
 					</kit:btn>
 				{/if}
 				<kit:spacer />
@@ -160,7 +161,7 @@
 								<ChevronRight />
 							</kit:icon>
 						{/snippet}
-						{data.nextDoc.title}
+						{capitalize(data.nextDoc.title)}
 					</kit:btn>
 				{/if}
 			</kit:toolbar>
