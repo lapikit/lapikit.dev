@@ -3,7 +3,7 @@
 	import BackgroundStar from '$lib/assets/animations/background-star.svelte';
 	import LapinosaureExpertLapikit from '$lib/@legacy/images/lapinosaure-expert-lapikit.webp?enhanced';
 	import StarMedium from '$lib/@legacy/images/star-medium.webp?enhanced';
-	import { Button, Card, Chip, Toolbar } from 'lapikit/components';
+	import { Appbar, Button, Card, Chip, Icon, Separator, Toolbar } from 'lapikit/components';
 	import {
 		ArrowRight,
 		Box,
@@ -11,6 +11,7 @@
 		ChevronRight,
 		CircleCheck,
 		Copy,
+		GraduationCap,
 		Images,
 		Package,
 		PencilRuler,
@@ -28,6 +29,7 @@
 	import StepperCustomizeYourApp from '$lib/@legacy/images/customize-your-app.webp?enhanced';
 	import NycolaideAvatar from '$lib/@legacy/images/nycolaide.webp?enhanced';
 	import LapikitLikeYou from '$lib/@legacy/images/lapinosaure-like-you.webp?enhanced';
+	import LapinosaureFace from '$lib/@legacy/images/lapinosaure-face.webp?enhanced';
 
 	import '../plugins/lapikit.ts';
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
@@ -38,11 +40,42 @@
 	import instagramIcon from '$lib/assets/icons/instagram.svg?raw';
 	import discordIcon from '$lib/assets/icons/discord.svg?raw';
 	import buymeacoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
+	import { onDestroy, onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import LapikitLogo from '$lib/assets/images/lapikit.webp?enhanced';
 
 	// states
 	let stepCode: number = $state(0);
 	let counter: number = $state(19); // API GITHUB
 	let stepTimeline: number = $state(0);
+	let scrolled: boolean = $state(false);
+	let year: number = new Date().getFullYear();
+
+	function handleScroll() {
+		scrolled = window.scrollY > 20;
+	}
+
+	onMount(() => {
+		if (browser) {
+			window.addEventListener('scroll', handleScroll);
+		}
+	});
+
+	// $effect(() => {
+	// 	if ($viewport.innerWidth >= $breakpoints.md) {
+	// 		if (browser && open) {
+	// 			document.body.style.overflow = '';
+	// 		}
+
+	// 		open = false;
+	// 	}
+	// });
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('scroll', handleScroll);
+		}
+	});
 
 	const stepperToUseComponent = [
 		{
@@ -130,9 +163,82 @@
 			}
 		}
 	];
+
+	const footer_links = {
+		docs: {
+			title: 'product',
+			items: [
+				{
+					key: 'documentation',
+					title: 'documentation',
+					slug: '/docs'
+				},
+				{
+					key: 'changelog',
+					title: 'changelog',
+					slug: '/docs/changelog'
+				}
+			]
+		},
+		policies: {
+			title: 'policies',
+			items: [
+				{
+					key: 'terms_and_privacy',
+					title: 'terms & privacy',
+					slug: '/terms'
+				},
+				{
+					key: 'cookie',
+					title: 'cookie consent',
+					custom: 'cookie-consent'
+				}
+			]
+		}
+	};
 </script>
 
-<div class="home">
+<div class="home kit-theme--dark">
+	<Appbar
+		class="sticky top-0 z-100"
+		classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"
+		background={scrolled ? 'background-primary' : 'transparent'}
+	>
+		<div class="flex items-center justify-start gap-2">
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+			<a href="/">
+				<div class="flex items-center gap-2">
+					<enhanced:img
+						src={LapikitLogo}
+						alt="Lapikit logo"
+						class="no-select w-[38px] min-w-[38px]"
+					/>
+					<p class="text-2xl font-bold">Lapikit</p>
+				</div>
+			</a>
+
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100"> v0.0.0 </a>
+		</div>
+
+		<div class="flex items-center justify-end gap-2">
+			<Button href="/docs" background="accent-primary">
+				<GraduationCap />
+				<span class="hidden! md:inline-block!">Documentation</span>
+			</Button>
+
+			<Button href="https://github.com/lapikit" target="_blank" aria-label="GitHub Lapikit">
+				{#snippet prepend()}
+					<Icon>
+						{@html githubIcon}
+					</Icon>
+				{/snippet}
+
+				<span class="hidden! md:inline-block!">GitHub</span>
+			</Button>
+		</div>
+	</Appbar>
+
 	<section id="hero" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div class="flex h-[calc(100vh-72px-30px)] flex-col md:h-[calc(100vh-100px-72px)]">
 			<BackgroundStar />
@@ -542,7 +648,7 @@
 						{#each enableFeatures as { title, description, icon } (title)}
 							<li>
 								<div>
-									<div class="icon-md">
+									<div class="icon-md" style="color: var(--kit-accent-primary)">
 										{#if typeof icon === 'string'}
 											{@html icon}
 										{:else}
@@ -913,6 +1019,155 @@
 			</div>
 		</div>
 	</section>
+
+	<footer>
+		<div class="align-center flex h-px w-full flex-row items-center text-center">
+			<Separator opacity="0.2" />
+			<div class="mx-4 flex items-center gap-2">
+				<enhanced:img class="no-select w-[3rem]" src={LapinosaureFace} alt="Lapikit logo icon" />
+			</div>
+			<Separator opacity="0.2" />
+		</div>
+
+		<div class="mx-auto flex w-full max-w-[90rem] flex-col px-4 py-16 sm:px-6 sm:py-10 lg:px-8">
+			<div class="mb-6 grid gap-3 sm:grid-cols-2 sm:gap-6">
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+				<a href="/" class="order-first">
+					<div class="flex items-center gap-4">
+						<enhanced:img
+							src={LapikitLogo}
+							alt="Lapikit logo icon"
+							class="no-select w-[40px] md:w-[70px]"
+						/>
+						<span class="mt-5 text-[2rem] font-semibold">Lapikit</span>
+					</div>
+				</a>
+
+				<div class="order-last flex items-center gap-4 sm:order-none sm:mt-5 sm:justify-end">
+					<a
+						href="https://www.npmjs.com/package/lapikit"
+						target="_blank"
+						class="icon-md"
+						style="color: var(--kit-service-npm)"
+					>
+						{@html npmIcon}
+					</a>
+
+					<a
+						href="https://github.com/lapikit/lapikit"
+						target="_blank"
+						class="icon-md"
+						style="color: var(--kit-service-github)"
+					>
+						{@html githubIcon}
+					</a>
+
+					<a
+						href="https://discord.gg/gn9ZGtDtK4"
+						target="_blank"
+						class="icon-md"
+						style="color: var(--kit-service-discord)"
+					>
+						{@html discordIcon}
+					</a>
+				</div>
+			</div>
+			<div class="grid gap-8 md:grid-cols-[1fr_auto]">
+				<div class="grid gap-8 text-sm sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-8 lg:gap-16">
+					{#each Object.entries(footer_links) as [sectionKey, sectionValue] (sectionKey)}
+						<ul>
+							<li class="mt-4 text-lg font-semibold">{capitalize(`${sectionValue.title}`)}</li>
+							{#if Array.isArray(sectionValue.items)}
+								{#each sectionValue.items as { key, title, slug, custom, external } (key)}
+									{#if !custom}
+										<li>
+											<Button
+												href={slug}
+												target={external ? '_blank' : '_self'}
+												rounded="full"
+												variant="text"
+											>
+												{capitalize(`${title}`)}
+											</Button>
+										</li>
+									{:else if custom === 'cookie-consent'}
+										<li>
+											<Button
+												// onclick={() => consentManaged.set(true)}
+												rounded="full"
+												variant="text"
+											>
+												{capitalize(`${title}`)}
+											</Button>
+										</li>
+									{/if}
+								{/each}
+							{:else}
+								{#each Object.entries(sectionValue.items) as [key, { title, slug, external }] (key)}
+									<li>
+										<Button
+											href={slug}
+											target={external ? '_blank' : '_self'}
+											rounded="full"
+											variant="text"
+										>
+											{capitalize(`${title}`)}
+										</Button>
+									</li>
+								{/each}
+							{/if}
+						</ul>
+					{/each}
+				</div>
+
+				<Card
+					background="service-discord"
+					color="service-on-discord"
+					class="mt-6 rounded-lg! p-6! text-center! sm:mx-auto sm:max-w-[350px] md:text-start!"
+				>
+					<p class="text-xl font-semibold">Join our community on Discord</p>
+					<p class="my-2 sm:text-lg">News, updates, and discussions await you!</p>
+					<div>
+						<Button
+							href="https://discord.gg/gn9ZGtDtK4"
+							target="_blank"
+							size={{ base: 'md', sm: 'lg' }}
+							rounded="full"
+							class="px-5!"
+						>
+							Chat with us
+							{#snippet append()}
+								<Icon size="lg" icon="mgc_chat_1_line" />
+							{/snippet}
+						</Button>
+					</div>
+				</Card>
+			</div>
+
+			<Toolbar
+				class="mt-6"
+				classContent="flex-col! md:flex-row! md:justify-between gap-2"
+				background="transparent"
+			>
+				<p>
+					Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit -
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+					<a
+						href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
+						target="_blank"
+						class="hover:underline">MIT License</a
+					>
+				</p>
+				<div class="order-first flex gap-2 text-sm md:order-last">
+					<span class="mr-1">Developed by</span>
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+					<a href="https://nycolaide.dev" target="_blank" style:color="var(--kit-service-svelte)">
+						Nycolaide
+					</a>
+				</div>
+			</Toolbar>
+		</div>
+	</footer>
 </div>
 
 <style>
@@ -980,6 +1235,52 @@
 		--system-animation-ripple-duration: 0.4s;
 	}
 
+	.kit-theme--dark {
+		color-scheme: dark;
+		--kit-pink: oklch(86.774% 0.0735 7.09);
+		--kit-label-primary: oklch(100% 0 89.88);
+		--kit-label-secondary: oklch(50.07% 0.0047 286.23);
+		--kit-label-tertiary: oklch(40.238% 0.0033 286.25);
+		--kit-label-quaternary: oklch(34.92% 0.0034 286.22);
+		--kit-accent-primary: oklch(62.425% 0.2056 255.49);
+		--kit-accent-success: oklch(75.555% 0.2082 146.98);
+		--kit-accent-warning: oklch(78.237% 0.1711 67.22);
+		--kit-accent-destructive: oklch(66.33% 0.2236 28.29);
+		--kit-accent-info: oklch(81.662% 0.1185 227.75);
+		--kit-separator-default: oklch(40.238% 0.0033 286.25);
+		--kit-separator-opaque: oklch(34.92% 0.0034 286.22);
+		--kit-state-placeholder: oklch(40.238% 0.0033 286.25);
+		--kit-state-disabled: oklch(34.92% 0.0034 286.22);
+		--kit-state-link: oklch(62.425% 0.2056 255.49);
+		--kit-state-highlight: oklch(29.39% 0.0036 286.18);
+		--kit-state-shadow: oklch(23.065% 0.1598 264.05);
+		--kit-background-primary: oklch(0% 0 0);
+		--kit-background-secondary: oklch(22.728% 0.0038 286.09);
+		--kit-background-tertiary: oklch(29.39% 0.0036 286.18);
+		--kit-background-grouped-primary: oklch(22.728% 0.0038 286.09);
+		--kit-background-grouped-secondary: oklch(29.39% 0.0036 286.18);
+		--kit-background-grouped-tertiary: oklch(34.92% 0.0034 286.22);
+		--kit-service-github: oklch(97.913% 0 89.88);
+		--kit-service-on-github: oklch(23.166% 0.0107 242.2);
+		--kit-service-svelte: oklch(65.432% 0.2341 34.2);
+		--kit-service-buy-me-a-coffee: oklch(89.869% 0.1857 97.86);
+		--kit-service-on-buy-me-a-coffee: oklch(0% 0 0);
+		--kit-service-discord: oklch(56.453% 0.2066 274.24);
+		--kit-service-on-discord: oklch(100% 0 89.88);
+		--kit-service-npm: oklch(56.275% 0.1843 25.7);
+		--kit-service-on-npm: oklch(100% 0 89.88);
+		--kit-service-x: oklch(97.913% 0 89.88);
+		--kit-service-instagram: linear-gradient(
+			45deg,
+			#833ab4 0%,
+			#c13584 25%,
+			#f56040 50%,
+			#fcaf45 100%
+		);
+		--kit-service-on-instagram: oklch(100% 0 89.88);
+		--kit-test-variable: 1rem;
+	}
+
 	:global(#install-lapikit-command-line .copy-icon) {
 		visibility: hidden;
 	}
@@ -1019,7 +1320,16 @@
 		}
 	}
 
+	.home :global(.lazy-repl) {
+		color: black;
+	}
+
 	:root {
 		--ui-container: 90rem;
+	}
+
+	.home {
+		background-color: var(--kit-background-primary);
+		color: var(--kit-label-primary);
 	}
 </style>
