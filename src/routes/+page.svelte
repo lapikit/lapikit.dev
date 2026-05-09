@@ -164,7 +164,9 @@
 		}
 	];
 
-	const footer_links = {
+	type FooterLinkItem = { key: string; title: string; slug?: string; custom?: string; external?: boolean };
+	type FooterSection = { title: string; items: FooterLinkItem[] };
+	const footer_links: Record<string, FooterSection> = {
 		docs: {
 			title: 'product',
 			items: [
@@ -1103,7 +1105,7 @@
 									{/if}
 								{/each}
 							{:else}
-								{#each Object.entries(sectionValue.items) as [key, { title, slug, external }] (key)}
+								{#each Object.entries(sectionValue.items as Record<string, FooterLinkItem>) as [key, { title, slug, external }] (key)}
 									<li>
 										<Button
 											href={slug}
