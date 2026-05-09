@@ -35,7 +35,7 @@
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
 </script>
 
-<div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[250px_1fr_250px]">
+<div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[250px_1fr]">
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
 		<nav>
 			{#each docsNavigation as { label, icon, pages } (label)}
@@ -43,7 +43,12 @@
 					<kit:list-item>
 						{#snippet prepend()}
 							<kit:icon>
-								{@html icon}
+								{#if typeof icon === 'string'}
+									{@html icon}
+								{:else}
+									{@const Icon = icon}
+									<Icon />
+								{/if}
 							</kit:icon>
 						{/snippet}
 						{label}
@@ -87,3 +92,10 @@
 		</article>
 	</div>
 </div>
+
+<style>
+	article .kit-prose,
+	article :global(> nav) {
+		max-width: calc(var(--md-max-width) + 250px);
+	}
+</style>

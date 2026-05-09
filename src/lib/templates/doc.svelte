@@ -6,8 +6,9 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { beforeNavigate } from '$app/navigation';
-	import { onMount } from 'svelte';
+	import { mount, unmount, onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
+	import EnumChip from '$lib/components/enum-chip.svelte';
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../../routes/docs/[...slug]/$types';
 	import { docsNavigation, getBreadcrumbs } from '$lib';
@@ -18,6 +19,28 @@
 	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import Drawer from '$lib/components/drawer.svelte';
 	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
+
+	function enhanceEnumChips(node: HTMLElement) {
+		const chips = node.querySelectorAll<HTMLElement>('.enum-chip[data-values]');
+		const instances: Array<ReturnType<typeof mount>> = [];
+
+		for (const chip of chips) {
+			try {
+				const values = JSON.parse(chip.dataset.values ?? '[]');
+				const placeholder = document.createElement('span');
+				chip.replaceWith(placeholder);
+				instances.push(mount(EnumChip, { target: placeholder, props: { values } }));
+			} catch {
+				// ignore malformed data-values
+			}
+		}
+
+		return {
+			destroy() {
+				for (const instance of instances) unmount(instance);
+			}
+		};
+	}
 
 	let navOpen = $state(false);
 	let sidebarEl: HTMLDivElement | undefined = $state();
@@ -52,7 +75,12 @@
 					<kit:list-item>
 						{#snippet prepend()}
 							<kit:icon>
-								{@html icon}
+								{#if typeof icon === 'string'}
+									{@html icon}
+								{:else}
+									{@const Icon = icon}
+									<Icon />
+								{/if}
 							</kit:icon>
 						{/snippet}
 						{label}
@@ -109,7 +137,7 @@
 		<article>
 			<Breadcrumbs items={breadcrumbs} />
 
-			<div class="kit-prose">
+			<div class="kit-prose" use:enhanceEnumChips>
 				{@render children?.()}
 			</div>
 

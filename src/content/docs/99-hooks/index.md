@@ -1,7 +1,11 @@
 ---
-title: "Hooks stores and actions"
-descriptions: "Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluently."
+title: 'Hooks stores and actions'
+descriptions: 'Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluently.'
 ---
+
+<script>
+    import ListHooks from "$lib/components/list-hooks.svelte";
+</script>
 
 # Discover the Lapikit hooks
 
@@ -10,3 +14,5 @@ Lapikit hooks integrate additional features directly onto your Svelte workflow. 
 ## Actions
 
 Lapikit hooks integrate additional features directly onto your Svelte workflow. They manage internal states and background logic, allowing you to focus on developing important features. Instead of juggling event listeners or intricate prop chains, Lapikit hooks keep everything responsive.
+
+<ListHooks key="Stores and Hooks"/>

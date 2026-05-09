@@ -5,7 +5,7 @@
 	import { docsMetadata } from '$lib/registry';
 	import { capitalize } from '$lib/utils';
 	import type { ModelPopoverProps } from 'lapikit/labs/components';
-	import { XIcon, ChevronRight, Search } from 'lucide-svelte';
+	import { ChevronRight, Search, Puzzle, NotebookText, SquareFunction } from 'lucide-svelte';
 
 	const searchEntries: SearchEntry[] = docsMetadata.map((doc, index) => {
 		const title = doc.metadata.title;
@@ -134,9 +134,9 @@
 	<div class="md:min-w-md">
 		{#if query}
 			{#if results.length > 0}
-				<p>{resultCountLabel}</p>
+				<p class="mx-4 mt-1.5 mb-0">{resultCountLabel}</p>
 
-				<kit:list>
+				<kit:list class="max-w-[92%]">
 					{#each results as result (result.path)}
 						<kit:list-item
 							nav
@@ -144,7 +144,12 @@
 							active={normalizedPath === result.path}
 						>
 							{#snippet prepend()}
-								{@const Icon = result.section === 'Components' ? XIcon : XIcon}
+								{@const Icon =
+									result.section === 'Components'
+										? Puzzle
+										: result.section === 'Hooks'
+											? SquareFunction
+											: NotebookText}
 								<kit:icon><Icon /></kit:icon>
 							{/snippet}
 							<div class="flex flex-col truncate">
@@ -159,10 +164,10 @@
 					{/each}
 				</kit:list>
 			{:else}
-				<p>No results found.</p>
+				<p class="mx-4 mt-1.5 mb-0">No results found.</p>
 			{/if}
 		{:else}
-			<p>Search in documentation...</p>
+			<p class="mx-4 mt-1.5 mb-0">Search in documentation...</p>
 		{/if}
 	</div>
 </kit:popover>
@@ -185,7 +190,7 @@
 	<div>
 		{#if query}
 			{#if results.length > 0}
-				<p>{resultCountLabel}</p>
+				<p class="mx-4 mt-1.5 mb-0">{resultCountLabel}</p>
 
 				<kit:list>
 					{#each results as result (result.path)}
@@ -195,7 +200,12 @@
 							active={normalizedPath === result.path}
 						>
 							{#snippet prepend()}
-								{@const Icon = result.section === 'Components' ? XIcon : XIcon}
+								{@const Icon =
+									result.section === 'Components'
+										? Puzzle
+										: result.section === 'Hooks'
+											? SquareFunction
+											: NotebookText}
 								<kit:icon><Icon /></kit:icon>
 							{/snippet}
 							<div class="flex flex-col truncate">
@@ -210,10 +220,10 @@
 					{/each}
 				</kit:list>
 			{:else}
-				<p>No results found.</p>
+				<p class="mx-4 mt-1.5 mb-0">No results found.</p>
 			{/if}
 		{:else}
-			<p>Search in documentation...</p>
+			<p class="mx-4 mt-1.5 mb-0">Search in documentation...</p>
 		{/if}
 	</div>
 </kit:modal>

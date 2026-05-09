@@ -75,7 +75,7 @@ function walk(node, visitor) {
 /** @param {MarkdownNode} node @returns {string} */
 function toPlainText(node) {
 	if (typeof node.value === 'string') {
-		return node.value;
+		return decodeHtmlEntities(node.value);
 	}
 
 	if (!Array.isArray(node.children)) {
@@ -83,6 +83,16 @@ function toPlainText(node) {
 	}
 
 	return node.children.map(toPlainText).join('');
+}
+
+/** @param {string} str */
+function decodeHtmlEntities(str) {
+	return str
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&amp;/g, '&')
+		.replace(/&quot;/g, '"')
+		.replace(/&#39;/g, "'");
 }
 
 /** @param {string} value @param {Map<string, number>} slugCounts */

@@ -2,6 +2,7 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 import remarkHeadings from './scripts/remark/remark-headings.js';
+import rehypeEnumChip from './scripts/rehype/rehype-enum-chip.js';
 
 // prism
 import Prism from 'prismjs';
@@ -28,6 +29,7 @@ function highlighter(code, lang) {
 export const mdsvexOptions = {
 	extensions: ['.md', '.svx'],
 	remarkPlugins: [remarkHeadings],
+	rehypePlugins: [rehypeEnumChip],
 	highlight: { highlighter },
 	layout: {
 		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.svelte',

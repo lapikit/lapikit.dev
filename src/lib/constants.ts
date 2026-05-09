@@ -66,6 +66,7 @@ import githubIcon from '$lib/assets/icons/github.svg?raw';
 import xIcon from '$lib/assets/icons/x.svg?raw';
 import discordIcon from '$lib/assets/icons/discord.svg?raw';
 import applicationImage from '$lib/assets/images/application.webp';
+import { Container, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
 
 export const socialMediaLinks = [
 	{ label: 'Twitter', url: 'https://x.com/lapikit', icon: xIcon },
@@ -80,16 +81,19 @@ export type NavPage = {
 	image?: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type IconComponent = new (...args: any[]) => any;
+
 export type NavSection = {
 	label: string;
-	icon: string;
+	icon: string | IconComponent;
 	pages: NavPage[];
 };
 
 export const docsNavigation: NavSection[] = [
 	{
 		label: 'Getting Started',
-		icon: xIcon,
+		icon: Container,
 		pages: [
 			{ label: 'Introduction', url: '/docs/introduction' },
 			{ label: 'Quick Start', url: '/docs/quick-start' }
@@ -97,7 +101,7 @@ export const docsNavigation: NavSection[] = [
 	},
 	{
 		label: 'Essentials',
-		icon: xIcon,
+		icon: ToolCase,
 		pages: [
 			{ label: 'Customization', url: '/docs/customize' },
 			{ label: 'Initialize application', url: '/docs/essentials/initialize-application' },
@@ -107,7 +111,7 @@ export const docsNavigation: NavSection[] = [
 	},
 	{
 		label: 'Components',
-		icon: xIcon,
+		icon: Puzzle,
 		pages: [
 			{
 				label: 'Application',
@@ -209,12 +213,18 @@ export const docsNavigation: NavSection[] = [
 	},
 	{
 		label: 'Stores and Hooks',
-		icon: xIcon,
-		pages: [{ label: 'useAccordion', url: '/docs/hooks/use-accordion' }]
+		icon: SquareFunction,
+		pages: [
+			{
+				label: 'useAccordion',
+				url: '/docs/hooks/use-accordion',
+				description: 'Controls accordion open/close states and syncs sections automatically'
+			}
+		]
 	},
 	{
 		label: 'Extra Topics',
-		icon: xIcon,
+		icon: VectorSquare,
 		pages: [
 			{ label: 'Migration Guide', url: '/docs/migration-guide' },
 			{ label: 'Typescripts and Linter', url: '/docs/environments' }
