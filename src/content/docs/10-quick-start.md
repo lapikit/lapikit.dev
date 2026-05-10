@@ -1,22 +1,30 @@
 ---
-title: "quick start"
-description: "Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast."
+title: 'quick start'
+description: 'Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast.'
 ---
 
 <script>
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
 </script>
 
-## Install Lapikit in your project
+# Getting Started with Lapikit library for Svelte Projects
+
+## Install Lapikit in your Svelte project
 
 **Prerequisites**
 
-- Familiarity with the command line
-- A Svelte project set up (e.g., using SvelteKit or Vite)
+Before installing Lapikit, make sure you have:
+
+- basic familiarity with the command line
+- an existing Svelte project (SvelteKit, Vite, or another Svelte setup)
 
 SvelteKit is recommended for the best experience, but Lapikit works with any Svelte project.
 
 Lapikit is written in TypeScript and fully supports TypeScript projects. It is also compatible with JavaScript - you can simply ignore type annotations and type errors. That said, using TypeScript is recommended for a better developer experience, as some advanced features may be harder to use without types.
+
+## Install and configure Lapikit
+
+### Install Lapikit in your project directory
 
 To install Lapikit, run the following command in your project directory:
 
@@ -28,9 +36,9 @@ Once installed, use the setup CLI to automatically add the required preprocessor
 
 **Note: If you are using SvelteKit, the CLI will automatically detect it and configure the preprocessor. For other setups, follow the manual configuration steps below.**
 
-### Manual Configuration
+### Manual installation and configuration
 
-To configure the preprocessor manually:
+Configure the preprocessor manually in 3 steps:
 
 1. Install Lapikit:
 
@@ -46,20 +54,26 @@ You can now start using Lapikit components in your Svelte project. For example:
 
 <LazyRepl lang="svelte" title="+layout.svelte" content={() => import('../../content/examples/started/start-your-project-with-lapikit.svelte?raw')} />
 
-## Explore the documentation
+## Explore the Lapikit documentation
 
-Once installation is complete, you can start exploring the documentation to discover everything Lapikit has to offer. Each component has its own dedicated section, along with guides and examples to help you get the most out of the library.
+Once Lapikit is installed, you can start exploring the documentation to understand how components, stores, hooks, and themes work together.
+
+Each component includes examples, usage guides, and API references to help you integrate it quickly into your Svelte or SvelteKit project.
 
 ### Integrate Lapikit into your design system
 
-Lapikit is designed to fit seamlessly into your existing design system. You can customize each component's appearance using built-in style props, or create a custom theme to apply consistent styles across all components.
+Lapikit is built to adapt to your existing design system rather than replace it.
 
-Check out the customization section to learn more about styling Lapikit and integrating it into your design system.
+You can customize components with styling props, CSS variables, or themes to keep a consistent visual language across your application.
+
+The customization guides explain how to configure themes, styles, dropdown, and global components.
 
 ### Using Lapikit components
 
-Lapikit provides a wide range of ready-to-use components - from buttons and dropdowns to modals and tooltips. Each component is designed to be easy to use and customize, with simple and intuitive APIs.
+Lapikit includes a growing collection of components for common interface patterns such as buttons, dialogs, dropdowns, tooltips, and forms.
 
-The first component you should get familiar with is `kit:app`, which acts as the main wrapper for your application. It provides a base structure and default styles for your project, while allowing you to control the look and behavior of your app.
+Components are designed to stay close to native HTML behavior while providing additional styling and reactive features.
 
-See the [`kit:app` component documentation](components/application) to learn more about its usage and features.
+A helpful starting point is the documentation for the `kit:app` component, which describes the main wrapper component used to initialize the app's styles, themes, and overall behavior.
+
+Refer to the [`kit:app`](components/application) component documentation to learn more about how to use it and the features
