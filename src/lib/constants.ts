@@ -114,6 +114,10 @@ export const docsNavigation: NavSection[] = [
 		icon: Puzzle,
 		pages: [
 			{
+				label: 'All components',
+				url: '/docs/components'
+			},
+			{
 				label: 'Application',
 				url: '/docs/components/application',
 				description: 'Root wrapper that initializes the Lapikit theme and global styles.',

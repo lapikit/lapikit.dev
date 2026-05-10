@@ -43,6 +43,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import LapikitLogo from '$lib/assets/images/lapikit.webp?enhanced';
+	import { openConsentPreferences } from '$lib/stores/consent.svelte';
 
 	// states
 	let stepCode: number = $state(0);
@@ -164,7 +165,13 @@
 		}
 	];
 
-	type FooterLinkItem = { key: string; title: string; slug?: string; custom?: string; external?: boolean };
+	type FooterLinkItem = {
+		key: string;
+		title: string;
+		slug?: string;
+		custom?: string;
+		external?: boolean;
+	};
 	type FooterSection = { title: string; items: FooterLinkItem[] };
 	const footer_links: Record<string, FooterSection> = {
 		docs: {
@@ -1094,11 +1101,7 @@
 										</li>
 									{:else if custom === 'cookie-consent'}
 										<li>
-											<Button
-												// onclick={() => consentManaged.set(true)}
-												rounded="full"
-												variant="text"
-											>
+											<Button onclick={openConsentPreferences} rounded="full" variant="text">
 												{capitalize(`${title}`)}
 											</Button>
 										</li>
