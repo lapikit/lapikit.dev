@@ -11,7 +11,7 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
-	const THEME_KEY = 'docs-theme';
+	const THEME_KEY = '@lapikit/theme';
 
 	let { children } = $props();
 	let mode = $state<'light' | 'dark' | 'system'>('system');
