@@ -220,6 +220,10 @@ export const docsNavigation: NavSection[] = [
 		icon: SquareFunction,
 		pages: [
 			{
+				label: 'All hooks',
+				url: '/docs/hooks'
+			},
+			{
 				label: 'useAccordion',
 				url: '/docs/hooks/use-accordion',
 				description: 'Controls accordion open/close states and syncs sections automatically'

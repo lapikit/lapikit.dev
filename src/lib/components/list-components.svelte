@@ -6,27 +6,29 @@
 
 <div class="components-grid">
 	{#each components as { label, url, description, image } (label)}
-		<kit:card href={url}>
-			{#if image}
-				<div class="kit-card__media">
-					<kit:aspect-ratio ratio="1/1">
-						<img src={image} alt={label} />
-					</kit:aspect-ratio>
-				</div>
-			{:else}
-				<div class="kit-card__media">
-					<kit:aspect-ratio ratio="1/1">
-						<div class="placeholder">{label[0]}</div>
-					</kit:aspect-ratio>
-				</div>
-			{/if}
-			<div class="card-text">
-				<p class="kit-card__header">{label}</p>
-				{#if description}
-					<p class="kit-card__body">{description}</p>
+		{#if description}
+			<kit:card href={url}>
+				{#if image}
+					<div class="kit-card__media">
+						<kit:aspect-ratio ratio="1/1">
+							<img src={image} alt={label} />
+						</kit:aspect-ratio>
+					</div>
+				{:else}
+					<div class="kit-card__media">
+						<kit:aspect-ratio ratio="1/1">
+							<div class="placeholder">{label[0]}</div>
+						</kit:aspect-ratio>
+					</div>
 				{/if}
-			</div>
-		</kit:card>
+				<div class="card-text">
+					<p class="kit-card__header">{label}</p>
+					{#if description}
+						<p class="kit-card__body">{description}</p>
+					{/if}
+				</div>
+			</kit:card>
+		{/if}
 	{/each}
 </div>
 
