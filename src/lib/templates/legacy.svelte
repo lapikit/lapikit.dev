@@ -43,7 +43,12 @@
 					<kit:list-item>
 						{#snippet prepend()}
 							<kit:icon>
-								{@html icon}
+								{#if typeof icon === 'string'}
+									{@html icon}
+								{:else}
+									{@const Icon = icon}
+									<Icon />
+								{/if}
 							</kit:icon>
 						{/snippet}
 						{label}
