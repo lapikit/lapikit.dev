@@ -66,7 +66,7 @@ import githubIcon from '$lib/assets/icons/github.svg?raw';
 import xIcon from '$lib/assets/icons/x.svg?raw';
 import discordIcon from '$lib/assets/icons/discord.svg?raw';
 import applicationImage from '$lib/assets/images/application.webp';
-import { Container, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
+import { Container, Eraser, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
 
 export const socialMediaLinks = [
 	{ label: 'Twitter', url: 'https://x.com/lapikit', icon: xIcon },
@@ -236,6 +236,17 @@ export const docsNavigation: NavSection[] = [
 		pages: [
 			{ label: 'Migration Guide', url: '/docs/migration-guide' },
 			{ label: 'Typescripts and Linter', url: '/docs/environments' }
+		]
+	},
+	{
+		label: 'Deprecated',
+		icon: Eraser,
+		pages: [
+			{ label: 'Breakpoints', url: '/docs/breakpoints' },
+			{ label: 'Getting Started', url: '/docs/getting-started' },
+			{ label: '$breakpoints', url: '/docs/hooks/store-breakpoints' },
+			{ label: '$devices', url: '/docs/hooks/store-devices' },
+			{ label: '$theme', url: '/docs/hooks/store-theme' }
 		]
 	}
 ];
