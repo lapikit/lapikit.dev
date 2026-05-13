@@ -7,6 +7,14 @@
 	// components
 	import ConsentMode from '$lib/components/consent-mode.svelte';
 
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+	import { loadNpmData } from '$lib/stores/npm.svelte';
+
+	onMount(() => {
+		if (browser) loadNpmData();
+	});
+
 	// images
 	import favicon from '$lib/assets/favicon.svg';
 

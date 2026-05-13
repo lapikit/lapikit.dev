@@ -44,6 +44,7 @@
 	import { browser } from '$app/environment';
 	import LapikitLogo from '$lib/assets/images/lapikit.webp?enhanced';
 	import { openConsentPreferences } from '$lib/stores/consent.svelte';
+	import { npmState } from '$lib/stores/npm.svelte';
 
 	// states
 	let stepCode: number = $state(0);
@@ -227,7 +228,9 @@
 			</a>
 
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100"> v0.0.0 </a>
+			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
+				{npmState.version || 'v0.0.0'}
+			</a>
 		</div>
 
 		<div class="flex items-center justify-end gap-2">
@@ -750,7 +753,7 @@
 								{@html npmIcon}
 							</div>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">46.4k</span>
+								<span class="text-highlighted text-xl font-semibold">{npmState.downloads || '---'}</span>
 								<p class="text-sm">Monthly downloads</p>
 							</div>
 						</div>
