@@ -33,6 +33,7 @@
 	/* Tableaux */
 	--md-table-head-bg: #f6f8fa;
 	--md-table-stripe-bg: #fafafa;
+	--md-table-surface: var(--kit-bg);
 }
 
 /* Dark mode */
@@ -304,6 +305,7 @@
 		overflow-x: auto;
 		display: block;
 		max-width: 100%;
+		background-color: var(--md-table-surface);
 	}
 
 	.kit-prose thead {
