@@ -51,7 +51,7 @@ Lapikit is designed to let you focus on the complex features of your project. Th
 Each component has been developed with Svelte and TypeScript with this in mind:
 
 - To provide stable, simple, and diverse APIs.
-- Carefully selected [default settings](docs/customize) that work right out of the box.
+- Carefully selected [default settings](/docs/customize) that work right out of the box.
 - Full support for Svelte features, from actions to transitions to snippets, and much more.
 - All customizable: Lapikit is built with a default style that you can customize to your liking.
 
