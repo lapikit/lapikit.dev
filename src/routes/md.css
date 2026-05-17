@@ -305,7 +305,6 @@
 		overflow-x: auto;
 		display: block;
 		max-width: 100%;
-		background-color: var(--md-table-surface);
 	}
 
 	.kit-prose thead {
@@ -325,6 +324,9 @@
 	}
 
 	/* Lines (zebra striping) */
+	.kit-prose tbody tr:nth-child(odd) {
+		background-color: var(--md-table-surface);
+	}
 	.kit-prose tbody tr:nth-child(even) {
 		background-color: var(--md-table-stripe-bg);
 	}
