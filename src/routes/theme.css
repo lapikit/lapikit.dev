@@ -49,6 +49,8 @@ html[data-theme='light'] {
 		--md-color-mark: #3d3200;
 		--md-color-ins: #122b14;
 		--md-color-del: #3d0c10;
+		--md-table-head-bg: hsl(222 18% 15%);
+		--md-table-stripe-bg: hsl(222 20% 12%);
 	}
 
 	html:not([data-theme='light']) div#kit-app {
@@ -103,4 +105,6 @@ html[data-theme='dark'] {
 	--md-color-mark: #3d3200;
 	--md-color-ins: #122b14;
 	--md-color-del: #3d0c10;
+	--md-table-head-bg: hsl(222 18% 15%);
+	--md-table-stripe-bg: hsl(222 20% 12%);
 }
