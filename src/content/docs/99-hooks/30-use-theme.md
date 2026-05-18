@@ -1,6 +1,6 @@
 ---
-title: "useTheme action"
-description: "Learn how to use the useTheme action in Lapikit for dynamic theming."
+title: 'useTheme action'
+description: 'Learn how to use the useTheme action in Lapikit for dynamic theming.'
 ---
 
 <script>
@@ -23,9 +23,9 @@ You can also customize the storage key in localStorage by passing a second argum
 
 You can customize the available themes and their associated styles via the configuration file `plugins/lapikit.(js|ts)`. Check the documentation on [themes](/docs/customize) to discover all the options available to tailor Lapikit to your application.
 
-## Parameters
+## API References
 
-| parameter | type     | default          | description         |
-| --------- | -------- | ---------------- | ------------------- |
-| name      | `string` |                  | set the theme name  |
-| key       | `string` | `@lapikit/theme` | set the storage key |
+| parameter | type     | description         | default          |
+| --------- | -------- | ------------------- | ---------------- |
+| name      | `string` | set the theme name  |                  |
+| key       | `string` | set the storage key | `@lapikit/theme` |
