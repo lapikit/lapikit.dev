@@ -20,7 +20,7 @@ html[data-theme='light'] {
 	--md-color-link: #0969da;
 	--md-color-link-hover: #0550ae;
 	--md-color-border: #d0d7de;
-	/* --md-color-bg: #ffffff; */
+	--md-color-bg: #ffffff;
 	--md-color-surface: #f6f8fa;
 	--md-color-code-bg: #f0f2f5;
 	--md-color-code-text: #c7254e;
@@ -39,8 +39,7 @@ html[data-theme='light'] {
 		--md-color-link: #58a6ff;
 		--md-color-link-hover: #79b8ff;
 		--md-color-border: #30363d;
-		/* --md-color-bg: hsl(222 20% 9%); */
-		/* --md-color-bg: hsl(222 20% 9%); */
+		--md-color-bg: hsl(222 20% 9%);
 		--md-color-surface: hsl(222 18% 15%);
 		--md-color-code-bg: hsl(222 16% 14%);
 		--md-color-code-text: #ff7b72;
@@ -53,6 +52,7 @@ html[data-theme='light'] {
 		--md-table-stripe-bg: hsl(222 20% 12%);
 	}
 
+	html:not([data-theme='light']),
 	html:not([data-theme='light']) div#kit-app {
 		color-scheme: dark;
 		--kit-bg: hsl(222 20% 9%);
@@ -96,7 +96,7 @@ html[data-theme='dark'] {
 	--md-color-link: #58a6ff;
 	--md-color-link-hover: #79b8ff;
 	--md-color-border: #30363d;
-	/* --md-color-bg: hsl(222 20% 9%); */
+	--md-color-bg: hsl(222 20% 9%);
 	--md-color-surface: hsl(222 18% 15%);
 	--md-color-code-bg: hsl(222 16% 14%);
 	--md-color-code-text: #ff7b72;
