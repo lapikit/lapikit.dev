@@ -227,6 +227,11 @@ export const docsNavigation: NavSection[] = [
 				label: 'useAccordion',
 				url: '/docs/hooks/use-accordion',
 				description: 'Controls accordion open/close states and syncs sections automatically'
+			},
+			{
+				label: 'useTheme',
+				url: '/docs/hooks/use-theme',
+				description: 'Manages theme switching and keeps dark/light modes in sync across the app'
 			}
 		]
 	},
