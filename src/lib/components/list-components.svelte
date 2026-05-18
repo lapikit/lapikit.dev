@@ -10,13 +10,13 @@
 			<kit:card href={url}>
 				{#if image}
 					<div class="kit-card__media">
-						<kit:aspect-ratio ratio="1/1">
+						<kit:aspect-ratio ratio="4/3" style="border-radius: var(--kit-radius-2);">
 							<img src={image} alt={label} />
 						</kit:aspect-ratio>
 					</div>
 				{:else}
 					<div class="kit-card__media">
-						<kit:aspect-ratio ratio="1/1">
+						<kit:aspect-ratio ratio="4/3">
 							<div class="placeholder">{label[0]}</div>
 						</kit:aspect-ratio>
 					</div>
@@ -52,7 +52,7 @@
 		}
 
 		.components-grid :global(.kit-card__media) {
-			aspect-ratio: 1 / 1;
+			aspect-ratio: 4 / 3;
 			flex-shrink: 0;
 		}
 
@@ -73,5 +73,9 @@
 		text-transform: uppercase;
 		background: var(--kit-color-surface);
 		color: var(--kit-color-on-surface-variant);
+	}
+
+	img {
+		border-radius: var(--kit-radius-2);
 	}
 </style>
