@@ -9,17 +9,15 @@
 	import type { ModelDropdownProps } from 'lapikit/labs/components';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
 
 	const THEME_KEY = '@lapikit/theme';
 
 	let { children } = $props();
-	let mode = $state<'light' | 'dark' | 'system'>('system');
-
-	onMount(() => {
-		const saved = localStorage.getItem(THEME_KEY) as typeof mode | null;
-		if (saved) mode = saved;
-	});
+	let mode = $state<'light' | 'dark' | 'system'>(
+		browser
+			? ((localStorage.getItem(THEME_KEY) as 'light' | 'dark' | 'system') ?? 'system')
+			: 'system'
+	);
 
 	$effect(() => {
 		if (!browser) return;

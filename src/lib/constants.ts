@@ -123,8 +123,8 @@ export const docsNavigation: NavSection[] = [
 		label: 'Essentials',
 		icon: ToolCase,
 		pages: [
-			{ label: 'Customization', url: '/docs/customize' },
 			{ label: 'Initialize application', url: '/docs/essentials/initialize-application' },
+			{ label: 'Customization', url: '/docs/customize' },
 			{ label: 'Template syntax', url: '/docs/essentials/template-syntax' },
 			{ label: 'Classes and Styles', url: '/docs/essentials/class-and-style' }
 		]
