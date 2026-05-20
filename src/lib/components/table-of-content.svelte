@@ -60,8 +60,10 @@
 {/if}
 
 <style>
-	nav :global(.kit-list) {
-		min-height: calc(100vh - 64px);
+	@media (min-width: 1024px) {
+		nav :global(.kit-list) {
+			min-height: calc(100vh - 64px);
+		}
 	}
 	:global(.depth-1) span {
 		padding-left: 0.25rem;
