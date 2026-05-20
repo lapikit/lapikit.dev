@@ -103,7 +103,7 @@
 	</Drawer>
 
 	<div class="min-w-0">
-		<kit:toolbar class="sticky! top-16 z-51 lg:hidden!">
+		<kit:toolbar class="sticky! top-16 z-40 lg:hidden!">
 			<kit:btn class="md:hidden!" onclick={() => (navOpen = true)} aria-label="open navigation">
 				{#snippet prepend()}
 					<kit:icon>
