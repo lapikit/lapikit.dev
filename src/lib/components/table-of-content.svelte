@@ -65,6 +65,14 @@
 			min-height: calc(100vh - 64px);
 		}
 	}
+
+	@media (max-width: 1024px) {
+		nav :global(.kit-list) {
+			max-height: calc(100vh - (64px * 3));
+			overflow: auto;
+		}
+	}
+
 	:global(.depth-1) span {
 		padding-left: 0.25rem;
 	}
