@@ -1,7 +1,10 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsBySlug } from '$lib/registry';
+import { docsNavigation } from '$lib/constants';
+import { docs, docsByPath, docsBySlug } from '$lib/registry';
 
 export const prerender = true;
+
+const navPaths = docsNavigation.flatMap((section) => section.pages.map((page) => page.url));
 
 export function entries() {
 	return docs.map((doc) => ({ slug: doc.slug }));
@@ -14,23 +17,18 @@ export function load({ params }) {
 		throw error(404, 'Documentation page not found');
 	}
 
-	const index = docs.findIndex((d) => d.slug === doc.slug);
-	const prevDoc =
-		index > 0
-			? {
-					slug: docs[index - 1].slug,
-					title: docs[index - 1].metadata.title,
-					path: docs[index - 1].path
-				}
-			: null;
-	const nextDoc =
-		index < docs.length - 1
-			? {
-					slug: docs[index + 1].slug,
-					title: docs[index + 1].metadata.title,
-					path: docs[index + 1].path
-				}
-			: null;
+	const index = navPaths.indexOf(doc.path);
+	const prevPath = index > 0 ? navPaths[index - 1] : null;
+	const nextPath = index !== -1 && index < navPaths.length - 1 ? navPaths[index + 1] : null;
+
+	const prevDoc = prevPath ? toDocLink(prevPath) : null;
+	const nextDoc = nextPath ? toDocLink(nextPath) : null;
 
 	return { doc, prevDoc, nextDoc };
+}
+
+function toDocLink(path: string) {
+	const doc = docsByPath.get(path);
+	if (!doc) return null;
+	return { slug: doc.slug, title: doc.metadata.title, path: doc.path };
 }

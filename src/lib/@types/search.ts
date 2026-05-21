@@ -4,7 +4,6 @@ export type SearchEntry = {
 	path: string;
 	slug: string;
 	section: string;
-	order: number;
 	normalizedTitle: string;
 	normalizedDescription: string;
 	normalizedPath: string;

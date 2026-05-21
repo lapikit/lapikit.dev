@@ -17,12 +17,10 @@ export type ParsedMarkdownFile = {
 export type DerivedDoc = {
 	id: string;
 	metadata: FrontmatterData & { title: string };
-	order: number;
 	path: string;
 	section?: string;
 	slug: string;
 	slugSegments: string[];
-	sortKey: number[];
 	sourcePath: string;
 	title: string;
 };

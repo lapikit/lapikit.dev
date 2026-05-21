@@ -12,46 +12,29 @@ export function deriveDoc(filePath: string, frontmatter: FrontmatterData): Deriv
 		throw new Error(`Invalid documentation file path: ${filePath}`);
 	}
 
-	const directorySegments = pathSegments.map(parseOrderedSegment);
 	const fileBasename = basename(fileName, '.md');
-	const fileSegment = fileBasename === 'index' ? null : parseOrderedSegment(fileBasename);
-	const slugSegments = directorySegments
-		.map((segment) => slugify(segment.name))
-		.concat(fileSegment ? [slugify(fileSegment.name)] : [])
+	const slugSegments = pathSegments
+		.map(slugify)
+		.concat(fileBasename !== 'index' ? [slugify(fileBasename)] : [])
 		.filter(Boolean);
 	const slug = slugSegments.join('/');
 	const path = slug ? `/docs/${slug}` : '/docs';
-	const fallbackTitle = fileSegment?.title ?? directorySegments.at(-1)?.title ?? 'Documentation';
+	const fallbackTitle = toTitle(fileBasename !== 'index' ? fileBasename : (pathSegments.at(-1) ?? '')) || 'Documentation';
 	const title = asOptionalString(frontmatter.title) ?? fallbackTitle;
-	const order = fileSegment?.order ?? directorySegments.at(-1)?.order ?? 0;
-	const sortKey = [...directorySegments.map((segment) => segment.order), fileSegment?.order ?? -1];
 
 	return {
 		id: relativeFilePath.replace(/\.md$/, ''),
 		metadata: createDocMetadata(frontmatter, title),
-		order,
 		path,
 		section: slugSegments[0],
 		slug,
 		slugSegments,
-		sortKey,
 		sourcePath,
 		title
 	};
 }
 
 export function compareDocs(left: DerivedDoc, right: DerivedDoc) {
-	const maxLength = Math.max(left.sortKey.length, right.sortKey.length);
-
-	for (let index = 0; index < maxLength; index += 1) {
-		const leftValue = left.sortKey[index] ?? Number.POSITIVE_INFINITY;
-		const rightValue = right.sortKey[index] ?? Number.POSITIVE_INFINITY;
-
-		if (leftValue !== rightValue) {
-			return leftValue - rightValue;
-		}
-	}
-
 	return left.path.localeCompare(right.path);
 }
 
@@ -81,9 +64,7 @@ export function createDocsMetadataJson(docs: DerivedDoc[]) {
 		slug: doc.slug,
 		slugSegments: doc.slugSegments,
 		path: doc.path,
-		section: doc.section,
-		order: doc.order,
-		sortKey: doc.sortKey
+		section: doc.section
 	}));
 
 	return `${JSON.stringify(docsPayload, null, 2)}\n`;
@@ -103,18 +84,6 @@ function createDocMetadata(frontmatter: FrontmatterData, title: string) {
 	}
 
 	return metadata;
-}
-
-function parseOrderedSegment(segment: string) {
-	const match = segment.match(/^(\d+)-(.+)$/);
-	const order = match ? Number(match[1]) : 0;
-	const name = match ? match[2] : segment;
-
-	return {
-		name,
-		order,
-		title: toTitle(name)
-	};
 }
 
 function slugify(value: string) {

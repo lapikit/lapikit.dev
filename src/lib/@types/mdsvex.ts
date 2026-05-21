@@ -26,9 +26,7 @@ export type DocSummary = {
 	slug: string;
 	path: string;
 	section?: string;
-	order: number;
 	slugSegments: string[];
-	sortKey: number[];
 };
 
 export type DocComponent = ComponentType<SvelteComponent>;

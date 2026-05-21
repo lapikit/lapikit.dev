@@ -7,7 +7,7 @@
 	import type { ModelPopoverProps } from 'lapikit/labs/components';
 	import { ChevronRight, Search, Puzzle, NotebookText, SquareFunction } from 'lucide-svelte';
 
-	const searchEntries: SearchEntry[] = docsMetadata.map((doc, index) => {
+	const searchEntries: SearchEntry[] = docsMetadata.map((doc) => {
 		const title = doc.metadata.title;
 		const description =
 			getMetadataString(doc.metadata.description) ?? `Open ${title} documentation.`;
@@ -20,7 +20,6 @@
 			path: doc.path,
 			slug: doc.slug,
 			section,
-			order: index,
 			normalizedTitle: normalize(title),
 			normalizedDescription: normalize(description),
 			normalizedPath: normalize(doc.path),
@@ -44,7 +43,7 @@
 		return searchEntries
 			.map((entry) => ({ entry, score: getScore(entry, normalizedQuery, queryTerms) }))
 			.filter((candidate) => candidate.score > 0)
-			.sort((left, right) => right.score - left.score || left.entry.order - right.entry.order)
+			.sort((left, right) => right.score - left.score)
 			.map((candidate) => candidate.entry)
 			.slice(0, 8);
 	});
@@ -98,7 +97,6 @@
 			.join(' ');
 	}
 
-	$effect(() => {});
 </script>
 
 <kit:btn
