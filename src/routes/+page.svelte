@@ -223,7 +223,7 @@
 						alt="Lapikit logo"
 						class="no-select w-[38px] min-w-[38px]"
 					/>
-					<p class="text-2xl font-bold">Lapikit Home</p>
+					<p class="text-2xl font-bold">Lapikit</p>
 				</div>
 			</a>
 
