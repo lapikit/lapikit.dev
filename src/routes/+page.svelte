@@ -223,7 +223,7 @@
 						alt="Lapikit logo"
 						class="no-select w-[38px] min-w-[38px]"
 					/>
-					<p class="text-2xl font-bold">Lapikit</p>
+					<p class="text-2xl font-bold">Lapikit Home</p>
 				</div>
 			</a>
 
@@ -753,7 +753,9 @@
 								{@html npmIcon}
 							</div>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">{npmState.downloads || '---'}</span>
+								<span class="text-highlighted text-xl font-semibold"
+									>{npmState.downloads || '---'}</span
+								>
 								<p class="text-sm">Monthly downloads</p>
 							</div>
 						</div>

@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/${{ secrets.PATH_NEXT }}
+            cd ~/${{ secrets.PATH_CANARY }}
             git pull origin next
             docker compose build
             docker compose up -d
