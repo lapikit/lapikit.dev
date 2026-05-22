@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_GTM_ID, PUBLIC_GTAG_ID } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import type { ConsentState } from '$lib/hooks';
 	import {
@@ -14,8 +14,8 @@
 	import { consent_cookie } from '$lib/constants';
 	import { consentState } from '$lib/stores/consent.svelte';
 
-	const gtmID = env.PUBLIC_GTM_ID?.trim() ?? '';
-	const gtagID = env.PUBLIC_GTAG_ID?.trim() ?? '';
+	const gtmID = PUBLIC_GTM_ID?.trim() ?? '';
+	const gtagID = PUBLIC_GTAG_ID?.trim() ?? '';
 
 	type TrackingProvider = 'gtag' | 'gtm' | null;
 
