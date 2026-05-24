@@ -1,5 +1,6 @@
 ---
-title: "Accordion"
+title: 'Accordion'
+description: 'Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable.'
 ---
 
 <script>

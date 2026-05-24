@@ -1,5 +1,6 @@
 ---
-title: "Class & Style"
+title: 'Class and Style'
+description: 'Learn how to use s-class and s-style in Lapikit to dynamically manage classes and inline styles on Svelte components with a syntax close to native Svelte directives.'
 ---
 
 <script>

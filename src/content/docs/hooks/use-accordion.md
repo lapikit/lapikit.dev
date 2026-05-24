@@ -1,6 +1,6 @@
 ---
-title: "useAccordion"
-description: "Learn how to use the useAccordion action in Lapikit for managing accordion state."
+title: 'useAccordion'
+description: 'Discover the UseAccordion hook from Lapikit: manage expandable sections in Svelte easily, keep state synchronized, and avoid prop drilling or manual event handling.'
 ---
 
 <script>

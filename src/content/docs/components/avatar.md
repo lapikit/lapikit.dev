@@ -1,6 +1,6 @@
 ---
-title: "Avatar"
-description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
+title: 'Avatar'
+description: 'Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards.'
 ---
 
 <script>

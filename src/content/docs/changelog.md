@@ -1,6 +1,6 @@
 ---
-title: "changelog"
-description: "Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components."
+title: 'changelog'
+description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
 ---
 
 # Lapikit changelog: latest added, fixes and improvements
@@ -8,19 +8,22 @@ description: "Follow the latest Lapikit developments, updates and fixes. Transpa
 Find all the changes in the Lapikit release notes
 
 ---
+
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'
 description: Find all the changes in the Lapikit release notes
 head:
-  title: changelog
-  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
+title: changelog
+description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
 state:
-  section: base
-  published: true
-  order: -1
+section: base
+published: true
+order: -1
 keywords:
-  - version
-  - npm
+
+- version
+- npm
+
 ---
 
 All notable changes to this project will be documented in this file.
@@ -652,4 +655,3 @@ Reduce 16% size to Lapikit package with new core (265kb to 222kb)
 ### Added
 
 - Create [Lapikit](https://github.com/Nycolaide/lapikit)
-

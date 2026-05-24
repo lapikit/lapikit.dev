@@ -1,6 +1,6 @@
 ---
-title: "Textfield"
-description: "Capture user input with flexible, accessible text fields. Support various types, validation, and enhanced features."
+title: 'Textfield'
+description: 'Explore the Textfield component of Lapikit: customizable input fields for Svelte with full styling, validation and theming support to build forms faster.'
 ---
 
 <script>

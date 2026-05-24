@@ -1,6 +1,6 @@
 ---
-title: "useTheme action"
-description: "Learn how to use the useTheme action in Lapikit for dynamic theming."
+title: 'useTheme action'
+description: 'Learn how the UseTheme hook from Lapikit simplifies theme management in Svelte: switch dark/light modes, sync global state, and keep components in sync effortlessly.'
 ---
 
 <script>

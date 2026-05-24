@@ -1,6 +1,6 @@
 ---
-title: "Popover"
-description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
+title: 'Popover'
+description: 'Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements.'
 ---
 
 <script>

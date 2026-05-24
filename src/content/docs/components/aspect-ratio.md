@@ -1,6 +1,6 @@
 ---
-title: "Aspect Ratio"
-description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
+title: 'Aspect Ratio'
+description: 'Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component.'
 ---
 
 <script>

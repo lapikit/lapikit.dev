@@ -1,6 +1,6 @@
 ---
-title: "Toolbar"
-description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
+title: 'Toolbar'
+description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
 ---
 
 <script>

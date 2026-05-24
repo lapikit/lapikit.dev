@@ -1,11 +1,11 @@
 ---
-title: "Customize"
-description: "Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed."
+title: 'Customize'
+description: 'Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed.'
 keywords:
-  - "customize"
-  - "theming"
-  - "css variables"
-  - "design tokens"
+  - 'customize'
+  - 'theming'
+  - 'css variables'
+  - 'design tokens'
 ---
 
 <script>
