@@ -115,4 +115,4 @@ Lapikit wouldn't exist without the work of Svelte and the people who develop too
 
 Lapikit draws on the ideas, tools, and discussions I’ve had with frontend developers
 
-Once you’ve gone through the introduction, you can move on to the [quick start guide](/docs/quick-start) to install and configure Lapikit in your Svelte or SvelteKit project.
+Once you’ve gone through the introduction, you can move on to the [quick start guide](/docs/getting-started) to install and configure Lapikit in your Svelte or SvelteKit project.

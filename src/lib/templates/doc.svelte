@@ -177,6 +177,10 @@
 			>
 			- Developed by
 			<a href="https://nycolaide.dev" target="_blank" style="color: var(--kit-accent)">Nycolaide</a>
+			<kit:spacer />
+			<a href={resolve('/docs/changelog')} style="color: var(--kit-accent)">Changelog</a>
+			-
+			<a href={resolve('/docs/roadmap')} style="color: var(--kit-accent)">Roadmap</a>
 		</footer>
 	</div>
 

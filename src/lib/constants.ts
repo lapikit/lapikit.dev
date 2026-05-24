@@ -116,7 +116,7 @@ export const docsNavigation: NavSection[] = [
 		icon: Container,
 		pages: [
 			{ label: 'Introduction', url: '/docs/introduction' },
-			{ label: 'Quick Start', url: '/docs/quick-start' }
+			{ label: 'Quick Start', url: '/docs/getting-started' }
 		]
 	},
 	{
@@ -286,7 +286,6 @@ export const docsNavigation: NavSection[] = [
 		icon: Eraser,
 		pages: [
 			{ label: 'Breakpoints', url: '/docs/breakpoints' },
-			{ label: 'Getting Started', url: '/docs/getting-started' },
 			{ label: '$breakpoints', url: '/docs/hooks/store-breakpoints' },
 			{ label: '$devices', url: '/docs/hooks/store-devices' },
 			{ label: '$theme', url: '/docs/hooks/store-theme' }
