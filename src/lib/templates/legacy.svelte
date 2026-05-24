@@ -39,7 +39,7 @@
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
 		<nav>
 			{#each docsNavigation as { label, icon, pages } (label)}
-				<kit:list density="compact" size="sm" nav>
+				<kit:list density="compact" size="sm" nav s-class_opacity-50={label == 'Deprecated'}>
 					<kit:list-item>
 						{#snippet prepend()}
 							<kit:icon>
