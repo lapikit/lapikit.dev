@@ -1,6 +1,6 @@
 ---
-title: 'Chip'
-description: 'Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants.'
+title: "Chip"
+description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
 ---
 
 <script>

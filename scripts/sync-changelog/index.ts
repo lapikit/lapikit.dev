@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '../..');
 const TEMP_DIR = join(ROOT, '.tmp-changelog');
 const REPO_URL = 'https://github.com/lapikit/lapikit';
-const CHANGELOG_TARGET = join(ROOT, 'src/content/docs/99-changelog.md');
+const CHANGELOG_TARGET = join(ROOT, 'src/content/docs/changelog.md');
 const PLACEHOLDER = '<p>Changelog Content</p>';
 
 async function syncChangelog() {

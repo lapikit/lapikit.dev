@@ -1,6 +1,6 @@
 ---
-title: 'Appbar'
-description: 'Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones.'
+title: "Appbar"
+description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
 ---
 
 <script>

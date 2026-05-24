@@ -208,6 +208,13 @@
 	};
 </script>
 
+<svelte:head>
+	<meta
+		name="description"
+		content="Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability."
+	/>
+</svelte:head>
+
 <div class="home kit-theme--dark">
 	<Appbar
 		class="sticky top-0 z-100"
@@ -309,7 +316,7 @@
 				<div>
 					<div class="flex justify-center gap-3 sm:gap-6">
 						<Button
-							href="/docs/quick-start"
+							href="/docs/getting-started"
 							background="accent-primary"
 							color="white"
 							size={{ base: 'md', md: 'lg' }}
