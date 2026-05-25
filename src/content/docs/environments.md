@@ -1,5 +1,5 @@
 ---
-title: "environments"
+title: 'environments'
 ---
 
 <script>
@@ -9,11 +9,11 @@ title: "environments"
 	import ComponentWithoutPreprocessor from '$examples/addons/component-without-preprocessor.svelte';
 </script>
 
-# Editor Setup
+# Configure TypeScript and editor tooling for Lapikit
 
 Lapikit uses a custom `<kit:*>` syntax that is transformed into standard Svelte components at build time via its preprocessor. This page explains how to configure your editor and linting tools to work properly with lapikit.
 
-## ESLint
+## Configure ESLint with Lapikit
 
 Lapikit provides an official ESLint config package to avoid false positives caused by its preprocessor.
 
@@ -31,11 +31,11 @@ This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-spe
 
 <LazyRepl title="eslint.config.js" lang="js" content={() => import('$examples/addons/eslint-config-no-unused-vars.js?raw')} />
 
-## Known False Positives
+## Known TypeScript and editor limitations
 
-### `ts(6133)` - snippet declared but never read
+### Snippet warnings in TypeScript
 
-When using lapikit snippets like `activator`, your IDE may display the following warning:
+When using lapikit snippets like `activator`, your IDE may display the following warning `ts(6133)`:
 
 <LazyRepl lang="sh" content={"'activator' is declared but its value is never read. ts(6133)"} />
 
@@ -49,7 +49,7 @@ To suppress it, set `noUnusedLocals` to `false` in your `tsconfig.json`:
 
 > **Note:** This is a limitation of the current Svelte language server. A fix would require native support for custom preprocessors in IDE language servers. This issue has been reported upstream.
 
-### No autocompletion for `<kit:*>` tags
+### Missing component autocompletion
 
 For the same reason, IDE autocompletion is not available for `<kit:*>` tags. Full IDE support would require a dedicated editor extension, which is on the lapikit roadmap.
 
@@ -60,6 +60,17 @@ If the false positives are a blocker for your workflow, you can use lapikit comp
 <LazyRepl lang="svelte" content={() => import('$examples/addons/component-without-preprocessor.svelte?raw')}>
 <ComponentWithoutPreprocessor/>
 </LazyRepl>
+
 Your IDE will fully understand this syntax and the `ts(6133)` warning will no longer appear.
 
 > **Keep in mind:** By skipping the preprocessor, you lose the main benefits of the `<kit:*>` syntax - automatic imports, shorter and more readable markup, and the full integration optimizations that lapikit is designed around. We recommend sticking with the preprocessor and suppressing the warning via `noUnusedLocals: false`.
+
+## Continue working with Lapikit and TypeScript
+
+Lapikit is designed to integrate with your Svelte or SvelteKit workflows, including TypeScript, ESLint, and code editors.
+
+Since some features rely on the Lapikit preprocessor and a custom template syntax, certain editors or static analysis tools may report incomplete autocompletion or generate false warnings. These limitations stem from these tools’ current support for custom Svelte syntax.
+
+The purpose of this page is to help you properly configure your environment, understand your editor’s expected behavior, and maintain a manageable workflow while using Lapikit components, stores, hooks, and template helpers.
+
+For the best experience, check out the pages on [installation](docs/getting-started), [template syntax](docs/template-syntax), and [component documentation](docs/components).

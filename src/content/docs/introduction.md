@@ -1,11 +1,11 @@
 ---
-title: "introduction"
-description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
+title: 'introduction'
+description: 'Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte.'
 keywords:
-  - "why lapikit"
-  - "acknowledgements"
-  - "discover"
-  - "lapikit"
+  - 'why lapikit'
+  - 'acknowledgements'
+  - 'discover'
+  - 'lapikit'
 ---
 
 <script>
@@ -20,12 +20,16 @@ keywords:
 ## What is Lapikit?
 
 Lapikit is a mix of the French word lapin (rabbit), lapis lazuli - a deep blue stone - and the word kit, referring to a development toolkit.
+
 It is a Svelte component library focused on developer experience, simple integration, and full component customization.
 
 The goal is straightforward: help developers build accessible and performant interfaces without sacrificing flexibility.
-The Lapinausore mascot was created as a mix between a rabbit and a dragon.
 
-If you're asking yourself why? Because it combines two opposite ideas: the calm and simplicity of a rabbit with the strength and imagination often associated with dragons. A mysterious creature, but a good representation of Lapikit itself: simple on the surface, powerful underneath.
+The Lapinausore was conceived as a cross between a rabbit and a dragon.
+
+Wondering why? Because it combines two concepts: the calmness, rapid growth, and ingenuity of a rabbit, and the strength, endurance, and power often associated with dragons.
+
+All of this combined makes our Lapinausore an excellent tool for work that is simple in appearance but powerful in reality.
 
 Want to learn more? Here's a quick example of how to use Lapikit
 
@@ -42,7 +46,15 @@ This example shows how to configure the Lapikit preprocessor, which allows you t
 
 ### Prerequisites before getting started with Lapikit
 
-The rest of this documentation assumes you have a basic understanding of HTML, CSS, and JavaScript. A basic knowledge of Svelte is also recommended - while we aim to make the documentation as accessible as possible, going through it without any Svelte experience may make some concepts harder to follow.
+If you're already familiar with Svelte and want to develop projects faster or simply avoid constantly rewriting the same code, you've come to the right place.
+
+Lapikit is designed for developers who already have a solid grasp of the basics of HTML, CSS, and JavaScript and are looking for an easier way to build user interfaces with Svelte and SvelteKit.
+
+Whether you’re just starting out with Svelte or are already comfortable with the language, the goal remains the same: to ensure a clear, accessible workflow that’s easy to integrate into your projects.
+
+The documentation is designed to be simple and practical to use, but if certain points seem unclear or are holding you back, that’s perfectly normal. Lapikit is still evolving, and your feedback is always welcome.
+
+Start slowly, experiment, break things, and rebuild them. And once you feel comfortable, explore the rest of the Svelte ecosystem alongside Lapikit.
 
 ## A more natural and intuitive way to build interfaces with Svelte
 
@@ -59,14 +71,20 @@ A theme manager and utility functions round out Lapikit, making it easy to apply
 
 ### Simplify your workflow with HTML-style props
 
-Svelte natively offers `class_name={condition}` and `style_property={value}` directives on HTML elements - but not on components. Lapikit bridges that gap by pre-integrating two equivalent props on every component:
+Lapikit keeps the styling experience close to native Svelte and HTML behavior. You can manage conditional classes and inline styles directly on components without adding extra wrappers or custom logic.
 
-- **`s-class`** - conditionally apply classes, just like `class:name={condition}`:
+Svelte natively supports directives like `class_{property}={condition}` and `style_{property}={value}` on HTML elements, not directly on custom components.
+
+This often results in repetitive code or extra styling work during development.
+
+Lapikit solves this problem by providing built-in styling properties for each component, designed to work similar to Svelte native directives.
+
+- **`s-class`** - conditionally apply classes, just like `class:{property}={condition}`:
 
 <LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/s-class-preprocessor.svelte?raw')}>
 </LazyRepl>
 
-- **`s-style`** - conditionally apply inline styles, just like `style:property={value}`:
+- **`s-style`** - conditionally apply inline styles, just like `style:{property}={value}`:
 
 <LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/s-style-preprocessor.svelte?raw')}>
 </LazyRepl>
@@ -115,4 +133,4 @@ Lapikit wouldn't exist without the work of Svelte and the people who develop too
 
 Lapikit draws on the ideas, tools, and discussions I’ve had with frontend developers
 
-Once you’ve gone through the introduction, you can move on to the [quick start guide](/docs/getting-started) to install and configure Lapikit in your Svelte or SvelteKit project.
+Once you’ve gone through the introduction, you can move on to the [quick start guide](/docs/getting-started) to **install and configure Lapikit** in your Svelte or SvelteKit project.

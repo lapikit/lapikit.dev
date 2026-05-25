@@ -1,6 +1,6 @@
 ---
-title: "quick start"
-description: "Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast."
+title: 'quick start'
+description: 'Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast.'
 ---
 
 <script>
@@ -20,7 +20,11 @@ Before installing Lapikit, make sure you have:
 
 SvelteKit is recommended for the best experience, but Lapikit works with any Svelte project.
 
-Lapikit is written in TypeScript and fully supports TypeScript projects. It is also compatible with JavaScript - you can simply ignore type annotations and type errors. That said, using TypeScript is recommended for a better developer experience, as some advanced features may be harder to use without types.
+Lapikit is written in TypeScript and fully supports TypeScript environments.
+
+JavaScript projects are also supported. You can ignore type annotations if needed.
+
+That said, TypeScript is recommended for a smoother developer experience, especially when working with advanced component props, stores, and hooks.
 
 ## Install and configure Lapikit
 
@@ -28,13 +32,15 @@ Lapikit is written in TypeScript and fully supports TypeScript projects. It is a
 
 To install Lapikit, run the following command in your project directory:
 
-<LazyRepl lang="sh" content={"npm install -save-dev lapikit"} />
+<LazyRepl lang="sh" content={"npm install --save-dev lapikit"} />
 
-Once installed, use the setup CLI to automatically add the required preprocessor to your project:
+Once installed, run the setup CLI to automatically configure the required preprocessor:
 
 <LazyRepl lang="sh" content={"npx lapikit"} />
 
-**Note: If you are using SvelteKit, the CLI will automatically detect it and configure the preprocessor. For other setups, follow the manual configuration steps below.**
+**Note: If you are using SvelteKit, the CLI will detect your setup automatically and apply the recommended configuration. For other setups, follow the manual configuration steps below.**
+
+If your project goes beyond the standard SvelteKit setup (routes, lib), we recommend using the manual installation process to minimize potential errors and, most importantly, to specify exactly where Lapikit should run. Otherwise, using the CLI will allow you to get Lapikit up and running in less than 5 minutes
 
 ### Manual installation and configuration
 
@@ -42,11 +48,13 @@ Configure the preprocessor manually in 3 steps:
 
 1. Install Lapikit:
 
-<LazyRepl lang="sh" content={"npm install -save-dev lapikit"} />
+<LazyRepl lang="sh" content={"npm install --save-dev lapikit"} />
 
 2. Update your `svelte.config.js` to include the Lapikit preprocessor:
 
 <LazyRepl lang="js" title="svelte.config.js" content={() => import('$examples/started/svelte-config-js.js?raw')} />
+
+If you're using packages like TypeScript and eSLint in your project, we recommend checking out the [page on configuring environments](docs/environments) with Lapikit.
 
 3. Restart your development server to apply the changes.
 
@@ -68,7 +76,7 @@ You can customize components with styling props, CSS variables, or themes to kee
 
 The customization guides explain how to configure themes, styles, dropdown, and global components.
 
-### Using Lapikit components
+### Use Lapikit components
 
 Lapikit includes a growing collection of components for common interface patterns such as buttons, dialogs, dropdowns, tooltips, and forms.
 
@@ -76,4 +84,4 @@ Components are designed to stay close to native HTML behavior while providing ad
 
 A helpful starting point is the documentation for the `kit:app` component, which describes the main wrapper component used to initialize the app's styles, themes, and overall behavior.
 
-Refer to the [`kit:app`](components/application) component documentation to learn more about how to use it and the features
+Refer to the [`kit:app`](components/application) component documentation to learn more about how to use it and the features.
