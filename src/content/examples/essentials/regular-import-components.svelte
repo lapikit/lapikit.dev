@@ -1,6 +1,6 @@
 <script>
 	import { KitBtn } from 'lapikit/labs/components';
-	import MyCustomButton from '$lib/components/my-button.svelte';
+	import MyCustomButton from '../../../components/my-button.svelte';
 </script>
 
 <kit:btn>Auto-imported button</kit:btn>

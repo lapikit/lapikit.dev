@@ -4,7 +4,7 @@ description: "Small, practical UI elements for filters, tags or status. Supports
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/chip/preview.svelte';
 	import Variants from '../../../content/examples/components/chip/variants.svelte';

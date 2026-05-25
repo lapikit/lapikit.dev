@@ -4,7 +4,7 @@ description: "Create modal dialogs with a fluid UX. Integrated focus, size, dens
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/dialog/preview.svelte';
 	import Position from '../../../content/examples/components/dialog/position.svelte';

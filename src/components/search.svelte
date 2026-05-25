@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import type { SearchEntry } from '$lib/@types';
-	import { docsMetadata } from '$lib/registry';
+	import { docsMetadata } from '$lib';
 	import { capitalize } from '$lib/utils';
 	import type { ModelPopoverProps } from 'lapikit/labs/components';
 	import { ChevronRight, Search, Puzzle, NotebookText, SquareFunction } from 'lucide-svelte';
@@ -96,7 +96,6 @@
 			.map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
 			.join(' ');
 	}
-
 </script>
 
 <kit:btn

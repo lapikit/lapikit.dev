@@ -1,6 +1,4 @@
-import { PUBLIC_BASE_URL } from '$env/static/public';
-import { siteDefaultUrl } from '$lib/constants';
-import { docsPaths } from '$lib/registry';
+import { docsPaths } from '$lib';
 
 export const prerender = true;
 
@@ -16,8 +14,8 @@ function toUrl(path: string) {
 	return route || '/';
 }
 
-export async function GET() {
-	const baseUrl = (PUBLIC_BASE_URL || siteDefaultUrl).replace(/\/$/, '');
+export async function GET({ request }) {
+	const baseUrl = new URL(request.url).origin;
 
 	const routes = [...Object.keys(pageModules), ...Object.keys(markdownModules)]
 		.map(toUrl)

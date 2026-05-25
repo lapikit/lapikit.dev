@@ -4,7 +4,7 @@ description: "Group actions in a compact, coherent space. Ideal for headers, lis
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/toolbar/preview.svelte';
 	import Variants from '../../../content/examples/components/toolbar/variants.svelte';

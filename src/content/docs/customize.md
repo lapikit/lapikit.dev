@@ -9,7 +9,7 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
   // examples
   import SStyleComponent from '../../content/examples/started/s-style-component.svelte';

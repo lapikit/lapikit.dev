@@ -4,7 +4,7 @@ description: "The root component of your Svelte projects with Lapikit. The ideal
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	// images
 	import picture from '$lib/assets/images/use-kit-app.webp';

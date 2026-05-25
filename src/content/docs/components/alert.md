@@ -4,7 +4,7 @@ description: "Display alert or status messages. Manage variants, densities and i
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/alert/preview.svelte';
 	import Tones from '../../../content/examples/components/alert/tones.svelte';

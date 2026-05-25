@@ -1,6 +1,6 @@
 import { SvelteDate } from 'svelte/reactivity';
+import { npm_stats_storage_key } from '$lib';
 
-const NPM_CACHE_KEY = '@lapikit/npm-stats';
 const NPM_CACHE_TTL = 4 * 60 * 60 * 1000;
 
 type NpmCache = { version: string; downloads: string; cachedAt: number };
@@ -16,7 +16,7 @@ export const npmState = $state({
 });
 
 export async function loadNpmData() {
-	const raw = localStorage.getItem(NPM_CACHE_KEY);
+	const raw = localStorage.getItem(npm_stats_storage_key);
 	if (raw) {
 		const cache: NpmCache = JSON.parse(raw);
 		if (Date.now() - cache.cachedAt < NPM_CACHE_TTL) {
@@ -40,5 +40,8 @@ export async function loadNpmData() {
 	npmState.version = version;
 	npmState.downloads = downloads;
 
-	localStorage.setItem(NPM_CACHE_KEY, JSON.stringify({ version, downloads, cachedAt: Date.now() }));
+	localStorage.setItem(
+		npm_stats_storage_key,
+		JSON.stringify({ version, downloads, cachedAt: Date.now() })
+	);
 }

@@ -4,7 +4,7 @@ description: "Show contextual information on click or hover. Ideal for enhancing
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/popover/preview.svelte';
 	import Position from '../../../content/examples/components/popover/position.svelte';

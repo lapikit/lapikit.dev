@@ -1,4 +1,4 @@
-import type { ComponentType, SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 export type DocMetadataValue =
 	| string
@@ -29,7 +29,8 @@ export type DocSummary = {
 	slugSegments: string[];
 };
 
-export type DocComponent = ComponentType<SvelteComponent>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type DocComponent = Component<any>;
 
 export type DocEntry = DocSummary & {
 	component: DocComponent;
@@ -40,3 +41,14 @@ export type DocSeoEntry = {
 	description: string;
 	type: 'article';
 };
+
+export type ContentSummary = {
+	path: string;
+	slug: string;
+	sourcePath: string;
+	metadata: { title: string; description?: unknown; [key: string]: unknown };
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type MarkdownComponent = Component<any>;
+export type ContentEntry<T extends ContentSummary> = T & { component: MarkdownComponent };

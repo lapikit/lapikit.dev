@@ -4,7 +4,7 @@ description: "Discover the UseAccordion hook from Lapikit: manage expandable sec
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Multiple from '../../../content/examples/components/accordion/multiple.svelte';
 </script>

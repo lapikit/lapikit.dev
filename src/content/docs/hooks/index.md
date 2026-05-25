@@ -4,7 +4,7 @@ descriptions: "Built-in stores and actions with Lapikit: connect components and 
 ---
 
 <script>
-    import ListHooks from "$lib/components/list-hooks.svelte";
+    import ListHooks from "$components/list-hooks.svelte";
 </script>
 
 # Discover the Lapikit hooks

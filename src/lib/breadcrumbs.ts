@@ -1,7 +1,7 @@
 import type { Pathname } from '$app/types';
 import type { BreadcrumbItem, BreadcrumbListSchema } from './@types';
-import { seoByPath, siteDefaultUrl } from './constants';
-import { docsByPath } from './registry';
+import { seoByPath } from './constants';
+import { docsByPath } from './markdown';
 
 export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 	const normalizedPath = normalizePath(pathname);
@@ -27,7 +27,7 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 
 export function getBreadcrumbStructuredData(
 	items: BreadcrumbItem[],
-	origin = siteDefaultUrl
+	origin: string
 ): BreadcrumbListSchema | null {
 	if (items.length < 2) {
 		return null;

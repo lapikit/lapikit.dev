@@ -4,7 +4,7 @@ description: "Explore the Textfield component of Lapikit: customizable input fie
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/textfield/preview.svelte';
 	import Variants from '../../../content/examples/components/textfield/variants.svelte';

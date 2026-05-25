@@ -4,7 +4,7 @@ description: "Learn how the UseTheme hook from Lapikit simplifies theme manageme
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import UseThemeToggle from '../../../content/examples/hooks/useTheme-toggle.svelte';
 </script>

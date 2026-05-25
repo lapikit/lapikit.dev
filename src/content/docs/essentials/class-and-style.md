@@ -4,7 +4,7 @@ description: "Learn how to use s-class and s-style in Lapikit to dynamically man
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 </script>
 
 ## Class & Style binding

@@ -4,7 +4,7 @@ description: "Get started with Lapikit: installation, CI/CD or manual configurat
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 </script>
 
 # Getting Started with Lapikit library for Svelte Projects

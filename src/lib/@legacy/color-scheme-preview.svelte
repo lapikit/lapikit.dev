@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { scrollAnimation } from '$lib/assets/animations/scroll-animation';
+	import { scrollAnimation } from './scroll-animation';
 
 	// Drag and drop functionality
 	let isDragging = $state<boolean>(false);

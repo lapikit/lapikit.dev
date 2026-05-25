@@ -4,7 +4,7 @@ description: "Display profile images, icons or initials in a variety of formats.
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/avatar/preview.svelte';
 	import Label from '../../../content/examples/components/avatar/label.svelte';

@@ -4,7 +4,7 @@ description: "Flexible drop-down menu for actions or selections. Manages focus, 
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/dropdown/preview.svelte';
 	import Position from '../../../content/examples/components/dropdown/position.svelte';

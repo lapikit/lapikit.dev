@@ -4,7 +4,7 @@ description: "Organize and display content in visually coherent blocks. The Lapi
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/card/preview.svelte';
 	import Variants from '../../../content/examples/components/card/variants.svelte';

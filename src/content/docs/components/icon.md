@@ -4,7 +4,7 @@ description: "Insert icons easily with Lapikit. Manage sizes, colors, states and
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/icon/preview.svelte';
 	import Size from '../../../content/examples/components/icon/size.svelte';

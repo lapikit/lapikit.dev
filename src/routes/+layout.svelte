@@ -1,51 +1,36 @@
 <script lang="ts">
-	//import { resolve } from '$app/paths';
+	import { PUBLIC_DEV } from '$env/static/public';
+
 	import { page } from '$app/state';
-	import { PUBLIC_BASE_URL } from '$env/static/public';
-	import './layout.css';
-
-	// components
-	import ConsentMode from '$lib/components/consent-mode.svelte';
-
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import './layout.css';
+	import { docsSeoByPath, getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
+	import { capitalize } from '$lib/utils';
+
+	// components
+	import ConsentMode from '../components/consent-mode.svelte';
+
+	// api
 	import { loadNpmData } from '$lib/stores/npm.svelte';
+
+	// images
+	import favicon from '$lib/assets/favicon.svg';
+
+	let { children } = $props();
 
 	onMount(() => {
 		if (browser) loadNpmData();
 	});
 
-	// images
-	import favicon from '$lib/assets/favicon.svg';
-
-	import { docsSeoByPath } from '$lib';
-	import {
-		defaultSeo,
-		getBreadcrumbStructuredData,
-		getBreadcrumbs,
-		seoByPath,
-		siteDefaultUrl,
-		siteName
-	} from '$lib';
-	import { capitalize } from '$lib/utils';
-
-	let { children } = $props();
-
-	const normalizedPath = $derived(
-		page.url.pathname === '/' ? '/' : page.url.pathname.replace(/\/$/, '')
-	);
-	const seo = $derived(docsSeoByPath[normalizedPath] ?? seoByPath[normalizedPath] ?? defaultSeo);
-	const siteUrl = $derived(
-		(PUBLIC_BASE_URL || page.url.origin || siteDefaultUrl).replace(/\/$/, '')
-	);
-	const canonicalUrl = $derived(`${siteUrl}${normalizedPath === '/' ? '' : normalizedPath}`);
+	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
+	const seo = $derived(docsSeoByPath[path] ?? seoByPath[path] ?? seoByPath['/']);
+	const canonicalUrl = $derived(`${page.url.origin}${path === '/' ? '' : path}`);
 	const pageTitle = $derived(
-		normalizedPath === '/'
-			? `${siteName} • Svelte Components Library`
-			: `${capitalize(seo.title)} • Lapikit Svelte Components`
+		`${capitalize(seo.title)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
-	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
-	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, siteUrl));
+	const breadcrumbs = $derived(getBreadcrumbs(path));
+	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, page.url.origin));
 	const breadcrumbSchemaTag = $derived(breadcrumbSchema ? toJsonLdScriptTag(breadcrumbSchema) : '');
 
 	function toJsonLdScriptTag(data: unknown) {
@@ -64,13 +49,15 @@
 	<meta name="description" content={seo.description} />
 	<meta
 		name="robots"
-		content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+		content={PUBLIC_DEV === 'true'
+			? 'noindex, nofollow'
+			: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
 	/>
-	<meta name="generator" content={siteName} />
-	<meta name="application-name" content={siteName} />
+	<meta name="generator" content="Lapikit" />
+	<meta name="application-name" content="Lapikit" />
 	<meta name="referrer" content="strict-origin-when-cross-origin" />
 	<meta property="og:locale" content="en_US" />
-	<meta property="og:site_name" content={siteName} />
+	<meta property="og:site_name" content="Lapikit" />
 	<meta property="og:title" content={pageTitle} />
 	<meta property="og:description" content={seo.description} />
 	<meta property="og:type" content={seo.type ?? 'website'} />

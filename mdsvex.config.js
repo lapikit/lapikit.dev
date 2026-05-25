@@ -32,9 +32,9 @@ export const mdsvexOptions = {
 	rehypePlugins: [rehypeEnumChip],
 	highlight: { highlighter },
 	layout: {
-		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.svelte',
-		docs: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/doc.svelte',
-		section: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/section.svelte',
-		legacy: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/legacy.svelte'
+		_: dirname(fileURLToPath(import.meta.url)) + '/src/templates/page.svelte',
+		docs: dirname(fileURLToPath(import.meta.url)) + '/src/templates/doc.svelte',
+		section: dirname(fileURLToPath(import.meta.url)) + '/src/templates/section.svelte',
+		legacy: dirname(fileURLToPath(import.meta.url)) + '/src/templates/legacy.svelte'
 	}
 };

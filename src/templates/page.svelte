@@ -9,9 +9,9 @@
 	import { ChevronDown, ChevronRight } from 'lucide-svelte';
 
 	// components
-	import Search from '$lib/components/search.svelte';
-	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
-	import TableOfContent from '$lib/components/table-of-content.svelte';
+	import Search from '../components/search.svelte';
+	import Breadcrumbs from '../components/breadcrumbs.svelte';
+	import TableOfContent from '../components/table-of-content.svelte';
 
 	// svg
 	import githubIcon from '$lib/assets/icons/github.svg?raw';

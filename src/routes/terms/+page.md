@@ -1,8 +1,3 @@
----
-title: Legal Notices
-description: Legal notices, hosting information and privacy details for the Lapikit website.
----
-
 # Legal notices Lapikit
 
 Updated to 31/03/2026

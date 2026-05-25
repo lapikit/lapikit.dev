@@ -3,7 +3,7 @@ title: "environments"
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	// examples
 	import ComponentWithoutPreprocessor from '../../content/examples/addons/component-without-preprocessor.svelte';

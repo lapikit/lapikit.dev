@@ -4,7 +4,7 @@ description: "Structure your data with a stylized list. Ideal for menus, hierarc
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/list/preview.svelte';
 	import Variants from '../../../content/examples/components/list/variants.svelte';

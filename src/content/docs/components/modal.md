@@ -4,7 +4,7 @@ description: "Display stacked content in a responsive modal window. Manages posi
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/modal/preview.svelte';
 	import Position from '../../../content/examples/components/modal/position.svelte';

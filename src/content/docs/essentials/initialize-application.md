@@ -4,7 +4,7 @@ description: "Initialize the Lapikit application context in Svelte and SvelteKit
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 </script>
 
 ## Initialize Lapikit Application Context

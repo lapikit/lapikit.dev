@@ -8,16 +8,16 @@
 	import { beforeNavigate } from '$app/navigation';
 	import { mount, unmount, onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
-	import EnumChip from '$lib/components/enum-chip.svelte';
+	import EnumChip from '../components/enum-chip.svelte';
 	import type { MarkdownHeading } from '$lib/@types';
-	import type { PageData } from '../../routes/docs/[...slug]/$types';
+	import type { PageData } from '../routes/docs/[...slug]/$types';
 	import { docsNavigation, getBreadcrumbs } from '$lib';
 	import type { ModelDropdownProps } from 'lapikit/labs/components';
 
 	// Components
-	import TableOfContent from '$lib/components/table-of-content.svelte';
-	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
-	import Drawer from '$lib/components/drawer.svelte';
+	import TableOfContent from '../components/table-of-content.svelte';
+	import Breadcrumbs from '../components/breadcrumbs.svelte';
+	import Drawer from '../components/drawer.svelte';
 	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
 	import { capitalize } from '$lib/utils';
 

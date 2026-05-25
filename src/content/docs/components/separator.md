@@ -4,7 +4,7 @@ description: "Visually separate your UI blocks with customizable lines in size, 
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/separator/preview.svelte';
 	import Orientation from '../../../content/examples/components/separator/orientation.svelte';

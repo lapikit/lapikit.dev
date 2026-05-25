@@ -5,7 +5,7 @@ layout: "section"
 ---
 
 <script>
-    import ListComponents from "$lib/components/list-components.svelte";
+    import ListComponents from "$components/list-components.svelte";
 </script>
 
 # Discover the Lapikit components

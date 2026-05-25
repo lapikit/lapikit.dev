@@ -10,7 +10,10 @@ const config = {
 			out: 'build',
 			precompress: true,
 			envPrefix: ''
-		})
+		}),
+		alias: {
+			$components: 'src/components'
+		}
 	},
 	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] })],
 	extensions: ['.svelte', '.svx', '.md']

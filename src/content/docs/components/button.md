@@ -4,7 +4,7 @@ description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/btn/preview.svelte';
 	import Variants from '../../../content/examples/components/btn/variants.svelte';

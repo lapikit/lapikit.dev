@@ -1,21 +1,23 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { browser } from '$app/environment';
+	import { theme_storage_key } from '$lib';
+
+	// types
+	import type { ModelDropdownProps } from 'lapikit/labs/components';
 
 	// components
-	import Search from '$lib/components/search.svelte';
+	import Search from '../../components/search.svelte';
 
-	// svg
+	// svg & images
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
-	import { browser } from '$app/environment';
-
-	const THEME_KEY = '@lapikit/theme';
 
 	let { children } = $props();
+
 	let mode = $state<'light' | 'dark' | 'system'>(
 		browser
-			? ((localStorage.getItem(THEME_KEY) as 'light' | 'dark' | 'system') ?? 'system')
+			? ((localStorage.getItem(theme_storage_key) as 'light' | 'dark' | 'system') ?? 'system')
 			: 'system'
 	);
 
@@ -26,7 +28,7 @@
 		} else {
 			document.documentElement.setAttribute('data-theme', mode);
 		}
-		localStorage.setItem(THEME_KEY, mode);
+		localStorage.setItem(theme_storage_key, mode);
 	});
 </script>
 

@@ -4,7 +4,7 @@ description: "Provide additional info without cluttering the UI. Display on hove
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/tooltip/preview.svelte';
 	import Location from '../../../content/examples/components/tooltip/location.svelte';

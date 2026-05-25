@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LapinosaureOnSpace from '$lib/@legacy/lapinosaure-on-space.svelte';
-	import BackgroundStar from '$lib/assets/animations/background-star.svelte';
+	import BackgroundStar from '$lib/@legacy/background-star.svelte';
 	import LapinosaureExpertLapikit from '$lib/@legacy/images/lapinosaure-expert-lapikit.webp?enhanced';
 	import StarMedium from '$lib/@legacy/images/star-medium.webp?enhanced';
 	import { Appbar, Button, Card, Chip, Icon, Separator, Toolbar } from 'lapikit/components';
@@ -22,7 +22,7 @@
 	} from 'lucide-svelte';
 	import { capitalize, copyToClipboard } from '$lib/utils';
 	import EarthMoonLapikit from '$lib/@legacy/earth-moon-lapikit.svelte';
-	import { scrollAnimation } from '$lib/assets/animations/scroll-animation';
+	import { scrollAnimation } from '$lib/@legacy/scroll-animation';
 	import ColorSchemePreview from '$lib/@legacy/color-scheme-preview.svelte';
 	import StepperInstallLapikit from '$lib/@legacy/images/install-lapikit.webp?enhanced';
 	import StepperImportsComponents from '$lib/@legacy/images/imports-components.webp?enhanced';
@@ -32,7 +32,7 @@
 	import LapinosaureFace from '$lib/@legacy/images/lapinosaure-face.webp?enhanced';
 
 	import '../plugins/lapikit.ts';
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '../components/lazy-repl.svelte';
 	import TypeScriptIcon from '$lib/assets/icons/typescript.svg?raw';
 	import SvelteIcon from '$lib/assets/icons/svelte.svg?raw';
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
@@ -207,13 +207,6 @@
 		}
 	};
 </script>
-
-<svelte:head>
-	<meta
-		name="description"
-		content="Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability."
-	/>
-</svelte:head>
 
 <div class="home kit-theme--dark">
 	<Appbar

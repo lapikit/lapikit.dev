@@ -1,6 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { docsNavigation } from '$lib/constants';
-import { docs, docsByPath, docsBySlug } from '$lib/registry';
+import { docsNavigation, docs, docsByPath, docsBySlug } from '$lib';
 
 export const prerender = true;
 

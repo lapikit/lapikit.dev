@@ -4,7 +4,7 @@ description: "Add an elegant, responsive application bar to your interfaces. Per
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/appbar/preview.svelte';
 	import Variants from '../../../content/examples/components/appbar/variants.svelte';

@@ -30,5 +30,5 @@ vite.config.ts.timestamp-*
 docker-compose.yml
 Dockerfile
 
-# Documentation
+# Markdown
 src/pages.docs.json

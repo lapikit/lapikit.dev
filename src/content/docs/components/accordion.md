@@ -4,7 +4,7 @@ description: "Display expandable content in a seamless interface. The Lapikit ac
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$components/lazy-repl.svelte';
 
 	import Preview from '../../../content/examples/components/accordion/preview.svelte';
 	import Spacer from '../../../content/examples/components/accordion/spacer.svelte';
