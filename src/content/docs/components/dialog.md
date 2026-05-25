@@ -6,10 +6,10 @@ description: "Create modal dialogs with a fluid UX. Integrated focus, size, dens
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/dialog/preview.svelte';
-	import Position from '../../../content/examples/components/dialog/position.svelte';
-	import Size from '../../../content/examples/components/dialog/size.svelte';
-	import Persistent from '../../../content/examples/components/dialog/persistent.svelte';
+	import Preview from '$examples/components/dialog/preview.svelte';
+	import Position from '$examples/components/dialog/position.svelte';
+	import Size from '$examples/components/dialog/size.svelte';
+	import Persistent from '$examples/components/dialog/persistent.svelte';
 </script>
 
 # Dialog component
@@ -18,7 +18,7 @@ The `kit:dialog` component is a modal window based on the native HTML element `<
 
 It can be used to display temporary content above the main interface: messages, forms, confirmations, etc. It is controlled via the prop bindable open, can be customized in position, size, density and style, and adapts easily to all usage contexts.
 
-<LazyRepl title="dialog.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/dialog/preview.svelte?raw')}>
+<LazyRepl title="dialog.svelte" presentation lang="svelte" content={() => import('$examples/components/dialog/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -34,7 +34,7 @@ Controls the vertical alignment of the dialog on the viewport.
 
 - **position**: `'top' | 'center' | 'bottom'` = `'center'`
 
-<LazyRepl title="dialog.svelte" lang="svelte" content={() => import('../../../content/examples/components/dialog/position.svelte?raw')}>
+<LazyRepl title="dialog.svelte" lang="svelte" content={() => import('$examples/components/dialog/position.svelte?raw')}>
 <Position/>
 </LazyRepl>
 
@@ -44,7 +44,7 @@ Controls the max-width of the dialog content panel.
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
-<LazyRepl title="dialog.svelte" lang="svelte" content={() => import('../../../content/examples/components/dialog/size.svelte?raw')}>
+<LazyRepl title="dialog.svelte" lang="svelte" content={() => import('$examples/components/dialog/size.svelte?raw')}>
 <Size/>
 </LazyRepl>
 
@@ -54,7 +54,7 @@ When `persistent` is set, clicking the backdrop or pressing Escape does not clos
 
 - **persistent**: `boolean` = `false`
 
-<LazyRepl title="dialog.svelte" lang="svelte" content={() => import('../../../content/examples/components/dialog/persistent.svelte?raw')}>
+<LazyRepl title="dialog.svelte" lang="svelte" content={() => import('$examples/components/dialog/persistent.svelte?raw')}>
 <Persistent/>
 </LazyRepl>
 

@@ -6,10 +6,10 @@ description: "Display stacked content in a responsive modal window. Manages posi
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/modal/preview.svelte';
-	import Position from '../../../content/examples/components/modal/position.svelte';
-	import Size from '../../../content/examples/components/modal/size.svelte';
-	import Persistent from '../../../content/examples/components/modal/persistent.svelte';
+	import Preview from '$examples/components/modal/preview.svelte';
+	import Position from '$examples/components/modal/position.svelte';
+	import Size from '$examples/components/modal/size.svelte';
+	import Persistent from '$examples/components/modal/persistent.svelte';
 </script>
 
 # Modal component
@@ -18,7 +18,7 @@ The `kit:modal` component displays an overlay panel above the main content. It i
 
 The modal can be centered, fixed at the top or bottom of the screen, and closes in different ways depending on the options activated (outside click, Escape key, etc.). It is a flexible alternative to [`kit:dialog`](/docs/components/dialog) when you need more control over the structure, behavior or styling of the modal content, or when you want to manage the backdrop at the application level.
 
-<LazyRepl title="modal.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/modal/preview.svelte?raw')}>
+<LazyRepl title="modal.svelte" presentation lang="svelte" content={() => import('$examples/components/modal/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -34,7 +34,7 @@ Controls the vertical alignment of the content panel.
 
 - **position**: `'top' | 'center' | 'bottom'` = `'center'`
 
-<LazyRepl title="modal.svelte" lang="svelte" content={() => import('../../../content/examples/components/modal/position.svelte?raw')}>
+<LazyRepl title="modal.svelte" lang="svelte" content={() => import('$examples/components/modal/position.svelte?raw')}>
 <Position/>
 </LazyRepl>
 
@@ -44,7 +44,7 @@ Controls the max-width of the content panel. `'full'` renders as a bottom sheet 
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'` = `'md'`
 
-<LazyRepl title="modal.svelte" lang="svelte" content={() => import('../../../content/examples/components/modal/size.svelte?raw')}>
+<LazyRepl title="modal.svelte" lang="svelte" content={() => import('$examples/components/modal/size.svelte?raw')}>
 <Size/>
 </LazyRepl>
 
@@ -54,7 +54,7 @@ When `persistent` is set, pressing Escape does not close the modal. The user mus
 
 - **persitent**: `boolean` = `false`
 
-<LazyRepl title="modal.svelte" lang="svelte" content={() => import('../../../content/examples/components/modal/persistent.svelte?raw')}>
+<LazyRepl title="modal.svelte" lang="svelte" content={() => import('$examples/components/modal/persistent.svelte?raw')}>
 <Persistent/>
 </LazyRepl>
 

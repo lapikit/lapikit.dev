@@ -6,7 +6,7 @@ description: "Discover the UseAccordion hook from Lapikit: manage expandable sec
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Multiple from '../../../content/examples/components/accordion/multiple.svelte';
+	import Multiple from '$examples/components/accordion/multiple.svelte';
 </script>
 
 # useAccordion
@@ -48,7 +48,7 @@ Pass `accordion.values.includes(index)` to each item's `open` prop, and `accordi
 
 ### Multiple mode
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/multiple.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/multiple.svelte?raw')}>
 <Multiple/>
 </LazyRepl>
 

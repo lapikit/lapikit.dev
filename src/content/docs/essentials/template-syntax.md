@@ -14,21 +14,21 @@ Lapikit comes with a preprocessor that extends Svelte's template syntax with a s
 
 Instead of importing and using components manually, you can use the `<kit:name>` syntax directly in your templates. The preprocessor handles the import automatically at compile time.
 
-<LazyRepl lang="svelte" title="without preprocessor lapikit" content={() => import('../../../content/examples/essentials/use-component-without-preprocessor.svelte?raw')} />
+<LazyRepl lang="svelte" title="without preprocessor lapikit" content={() => import('$examples/essentials/use-component-without-preprocessor.svelte?raw')} />
 
-<LazyRepl lang="svelte" title="with preprocessor lapikit" content={() => import('../../../content/examples/essentials/use-component-with-preprocessor.svelte?raw')} />
+<LazyRepl lang="svelte" title="with preprocessor lapikit" content={() => import('$examples/essentials/use-component-with-preprocessor.svelte?raw')} />
 
 Both are equivalent. The preprocessor transforms `<kit:btn>` into `<KitBtn>` and injects the import into your `<script>` block - or creates one if it doesn't exist.
 
 **Available components** use the `kit:` prefix followed by the component short name:
 
-<LazyRepl lang="svelte" title="+page.svelte" content={() => import('../../../content/examples/essentials/use-components.svelte?raw')} />
+<LazyRepl lang="svelte" title="+page.svelte" content={() => import('$examples/essentials/use-components.svelte?raw')} />
 
 #### Using regular imports alongside `kit:` syntax
 
 You can still import components manually when needed - for example, to alias them, use them conditionally, or work with components outside the `kit:` registry.
 
-<LazyRepl lang="svelte" title="+page.svelte" content={() => import('../../../content/examples/essentials/regular-import-components.svelte?raw')} />
+<LazyRepl lang="svelte" title="+page.svelte" content={() => import('$examples/essentials/regular-import-components.svelte?raw')} />
 
 ---
 

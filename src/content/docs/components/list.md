@@ -6,17 +6,17 @@ description: "Structure your data with a stylized list. Ideal for menus, hierarc
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/list/preview.svelte';
-	import Variants from '../../../content/examples/components/list/variants.svelte';
-	import PrependAppend from '../../../content/examples/components/list/prepend-append.svelte';
-	import Nav from '../../../content/examples/components/list/nav.svelte';
+	import Preview from '$examples/components/list/preview.svelte';
+	import Variants from '$examples/components/list/variants.svelte';
+	import PrependAppend from '$examples/components/list/prepend-append.svelte';
+	import Nav from '$examples/components/list/nav.svelte';
 </script>
 
 # List component
 
 The `kit:list` and `kit:list-item` components render structured vertical lists. Items are interactive automatically when `onclick` is attached or `href` is set.
 
-<LazyRepl title="list.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/list/preview.svelte?raw')}>
+<LazyRepl title="list.svelte" presentation lang="svelte" content={() => import('$examples/components/list/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -34,7 +34,7 @@ Shows visual variants (**filled**, **text**, **outline**) to adapt the overall a
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
-<LazyRepl title="list.svelte" lang="svelte" content={() => import('../../../content/examples/components/list/variants.svelte?raw')}>
+<LazyRepl title="list.svelte" lang="svelte" content={() => import('$examples/components/list/variants.svelte?raw')}>
 <Variants/>
 </LazyRepl>
 
@@ -45,7 +45,7 @@ Shows visual variants (**filled**, **text**, **outline**) to adapt the overall a
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="list.svelte" lang="svelte" content={() => import('../../../content/examples/components/list/prepend-append.svelte?raw')}>
+<LazyRepl title="list.svelte" lang="svelte" content={() => import('$examples/components/list/prepend-append.svelte?raw')}>
 <PrependAppend/>
 </LazyRepl>
 
@@ -55,7 +55,7 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 
 - **nav**: `boolean` = `false`
 
-<LazyRepl title="list.svelte" lang="svelte" content={() => import('../../../content/examples/components/list/nav.svelte?raw')}>
+<LazyRepl title="list.svelte" lang="svelte" content={() => import('$examples/components/list/nav.svelte?raw')}>
 
 <Nav/>
 </LazyRepl>

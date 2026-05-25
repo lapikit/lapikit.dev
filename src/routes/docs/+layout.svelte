@@ -7,9 +7,9 @@
 	import type { ModelDropdownProps } from 'lapikit/labs/components';
 
 	// components
-	import Search from '../../components/search.svelte';
+	import Search from '$components/search.svelte';
 
-	// svg & images
+	// icons & images
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
 

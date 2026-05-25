@@ -6,18 +6,18 @@ description: "Organize and display content in visually coherent blocks. The Lapi
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/card/preview.svelte';
-	import Variants from '../../../content/examples/components/card/variants.svelte';
-	import Density from '../../../content/examples/components/card/density.svelte';
-	import Interactive from '../../../content/examples/components/card/interactive.svelte';
-	import Structure from '../../../content/examples/components/card/structure.svelte';
+	import Preview from '$examples/components/card/preview.svelte';
+	import Variants from '$examples/components/card/variants.svelte';
+	import Density from '$examples/components/card/density.svelte';
+	import Interactive from '$examples/components/card/interactive.svelte';
+	import Structure from '$examples/components/card/structure.svelte';
 </script>
 
 # Card component
 
 The `kit:card` component is a versatile container used to group together information or actions in a user interface. It can be used to display content, images, buttons or links, while offering advanced customization to suit various styles and contexts.
 
-<LazyRepl title="card.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/card/preview.svelte?raw')}>
+<LazyRepl title="card.svelte" presentation lang="svelte" content={() => import('$examples/components/card/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -32,7 +32,7 @@ The `kit:card` component is a versatile container used to group together informa
 | `kit-card__footer-content` | Muted text (date, meta) inside the footer.                     |
 | `kit-card__actions`        | Inline action buttons inside the footer.                       |
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/structure.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/structure.svelte?raw')}>
 <Structure/>
 </LazyRepl>
 
@@ -46,7 +46,7 @@ The `kit:card` component is a versatile container used to group together informa
 - `outline` - transparent background with accent border.
 - `text` - no background or border, accent text color.
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/variants.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/variants.svelte?raw')}>
 <Variants/>
 </LazyRepl>
 
@@ -56,7 +56,7 @@ The `kit:card` component is a versatile container used to group together informa
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/density.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/density.svelte?raw')}>
 <Density/>
 </LazyRepl>
 
@@ -72,7 +72,7 @@ An interactive card lifts on hover and shows a ripple on click. This behaviour i
 
 > When `disabled` is `true` on an `<a>` card, `href` is removed and `tabindex="-1"` is set.
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('../../../content/examples/components/card/interactive.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/interactive.svelte?raw')}>
 <Interactive/>
 </LazyRepl>
 

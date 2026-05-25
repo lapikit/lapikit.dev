@@ -12,7 +12,8 @@ const config = {
 			envPrefix: ''
 		}),
 		alias: {
-			$components: 'src/components'
+			$components: 'src/components',
+			$examples: 'src/content/examples'
 		}
 	},
 	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] })],

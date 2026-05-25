@@ -6,16 +6,16 @@ description: "Visually separate your UI blocks with customizable lines in size, 
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/separator/preview.svelte';
-	import Orientation from '../../../content/examples/components/separator/orientation.svelte';
-	import Inset from '../../../content/examples/components/separator/inset.svelte';
+	import Preview from '$examples/components/separator/preview.svelte';
+	import Orientation from '$examples/components/separator/orientation.svelte';
+	import Inset from '$examples/components/separator/inset.svelte';
 </script>
 
 # Separator component
 
 The `kit:separator` component renders a thin horizontal or vertical dividing line.
 
-<LazyRepl title="separator.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/separator/preview.svelte?raw')}>
+<LazyRepl title="separator.svelte" presentation lang="svelte" content={() => import('$examples/components/separator/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -29,7 +29,7 @@ The `kit:separator` component renders a thin horizontal or vertical dividing lin
 
 Vertical separators are inline-flex and stretch to fill their container's height.
 
-<LazyRepl title="separator.svelte" lang="svelte" content={() => import('../../../content/examples/components/separator/orientation.svelte?raw')}>
+<LazyRepl title="separator.svelte" lang="svelte" content={() => import('$examples/components/separator/orientation.svelte?raw')}>
 <Orientation/>
 </LazyRepl>
 
@@ -39,7 +39,7 @@ Adds a leading margin to indent the separator from the left edge useful inside l
 
 - **inset**: `boolean` = `false`
 
-<LazyRepl title="separator.svelte" lang="svelte" content={() => import('../../../content/examples/components/separator/inset.svelte?raw')}>
+<LazyRepl title="separator.svelte" lang="svelte" content={() => import('$examples/components/separator/inset.svelte?raw')}>
 <Inset/>
 </LazyRepl>
 

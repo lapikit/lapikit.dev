@@ -6,10 +6,10 @@ description: "Provide additional info without cluttering the UI. Display on hove
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/tooltip/preview.svelte';
-	import Location from '../../../content/examples/components/tooltip/location.svelte';
-	import Arrow from '../../../content/examples/components/tooltip/arrow.svelte';
-	import Custom from '../../../content/examples/components/tooltip/custom.svelte';
+	import Preview from '$examples/components/tooltip/preview.svelte';
+	import Location from '$examples/components/tooltip/location.svelte';
+	import Arrow from '$examples/components/tooltip/arrow.svelte';
+	import Custom from '$examples/components/tooltip/custom.svelte';
 </script>
 
 # Tooltip component
@@ -21,7 +21,7 @@ The `kit:tooltip` component can be used to display a tooltip on hover, focus or 
 
 It is particularly useful for enhancing the user experience by explaining icons, specifying actions or providing secondary details.
 
-<LazyRepl title="tooltip.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/tooltip/preview.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" presentation lang="svelte" content={() => import('$examples/components/tooltip/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -35,7 +35,7 @@ The tooltip can be positioned in four directions relative to the trigger element
 
 - **location**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('../../../content/examples/components/tooltip/location.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('$examples/components/tooltip/location.svelte?raw')}>
 <Location/>
 </LazyRepl>
 
@@ -45,7 +45,7 @@ Add `variant="arrow"` to render a directional arrow on the tooltip panel.
 
 - **variant**: `'arrow' | undefined` = `''`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('../../../content/examples/components/tooltip/arrow.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('$examples/components/tooltip/arrow.svelte?raw')}>
 <Arrow/>
 </LazyRepl>
 
@@ -55,7 +55,7 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 - **tooltip**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('../../../content/examples/components/tooltip/custom.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('$examples/components/tooltip/custom.svelte?raw')}>
 <Custom/>
 </LazyRepl>
 

@@ -6,18 +6,18 @@ description: "Display profile images, icons or initials in a variety of formats.
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/avatar/preview.svelte';
-	import Label from '../../../content/examples/components/avatar/label.svelte';
-	import Image from '../../../content/examples/components/avatar/image.svelte';
-	import Size from '../../../content/examples/components/avatar/size.svelte';
-	import Density from '../../../content/examples/components/avatar/density.svelte';
+	import Preview from '$examples/components/avatar/preview.svelte';
+	import Label from '$examples/components/avatar/label.svelte';
+	import Image from '$examples/components/avatar/image.svelte';
+	import Size from '$examples/components/avatar/size.svelte';
+	import Density from '$examples/components/avatar/density.svelte';
 </script>
 
 # Avatar component
 
 The `kit:avatar` component is used to display images, icons or initials representing a person or object. It is often used in user interfaces to identify users, profiles or entities. Thanks to its many customization options, the `kit:avatar` component adapts easily to different styles and contexts.
 
-<LazyRepl title="avatar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/avatar/preview.svelte?raw')}>
+<LazyRepl title="avatar.svelte" presentation lang="svelte" content={() => import('$examples/components/avatar/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -34,7 +34,7 @@ Pass a string to `label` to display initials or short text. The value is trimmed
 
 - **label**: `string | undefined` = `undefined`
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/label.svelte?raw')}>
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('$examples/components/avatar/label.svelte?raw')}>
 <Label/>
 </LazyRepl>
 
@@ -42,7 +42,7 @@ Pass a string to `label` to display initials or short text. The value is trimmed
 
 Without `label`, pass an `<img>` (or any element) as `children`. The image fills the circle via `object-fit: cover`.
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/image.svelte?raw')}>
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('$examples/components/avatar/image.svelte?raw')}>
 <Image/>
 </LazyRepl>
 
@@ -52,7 +52,7 @@ Controls the diameter and font size in label mode.
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/size.svelte?raw')}>
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('$examples/components/avatar/size.svelte?raw')}>
 <Size/>
 </LazyRepl>
 
@@ -62,7 +62,7 @@ Scales the diameter by a multiplier on top of `size`, in label mode only.
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('../../../content/examples/components/avatar/density.svelte?raw')}>
+<LazyRepl title="avatar.svelte" lang="svelte" content={() => import('$examples/components/avatar/density.svelte?raw')}>
 <Density/>
 </LazyRepl>
 

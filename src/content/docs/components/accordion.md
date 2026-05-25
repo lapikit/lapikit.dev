@@ -6,14 +6,14 @@ description: "Display expandable content in a seamless interface. The Lapikit ac
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/accordion/preview.svelte';
-	import Spacer from '../../../content/examples/components/accordion/spacer.svelte';
-	import Basic from '../../../content/examples/components/accordion/basic.svelte';
-	import Multiple from '../../../content/examples/components/accordion/multiple.svelte';
-	import ReadOnly from '../../../content/examples/components/accordion/read-only.svelte';
-	import HideIcon from '../../../content/examples/components/accordion/hide-icon.svelte';
-	import Activator from '../../../content/examples/components/accordion/activator.svelte';
-    import Indicator from '../../../content/examples/components/accordion/indicator.svelte';
+	import Preview from '$examples/components/accordion/preview.svelte';
+	import Spacer from '$examples/components/accordion/spacer.svelte';
+	import Basic from '$examples/components/accordion/basic.svelte';
+	import Multiple from '$examples/components/accordion/multiple.svelte';
+	import ReadOnly from '$examples/components/accordion/read-only.svelte';
+	import HideIcon from '$examples/components/accordion/hide-icon.svelte';
+	import Activator from '$examples/components/accordion/activator.svelte';
+    import Indicator from '$examples/components/accordion/indicator.svelte';
 </script>
 
 # Accordion component
@@ -27,7 +27,7 @@ An `kit:accordion` lets you group content into collapsible sections. It improves
 - Renders accessible trigger buttons with `aria-expanded`
 - Supports single or multiple open items depending on the hook configuration
 
-<LazyRepl title="accordion.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/accordion/preview.svelte?raw')}>
+<LazyRepl title="accordion.svelte" presentation lang="svelte" content={() => import('$examples/components/accordion/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -47,7 +47,7 @@ The `spacer` prop adds a gap between items, useful when items have a `rounded` r
 
 - **spacer**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/spacer.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/spacer.svelte?raw')}>
 <Spacer/>
 </LazyRepl>
 
@@ -57,7 +57,7 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/use-accordion) to allo
 
 - **multiple**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/multiple.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/multiple.svelte?raw')}>
 <Multiple/>
 </LazyRepl>
 
@@ -68,7 +68,7 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/use-accordion) to allo
 - **readOnly**: `boolean` = `false`
 - **disabled**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/read-only.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/read-only.svelte?raw')}>
 <ReadOnly/>
 </LazyRepl>
 
@@ -78,7 +78,7 @@ The `hideIcon` prop on `kit:accordion` hides the chevron indicator on all child 
 
 - **hideIcon**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/hide-icon.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/hide-icon.svelte?raw')}>
 <HideIcon/>
 </LazyRepl>
 
@@ -88,7 +88,7 @@ Use the `activator` snippet to fully customize the trigger content - replaces th
 
 - **activator**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/activator.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/activator.svelte?raw')}>
 <Activator/>
 </LazyRepl>
 
@@ -98,7 +98,7 @@ Use the `indicator` snippet to replace the default chevron with a custom element
 
 - **indicator**: `Snippet<[{ open: boolean }]> | undefined` = `undefined`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('../../../content/examples/components/accordion/indicator.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/indicator.svelte?raw')}>
 <Indicator/>
 </LazyRepl>
 

@@ -6,7 +6,7 @@ title: "environments"
 	import LazyRepl from '$components/lazy-repl.svelte';
 
 	// examples
-	import ComponentWithoutPreprocessor from '../../content/examples/addons/component-without-preprocessor.svelte';
+	import ComponentWithoutPreprocessor from '$examples/addons/component-without-preprocessor.svelte';
 </script>
 
 # Editor Setup
@@ -23,13 +23,13 @@ Install it:
 
 Then add it to your `eslint.config.js`:
 
-<LazyRepl title="eslint.config.js" lang="js" content={() => import('../../content/examples/addons/eslint-config-lapikit.js?raw')} />
+<LazyRepl title="eslint.config.js" lang="js" content={() => import('$examples/addons/eslint-config-lapikit.js?raw')} />
 
 This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-specific snippets such as `activator`, `indicator`, `append`, `prepend`, `close`, `load`, and `tooltip`.
 
 > **Note:** `eslint-config-lapikit` configures the `@typescript-eslint/no-unused-vars` rule. If you already have a custom configuration for this rule, place the lapikit config first so your own rules take precedence:
 
-<LazyRepl title="eslint.config.js" lang="js" content={() => import('../../content/examples/addons/eslint-config-no-unused-vars.js?raw')} />
+<LazyRepl title="eslint.config.js" lang="js" content={() => import('$examples/addons/eslint-config-no-unused-vars.js?raw')} />
 
 ## Known False Positives
 
@@ -45,7 +45,7 @@ Your code is correct and will work as expected - this warning can be safely igno
 
 To suppress it, set `noUnusedLocals` to `false` in your `tsconfig.json`:
 
-<LazyRepl title="tsconfig.json" lang="json" content={() => import('../../content/examples/addons/tsconfig-compiler-options.json?raw')} />
+<LazyRepl title="tsconfig.json" lang="json" content={() => import('$examples/addons/tsconfig-compiler-options.json?raw')} />
 
 > **Note:** This is a limitation of the current Svelte language server. A fix would require native support for custom preprocessors in IDE language servers. This issue has been reported upstream.
 
@@ -57,7 +57,7 @@ For the same reason, IDE autocompletion is not available for `<kit:*>` tags. Ful
 
 If the false positives are a blocker for your workflow, you can use lapikit components directly without the preprocessor. Import them manually from `lapikit/labs/components` and use them like any standard Svelte component:
 
-<LazyRepl lang="svelte" content={() => import('../../content/examples/addons/component-without-preprocessor.svelte?raw')}>
+<LazyRepl lang="svelte" content={() => import('$examples/addons/component-without-preprocessor.svelte?raw')}>
 <ComponentWithoutPreprocessor/>
 </LazyRepl>
 Your IDE will fully understand this syntax and the `ts(6133)` warning will no longer appear.

@@ -6,17 +6,17 @@ description: "Group actions in a compact, coherent space. Ideal for headers, lis
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/toolbar/preview.svelte';
-	import Variants from '../../../content/examples/components/toolbar/variants.svelte';
-	import Density from '../../../content/examples/components/toolbar/density.svelte';
-	import Orientation from '../../../content/examples/components/toolbar/orientation.svelte';
+	import Preview from '$examples/components/toolbar/preview.svelte';
+	import Variants from '$examples/components/toolbar/variants.svelte';
+	import Density from '$examples/components/toolbar/density.svelte';
+	import Orientation from '$examples/components/toolbar/orientation.svelte';
 </script>
 
 # Toolbar component
 
 The `kit:toolbar` component creates a flexible, customizable toolbar, ideal for organizing actions, titles, filters or other navigation content. It is designed to adapt to different contexts thanks to its layout, style and density options.
 
-<LazyRepl title="toolbar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/toolbar/preview.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" presentation lang="svelte" content={() => import('$examples/components/toolbar/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -35,7 +35,7 @@ Demonstrates the use of visual variants: **filled**, **outline**, **text** or **
 
 - **variant**: `'filled' | 'outline' | 'text' | 'dash'` = `'filled'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/variants.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('$examples/components/toolbar/variants.svelte?raw')}>
 <Variants/>
 </LazyRepl>
 
@@ -49,7 +49,7 @@ Shows how to adjust density (`compact`, `comfortable`, `default`) to manage vert
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/density.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('$examples/components/toolbar/density.svelte?raw')}>
 <Density/>
 </LazyRepl>
 
@@ -59,7 +59,7 @@ The toolbar can be displayed horizontally (default) or vertically. This example 
 
 - **orientation**: `'horizontal' | 'vertical'` = `'horizontal'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/toolbar/orientation.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('$examples/components/toolbar/orientation.svelte?raw')}>
 <Orientation/>
 </LazyRepl>
 

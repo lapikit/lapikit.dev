@@ -6,7 +6,7 @@ description: "Learn how the UseTheme hook from Lapikit simplifies theme manageme
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import UseThemeToggle from '../../../content/examples/hooks/useTheme-toggle.svelte';
+	import UseThemeToggle from '$examples/hooks/useTheme-toggle.svelte';
 </script>
 
 # Discover the useTheme action in Lapikit
@@ -15,7 +15,7 @@ The `useTheme` function allows you to dynamically change your application's them
 
 You can use this action by calling `useTheme` with the desired theme name. For example, `useTheme('dark')` will apply the dark theme by adding the corresponding class to the HTML element.
 
-<LazyRepl title="useThemeToggle.svelte" lang="svelte" content={() => import('../../../content/examples/hooks/useTheme-toggle.svelte?raw')}>
+<LazyRepl title="useThemeToggle.svelte" lang="svelte" content={() => import('$examples/hooks/useTheme-toggle.svelte?raw')}>
 <UseThemeToggle/>
 </LazyRepl>
 

@@ -12,7 +12,7 @@ keywords:
 	import LazyRepl from '$components/lazy-repl.svelte';
 
   // examples
-  import IntroductionLapikit from '../../content/examples/started/introduction-lapikit.svelte';
+  import IntroductionLapikit from '$examples/started/introduction-lapikit.svelte';
 </script>
 
 # More about Lapikit Svelte Library
@@ -29,7 +29,7 @@ If you're asking yourself why? Because it combines two opposite ideas: the calm 
 
 Want to learn more? Here's a quick example of how to use Lapikit
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('../../content/examples/started/introduction-lapikit.svelte?raw')}>
+<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/introduction-lapikit.svelte?raw')}>
 </LazyRepl>
 
 **Result**
@@ -63,12 +63,12 @@ Svelte natively offers `class_name={condition}` and `style_property={value}` dir
 
 - **`s-class`** - conditionally apply classes, just like `class:name={condition}`:
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('../../content/examples/started/s-class-preprocessor.svelte?raw')}>
+<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/s-class-preprocessor.svelte?raw')}>
 </LazyRepl>
 
 - **`s-style`** - conditionally apply inline styles, just like `style:property={value}`:
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('../../content/examples/started/s-style-preprocessor.svelte?raw')}>
+<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/s-style-preprocessor.svelte?raw')}>
 </LazyRepl>
 
 Both props also accept a plain `string` or `string[]` when no conditions are needed.

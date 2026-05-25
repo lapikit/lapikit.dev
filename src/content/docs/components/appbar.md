@@ -6,17 +6,17 @@ description: "Add an elegant, responsive application bar to your interfaces. Per
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/appbar/preview.svelte';
-	import Variants from '../../../content/examples/components/appbar/variants.svelte';
-	import Density from '../../../content/examples/components/appbar/density.svelte';
-	import ClassContent from '../../../content/examples/components/appbar/class-content.svelte';
+	import Preview from '$examples/components/appbar/preview.svelte';
+	import Variants from '$examples/components/appbar/variants.svelte';
+	import Density from '$examples/components/appbar/density.svelte';
+	import ClassContent from '$examples/components/appbar/class-content.svelte';
 </script>
 
 # Appbar component
 
 The `kit:appbar` is an essential component for structuring an application's header. It provides a dedicated space for displaying elements such as titles, icons, buttons or menus. Thanks to its many customization options, the `kit:appbar` integrates perfectly into a variety of designs, from minimalist to complex.
 
-<LazyRepl title="appbar.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/appbar/preview.svelte?raw')}>
+<LazyRepl title="appbar.svelte" presentation lang="svelte" content={() => import('$examples/components/appbar/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -30,7 +30,7 @@ The `variant` prop controls the background and border style.
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/appbar/variants.svelte?raw')}>
+<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('$examples/components/appbar/variants.svelte?raw')}>
 <Variants/>
 </LazyRepl>
 
@@ -40,7 +40,7 @@ The `variant` prop controls the background and border style.
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/appbar/density.svelte?raw')}>
+<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('$examples/components/appbar/density.svelte?raw')}>
 <Density/>
 </LazyRepl>
 
@@ -50,7 +50,7 @@ The `variant` prop controls the background and border style.
 
 - **classContent**: `string | string[]` = `''`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('../../../content/examples/components/appbar/class-content.svelte?raw')}>
+<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('$examples/components/appbar/class-content.svelte?raw')}>
 <ClassContent/>
 </LazyRepl>
 

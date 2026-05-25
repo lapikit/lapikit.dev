@@ -6,17 +6,17 @@ description: "Insert icons easily with Lapikit. Manage sizes, colors, states and
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/icon/preview.svelte';
-	import Size from '../../../content/examples/components/icon/size.svelte';
-	import Color from '../../../content/examples/components/icon/color.svelte';
-	import Src from '../../../content/examples/components/icon/src.svelte';
+	import Preview from '$examples/components/icon/preview.svelte';
+	import Size from '$examples/components/icon/size.svelte';
+	import Color from '$examples/components/icon/color.svelte';
+	import Src from '$examples/components/icon/src.svelte';
 </script>
 
 # Icon component
 
 The `kit:icon` component is a sizing and accessibility wrapper for icons. It supports three rendering modes: SVG component via `children`, image via `src`, or CSS icon font via `name`.
 
-<LazyRepl title="icon.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/icon/preview.svelte?raw')}>
+<LazyRepl title="icon.svelte" presentation lang="svelte" content={() => import('$examples/components/icon/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -32,7 +32,7 @@ When no `size` is set, the icon inherits the font-size of its parent useful insi
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `inherits`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={() => import('../../../content/examples/components/icon/size.svelte?raw')}>
+<LazyRepl title="icon.svelte" lang="svelte" content={() => import('$examples/components/icon/size.svelte?raw')}>
 <Size/>
 </LazyRepl>
 
@@ -42,7 +42,7 @@ Pass a CSS color value to `color`. It sets both `color` and `--kit-icon-color` s
 
 - **color**: `string` = `''`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={() => import('../../../content/examples/components/icon/color.svelte?raw')}>
+<LazyRepl title="icon.svelte" lang="svelte" content={() => import('$examples/components/icon/color.svelte?raw')}>
 <Color/>
 </LazyRepl>
 
@@ -54,7 +54,7 @@ Pass an image URL to `src`. For SVG sources, `colorMode="mask"` applies `current
 - **colorMode**: `'auto' | 'mask' | 'filter' | 'none'` = `'auto'`
 - **imgFilter**: `string` = `''`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={() => import('../../../content/examples/components/icon/src.svelte?raw')}>
+<LazyRepl title="icon.svelte" lang="svelte" content={() => import('$examples/components/icon/src.svelte?raw')}>
 <Src/>
 </LazyRepl>
 

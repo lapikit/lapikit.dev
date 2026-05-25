@@ -12,7 +12,7 @@ keywords:
 	import LazyRepl from '$components/lazy-repl.svelte';
 
   // examples
-  import SStyleComponent from '../../content/examples/started/s-style-component.svelte';
+  import SStyleComponent from '$examples/started/s-style-component.svelte';
 </script>
 
 ## Customize
@@ -25,11 +25,11 @@ Lapikit is built entirely on CSS custom properties. Every visual aspect of every
 
 Lapikit ships with a light theme applied at `:root`. These are all the variables you can override:
 
-<LazyRepl lang="css" content={() => import('../../content/examples/started/initial-style.css?raw')} />
+<LazyRepl lang="css" content={() => import('$examples/started/initial-style.css?raw')} />
 
 To apply your own values, override any of these in your global stylesheet - no build step needed.
 
-<LazyRepl title="layout.css" lang="css" content={() => import('../../content/examples/started/override-style.css?raw')} />
+<LazyRepl title="layout.css" lang="css" content={() => import('$examples/started/override-style.css?raw')} />
 
 ---
 
@@ -37,7 +37,7 @@ To apply your own values, override any of these in your global stylesheet - no b
 
 To support a dark theme, override the relevant variables inside a `[data-theme="dark"]` selector or `@media (prefers-color-scheme: dark)`, depending on how you manage themes in your project.
 
-<LazyRepl title="layout.css" lang="css" content={() => import('../../content/examples/started/dark-mode.css?raw')} />
+<LazyRepl title="layout.css" lang="css" content={() => import('$examples/started/dark-mode.css?raw')} />
 
 ---
 
@@ -47,13 +47,13 @@ Each Lapikit component also exposes its own set of variables, prefixed with the 
 
 To override them globally, scope the variables to the component's root class:
 
-<LazyRepl title="layout.css" lang="css" content={() => import('../../content/examples/started/override-style-component.css?raw')} />
+<LazyRepl title="layout.css" lang="css" content={() => import('$examples/started/override-style-component.css?raw')} />
 
 This will apply to every instance of `<kit:btn>` across your app.
 
 For per-instance customization, use the `s-style` prop instead:
 
-<LazyRepl title="btn" lang="css" content={() => import('../../content/examples/started/s-style-component.svelte?raw')}>
+<LazyRepl title="btn" lang="css" content={() => import('$examples/started/s-style-component.svelte?raw')}>
 <SStyleComponent/>
 </LazyRepl>
 

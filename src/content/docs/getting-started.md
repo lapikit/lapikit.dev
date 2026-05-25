@@ -46,13 +46,13 @@ Configure the preprocessor manually in 3 steps:
 
 2. Update your `svelte.config.js` to include the Lapikit preprocessor:
 
-<LazyRepl lang="js" title="svelte.config.js" content={() => import('../../content/examples/started/svelte-config-js.js?raw')} />
+<LazyRepl lang="js" title="svelte.config.js" content={() => import('$examples/started/svelte-config-js.js?raw')} />
 
 3. Restart your development server to apply the changes.
 
 You can now start using Lapikit components in your Svelte project. For example:
 
-<LazyRepl lang="svelte" title="+layout.svelte" content={() => import('../../content/examples/started/start-your-project-with-lapikit.svelte?raw')} />
+<LazyRepl lang="svelte" title="+layout.svelte" content={() => import('$examples/started/start-your-project-with-lapikit.svelte?raw')} />
 
 ## Explore the Lapikit documentation
 

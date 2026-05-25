@@ -33,13 +33,13 @@ If you're using SvelteKit, you can rely on the layout system. Each main layout c
 
 To get started or continue your project with Lapikit, define the entry point where Lapikit components will be used. The most common approach is to initialize them directly in your project's root `+layout.svelte` file.
 
-<LazyRepl lang="svelte" content={() => import('../../../content/examples/components/application/root.svelte?raw')} />
+<LazyRepl lang="svelte" content={() => import('$examples/components/application/root.svelte?raw')} />
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, you can import it the usual way with:
 
-<LazyRepl lang="svelte" content={() => import('../../../content/examples/components/application/with-classic-import.svelte?raw')} />
+<LazyRepl lang="svelte" content={() => import('$examples/components/application/with-classic-import.svelte?raw')} />
 
 ## API References
 

@@ -6,9 +6,9 @@ description: "Flexible drop-down menu for actions or selections. Manages focus, 
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 
-	import Preview from '../../../content/examples/components/dropdown/preview.svelte';
-	import Position from '../../../content/examples/components/dropdown/position.svelte';
-	import Hover from '../../../content/examples/components/dropdown/hover.svelte';
+	import Preview from '$examples/components/dropdown/preview.svelte';
+	import Position from '$examples/components/dropdown/position.svelte';
+	import Hover from '$examples/components/dropdown/hover.svelte';
 </script>
 
 # Dropdown component
@@ -17,7 +17,7 @@ The `kit:dropdown` component displays a menu or contextual content when opened, 
 
 It's designed to offer great flexibility: configurable positioning, customizable appearance, and a customizable activator for total trigger control.
 
-<LazyRepl title="dropdown.svelte" presentation lang="svelte" content={() => import('../../../content/examples/components/dropdown/preview.svelte?raw')}>
+<LazyRepl title="dropdown.svelte" presentation lang="svelte" content={() => import('$examples/components/dropdown/preview.svelte?raw')}>
 <Preview/>
 </LazyRepl>
 
@@ -42,7 +42,7 @@ The `position` prop sets the preferred position of the dropdown panel relative t
 
 - **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('../../../content/examples/components/dropdown/position.svelte?raw')}>
+<LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('$examples/components/dropdown/position.svelte?raw')}>
 <Position/>
 </LazyRepl>
 
@@ -52,7 +52,7 @@ When `openOnHover` is set, wire `handleMouse` to `onmouseenter` and `onmouseleav
 
 - **openOnHover**: `boolean` = `false`
 
-<LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('../../../content/examples/components/dropdown/hover.svelte?raw')}>
+<LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('$examples/components/dropdown/hover.svelte?raw')}>
 <Hover/>
 </LazyRepl>
 
