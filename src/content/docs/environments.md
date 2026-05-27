@@ -73,4 +73,4 @@ Since some features rely on the Lapikit preprocessor and a custom template synta
 
 The purpose of this page is to help you properly configure your environment, understand your editor’s expected behavior, and maintain a manageable workflow while using Lapikit components, stores, hooks, and template helpers.
 
-For the best experience, check out the pages on [installation](docs/getting-started), [template syntax](docs/template-syntax), and [component documentation](docs/components).
+For the best experience, check out the pages on [installation](/docs/getting-started), [template syntax](/docs/template-syntax), and [component documentation](/docs/components).

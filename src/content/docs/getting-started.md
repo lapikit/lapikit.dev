@@ -54,7 +54,7 @@ Configure the preprocessor manually in 3 steps:
 
 <LazyRepl lang="js" title="svelte.config.js" content={() => import('$examples/started/svelte-config-js.js?raw')} />
 
-If you're using packages like TypeScript and eSLint in your project, we recommend checking out the [page on configuring environments](docs/environments) with Lapikit.
+If you're using packages like TypeScript and eSLint in your project, we recommend checking out the [page on configuring environments](/docs/environments) with Lapikit.
 
 3. Restart your development server to apply the changes.
 
@@ -84,4 +84,4 @@ Components are designed to stay close to native HTML behavior while providing ad
 
 A helpful starting point is the documentation for the `kit:app` component, which describes the main wrapper component used to initialize the app's styles, themes, and overall behavior.
 
-Refer to the [`kit:app`](components/application) component documentation to learn more about how to use it and the features.
+Refer to the [`kit:app`](/docs/components/application) component documentation to learn more about how to use it and the features.
