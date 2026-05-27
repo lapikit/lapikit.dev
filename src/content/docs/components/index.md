@@ -1,7 +1,7 @@
 ---
-title: "Components"
-description: "Find out more about Lapikit's Svelte components."
-layout: "section"
+title: 'Components'
+description: 'Find out more about Lapikit Svelte components.'
+layout: 'section'
 ---
 
 <script>
@@ -10,13 +10,13 @@ layout: "section"
 
 # Discover the Lapikit components
 
-Components are the core of Lapikit. Without them, the library wouldn’t exist. Each component isa reusable block of code that manages a complete UI element, fully aligned with the design system defined by Lapikit.
+Components are at the heart of Lapikit. Without them, the library won’t exist. Each component is a reusable block of code that handles an entire user interface element, in perfect alignment with the design system defined by Lapikit.
 
 <ListComponents/>
 
 Every component receives props (parameters) that allow you to customize its appearance and behavior.
 
-A concrete example: the Button component. It displays an interactive button that can receive text, an icon, a link, or combinations of these. It automatically inherits Lapikit’s styles while remaining fully customizable (size, color, variant, states, and more).
+A concrete example: the Button component. It displays an interactive button that can receive text, an icon, a link, or combinations of these. It automatically inherits Lapikit styles while remaining fully customizable (size, color, variant, states, and more).
 
 Components can also be nested. For instance, a Card can contain a Button, images, text, or any other components. This nesting respects the Lapikit global configuration, ensuring visual consistency and accessibility across your app.
 

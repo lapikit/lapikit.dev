@@ -1,22 +1,20 @@
 ---
-title: "Migration Guide"
-description: "Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit"
+title: 'Migration Guide'
+description: 'Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit'
 keywords:
-  - "migration"
-  - "upgrade"
-  - "changelog"
-  - "breaking changes"
+  - 'migration'
+  - 'upgrade'
+  - 'changelog'
+  - 'breaking changes'
 ---
 
-## Migration Guide
+# Migration Guide
 
 Learn how to migrate from older Lapikit versions to the latest release.
 
----
+## Guide to migrating from version from 0.2.x to 0.5
 
-## From 0.2.x to 0.5
-
-Lapikit v0.5 introduces several breaking changes that affect the preprocessor, component syntax, and how styles are loaded. This guide walks through each change and how to update your setup.
+Version **0.5** of Lapikit introduces several significant changes related to the preprocessor, component syntax, and styles are loaded. This guide outlines each of these changes and provides detailed instructions for updating your configuration.
 
 ### Preprocessor - from Vite to Svelte
 
@@ -55,9 +53,7 @@ export default config;
 
 Remove any Lapikit-related entries from your `vite.config.js`. After updating, restart your dev server.
 
----
-
-### Component syntax - `<kit:*>`
+### Component syntax with `<kit:*>`
 
 Components are no longer imported manually. Lapikit v0.5 introduces the `<kit:*>` template syntax, powered by the Svelte preprocessor. Imports are injected automatically at compile time.
 
@@ -94,8 +90,6 @@ Here is a more complete example:
 </kit:app>
 ```
 
----
-
 ### Scoped style imports
 
 Component styles are now loaded in a **scoped** manner. Each component only loads the styles it actually uses, rather than injecting a global stylesheet at startup.
@@ -114,8 +108,6 @@ import 'lapikit/styles';
 No global import is needed. Styles are handled automatically per component when you use the `<kit:*>` syntax with the preprocessor in place.
 
 If you were customizing component styles via global overrides, you will need to migrate those to CSS custom properties (see the theming section below) or use the `s-class` / `s-style` props for per-instance customization.
-
----
 
 ### Breakpoints and theming - from JS config to CSS variables
 
@@ -153,9 +145,7 @@ Breakpoint logic should be handled with standard CSS media queries or any respon
 
 For the full list of available variables and how to customize them, see the [Customize](/docs/customize) page.
 
----
-
-### Migration steps summary (0.2.x → 0.5)
+### Migration steps summary from 0.2.x to 0.5
 
 1. Remove the Lapikit Vite plugin from `vite.config.js`.
 2. Add `lapikitPreprocess()` to `svelte.config.js`.
@@ -177,9 +167,7 @@ For the full list of available variables and how to customize them, see the [Cus
 | Breakpoints        | Built into `createLapikit()`   | Removed - handle with CSS media queries     |
 | JS config file     | `src/plugins/lapikit.(js\|ts)` | No longer needed - delete it                |
 
----
-
-## From 0.2.3 to 0.2.4
+## And guide to migrating from version from 0.2.3 to 0.2.4
 
 Lapikit v0.2.4 introduced major changes to configuration, theming, and the CLI.
 
@@ -277,7 +265,7 @@ The theme system became more modular: each theme is independent and can override
 
 `d` = display, `h` = hide.
 
-### Migration steps summary (0.2.3 → 0.2.4)
+### Migration steps summary from 0.2.3 to 0.2.4
 
 1. Replace `npx lapikit init` with `npx lapikit`.
 2. Move your config to `src/plugins/lapikit.(js|ts)`.
