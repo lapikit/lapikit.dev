@@ -22,6 +22,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            set -euo pipefail
             cd ~/${{ secrets.PATH_CANARY }}
             git pull origin next
             docker compose build
