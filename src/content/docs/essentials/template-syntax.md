@@ -1,5 +1,5 @@
 ---
-title: 'Template Syntax'
+title: "Template Syntax"
 ---
 
 <script>

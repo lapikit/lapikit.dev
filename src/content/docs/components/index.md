@@ -1,7 +1,7 @@
 ---
-title: 'Components'
-description: 'Find out more about Lapikit Svelte components.'
-layout: 'section'
+title: "Components"
+description: "Find out more about Lapikit Svelte components."
+layout: "section"
 ---
 
 <script>
