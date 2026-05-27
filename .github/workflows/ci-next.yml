@@ -8,13 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: deploy on production environment
-        uses: appleboy/ssh-action@v1.2.2
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -24,4 +25,4 @@ jobs:
             cd ~/${{ secrets.PATH_CANARY }}
             git pull origin next
             docker compose build
-            docker compose up -d
+            docker compose up -d --remove-orphans
