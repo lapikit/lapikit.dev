@@ -9,16 +9,20 @@ on:
       - develop
 
 jobs:
+  build:
+    uses: ./.github/workflows/integrations-test.yml
+
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs: build
+    if: github.event_name == 'push'
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
       - name: deploy on production environment
-        if: github.event_name == 'push'
         uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.VPS_HOST }}
