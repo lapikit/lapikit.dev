@@ -3,12 +3,12 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 	testDir: './tests',
 	webServer: {
-		command: 'bun run preview',
-		port: 4173,
+		command: 'node build',
+		port: 3000,
 		reuseExistingServer: !process.env.CI,
 	},
 	use: {
-		baseURL: 'http://localhost:4173',
+		baseURL: 'http://localhost:3000',
 	},
 	projects: [
 		{
