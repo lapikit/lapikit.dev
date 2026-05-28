@@ -1,0 +1,34 @@
+name: CI/CD Insider
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: deploy on production environment
+        if: github.event_name == 'push'
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            set -euo pipefail
+            cd ~/${{ secrets.PATH_INSIDER }}
+            git fetch origin
+            git reset --hard origin/develop
+            docker compose build
+            docker compose up -d --remove-orphans
