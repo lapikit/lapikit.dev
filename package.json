@@ -1,35 +1,55 @@
 {
-  "name": "lapikit-monorepo",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "cd ./apps/website && npm run dev",
-    "build": "npm run build:packages && npm run build:website",
-    "build:website": "cd ./apps/website && npm run build",
-    "build:packages": "node scripts/build.js",
-    "build:packages:site-kit": "cd ./packages/site-kit && npm run build",
-    "build:types": "tsc --build --force",
-    "clean:types": "tsc --build --clean",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "sync": "node scripts/clone.js",
-    "initialize": "cd ./apps/website && npm run initialize"
-  },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
-  "devDependencies": {
-    "@eslint/compat": "^2.0.0",
-    "@eslint/js": "^9.39.1",
-    "@types/bun": "latest",
-    "eslint": "^9.39.1",
-    "eslint-config-prettier": "^10.1.8",
-    "globals": "^16.5.0",
-    "typescript-eslint": "^8.47.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+	"name": "lapikit.dev",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "bun run sync-docs && vite dev",
+		"build": "bun run sync-docs && vite build",
+		"build-srv": "bun run sync-docs && bun run sync-changelog && bun run sync-robots && vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"sync-docs": "node --experimental-strip-types scripts/sync-docs/index.ts",
+		"sync-changelog": "node --experimental-strip-types scripts/sync-changelog/index.ts",
+		"sync-robots": "node --experimental-strip-types scripts/sync-robots/index.ts",
+		"check": "bun run sync-docs && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@eslint/compat": "^2.0.2",
+		"@eslint/js": "^9.39.2",
+		"@lapikit/repl": "^0.0.0-insiders.fbbe434",
+		"@sveltejs/adapter-node": "^5.5.2",
+		"@sveltejs/enhanced-img": "^0.10.4",
+		"@sveltejs/kit": "^2.50.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@tailwindcss/forms": "^0.5.11",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.1.18",
+		"@types/node": "^25.5.0",
+		"eslint": "^9.39.2",
+		"eslint-config-lapikit": "^0.0.2",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.14.0",
+		"globals": "^17.3.0",
+		"lapikit": "^0.0.0-insiders.3744ba8",
+		"mdsvex": "^0.12.7",
+		"prettier": "^3.8.1",
+		"prettier-plugin-svelte": "^3.4.1",
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"svelte": "^5.51.0",
+		"svelte-check": "^4.4.2",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.54.0",
+		"vite": "^7.3.1",
+		"vite-plugin-devtools-json": "^1.0.0"
+	},
+	"dependencies": {
+		"@fontsource-variable/jetbrains-mono": "^5.2.8",
+		"@fontsource-variable/outfit": "^5.2.8",
+		"lucide-svelte": "^1.0.1"
+	}
 }
