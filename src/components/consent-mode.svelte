@@ -133,7 +133,7 @@
 	}
 </script>
 
-{#if provider}
+{#if provider && consentState.open}
 	<kit:dialog bind:open={consentState.open} persistent size="sm">
 		{#if consentState.view === 'summary'}
 			<kit:toolbar>
@@ -144,7 +144,7 @@
 				</kit:btn>
 			</kit:toolbar>
 
-			<h2 class="text-xl font-bold">Choose what Lapikit can store on your device.</h2>
+			<p class="text-xl font-bold">Choose what Lapikit can store on your device.</p>
 			<p class="my-4">
 				Lapikit and our partners use cookies or similar technologies to enable us to improve the
 				site, your experience and to ensure the proper functioning of the site, to collect
@@ -152,7 +152,8 @@
 				change it later from the the cookie settings button.
 			</p>
 			<kit:toolbar classContent="justify-end!">
-				<kit:btn variant="text" onclick={() => (consentState.view = 'customize')}>Customize</kit:btn>
+				<kit:btn variant="text" onclick={() => (consentState.view = 'customize')}>Customize</kit:btn
+				>
 				<kit:btn onclick={() => void applyConsent('accept', true)}>Accept all</kit:btn>
 			</kit:toolbar>
 		{:else}

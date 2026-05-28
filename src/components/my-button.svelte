@@ -1,5 +1,6 @@
 <script lang="ts">
-	// Only use for demonstration documentation
+	// Only use for demonstration documentation*
+	let { children } = $props();
 </script>
 
-<button>Button</button>
+<button>{@render children()}</button>
