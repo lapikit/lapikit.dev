@@ -3,6 +3,7 @@ name: Integrations test
 on:
   push:
     branches-ignore:
+      - develop
       - next
 
 env:
