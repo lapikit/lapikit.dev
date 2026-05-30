@@ -46,6 +46,7 @@
 	import LapikitLogo from '$lib/assets/images/lapikit.webp?enhanced';
 	import { openConsentPreferences } from '$lib/stores/consent.svelte';
 	import { npmState } from '$lib/stores/npm.svelte';
+	import { resolve } from '$app/paths';
 
 	// states
 	let stepCode: number = $state(0);
@@ -217,7 +218,7 @@
 	>
 		<div class="flex items-center justify-start gap-2">
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-			<a href="/">
+			<a href={resolve('/')} style="color: var(--fg-primary-legacy)">
 				<div class="flex items-center gap-2">
 					<enhanced:img src={LapikitLogo} alt="Lapikit logo" class="no-select w-9.5 min-w-9.5" />
 					<p class="text-2xl font-bold">Lapikit</p>
@@ -225,7 +226,11 @@
 			</a>
 
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
+			<a
+				href={resolve('/docs/changelog')}
+				class="text-xs opacity-70 hover:opacity-100"
+				style="color: var(--fg-primary-legacy)"
+			>
 				{npmState.version || 'v0.0.0'}
 			</a>
 		</div>

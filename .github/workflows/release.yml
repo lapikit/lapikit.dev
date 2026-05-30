@@ -1,21 +1,14 @@
-name: CI/CD Current
+name: CI/CD Release lapikit
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-jobs:
-  build:
-    uses: ./.github/workflows/integrations-test.yml
+  repository_dispatch:
+    types: [lapikit-updated]
 
+jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: build
-    if: github.event_name == 'push'
 
     steps:
       - name: Checkout repository
