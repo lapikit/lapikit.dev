@@ -3,7 +3,7 @@
 	import BackgroundStar from '$lib/@legacy/background-star.svelte';
 	import LapinosaureExpertLapikit from '$lib/@legacy/images/lapinosaure-expert-lapikit.webp?enhanced';
 	import StarMedium from '$lib/@legacy/images/star-medium.webp?enhanced';
-	import { Appbar, Button, Card, Chip, Icon, Separator, Toolbar } from 'lapikit/components';
+
 	import {
 		ArrowRight,
 		Box,
@@ -13,6 +13,7 @@
 		Copy,
 		GraduationCap,
 		Images,
+		MessageSquareText,
 		Package,
 		PencilRuler,
 		Quote,
@@ -31,7 +32,7 @@
 	import LapikitLikeYou from '$lib/@legacy/images/lapinosaure-like-you.webp?enhanced';
 	import LapinosaureFace from '$lib/@legacy/images/lapinosaure-face.webp?enhanced';
 
-	import '../plugins/lapikit.ts';
+	// import '../plugins/lapikit.ts';
 	import LazyRepl from '../components/lazy-repl.svelte';
 	import TypeScriptIcon from '$lib/assets/icons/typescript.svg?raw';
 	import SvelteIcon from '$lib/assets/icons/svelte.svg?raw';
@@ -209,20 +210,16 @@
 </script>
 
 <div class="home kit-theme--dark">
-	<Appbar
-		class="sticky top-0 z-100"
+	<kit:appbar
+		class="sticky! top-0 z-100"
 		classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"
-		background={scrolled ? 'background-primary' : 'transparent'}
+		s-style_background={scrolled ? 'var(--bg-primary-legacy)' : 'transparent'}
 	>
 		<div class="flex items-center justify-start gap-2">
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href="/">
 				<div class="flex items-center gap-2">
-					<enhanced:img
-						src={LapikitLogo}
-						alt="Lapikit logo"
-						class="no-select w-[38px] min-w-[38px]"
-					/>
+					<enhanced:img src={LapikitLogo} alt="Lapikit logo" class="no-select w-9.5 min-w-9.5" />
 					<p class="text-2xl font-bold">Lapikit</p>
 				</div>
 			</a>
@@ -234,67 +231,84 @@
 		</div>
 
 		<div class="flex items-center justify-end gap-2">
-			<Button href="/docs" background="accent-primary">
-				<GraduationCap />
-				<span class="hidden! md:inline-block!">Documentation</span>
-			</Button>
-
-			<Button href="https://github.com/lapikit" target="_blank" aria-label="GitHub Lapikit">
+			<kit:btn href="/docs" s-style_background="var(--primary-legacy)">
 				{#snippet prepend()}
-					<Icon>
+					<kit:icon>
+						<GraduationCap />
+					</kit:icon>
+				{/snippet}
+
+				<span class="hidden! md:inline-block!">Documentation</span>
+			</kit:btn>
+
+			<kit:btn
+				href="https://github.com/lapikit"
+				target="_blank"
+				aria-label="GitHub Lapikit"
+				s-style_background="var(--secondary-legacy)"
+			>
+				{#snippet prepend()}
+					<kit:icon>
 						{@html githubIcon}
-					</Icon>
+					</kit:icon>
 				{/snippet}
 
 				<span class="hidden! md:inline-block!">GitHub</span>
-			</Button>
+			</kit:btn>
 		</div>
-	</Appbar>
+	</kit:appbar>
 
 	<section id="hero" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div class="flex h-[calc(100vh-72px-30px)] flex-col md:h-[calc(100vh-100px-72px)]">
 			<BackgroundStar />
 
 			<div
-				class="relative z-1 mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 text-center sm:gap-16 lg:grid lg:px-8"
+				class="relative z-1 mx-auto my-auto flex w-full max-w-360 flex-col justify-center gap-8 px-4 text-center sm:gap-16 lg:grid lg:px-8"
 			>
-				<div class="absolute top-0 mx-auto w-full max-w-[85rem] max-lg:hidden">
+				<div class="absolute top-0 mx-auto w-full max-w-340 max-lg:hidden">
 					<LapinosaureOnSpace />
 				</div>
 
-				<div class="absolute right-0 mt-[130px] mr-20 h-fit w-[115px] max-lg:hidden">
+				<div class="absolute right-0 mt-32.5 mr-20 h-fit w-28.75 max-lg:hidden">
 					<enhanced:img
 						class="absolute -rotate-15"
 						src={LapinosaureExpertLapikit}
 						alt="lapinosaure expert lapikit"
 					/>
 					<enhanced:img
-						class="animate-star-yolo no-select absolute top-[80px] -right-[15px] w-[40px] -rotate-30"
+						class="animate-star-yolo no-select absolute top-20 -right-3.75 w-10 -rotate-30"
 						src={StarMedium}
 						alt="star medium"
 					/>
 				</div>
 
 				<div>
-					<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
+					<kit:chip
+						href="/docs/changelog"
+						variant="outline"
+						density="comfortable"
+						style="--kit-chip-fg: var(--fg-primary-legacy); --outline-color: var(--fg-primary-legacy);"
+						size="lg"
+						class="px-1!"
+					>
 						{#snippet prepend()}
-							<Chip
-								density="compact"
-								color="white"
-								style="background-color: var(--kit-accent-success) !important;"
-								><span class="px-2">New 🎉</span></Chip
-							>
+							<kit:chip density="compact" style="--kit-chip-bg: oklch(75.555% 0.2082 146.98);">
+								<span>New 🎉</span>
+							</kit:chip>
 						{/snippet}
+
 						Lapikit v0.5 is up!
 						{#snippet append()}
-							<ChevronRight />
+							<kit:icon>
+								<ChevronRight />
+							</kit:icon>
 						{/snippet}
-					</Chip>
+					</kit:chip>
 				</div>
 
 				<div class="grid gap-4">
 					<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
-						Simple, optimized components for <span style="color: var(--kit-service-svelte);">
+						Simple, optimized components for <span style="color: var(--service-svelte-legacy);">
 							Svelte
 						</span>
 					</h1>
@@ -308,32 +322,32 @@
 
 				<div>
 					<div class="flex justify-center gap-3 sm:gap-6">
-						<Button
+						<kit:btn
 							href="/docs/getting-started"
 							background="accent-primary"
 							color="white"
-							size={{ base: 'md', md: 'lg' }}
-							rounded="full"
+							rounded="xl"
+							size="lg"
 						>
 							Get Started
-						</Button>
-						<Button
+						</kit:btn>
+						<kit:btn
 							href="/docs/components"
 							variant="outline"
 							color="accent-primary"
-							size={{ base: 'md', md: 'lg' }}
-							rounded="full"
+							rounded="xl"
+							size="lg"
 						>
 							Browse Components
-						</Button>
+						</kit:btn>
 					</div>
-					<Button
+					<kit:btn
 						id="install-lapikit-command-line"
 						class="mt-2 px-2!"
 						variant="text"
 						density="compact"
-						size={{ base: 'sm', md: 'md' }}
 						onclick={() => copyToClipboard('npm install -D lapikit')}
+						s-style_--kit-btn-fg="var(--fg-primary-legacy)"
 					>
 						{#snippet prepend()}
 							<span>~ </span>
@@ -342,7 +356,7 @@
 						{#snippet append()}
 							<Copy />
 						{/snippet}
-					</Button>
+					</kit:btn>
 				</div>
 			</div>
 
@@ -356,7 +370,7 @@
 		class="relative z-1"
 	>
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-32 md:py-40 lg:grid lg:px-8 lg:py-42"
+			class="mx-auto flex w-full max-w-360 flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-32 md:py-40 lg:grid lg:px-8 lg:py-42"
 		>
 			<div>
 				<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Build faster, write cleaner code</h2>
@@ -378,60 +392,45 @@
 						<p class="mt-6">With Lapikit, you write less but build more:</p>
 						<ul class="mt-6!">
 							<li class="mb-2 flex gap-2">
-								<CircleCheck color="#30d158" /> Your code will be cleaner, with simpler and more legible
-								syntax
+								<kit:icon>
+									<CircleCheck color="#30d158" />
+								</kit:icon>
+								Your code will be cleaner, with simpler and more legible syntax
 							</li>
 							<li class="mb-2 flex gap-2">
-								<CircleCheck color="#30d158" /> Faster, thanks to reuse components and uniform styling
+								<kit:icon>
+									<CircleCheck color="#30d158" />
+								</kit:icon> Faster, thanks to reuse components and uniform styling
 							</li>
 							<li class="mb-2 flex gap-2">
-								<CircleCheck color="#30d158" /> More consistently, with pre-optimized Svelte + TypeScript
-								integration
+								<kit:icon>
+									<CircleCheck color="#30d158" />
+								</kit:icon> More consistently, with pre-optimized Svelte + TypeScript integration
 							</li>
 							<li class="mb-2 flex gap-2">
-								<CircleCheck color="#30d158" /> Stop copying and duplicating CSS classes and start shipping
-								better user interfaces
+								<kit:icon>
+									<CircleCheck color="#30d158" />
+								</kit:icon> Stop copying and duplicating CSS classes and start shipping better user interfaces
 							</li>
 						</ul>
 						<p class="mt-6 italic md:mb-10">
 							Instead of struggling with redundancy, you focus on the experience you want to offer
 						</p>
-						<Toolbar
+						<kit:toolbar
 							class="mt-4"
 							classContent="md:justify-start justify-center gap-3"
-							background="transparent"
+							variant="text"
 						>
-							<Button
-								onclick={() => (stepCode = 0)}
-								active={stepCode === 0}
-								rounded="full"
-								background={stepCode === 0 ? 'accent-primary' : 'label-secondary'}
-								color="white"
-								size={{ base: 'sm', md: 'md' }}
-							>
+							<kit:btn onclick={() => (stepCode = 0)} active={stepCode === 0} rounded="xl">
 								View Button
-							</Button>
-							<Button
-								onclick={() => (stepCode = 1)}
-								active={stepCode === 1}
-								rounded="full"
-								background={stepCode === 1 ? 'accent-primary' : 'label-secondary'}
-								color="white"
-								size={{ base: 'sm', md: 'md' }}
-							>
+							</kit:btn>
+							<kit:btn onclick={() => (stepCode = 1)} active={stepCode === 1} rounded="xl">
 								Discover Card
-							</Button>
-							<Button
-								onclick={() => (stepCode = 2)}
-								active={stepCode === 2}
-								rounded="full"
-								background={stepCode === 2 ? 'accent-primary' : 'label-secondary'}
-								color="white"
-								size={{ base: 'sm', md: 'md' }}
-							>
+							</kit:btn>
+							<kit:btn onclick={() => (stepCode = 2)} active={stepCode === 2} rounded="xl">
 								Explore Modal
-							</Button>
-						</Toolbar>
+							</kit:btn>
+						</kit:toolbar>
 					</div>
 					<div>
 						{#if stepCode === 0}
@@ -511,10 +510,10 @@
 	<section
 		id="simply-process-to-use-lapikit"
 		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
-		class="mb-[48px] h-fit text-center"
+		class="mb-12 h-fit text-center"
 	>
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto flex w-full max-w-360 flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
 				One library for your entire Svelte project
@@ -524,7 +523,7 @@
 				class="mt-8 grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
 			>
 				<div>
-					<div class="mx-auto my-0 max-w-[650px] rounded-lg">
+					<div class="mx-auto my-0 max-w-162.5 rounded-lg">
 						{#if stepTimeline === 0}
 							<enhanced:img
 								src={StepperInstallLapikit}
@@ -552,17 +551,20 @@
 					<div class="absolute flex gap-7 lg:hidden">
 						{#each stepperToUseComponent as step, index (step)}
 							{@const StepIcon = step.icon}
-							<Button
-								rounded="full"
+							<kit:btn
 								active={stepTimeline === index}
-								onclick={() => (stepTimeline = index)}
 								aria-label={`Display ${step.title}`}
-								background={stepTimeline === index ? 'accent-primary' : 'label-secondary'}
-								color="white"
+								onclick={() => (stepTimeline = index)}
+								rounded="xl"
 								icon
+								s-style_--kit-btn-bg={stepTimeline === index
+									? 'var(--primary-legacy)'
+									: 'var(--secondary-legacy)'}
 							>
-								<StepIcon />
-							</Button>
+								<kit:icon>
+									<StepIcon />
+								</kit:icon>
+							</kit:btn>
 						{/each}
 					</div>
 				</div>
@@ -570,18 +572,22 @@
 					{#each stepperToUseComponent as step, index (step)}
 						{@const StepIcon = step.icon}
 						<li class="align-center flex justify-center lg:flex-col">
-							<Button
-								class="absolute! -mt-[85px]! hidden! lg:mt-0! lg:-ml-[85px]! lg:inline-flex!"
-								rounded="full"
-								aria-label={`Display ${step.title}`}
+							<kit:btn
+								class="absolute! -mt-21.25! hidden! lg:mt-0! lg:-ml-21.25! lg:inline-flex!"
 								active={stepTimeline === index}
+								aria-label={`Display ${step.title}`}
 								onclick={() => (stepTimeline = index)}
-								background={stepTimeline === index ? 'accent-primary' : 'label-secondary'}
-								color="white"
+								rounded="xl"
 								icon
+								s-style_--kit-btn-bg={stepTimeline === index
+									? 'var(--primary-legacy)'
+									: 'var(--secondary-legacy)'}
 							>
-								<StepIcon />
-							</Button>
+								<kit:icon>
+									<StepIcon />
+								</kit:icon>
+							</kit:btn>
+
 							<p
 								class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto lg:text-start"
 								class:display-element={stepTimeline === index}
@@ -610,29 +616,25 @@
 				<div></div>
 				<div></div>
 				<div>
-					<Button
-						density="comfortable"
-						size={{ base: 'sm', sm: 'md', md: 'lg' }}
+					<kit:btn
 						href="/docs/components"
-						rounded="full"
-						background="accent-primary"
-						color="white"
+						density="comfortable"
 						class="max-sm:flex-col max-sm:p-[36px_29px]!"
+						rounded="xl"
+						size="lg"
 					>
 						Start Building with Lapikit
 
 						{#snippet append()}
-							<Chip
-								class="!px-2 "
-								size={{ base: 'xs', md: 'sm' }}
-								density="compact"
-								background="white"
-								color="black"
+							<kit:chip
+								size="xs"
+								s-style_--kit-chip-bg="var(--fg-primary-legacy)"
+								s-style_--kit-chip-fg="var(--bg-primary-legacy)"
 							>
 								{counter || 0} components
-							</Chip>
+							</kit:chip>
 						{/snippet}
-					</Button>
+					</kit:btn>
 				</div>
 			</div>
 		</div>
@@ -643,7 +645,7 @@
 		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
 	>
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto flex w-full max-w-360 flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div>
 				<div>
@@ -660,13 +662,17 @@
 						{#each enableFeatures as { title, description, icon } (title)}
 							<li>
 								<div>
-									<div class="icon-md" style="color: var(--kit-accent-primary)">
+									<div style="color: var(--kit-accent-primary)">
 										{#if typeof icon === 'string'}
-											{@html icon}
+											<kit:icon size="xl" s-style_color="var(--primary-legacy)">
+												{@html icon}
+											</kit:icon>
 										{:else}
 											{@const FeatureIcon = icon}
 
-											<FeatureIcon />
+											<kit:icon size="xl" s-style_color="var(--primary-legacy)">
+												<FeatureIcon />
+											</kit:icon>
 										{/if}
 									</div>
 									<div>
@@ -680,20 +686,15 @@
 				</div>
 				<div>
 					<div class="mt-16 flex justify-center">
-						<Button
-							href="/docs"
-							size="lg"
-							class="px-4!"
-							color="white"
-							background="accent-primary"
-							rounded="full"
-						>
+						<kit:btn href="/docs" size="lg" rounded="xl">
 							{capitalize(`It's not over yet!`)}
 
 							{#snippet append()}
-								<ArrowRight />
+								<kit:icon>
+									<ArrowRight />
+								</kit:icon>
 							{/snippet}
-						</Button>
+						</kit:btn>
 					</div>
 				</div>
 			</div>
@@ -705,19 +706,23 @@
 		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
 	>
 		<div
-			class="mx-auto grid w-full max-w-[90rem] items-center justify-center gap-8 px-4 py-16 pb-10! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto grid w-full max-w-360 items-center justify-center gap-8 px-4 py-16 pb-10! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div class="flex items-center gap-4">
 				<div>
-					<Quote style="transform: rotate(180deg);" />
+					<kit:icon>
+						<Quote style="transform: rotate(180deg);" />
+					</kit:icon>
 				</div>
-				<p class="max-w-[780px] text-center md:text-lg">
+				<p class="max-w-195 text-center md:text-lg">
 					Lapikit is designed to simplify and streamline the work of front-end developers by
 					limiting code redundancy, leaving more time for the development of advanced and complex
 					features.
 				</p>
 				<div>
-					<Quote />
+					<kit:icon>
+						<Quote />
+					</kit:icon>
 				</div>
 			</div>
 
@@ -738,20 +743,20 @@
 		</div>
 
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 pt-8! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="max-w-360] mx-auto flex w-full flex-col gap-8 px-4 py-16 pt-8! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div class="flex flex-col gap-4 md:flex-row md:items-stretch">
 				<div class="flex flex-col gap-4 md:w-1/4">
-					<Card
+					<kit:card
 						href="https://www.npmjs.com/package/lapikit"
 						target="_blank"
-						background="background-tertiary"
 						class="flex flex-1 justify-center"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<div class="icon-size-xl" style="color: var(--kit-service-npm)">
+							<kit:icon size="xl" style="color: var(--service-npm-legacy)">
 								{@html npmIcon}
-							</div>
+							</kit:icon>
 							<div>
 								<span class="text-highlighted text-xl font-semibold"
 									>{npmState.downloads || '---'}</span
@@ -759,29 +764,32 @@
 								<p class="text-sm">Monthly downloads</p>
 							</div>
 						</div>
-					</Card>
+					</kit:card>
 
-					<Card
+					<kit:card
 						href="https://github.com/lapikit/lapikit"
 						target="_blank"
-						background="background-tertiary"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
 						class="flex flex-1 justify-center"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<div class="icon-size-xl">
+							<kit:icon size="xl">
 								{@html githubIcon}
-							</div>
+							</kit:icon>
 
 							<div>
 								<span class="text-highlighted text-xl font-semibold">2</span>
 								<p class="text-sm">GitHub Stars</p>
 							</div>
 						</div>
-					</Card>
+					</kit:card>
 				</div>
 
 				<div class="flex md:w-1/2">
-					<Card class="flex flex-1 justify-center" background="background-tertiary">
+					<kit:card
+						class="flex flex-1 justify-center"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
+					>
 						<div class="flex h-full flex-col items-center justify-around gap-y-4 p-4 sm:p-6">
 							<p class="text-center text-xl font-semibold">
 								Open Source and built by developers, for developers
@@ -795,39 +803,41 @@
 								Every contribution helps improve the developer experience for the entire Svelte
 								community.
 							</p>
-							<Button
+							<kit:btn
 								href="https://github.com/lapikit/lapikit"
 								target="_blank"
-								rounded="full"
+								rounded="xl"
 								class="px-4!"
-								color="service-on-github"
-								background="service-github"
+								s-style_--kit-btn-bg="var(--fg-primary-legacy)"
+								s-style_--kit-btn-fg="var(--bg-primary-legacy)"
 							>
 								Contribute to Lapikit on GitHub
 								{#snippet append()}
-									{@html githubIcon}
+									<kit:icon>
+										{@html githubIcon}
+									</kit:icon>
 								{/snippet}
-							</Button>
+							</kit:btn>
 						</div>
-					</Card>
+					</kit:card>
 				</div>
 
 				<div class="flex flex-col gap-4 md:w-1/4">
-					<Card
+					<kit:card
 						href="https://www.instagram.com/lapikit"
 						target="_blank"
-						background="background-tertiary"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
 						class="flex flex-1 justify-center"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 							<div class="flex items-center">
 								<div
 									class="inline-flex h-fit items-center justify-center"
-									style="background: var(--kit-service-instagram); border-radius: 8px;"
+									style="background: var(--service-instagram-legacy); border-radius: 8px;"
 								>
-									<div class="icon-size-xl" style="color: var(--kit-service-instagram)">
+									<kit:icon size="xl" style="color: var(--service-instagram-legacy)">
 										{@html instagramIcon}
-									</div>
+									</kit:icon>
 								</div>
 							</div>
 
@@ -836,24 +846,25 @@
 								<p class="text-sm">Followers</p>
 							</div>
 						</div>
-					</Card>
+					</kit:card>
 
-					<Card
+					<kit:card
 						href="https://discord.gg/gn9ZGtDtK4"
 						target="_blank"
-						background="background-tertiary"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
 						class="flex flex-1 justify-center"
 					>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<div class="icon-size-xl" style="color: var(--kit-service-discord)">
+							<kit:icon style="color: var(--service-discord-legacy)" size="xl">
 								{@html discordIcon}
-							</div>
+							</kit:icon>
+
 							<div>
 								<span class="text-highlighted text-xl font-semibold">2</span>
 								<p class="text-sm">Members</p>
 							</div>
 						</div>
-					</Card>
+					</kit:card>
 				</div>
 			</div>
 		</div>
@@ -861,7 +872,7 @@
 
 	<section id="go-to-use-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto flex w-full max-w-360 flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div class="grid justify-center gap-4 text-center">
 				<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Go further with Lapikit</h2>
@@ -870,20 +881,23 @@
 				</p>
 
 				<div class="mt-8 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
-					<Card href="/docs">
+					<kit:card href="/docs" s-style_--kit-card-bg="var(--bg-secondary-legacy)">
 						<div class="flex justify-between px-4 py-3">
 							<div>
 								<span class="font-semibold sm:text-lg">Documentations</span>
 								<p>Learn how to install and use Lapikit in your project</p>
 							</div>
 							<div>
-								<ArrowRight />
+								<kit:icon size="lg">
+									<ArrowRight />
+								</kit:icon>
 							</div>
 						</div>
-					</Card>
-					<Card
+					</kit:card>
+					<kit:card
 						href="https://github.com/lapikit/lapikit.dev/blob/main/CONTRIBUTING.md"
 						target="_blank"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
 					>
 						<div class="flex justify-between px-4 py-3">
 							<div>
@@ -894,21 +908,29 @@
 								</p>
 							</div>
 							<div>
-								<ArrowRight />
+								<kit:icon size="lg">
+									<ArrowRight />
+								</kit:icon>
 							</div>
 						</div>
-					</Card>
-					<Card href="https://github.com/lapikit/lapikit" target="_blank">
+					</kit:card>
+					<kit:card
+						href="https://github.com/lapikit/lapikit"
+						target="_blank"
+						s-style_--kit-card-bg="var(--bg-secondary-legacy)"
+					>
 						<div class="flex justify-between px-4 py-3">
 							<div>
 								<span class="font-semibold sm:text-lg">Sponsor</span>
 								<p>Become a sponsor to help Lapikit create a strong community</p>
 							</div>
 							<div>
-								<ArrowRight />
+								<kit:icon size="lg">
+									<ArrowRight />
+								</kit:icon>
 							</div>
 						</div>
-					</Card>
+					</kit:card>
 				</div>
 			</div>
 		</div>
@@ -937,59 +959,57 @@
 						All donations and sponsorships will be utilized solely to support the development and
 						maintenance of Lapikit
 					</p>
-					<Toolbar
+					<kit:toolbar
 						class="mt-10 max-md:mb-4 md:mt-8"
 						classContent="max-sm:flex-col! sm:justify-center md:justify-start gap-6 md:gap-3"
-						background="transparent"
+						variant="text"
 					>
-						<Button
-							background="service-github"
-							color="service-on-github"
-							rounded="full"
+						<kit:btn
+							rounded="xl"
 							href="https://github.com/lapikit/lapikit"
 							target="_blank"
-							class="px-4!"
 							aria-label="Open GitHub Sponsors"
 							disabled
+							s-style_--kit-btn-fg="var(--bg-primary-legacy)"
+							s-style_--kit-btn-bg="var(--fg-primary-legacy)"
 						>
 							{#snippet prepend()}
 								{@html githubIcon}
 							{/snippet}
 							Github Sponsors
 							{#snippet append()}
-								<Chip
-									background="accent-primary"
-									color="white"
-									class="absolute! right-[10px] bottom-[-16px] px-2!"
-									density="compact"
-									size="sm"
-								>
+								<kit:chip class="absolute! right-2.5 -bottom-4 px-2!" density="compact" size="sm">
 									Coming soon
-								</Chip>
+								</kit:chip>
 							{/snippet}
-						</Button>
-						<Button
-							background="service-buy-me-a-coffee"
-							color="service-on-buy-me-a-coffee"
-							rounded="full"
+						</kit:btn>
+
+						<kit:btn
 							href="https://www.buymeacoffee.com/nycolaide"
 							target="_blank"
-							class="px-4!"
+							rounded="xl"
+							s-style_--kit-btn-bg="var(--service-buy-me-a-coffee-legacy)"
+							s-style_--kit-btn-fg="var(--service-on-buy-me-a-coffee-legacy)"
 						>
 							{#snippet prepend()}
-								<div class="icon-md">
+								<kit:icon size="lg">
 									{@html buymeacoffeeIcon}
-								</div>
+								</kit:icon>
 							{/snippet}
 							Buy me a coffee
-						</Button>
-					</Toolbar>
+						</kit:btn>
+					</kit:toolbar>
 
-					<Button variant="text" href="/docs/roadmap" class="mt-3 underline! opacity-70"
-						>Explore Lapikit roadmap 2026</Button
+					<kit:btn
+						variant="text"
+						href="/docs/roadmap"
+						class="mt-3 underline! opacity-70"
+						s-style_--kit-btn-fg="var(--secondary-legacy)"
 					>
+						Explore Lapikit roadmap 2026
+					</kit:btn>
 				</div>
-				<div class="mx-auto my-auto flex w-full max-w-[200px] justify-center md:max-w-[450px]">
+				<div class="mx-auto my-auto flex w-full max-w-50 justify-center md:max-w-112.5">
 					<enhanced:img
 						src={LapikitLikeYou}
 						alt="lapikit love you"
@@ -1017,33 +1037,28 @@
 			>
 				<p class="text-2xl font-bold sm:text-3xl lg:text-4xl">Start exploring Lapikit</p>
 				<p class="mt-6 sm:text-lg">Design system, themes, components, all in one lib</p>
-				<Button
-					class="mt-8"
-					href="/docs/components"
-					rounded="full"
-					density="comfortable"
-					background="accent-primary"
-					color="white"
-				>
+				<kit:btn class="mt-8" href="/docs/components" rounded="xl" density="comfortable">
 					Discover the components
 					{#snippet append()}
-						<ArrowRight />
+						<kit:icon>
+							<ArrowRight />
+						</kit:icon>
 					{/snippet}
-				</Button>
+				</kit:btn>
 			</div>
 		</div>
 	</section>
 
 	<footer>
 		<div class="align-center flex h-px w-full flex-row items-center text-center">
-			<Separator opacity="0.2" />
+			<kit:separator opacity="0.2" />
 			<div class="mx-4 flex items-center gap-2">
-				<enhanced:img class="no-select w-[3rem]" src={LapinosaureFace} alt="Lapikit logo icon" />
+				<enhanced:img class="no-select w-12" src={LapinosaureFace} alt="Lapikit logo icon" />
 			</div>
-			<Separator opacity="0.2" />
+			<kit:separator opacity="0.2" />
 		</div>
 
-		<div class="mx-auto flex w-full max-w-[90rem] flex-col px-4 py-16 sm:px-6 sm:py-10 lg:px-8">
+		<div class="mx-auto flex w-full max-w-360 flex-col px-4 py-16 sm:px-6 sm:py-10 lg:px-8">
 			<div class="mb-6 grid gap-3 sm:grid-cols-2 sm:gap-6">
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a href="/" class="order-first">
@@ -1051,39 +1066,48 @@
 						<enhanced:img
 							src={LapikitLogo}
 							alt="Lapikit logo icon"
-							class="no-select w-[40px] md:w-[70px]"
+							class="no-select w-10 md:w-17.5"
 						/>
 						<span class="mt-5 text-[2rem] font-semibold">Lapikit</span>
 					</div>
 				</a>
 
-				<div class="order-last flex items-center gap-4 sm:order-none sm:mt-5 sm:justify-end">
-					<a
+				<div class="order-last flex items-center gap-4 sm:order-0 sm:mt-5 sm:justify-end">
+					<kit:btn
 						href="https://www.npmjs.com/package/lapikit"
 						target="_blank"
-						class="icon-md"
-						style="color: var(--kit-service-npm)"
+						variant="text"
+						icon
+						s-style_--kit-btn-fg="var(--service-npm-legacy)"
 					>
-						{@html npmIcon}
-					</a>
+						<kit:icon size="xl">
+							{@html npmIcon}
+						</kit:icon>
+					</kit:btn>
 
-					<a
+					<kit:btn
 						href="https://github.com/lapikit/lapikit"
 						target="_blank"
-						class="icon-md"
-						style="color: var(--kit-service-github)"
+						variant="text"
+						icon
+						s-style_--kit-btn-fg="var(--fg-primary-legacy)"
 					>
-						{@html githubIcon}
-					</a>
+						<kit:icon size="xl">
+							{@html githubIcon}
+						</kit:icon>
+					</kit:btn>
 
-					<a
+					<kit:btn
 						href="https://discord.gg/gn9ZGtDtK4"
 						target="_blank"
-						class="icon-md"
-						style="color: var(--kit-service-discord)"
+						variant="text"
+						icon
+						s-style_--kit-btn-fg="var(--service-discord-legacy)"
 					>
-						{@html discordIcon}
-					</a>
+						<kit:icon size="xl">
+							{@html discordIcon}
+						</kit:icon>
+					</kit:btn>
 				</div>
 			</div>
 			<div class="grid gap-8 md:grid-cols-[1fr_auto]">
@@ -1095,34 +1119,41 @@
 								{#each sectionValue.items as { key, title, slug, custom, external } (key)}
 									{#if !custom}
 										<li>
-											<Button
+											<kit:btn
 												href={slug}
 												target={external ? '_blank' : '_self'}
-												rounded="full"
+												rounded="xl"
 												variant="text"
+												s-style_--kit-btn-fg="var(--fg-primary-legacy)"
 											>
 												{capitalize(`${title}`)}
-											</Button>
+											</kit:btn>
 										</li>
 									{:else if custom === 'cookie-consent'}
 										<li>
-											<Button onclick={openConsentPreferences} rounded="full" variant="text">
+											<kit:btn
+												onclick={openConsentPreferences}
+												rounded="xl"
+												variant="text"
+												s-style_--kit-btn-fg="var(--fg-primary-legacy)"
+											>
 												{capitalize(`${title}`)}
-											</Button>
+											</kit:btn>
 										</li>
 									{/if}
 								{/each}
 							{:else}
 								{#each Object.entries(sectionValue.items as Record<string, FooterLinkItem>) as [key, { title, slug, external }] (key)}
 									<li>
-										<Button
+										<kit:btn
 											href={slug}
 											target={external ? '_blank' : '_self'}
-											rounded="full"
+											rounded="xl"
 											variant="text"
+											s-style_--kit-btn-fg="var(--fg-primary-legacy)"
 										>
 											{capitalize(`${title}`)}
-										</Button>
+										</kit:btn>
 									</li>
 								{/each}
 							{/if}
@@ -1130,34 +1161,38 @@
 					{/each}
 				</div>
 
-				<Card
+				<kit:card
 					background="service-discord"
 					color="service-on-discord"
-					class="mt-6 rounded-lg! p-6! text-center! sm:mx-auto sm:max-w-[350px] md:text-start!"
+					class="mt-6 rounded-lg! p-6! text-center! sm:mx-auto sm:max-w-87.5 md:text-start!"
+					s-style_--kit-card-fg="var(--service-on-discord-legacy)"
+					s-style_--kit-card-bg="var(--service-discord-legacy)"
 				>
 					<p class="text-xl font-semibold">Join our community on Discord</p>
 					<p class="my-2 sm:text-lg">News, updates, and discussions await you!</p>
 					<div>
-						<Button
+						<kit:btn
 							href="https://discord.gg/gn9ZGtDtK4"
 							target="_blank"
-							size={{ base: 'md', sm: 'lg' }}
-							rounded="full"
-							class="px-5!"
+							rounded="xl"
+							s-style_--kit-btn-fg="var(--bg-primary-legacy)"
+							s-style_--kit-btn-bg="var(--fg-primary-legacy)"
 						>
 							Chat with us
 							{#snippet append()}
-								<Icon size="lg" icon="mgc_chat_1_line" />
+								<kit:icon size="lg">
+									<MessageSquareText />
+								</kit:icon>
 							{/snippet}
-						</Button>
+						</kit:btn>
 					</div>
-				</Card>
+				</kit:card>
 			</div>
 
-			<Toolbar
+			<kit:toolbar
 				class="mt-6"
 				classContent="flex-col! md:flex-row! md:justify-between gap-2"
-				background="transparent"
+				s-style_--kit-toolbar-bg="transparent"
 			>
 				<p>
 					Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit -
@@ -1171,126 +1206,20 @@
 				<div class="order-first flex gap-2 text-sm md:order-last">
 					<span class="mr-1">Developed by</span>
 					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-					<a href="https://nycolaide.dev" target="_blank" style:color="var(--kit-service-svelte)">
+					<a
+						href="https://nycolaide.dev"
+						target="_blank"
+						style:color="var(--service-svelte-legacy)"
+					>
 						Nycolaide
 					</a>
 				</div>
-			</Toolbar>
+			</kit:toolbar>
 		</div>
 	</footer>
 </div>
 
 <style>
-	/* lapikit css legacy */
-	:root {
-		--kit-label-primary: oklch(0% 0 0);
-		--kit-label-secondary: oklch(64.831% 0.0073 286.19);
-		--kit-label-tertiary: oklch(75.204% 0.0057 286.26);
-		--kit-label-quaternary: oklch(83.116% 0.0069 286.25);
-		--kit-accent-primary: oklch(60.276% 0.2177 257.42);
-		--kit-accent-success: oklch(73.032% 0.1944 147.44);
-		--kit-accent-warning: oklch(76.524% 0.1752 62.57);
-		--kit-accent-destructive: oklch(65.421% 0.2321 28.66);
-		--kit-accent-info: oklch(70.679% 0.1327 233.88);
-		--kit-separator-default: oklch(83.116% 0.0069 286.25);
-		--kit-separator-opaque: oklch(86.216% 0.0068 286.26);
-		--kit-state-placeholder: oklch(83.116% 0.0069 286.25);
-		--kit-state-disabled: oklch(75.204% 0.0057 286.26);
-		--kit-state-link: oklch(60.276% 0.2177 257.42);
-		--kit-state-highlight: oklch(92.334% 0.0067 286.27);
-		--kit-state-shadow: oklch(14.514% 0.1006 264.05);
-		--kit-background-primary: oklch(100% 0 89.88);
-		--kit-background-secondary: oklch(96.257% 0.0066 286.27);
-		--kit-background-tertiary: oklch(92.334% 0.0067 286.27);
-		--kit-background-grouped-primary: oklch(96.257% 0.0066 286.27);
-		--kit-background-grouped-secondary: oklch(100% 0 89.88);
-		--kit-background-grouped-tertiary: oklch(96.257% 0.0066 286.27);
-		--kit-service-github: oklch(23.166% 0.0107 242.2);
-		--kit-service-on-github: oklch(97.913% 0 89.88);
-		--kit-service-svelte: oklch(65.432% 0.2341 34.2);
-		--kit-service-buy-me-a-coffee: oklch(89.869% 0.1857 97.86);
-		--kit-service-on-buy-me-a-coffee: oklch(0% 0 0);
-		--kit-service-discord: oklch(56.453% 0.2066 274.24);
-		--kit-service-on-discord: oklch(100% 0 89.88);
-		--kit-service-npm: oklch(56.275% 0.1843 25.7);
-		--kit-service-on-npm: oklch(100% 0 89.88);
-		--kit-service-x: oklch(23.166% 0.0107 242.2);
-		--kit-service-instagram: linear-gradient(
-			45deg,
-			#833ab4 0%,
-			#c13584 25%,
-			#f56040 50%,
-			#fcaf45 100%
-		);
-		--kit-service-on-instagram: oklch(100% 0 89.88);
-		--kit-test-variable: 1rem;
-		--system-spacing: 0.125rem;
-		--system-shape-sm: 0.125rem;
-		--system-shape-md: 0.25rem;
-		--system-shape-lg: 0.5rem;
-		--system-shape-xl: 0.75rem;
-		--system-shape-2xl: 1rem;
-		--system-shape-3xl: 1.5rem;
-		--system-shape-full: 9999px;
-		--system-dialog-xs: 18.75rem;
-		--system-dialog-sm: 25rem;
-		--system-dialog-md: 37.5rem;
-		--system-dialog-lg: 53.125rem;
-		--system-dialog-xl: 75rem;
-		--system-modal-xs: 18.75rem;
-		--system-modal-sm: 25rem;
-		--system-modal-md: 37.5rem;
-		--system-modal-lg: 53.125rem;
-		--system-modal-xl: 75rem;
-		--system-animation-ripple-duration: 0.4s;
-	}
-
-	.kit-theme--dark {
-		color-scheme: dark;
-		--kit-pink: oklch(86.774% 0.0735 7.09);
-		--kit-label-primary: oklch(100% 0 89.88);
-		--kit-label-secondary: oklch(50.07% 0.0047 286.23);
-		--kit-label-tertiary: oklch(40.238% 0.0033 286.25);
-		--kit-label-quaternary: oklch(34.92% 0.0034 286.22);
-		--kit-accent-primary: oklch(62.425% 0.2056 255.49);
-		--kit-accent-success: oklch(75.555% 0.2082 146.98);
-		--kit-accent-warning: oklch(78.237% 0.1711 67.22);
-		--kit-accent-destructive: oklch(66.33% 0.2236 28.29);
-		--kit-accent-info: oklch(81.662% 0.1185 227.75);
-		--kit-separator-default: oklch(40.238% 0.0033 286.25);
-		--kit-separator-opaque: oklch(34.92% 0.0034 286.22);
-		--kit-state-placeholder: oklch(40.238% 0.0033 286.25);
-		--kit-state-disabled: oklch(34.92% 0.0034 286.22);
-		--kit-state-link: oklch(62.425% 0.2056 255.49);
-		--kit-state-highlight: oklch(29.39% 0.0036 286.18);
-		--kit-state-shadow: oklch(23.065% 0.1598 264.05);
-		--kit-background-primary: oklch(0% 0 0);
-		--kit-background-secondary: oklch(22.728% 0.0038 286.09);
-		--kit-background-tertiary: oklch(29.39% 0.0036 286.18);
-		--kit-background-grouped-primary: oklch(22.728% 0.0038 286.09);
-		--kit-background-grouped-secondary: oklch(29.39% 0.0036 286.18);
-		--kit-background-grouped-tertiary: oklch(34.92% 0.0034 286.22);
-		--kit-service-github: oklch(97.913% 0 89.88);
-		--kit-service-on-github: oklch(23.166% 0.0107 242.2);
-		--kit-service-svelte: oklch(65.432% 0.2341 34.2);
-		--kit-service-buy-me-a-coffee: oklch(89.869% 0.1857 97.86);
-		--kit-service-on-buy-me-a-coffee: oklch(0% 0 0);
-		--kit-service-discord: oklch(56.453% 0.2066 274.24);
-		--kit-service-on-discord: oklch(100% 0 89.88);
-		--kit-service-npm: oklch(56.275% 0.1843 25.7);
-		--kit-service-on-npm: oklch(100% 0 89.88);
-		--kit-service-x: oklch(97.913% 0 89.88);
-		--kit-service-instagram: linear-gradient(
-			45deg,
-			#833ab4 0%,
-			#c13584 25%,
-			#f56040 50%,
-			#fcaf45 100%
-		);
-		--kit-service-on-instagram: oklch(100% 0 89.88);
-		--kit-test-variable: 1rem;
-	}
-
 	:global(#install-lapikit-command-line .copy-icon) {
 		visibility: hidden;
 	}
@@ -1303,24 +1232,6 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
-	}
-
-	/* @layer components { */
-	/* @import 'lapikit/styles'; */
-	/* } */
-
-	.icon-md :global(svg) {
-		width: 24px;
-		height: 24px;
-	}
-
-	.icon-size-xl {
-		align-items: center;
-		display: flex;
-	}
-	.icon-size-xl :global(svg) {
-		width: 32px;
-		height: 32px;
 	}
 
 	@media (min-width: 1407px) {
@@ -1339,8 +1250,28 @@
 	}
 
 	.home {
-		background-color: var(--kit-background-primary);
-		color: var(--kit-label-primary);
+		--bg-primary-legacy: #000000;
+		--fg-primary-legacy: #ffffff;
+		--fg-secondary-legacy: #ffffff;
+		--bg-secondary-legacy: oklch(29.39% 0.0036 286.18);
+		--primary-legacy: hsl(220 90% 65%);
+		--secondary-legacy: hsl(220deg 17.66% 49.12%);
+		--service-buy-me-a-coffee-legacy: oklch(89.869% 0.1857 97.86);
+		--service-on-buy-me-a-coffee-legacy: oklch(0% 0 0);
+		--service-github-legacy: oklch(23.166% 0.0107 242.2);
+		--service-svelte-legacy: oklch(65.432% 0.2341 34.2);
+		--service-discord-legacy: oklch(56.453% 0.2066 274.24);
+		--service-on-discord-legacy: oklch(100% 0 89.88);
+		--service-npm-legacy: oklch(56.275% 0.1843 25.7);
+		--service-instagram-legacy: linear-gradient(
+			45deg,
+			#833ab4 0%,
+			#c13584 25%,
+			#f56040 50%,
+			#fcaf45 100%
+		);
+		background-color: var(--bg-primary-legacy);
+		color: var(--fg-primary-legacy);
 		font-family: 'Roboto Variable', sans-serif;
 	}
 </style>

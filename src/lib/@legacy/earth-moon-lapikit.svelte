@@ -64,12 +64,12 @@
 	}
 
 	.planet-svg path {
-		fill: var(--kit-background-primary);
+		fill: var(--bg-primary-legacy);
 	}
 
 	.planet-padding {
 		position: relative;
-		background-color: var(--kit-background-primary);
+		background-color: var(--bg-primary-legacy);
 		width: 100%;
 		height: 100px;
 	}

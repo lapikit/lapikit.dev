@@ -45,10 +45,10 @@
 
 	.dot {
 		position: absolute;
-		background: color-mix(in oklab, var(--kit-accent-primary) 80%, transparent);
+		background: color-mix(in oklab, var(--primary-legacy) 80%, transparent);
 		border-radius: 50%;
 		opacity: 0;
-		box-shadow: 0 0 6px color-mix(in oklab, var(--kit-accent-primary) 80%, transparent);
+		box-shadow: 0 0 6px color-mix(in oklab, var(--primary-legacy) 80%, transparent);
 		animation-name: blink;
 		animation-timing-function: ease-in-out;
 		animation-iteration-count: infinite;
