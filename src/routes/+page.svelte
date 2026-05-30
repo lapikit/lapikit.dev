@@ -420,6 +420,7 @@
 							class="mt-4"
 							classContent="md:justify-start justify-center gap-3"
 							variant="text"
+							density="compact"
 						>
 							<kit:btn
 								onclick={() => (stepCode = 0)}
