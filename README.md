@@ -35,14 +35,24 @@ pnpm add -D lapikit
 bun add -D lapikit
 ```
 
+Connect lapikit on your svelte configuration:
+
+```js
+// svelte.config.js
+import { lapikitPreprocess } from 'lapikit/labs/preprocess';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	preprocess: [lapikitPreprocess()]
+};
+
+export default config;
+```
+
 Use your first component:
 
 ```svelte
-<script lang="ts">
-	import { Button } from 'lapikit/components';
-</script>
-
-<Button variant="filled">Click me</Button>
+<kit:btn variant="filled">Click me</kit:btn>
 ```
 
 ### Documentation
