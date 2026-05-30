@@ -1,0 +1,31 @@
+name: CI/CD Canary
+
+on:
+  push:
+    branches-ignore:
+      - develop
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: deploy on production environment
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            set -euo pipefail
+            cd ~/${{ secrets.PATH_CANARY }}
+            git fetch origin
+            git reset --hard origin/${{ github.ref_name }}
+            docker compose build
+            docker compose up -d --remove-orphans

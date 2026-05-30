@@ -1,0 +1,13 @@
+[data-theme='dark'] {
+	color-scheme: dark;
+
+	--kit-bg: hsl(222 20% 10%);
+	--kit-fg: hsl(0 0% 98%);
+	--kit-muted: hsl(220 10% 60%);
+
+	--kit-surface-1: hsl(222 20% 10%);
+	--kit-surface-2: hsl(222 18% 14%);
+	--kit-surface-3: hsl(222 16% 18%);
+
+	--kit-border: hsl(220 14% 24%);
+}

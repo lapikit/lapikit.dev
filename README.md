@@ -39,7 +39,7 @@ Use your first component:
 
 ```svelte
 <script lang="ts">
-  import { Button } from 'lapikit/components';
+	import { Button } from 'lapikit/components';
 </script>
 
 <Button variant="filled">Click me</Button>
