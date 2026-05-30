@@ -421,13 +421,28 @@
 							classContent="md:justify-start justify-center gap-3"
 							variant="text"
 						>
-							<kit:btn onclick={() => (stepCode = 0)} active={stepCode === 0} rounded="xl">
+							<kit:btn
+								onclick={() => (stepCode = 0)}
+								active={stepCode === 0}
+								rounded="xl"
+								size="sm"
+							>
 								View Button
 							</kit:btn>
-							<kit:btn onclick={() => (stepCode = 1)} active={stepCode === 1} rounded="xl">
+							<kit:btn
+								onclick={() => (stepCode = 1)}
+								active={stepCode === 1}
+								rounded="xl"
+								size="sm"
+							>
 								Discover Card
 							</kit:btn>
-							<kit:btn onclick={() => (stepCode = 2)} active={stepCode === 2} rounded="xl">
+							<kit:btn
+								onclick={() => (stepCode = 2)}
+								active={stepCode === 2}
+								rounded="xl"
+								size="sm"
+							>
 								Explore Modal
 							</kit:btn>
 						</kit:toolbar>
