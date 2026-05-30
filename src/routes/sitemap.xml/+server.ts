@@ -1,4 +1,5 @@
 import { docsPaths } from '$lib';
+import { PUBLIC_BASE_URL } from '$env/static/public';
 
 export const prerender = true;
 
@@ -14,8 +15,8 @@ function toUrl(path: string) {
 	return route || '/';
 }
 
-export async function GET({ request }) {
-	const baseUrl = new URL(request.url).origin;
+export async function GET() {
+	const baseUrl = PUBLIC_BASE_URL.replace(/\/$/, '');
 
 	const routes = [...Object.keys(pageModules), ...Object.keys(markdownModules)]
 		.map(toUrl)
