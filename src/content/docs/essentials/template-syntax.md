@@ -1,5 +1,6 @@
 ---
 title: "Template Syntax"
+description: "Learn how the Lapikit preprocessor extends Svelte template syntax component system, automatic imports, and dynamic styling helpers for cleaner Svelte and SvelteKit projects."
 ---
 
 <script>
