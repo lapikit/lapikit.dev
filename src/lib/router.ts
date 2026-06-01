@@ -22,6 +22,12 @@ import toolbarImage from '$lib/assets/images/components/toolbar.webp';
 import tooltipImage from '$lib/assets/images/components/tooltip.webp';
 import applicationImage from '$lib/assets/images/components/application.webp';
 
+export const appNavigation: NavSection[] = [
+	{ label: 'Label Menu Page1', url: '/' },
+	{ label: 'Label Menu Page2', url: '/' },
+	{ label: 'Label Menu Page3', url: '/' }
+];
+
 export const docsNavigation: NavSection[] = [
 	{
 		label: 'Getting Started',
