@@ -52,6 +52,7 @@
 	"dependencies": {
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@fontsource-variable/outfit": "^5.2.8",
+		"chart.js": "^4.5.1",
 		"lucide-svelte": "^1.0.1"
 	}
 }

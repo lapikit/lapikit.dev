@@ -1,0 +1,104 @@
+<script lang="ts">
+	import {
+		Chart,
+		LineController,
+		LineElement,
+		PointElement,
+		LinearScale,
+		CategoryScale,
+		Filler,
+		Tooltip
+	} from 'chart.js';
+	import { onDestroy, onMount } from 'svelte';
+
+	Chart.register(
+		LineController,
+		LineElement,
+		PointElement,
+		LinearScale,
+		CategoryScale,
+		Filler,
+		Tooltip
+	);
+
+	let canvas: HTMLCanvasElement;
+	let chart: Chart;
+	const data = [
+		{ version: '0.5.4', value: 18788 },
+		{ version: '0.5.5', value: 20784 },
+		{ version: '0.5.6', value: 27541 },
+		{ version: '0.5.7', value: 39724 }
+	];
+
+	onMount(() => {
+		chart = new Chart(canvas, {
+			type: 'line',
+			data: {
+				labels: data.map((d) => d.version),
+				datasets: [
+					{
+						label: 'downloads',
+						data: data.map((d) => d.value),
+						borderColor: '#1D9E75',
+						backgroundColor: 'rgba(29,158,117,0.08)',
+						pointBackgroundColor: '#1D9E75',
+						pointBorderColor: '#fff',
+						pointBorderWidth: 2,
+						pointRadius: 5,
+						tension: 0.35,
+						fill: true
+					}
+				]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				animation: {
+					delay: (ctx) => ctx.dataIndex * 200,
+					duration: 1000,
+					easing: 'easeOutQuart'
+				},
+				transitions: {
+					active: { animation: { duration: 0 } }
+				},
+				plugins: {
+					legend: { display: false },
+					tooltip: {
+						callbacks: {
+							label: (ctx) => ` ${ctx.parsed.y.toLocaleString('fr-FR')} dl`
+						}
+					}
+				},
+				scales: {
+					x: {
+						grid: { display: false },
+						border: { display: false },
+						ticks: { font: { size: 10 } }
+					},
+					y: {
+						display: false
+					}
+				}
+			}
+		});
+	});
+
+	onDestroy(() => chart?.destroy());
+</script>
+
+<p>45.8k downloads</p>
+<div>
+	<canvas bind:this={canvas}></canvas>
+</div>
+
+<style>
+	div {
+		position: relative;
+		width: 100%;
+		height: 72px;
+	}
+
+	p {
+		text-align: end;
+	}
+</style>

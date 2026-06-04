@@ -10,7 +10,8 @@
 
 	// components
 	import ConsentMode from '../components/consent-mode.svelte';
-	import AppBar from '../components/appbar/index.svelte';
+	import AppBarTest from '../components/appbar/index.svelte';
+	import Appbar from '$components/appbar.svelte';
 
 	// api
 	import { loadNpmData } from '$lib/stores/npm.svelte';
@@ -73,7 +74,9 @@
 </svelte:head>
 
 <kit:app>
-	<AppBar />
+	<Appbar />
+	<!-- 
+	<AppBarTest /> -->
 
 	<main>
 		{@render children()}
