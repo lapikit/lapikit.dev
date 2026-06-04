@@ -27,7 +27,8 @@
 		{ version: '0.5.4', value: 18788 },
 		{ version: '0.5.5', value: 20784 },
 		{ version: '0.5.6', value: 27541 },
-		{ version: '0.5.7', value: 39724 }
+		{ version: '0.5.7', value: 39724 },
+		{ version: 'current', value: 45865 }
 	];
 
 	onMount(() => {
@@ -44,7 +45,7 @@
 						pointBackgroundColor: '#1D9E75',
 						pointBorderColor: '#fff',
 						pointBorderWidth: 2,
-						pointRadius: 5,
+						pointRadius: (ctx) => (ctx.dataIndex === data.length - 1 ? 0 : 5),
 						tension: 0.35,
 						fill: true
 					}
@@ -73,7 +74,10 @@
 					x: {
 						grid: { display: false },
 						border: { display: false },
-						ticks: { font: { size: 10 } }
+						ticks: {
+							font: { size: 10 },
+							callback: (_, index) => (data[index].version === 'current' ? '' : data[index].version)
+						}
 					},
 					y: {
 						display: false
