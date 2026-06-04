@@ -4,6 +4,8 @@
 	import { Ellipsis } from 'lucide-svelte';
 	import { innerWidth } from 'svelte/reactivity/window';
 
+	let { ...rest } = $props();
+
 	const btnRefWidth: number = 150;
 	const dropdownRefWidth: number = 38;
 	let navigationDisplayedItems: number = $state(appNavigation.length);
@@ -29,7 +31,7 @@
 	});
 </script>
 
-<div id="navigation-app">
+<div id="navigation-app" {...rest}>
 	{#each appNavigation as navItem, index (navItem.label)}
 		{#if index < navigationDisplayedItems}
 			<kit:btn density="compact" is="button" variant="text" href={navItem.url}>

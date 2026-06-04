@@ -10,6 +10,7 @@
 	import { Bolt, ChevronDown, ChevronUp, Search } from 'lucide-svelte';
 	import Version from '$components/appbar/modules/version.svelte';
 	import DesktopNav from '$components/appbar/modules/desktop-nav.svelte';
+	import MobileNav from './appbar/modules/mobile-nav.svelte';
 </script>
 
 <kit:appbar id="appbar-lapikit">
@@ -20,11 +21,14 @@
 
 	<Version />
 
-	<DesktopNav />
+	<DesktopNav class="hidden-mobile" />
+
+	<kit:spacer />
 
 	<kit:dropdown closeOnClick>
 		{#snippet activator({ open, toggle }: ModelDropdownProps)}
 			<kit:btn
+				class="hidden-mobile"
 				density="compact"
 				is="button"
 				variant="text"
@@ -50,13 +54,13 @@
 			{@html githubIcon}
 		</kit:icon>
 	</kit:btn>
-	<kit:btn density="compact" variant="text" icon>
+	<kit:btn density="compact" variant="text" icon class="hidden-mobile">
 		<kit:icon>
 			<Search />
 		</kit:icon>
 	</kit:btn>
 
-	<kit:btn density="compact">
+	<kit:btn density="compact" class="hidden-mobile">
 		{#snippet prepend()}
 			{@html discordIcon}
 		{/snippet}
@@ -85,6 +89,8 @@
 	</kit:dropdown>
 </kit:appbar>
 
+<MobileNav class="hidden-desktop" />
+
 <style>
 	:global(#appbar-lapikit) {
 		max-width: 98%;
@@ -104,5 +110,17 @@
 		font-weight: 700;
 		font-size: 1.325rem;
 		margin-left: 60px;
+	}
+
+	@media (max-width: 600px) {
+		:global(.hidden-mobile) {
+			display: none !important;
+		}
+	}
+
+	@media (min-width: 600px) {
+		:global(.hidden-desktop) {
+			display: none !important;
+		}
 	}
 </style>

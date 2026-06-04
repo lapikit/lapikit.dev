@@ -66,7 +66,7 @@
 					legend: { display: false },
 					tooltip: {
 						callbacks: {
-							label: (ctx) => ` ${ctx.parsed.y.toLocaleString('fr-FR')} dl`
+							label: (ctx) => ` ${ctx.parsed.y!.toLocaleString('en-US')} dl`
 						}
 					}
 				},

@@ -1,6 +1,18 @@
 import type { NavSection } from './@types';
 
-import { Container, Eraser, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
+import {
+	Container,
+	Eraser,
+	Puzzle,
+	SquareFunction,
+	ToolCase,
+	VectorSquare,
+	Workflow,
+	PackageOpen,
+	House
+} from 'lucide-svelte';
+
+import githubIcon from '$lib/assets/icons/github.svg?raw';
 
 import accordionImage from '$lib/assets/images/components/accordion.webp';
 import alertImage from '$lib/assets/images/components/alert.webp';
@@ -26,6 +38,13 @@ export const appNavigation: NavSection[] = [
 	{ label: 'Label Menu Page1', url: '/' },
 	{ label: 'Label Menu Page2', url: '/' },
 	{ label: 'Label Menu Page3', url: '/' }
+];
+
+export const appMobileNavigation: NavSection[] = [
+	{ label: 'Home', icon: House, url: '/' },
+	{ label: 'Docs', icon: PackageOpen, url: '/' },
+	{ label: 'About', icon: Workflow, url: '/' },
+	{ label: 'GitHub', icon: githubIcon, url: '/' }
 ];
 
 export const docsNavigation: NavSection[] = [

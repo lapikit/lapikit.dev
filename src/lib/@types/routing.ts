@@ -10,6 +10,7 @@ export type IconComponent = new (...args: any[]) => any;
 
 export type NavSection = {
 	label: string;
-	icon: string | IconComponent;
-	pages: NavPage[];
+	icon?: string | IconComponent;
+	url?: string;
+	pages?: NavPage[];
 };
