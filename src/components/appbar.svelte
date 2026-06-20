@@ -93,11 +93,14 @@
 
 <style>
 	:global(#appbar-lapikit) {
-		max-width: 98%;
-		margin: 1% auto 0;
+		max-width: calc(100% - 1rem);
+		margin: 1rem auto 0;
 		background-color: purple;
 		border-radius: 8px;
 		overflow: visible;
+		z-index: 2000;
+		position: sticky;
+		top: 1rem;
 	}
 
 	.lapikit-logo {
