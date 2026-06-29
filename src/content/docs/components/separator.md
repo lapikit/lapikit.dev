@@ -47,7 +47,7 @@ Adds a leading margin to indent the separator from the left edge useful inside l
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Separator } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Separator } from 'lapikit/components';"} />
 
 ## API Reference
 

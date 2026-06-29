@@ -4,7 +4,7 @@
 	import type { SearchEntry } from '$lib/@types';
 	import { docsMetadata } from '$lib';
 	import { capitalize } from '$lib/utils';
-	import type { ModelPopoverProps } from 'lapikit/labs/components';
+	import type { ModelPopoverProps } from 'lapikit/components';
 	import { ChevronRight, Search, Puzzle, NotebookText, SquareFunction } from 'lucide-svelte';
 
 	const searchEntries: SearchEntry[] = docsMetadata.map((doc) => {

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { KitBtn, KitDropdown, KitList, KitListItem } from 'lapikit/labs/components';
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
+	import { KitBtn, KitDropdown, KitList, KitListItem } from 'lapikit/components';
+	import type { ModelDropdownProps } from 'lapikit/components';
 </script>
 
 <KitDropdown closeOnClick>

@@ -119,7 +119,7 @@ Pass `href` to render the button as an `<a>` element. The `disabled` prop remove
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Btn } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Btn } from 'lapikit/components';"} />
 
 ## API Reference
 

@@ -106,7 +106,7 @@ Use the `indicator` snippet to replace the default chevron with a custom element
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Accordion, AccordionItem } from 'lapikit/labs/components';\nimport { useAccordion } from 'lapikit/actions';"} />
+<LazyRepl lang="js" content={"import { Accordion, AccordionItem } from 'lapikit/components';\nimport { useAccordion } from 'lapikit/actions';"} />
 
 ## API References
 

@@ -44,7 +44,7 @@ activator(model: ModelPopoverProps)
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Popover } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Popover } from 'lapikit/components';"} />
 
 ## API Reference
 

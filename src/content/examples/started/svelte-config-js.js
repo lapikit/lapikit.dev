@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-node';
-import { lapikitPreprocess } from 'lapikit/labs/preprocess';
+import { lapikitPreprocess } from 'lapikit/preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

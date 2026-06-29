@@ -80,7 +80,7 @@ An interactive card lifts on hover and shows a ripple on click. This behaviour i
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Card } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Card } from 'lapikit/components';"} />
 
 ## API Reference
 

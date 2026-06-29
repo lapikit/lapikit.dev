@@ -1,5 +1,5 @@
 <script>
-	import { KitBtn } from 'lapikit/labs/components';
+	import { KitBtn } from 'lapikit/components';
 </script>
 
 <KitBtn>Click me</KitBtn>

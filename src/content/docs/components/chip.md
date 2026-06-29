@@ -89,7 +89,7 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Chip } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Chip } from 'lapikit/components';"} />
 
 ## API Reference
 

@@ -70,7 +70,7 @@ By default icons are hidden from assistive technologies (`decorative={true}`, `a
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Icon } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Icon } from 'lapikit/components';"} />
 
 ## API Reference
 

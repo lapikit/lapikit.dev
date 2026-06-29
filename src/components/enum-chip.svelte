@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ModelPopoverProps } from 'lapikit/labs/components';
+	import type { ModelPopoverProps } from 'lapikit/components';
 	import { Info } from 'lucide-svelte';
 
 	let { values }: { values: string[] } = $props();

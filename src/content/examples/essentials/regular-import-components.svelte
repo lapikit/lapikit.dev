@@ -1,5 +1,5 @@
 <script>
-	import { KitBtn } from 'lapikit/labs/components';
+	import { KitBtn } from 'lapikit/components';
 	import MyCustomButton from '$components/my-button.svelte';
 </script>
 

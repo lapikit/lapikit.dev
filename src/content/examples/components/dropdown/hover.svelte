@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ChevronDown } from 'lucide-svelte';
 
-	import type { ModelDropdownProps, ModelDropdownHandleProps } from 'lapikit/labs/components';
+	import type { ModelDropdownProps, ModelDropdownHandleProps } from 'lapikit/components';
 </script>
 
 <kit:dropdown openOnHover closeOnClick>

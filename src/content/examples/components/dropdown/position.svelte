@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
+	import type { ModelDropdownProps } from 'lapikit/components';
 </script>
 
 <div

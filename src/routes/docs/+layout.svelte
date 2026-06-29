@@ -4,7 +4,7 @@
 	import { theme_storage_key } from '$lib';
 
 	// types
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
+	import type { ModelDropdownProps } from 'lapikit/components';
 
 	// components
 	import Search from '$components/search.svelte';

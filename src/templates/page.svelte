@@ -5,7 +5,7 @@
 	import type { MarkdownHeading } from '$lib/@types';
 
 	import { getBreadcrumbs } from '$lib/breadcrumbs';
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
+	import type { ModelDropdownProps } from 'lapikit/components';
 	import { ChevronDown, ChevronRight } from 'lucide-svelte';
 
 	// components

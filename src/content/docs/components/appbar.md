@@ -58,7 +58,7 @@ The `variant` prop controls the background and border style.
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Appbar } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Appbar } from 'lapikit/components';"} />
 
 ## API Reference
 

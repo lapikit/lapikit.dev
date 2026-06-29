@@ -84,7 +84,7 @@ Adds a clear button that appears when the field has a value.
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Textfield } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Textfield } from 'lapikit/components';"} />
 
 ## API Reference
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Settings, User, LogOut, ChevronDown } from 'lucide-svelte';
 
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
+	import type { ModelDropdownProps } from 'lapikit/components';
 </script>
 
 <kit:dropdown closeOnClick>

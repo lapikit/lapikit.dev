@@ -12,7 +12,7 @@
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../routes/docs/[...slug]/$types';
 	import { docsNavigation, getBreadcrumbs } from '$lib';
-	import type { ModelDropdownProps } from 'lapikit/labs/components';
+	import type { ModelDropdownProps } from 'lapikit/components';
 
 	// Components
 	import TableOfContent from '../components/table-of-content.svelte';
