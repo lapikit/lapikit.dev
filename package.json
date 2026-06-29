@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^9.39.4",
-		"@lapikit/repl": "^0.0.0",
+		"@lapikit/repl": "^0.0.0-insiders.fbbe434",
 		"@playwright/test": "^1.61.1",
 		"@sveltejs/adapter-node": "^5.5.7",
 		"@sveltejs/enhanced-img": "^0.10.4",
@@ -37,7 +37,7 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.20.0",
 		"globals": "^17.7.0",
-		"lapikit": "^0.0.0",
+		"lapikit": "^0.0.0-insiders.f8c7747",
 		"mdsvex": "^0.12.7",
 		"prettier": "^3.9.3",
 		"prettier-plugin-svelte": "^3.5.2",
