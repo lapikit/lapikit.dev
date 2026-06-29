@@ -73,7 +73,7 @@ Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge 
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Toolbar } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Toolbar } from 'lapikit/components';"} />
 
 ## API Reference
 

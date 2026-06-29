@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ModelPopoverProps } from 'lapikit/labs/components';
+	import type { ModelPopoverProps } from 'lapikit/components';
 
 	const positions = ['top', 'bottom', 'left', 'right'] as const;
 </script>

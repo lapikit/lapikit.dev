@@ -39,7 +39,7 @@ Connect lapikit on your svelte configuration:
 
 ```js
 // svelte.config.js
-import { lapikitPreprocess } from 'lapikit/labs/preprocess';
+import { lapikitPreprocess } from 'lapikit/preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

@@ -61,7 +61,7 @@ The `inline` property displays the component in the text flow, as an inline elem
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { AspectRatio } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { AspectRatio } from 'lapikit/components';"} />
 
 ## API Reference
 

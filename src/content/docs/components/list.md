@@ -64,7 +64,7 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { List, ListItem } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { List, ListItem } from 'lapikit/components';"} />
 
 ## API Reference
 

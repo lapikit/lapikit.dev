@@ -70,7 +70,7 @@ Scales the diameter by a multiplier on top of `size`, in label mode only.
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Avatar } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Avatar } from 'lapikit/components';"} />
 
 ## API Reference
 

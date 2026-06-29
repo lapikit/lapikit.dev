@@ -56,7 +56,7 @@ For the same reason, IDE autocompletion is not available for `<kit:*>` tags. Ful
 
 ## Using Lapikit Without the Preprocessor
 
-If the false positives are a blocker for your workflow, you can use lapikit components directly without the preprocessor. Import them manually from `lapikit/labs/components` and use them like any standard Svelte component:
+If the false positives are a blocker for your workflow, you can use lapikit components directly without the preprocessor. Import them manually from `lapikit/components` and use them like any standard Svelte component:
 
 <LazyRepl lang="svelte" content={() => import('$examples/addons/component-without-preprocessor.svelte?raw')}>
 <ComponentWithoutPreprocessor/>

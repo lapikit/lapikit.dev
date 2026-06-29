@@ -62,7 +62,7 @@ When `persistent` is set, clicking the backdrop or pressing Escape does not clos
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Dialog } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Dialog } from 'lapikit/components';"} />
 
 ## API Reference
 

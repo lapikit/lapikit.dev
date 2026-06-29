@@ -66,7 +66,7 @@ Closes the dropdown automatically when any element inside the panel is clicked.
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Dropdown } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Dropdown } from 'lapikit/components';"} />
 
 ## API Reference
 

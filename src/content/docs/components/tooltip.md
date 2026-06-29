@@ -63,7 +63,7 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Tooltip } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Tooltip } from 'lapikit/components';"} />
 
 ## API Reference
 

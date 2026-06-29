@@ -62,7 +62,7 @@ When `persistent` is set, pressing Escape does not close the modal. The user mus
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Modal } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Modal } from 'lapikit/components';"} />
 
 ## API Reference
 

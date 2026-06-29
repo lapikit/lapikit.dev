@@ -108,7 +108,7 @@ Use the `close` snippet to replace the default `×` character with a custom clos
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Alert } from 'lapikit/labs/components';"} />
+<LazyRepl lang="js" content={"import { Alert } from 'lapikit/components';"} />
 
 ## API Reference
 

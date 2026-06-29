@@ -5,6 +5,7 @@ export type DocMetadataValue =
 	| number
 	| boolean
 	| null
+	| undefined
 	| DocMetadataValue[]
 	| { [key: string]: DocMetadataValue };
 
