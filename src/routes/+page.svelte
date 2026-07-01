@@ -302,7 +302,7 @@
 							</kit:chip>
 						{/snippet}
 
-						Lapikit v0.5 is up!
+						Lapikit v0.6 is up!
 						{#snippet append()}
 							<kit:icon>
 								<ChevronRight />
