@@ -27,5 +27,5 @@ jobs:
             cd ~/${{ secrets.PATH_CANARY }}
             git fetch origin
             git reset --hard origin/${{ github.ref_name }}
-            docker compose build
+            docker compose build --no-cache
             docker compose up -d --remove-orphans
