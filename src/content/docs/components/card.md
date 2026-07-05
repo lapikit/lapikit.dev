@@ -21,16 +21,15 @@ The `kit:card` component is a versatile container used to group together informa
 <Preview/>
 </LazyRepl>
 
-`kit:card` is a layout container, it adds no heading or structure on its own. Use the utility classes below inside it to organise content consistently.
+`kit:card` is a layout container, it adds no heading or structure on its own. Use the following subcomponents to structure your card content:
 
-| class                      | description                                                    |
-| -------------------------- | -------------------------------------------------------------- |
-| `kit-card__media`          | Wraps media (image, video). Clips overflow to the card radius. |
-| `kit-card__header`         | Bold title. `font-weight: 600`, tight line-height.             |
-| `kit-card__body`           | Main text content.                                             |
-| `kit-card__footer`         | Flex row between footer text and actions.                      |
-| `kit-card__footer-content` | Muted text (date, meta) inside the footer.                     |
-| `kit-card__actions`        | Inline action buttons inside the footer.                       |
+| components           | description                                                    |
+| -------------------- | -------------------------------------------------------------- |
+| `kit:card-media`     | Wraps media (image, video). Clips overflow to the card radius. |
+| `kit:card-title`     | Bold title. `font-weight: 600`, tight line-height.             |
+| `kit:card-content`   | Main text content.                                             |
+| `kit:card-actions`   | Flex bar for action buttons.                                   |
+| `kit:card-container` | Main container for the card content.                           |
 
 <LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/structure.svelte?raw')}>
 <Structure/>
@@ -54,7 +53,7 @@ The `kit:card` component is a versatile container used to group together informa
 
 `density` adjusts the internal padding.
 
-- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
+- **density**: `'none' | 'compact' | 'default' | 'comfortable'` = `'default'`
 
 <LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/density.svelte?raw')}>
 <Density/>
@@ -90,7 +89,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | ----------- | --------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
 | is          | `'div' \| 'article' \| 'section' \| 'aside' \| 'a' \| 'button'` | HTML element to render. Overridden by `href`.           | `'div'`     |
 | variant     | `'filled' \| 'outline' \| 'text'`                               | Visual style.                                           | `'filled'`  |
-| density     | `'compact' \| 'default' \| 'comfortable'`                       | Internal padding.                                       | `'default'` |
+| density     | `'none' \| 'compact' \| 'default' \| 'comfortable'`             | Internal padding.                                       | `'default'` |
 | rounded     | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Border radius.                                          | `'md'`      |
 | href        | `string`                                                        | Renders as `<a>`. Enables interactive mode.             |             |
 | interactive | `boolean`                                                       | Enables hover lift and ripple without changing the tag. | `false`     |
