@@ -1,16 +1,16 @@
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
 	<kit:card variant="filled">
-		<p class="kit-card__header">Filled</p>
-		<p class="kit-card__body">Accent background with white text.</p>
+		<kit:card-title>Filled</kit:card-title>
+		<kit:card-content>Accent background with white text.</kit:card-content>
 	</kit:card>
 
 	<kit:card variant="outline">
-		<p class="kit-card__header">Outline</p>
-		<p class="kit-card__body">Transparent background with accent border.</p>
+		<kit:card-title>Outline</kit:card-title>
+		<kit:card-content>Transparent background with accent border.</kit:card-content>
 	</kit:card>
 
 	<kit:card variant="text">
-		<p class="kit-card__header">Text</p>
-		<p class="kit-card__body">No background or border, accent text only.</p>
+		<kit:card-title>Text</kit:card-title>
+		<kit:card-content>No background or border, accent text only.</kit:card-content>
 	</kit:card>
 </div>

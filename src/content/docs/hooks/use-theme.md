@@ -1,6 +1,6 @@
 ---
-title: "useTheme action"
-description: "Learn how the UseTheme hook from Lapikit simplifies theme management in Svelte: switch dark/light modes, sync global state, and keep components in sync effortlessly."
+title: 'useTheme action'
+description: 'Learn how the UseTheme hook from Lapikit simplifies theme management in Svelte: switch dark/light modes, sync global state, and keep components in sync effortlessly.'
 ---
 
 <script>
@@ -23,7 +23,7 @@ You can use this action by calling `useTheme` with the desired theme name. For e
 
 You can also customize the storage key in localStorage by passing a second argument to the `useTheme` function. By default, this key is set to `@lapikit/theme`.
 
-You can customize the available themes and their associated styles via the configuration file `plugins/lapikit.(js|ts)`. See the [themes](/docs/customize) documentation to learn about all the available options for customizing Lapikit for your application.
+See the [themes](/docs/customize) documentation to learn about all the available options for customizing Lapikit for your application.
 
 ## API References
 
