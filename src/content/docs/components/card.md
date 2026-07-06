@@ -11,6 +11,7 @@ description: "Organize and display content in visually coherent blocks. The Lapi
 	import Density from '$examples/components/card/density.svelte';
 	import Interactive from '$examples/components/card/interactive.svelte';
 	import Structure from '$examples/components/card/structure.svelte';
+	import Elevation from '$examples/components/card/elevation.svelte';
 </script>
 
 # Card component
@@ -59,7 +60,7 @@ The `kit:card` component is a versatile container used to group together informa
 <Density/>
 </LazyRepl>
 
-### interactive
+### Interactive
 
 An interactive card lifts on hover and shows a ripple on click. This behaviour is automatic when `href` is set or an `onclick` handler is attached. Use `interactive` to enable it on a plain `<div>` without changing the element.
 
@@ -73,6 +74,17 @@ An interactive card lifts on hover and shows a ripple on click. This behaviour i
 
 <LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/interactive.svelte?raw')}>
 <Interactive/>
+</LazyRepl>
+
+### Elevation
+
+The Elevation property allows you to apply a `box shadow` effect to the **Card** component. This property lets you add this effect to the component—either by default or when the component is in the `hover` or `active` states.
+
+- **elevation**: `'0' | '1' | '2' | '3' | '4' | '5'` = `'undefined'`
+- **elevation** (multi-state): `{base: value, hover: value, active: value}`
+
+<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/elevation.svelte?raw')}>
+<Elevation/>
 </LazyRepl>
 
 ### Without preprocess Lapikit
@@ -91,6 +103,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | variant     | `'filled' \| 'outline' \| 'text'`                               | Visual style.                                           | `'filled'`  |
 | density     | `'none' \| 'compact' \| 'default' \| 'comfortable'`             | Internal padding.                                       | `'default'` |
 | rounded     | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Border radius.                                          | `'md'`      |
+| elevation   | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`      | Add shadow effect                                       |             |
 | href        | `string`                                                        | Renders as `<a>`. Enables interactive mode.             |             |
 | interactive | `boolean`                                                       | Enables hover lift and ripple without changing the tag. | `false`     |
 | active      | `boolean`                                                       | Applies the pressed background.                         | `false`     |
