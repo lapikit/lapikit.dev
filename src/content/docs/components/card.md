@@ -1,6 +1,6 @@
 ---
-title: "Card"
-description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+title: 'Card'
+description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
 ---
 
 <script>
@@ -101,6 +101,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | ----------- | --------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
 | is          | `'div' \| 'article' \| 'section' \| 'aside' \| 'a' \| 'button'` | HTML element to render. Overridden by `href`.           | `'div'`     |
 | variant     | `'filled' \| 'outline' \| 'text'`                               | Visual style.                                           | `'filled'`  |
+| type        | `'button' \| 'submit' \| 'reset'`                               | Defined html type to card                               | `undefined` |
 | density     | `'none' \| 'compact' \| 'default' \| 'comfortable'`             | Internal padding.                                       | `'default'` |
 | rounded     | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Border radius.                                          | `'md'`      |
 | elevation   | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`      | Add shadow effect                                       |             |
