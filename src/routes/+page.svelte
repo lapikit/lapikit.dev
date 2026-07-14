@@ -47,6 +47,7 @@
 	import { openConsentPreferences } from '$lib/stores/consent.svelte';
 	import { npmState } from '$lib/stores/npm.svelte';
 	import { resolve } from '$app/paths';
+	import { createTheme } from 'lapikit/actions';
 
 	// states
 	let stepCode: number = $state(0);
@@ -58,6 +59,8 @@
 	function handleScroll() {
 		scrolled = window.scrollY > 20;
 	}
+
+	const themeHomepage = createTheme();
 
 	onMount(() => {
 		if (browser) {
@@ -210,7 +213,7 @@
 	};
 </script>
 
-<div class="home kit-theme--dark">
+<div class="home" use:themeHomepage.action={{ name: 'dark' }}>
 	<kit:appbar
 		class="sticky! top-0 z-100"
 		classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"

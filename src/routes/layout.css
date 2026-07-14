@@ -12,9 +12,10 @@
 }
 
 @layer base {
-	body {
+	body,
+	#kit-app {
 		font-family: var(--font-sans);
-		background-color: var(--kit-bg);
-		color: var(--kit-fg);
+		background-color: var(--kit-color-surface);
+		color: var(--kit-color-text);
 	}
 }
