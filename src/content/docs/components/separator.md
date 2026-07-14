@@ -1,6 +1,6 @@
 ---
-title: "Separator"
-description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
+title: 'Separator'
+description: 'Visually separate your UI blocks with customizable lines in size, color, orientation and opacity.'
 ---
 
 <script>
@@ -53,13 +53,15 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:separator`**
 
-| props       | type                         | description                                      | default        |
-| ----------- | ---------------------------- | ------------------------------------------------ | -------------- |
-| is          | `'div' \| 'hr'`              | HTML element to render.                          | `'hr'`         |
-| orientation | `'horizontal' \| 'vertical'` | Direction of the separator.                      | `'horizontal'` |
-| inset       | `boolean`                    | Adds a leading indent.                           | `false`        |
-| thickness   | `string \| number`           | Border width override (px number or CSS string). |                |
-| opacity     | `string \| number`           | Opacity override.                                | `0.12`         |
-| color       | `string`                     | Color override (`--kit-separator-color`).        |                |
+| props         | type                              | description                                      | default        |
+| ------------- | --------------------------------- | ------------------------------------------------ | -------------- |
+| ref $bindable | `HTMLElement`                     | Bindable reference to the rendered DOM element.  | `null`         |
+| is            | `'div' \| 'hr'`                   | HTML element to render.                          | `'hr'`         |
+| s-class       | `'string' \| 'array' \| 'object'` | Sets className on separator.                     |                |
+| s-style       | `'string' \| 'array' \| 'object'` | Sets styles on separator.                        |                |
+| orientation   | `'horizontal' \| 'vertical'`      | Direction of the separator.                      | `'horizontal'` |
+| inset         | `boolean`                         | Adds a leading indent.                           | `false`        |
+| thickness     | `string \| number`                | Border width override (px number or CSS string). |                |
+| color         | `string`                          | Color override (`--kit-separator-color`).        |                |
 
 To organize your data, combine Separators with [List](/docs/components/list) for greater legibility.

@@ -1,6 +1,6 @@
 ---
-title: "Alert"
-description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
+title: 'Alert'
+description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
 ---
 
 <script>
@@ -114,20 +114,26 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:alert`**
 
-| props      | type                                                       | description                                      | default     |
-| ---------- | ---------------------------------------------------------- | ------------------------------------------------ | ----------- |
-| is         | `'div' \| 'section' \| 'aside' \| 'article'`               | HTML element to render.                          | `'div'`     |
-| open       | `boolean`                                                  | Controls visibility. Bindable.                   | `true`      |
-| closable   | `boolean`                                                  | Adds a close button that sets `open` to `false`. | `false`     |
-| variant    | `'filled' \| 'outline' \| 'text'`                          | Visual style of the alert.                       | `'filled'`  |
-| density    | `'compact' \| 'default' \| 'comfortable'`                  | Spacing inside the alert.                        | `'default'` |
-| tone       | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'` | Semantic color tone.                             | `'default'` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Border radius.                                   | `'md'`      |
-| color      | `string`                                                   | Foreground color override (`--kit-alert-fg`).    |             |
-| background | `string`                                                   | Background color override (`--kit-alert-bg`).    |             |
-| prepend    | `Snippet`                                                  | Content rendered before the main text.           |             |
-| append     | `Snippet`                                                  | Content rendered after the main text.            |             |
-| close      | `Snippet`                                                  | Custom content inside the close button.          |             |
-| children   | `Snippet`                                                  | Main alert content.                              |             |
+| props          | type                                                       | description                                      | default     |
+| -------------- | ---------------------------------------------------------- | ------------------------------------------------ | ----------- |
+| ref $bindable  | `HTMLElement`                                              | Bindable reference to the rendered DOM element.  | `null`      |
+| is             | `'div' \| 'section' \| 'aside' \| 'article'`               | HTML element to render.                          | `'div'`     |
+| s-class        | `'string' \| 'array' \| 'object'`                          | Sets className on alert.                         |             |
+| s-style        | `'string' \| 'array' \| 'object'`                          | Sets styles on alert.                            |             |
+| open $bindable | `boolean`                                                  | Controls visibility. Bindable.                   | `true`      |
+| closable       | `boolean`                                                  | Adds a close button that sets `open` to `false`. | `false`     |
+| variant        | `'filled' \| 'outline' \| 'text'`                          | Visual style of the alert.                       | `'filled'`  |
+| density        | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Spacing inside the alert.                        | `'default'` |
+| tone           | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'` | Semantic color tone.                             | `'default'` |
+| rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                   | `'md'`      |
+| color          | `string`                                                   | Foreground color override (`--kit-alert-fg`).    |             |
+| background     | `string`                                                   | Background color override (`--kit-alert-bg`).    |             |
+| size           | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Sizing height, font and gap for alert.           | `'md'`      |
+| prepend        | `Snippet`                                                  | Content rendered before the main text.           |             |
+| append         | `Snippet`                                                  | Content rendered after the main text.            |             |
+| close          | `Snippet`                                                  | Custom content inside the close button.          |             |
+| children       | `Snippet`                                                  | Main alert content.                              |             |
+| multiline      | `boolean`                                                  | Define alert message on one or more line.        |             |
+| elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                               |             |
 
 To enhance your `kit:alert`, think of [Icon](/docs/components/icon) for legibility, or [Button](/docs/components/button) for integrated actions.

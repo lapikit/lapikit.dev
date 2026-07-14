@@ -1,5 +1,5 @@
 ---
-title: "Button"
+title: 'Button'
 description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 ---
 
@@ -125,24 +125,30 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:btn`**
 
-| props    | type                                        | description                                              | default     |
-| -------- | ------------------------------------------- | -------------------------------------------------------- | ----------- |
-| is       | `'button' \| 'a' \| 'input'`                | HTML element to render. Overridden by `href` or `input`. | `'button'`  |
-| variant  | `'filled' \| 'outline' \| 'text' \| 'link'` | Visual style.                                            | `'filled'`  |
-| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Height and font size.                                    | `'md'`      |
-| density  | `'compact' \| 'default' \| 'comfortable'`   | Padding and height multiplier.                           | `'default'` |
-| rounded  | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                           |             |
-| href     | `string`                                    | Renders as `<a>`. Cleared when `disabled`.               |             |
-| disabled | `boolean`                                   | Prevents interaction, dims the button.                   | `false`     |
-| loading  | `boolean`                                   | Shows a spinner, hides content.                          |             |
-| active   | `boolean`                                   | Applies the pressed background.                          | `false`     |
-| icon     | `boolean`                                   | Makes width equal height for icon-only buttons.          |             |
-| block    | `boolean`                                   | Stretches to full container width.                       |             |
-| wide     | `boolean`                                   | Caps width at `16rem`.                                   |             |
-| noRipple | `boolean`                                   | Disables the ripple animation on click.                  |             |
-| prepend  | `Snippet`                                   | Content before the label.                                |             |
-| append   | `Snippet`                                   | Content after the label.                                 |             |
-| load     | `Snippet`                                   | Custom spinner content shown while loading.              |             |
-| children | `Snippet`                                   | Button label.                                            |             |
+| props         | type                                                       | description                                              | default     |
+| ------------- | ---------------------------------------------------------- | -------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.          | `null`      |
+| is            | `'button' \| 'a' \| 'input'`                               | HTML element to render. Overridden by `href` or `input`. | `'button'`  |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on btn.                                   |             |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on btn.                                      |             |
+| variant       | `'filled' \| 'outline' \| 'text' \| 'link'`                | Visual style.                                            | `'filled'`  |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Height and font size.                                    | `'md'`      |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding and height multiplier.                           | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                           | `'sm'`      |
+| href          | `string`                                                   | Renders as `<a>`. Cleared when `disabled`.               |             |
+| disabled      | `boolean`                                                  | Prevents interaction, dims the button.                   | `false`     |
+| loading       | `boolean`                                                  | Shows a spinner, hides content.                          |             |
+| active        | `boolean`                                                  | Applies the pressed background.                          | `false`     |
+| icon          | `boolean`                                                  | Makes width equal height for icon-only buttons.          |             |
+| block         | `boolean`                                                  | Stretches to full container width.                       |             |
+| wide          | `boolean`                                                  | Caps width at `16rem`.                                   |             |
+| noRipple      | `boolean`                                                  | Disables the ripple animation on click.                  |             |
+| prepend       | `Snippet`                                                  | Content before the label.                                |             |
+| append        | `Snippet`                                                  | Content after the label.                                 |             |
+| load          | `Snippet`                                                  | Custom spinner content shown while loading.              |             |
+| children      | `Snippet`                                                  | Button label.                                            |             |
+| color         | `string`                                                   | Foreground color override (`--kit-btn-fg`).              |             |
+| background    | `string`                                                   | Background color override (`--kit-btn-bg`).              |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                       |             |
 
 `kit:btn` become more effective with [Tooltips](/docs/components/tooltip), a [Toolbar](/docs/components/toolbar) or [Popover](/docs/components/popover) interactions.

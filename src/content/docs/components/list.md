@@ -70,32 +70,38 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:list`**
 
-| props      | type                                                  | description                                        | default     |
-| ---------- | ----------------------------------------------------- | -------------------------------------------------- | ----------- |
-| is         | `'div' \| 'nav' \| 'ul'`                              | HTML element to render.                            | `'div'`     |
-| variant    | `'filled' \| 'outline' \| 'text'`                     | Visual style.                                      | `'filled'`  |
-| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Item height, padding, and font size tokens.        | `'md'`      |
-| density    | `'none' \| 'compact' \| 'default' \| 'comfortable'`   | Vertical density offset applied to item height.    | `'default'` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Border radius on list items children               | `'md'`      |
-| nav        | `boolean`                                             | Navigation mode more padding, `role="navigation"`. | `false`     |
-| color      | `string`                                              | Foreground color override (`--kit-list-item-fg`).  |             |
-| background | `string`                                              | Background color override (`--kit-list-item-bg`).  |             |
-| children   | `Snippet`                                             | List items.                                        |             |
+| props         | type                                                  | description                                        | default     |
+| ------------- | ----------------------------------------------------- | -------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                         | Bindable reference to the rendered DOM element.    | `null`      |
+| is            | `'div' \| 'nav' \| 'ul'`                              | HTML element to render.                            | `'div'`     |
+| s-class       | `'string' \| 'array' \| 'object'`                     | Sets className on list.                            |             |
+| s-style       | `'string' \| 'array' \| 'object'`                     | Sets styles on list.                               |             |
+| variant       | `'filled' \| 'outline' \| 'text'`                     | Visual style.                                      | `'filled'`  |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Item height, padding, and font size tokens.        | `'md'`      |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`   | Vertical density offset applied to item height.    | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Border radius on list items children.              | `'md'`      |
+| nav           | `boolean`                                             | Navigation mode more padding, `role="navigation"`. | `false`     |
+| color         | `string`                                              | Foreground color override (`--kit-list-item-fg`).  |             |
+| background    | `string`                                              | Background color override (`--kit-list-item-bg`).  |             |
+| children      | `Snippet`                                             | List items.                                        |             |
 
 **`kit:list-item`**
 
-| props       | type                               | description                                       | default |
-| ----------- | ---------------------------------- | ------------------------------------------------- | ------- |
-| is          | `'div' \| 'a' \| 'button' \| 'li'` | HTML element. Overridden by `href` or `onclick`.  | `'div'` |
-| href        | `string`                           | Renders as `<a>`. Cleared when `disabled`.        |         |
-| active      | `boolean`                          | Applies the active background.                    | `false` |
-| disabled    | `boolean`                          | Dims and blocks interaction.                      | `false` |
-| noRipple    | `boolean`                          | Disables the ripple animation.                    | `false` |
-| interactive | `boolean`                          | Force effect hover and active                     | `false` |
-| color       | `string`                           | Foreground color override (`--kit-list-item-fg`). |         |
-| background  | `string`                           | Background color override (`--kit-list-item-bg`). |         |
-| prepend     | `Snippet`                          | Content before the label.                         |         |
-| append      | `Snippet`                          | Content after the label.                          |         |
-| children    | `Snippet`                          | Item label.                                       |         |
+| props         | type                               | description                                       | default |
+| ------------- | ---------------------------------- | ------------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                      | Bindable reference to the rendered DOM element.   | `null`  |
+| is            | `'div' \| 'a' \| 'button' \| 'li'` | HTML element. Overridden by `href` or `onclick`.  | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`  | Sets className on list item.                      |         |
+| s-style       | `'string' \| 'array' \| 'object'`  | Sets styles on list item.                         |         |
+| href          | `string`                           | Renders as `<a>`. Cleared when `disabled`.        |         |
+| active        | `boolean`                          | Applies the active background.                    | `false` |
+| disabled      | `boolean`                          | Dims and blocks interaction.                      | `false` |
+| noRipple      | `boolean`                          | Disables the ripple animation.                    | `false` |
+| interactive   | `boolean`                          | Force effect hover and active                     | `false` |
+| color         | `string`                           | Foreground color override (`--kit-list-item-fg`). |         |
+| background    | `string`                           | Background color override (`--kit-list-item-bg`). |         |
+| prepend       | `Snippet`                          | Content before the label.                         |         |
+| append        | `Snippet`                          | Content after the label.                          |         |
+| children      | `Snippet`                          | Item label.                                       |         |
 
 A well-structured `kit:list` can easily be enriched with [Separators](/docs/components/separator) or elements in a [Card](/docs/components/card).

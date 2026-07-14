@@ -1,6 +1,6 @@
 ---
-title: "Accordion"
-description: "Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable."
+title: 'Accordion'
+description: 'Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable.'
 ---
 
 <script>
@@ -112,31 +112,42 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:accordion`**
 
-| props      | type                                        | description                                       | default |
-| ---------- | ------------------------------------------- | ------------------------------------------------- | ------- |
-| spacer     | `boolean`                                   | Adds a gap between items.                         | `false` |
-| hideIcon   | `boolean`                                   | Hides the indicator icon on all child items.      | `false` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius applied to all items.               |         |
-| text       | `string`                                    | Applies a text color CSS variable.                |         |
-| color      | `string`                                    | Foreground color override (`--kit-accordion-fg`). |         |
-| background | `string`                                    | Background color override (`--kit-accordion-bg`). |         |
-| children   | `Snippet`                                   | Accordion items to render.                        |         |
+| props         | type                                                  | description                                            | default     |
+| ------------- | ----------------------------------------------------- | ------------------------------------------------------ | ----------- |
+| ref $bindable | `HTMLElement`                                         | Bindable reference to the rendered DOM element.        | `null`      |
+| is            | `div`                                                 | Defines the HTML tag used as the root element.         | `'div'`     |
+| s-class       | `'string' \| 'array' \| 'object'`                     | Sets className on accordion                            |             |
+| s-style       | `'string' \| 'array' \| 'object'`                     | Sets styles on accordion                               |             |
+| spacer        | `boolean`                                             | Adds a gap between items.                              |             |
+| hideIcon      | `boolean`                                             | Hides the indicator icon on all child items.           |             |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Border radius applied to all items.                    | `'md'`      |
+| text          | `string`                                              | Applies a text color CSS variable.                     |             |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`   | Spacing inside accordion.                              | `'default'` |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Sizing height, font and gap for accordion items.       | `'md'`      |
+| variant       | `'filled' \| 'outline' \| 'text'`                     | Visual style of the accordion items.                   | `'filled'`  |
+| color         | `string`                                              | Foreground color override (`--kit-accordion-item-fg`). |             |
+| background    | `string`                                              | Background color override (`--kit-accordion-item-bg`). |             |
+| children      | `Snippet`                                             | Accordion items to render.                             |             |
 
 **`kit:accordion-item`**
 
-| props      | type                                        | description                                                      | default |
-| ---------- | ------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| index      | `string \| number`                          | Unique identifier for this item. **Required.**                   |         |
-| open       | `boolean`                                   | Whether the item is expanded.                                    | `false` |
-| toggle     | `(index: string \| number) => void`         | Called when the trigger is clicked. Receives the item's `index`. |         |
-| text       | `string`                                    | Label displayed in the trigger button.                           |         |
-| activator  | `Snippet`                                   | Custom trigger content - replaces `text`.                        |         |
-| indicator  | `Snippet<[{ open: boolean }]>`              | Custom indicator - replaces the default chevron icon.            |         |
-| disabled   | `boolean`                                   | Prevents the item from being toggled.                            | `false` |
-| readOnly   | `boolean`                                   | Renders the item as non-interactive without disabled styling.    | `false` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Per-item border radius override.                                 |         |
-| color      | `string`                                    | Foreground color override (`--kit-accordion-item-fg`).           |         |
-| background | `string`                                    | Background color override (`--kit-accordion-item-bg`).           |         |
-| children   | `Snippet`                                   | Content revealed when the item is open.                          |         |
+| props         | type                                                       | description                                                      | default |
+| ------------- | ---------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.                  | `null`  |
+| is            | `div`                                                      | Defines the HTML tag used as the root element.                   | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on accordion item                                 |         |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on accordion item                                    |         |
+| index         | `string \| number`                                         | Unique identifier for this item. **Required.**                   |         |
+| open          | `boolean`                                                  | Whether the item is expanded.                                    | `false` |
+| toggle        | `(index: string \| number) => void`                        | Called when the trigger is clicked. Receives the item's `index`. |         |
+| text          | `string`                                                   | Label displayed in the trigger button.                           |         |
+| activator     | `Snippet`                                                  | Custom trigger content - replaces `text`.                        |         |
+| indicator     | `Snippet<[{ open: boolean }]>`                             | Custom indicator - replaces the default chevron icon.            |         |
+| disabled      | `boolean`                                                  | Prevents the item from being toggled.                            | `false` |
+| readOnly      | `boolean`                                                  | Renders the item as non-interactive without disabled styling.    | `false` |
+| color         | `string`                                                   | Foreground color override (`--kit-accordion-item-fg`).           |         |
+| background    | `string`                                                   | Background color override (`--kit-accordion-item-bg`).           |         |
+| children      | `Snippet`                                                  | Content revealed when the item is open.                          |         |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect                                                |         |
 
 For the state hook API, see the dedicated [`useAccordion`](/docs/hooks/use-accordion) page and for complete your `kit:accordion` interface, consider the [Icon](/docs/components/icon) and [Chip](/docs/components/chip) components for dynamic content.

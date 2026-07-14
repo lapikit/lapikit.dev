@@ -97,19 +97,69 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:card`**
 
-| props       | type                                                            | description                                             | default     |
-| ----------- | --------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
-| is          | `'div' \| 'article' \| 'section' \| 'aside' \| 'a' \| 'button'` | HTML element to render. Overridden by `href`.           | `'div'`     |
-| variant     | `'filled' \| 'outline' \| 'text'`                               | Visual style.                                           | `'filled'`  |
-| type        | `'button' \| 'submit' \| 'reset'`                               | Defined html type to card                               | `undefined` |
-| density     | `'none' \| 'compact' \| 'default' \| 'comfortable'`             | Internal padding.                                       | `'default'` |
-| rounded     | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Border radius.                                          | `'md'`      |
-| elevation   | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`      | Add shadow effect                                       |             |
-| href        | `string`                                                        | Renders as `<a>`. Enables interactive mode.             |             |
-| interactive | `boolean`                                                       | Enables hover lift and ripple without changing the tag. | `false`     |
-| active      | `boolean`                                                       | Applies the pressed background.                         | `false`     |
-| disabled    | `boolean`                                                       | Dims and disables interaction.                          | `false`     |
-| noRipple    | `boolean`                                                       | Disables the ripple animation on click.                 |             |
-| children    | `Snippet`                                                       | Card content.                                           |             |
+| props         | type                                                            | description                                             | default     |
+| ------------- | --------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                   | Bindable reference to the rendered DOM element.         | `null`      |
+| is            | `'div' \| 'article' \| 'section' \| 'aside' \| 'a' \| 'button'` | HTML element to render. Overridden by `href`.           | `'div'`     |
+| s-class       | `'string' \| 'array' \| 'object'`                               | Sets className on card.                                 |             |
+| s-style       | `'string' \| 'array' \| 'object'`                               | Sets styles on card.                                    |             |
+| variant       | `'filled' \| 'outline' \| 'text'`                               | Visual style.                                           | `'filled'`  |
+| type          | `'button' \| 'submit' \| 'reset'`                               | Defined html type to card.                              |             |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`             | Internal padding.                                       | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Border radius.                                          | `'md'`      |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`      | Add shadow effect.                                      |             |
+| href          | `string`                                                        | Renders as `<a>`. Enables interactive mode.             |             |
+| interactive   | `boolean`                                                       | Enables hover lift and ripple without changing the tag. | `false`     |
+| active        | `boolean`                                                       | Applies the pressed background.                         | `false`     |
+| disabled      | `boolean`                                                       | Dims and disables interaction.                          | `false`     |
+| noRipple      | `boolean`                                                       | Disables the ripple animation on click.                 |             |
+| children      | `Snippet`                                                       | Card content.                                           |             |
+| color         | `string`                                                        | Foreground color override (`--kit-card-fg`).            |             |
+| background    | `string`                                                        | Background color override (`--kit-card-bg`).            |             |
+
+**`kit:card-container`**
+
+| props         | type                              | description                                     | default |
+| ------------- | --------------------------------- | ----------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                     | Bindable reference to the rendered DOM element. | `null`  |
+| is            | `'div' \| 'span'`                 | HTML element to render                          | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'` | Sets className on card container.               |         |
+| s-style       | `'string' \| 'array' \| 'object'` | Sets styles on card container.                  |         |
+
+**`kit:card-title`**
+
+| props         | type                                                                        | description                                     | default |
+| ------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element. | `null`  |
+| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                          | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card title.                   |         |
+| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card title.                      |         |
+
+**`kit:card-content`**
+
+| props         | type                                                                        | description                                     | default |
+| ------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element. | `null`  |
+| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                          | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card content.                 |         |
+| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card content.                    |         |
+
+**`kit:card-media`**
+
+| props         | type                              | description                                     | default |
+| ------------- | --------------------------------- | ----------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                     | Bindable reference to the rendered DOM element. | `null`  |
+| is            | `'div' \| 'span'`                 | HTML element to render                          | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'` | Sets className on card media.                   |         |
+| s-style       | `'string' \| 'array' \| 'object'` | Sets styles on card media.                      |         |
+
+**`kit:card-actions`**
+
+| props         | type                              | description                                     | default |
+| ------------- | --------------------------------- | ----------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                     | Bindable reference to the rendered DOM element. | `null`  |
+| is            | `'div' \| 'span'`                 | HTML element to render                          | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'` | Sets className on card actions.                 |         |
+| s-style       | `'string' \| 'array' \| 'object'` | Sets styles on card actions.                    |         |
 
 For better structure, combine your [Cards](/docs/components/card) with [Avatars](/docs/components/avatar) and clear [Buttons](/docs/components/button).

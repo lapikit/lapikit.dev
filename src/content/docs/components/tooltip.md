@@ -1,6 +1,6 @@
 ---
-title: "Tooltip"
-description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
+title: 'Tooltip'
+description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
 ---
 
 <script>
@@ -69,21 +69,21 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:tooltip`**
 
-| props           | type                                        | description                                       | default     |
-| --------------- | ------------------------------------------- | ------------------------------------------------- | ----------- |
-| label           | `string`                                    | Plain text content of the tooltip.                |             |
-| location        | `'top' \| 'bottom' \| 'left' \| 'right'`    | Preferred position relative to the trigger.       | `'bottom'`  |
-| variant         | `'arrow'`                                   | Renders a directional arrow on the tooltip panel. |             |
-| delayDuration   | `number`                                    | Hover delay before the tooltip appears (ms).      | `850`       |
-| open            | `boolean`                                   | Controls visibility. Bindable.                    | `false`     |
-| disabled        | `boolean`                                   | Prevents the tooltip from showing.                | `false`     |
-| forceMount      | `boolean`                                   | Keeps the tooltip in the DOM when closed.         | `false`     |
-| avoidCollisions | `boolean`                                   | Flips position to stay within the viewport.       | `true`      |
-| density         | `'compact' \| 'default' \| 'comfortable'`   | Padding density.                                  | `'default'` |
-| rounded         | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                    |             |
-| color           | `string`                                    | Foreground color override (`--kit-tooltip-fg`).   |             |
-| background      | `string`                                    | Background color override (`--kit-tooltip-bg`).   |             |
-| tooltip         | `Snippet`                                   | Rich content rendered inside the tooltip panel.   |             |
-| children        | `Snippet`                                   | The trigger element.                              |             |
+| props           | type                                                  | description                                       | default     |
+| --------------- | ----------------------------------------------------- | ------------------------------------------------- | ----------- |
+| label           | `string`                                              | Plain text content of the tooltip.                |             |
+| location        | `'top' \| 'bottom' \| 'left' \| 'right'`              | Preferred position relative to the trigger.       | `'bottom'`  |
+| variant         | `'arrow'`                                             | Renders a directional arrow on the tooltip panel. |             |
+| delayDuration   | `number`                                              | Hover delay before the tooltip appears (ms).      | `850`       |
+| open            | `boolean`                                             | Controls visibility. Bindable.                    | `false`     |
+| disabled        | `boolean`                                             | Prevents the tooltip from showing.                | `false`     |
+| forceMount      | `boolean`                                             | Keeps the tooltip in the DOM when closed.         | `false`     |
+| avoidCollisions | `boolean`                                             | Flips position to stay within the viewport.       | `true`      |
+| density         | `'none' \| 'compact' \| 'default' \| 'comfortable'`   | Padding density.                                  | `'default'` |
+| rounded         | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Border radius.                                    | `'xs'`      |
+| color           | `string`                                              | Foreground color override (`--kit-tooltip-fg`).   |             |
+| background      | `string`                                              | Background color override (`--kit-tooltip-bg`).   |             |
+| tooltip         | `Snippet`                                             | Rich content rendered inside the tooltip panel.   |             |
+| children        | `Snippet`                                             | The trigger element.                              |             |
 
 Tooltips complement your [Buttons](/docs/components/button) or [Icons](/docs/components/icon) by providing discreet but useful context for users.

@@ -1,6 +1,6 @@
 ---
-title: "Chip"
-description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
+title: 'Chip'
+description: 'Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants.'
 ---
 
 <script>
@@ -95,22 +95,29 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:chip`**
 
-| props      | type                                        | description                                                | default     |
-| ---------- | ------------------------------------------- | ---------------------------------------------------------- | ----------- |
-| is         | `'div' \| 'a' \| 'button' \| 'input'`       | HTML element. Overridden by `href` or event handlers.      | `'div'`     |
-| variant    | `'filled' \| 'outline' \| 'text' \| 'link'` | Visual style.                                              | `'filled'`  |
-| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Height and font size.                                      | `'md'`      |
-| density    | `'compact' \| 'default' \| 'comfortable'`   | Padding and height multiplier.                             | `'default'` |
-| href       | `string`                                    | Renders as `<a>`. Cleared when `disabled` or `readonly`.   |             |
-| active     | `boolean`                                   | Applies the pressed background.                            | `false`     |
-| disabled   | `boolean`                                   | Dims and blocks all interaction.                           | `false`     |
-| readonly   | `boolean`                                   | Blocks interaction without disabled styling.               | `false`     |
-| labelStyle | `boolean`                                   | Uppercase, bold, letter-spacing for badges and categories. | `false`     |
-| loading    | `boolean`                                   | Shows a spinner, hides content.                            |             |
-| noRipple   | `boolean`                                   | Disables the ripple animation on click.                    |             |
-| prepend    | `Snippet`                                   | Content before the label.                                  |             |
-| append     | `Snippet`                                   | Content after the label.                                   |             |
-| load       | `Snippet`                                   | Custom spinner content shown while loading.                |             |
-| children   | `Snippet`                                   | Chip label.                                                |             |
+| props         | type                                                       | description                                                | default     |
+| ------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.            | `null`      |
+| is            | `'div' \| 'a' \| 'button' \| 'input'`                      | HTML element. Overridden by `href` or event handlers.      | `'div'`     |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on chip.                                    |             |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on chip.                                       |             |
+| variant       | `'filled' \| 'outline' \| 'text'`                          | Visual style.                                              | `'filled'`  |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Height and font size.                                      | `'md'`      |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding and height multiplier.                             | `'default'` |
+| href          | `string`                                                   | Renders as `<a>`. Cleared when `disabled` or `readonly`.   |             |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                             | `'full'`    |
+| active        | `boolean`                                                  | Applies the pressed background.                            | `false`     |
+| disabled      | `boolean`                                                  | Dims and blocks all interaction.                           | `false`     |
+| readonly      | `boolean`                                                  | Blocks interaction without disabled styling.               | `false`     |
+| labelStyle    | `boolean`                                                  | Uppercase, bold, letter-spacing for badges and categories. | `false`     |
+| loading       | `boolean`                                                  | Shows a spinner, hides content.                            |             |
+| noRipple      | `boolean`                                                  | Disables the ripple animation on click.                    |             |
+| prepend       | `Snippet`                                                  | Content before the label.                                  |             |
+| append        | `Snippet`                                                  | Content after the label.                                   |             |
+| load          | `Snippet`                                                  | Custom spinner content shown while loading.                |             |
+| children      | `Snippet`                                                  | Chip label.                                                |             |
+| color         | `string`                                                   | Foreground color override (`--kit-chip-fg`).               |             |
+| background    | `string`                                                   | Background color override (`--kit-chip-bg`).               |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                         |             |
 
 `kit:chip` are often used in a [Toolbar](/docs/components/toolbar) or as a complement in a [Card](/docs/components/card) to structure information and [List](/docs/components/list).

@@ -1,6 +1,6 @@
 ---
-title: "Popover"
-description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
+title: 'Popover'
+description: 'Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements.'
 ---
 
 <script>
@@ -50,15 +50,20 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:popover`**
 
-| props      | type                                                  | description                                     | default    |
-| ---------- | ----------------------------------------------------- | ----------------------------------------------- | ---------- |
-| open       | `boolean`                                             | Controls visibility. Bindable.                  | `false`    |
-| position   | `'top' \| 'bottom' \| 'left' \| 'right'`              | Preferred position relative to the activator.   | `'bottom'` |
-| rounded    | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius of the floating panel.            |            |
-| color      | `string`                                              | Foreground color override (`--kit-popover-fg`). |            |
-| background | `string`                                              | Background color override (`--kit-popover-bg`). |            |
-| activator  | `Snippet<[model]>`                                    | Trigger element. Receives model with `toggle`.  |            |
-| children   | `Snippet`                                             | Floating panel content.                         |            |
+| props          | type                                                       | description                                     | default     |
+| -------------- | ---------------------------------------------------------- | ----------------------------------------------- | ----------- |
+| ref $bindable  | `HTMLElement`                                              | Bindable reference to the rendered DOM element. | `null`      |
+| s-class        | `'string' \| 'array' \| 'object'`                          | Sets className on popover.                      |             |
+| s-style        | `'string' \| 'array' \| 'object'`                          | Sets styles on popover.                         |             |
+| open $bindable | `boolean`                                                  | Controls visibility. Bindable.                  | `false`     |
+| position       | `'top' \| 'bottom' \| 'left' \| 'right'`                   | Preferred position relative to the activator.   | `'bottom'`  |
+| rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' `               | Border radius of the floating panel.            |             |
+| color          | `string`                                                   | Foreground color override (`--kit-popover-fg`). |             |
+| background     | `string`                                                   | Background color override (`--kit-popover-bg`). |             |
+| activator      | `Snippet<[model]>`                                         | Trigger element. Receives model with `toggle`.  |             |
+| children       | `Snippet`                                                  | Floating panel content.                         |             |
+| elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                              | `'2'`       |
+| density        | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding inside the content panel.               | `'default'` |
 
 **ModelPopoverProps**
 

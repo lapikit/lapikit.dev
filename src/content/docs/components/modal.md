@@ -1,6 +1,6 @@
 ---
-title: "Modal"
-description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
+title: 'Modal'
+description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
 ---
 
 <script>
@@ -68,19 +68,24 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:modal`**
 
-| props        | type                                             | description                                       | default     |
-| ------------ | ------------------------------------------------ | ------------------------------------------------- | ----------- |
-| open         | `boolean`                                        | Controls visibility. Bindable.                    | `false`     |
-| persistent   | `boolean`                                        | Prevents closing on Escape.                       | `false`     |
-| contain      | `boolean`                                        | Positions relative to parent instead of viewport. | `false`     |
-| closeWithEsc | `boolean`                                        | Closes on Escape key.                             | `true`      |
-| size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Max-width of the content panel.                   | `'md'`      |
-| position     | `'top' \| 'center' \| 'bottom'`                  | Vertical alignment on the viewport.               | `'center'`  |
-| density      | `'compact' \| 'default' \| 'comfortable'`        | Padding inside the content panel.                 | `'default'` |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Border radius of the content panel.               | `'md'`      |
-| classContent | `string \| string[]`                             | Class(es) applied to the inner content panel.     |             |
-| color        | `string`                                         | Foreground color override (`--kit-modal-fg`).     |             |
-| background   | `string`                                         | Background color override (`--kit-modal-bg`).     |             |
-| children     | `Snippet`                                        | Modal content.                                    |             |
+| props          | type                                                                                                                                    | description                                                  | default     |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------- |
+| ref $bindable  | `HTMLElement`                                                                                                                           | Bindable reference to the rendered DOM element.              | `null`      |
+| s-class        | `'string' \| 'array' \| 'object'`                                                                                                       | Sets className on modal.                                     |             |
+| s-style        | `'string' \| 'array' \| 'object'`                                                                                                       | Sets styles on modal.                                        |             |
+| open $bindable | `boolean`                                                                                                                               | Controls visibility.                                         | `false`     |
+| persistent     | `boolean`                                                                                                                               | Prevents closing on Escape.                                  | `false`     |
+| contain        | `boolean`                                                                                                                               | Positions relative to parent instead of viewport.            | `false`     |
+| closeWithEsc   | `boolean`                                                                                                                               | Closes on Escape key.                                        | `true`      |
+| size           | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                                                                                        | Max-width of the content panel.                              | `'md'`      |
+| position       | `'top' \| 'center' \| 'bottom'  \| 'top-left'  \| 'top-right'  \| 'center-left'  \| 'center-right'  \| 'bottom-left'  \| 'botom-right'` | Vertical alignment on the viewport.                          | `'center'`  |
+| density        | `'none' \| 'compact' \| 'default' \| 'comfortable'`                                                                                     | Padding inside the content panel.                            | `'default'` |
+| rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                                                             | Border radius of the content panel.                          | `'md'`      |
+| classContent   | `string \| string[]`                                                                                                                    | Class(es) applied to the inner content panel.                |             |
+| color          | `string`                                                                                                                                | Foreground color override (`--kit-modal-fg`).                |             |
+| background     | `string`                                                                                                                                | Background color override (`--kit-modal-bg`).                |             |
+| children       | `Snippet`                                                                                                                               | Modal content.                                               |             |
+| space          | `string`                                                                                                                                | Add border space to viewport override (`--kit-modal-space`). |             |
+| elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                                                                              | Add shadow effect.                                           | `'2'`       |
 
 Complement the use of `kit:modal` with [Dialog](/docs/components/dialog) for confirmations or [Popover](/docs/components/popover) for light details.

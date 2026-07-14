@@ -1,6 +1,6 @@
 ---
-title: "Dropdown"
-description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
+title: 'Dropdown'
+description: 'Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning.'
 ---
 
 <script>
@@ -72,16 +72,21 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:dropdown`**
 
-| props        | type                                                  | description                                           | default    |
-| ------------ | ----------------------------------------------------- | ----------------------------------------------------- | ---------- |
-| position     | `'top' \| 'bottom' \| 'left' \| 'right'`              | Preferred position relative to the activator.         | `'bottom'` |
-| openOnHover  | `boolean`                                             | Opens on mouse enter wire `handleMouse` on activator. | `false`    |
-| closeOnClick | `boolean`                                             | Closes when content inside the panel is clicked.      | `false`    |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius of the floating panel.                  |            |
-| color        | `string`                                              | Foreground color override (`--kit-dropdown-fg`).      |            |
-| background   | `string`                                              | Background color override (`--kit-dropdown-bg`).      |            |
-| activator    | `Snippet<[model, handleMouse]>`                       | Trigger element. Receives model and mouse handler.    |            |
-| children     | `Snippet`                                             | Floating panel content.                               |            |
+| props         | type                                                       | description                                           | default     |
+| ------------- | ---------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.       | `null`      |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on dropdown.                           |             |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on dropdown.                              |             |
+| position      | `'top' \| 'bottom' \| 'left' \| 'right'`                   | Preferred position relative to the activator.         | `'bottom'`  |
+| openOnHover   | `boolean`                                                  | Opens on mouse enter wire `handleMouse` on activator. | `false`     |
+| closeOnClick  | `boolean`                                                  | Closes when content inside the panel is clicked.      | `false`     |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' `               | Border radius of the floating panel.                  |             |
+| color         | `string`                                                   | Foreground color override (`--kit-dropdown-fg`).      |             |
+| background    | `string`                                                   | Background color override (`--kit-dropdown-bg`).      |             |
+| activator     | `Snippet<[model, handleMouse]>`                            | Trigger element. Receives model and mouse handler.    |             |
+| children      | `Snippet`                                                  | Floating panel content.                               |             |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Height and horizontal padding.                        | `'default'` |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                    |             |
 
 **ModelDropdownProps**
 

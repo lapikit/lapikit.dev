@@ -1,6 +1,6 @@
 ---
-title: "Toolbar"
-description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
+title: 'Toolbar'
+description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
 ---
 
 <script>
@@ -79,17 +79,21 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:toolbar`**
 
-| props        | type                                        | description                                     | default        |
-| ------------ | ------------------------------------------- | ----------------------------------------------- | -------------- |
-| is           | `'div' \| 'header' \| 'nav'`                | HTML element to render.                         | `'div'`        |
-| variant      | `'filled' \| 'outline' \| 'text' \| 'dash'` | Visual style.                                   | `'filled'`     |
-| density      | `'compact' \| 'default' \| 'comfortable'`   | Padding and size density.                       | `'default'`    |
-| orientation  | `'horizontal' \| 'vertical'`                | Layout direction.                               | `'horizontal'` |
-| location     | `'top' \| 'bottom'`                         | Pins to viewport edge (`position: fixed`).      |                |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius.                                  | `'xl'` (1rem)  |
-| classContent | `string \| string[]`                        | Class(es) applied to the inner wrapper.         |                |
-| color        | `string`                                    | Foreground color override (`--kit-toolbar-fg`). |                |
-| background   | `string`                                    | Background color override (`--kit-toolbar-bg`). |                |
-| children     | `Snippet`                                   | Toolbar content.                                |                |
+| props         | type                                                       | description                                     | default        |
+| ------------- | ---------------------------------------------------------- | ----------------------------------------------- | -------------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element. | `null`         |
+| is            | `'div' \| 'header' \| 'nav'`                               | HTML element to render.                         | `'div'`        |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on toolbar.                      |                |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on toolbar.                         |                |
+| variant       | `'filled' \| 'outline' \| 'text'`                          | Visual style.                                   | `'filled'`     |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Field size.                                     | `'md'`         |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding and size density.                       | `'default'`    |
+| orientation   | `'horizontal' \| 'vertical'`                               | Layout direction.                               | `'horizontal'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                  | `'md'`         |
+| classContent  | `string \| string[]`                                       | Class(es) applied to the inner wrapper.         |                |
+| color         | `string`                                                   | Foreground color override (`--kit-toolbar-fg`). |                |
+| background    | `string`                                                   | Background color override (`--kit-toolbar-bg`). |                |
+| children      | `Snippet`                                                  | Toolbar content.                                |                |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                              |                |
 
 `kit:toolbar` is the right place to group [Buttons](/docs/components/button), [Chips](/docs/components/chip) and [Icons](/docs/components/icon) in a coherent space.

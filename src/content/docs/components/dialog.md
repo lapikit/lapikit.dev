@@ -1,6 +1,6 @@
 ---
-title: "Dialog"
-description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
+title: 'Dialog'
+description: 'Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management.'
 ---
 
 <script>
@@ -68,17 +68,21 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:dialog`**
 
-| props        | type                                        | description                                    | default     |
-| ------------ | ------------------------------------------- | ---------------------------------------------- | ----------- |
-| open         | `boolean`                                   | Controls visibility. Bindable.                 | `false`     |
-| persistent   | `boolean`                                   | Prevents closing on backdrop click or Escape.  | `false`     |
-| size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | Max-width of the content panel.                | `'md'`      |
-| position     | `'top' \| 'center' \| 'bottom'`             | Vertical alignment on the viewport.            | `'center'`  |
-| density      | `'compact' \| 'default' \| 'comfortable'`   | Padding inside the content panel.              | `'default'` |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Border radius of the content panel.            | `'md'`      |
-| classContent | `string \| string[]`                        | Class(es) applied to the inner content panel.  |             |
-| color        | `string`                                    | Foreground color override (`--kit-dialog-fg`). |             |
-| background   | `string`                                    | Background color override (`--kit-dialog-bg`). |             |
-| children     | `Snippet`                                   | Dialog content.                                |             |
+| props          | type                                                                                                                                    | description                                     | default     |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
+| ref $bindable  | `HTMLElement`                                                                                                                           | Bindable reference to the rendered DOM element. | `null`      |
+| s-class        | `'string' \| 'array' \| 'object'`                                                                                                       | Sets className on dialog.                       |             |
+| s-style        | `'string' \| 'array' \| 'object'`                                                                                                       | Sets styles on dialog.                          |             |
+| open $bindable | `boolean`                                                                                                                               | Controls visibility. Bindable.                  | `false`     |
+| persistent     | `boolean`                                                                                                                               | Prevents closing on backdrop click or Escape.   | `false`     |
+| size           | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                                                                  | Max-width of the content panel.                 | `'md'`      |
+| position       | `'top' \| 'center' \| 'bottom'  \| 'top-left'  \| 'top-right'  \| 'center-left'  \| 'center-right'  \| 'bottom-left'  \| 'botom-right'` | Orientation dialog on viewport.                 | `'center'`  |
+| density        | `'none' \| 'compact' \| 'default' \| 'comfortable'`                                                                                     | Padding inside the content panel.               | `'default'` |
+| rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                                                             | Border radius of the content panel.             | `'md'`      |
+| classContent   | `string \| string[]`                                                                                                                    | Class(es) applied to the inner content panel.   |             |
+| color          | `string`                                                                                                                                | Foreground color override (`--kit-dialog-fg`).  |             |
+| background     | `string`                                                                                                                                | Background color override (`--kit-dialog-bg`).  |             |
+| children       | `Snippet`                                                                                                                               | Dialog content.                                 |             |
+| elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                                                                              | Add shadow effect.                              | `'2'`       |
 
 Remember to follow up with [Modal](/docs/components/modal) or [Popover](/docs/components/popover) to create complete user paths.

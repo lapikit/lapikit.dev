@@ -1,6 +1,6 @@
 ---
-title: "Application"
-description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
+title: 'Application'
+description: 'The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity.'
 ---
 
 <script>
@@ -45,8 +45,11 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, you can impo
 
 **Root**
 
-| props    | type                     | description                                 | default     |
-| -------- | ------------------------ | ------------------------------------------- | ----------- |
-| children | `Snippet` \| `undefined` | Child content to be displayed in `kit:app`. | `undefined` |
+| props         | type                              | description                                     | default     |
+| ------------- | --------------------------------- | ----------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                     | Bindable reference to the rendered DOM element. | `null`      |
+| s-class       | `'string' \| 'array' \| 'object'` | Sets className on app.                          |             |
+| s-style       | `'string' \| 'array' \| 'object'` | Sets styles on app.                             |             |
+| children      | `Snippet` \| `undefined`          | Child content to be displayed in `kit:app`.     | `undefined` |
 
 Then you can explore basic components like [Button](/docs/components/button), [Card](/docs/components/card) or [Dialog](/docs/components/dialog) to enrich your `kit:app`.
