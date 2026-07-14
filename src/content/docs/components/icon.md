@@ -1,6 +1,6 @@
 ---
-title: 'Icon'
-description: 'Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components.'
+title: "Icon"
+description: "Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components."
 ---
 
 <script>

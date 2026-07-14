@@ -1,6 +1,6 @@
 ---
-title: 'Application'
-description: 'The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity.'
+title: "Application"
+description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
 ---
 
 <script>
