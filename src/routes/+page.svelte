@@ -297,7 +297,7 @@
 						density="comfortable"
 						style="--kit-chip-fg: var(--fg-primary-legacy); --outline-color: var(--fg-primary-legacy);"
 						size="lg"
-						class="px-1!"
+						class="px-1.5!"
 					>
 						{#snippet prepend()}
 							<kit:chip density="compact" style="--kit-chip-bg: oklch(75.555% 0.2082 146.98);">
