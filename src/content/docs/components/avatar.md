@@ -76,11 +76,18 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:avatar`**
 
-| props    | type                                      | description                                             | default     |
-| -------- | ----------------------------------------- | ------------------------------------------------------- | ----------- |
-| label    | `string`                                  | Text displayed inside the avatar (uppercased).          |             |
-| size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`    | Diameter and font size. Label mode only.                | `'md'`      |
-| density  | `'compact' \| 'default' \| 'comfortable'` | Size multiplier applied on top of `size`. Label only.   | `'default'` |
-| children | `Snippet`                                 | Content when `label` is not set (typically an `<img>`). |             |
+| props         | type                                                       | description                                             | default     |
+| ------------- | ---------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.         | `null`      |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on avatar.                               |             |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on avatar.                                  |             |
+| label         | `string`                                                   | Text displayed inside the avatar (uppercased).          |             |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Diameter and font size. Label mode only.                | `'md'`      |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Size multiplier applied on top of `size`. Label only.   | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                          | `'full'`    |
+| children      | `Snippet`                                                  | Content when `label` is not set (typically an `<img>`). |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                      |             |
+| color         | `string`                                                   | Foreground color override (`--kit-avatar-fg`).          |             |
+| background    | `string`                                                   | Background color override (`--kit-avatar-bg`).          |             |
 
 Associate `kit:avatar` with user [Cards](/docs/components/card) or [Chips](/docs/components/chip) to display roles or status.

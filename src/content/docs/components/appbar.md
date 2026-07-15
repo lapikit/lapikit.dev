@@ -64,15 +64,20 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:appbar`**
 
-| props        | type                                                  | description                                     | default     |
-| ------------ | ----------------------------------------------------- | ----------------------------------------------- | ----------- |
-| is           | `'div' \| 'header' \| 'nav'`                          | HTML element to render.                         | `'header'`  |
-| variant      | `'filled' \| 'outline' \| 'text'`                     | Visual style of the appbar.                     | `'filled'`  |
-| density      | `'compact' \| 'default' \| 'comfortable'`             | Height and horizontal padding.                  | `'default'` |
-| rounded      | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | Border radius. Accepts a custom `px` value.     | `0`         |
-| color        | `string`                                              | Foreground color override (`--kit-appbar-fg`).  |             |
-| background   | `string`                                              | Background color override (`--kit-appbar-bg`).  |             |
-| classContent | `string \| string[]`                                  | Class(es) applied to the inner content wrapper. |             |
-| children     | `Snippet`                                             | Appbar content.                                 |             |
+| props         | type                                                       | description                                     | default     |
+| ------------- | ---------------------------------------------------------- | ----------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element. | `null`      |
+| is            | `'div' \| 'header' \| 'nav'`                               | HTML element to render.                         | `'header'`  |
+| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on appbar.                       |             |
+| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on appbar.                          |             |
+| variant       | `'filled' \| 'outline' \| 'text'`                          | Visual style of the appbar.                     | `'filled'`  |
+| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Height and horizontal padding.                  | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                  | `0`         |
+| color         | `string`                                                   | Foreground color override (`--kit-appbar-fg`).  |             |
+| background    | `string`                                                   | Background color override (`--kit-appbar-bg`).  |             |
+| classContent  | `string \| string[]`                                       | Class(es) applied to the inner content wrapper. |             |
+| children      | `Snippet`                                                  | Appbar content.                                 |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                              |             |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Sizing height, font and gap for appbar.         | `'md'`      |
 
 An effective `kit:appbar` goes well with [Dropdown](/docs/components/dropdown) for menus and [Avatars](/docs/components/avatar) for identification.

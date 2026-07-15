@@ -4,7 +4,7 @@
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
-	import './layout.css';
+	import { createGlobalTheme } from 'lapikit/actions';
 	import { docsSeoByPath, getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
 	import { capitalize } from '$lib/utils';
 
@@ -18,6 +18,10 @@
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
+
+	const app = createGlobalTheme();
+
+	import './layout.css';
 
 	onMount(() => {
 		if (browser) loadNpmData();
@@ -72,6 +76,7 @@
 </svelte:head>
 
 <kit:app>
+	<!-- <p>Thème actif : {app.active}</p> -->
 	<main>
 		{@render children()}
 	</main>

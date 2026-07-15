@@ -1,6 +1,6 @@
-html[data-theme='light'] {
+html[data-kit-theme='light'] {
 	color-scheme: light;
-	--kit-bg: hsl(0 0% 100%);
+	/* --kit-bg: hsl(0 0% 100%);
 	--kit-fg: hsl(222 20% 10%);
 	--kit-muted: hsl(220 10% 45%);
 
@@ -12,7 +12,7 @@ html[data-theme='light'] {
 
 	--kit-accent: hsl(220 90% 56%);
 
-	--kit-focus: hsl(35, 90%, 56%);
+	--kit-focus: hsl(35, 90%, 56%); */
 
 	/** markdown theme variables */
 	--md-color-text: #1a1a1a;
@@ -32,14 +32,15 @@ html[data-theme='light'] {
 }
 
 @media (prefers-color-scheme: dark) {
-	html:not([data-theme='light']) {
+	html:not([data-kit-theme='light']) {
 		color-scheme: dark;
 		--md-color-text: #e6edf3;
 		--md-color-muted: #8b949e;
 		--md-color-link: #58a6ff;
 		--md-color-link-hover: #79b8ff;
 		--md-color-border: #30363d;
-		--md-color-bg: hsl(222 20% 9%);
+		/* --md-color-bg: hsl(222 20% 9%); */
+		--md-color-bg: var(--kit-color-surface);
 		--md-color-surface: hsl(222 18% 15%);
 		--md-color-code-bg: hsl(222 16% 14%);
 		--md-color-code-text: #ff7b72;
@@ -52,7 +53,7 @@ html[data-theme='light'] {
 		--md-table-stripe-bg: hsl(222 20% 12%);
 	}
 
-	html:not([data-theme='light']),
+	/* html:not([data-theme='light']),
 	html:not([data-theme='light']) div#kit-app {
 		color-scheme: dark;
 		--kit-bg: hsl(222 20% 9%);
@@ -68,10 +69,10 @@ html[data-theme='light'] {
 		--kit-accent: hsl(220 90% 65%);
 
 		--kit-focus: hsl(35 90% 62%);
-	}
+	} */
 }
 
-html[data-theme='dark'],
+/* html[data-theme='dark'],
 html[data-theme='dark'] div#kit-app {
 	color-scheme: dark;
 	--kit-bg: hsl(222 20% 9%);
@@ -87,16 +88,16 @@ html[data-theme='dark'] div#kit-app {
 	--kit-accent: hsl(220 90% 65%);
 
 	--kit-focus: hsl(35 90% 62%);
-}
+} */
 
-html[data-theme='dark'] {
+html[data-kit-theme='dark'] {
 	color-scheme: dark;
 	--md-color-text: #e6edf3;
 	--md-color-muted: #8b949e;
 	--md-color-link: #58a6ff;
 	--md-color-link-hover: #79b8ff;
 	--md-color-border: #30363d;
-	--md-color-bg: hsl(222 20% 9%);
+	--md-color-bg: var(--kit-color-surface);
 	--md-color-surface: hsl(222 18% 15%);
 	--md-color-code-bg: hsl(222 16% 14%);
 	--md-color-code-text: #ff7b72;

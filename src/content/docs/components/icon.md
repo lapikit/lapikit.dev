@@ -76,21 +76,24 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:icon`**
 
-| props      | type                                     | description                                             | default   |
-| ---------- | ---------------------------------------- | ------------------------------------------------------- | --------- |
-| is         | `string`                                 | HTML element to render.                                 | `'i'`     |
-| size       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Icon size token. Inherits from context when unset.      |           |
-| src        | `string`                                 | Image URL. Used instead of `children`.                  |           |
-| name       | `string`                                 | CSS class name for icon fonts.                          |           |
-| icon       | `string`                                 | Alias treated as `src` if it contains `/`, else `name`. |           |
-| color      | `string`                                 | Color applied to the icon and mask.                     |           |
-| colorMode  | `'auto' \| 'mask' \| 'filter' \| 'none'` | How `color` is applied to image icons.                  | `'auto'`  |
-| imgFilter  | `string`                                 | CSS `filter` value used in `filter` mode.               |           |
-| decorative | `boolean`                                | Hides from assistive tech when `true`.                  | `true`    |
-| label      | `string`                                 | Accessible label when `decorative={false}`.             |           |
-| alt        | `string`                                 | Alt text for image icons.                               | `''`      |
-| loading    | `'eager' \| 'lazy'`                      | Image loading strategy.                                 | `'eager'` |
-| decoding   | `'sync' \| 'async' \| 'auto'`            | Image decoding hint.                                    | `'async'` |
-| children   | `Snippet`                                | SVG icon component (e.g. from lucide-svelte).           |           |
+| props         | type                                     | description                                             | default   |
+| ------------- | ---------------------------------------- | ------------------------------------------------------- | --------- |
+| ref $bindable | `HTMLElement`                            | Bindable reference to the rendered DOM element.         | `null`    |
+| is            | `string`                                 | HTML element to render.                                 | `'i'`     |
+| s-class       | `'string' \| 'array' \| 'object'`        | Sets className on icon.                                 |           |
+| s-style       | `'string' \| 'array' \| 'object'`        | Sets styles on icon.                                    |           |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Icon size token. Inherits from context when unset.      |           |
+| src           | `string`                                 | Image URL. Used instead of `children`.                  |           |
+| name          | `string`                                 | CSS class name for icon fonts.                          |           |
+| icon          | `string`                                 | Alias treated as `src` if it contains `/`, else `name`. |           |
+| color         | `string`                                 | Color applied to the icon and mask.                     |           |
+| colorMode     | `'auto' \| 'mask' \| 'filter' \| 'none'` | How `color` is applied to image icons.                  | `'auto'`  |
+| imgFilter     | `string`                                 | CSS `filter` value used in `filter` mode.               |           |
+| decorative    | `boolean`                                | Hides from assistive tech when `true`.                  | `true`    |
+| label         | `string`                                 | Accessible label when `decorative={false}`.             |           |
+| alt           | `string`                                 | Alt text for image icons.                               | `''`      |
+| loading       | `'eager' \| 'lazy'`                      | Image loading strategy.                                 | `'eager'` |
+| decoding      | `'sync' \| 'async' \| 'auto'`            | Image decoding hint.                                    | `'async'` |
+| children      | `Snippet`                                | SVG icon component (e.g. from lucide-svelte).           |           |
 
 Add `kit:icon` to your [Buttons](/docs/components/button), [Cards](/docs/components/card) or [Chips](/docs/components/chip) to visually guide your users.

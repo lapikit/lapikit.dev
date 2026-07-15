@@ -90,40 +90,44 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:textfield`**
 
-| props             | type                                          | description                                        | default     |
-| ----------------- | --------------------------------------------- | -------------------------------------------------- | ----------- |
-| value             | `string \| number`                            | Input value. Bindable.                             |             |
-| type              | `'text' \| 'email' \| 'password' \| 'number'` | Input type.                                        | `'text'`    |
-| placeholder       | `string`                                      | Placeholder text.                                  |             |
-| variant           | `'filled' \| 'outline' \| 'text'`             | Visual style.                                      | `'filled'`  |
-| size              | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`        | Field size.                                        | `'md'`      |
-| density           | `'compact' \| 'default' \| 'comfortable'`     | Padding density.                                   | `'default'` |
-| rounded           | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`   | Border radius.                                     | `'md'`      |
-| error             | `boolean`                                     | Activates error state.                             | `false`     |
-| errorMessage      | `string`                                      | Message shown when `error` is `true`.              |             |
-| message           | `string`                                      | Helper text below the field.                       |             |
-| messagePrefix     | `string`                                      | Leading text in the message row.                   |             |
-| messageSuffix     | `string`                                      | Trailing text in the message row.                  |             |
-| persistentMessage | `boolean`                                     | Always shows the message, not only on focus.       | `false`     |
-| counter           | `boolean`                                     | Shows character counter.                           | `false`     |
-| min               | `number`                                      | Minimum character count.                           |             |
-| max               | `number`                                      | Maximum character count.                           |             |
-| clearable         | `boolean`                                     | Shows a clear button when the field has a value.   | `false`     |
-| persistentClear   | `boolean`                                     | Always shows the clear button.                     | `false`     |
-| disabled          | `boolean`                                     | Disables the input.                                | `false`     |
-| readonly          | `boolean`                                     | Makes the input read-only.                         | `false`     |
-| hideSpinButtons   | `boolean`                                     | Hides the spin buttons on `type="number"` inputs.  | `false`     |
-| prefix            | `string`                                      | Static text before the input value.                |             |
-| suffix            | `string`                                      | Static text after the input value.                 |             |
-| name              | `string`                                      | Input `name` attribute.                            |             |
-| id                | `string`                                      | Input `id` attribute.                              |             |
-| autocomplete      | `string`                                      | Input `autocomplete` attribute.                    |             |
-| inputmode         | `string`                                      | Input `inputmode` attribute.                       |             |
-| color             | `string`                                      | Foreground color override (`--kit-textfield-fg`).  |             |
-| background        | `string`                                      | Background color override (`--kit-textfield-bg`).  |             |
-| prepend           | `Snippet`                                     | Content outside the field, before it.              |             |
-| append            | `Snippet`                                     | Content outside the field, after it.               |             |
-| prependInner      | `Snippet`                                     | Content inside the field border, before the input. |             |
-| appendInner       | `Snippet`                                     | Content inside the field border, after the input.  |             |
+| props             | type                                                       | description                                        | default     |
+| ----------------- | ---------------------------------------------------------- | -------------------------------------------------- | ----------- |
+| ref $bindable     | `HTMLElement`                                              | Bindable reference to the rendered DOM element.    | `null`      |
+| s-class           | `'string' \| 'array' \| 'object'`                          | Sets className on textfield.                       |             |
+| s-style           | `'string' \| 'array' \| 'object'`                          | Sets styles on textfield.                          |             |
+| value $bindable   | `string \| number`                                         | Input value.                                       |             |
+| type              | `'text' \| 'email' \| 'password' \| 'number'`              | Input type.                                        | `'text'`    |
+| placeholder       | `string`                                                   | Placeholder text.                                  |             |
+| variant           | `'filled' \| 'outline' \| 'text'`                          | Visual style.                                      | `'filled'`  |
+| size              | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Field size.                                        | `'md'`      |
+| density           | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding density.                                   | `'default'` |
+| rounded           | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Border radius.                                     | `'md'`      |
+| error             | `boolean`                                                  | Activates error state.                             | `false`     |
+| errorMessage      | `string`                                                   | Message shown when `error` is `true`.              |             |
+| message           | `string`                                                   | Helper text below the field.                       |             |
+| messagePrefix     | `string`                                                   | Leading text in the message row.                   |             |
+| messageSuffix     | `string`                                                   | Trailing text in the message row.                  |             |
+| persistentMessage | `boolean`                                                  | Always shows the message, not only on focus.       | `false`     |
+| counter           | `boolean`                                                  | Shows character counter.                           | `false`     |
+| min               | `number`                                                   | Minimum character count.                           |             |
+| max               | `number`                                                   | Maximum character count.                           |             |
+| clearable         | `boolean`                                                  | Shows a clear button when the field has a value.   | `false`     |
+| persistentClear   | `boolean`                                                  | Always shows the clear button.                     | `false`     |
+| disabled          | `boolean`                                                  | Disables the input.                                | `false`     |
+| readonly          | `boolean`                                                  | Makes the input read-only.                         | `false`     |
+| hideSpinButtons   | `boolean`                                                  | Hides the spin buttons on `type="number"` inputs.  | `false`     |
+| prefix            | `string`                                                   | Static text before the input value.                |             |
+| suffix            | `string`                                                   | Static text after the input value.                 |             |
+| name              | `string`                                                   | Input `name` attribute.                            |             |
+| id                | `string`                                                   | Input `id` attribute.                              |             |
+| autocomplete      | `string`                                                   | Input `autocomplete` attribute.                    |             |
+| inputmode         | `string`                                                   | Input `inputmode` attribute.                       |             |
+| color             | `string`                                                   | Foreground color override (`--kit-textfield-fg`).  |             |
+| background        | `string`                                                   | Background color override (`--kit-textfield-bg`).  |             |
+| prepend           | `Snippet`                                                  | Content outside the field, before it.              |             |
+| append            | `Snippet`                                                  | Content outside the field, after it.               |             |
+| prependInner      | `Snippet`                                                  | Content inside the field border, before the input. |             |
+| appendInner       | `Snippet`                                                  | Content inside the field border, after the input.  |             |
+| elevation         | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                 |             |
 
 `kit:textfield` works great with Form validation and can be enhanced with [Icons](/docs/components/icon) and [Buttons](/docs/components/button) using snippets.

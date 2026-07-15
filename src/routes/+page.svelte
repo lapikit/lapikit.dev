@@ -47,6 +47,7 @@
 	import { openConsentPreferences } from '$lib/stores/consent.svelte';
 	import { npmState } from '$lib/stores/npm.svelte';
 	import { resolve } from '$app/paths';
+	import { createTheme } from 'lapikit/actions';
 
 	// states
 	let stepCode: number = $state(0);
@@ -58,6 +59,8 @@
 	function handleScroll() {
 		scrolled = window.scrollY > 20;
 	}
+
+	const themeHomepage = createTheme();
 
 	onMount(() => {
 		if (browser) {
@@ -210,7 +213,7 @@
 	};
 </script>
 
-<div class="home kit-theme--dark">
+<div class="home" use:themeHomepage.action={{ name: 'dark' }}>
 	<kit:appbar
 		class="sticky! top-0 z-100"
 		classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"
@@ -294,7 +297,7 @@
 						density="comfortable"
 						style="--kit-chip-fg: var(--fg-primary-legacy); --outline-color: var(--fg-primary-legacy);"
 						size="lg"
-						class="px-1!"
+						class="px-1.5!"
 					>
 						{#snippet prepend()}
 							<kit:chip density="compact" style="--kit-chip-bg: oklch(75.555% 0.2082 146.98);">
@@ -329,7 +332,7 @@
 					<div class="flex justify-center gap-3 sm:gap-6">
 						<kit:btn
 							href="/docs/getting-started"
-							background="accent-primary"
+							style="--kit-btn-bg: var(--primary-legacy)"
 							color="white"
 							rounded="xl"
 							size="lg"
@@ -339,7 +342,7 @@
 						<kit:btn
 							href="/docs/components"
 							variant="outline"
-							color="accent-primary"
+							style="--kit-btn-fg: var(--primary-legacy)"
 							rounded="xl"
 							size="lg"
 						>
@@ -432,6 +435,7 @@
 								active={stepCode === 0}
 								rounded="xl"
 								size="sm"
+								style="--kit-btn-bg: var(--primary-legacy)"
 							>
 								View Button
 							</kit:btn>
@@ -440,6 +444,7 @@
 								active={stepCode === 1}
 								rounded="xl"
 								size="sm"
+								style="--kit-btn-bg: var(--primary-legacy)"
 							>
 								Discover Card
 							</kit:btn>
@@ -448,6 +453,7 @@
 								active={stepCode === 2}
 								rounded="xl"
 								size="sm"
+								style="--kit-btn-bg: var(--primary-legacy)"
 							>
 								Explore Modal
 							</kit:btn>
@@ -643,6 +649,7 @@
 						class="max-sm:flex-col max-sm:p-[36px_29px]!"
 						rounded="xl"
 						size="lg"
+						style="--kit-btn-bg: var(--primary-legacy)"
 					>
 						Start Building with Lapikit
 
@@ -707,7 +714,12 @@
 				</div>
 				<div>
 					<div class="mt-16 flex justify-center">
-						<kit:btn href="/docs" size="lg" rounded="xl">
+						<kit:btn
+							href="/docs"
+							size="lg"
+							rounded="xl"
+							style="--kit-btn-bg: var(--primary-legacy)"
+						>
 							{capitalize(`It's not over yet!`)}
 
 							{#snippet append()}
@@ -1058,7 +1070,13 @@
 			>
 				<p class="text-2xl font-bold sm:text-3xl lg:text-4xl">Start exploring Lapikit</p>
 				<p class="mt-6 sm:text-lg">Design system, themes, components, all in one lib</p>
-				<kit:btn class="mt-8" href="/docs/components" rounded="xl" density="comfortable">
+				<kit:btn
+					class="mt-8"
+					href="/docs/components"
+					rounded="xl"
+					density="comfortable"
+					style="--kit-btn-bg: var(--primary-legacy)"
+				>
 					Discover the components
 					{#snippet append()}
 						<kit:icon>
