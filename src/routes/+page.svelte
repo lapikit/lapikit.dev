@@ -332,7 +332,7 @@
 					<div class="flex justify-center gap-3 sm:gap-6">
 						<kit:btn
 							href="/docs/getting-started"
-							background="accent-primary"
+							style="--kit-btn-bg: var(--primary-legacy)"
 							color="white"
 							rounded="xl"
 							size="lg"
@@ -342,7 +342,7 @@
 						<kit:btn
 							href="/docs/components"
 							variant="outline"
-							color="accent-primary"
+							style="--kit-btn-fg: var(--primary-legacy)"
 							rounded="xl"
 							size="lg"
 						>
@@ -435,6 +435,7 @@
 								active={stepCode === 0}
 								rounded="xl"
 								size="sm"
+								style="--kit-btn-bg: var(--primary-legacy)"
 							>
 								View Button
 							</kit:btn>
@@ -443,6 +444,7 @@
 								active={stepCode === 1}
 								rounded="xl"
 								size="sm"
+								style="--kit-btn-bg: var(--primary-legacy)"
 							>
 								Discover Card
 							</kit:btn>
@@ -451,6 +453,7 @@
 								active={stepCode === 2}
 								rounded="xl"
 								size="sm"
+								style="--kit-btn-bg: var(--primary-legacy)"
 							>
 								Explore Modal
 							</kit:btn>
@@ -646,6 +649,7 @@
 						class="max-sm:flex-col max-sm:p-[36px_29px]!"
 						rounded="xl"
 						size="lg"
+						style="--kit-btn-bg: var(--primary-legacy)"
 					>
 						Start Building with Lapikit
 
@@ -710,7 +714,12 @@
 				</div>
 				<div>
 					<div class="mt-16 flex justify-center">
-						<kit:btn href="/docs" size="lg" rounded="xl">
+						<kit:btn
+							href="/docs"
+							size="lg"
+							rounded="xl"
+							style="--kit-btn-bg: var(--primary-legacy)"
+						>
 							{capitalize(`It's not over yet!`)}
 
 							{#snippet append()}
@@ -1061,7 +1070,13 @@
 			>
 				<p class="text-2xl font-bold sm:text-3xl lg:text-4xl">Start exploring Lapikit</p>
 				<p class="mt-6 sm:text-lg">Design system, themes, components, all in one lib</p>
-				<kit:btn class="mt-8" href="/docs/components" rounded="xl" density="comfortable">
+				<kit:btn
+					class="mt-8"
+					href="/docs/components"
+					rounded="xl"
+					density="comfortable"
+					style="--kit-btn-bg: var(--primary-legacy)"
+				>
 					Discover the components
 					{#snippet append()}
 						<kit:icon>
