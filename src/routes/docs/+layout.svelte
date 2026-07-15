@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
 	import { theme_storage_key } from '$lib';
-
+	import { useTheme } from 'lapikit/actions';
 	// types
 	import type { ModelDropdownProps } from 'lapikit/components';
 
@@ -15,21 +15,22 @@
 
 	let { children } = $props();
 
-	let mode = $state<'light' | 'dark' | 'system'>(
+	let localMode = $state<'light' | 'dark' | 'system'>(
 		browser
 			? ((localStorage.getItem(theme_storage_key) as 'light' | 'dark' | 'system') ?? 'system')
 			: 'system'
 	);
 
-	$effect(() => {
-		if (!browser) return;
-		if (mode === 'system') {
-			document.documentElement.removeAttribute('data-theme');
-		} else {
-			document.documentElement.setAttribute('data-theme', mode);
-		}
-		localStorage.setItem(theme_storage_key, mode);
-	});
+	// $effect(() => {
+	// 	if (!browser) return;
+
+	// 	// if (mode === 'system') {
+	// 	// 	document.documentElement.removeAttribute('data-kit-theme');
+	// 	// } else {
+	// 	// 	document.documentElement.setAttribute('data-theme', mode);
+	// 	// }
+	// 	// localStorage.setItem(theme_storage_key, mode);
+	// });
 </script>
 
 <kit:appbar class="sticky! top-0 z-50" classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
@@ -58,11 +59,11 @@
 					icon
 					size="lg"
 				>
-					{#if mode === 'light'}
+					{#if localMode === 'light'}
 						<kit:icon>
 							<Sun />
 						</kit:icon>
-					{:else if mode === 'dark'}
+					{:else if localMode === 'dark'}
 						<kit:icon>
 							<Moon />
 						</kit:icon>
@@ -75,7 +76,7 @@
 			{/snippet}
 
 			<kit:list>
-				<kit:list-item onclick={() => (mode = 'light')} active={mode === 'light'}>
+				<kit:list-item onclick={() => useTheme('light')} active={localMode === 'light'}>
 					{#snippet prepend()}
 						<kit:icon>
 							<Sun />
@@ -83,7 +84,7 @@
 					{/snippet}
 					Light
 				</kit:list-item>
-				<kit:list-item onclick={() => (mode = 'dark')} active={mode === 'dark'}>
+				<kit:list-item onclick={() => useTheme('dark')} active={localMode === 'dark'}>
 					{#snippet prepend()}
 						<kit:icon>
 							<Moon />
@@ -91,7 +92,7 @@
 					{/snippet}
 					Dark
 				</kit:list-item>
-				<kit:list-item onclick={() => (mode = 'system')} active={mode === 'system'}>
+				<kit:list-item onclick={() => useTheme('system')} active={localMode === 'system'}>
 					{#snippet prepend()}
 						<kit:icon>
 							<SunMoon />

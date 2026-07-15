@@ -39,7 +39,8 @@ html[data-kit-theme='light'] {
 		--md-color-link: #58a6ff;
 		--md-color-link-hover: #79b8ff;
 		--md-color-border: #30363d;
-		--md-color-bg: hsl(222 20% 9%);
+		/* --md-color-bg: hsl(222 20% 9%); */
+		--md-color-bg: var(--kit-color-surface);
 		--md-color-surface: hsl(222 18% 15%);
 		--md-color-code-bg: hsl(222 16% 14%);
 		--md-color-code-text: #ff7b72;
@@ -96,7 +97,7 @@ html[data-kit-theme='dark'] {
 	--md-color-link: #58a6ff;
 	--md-color-link-hover: #79b8ff;
 	--md-color-border: #30363d;
-	--md-color-bg: hsl(222 20% 9%);
+	--md-color-bg: var(--kit-color-surface);
 	--md-color-surface: hsl(222 18% 15%);
 	--md-color-code-bg: hsl(222 16% 14%);
 	--md-color-code-text: #ff7b72;
