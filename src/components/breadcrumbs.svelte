@@ -27,7 +27,7 @@
 {/if}
 
 <style>
-	nav {
+	/**nav {
 		--md-max-width: 720px;
 		--md-space-xl: 2rem;
 		--md-space-lg: 1.5rem;
@@ -35,5 +35,5 @@
 		max-width: var(--md-max-width);
 		margin: 0 auto;
 		padding: var(--md-space-xl) var(--md-space-lg);
-	}
+	}**/
 </style>

@@ -3,6 +3,7 @@
 </script>
 
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { beforeNavigate } from '$app/navigation';
@@ -17,9 +18,9 @@
 	// Components
 	import TableOfContent from '../components/table-of-content.svelte';
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
-	import Drawer from '../components/drawer.svelte';
 	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
 	import { capitalize } from '$lib/utils';
+	import Aside from '$components/aside/aside.svelte';
 
 	function enhanceEnumChips(node: HTMLElement) {
 		const chips = node.querySelectorAll<HTMLElement>('.enum-chip[data-values]');
@@ -43,8 +44,8 @@
 		};
 	}
 
-	let navOpen = $state(false);
 	let sidebarEl: HTMLDivElement | undefined = $state();
+	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
 
 	onMount(() => {
 		if (sidebarEl) sidebarEl.scrollTop = sidebarScrollTop;
@@ -66,152 +67,66 @@
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
-	let year: number = new Date().getFullYear();
 </script>
 
-<div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[250px_1fr_250px]">
-	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
-		<nav>
-			{#each docsNavigation as { label, icon, pages } (label)}
-				<kit:list density="compact" size="sm" nav s-class_opacity-50={label == 'Deprecated'}>
-					<kit:list-item>
-						{#snippet prepend()}
-							<kit:icon>
-								{#if typeof icon === 'string'}
-									{@html icon}
-								{:else}
-									{@const Icon = icon}
-									<Icon />
-								{/if}
-							</kit:icon>
-						{/snippet}
-						{label}
-					</kit:list-item>
+<kit:toolbar rounded="0">
+	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation">
+		{#snippet prepend()}
+			<kit:icon>
+				<Menu />
+			</kit:icon>
+		{/snippet}
 
-					{#each pages as page (page.label)}
-						<kit:list-item
-							href={page.url}
-							onclick={() => (navOpen = false)}
-							active={normalizedPath === page.url}
-						>
-							{page.label}
-						</kit:list-item>
-					{/each}
-				</kit:list>
-			{/each}
-		</nav>
-	</Drawer>
+		Menu
+	</kit:btn>
+</kit:toolbar>
 
-	<div class="min-w-0">
-		<kit:toolbar class="sticky! top-16 z-40 lg:hidden!">
-			<kit:btn class="md:hidden!" onclick={() => (navOpen = true)} aria-label="open navigation">
-				{#snippet prepend()}
-					<kit:icon>
-						<Menu />
-					</kit:icon>
-				{/snippet}
+<main>
+	<Breadcrumbs items={breadcrumbs} />
 
-				Menu
-			</kit:btn>
+	<article>
+		{@render children?.()}
 
-			<kit:spacer />
+		<footer>footer article</footer>
+	</article>
 
-			<kit:dropdown>
-				{#snippet activator({ toggle, open }: ModelDropdownProps)}
-					<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
-						On this page
-
-						{#snippet append()}
-							<kit:icon>
-								{#if open}
-									<ChevronDown />
-								{:else}
-									<ChevronRight />
-								{/if}
-							</kit:icon>
-						{/snippet}
-					</kit:btn>
-				{/snippet}
-				<TableOfContent {summary} />
-			</kit:dropdown>
-		</kit:toolbar>
-
-		<article>
-			<Breadcrumbs items={breadcrumbs} />
-
-			<div class="kit-prose" use:enhanceEnumChips>
-				{@render children?.()}
-			</div>
-
-			<kit:toolbar classContent="pagination-docs">
-				{#if data.prevDoc}
-					<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
-						{#snippet prepend()}
-							<kit:icon>
-								<ChevronLeft />
-							</kit:icon>
-						{/snippet}
-						{capitalize(data.prevDoc.title)}
-					</kit:btn>
-				{/if}
-				<kit:spacer />
-				{#if data.nextDoc}
-					<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
-						{#snippet append()}
-							<kit:icon>
-								<ChevronRight />
-							</kit:icon>
-						{/snippet}
-						{capitalize(data.nextDoc.title)}
-					</kit:btn>
-				{/if}
-			</kit:toolbar>
-		</article>
-
-		<footer>
-			Copyright © 2025 - {year} Lapikit -
-			<a
-				href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
-				target="_blank"
-				style="color: var(--kit-accent)">MIT License</a
-			>
-			- Developed by
-			<a href="https://nycolaide.dev" target="_blank" style="color: var(--kit-accent)">Nycolaide</a>
-			<kit:spacer />
-			<a href={resolve('/docs/changelog')} style="color: var(--kit-accent)">Changelog</a>
-			-
-			<a href={resolve('/docs/roadmap')} style="color: var(--kit-accent)">Roadmap</a>
-		</footer>
-	</div>
-
-	<div
-		class="hidden lg:sticky lg:top-16 lg:z-auto lg:block lg:h-[calc(100vh-64px)] lg:overflow-y-auto"
-	>
-		<TableOfContent {summary} />
-	</div>
-</div>
+	<Aside />
+</main>
 
 <style>
-	:global(.pagination-docs) {
-		--md-max-width: 720px;
-		--md-space-xl: 2rem;
-		--md-space-lg: 1.5rem;
-
-		max-width: var(--md-max-width);
-		margin: 0 auto;
-		padding: var(--md-space-xl) var(--md-space-lg);
+	main {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas:
+			'breadcrumb'
+			'article'
+			'aside';
+		gap: 1rem 2rem;
+		max-width: 72rem;
+		margin-inline: auto;
+		padding-inline: 1rem;
 	}
 
-	@media (min-width: 1407px) {
-		:global(.kit-repl) {
-			width: 120%;
-			margin-left: -10%;
+	main > :global(nav) {
+		grid-area: breadcrumb;
+	}
+
+	main > article {
+		grid-area: article;
+	}
+
+	main > :global(aside) {
+		grid-area: aside;
+	}
+
+	@media (min-width: 64rem) {
+		main {
+			grid-template-columns: minmax(0, 1fr) 20rem;
+			grid-template-rows: auto 1fr;
+			grid-template-areas:
+				'breadcrumb aside'
+				'article    aside';
+			align-items: start;
 		}
-	}
-
-	footer {
-		max-width: 720px;
-		margin: 0 auto;
-		padding: 2rem 1.5rem;
 	}
 </style>

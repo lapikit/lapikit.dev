@@ -77,9 +77,9 @@
 
 <kit:app>
 	<!-- <p>Thème actif : {app.active}</p> -->
-	<main>
-		{@render children()}
-	</main>
+	<!-- <main> -->
+	{@render children()}
+	<!-- </main> -->
 
 	<ConsentMode />
 </kit:app>

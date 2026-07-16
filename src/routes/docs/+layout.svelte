@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { setContext } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
-	import { theme_storage_key } from '$lib';
+	import { page } from '$app/state';
+	import { docsNavigation, theme_storage_key } from '$lib';
 	import { useTheme } from 'lapikit/actions';
 	// types
 	import type { ModelDropdownProps } from 'lapikit/components';
@@ -12,6 +14,7 @@
 	// icons & images
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
 	import { Moon, Sun, SunMoon } from 'lucide-svelte';
+	import Drawer from '$components/drawer.svelte';
 
 	let { children } = $props();
 
@@ -21,6 +24,20 @@
 			: 'system'
 	);
 
+	let navOpen = $state(false);
+	let sidebarEl: HTMLDivElement | undefined = $state();
+	let year: number = new Date().getFullYear();
+
+	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
+
+	setContext('nav', {
+		get open() {
+			return navOpen;
+		},
+		toggle() {
+			navOpen = !navOpen;
+		}
+	});
 	// $effect(() => {
 	// 	if (!browser) return;
 
@@ -114,4 +131,78 @@
 	</div>
 </kit:appbar>
 
-{@render children()}
+<div class="layout">
+	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
+		<nav>
+			{#each docsNavigation as { label, icon, pages } (label)}
+				<kit:list density="compact" size="sm" nav s-class_opacity-50={label == 'Deprecated'}>
+					<kit:list-item>
+						{#snippet prepend()}
+							<kit:icon>
+								{#if typeof icon === 'string'}
+									{@html icon}
+								{:else}
+									{@const Icon = icon}
+									<Icon />
+								{/if}
+							</kit:icon>
+						{/snippet}
+						{label}
+					</kit:list-item>
+
+					{#each pages as page (page.label)}
+						<kit:list-item
+							href={page.url}
+							onclick={() => (navOpen = false)}
+							active={normalizedPath === page.url}
+						>
+							{page.label}
+						</kit:list-item>
+					{/each}
+				</kit:list>
+			{/each}
+		</nav>
+	</Drawer>
+
+	<div class="content">
+		{@render children()}
+	</div>
+
+	<footer>
+		Copyright © 2025 - {year} Lapikit
+	</footer>
+</div>
+
+<style>
+	.layout {
+		display: grid;
+		min-height: 100dvh;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: 1fr auto;
+		grid-template-areas:
+			'content'
+			'footer';
+	}
+
+	.content {
+		grid-area: content;
+	}
+
+	footer {
+		grid-area: footer;
+	}
+
+	@media (min-width: 64rem) {
+		.layout {
+			grid-template-columns: auto minmax(0, 1fr);
+			grid-template-rows: 1fr auto;
+			grid-template-areas:
+				'drawer content'
+				'drawer footer';
+		}
+
+		.layout > :global(.drawer--persistent) {
+			grid-area: drawer;
+		}
+	}
+</style>
