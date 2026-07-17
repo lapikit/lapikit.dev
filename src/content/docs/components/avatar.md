@@ -1,6 +1,9 @@
 ---
-title: "Avatar"
-description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
+title: "Avatar component"
+category: "Components"
+head:
+  title: "Avatar"
+  description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
 ---
 
 <script>
@@ -12,8 +15,6 @@ description: "Display profile images, icons or initials in a variety of formats.
 	import Size from '$examples/components/avatar/size.svelte';
 	import Density from '$examples/components/avatar/density.svelte';
 </script>
-
-# Avatar component
 
 The `kit:avatar` component is used to display images, icons or initials representing a person or object. It is often used in user interfaces to identify users, profiles or entities. Thanks to its many customization options, the `kit:avatar` component adapts easily to different styles and contexts.
 

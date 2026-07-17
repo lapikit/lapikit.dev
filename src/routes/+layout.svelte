@@ -31,7 +31,7 @@
 	const seo = $derived(docsSeoByPath[path] ?? seoByPath[path] ?? seoByPath['/']);
 	const canonicalUrl = $derived(`${page.url.origin}${path === '/' ? '' : path}`);
 	const pageTitle = $derived(
-		`${capitalize(seo.title)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
+		`${capitalize(seo.head.title)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
 	const breadcrumbs = $derived(getBreadcrumbs(path));
 	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, page.url.origin));
@@ -43,6 +43,10 @@
 		// eslint-disable-next-line no-useless-escape
 		return `<script type="application/ld+json">${json}<\/script>`;
 	}
+
+	$effect(() => {
+		console.log('GW1 SEO', seo);
+	});
 </script>
 
 <svelte:head>
@@ -50,7 +54,7 @@
 	<link rel="icon" href={favicon} />
 	<link rel="canonical" href={canonicalUrl} />
 	<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
-	<meta name="description" content={seo.description} />
+	<meta name="description" content={seo.head.description} />
 	<meta
 		name="robots"
 		content={PUBLIC_DEV === 'true'
@@ -63,12 +67,12 @@
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:site_name" content="Lapikit" />
 	<meta property="og:title" content={pageTitle} />
-	<meta property="og:description" content={seo.description} />
+	<meta property="og:description" content={seo.head.description} />
 	<meta property="og:type" content={seo.type ?? 'website'} />
 	<meta property="og:url" content={canonicalUrl} />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
-	<meta name="twitter:description" content={seo.description} />
+	<meta name="twitter:description" content={seo.head.description} />
 
 	<meta name="color-scheme" content="light dark" />
 
@@ -83,3 +87,13 @@
 
 	<ConsentMode />
 </kit:app>
+
+<style>
+	:global(:root) {
+		--lpk-page-padding-side: 3.2rem;
+		--lpk-page-padding-top: 2rem;
+		--lpk-page-padding-bottom: 4rem;
+		/* --lpk-page-padding-top: 6rem; */
+		/* --lpk-page-padding-bottom: 8rem; */
+	}
+</style>

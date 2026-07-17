@@ -1,6 +1,9 @@
 ---
-title: "Customize"
-description: "Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed."
+title: "Customize themes and styles in Lapikit"
+category: "Essentials"
+head:
+  title: "Customize"
+  description: "Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed."
 keywords:
   - "customize"
   - "theming"
@@ -14,8 +17,6 @@ keywords:
   // examples
   import SStyleComponent from '$examples/started/s-style-component.svelte';
 </script>
-
-# Customize themes and styles in Lapikit
 
 ## Theme customization
 

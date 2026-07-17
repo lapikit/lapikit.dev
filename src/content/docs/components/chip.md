@@ -1,6 +1,9 @@
 ---
-title: "Chip"
-description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
+title: "Chip component"
+category: "Components"
+head:
+  title: "Chip"
+  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
 ---
 
 <script>
@@ -13,8 +16,6 @@ description: "Small, practical UI elements for filters, tags or status. Supports
 	import States from '$examples/components/chip/states.svelte';
 	import LabelStyle from '$examples/components/chip/label-style.svelte';
 </script>
-
-# Chip component
 
 The `kit:chip` component displays small interactive labels, perfect for representing status, categories, filters or actions. Compact, stylable and highly flexible, it can be clicked, disabled, loaded, closed or enriched with snippets.
 It supports different variants, states, densities and sizes, to suit all UI contexts. It can be used alone, in groups, or as the basis for a tag or filter system.

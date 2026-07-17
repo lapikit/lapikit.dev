@@ -1,6 +1,9 @@
 ---
-title: "Application"
-description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
+title: "Application component"
+category: "Components"
+head:
+  title: "Application"
+  description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
 ---
 
 <script>
@@ -9,8 +12,6 @@ description: "The root component of your Svelte projects with Lapikit. The ideal
 	// images
 	import picture from '$lib/assets/images/use-kit-app.webp';
 </script>
-
-# Application component
 
 The `kit:app` component is an root layout for all component Lapikit. It acts as a global provider, initializing and centralizing everything Lapikit needs to function properly.
 

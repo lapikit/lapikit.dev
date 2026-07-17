@@ -1,6 +1,9 @@
 ---
-title: "introduction"
-description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
+title: "More about Lapikit Svelte Library"
+category: "Getting Started"
+head:
+  title: "introduction"
+  description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
 keywords:
   - "why lapikit"
   - "acknowledgements"
@@ -14,8 +17,6 @@ keywords:
   // examples
   import IntroductionLapikit from '$examples/started/introduction-lapikit.svelte';
 </script>
-
-# More about Lapikit Svelte Library
 
 ## What is Lapikit?
 

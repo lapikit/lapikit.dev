@@ -1,6 +1,9 @@
 ---
-title: "Dialog"
-description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
+title: "Dialog component"
+category: "Components"
+head:
+  title: "Dialog"
+  description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
 ---
 
 <script>
@@ -11,8 +14,6 @@ description: "Create modal dialogs with a fluid UX. Integrated focus, size, dens
 	import Size from '$examples/components/dialog/size.svelte';
 	import Persistent from '$examples/components/dialog/persistent.svelte';
 </script>
-
-# Dialog component
 
 The `kit:dialog` component is a modal window based on the native HTML element `<dialog>`. Thanks to this foundation, it benefits from accessible and semantic features by default, such as focus management, closing with the Escape key or clicking outside the box (unless persistent is enabled).
 

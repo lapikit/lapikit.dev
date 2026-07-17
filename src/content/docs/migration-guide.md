@@ -1,14 +1,15 @@
 ---
 title: "Migration Guide"
-description: "Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit"
+category: "Extra Topics"
+head:
+  title: "Migration Guide"
+  description: "Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit"
 keywords:
   - "migration"
   - "upgrade"
   - "changelog"
   - "breaking changes"
 ---
-
-# Migration Guide
 
 Learn how to migrate from older Lapikit versions to the latest release.
 

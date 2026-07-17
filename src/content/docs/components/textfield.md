@@ -1,6 +1,9 @@
 ---
-title: "Textfield"
-description: "Explore the Textfield component of Lapikit: customizable input fields for Svelte with full styling, validation and theming support to build forms faster."
+title: "Textfield component"
+category: "Components"
+head:
+  title: "Textfield"
+  description: "Explore the Textfield component of Lapikit: customizable input fields for Svelte with full styling, validation and theming support to build forms faster."
 ---
 
 <script>
@@ -12,8 +15,6 @@ description: "Explore the Textfield component of Lapikit: customizable input fie
 	import PrependAppend from '$examples/components/textfield/prepend-append.svelte';
 	import Clearable from '$examples/components/textfield/clearable.svelte';
 </script>
-
-# Textfield component
 
 The `kit:textfield` component provides a versatile input solution for capturing user data. It supports various input types, validation states, and enhanced features like character counting and clearable functionality. Designed for i increase accessibility and user experience in mind in your interphase.
 

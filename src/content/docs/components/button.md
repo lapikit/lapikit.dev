@@ -1,6 +1,9 @@
 ---
-title: "Button"
-description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
+title: "Button component"
+category: "Components"
+head:
+  title: "Button"
+  description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 ---
 
 <script>
@@ -15,8 +18,6 @@ description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons
 	import Block from '$examples/components/btn/block.svelte';
 	import AsLink from '$examples/components/btn/as-link.svelte';
 </script>
-
-# Button component
 
 The `kit:btn` component is a central component of Lapikit. It allows you to create buttons that are adaptable, accessible and easily customized, either via props or CSS variables.
 

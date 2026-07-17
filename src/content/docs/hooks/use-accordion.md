@@ -1,6 +1,9 @@
 ---
-title: "useAccordion"
-description: "Discover the UseAccordion hook from Lapikit: manage expandable sections in Svelte easily, keep state synchronized, and avoid prop drilling or manual event handling."
+title: "Learn how to create an accordion"
+category: "Stores and Hooks"
+head:
+  title: "useAccordion"
+  description: "Discover the UseAccordion hook from Lapikit: manage expandable sections in Svelte easily, keep state synchronized, and avoid prop drilling or manual event handling."
 ---
 
 <script>
@@ -8,8 +11,6 @@ description: "Discover the UseAccordion hook from Lapikit: manage expandable sec
 
 	import Multiple from '$examples/components/accordion/multiple.svelte';
 </script>
-
-# Learn how to create an accordion
 
 `useAccordion` is a state hook from `lapikit/actions` that manages the open/close state of a [`kit:accordion`](/docs/components/accordion). It returns a reactive `values` array and a `toggle` function to wire up to your accordion items.
 

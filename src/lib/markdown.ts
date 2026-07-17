@@ -39,12 +39,22 @@ export function createRegistry<T extends ContentSummary>(
 }
 
 function defaultSeoBuilder<T extends ContentSummary>(doc: T): SeoEntry {
-	const description =
-		typeof doc.metadata.description === 'string' && doc.metadata.description.trim()
-			? doc.metadata.description
-			: `Read ${doc.metadata.title}.`;
+	const head = getDocHead(doc.metadata);
+	const title = asOptionalString(head?.title) ?? doc.metadata.title;
+	const description = asOptionalString(head?.description) ?? `Read ${doc.metadata.title}.`;
 
-	return { title: doc.metadata.title, description, type: 'article' };
+	return { head: { title, description }, type: 'article' };
+}
+
+function getDocHead(metadata: ContentSummary['metadata']) {
+	const head = metadata.head;
+	return typeof head === 'object' && head !== null && !Array.isArray(head)
+		? (head as Record<string, unknown>)
+		: undefined;
+}
+
+function asOptionalString(value: unknown): string | undefined {
+	return typeof value === 'string' && value.trim() ? value.trim() : undefined;
 }
 
 /**
@@ -59,18 +69,14 @@ const docModules = import.meta.glob('/src/content/docs/**/*.md', {
 
 export const docsMetadata: DocSummary[] = docsMetadataJson as DocSummary[];
 
-const { paths, byPath, seoByPath, entries, bySlug } = createRegistry(
-	docsMetadata,
-	docModules,
-	(doc) => ({
-		title: doc.metadata.title,
-		description:
-			typeof doc.metadata.description === 'string' && doc.metadata.description.trim()
-				? doc.metadata.description
-				: `Read ${doc.metadata.title} in the Lapikit documentation.`,
-		type: 'article'
-	})
-);
+const { paths, byPath, seoByPath, entries, bySlug } = createRegistry(docsMetadata, docModules, (doc) => {
+	const head = getDocHead(doc.metadata);
+	const title = asOptionalString(head?.title) ?? doc.metadata.title;
+	const description =
+		asOptionalString(head?.description) ?? `Read ${doc.metadata.title} in the Lapikit documentation.`;
+
+	return { head: { title, description }, type: 'article' };
+});
 
 export const docsPaths = paths;
 export const docsByPath = byPath;

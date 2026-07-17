@@ -1,5 +1,7 @@
 <script lang="ts" module>
+	import blockquote from '$components/markdown/blockquote.svelte';
 	let sidebarScrollTop = 0;
+	export { blockquote };
 </script>
 
 <script lang="ts">
@@ -14,11 +16,13 @@
 	import type { PageData } from '../routes/docs/[...slug]/$types';
 	import { docsNavigation, getBreadcrumbs } from '$lib';
 	import type { ModelDropdownProps } from 'lapikit/components';
+	import { useAccordion } from 'lapikit/actions';
 
+	const accordion = useAccordion();
 	// Components
 	import TableOfContent from '../components/table-of-content.svelte';
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
-	import { ChevronDown, ChevronLeft, ChevronRight, Menu } from 'lucide-svelte';
+	import { ChevronDown, ChevronLeft, ChevronRight, Menu, TextAlignStart } from 'lucide-svelte';
 	import { capitalize } from '$lib/utils';
 	import Aside from '$components/aside/aside.svelte';
 
@@ -103,36 +107,68 @@
 </kit:toolbar>
 
 <main>
-	<Breadcrumbs items={breadcrumbs} />
-
 	<article class="kit-prose" use:enhanceEnumChips>
+		<header>
+			<Breadcrumbs items={breadcrumbs} />
+			{#if data?.doc?.metadata?.category}
+				<div class="kit-prose-section">{data?.doc?.metadata?.category}</div>
+			{/if}
+			{#if data?.doc?.metadata?.title}
+				<h1 class="kit-prose-title">{capitalize(data?.doc?.metadata?.title)}</h1>
+			{/if}
+		</header>
+
+		<kit:accordion size="sm" class="kit-prose-summary">
+			<kit:accordion-item
+				index={0}
+				open={accordion.values.includes(0)}
+				toggle={accordion.toggle}
+				style="--kit-accordion-item-bg: transparent;"
+				color="text-muted"
+			>
+				{#snippet activator()}
+					<kit:icon>
+						<TextAlignStart />
+					</kit:icon>
+
+					On this page
+				{/snippet}
+
+				<aside>
+					<TableOfContent {summary} />
+				</aside>
+			</kit:accordion-item>
+		</kit:accordion>
+
 		{@render children?.()}
 
-		<footer>
-			<kit:toolbar>
-				{#if data.prevDoc}
-					<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
-						{#snippet prepend()}
-							<kit:icon>
-								<ChevronLeft />
-							</kit:icon>
-						{/snippet}
-						{capitalize(data.prevDoc.title)}
-					</kit:btn>
-				{/if}
-				<kit:spacer />
-				{#if data.nextDoc}
-					<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
-						{#snippet append()}
-							<kit:icon>
-								<ChevronRight />
-							</kit:icon>
-						{/snippet}
-						{capitalize(data.nextDoc.title)}
-					</kit:btn>
-				{/if}
-			</kit:toolbar>
-		</footer>
+		{#if data.prevDoc || data.nextDoc}
+			<footer>
+				<kit:toolbar>
+					{#if data.prevDoc}
+						<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
+							{#snippet prepend()}
+								<kit:icon>
+									<ChevronLeft />
+								</kit:icon>
+							{/snippet}
+							{capitalize(data.prevDoc.title)}
+						</kit:btn>
+					{/if}
+					<kit:spacer />
+					{#if data.nextDoc}
+						<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
+							{#snippet append()}
+								<kit:icon>
+									<ChevronRight />
+								</kit:icon>
+							{/snippet}
+							{capitalize(data.nextDoc.title)}
+						</kit:btn>
+					{/if}
+				</kit:toolbar>
+			</footer>
+		{/if}
 	</article>
 
 	<aside>
@@ -146,22 +182,23 @@
 </main>
 
 <style>
+	h1 {
+		margin-top: var(--kit-space-comfortable);
+	}
 	main {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-areas:
-			'breadcrumb'
+			/* 'breadcrumb' */
 			'article'
 			'aside';
-		/* gap: 1rem 2rem; */
-		/* max-width: 72rem; */
-		/* margin-inline: auto;
-		padding-inline: 1rem; */
+		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
+		gap: 1rem 2rem;
 	}
 
-	main > :global(nav) {
+	/* main > :global(nav) {
 		grid-area: breadcrumb;
-	}
+	} */
 
 	main > article {
 		grid-area: article;
@@ -176,9 +213,7 @@
 		main {
 			grid-template-columns: minmax(0, 1fr) 20rem;
 			grid-template-rows: auto 1fr;
-			grid-template-areas:
-				'breadcrumb aside'
-				'article    aside';
+			grid-template-areas: 'article  aside';
 			align-items: start;
 		}
 	}

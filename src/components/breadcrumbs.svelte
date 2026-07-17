@@ -27,13 +27,11 @@
 {/if}
 
 <style>
-	/**nav {
-		--md-max-width: 720px;
-		--md-space-xl: 2rem;
-		--md-space-lg: 1.5rem;
+	nav ol {
+		padding-left: 0;
+	}
 
-		max-width: var(--md-max-width);
-		margin: 0 auto;
-		padding: var(--md-space-xl) var(--md-space-lg);
-	}**/
+	nav ol a {
+		color: var(--kit-color-text);
+	}
 </style>

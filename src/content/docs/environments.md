@@ -1,6 +1,9 @@
 ---
-title: "environments"
-description: "Configure ESLint and TypeScript for Lapikit's custom <kit:*> syntax. Fix false positives, suppress ts(6133) warnings, and set up your editor for the best DX."
+title: "Set up TypeScript and the Editor"
+category: "Extra Topics"
+head:
+  title: "environments"
+  description: "Configure ESLint and TypeScript for Lapikit's custom <kit:*> syntax. Fix false positives, suppress ts(6133) warnings, and set up your editor for the best DX."
 ---
 
 <script>
@@ -9,8 +12,6 @@ description: "Configure ESLint and TypeScript for Lapikit's custom <kit:*> synta
 	// examples
 	import ComponentWithoutPreprocessor from '$examples/addons/component-without-preprocessor.svelte';
 </script>
-
-# Set up TypeScript and the Editor
 
 Lapikit uses a custom `<kit:*>` syntax that is transformed into standard Svelte components at build time via its preprocessor. This page explains how to configure your editor and linting tools to work properly with lapikit.
 

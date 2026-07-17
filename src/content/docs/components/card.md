@@ -1,6 +1,9 @@
 ---
-title: "Card"
-description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+title: "Card component"
+category: "Components"
+head:
+  title: "Card"
+  description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
 ---
 
 <script>
@@ -13,8 +16,6 @@ description: "Organize and display content in visually coherent blocks. The Lapi
 	import Structure from '$examples/components/card/structure.svelte';
 	import Elevation from '$examples/components/card/elevation.svelte';
 </script>
-
-# Card component
 
 The `kit:card` component is a versatile container used to group together information or actions in a user interface. It can be used to display content, images, buttons or links, while offering advanced customization to suit various styles and contexts.
 

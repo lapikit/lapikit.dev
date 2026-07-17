@@ -17,15 +17,26 @@ export const npm_stats_storage_key = '@lapikit/npm-stats';
  */
 export const seoByPath: Record<string, SeoEntry> = {
 	'/': {
-		title: 'Lapikit',
-		description:
-			'Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability.',
+		head: {
+			title: 'Lapikit',
+			description:
+				'Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability.'
+		},
 		type: 'website'
 	},
+	'/docs': {
+		head: {
+			title: 'Documentation',
+			description: 'Browse Lapikit documentation, including components, hooks and theming resources.'
+		},
+		type: 'article'
+	},
 	'/terms': {
-		title: 'Legal Notices',
-		description:
-			'Review Lapikit legal notices, hosting information, intellectual property and privacy details.',
+		head: {
+			title: 'Legal Notices',
+			description:
+				'Review Lapikit legal notices, hosting information, intellectual property and privacy details.'
+		},
 		type: 'article'
 	}
 };

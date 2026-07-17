@@ -19,7 +19,9 @@ export function deriveDoc(filePath: string, frontmatter: FrontmatterData): Deriv
 		.filter(Boolean);
 	const slug = slugSegments.join('/');
 	const path = slug ? `/docs/${slug}` : '/docs';
-	const fallbackTitle = toTitle(fileBasename !== 'index' ? fileBasename : (pathSegments.at(-1) ?? '')) || 'Documentation';
+	const fallbackTitle =
+		toTitle(fileBasename !== 'index' ? fileBasename : (pathSegments.at(-1) ?? '')) ||
+		'Documentation';
 	const title = asOptionalString(frontmatter.title) ?? fallbackTitle;
 
 	return {

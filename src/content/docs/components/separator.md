@@ -1,6 +1,9 @@
 ---
-title: "Separator"
-description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
+title: "Separator component"
+category: "Components"
+head:
+  title: "Separator"
+  description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
 ---
 
 <script>
@@ -10,8 +13,6 @@ description: "Visually separate your UI blocks with customizable lines in size, 
 	import Orientation from '$examples/components/separator/orientation.svelte';
 	import Inset from '$examples/components/separator/inset.svelte';
 </script>
-
-# Separator component
 
 The `kit:separator` component renders a thin horizontal or vertical dividing line.
 

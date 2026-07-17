@@ -92,6 +92,26 @@
 		margin-bottom: 0;
 	}
 
+	/* ── Heading  ──────────────────────────────────────────────── */
+
+	.kit-prose header {
+		margin-bottom: 4rem;
+	}
+
+	.kit-prose .kit-prose-section {
+		text-transform: uppercase;
+		color: var(--md-color-muted);
+		font-size: 13px;
+	}
+
+	.kit-prose .kit-prose-title {
+		margin-top: var(--kit-space-comfortable);
+	}
+
+	.kit-prose .kit-prose-summary {
+		margin: 4rem 0;
+	}
+
 	/* ── Title h1 – h6 ─────────────────────────────────────────── */
 	.kit-prose h1,
 	.kit-prose h2,

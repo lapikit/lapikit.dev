@@ -1,6 +1,9 @@
 ---
-title: "Aspect Ratio"
-description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
+title: "Aspect Ratio component"
+category: "Components"
+head:
+  title: "Aspect Ratio"
+  description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
 ---
 
 <script>
@@ -11,8 +14,6 @@ description: "Manage the ratios of your images, videos or blocks easily with thi
 	import Fit from '$examples/components/aspect-ratio/fit.svelte';
 	import Inline from '$examples/components/aspect-ratio/inline.svelte';
 </script>
-
-# Aspect Ratio component
 
 The `kit:aspect-ratio` component maintains a constant aspect ratio for an element, whatever its content. It is particularly useful for videos, images or any other content requiring a proportional layout. Thanks to its flexible options, it can be easily integrated into different design contexts
 
