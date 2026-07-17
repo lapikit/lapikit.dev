@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { MarkdownHeading } from '$lib/@types';
-	import { TextQuote } from 'lucide-svelte';
 	import { capitalize } from '$lib/utils';
 	import { page } from '$app/state';
 
@@ -36,15 +35,6 @@
 {#if summaryItems.length > 0}
 	<nav aria-label="Table of contents">
 		<kit:list density="compact" size="xs">
-			<kit:list-item class="hidden! lg:flex!">
-				{#snippet prepend()}
-					<kit:icon>
-						<TextQuote />
-					</kit:icon>
-				{/snippet}
-				<span class="font-semibold">On this page</span>
-			</kit:list-item>
-
 			{#each summaryItems as item (item.slug)}
 				<kit:tooltip label={item.value}>
 					<kit:list-item
@@ -60,13 +50,13 @@
 {/if}
 
 <style>
-	@media (min-width: 1024px) {
+	@media (min-width: 1260px) {
 		nav :global(.kit-list) {
 			min-height: calc(100vh - 64px);
 		}
 	}
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1260px) {
 		nav :global(.kit-list) {
 			max-height: calc(100vh - (64px * 3));
 			overflow: auto;

@@ -60,14 +60,22 @@
 @layer kit-prose {
 	/* ── Container ────────────────────────────────────── */
 	.kit-prose {
+		--md-color-text: var(--kit-color-text);
+		--md-color-muted: var(--kit-color-text-muted);
+		--md-color-link: var(--kit-color-accent);
+		/* --md-color-link-hover: #79b8ff; */
+		--md-color-border: var(--kit-color-border);
+		--md-color-bg: var(--kit-color-surface);
+		--md-color-surface: var(--kit-color-surface-1);
+
 		font-family: var(--md-font-sans);
 		font-size: var(--md-font-size);
 		line-height: var(--md-line-height);
 		color: var(--md-color-text);
 		background: var(--md-color-bg);
-		max-width: var(--md-max-width);
+		/* max-width: var(--md-max-width); */
 		margin: 0 auto;
-		padding: var(--md-space-xl) var(--md-space-lg);
+		/* padding: var(--md-space-xl) var(--md-space-lg); */
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 	}

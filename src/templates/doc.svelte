@@ -69,7 +69,7 @@
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
 </script>
 
-<kit:toolbar rounded="0">
+<kit:toolbar rounded="0" class="lg:hidden!">
 	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation">
 		{#snippet prepend()}
 			<kit:icon>
@@ -79,18 +79,70 @@
 
 		Menu
 	</kit:btn>
+
+	<kit:spacer />
+
+	<kit:dropdown>
+		{#snippet activator({ toggle, open }: ModelDropdownProps)}
+			<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
+				On this page
+
+				{#snippet append()}
+					<kit:icon>
+						{#if open}
+							<ChevronDown />
+						{:else}
+							<ChevronRight />
+						{/if}
+					</kit:icon>
+				{/snippet}
+			</kit:btn>
+		{/snippet}
+		<TableOfContent {summary} />
+	</kit:dropdown>
 </kit:toolbar>
 
 <main>
 	<Breadcrumbs items={breadcrumbs} />
 
-	<article>
+	<article class="kit-prose" use:enhanceEnumChips>
 		{@render children?.()}
 
-		<footer>footer article</footer>
+		<footer>
+			<kit:toolbar>
+				{#if data.prevDoc}
+					<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
+						{#snippet prepend()}
+							<kit:icon>
+								<ChevronLeft />
+							</kit:icon>
+						{/snippet}
+						{capitalize(data.prevDoc.title)}
+					</kit:btn>
+				{/if}
+				<kit:spacer />
+				{#if data.nextDoc}
+					<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
+						{#snippet append()}
+							<kit:icon>
+								<ChevronRight />
+							</kit:icon>
+						{/snippet}
+						{capitalize(data.nextDoc.title)}
+					</kit:btn>
+				{/if}
+			</kit:toolbar>
+		</footer>
 	</article>
 
-	<Aside />
+	<aside>
+		<kit:card>
+			<kit:card-content>
+				<kit:card-title>On this page</kit:card-title>
+				<TableOfContent {summary} />
+			</kit:card-content>
+		</kit:card>
+	</aside>
 </main>
 
 <style>
@@ -101,10 +153,10 @@
 			'breadcrumb'
 			'article'
 			'aside';
-		gap: 1rem 2rem;
-		max-width: 72rem;
-		margin-inline: auto;
-		padding-inline: 1rem;
+		/* gap: 1rem 2rem; */
+		/* max-width: 72rem; */
+		/* margin-inline: auto;
+		padding-inline: 1rem; */
 	}
 
 	main > :global(nav) {
@@ -113,13 +165,14 @@
 
 	main > article {
 		grid-area: article;
+		width: 100%;
 	}
 
 	main > :global(aside) {
 		grid-area: aside;
 	}
 
-	@media (min-width: 64rem) {
+	@media (min-width: 1260px) {
 		main {
 			grid-template-columns: minmax(0, 1fr) 20rem;
 			grid-template-rows: auto 1fr;

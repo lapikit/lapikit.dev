@@ -192,7 +192,7 @@
 		grid-area: footer;
 	}
 
-	@media (min-width: 64rem) {
+	@media (min-width: 1023px) {
 		.layout {
 			grid-template-columns: auto minmax(0, 1fr);
 			grid-template-rows: 1fr auto;
