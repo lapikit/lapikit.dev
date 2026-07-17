@@ -1,6 +1,6 @@
 ---
-title: "Card"
-description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+title: 'Card'
+description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
 ---
 
 <script>
@@ -128,21 +128,23 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:card-title`**
 
-| props         | type                                                                        | description                                     | default |
-| ------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
-| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element. | `null`  |
-| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                          | `'div'` |
-| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card title.                   |         |
-| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card title.                      |         |
+| props         | type                                                                        | description                                        | default |
+| ------------- | --------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element.    | `null`  |
+| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                             | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card title.                      |         |
+| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card title.                         |         |
+| color         | `string`                                                                    | Foreground color override (`--kit-card-title-fg`). |         |
 
 **`kit:card-content`**
 
-| props         | type                                                                        | description                                     | default |
-| ------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
-| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element. | `null`  |
-| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                          | `'div'` |
-| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card content.                 |         |
-| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card content.                    |         |
+| props         | type                                                                        | description                                          | default |
+| ------------- | --------------------------------------------------------------------------- | ---------------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element.      | `null`  |
+| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                               | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card content.                      |         |
+| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card content.                         |         |
+| color         | `string`                                                                    | Foreground color override (`--kit-card-content-fg`). |         |
 
 **`kit:card-media`**
 
