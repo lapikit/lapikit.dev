@@ -1,4 +1,10 @@
-# Legal notices Lapikit
+---
+title: 'Legal notices Lapikit'
+category: 'Terms'
+head:
+  title: 'Legal Notices'
+  description: 'Review Lapikit legal notices, hosting information, intellectual property and privacy details.'
+---
 
 Updated to 31/03/2026
 

@@ -49,7 +49,7 @@
 	}
 
 	let sidebarEl: HTMLDivElement | undefined = $state();
-	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
+	// const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
 
 	onMount(() => {
 		if (sidebarEl) sidebarEl.scrollTop = sidebarScrollTop;
@@ -62,10 +62,14 @@
 	let {
 		children,
 		summary = [],
+		title,
+		category,
 		data
 	}: {
 		children?: Snippet;
 		summary?: MarkdownHeading[];
+		title?: string;
+		category?: string;
 		data: PageData;
 	} = $props();
 
@@ -73,48 +77,16 @@
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
 </script>
 
-<kit:toolbar rounded="0" class="lg:hidden!">
-	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation">
-		{#snippet prepend()}
-			<kit:icon>
-				<Menu />
-			</kit:icon>
-		{/snippet}
-
-		Menu
-	</kit:btn>
-
-	<kit:spacer />
-
-	<kit:dropdown>
-		{#snippet activator({ toggle, open }: ModelDropdownProps)}
-			<kit:btn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
-				On this page
-
-				{#snippet append()}
-					<kit:icon>
-						{#if open}
-							<ChevronDown />
-						{:else}
-							<ChevronRight />
-						{/if}
-					</kit:icon>
-				{/snippet}
-			</kit:btn>
-		{/snippet}
-		<TableOfContent {summary} />
-	</kit:dropdown>
-</kit:toolbar>
-
 <main>
 	<article class="kit-prose" use:enhanceEnumChips>
 		<header>
 			<Breadcrumbs items={breadcrumbs} />
-			{#if data?.doc?.metadata?.category}
-				<div class="kit-prose-section">{data?.doc?.metadata?.category}</div>
+
+			{#if category}
+				<div class="kit-prose-section">{category}</div>
 			{/if}
-			{#if data?.doc?.metadata?.title}
-				<h1 class="kit-prose-title">{capitalize(data?.doc?.metadata?.title)}</h1>
+			{#if title}
+				<h1 class="kit-prose-title">{capitalize(title)}</h1>
 			{/if}
 		</header>
 
@@ -172,7 +144,7 @@
 	</article>
 
 	<aside>
-		<kit:card>
+		<kit:card class="table-of-content-wrapper">
 			<kit:card-content>
 				<kit:card-title>On this page</kit:card-title>
 				<TableOfContent {summary} />
@@ -182,39 +154,36 @@
 </main>
 
 <style>
-	h1 {
-		margin-top: var(--kit-space-comfortable);
-	}
 	main {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		grid-template-areas:
-			/* 'breadcrumb' */
-			'article'
-			'aside';
 		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
 		gap: 1rem 2rem;
 	}
 
-	/* main > :global(nav) {
-		grid-area: breadcrumb;
-	} */
-
-	main > article {
-		grid-area: article;
+	article {
 		width: 100%;
 	}
 
-	main > :global(aside) {
-		grid-area: aside;
+	main > aside {
+		display: none;
 	}
 
 	@media (min-width: 1260px) {
 		main {
 			grid-template-columns: minmax(0, 1fr) 20rem;
 			grid-template-rows: auto 1fr;
-			grid-template-areas: 'article  aside';
 			align-items: start;
+		}
+
+		main > aside {
+			display: initial;
+			position: sticky;
+			top: 95px;
+		}
+
+		main :global(.kit-prose-summary) {
+			display: none;
 		}
 	}
 </style>

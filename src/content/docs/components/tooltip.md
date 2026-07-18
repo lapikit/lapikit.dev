@@ -1,9 +1,9 @@
 ---
-title: "Tooltip component"
-category: "Components"
+title: 'Tooltip component'
+category: 'Components'
 head:
-  title: "Tooltip"
-  description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
+  title: 'Tooltip'
+  description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
 ---
 
 <script>

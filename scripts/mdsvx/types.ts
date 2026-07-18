@@ -8,19 +8,14 @@ export type FrontmatterValue =
 
 export type FrontmatterData = Record<string, FrontmatterValue>;
 
-export type ParsedMarkdownFile = {
-	body: string;
-	frontmatter: FrontmatterData;
-	hasFrontmatter: boolean;
-};
-
-export type DerivedDoc = {
-	id: string;
-	metadata: FrontmatterData & { title: string };
-	path: string;
-	section?: string;
+export type ManifestPath = {
+	sourcePath: string;
 	slug: string;
 	slugSegments: string[];
-	sourcePath: string;
+	pathname: string;
+};
+
+export type ManifestEntry = FrontmatterData & {
 	title: string;
+	path: ManifestPath;
 };

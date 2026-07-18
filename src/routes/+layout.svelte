@@ -5,7 +5,7 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { createGlobalTheme } from 'lapikit/actions';
-	import { docsSeoByPath, getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
+	import { getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
 	import { capitalize } from '$lib/utils';
 
 	// components
@@ -28,7 +28,7 @@
 	});
 
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
-	const seo = $derived(docsSeoByPath[path] ?? seoByPath[path] ?? seoByPath['/']);
+	const seo = $derived(seoByPath[path] ?? seoByPath['/']);
 	const canonicalUrl = $derived(`${page.url.origin}${path === '/' ? '' : path}`);
 	const pageTitle = $derived(
 		`${capitalize(seo.head.title)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`

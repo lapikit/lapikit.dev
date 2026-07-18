@@ -1,0 +1,9 @@
+{
+	"/": {
+		"title": "Lapikit",
+		"head": {
+			"title": "Lapikit",
+			"description": "Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability."
+		}
+	}
+}

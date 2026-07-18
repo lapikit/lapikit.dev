@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
@@ -13,7 +13,7 @@
 
 	// icons & images
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
-	import { Moon, Sun, SunMoon } from 'lucide-svelte';
+	import { Menu, Moon, Sun, SunMoon } from 'lucide-svelte';
 	import Drawer from '$components/drawer.svelte';
 
 	let { children } = $props();
@@ -38,6 +38,9 @@
 			navOpen = !navOpen;
 		}
 	});
+
+	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
+
 	// $effect(() => {
 	// 	if (!browser) return;
 
@@ -51,6 +54,15 @@
 </script>
 
 <kit:appbar class="sticky! top-0 z-50" classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
+	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation">
+		{#snippet prepend()}
+			<kit:icon>
+				<Menu />
+			</kit:icon>
+		{/snippet}
+
+		Menu
+	</kit:btn>
 	<a href={resolve('/')} class="flex items-center gap-2" aria-label="Lapikit Home">
 		<enhanced:img
 			src="$lib/assets/images/lapikit.webp?w=38"

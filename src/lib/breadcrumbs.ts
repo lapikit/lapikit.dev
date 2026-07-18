@@ -61,11 +61,10 @@ function getDocsBreadcrumbs(pathname: string) {
 
 	for (let index = 0; index < segments.length; index += 1) {
 		const href = `/docs/${segments.slice(0, index + 1).join('/')}`;
-		const label = docsByPath.get(href)?.metadata.title ?? formatSegmentLabel(segments[index]);
 		const isLast = index === segments.length - 1;
 
 		items.push({
-			label,
+			label: formatSegmentLabel(segments[index]),
 			href: isLast || docsByPath.has(href) ? toPathname(href) : undefined
 		});
 	}
