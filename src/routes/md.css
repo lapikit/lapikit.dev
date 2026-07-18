@@ -95,7 +95,7 @@
 	/* ── Heading  ──────────────────────────────────────────────── */
 
 	.kit-prose header {
-		margin-bottom: 4rem;
+		margin-bottom: 24px;
 	}
 
 	.kit-prose .kit-prose-section {
@@ -109,7 +109,7 @@
 	}
 
 	.kit-prose .kit-prose-summary {
-		margin: 4rem 0;
+		margin: 24px 0;
 	}
 
 	/* ── Title h1 – h6 ─────────────────────────────────────────── */

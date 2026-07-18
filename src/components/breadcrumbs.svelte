@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import type { BreadcrumbItem } from '$lib/@types';
 	import { capitalize } from '$lib/utils';
-	import { ChevronRight } from 'lucide-svelte';
+	import { ChevronRight, House } from 'lucide-svelte';
 
 	let { items = [] }: { items?: BreadcrumbItem[] } = $props();
 </script>
@@ -15,10 +15,16 @@
 					{#if index === items.length - 1}
 						<span aria-current="page">{capitalize(item.label)}</span>
 					{:else if item.href}
-						<a href={resolve(item.href)} class="underline">{capitalize(item.label)}</a>
-						<kit:icon> <ChevronRight /></kit:icon>
+						{#if item.label === 'Home'}
+							<kit:icon size="sm"> <House /></kit:icon>
+							<kit:icon size="sm"> <ChevronRight /></kit:icon>
+						{:else}
+							<a href={resolve(item.href)} class="underline">{capitalize(item.label)}</a>
+							<kit:icon size="sm"> <ChevronRight /></kit:icon>
+						{/if}
 					{:else}
 						<span>{capitalize(item.label)}</span>
+						<kit:icon size="sm"> <ChevronRight /></kit:icon>
 					{/if}
 				</li>
 			{/each}

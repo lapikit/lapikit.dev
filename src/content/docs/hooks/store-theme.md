@@ -1,4 +1,5 @@
 ---
+title: "Store Theme"
 layout: "legacy"
 head:
   title: "theme stored"

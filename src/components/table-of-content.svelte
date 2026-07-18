@@ -1,49 +1,88 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { MarkdownHeading } from '$lib/@types';
-	import { capitalize } from '$lib/utils';
+	import { capitalize, slugify } from '$lib/utils';
 	import { page } from '$app/state';
 
-	let { summary = [] }: { summary?: MarkdownHeading[] } = $props();
+	let { title, summary = [] }: { title?: string; summary?: MarkdownHeading[] } = $props();
 
 	const isChangelog = $derived(page.url.pathname.includes('changelog'));
 	const summaryItems = $derived(
 		summary.filter((item) => item.depth >= 1 && item.depth <= (isChangelog ? 2 : 3))
 	);
+	const titleSlug = $derived(title ? slugify(title) : null);
 
 	let activeSlug = $state<string | null>(null);
 
+	// Active item = last heading whose top has crossed a line 35% down the viewport.
+	const ACTIVE_LINE_RATIO = 0.35;
+
 	onMount(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						activeSlug = entry.target.id;
-					}
+		const updateActiveSlug = () => {
+			const slugs = [titleSlug, ...summaryItems.map((item) => item.slug)].filter(
+				(slug): slug is string => !!slug
+			);
+			const headings = slugs
+				.map((slug) => document.getElementById(slug))
+				.filter((el): el is HTMLElement => el !== null);
+
+			const activeLine = window.innerHeight * ACTIVE_LINE_RATIO;
+
+			let current: string | null = null;
+			for (const heading of headings) {
+				if (heading.getBoundingClientRect().top <= activeLine) {
+					current = heading.id;
+				} else {
+					break;
 				}
-			},
-			{ rootMargin: '0px 0px -80% 0px', threshold: 0 }
-		);
+			}
+			activeSlug = current ?? headings[0]?.id ?? null;
+		};
 
-		const headings = document.querySelectorAll('h1[id], h2[id], h3[id]');
-		headings.forEach((el) => observer.observe(el));
+		let ticking = false;
+		const onScroll = () => {
+			if (ticking) return;
+			ticking = true;
+			requestAnimationFrame(() => {
+				updateActiveSlug();
+				ticking = false;
+			});
+		};
 
-		return () => observer.disconnect();
+		updateActiveSlug();
+		window.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('resize', onScroll);
+
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+			window.removeEventListener('resize', onScroll);
+		};
 	});
 </script>
 
 {#if summaryItems.length > 0}
 	<nav aria-label="Table of contents">
-		<kit:list density="compact" size="xs">
+		<kit:list size="xs" variant="text" nav>
+			{#if title}
+				<kit:list-item
+					href={`#${titleSlug}`}
+					class={`depth-1`}
+					active={activeSlug === titleSlug}
+					color={activeSlug === titleSlug && 'accent'}
+				>
+					<span class="truncate">{capitalize(title)}</span>
+				</kit:list-item>
+			{/if}
+
 			{#each summaryItems as item (item.slug)}
-				<kit:tooltip label={item.value}>
-					<kit:list-item
-						href={`#${item.slug}`}
-						class={`depth-${item.depth} ${activeSlug === item.slug ? 'underline!' : ''}`}
-					>
-						<span class="truncate">{capitalize(item.value)}</span>
-					</kit:list-item>
-				</kit:tooltip>
+				<kit:list-item
+					href={`#${item.slug}`}
+					class={`depth-${item.depth}`}
+					active={activeSlug === item.slug}
+					color={activeSlug === item.slug && 'accent'}
+				>
+					<span class="truncate">{capitalize(item.value)}</span>
+				</kit:list-item>
 			{/each}
 		</kit:list>
 	</nav>
@@ -51,14 +90,14 @@
 
 <style>
 	:global(.depth-1) span {
-		padding-left: 0.25rem;
+		padding-left: 0rem;
 	}
 
 	:global(.depth-2) span {
-		padding-left: 0.75rem;
+		padding-left: 0.5rem;
 	}
 
 	:global(.depth-3) span {
-		padding-left: 1.25rem;
+		padding-left: 1rem;
 	}
 </style>

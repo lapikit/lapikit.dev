@@ -40,28 +40,13 @@
 	});
 
 	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
-
-	// $effect(() => {
-	// 	if (!browser) return;
-
-	// 	// if (mode === 'system') {
-	// 	// 	document.documentElement.removeAttribute('data-kit-theme');
-	// 	// } else {
-	// 	// 	document.documentElement.setAttribute('data-theme', mode);
-	// 	// }
-	// 	// localStorage.setItem(theme_storage_key, mode);
-	// });
 </script>
 
 <kit:appbar class="sticky! top-0 z-50" classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
-	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation">
-		{#snippet prepend()}
-			<kit:icon>
-				<Menu />
-			</kit:icon>
-		{/snippet}
-
-		Menu
+	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation" icon>
+		<kit:icon>
+			<Menu />
+		</kit:icon>
 	</kit:btn>
 	<a href={resolve('/')} class="flex items-center gap-2" aria-label="Lapikit Home">
 		<enhanced:img
@@ -147,7 +132,12 @@
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
 		<nav>
 			{#each docsNavigation as { label, icon, pages } (label)}
-				<kit:list density="compact" size="sm" nav s-class_opacity-50={label == 'Deprecated'}>
+				<kit:list
+					class="mb-2"
+					density="compact"
+					size="sm"
+					s-class_opacity-50={label == 'Deprecated'}
+				>
 					<kit:list-item>
 						{#snippet prepend()}
 							<kit:icon>
@@ -178,11 +168,18 @@
 
 	<div class="content">
 		{@render children()}
-	</div>
 
-	<footer>
-		Copyright © 2025 - {year} Lapikit
-	</footer>
+		<footer>
+			Copyright © 2025 - {year} Lapikit -
+			<a
+				href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
+				target="_blank"
+				style="color: var(--kit-accent)">MIT License</a
+			>
+			- Developed by
+			<a href="https://nycolaide.dev" target="_blank" style="color: var(--kit-accent)">Nycolaide</a>
+		</footer>
+	</div>
 </div>
 
 <style>
@@ -191,9 +188,7 @@
 		min-height: 100dvh;
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: 1fr auto;
-		grid-template-areas:
-			'content'
-			'footer';
+		grid-template-areas: 'content';
 	}
 
 	.content {
@@ -202,19 +197,26 @@
 
 	footer {
 		grid-area: footer;
+		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
+		margin: 0 var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
 	}
 
 	@media (min-width: 1023px) {
 		.layout {
 			grid-template-columns: auto minmax(0, 1fr);
 			grid-template-rows: 1fr auto;
-			grid-template-areas:
-				'drawer content'
-				'drawer footer';
+			grid-template-areas: 'drawer content';
 		}
 
 		.layout > :global(.drawer--persistent) {
 			grid-area: drawer;
+		}
+	}
+
+	@media (min-width: 1460px) {
+		footer {
+			width: 100%;
+			margin: 0 auto var(--lpk-page-padding-bottom);
 		}
 	}
 </style>

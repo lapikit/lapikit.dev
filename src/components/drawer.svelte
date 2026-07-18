@@ -17,7 +17,7 @@
 <!-- Backdrop - mobile/tablet only -->
 {#if open}
 	<div
-		class="backdrop-drawer fixed inset-0 z-9 lg:hidden"
+		class="backdrop-drawer fixed inset-0 z-55 lg:hidden"
 		role="presentation"
 		onclick={() => (open = false)}
 		onkeydown={(e) => e.key === 'Escape' && (open = false)}
@@ -29,7 +29,7 @@
 	bind:this={el}
 	class={[
 		'fixed top-0 z-100 h-full w-62.5 overflow-y-auto transition-transform duration-300',
-		'lg:sticky lg:top-16 lg:z-auto lg:h-[calc(100vh-64px)] lg:translate-x-0 lg:overflow-y-auto lg:transition-none',
+		'lg:sticky lg:top-18.75 lg:z-auto lg:h-[calc(100vh-75px)] lg:translate-x-0 lg:overflow-y-auto lg:transition-none',
 		side === 'left' ? 'left-0' : 'right-0',
 		side === 'left'
 			? open

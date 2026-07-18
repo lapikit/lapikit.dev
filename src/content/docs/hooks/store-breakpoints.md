@@ -1,4 +1,5 @@
 ---
+title: "Store Breakpoints"
 layout: "legacy"
 head:
   title: "breakpoints stored"

@@ -74,7 +74,7 @@ function getDocsBreadcrumbs(pathname: string) {
 
 function getPathLabel(pathname: string) {
 	return (
-		seoByPath[pathname]?.head.title ??
+		seoByPath[pathname]?.title ??
 		formatSegmentLabel(pathname.split('/').filter(Boolean).at(-1) ?? '')
 	);
 }

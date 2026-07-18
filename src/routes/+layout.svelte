@@ -29,13 +29,22 @@
 
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
 	const seo = $derived(seoByPath[path] ?? seoByPath['/']);
+	const seoTitle = $derived(getHeadString(seo.head, 'title') ?? seo.title);
+	const seoDescription = $derived(getHeadString(seo.head, 'description') ?? `Read ${seo.title}.`);
+	const seoType = $derived(seo.type === 'website' ? 'website' : 'article');
 	const canonicalUrl = $derived(`${page.url.origin}${path === '/' ? '' : path}`);
 	const pageTitle = $derived(
-		`${capitalize(seo.head.title)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
+		`${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
 	const breadcrumbs = $derived(getBreadcrumbs(path));
 	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, page.url.origin));
 	const breadcrumbSchemaTag = $derived(breadcrumbSchema ? toJsonLdScriptTag(breadcrumbSchema) : '');
+
+	function getHeadString(head: unknown, key: 'title' | 'description') {
+		if (typeof head !== 'object' || head === null) return undefined;
+		const value = (head as Record<string, unknown>)[key];
+		return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+	}
 
 	function toJsonLdScriptTag(data: unknown) {
 		const json = JSON.stringify(data).replace(/</g, '\\u003c');
@@ -54,7 +63,7 @@
 	<link rel="icon" href={favicon} />
 	<link rel="canonical" href={canonicalUrl} />
 	<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
-	<meta name="description" content={seo.head.description} />
+	<meta name="description" content={seoDescription} />
 	<meta
 		name="robots"
 		content={PUBLIC_DEV === 'true'
@@ -67,12 +76,12 @@
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:site_name" content="Lapikit" />
 	<meta property="og:title" content={pageTitle} />
-	<meta property="og:description" content={seo.head.description} />
-	<meta property="og:type" content={seo.type ?? 'website'} />
+	<meta property="og:description" content={seoDescription} />
+	<meta property="og:type" content={seoType} />
 	<meta property="og:url" content={canonicalUrl} />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
-	<meta name="twitter:description" content={seo.head.description} />
+	<meta name="twitter:description" content={seoDescription} />
 
 	<meta name="color-scheme" content="light dark" />
 

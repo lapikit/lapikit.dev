@@ -9,6 +9,7 @@
 	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import { getBreadcrumbs } from '$lib';
+	import { capitalize } from '$lib/utils';
 
 	// Components
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
@@ -25,9 +26,13 @@
 	});
 
 	let {
-		children
+		children,
+		title,
+		category
 	}: {
 		children?: Snippet;
+		title?: string;
+		category?: string;
 	} = $props();
 
 	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
@@ -54,7 +59,16 @@
 		</kit:toolbar>
 
 		<article>
-			<Breadcrumbs items={breadcrumbs} />
+			<header>
+				<Breadcrumbs items={breadcrumbs} />
+
+				{#if category}
+					<div class="kit-prose-section">{category}</div>
+				{/if}
+				{#if title}
+					<h1 class="kit-prose-title">{capitalize(title)}</h1>
+				{/if}
+			</header>
 
 			<div class="kit-prose">
 				{@render children?.()}

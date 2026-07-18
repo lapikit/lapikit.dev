@@ -23,7 +23,7 @@
 	import TableOfContent from '../components/table-of-content.svelte';
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
 	import { ChevronDown, ChevronLeft, ChevronRight, Menu, TextAlignStart } from 'lucide-svelte';
-	import { capitalize } from '$lib/utils';
+	import { capitalize, slugify } from '$lib/utils';
 	import Aside from '$components/aside/aside.svelte';
 
 	function enhanceEnumChips(node: HTMLElement) {
@@ -75,6 +75,10 @@
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
+
+	$effect(() => {
+		console.log('GW1 data', data);
+	});
 </script>
 
 <main>
@@ -86,7 +90,9 @@
 				<div class="kit-prose-section">{category}</div>
 			{/if}
 			{#if title}
-				<h1 class="kit-prose-title">{capitalize(title)}</h1>
+				<h1 id={slugify(title)} class="kit-prose-title">
+					{capitalize(title)}
+				</h1>
 			{/if}
 		</header>
 
@@ -107,7 +113,7 @@
 				{/snippet}
 
 				<aside>
-					<TableOfContent {summary} />
+					<TableOfContent {title} {summary} />
 				</aside>
 			</kit:accordion-item>
 		</kit:accordion>
@@ -116,38 +122,36 @@
 
 		{#if data.prevDoc || data.nextDoc}
 			<footer>
-				<kit:toolbar>
-					{#if data.prevDoc}
-						<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
-							{#snippet prepend()}
-								<kit:icon>
-									<ChevronLeft />
-								</kit:icon>
-							{/snippet}
-							{capitalize(data.prevDoc.title)}
-						</kit:btn>
-					{/if}
-					<kit:spacer />
-					{#if data.nextDoc}
-						<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
-							{#snippet append()}
-								<kit:icon>
-									<ChevronRight />
-								</kit:icon>
-							{/snippet}
-							{capitalize(data.nextDoc.title)}
-						</kit:btn>
-					{/if}
-				</kit:toolbar>
+				{#if data.prevDoc}
+					<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
+						{#snippet prepend()}
+							<kit:icon>
+								<ChevronLeft />
+							</kit:icon>
+						{/snippet}
+						{capitalize(data.prevDoc.title)}
+					</kit:btn>
+				{/if}
+				<kit:spacer />
+				{#if data.nextDoc}
+					<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
+						{#snippet append()}
+							<kit:icon>
+								<ChevronRight />
+							</kit:icon>
+						{/snippet}
+						{capitalize(data.nextDoc.title)}
+					</kit:btn>
+				{/if}
 			</footer>
 		{/if}
 	</article>
 
 	<aside>
-		<kit:card class="table-of-content-wrapper">
+		<kit:card class="table-of-content-wrapper" density="comfortable">
+			<kit:card-title>On this page</kit:card-title>
 			<kit:card-content>
-				<kit:card-title>On this page</kit:card-title>
-				<TableOfContent {summary} />
+				<TableOfContent {title} {summary} />
 			</kit:card-content>
 		</kit:card>
 	</aside>
@@ -159,6 +163,7 @@
 		grid-template-columns: minmax(0, 1fr);
 		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
 		gap: 1rem 2rem;
+		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
 	}
 
 	article {
@@ -177,13 +182,37 @@
 		}
 
 		main > aside {
-			display: initial;
-			position: sticky;
-			top: 95px;
+			display: flex;
+			height: 100%;
+			width: 100%;
+			position: relative;
 		}
 
 		main :global(.kit-prose-summary) {
 			display: none;
+		}
+
+		main :global(.table-of-content-wrapper) {
+			display: grid;
+			grid-template-rows: auto 1fr;
+			max-height: calc(
+				100vh - (75px + var(--lpk-page-padding-top) + var(--lpk-page-padding-bottom))
+			);
+			position: sticky;
+			top: calc(75px + var(--lpk-page-padding-top));
+			height: fit-content;
+			width: 100%;
+		}
+
+		main :global(.table-of-content-wrapper .kit-card-content) {
+			overflow-y: auto;
+		}
+
+		@media (min-width: 1460px) {
+			main {
+				margin-left: auto;
+				margin-right: auto;
+			}
 		}
 	}
 </style>

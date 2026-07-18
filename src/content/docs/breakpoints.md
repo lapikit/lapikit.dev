@@ -1,4 +1,5 @@
 ---
+title: "Breakpoints"
 layout: "legacy"
 head:
   title: "breakpoints"
