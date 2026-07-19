@@ -3,7 +3,7 @@
 
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { createGlobalTheme } from 'lapikit/actions';
 	import { getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
 	import { capitalize } from '$lib/utils';
@@ -22,6 +22,7 @@
 	const app = createGlobalTheme();
 
 	import './layout.css';
+	import SearchV2 from '$components/search-v2.svelte';
 
 	onMount(() => {
 		if (browser) loadNpmData();
@@ -53,8 +54,20 @@
 		return `<script type="application/ld+json">${json}<\/script>`;
 	}
 
+	// states
+	let searchOpen = $state(false);
+
 	$effect(() => {
 		console.log('GW1 SEO', seo);
+	});
+
+	setContext('search', {
+		get open() {
+			return searchOpen;
+		},
+		toggle() {
+			searchOpen = !searchOpen;
+		}
 	});
 </script>
 
@@ -95,6 +108,7 @@
 	<!-- </main> -->
 
 	<ConsentMode />
+	<SearchV2 bind:open={searchOpen} />
 </kit:app>
 
 <style>

@@ -1,30 +1,25 @@
 <script lang="ts" module>
 	import blockquote from '$components/markdown/blockquote.svelte';
-	let sidebarScrollTop = 0;
 	export { blockquote };
 </script>
 
 <script lang="ts">
-	import { getContext } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { beforeNavigate } from '$app/navigation';
-	import { mount, unmount, onMount } from 'svelte';
+	import { mount, unmount } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import EnumChip from '../components/enum-chip.svelte';
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../routes/docs/[...slug]/$types';
-	import { docsNavigation, getBreadcrumbs } from '$lib';
-	import type { ModelDropdownProps } from 'lapikit/components';
+	import { getBreadcrumbs } from '$lib';
 	import { useAccordion } from 'lapikit/actions';
 
 	const accordion = useAccordion();
 	// Components
 	import TableOfContent from '../components/table-of-content.svelte';
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
-	import { ChevronDown, ChevronLeft, ChevronRight, Menu, TextAlignStart } from 'lucide-svelte';
+	import { ChevronLeft, ChevronRight, TextAlignStart } from 'lucide-svelte';
 	import { capitalize, slugify } from '$lib/utils';
-	import Aside from '$components/aside/aside.svelte';
 
 	function enhanceEnumChips(node: HTMLElement) {
 		const chips = node.querySelectorAll<HTMLElement>('.enum-chip[data-values]');
@@ -48,17 +43,6 @@
 		};
 	}
 
-	let sidebarEl: HTMLDivElement | undefined = $state();
-	// const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
-
-	onMount(() => {
-		if (sidebarEl) sidebarEl.scrollTop = sidebarScrollTop;
-	});
-
-	beforeNavigate(() => {
-		if (sidebarEl) sidebarScrollTop = sidebarEl.scrollTop;
-	});
-
 	let {
 		children,
 		summary = [],
@@ -75,10 +59,6 @@
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
-
-	$effect(() => {
-		console.log('GW1 data', data);
-	});
 </script>
 
 <main>
@@ -96,27 +76,29 @@
 			{/if}
 		</header>
 
-		<kit:accordion size="sm" class="kit-prose-summary">
-			<kit:accordion-item
-				index={0}
-				open={accordion.values.includes(0)}
-				toggle={accordion.toggle}
-				style="--kit-accordion-item-bg: transparent;"
-				color="text-muted"
-			>
-				{#snippet activator()}
-					<kit:icon>
-						<TextAlignStart />
-					</kit:icon>
+		{#if summary.length > 0}
+			<kit:accordion size="sm" class="kit-prose-summary">
+				<kit:accordion-item
+					index={0}
+					open={accordion.values.includes(0)}
+					toggle={accordion.toggle}
+					style="--kit-accordion-item-bg: transparent;"
+					color="text-muted"
+				>
+					{#snippet activator()}
+						<kit:icon>
+							<TextAlignStart />
+						</kit:icon>
 
-					On this page
-				{/snippet}
+						On this page
+					{/snippet}
 
-				<aside>
-					<TableOfContent {title} {summary} />
-				</aside>
-			</kit:accordion-item>
-		</kit:accordion>
+					<aside>
+						<TableOfContent {title} {summary} />
+					</aside>
+				</kit:accordion-item>
+			</kit:accordion>
+		{/if}
 
 		{@render children?.()}
 
@@ -147,14 +129,16 @@
 		{/if}
 	</article>
 
-	<aside>
-		<kit:card class="table-of-content-wrapper" density="comfortable">
-			<kit:card-title>On this page</kit:card-title>
-			<kit:card-content>
-				<TableOfContent {title} {summary} />
-			</kit:card-content>
-		</kit:card>
-	</aside>
+	{#if summary.length > 0}
+		<aside>
+			<kit:card class="table-of-content-wrapper" density="comfortable">
+				<kit:card-title s-style_font-size="18px">On this page</kit:card-title>
+				<kit:card-content>
+					<TableOfContent {title} {summary} />
+				</kit:card-content>
+			</kit:card>
+		</aside>
+	{/if}
 </main>
 
 <style>

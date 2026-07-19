@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
-	import { docsNavigation, theme_storage_key } from '$lib';
+	import { theme_storage_key } from '$lib';
 	import { useTheme } from 'lapikit/actions';
 	// types
 	import type { ModelDropdownProps } from 'lapikit/components';
@@ -15,6 +15,7 @@
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
 	import { Menu, Moon, Sun, SunMoon } from 'lucide-svelte';
 	import Drawer from '$components/drawer.svelte';
+	import AppBar from '$components/app-bar.svelte';
 
 	let { children } = $props();
 
@@ -28,8 +29,6 @@
 	let sidebarEl: HTMLDivElement | undefined = $state();
 	let year: number = new Date().getFullYear();
 
-	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
-
 	setContext('nav', {
 		get open() {
 			return navOpen;
@@ -42,7 +41,7 @@
 	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
 </script>
 
-<kit:appbar class="sticky! top-0 z-50" classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
+<!-- <kit:appbar class="sticky! top-0 z-50" classContent="grid gap-4 md:grid-cols-[auto_1fr_auto]">
 	<kit:btn onclick={() => nav.toggle()} aria-label="open navigation" icon>
 		<kit:icon>
 			<Menu />
@@ -126,45 +125,12 @@
 			{@html githubIcon}
 		</kit:btn>
 	</div>
-</kit:appbar>
+</kit:appbar> -->
+
+<AppBar />
 
 <div class="layout">
-	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left">
-		<nav>
-			{#each docsNavigation as { label, icon, pages } (label)}
-				<kit:list
-					class="mb-2"
-					density="compact"
-					size="sm"
-					s-class_opacity-50={label == 'Deprecated'}
-				>
-					<kit:list-item>
-						{#snippet prepend()}
-							<kit:icon>
-								{#if typeof icon === 'string'}
-									{@html icon}
-								{:else}
-									{@const Icon = icon}
-									<Icon />
-								{/if}
-							</kit:icon>
-						{/snippet}
-						{label}
-					</kit:list-item>
-
-					{#each pages as page (page.label)}
-						<kit:list-item
-							href={page.url}
-							onclick={() => (navOpen = false)}
-							active={normalizedPath === page.url}
-						>
-							{page.label}
-						</kit:list-item>
-					{/each}
-				</kit:list>
-			{/each}
-		</nav>
-	</Drawer>
+	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left" />
 
 	<div class="content">
 		{@render children()}
@@ -189,10 +155,14 @@
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: 1fr auto;
 		grid-template-areas: 'content';
+		background: var(--kit-color-surface-1);
 	}
 
 	.content {
 		grid-area: content;
+		background: var(--kit-color-surface);
+		border-top-left-radius: 36px;
+		border-top-right-radius: 36px;
 	}
 
 	footer {
@@ -210,6 +180,11 @@
 
 		.layout > :global(.drawer--persistent) {
 			grid-area: drawer;
+		}
+
+		.content {
+			border-top-left-radius: 36px;
+			border-top-right-radius: 0;
 		}
 	}
 

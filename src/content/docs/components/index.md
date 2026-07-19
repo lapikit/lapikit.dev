@@ -1,10 +1,9 @@
 ---
-title: "Discover the Lapikit components"
-category: "Components"
+title: 'Discover the Lapikit components'
+category: 'Components'
 head:
-  title: "Components"
-  description: "Find out more about Lapikit Svelte components."
-layout: "section"
+  title: 'Components'
+  description: 'Find out more about Lapikit Svelte components.'
 ---
 
 <script>

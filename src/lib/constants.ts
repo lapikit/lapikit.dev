@@ -23,3 +23,5 @@ export const socialMediaLinks = [
 	{ label: 'GitHub', url: 'https://github.com/lapikit', icon: githubIcon },
 	{ label: 'Discord', url: 'https://discord.gg/lapikit', icon: discordIcon }
 ];
+
+export const manifestPage = manifest;
