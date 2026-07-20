@@ -1,29 +1,11 @@
-<script lang="ts" module>
-	let sidebarScrollTop = 0;
-</script>
-
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import { page } from '$app/state';
-	import { beforeNavigate } from '$app/navigation';
-	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import { getBreadcrumbs } from '$lib';
-	import { capitalize } from '$lib/utils';
-
+	import { capitalize, slugify } from '$lib/utils';
 	// Components
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
-	import { Menu } from 'lucide-svelte';
-
-	let sidebarEl: HTMLDivElement | undefined = $state();
-
-	onMount(() => {
-		if (sidebarEl) sidebarEl.scrollTop = sidebarScrollTop;
-	});
-
-	beforeNavigate(() => {
-		if (sidebarEl) sidebarScrollTop = sidebarEl.scrollTop;
-	});
 
 	let {
 		children,
@@ -39,40 +21,52 @@
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
-	let year: number = new Date().getFullYear();
 </script>
 
-<div class="grid">
-	<div class="min-w-0">
-		<kit:toolbar class="sticky! top-16 z-50 lg:hidden!">
-			<kit:btn onclick={() => nav.toggle()} aria-label="open navigation">
-				{#snippet prepend()}
-					<kit:icon>
-						<Menu />
-					</kit:icon>
-				{/snippet}
+<main>
+	<article class="kit-prose transition-lapikit">
+		<header>
+			<Breadcrumbs items={breadcrumbs} />
 
-				Menu
-			</kit:btn>
+			{#if category}
+				<div class="kit-prose-section">{category}</div>
+			{/if}
+			{#if title}
+				<h1 id={slugify(title)} class="kit-prose-title">
+					{capitalize(title)}
+				</h1>
+			{/if}
+		</header>
 
-			<kit:spacer />
-		</kit:toolbar>
+		{@render children?.()}
+	</article>
+</main>
 
-		<article>
-			<header>
-				<Breadcrumbs items={breadcrumbs} />
+<style>
+	main {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
+		gap: 1rem 2rem;
+		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
+	}
 
-				{#if category}
-					<div class="kit-prose-section">{category}</div>
-				{/if}
-				{#if title}
-					<h1 class="kit-prose-title">{capitalize(title)}</h1>
-				{/if}
-			</header>
+	article {
+		width: 100%;
+	}
 
-			<div class="kit-prose">
-				{@render children?.()}
-			</div>
-		</article>
-	</div>
-</div>
+	@media (min-width: 1260px) {
+		main {
+			grid-template-columns: calc(var(--md-max-width + 20rem));
+			grid-template-rows: 1fr auto;
+			align-items: start;
+		}
+
+		@media (min-width: 1460px) {
+			main {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+</style>

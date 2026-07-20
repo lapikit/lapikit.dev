@@ -234,7 +234,7 @@
 				class="text-xs opacity-70 hover:opacity-100"
 				style="color: var(--fg-primary-legacy)"
 			>
-				{npmState.version || 'v0.0.0'}
+				{npmState.version.latest || 'v0.0.0'}
 			</a>
 		</div>
 

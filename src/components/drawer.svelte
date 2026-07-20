@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { docsNavigation } from '$lib';
+	import { PanelLeftClose } from 'lucide-svelte';
+	import Logo from './logo.svelte';
+	import SearchV2Action from './search-v2-action.svelte';
+	import DrawerRelease from './drawer-release.svelte';
 
 	let {
 		open = $bindable(false),
@@ -29,8 +33,8 @@
 <div
 	bind:this={el}
 	class={[
-		'fixed top-0 z-100 h-full w-75 overflow-y-auto transition-transform duration-300',
-		'lg:sticky lg:top-18.75 lg:z-auto lg:h-[calc(100vh-75px)] lg:translate-x-0 lg:overflow-y-auto lg:transition-none',
+		'transition-lapikit fixed top-0 z-100 h-full w-75 overflow-y-auto transition-transform duration-300',
+		'lg:sticky lg:z-auto lg:h-[calc(100vh-75px)] lg:translate-x-0 lg:overflow-y-auto lg:transition-none',
 		side === 'left' ? 'left-0' : 'right-0',
 		side === 'left'
 			? open
@@ -42,12 +46,31 @@
 	].join(' ')}
 	style:background="var(--kit-color-surface-1)"
 >
+	<div class="sticky top-0 z-1 lg:hidden!" style="background: var(--kit-color-surface-1);">
+		<kit:toolbar>
+			<Logo />
+			<kit:spacer />
+			<kit:btn onclick={() => (open = false)} icon>
+				<kit:icon>
+					<PanelLeftClose />
+				</kit:icon>
+			</kit:btn>
+		</kit:toolbar>
+
+		<div class="mx-auto mt-5 grid w-67.5 gap-3">
+			<SearchV2Action />
+
+			<kit:separator />
+		</div>
+	</div>
+
 	<nav>
 		{#each docsNavigation as { label, icon, pages } (label)}
 			<kit:list
 				class="mx-auto mb-2 w-67.5"
 				variant="text"
 				nav
+				density="compact"
 				s-class_opacity-50={label == 'Deprecated'}
 			>
 				<kit:list-item class="gap-3!">
@@ -78,9 +101,7 @@
 		{/each}
 	</nav>
 
-	<kit:card class="sticky! bottom-6 mx-auto w-67.5" background="surface-3" density="comfortable">
-		<it:card-content>Demo</it:card-content>
-	</kit:card>
+	<DrawerRelease />
 </div>
 
 <style>

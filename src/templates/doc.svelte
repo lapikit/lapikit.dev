@@ -62,17 +62,24 @@
 </script>
 
 <main>
-	<article class="kit-prose" use:enhanceEnumChips>
+	<article class="kit-prose transition-lapikit" use:enhanceEnumChips>
 		<header>
 			<Breadcrumbs items={breadcrumbs} />
 
-			{#if category}
-				<div class="kit-prose-section">{category}</div>
-			{/if}
-			{#if title}
-				<h1 id={slugify(title)} class="kit-prose-title">
-					{capitalize(title)}
-				</h1>
+			{#if data?.doc?.state === 'deprecated'}
+				<kit:alert tone="warning">
+					This feature is deprecated and is no longer supported. Check out the new features and
+					improvements in the documentation.
+				</kit:alert>
+			{:else}
+				{#if category}
+					<div class="kit-prose-section">{category}</div>
+				{/if}
+				{#if title}
+					<h1 id={slugify(title)} class="kit-prose-title">
+						{capitalize(title)}
+					</h1>
+				{/if}
 			{/if}
 		</header>
 
@@ -102,10 +109,15 @@
 
 		{@render children?.()}
 
-		{#if data.prevDoc || data.nextDoc}
-			<footer>
+		{#if data?.doc?.state !== 'deprecated' && (data.prevDoc || data.nextDoc)}
+			<kit:separator />
+			<footer class="mt-8 grid sm:flex sm:justify-between">
 				{#if data.prevDoc}
-					<kit:btn href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}>
+					<kit:btn
+						variant="text"
+						size="sm"
+						href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}
+					>
 						{#snippet prepend()}
 							<kit:icon>
 								<ChevronLeft />
@@ -114,9 +126,13 @@
 						{capitalize(data.prevDoc.title)}
 					</kit:btn>
 				{/if}
-				<kit:spacer />
 				{#if data.nextDoc}
-					<kit:btn href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}>
+					<kit:btn
+						variant="text"
+						size="sm"
+						density="compact"
+						href={resolve('/docs/[...slug]', { slug: data.nextDoc.slug })}
+					>
 						{#snippet append()}
 							<kit:icon>
 								<ChevronRight />
@@ -148,6 +164,9 @@
 		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
 		gap: 1rem 2rem;
 		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
+		min-height: calc(
+			100dvh - 64px - var(--lpk-page-padding-top) - var(--lpk-page-padding-bottom) - 88px
+		);
 	}
 
 	article {
@@ -183,7 +202,7 @@
 				100vh - (75px + var(--lpk-page-padding-top) + var(--lpk-page-padding-bottom))
 			);
 			position: sticky;
-			top: calc(75px + var(--lpk-page-padding-top));
+			top: var(--lpk-page-padding-top);
 			height: fit-content;
 			width: 100%;
 		}

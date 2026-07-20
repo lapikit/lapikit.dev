@@ -129,10 +129,10 @@
 
 <AppBar />
 
-<div class="layout">
+<div class="layout transition-lapikit">
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left" />
 
-	<div class="content">
+	<div class="content transition-lapikit">
 		{@render children()}
 
 		<footer>
@@ -151,11 +151,12 @@
 <style>
 	.layout {
 		display: grid;
-		min-height: 100dvh;
+		height: calc(100dvh - 64px);
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: 1fr auto;
 		grid-template-areas: 'content';
 		background: var(--kit-color-surface-1);
+		overflow-x: auto;
 	}
 
 	.content {

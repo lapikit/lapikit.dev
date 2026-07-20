@@ -15,6 +15,11 @@ export type DocPath = {
 
 export type DocSummary = {
 	title: string;
+	state?: 'deprecated';
+	head?: {
+		title?: string;
+		description?: string;
+	};
 	path: DocPath;
 } & Record<string, unknown>;
 

@@ -29,5 +29,9 @@ export function load({ params }) {
 function toDocLink(pathname: string) {
 	const doc = docsByPath.get(pathname);
 	if (!doc) return null;
-	return { slug: doc.path.slug, title: doc.title, path: doc.path.pathname };
+	return {
+		slug: doc.path.slug,
+		title: doc?.head?.title || doc.title,
+		path: doc.path.pathname
+	};
 }

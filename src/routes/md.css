@@ -105,7 +105,7 @@
 	}
 
 	.kit-prose .kit-prose-title {
-		margin-top: var(--kit-space-comfortable);
+		margin-top: calc(var(--kit-space-comfortable) + var(--kit-space-default));
 	}
 
 	.kit-prose .kit-prose-summary {

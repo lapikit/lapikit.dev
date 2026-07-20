@@ -3,7 +3,12 @@ import { npm_stats_storage_key } from '$lib';
 
 const NPM_CACHE_TTL = 4 * 60 * 60 * 1000;
 
-type NpmCache = { version: string; downloads: string; cachedAt: number };
+type NpmCache = {
+	version: { latest: string; insiders: string };
+	publish: { latest: string; insiders: string };
+	downloads: string;
+	cachedAt: number;
+};
 
 function formatDownloads(n: number): string {
 	if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
@@ -11,7 +16,14 @@ function formatDownloads(n: number): string {
 }
 
 export const npmState = $state({
-	version: '',
+	version: {
+		latest: '',
+		insiders: ''
+	},
+	publish: {
+		latest: '',
+		insiders: ''
+	},
 	downloads: ''
 });
 
@@ -20,28 +32,52 @@ export async function loadNpmData() {
 	if (raw) {
 		const cache: NpmCache = JSON.parse(raw);
 		if (Date.now() - cache.cachedAt < NPM_CACHE_TTL) {
-			npmState.version = cache.version;
+			npmState.version.latest = cache.version.latest;
+			npmState.version.insiders = cache.version.insiders;
+			npmState.publish.latest = cache.publish.latest;
+			npmState.publish.insiders = cache.publish.insiders;
 			npmState.downloads = cache.downloads;
 			return;
 		}
 	}
 
 	const today = new SvelteDate().toISOString().slice(0, 10);
-	const [dlRes, versionRes] = await Promise.all([
+	const [dlRes, packumentRes] = await Promise.all([
 		fetch(`https://api.npmjs.org/downloads/point/2025-04-19:${today}/lapikit`),
-		fetch('https://registry.npmjs.org/lapikit/latest')
+		fetch('https://registry.npmjs.org/lapikit')
 	]);
 
-	const [dlData, versionData] = await Promise.all([dlRes.json(), versionRes.json()]);
+	const [dlData, packument] = await Promise.all([dlRes.json(), packumentRes.json()]);
 
-	const version = `v${versionData.version}`;
+	const distTagLatest = packument['dist-tags']?.latest;
+	const distTagInsider = packument['dist-tags']?.insiders;
+
+	const versionMain = distTagLatest ? `v${distTagLatest}` : '';
+	const versionInsider = distTagInsider ? `v${distTagInsider}` : '';
 	const downloads = formatDownloads(dlData.downloads);
 
-	npmState.version = version;
+	const publishMain = packument.time?.[distTagLatest] ?? '';
+	const publishInsider = packument.time?.[distTagInsider] ?? '';
+
+	npmState.version.latest = versionMain;
+	npmState.version.insiders = versionInsider;
+	npmState.publish.latest = publishMain;
+	npmState.publish.insiders = publishInsider;
 	npmState.downloads = downloads;
 
 	localStorage.setItem(
 		npm_stats_storage_key,
-		JSON.stringify({ version, downloads, cachedAt: Date.now() })
+		JSON.stringify({
+			version: {
+				latest: versionMain,
+				insiders: versionInsider
+			},
+			publish: {
+				latest: publishMain,
+				insiders: publishInsider
+			},
+			downloads,
+			cachedAt: Date.now()
+		})
 	);
 }

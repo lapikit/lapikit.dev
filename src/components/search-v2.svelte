@@ -22,10 +22,19 @@
 	// states
 	let query: string = $state('');
 	let selectedIndex: number = $state(0);
+	let fieldRef: HTMLElement | null = $state(null);
 
 	$effect(() => {
 		results; // dépendance
 		selectedIndex = 0;
+	});
+
+	$effect(() => {
+		if (open) {
+			requestAnimationFrame(() => {
+				fieldRef?.querySelector('input')?.focus();
+			});
+		}
 	});
 
 	const normalize = (str: string) =>
@@ -35,7 +44,7 @@
 			.replace(/[\u0300-\u036f]/g, '');
 
 	const searchablePages = manifestPage.filter(
-		(page) => page.path.pathname !== '/' && page.layout !== 'legacy'
+		(page) => page.path.pathname !== '/' && page.state !== 'deprecated'
 	);
 
 	const results = $derived.by(() => {
@@ -52,6 +61,12 @@
 	});
 
 	function handleKeydown(event: KeyboardEvent) {
+		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+			event.preventDefault();
+			open = !open;
+			return;
+		}
+
 		if (!open || results.length === 0) return;
 
 		switch (event.key) {
@@ -95,7 +110,13 @@
 
 <kit:modal id="search-modal" bind:open contain size="lg">
 	<div class="flex gap-2.5">
-		<kit:textfield type="search" placeholder="Search" bind:value={query} clearable />
+		<kit:textfield
+			bind:ref={fieldRef}
+			type="search"
+			placeholder="Search"
+			bind:value={query}
+			clearable
+		/>
 		<kit:btn icon density="comfortable">ESC</kit:btn>
 	</div>
 

@@ -1,8 +1,7 @@
 ---
-title: "Breakpoints"
-layout: "legacy"
+title: 'Breakpoints'
+state: 'deprecated'
 head:
-  title: "breakpoints"
-  description: "Manage the reactivity of your Lapikit components with customizable breakpoints. Easily adapt to all devices."
+  title: 'breakpoints'
+  description: 'Manage the reactivity of your Lapikit components with customizable breakpoints. Easily adapt to all devices.'
 ---
-

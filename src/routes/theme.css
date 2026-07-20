@@ -1,3 +1,16 @@
+:root {
+	--kit-color-bg-inverse: var(--kit-color-text);
+	--kit-color-fg-inverse: var(--kit-color-surface);
+}
+
+.transition-lapikit {
+	transition:
+		background 140ms ease,
+		color 140ms ease,
+		box-shadow 140ms ease,
+		translate 140ms ease;
+}
+
 html[data-kit-theme='light'] {
 	color-scheme: light;
 	/* --kit-bg: hsl(0 0% 100%);

@@ -113,10 +113,8 @@
 
 <style>
 	:global(:root) {
-		--lpk-page-padding-side: 3.2rem;
+		--lpk-page-padding-side: 2rem;
 		--lpk-page-padding-top: 2rem;
 		--lpk-page-padding-bottom: 4rem;
-		/* --lpk-page-padding-top: 6rem; */
-		/* --lpk-page-padding-bottom: 8rem; */
 	}
 </style>
