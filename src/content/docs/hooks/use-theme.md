@@ -1,9 +1,10 @@
 ---
-title: "useTheme: Manage theme state in Svelte"
-category: "Stores and Hooks"
+title: 'useTheme: Manage theme state in Svelte'
+category: 'Stores and Hooks'
 head:
-  title: "useTheme action"
-  description: "Learn how the UseTheme hook from Lapikit simplifies theme management in Svelte: switch dark/light modes, sync global state, and keep components in sync effortlessly."
+  title: 'useTheme action'
+  description: 'Learn how the UseTheme hook from Lapikit simplifies theme management in Svelte: switch dark/light modes, sync global state, and keep components in sync effortlessly.'
+layout: 'doc_page'
 ---
 
 <script>

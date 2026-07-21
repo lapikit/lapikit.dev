@@ -1,9 +1,10 @@
 ---
-title: "Learn how to create an accordion"
-category: "Stores and Hooks"
+title: 'Learn how to create an accordion'
+category: 'Stores and Hooks'
 head:
-  title: "useAccordion"
-  description: "Discover the UseAccordion hook from Lapikit: manage expandable sections in Svelte easily, keep state synchronized, and avoid prop drilling or manual event handling."
+  title: 'useAccordion'
+  description: 'Discover the UseAccordion hook from Lapikit: manage expandable sections in Svelte easily, keep state synchronized, and avoid prop drilling or manual event handling.'
+layout: 'doc_page'
 ---
 
 <script>

@@ -1,9 +1,10 @@
 ---
-title: "List component"
-category: "Components"
+title: 'List component'
+category: 'Components'
 head:
-  title: "List"
-  description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
+  title: 'List'
+  description: 'Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements.'
+layout: 'doc_page'
 ---
 
 <script>

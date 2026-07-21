@@ -101,7 +101,7 @@
 					{/snippet}
 
 					<aside>
-						<TableOfContent {title} {summary} />
+						<TableOfContent {title} {summary} inner />
 					</aside>
 				</kit:accordion-item>
 			</kit:accordion>
@@ -150,7 +150,7 @@
 			<kit:card class="table-of-content-wrapper" density="comfortable">
 				<kit:card-title s-style_font-size="18px">On this page</kit:card-title>
 				<kit:card-content>
-					<TableOfContent {title} {summary} />
+					<TableOfContent {title} {summary} inner />
 				</kit:card-content>
 			</kit:card>
 		</aside>

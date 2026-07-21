@@ -1,9 +1,10 @@
 ---
-title: "Aspect Ratio component"
-category: "Components"
+title: 'Aspect Ratio component'
+category: 'Components'
 head:
-  title: "Aspect Ratio"
-  description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
+  title: 'Aspect Ratio'
+  description: 'Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component.'
+layout: 'doc_page'
 ---
 
 <script>

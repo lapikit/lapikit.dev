@@ -1,9 +1,10 @@
 ---
-title: "Getting Started with Lapikit library for Svelte Projects"
-category: "Getting Started"
+title: 'Getting Started with Lapikit library for Svelte Projects'
+category: 'Getting Started'
 head:
-  title: "quick start"
-  description: "Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast."
+  title: 'quick start'
+  description: 'Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast.'
+layout: 'doc_page'
 ---
 
 <script>

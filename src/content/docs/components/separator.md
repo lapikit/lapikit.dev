@@ -1,9 +1,10 @@
 ---
-title: "Separator component"
-category: "Components"
+title: 'Separator component'
+category: 'Components'
 head:
-  title: "Separator"
-  description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
+  title: 'Separator'
+  description: 'Visually separate your UI blocks with customizable lines in size, color, orientation and opacity.'
+layout: 'doc_page'
 ---
 
 <script>

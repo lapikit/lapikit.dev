@@ -1,9 +1,10 @@
 ---
-title: "Card component"
-category: "Components"
+title: 'Card component'
+category: 'Components'
 head:
-  title: "Card"
-  description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+  title: 'Card'
+  description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
+layout: 'doc_page'
 ---
 
 <script>

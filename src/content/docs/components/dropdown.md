@@ -1,9 +1,10 @@
 ---
-title: "Dropdown component"
-category: "Components"
+title: 'Dropdown component'
+category: 'Components'
 head:
-  title: "Dropdown"
-  description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
+  title: 'Dropdown'
+  description: 'Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning.'
+layout: 'doc_page'
 ---
 
 <script>

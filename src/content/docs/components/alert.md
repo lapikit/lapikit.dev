@@ -1,9 +1,10 @@
 ---
-title: "Alert component"
-category: "Components"
+title: 'Alert component'
+category: 'Components'
 head:
-  title: "Alert"
-  description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
+  title: 'Alert'
+  description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
+layout: 'doc_page'
 ---
 
 <script>

@@ -4,7 +4,7 @@ category: 'Components'
 head:
   title: 'Components'
   description: 'Find out more about Lapikit Svelte components.'
-layout: 'section'
+layout: 'doc_section'
 ---
 
 <script>

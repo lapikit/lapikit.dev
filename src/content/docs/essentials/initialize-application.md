@@ -1,9 +1,10 @@
 ---
-title: "Initialize Lapikit application context"
-category: "Essentials"
+title: 'Initialize Lapikit application context'
+category: 'Essentials'
 head:
-  title: "Initialize Application"
-  description: "Initialize the Lapikit application context in Svelte and SvelteKit projects with the <kit:app> component, including global styles and shared application structure."
+  title: 'Initialize Application'
+  description: 'Initialize the Lapikit application context in Svelte and SvelteKit projects with the <kit:app> component, including global styles and shared application structure.'
+layout: 'doc_page'
 ---
 
 <script>

@@ -1,9 +1,10 @@
 ---
-title: "Application component"
-category: "Components"
+title: 'Application component'
+category: 'Components'
 head:
-  title: "Application"
-  description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
+  title: 'Application'
+  description: 'The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity.'
+layout: 'doc_page'
 ---
 
 <script>

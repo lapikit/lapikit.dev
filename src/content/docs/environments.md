@@ -1,9 +1,10 @@
 ---
-title: "Set up TypeScript and the Editor"
-category: "Extra Topics"
+title: 'Set up TypeScript and the Editor'
+category: 'Extra Topics'
 head:
-  title: "environments"
+  title: 'environments'
   description: "Configure ESLint and TypeScript for Lapikit's custom <kit:*> syntax. Fix false positives, suppress ts(6133) warnings, and set up your editor for the best DX."
+layout: 'doc_page'
 ---
 
 <script>

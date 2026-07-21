@@ -1,7 +1,6 @@
 <script>
-	import { GitMerge } from 'lucide-svelte';
+	import { GitMerge, PackageOpen } from 'lucide-svelte';
 	import { npmState } from '$lib/stores/npm.svelte';
-	import githubIcon from '$lib/assets/icons/github.svg?raw';
 
 	/** @param {string} iso */
 	function formatPublishDate(iso) {
@@ -40,7 +39,7 @@
 		<kit:spacer />
 		{npmState.downloads || 0}
 		<kit:icon>
-			{@html githubIcon}
+			<PackageOpen />
 		</kit:icon>
 	</kit:card-title>
 	<kit:list density="compact">

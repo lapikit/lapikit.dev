@@ -1,14 +1,15 @@
 ---
-title: "Customize themes and styles in Lapikit"
-category: "Essentials"
+title: 'Customize themes and styles in Lapikit'
+category: 'Essentials'
 head:
-  title: "Customize"
-  description: "Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed."
+  title: 'Customize'
+  description: 'Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed.'
+layout: 'doc_page'
 keywords:
-  - "customize"
-  - "theming"
-  - "css variables"
-  - "design tokens"
+  - 'customize'
+  - 'theming'
+  - 'css variables'
+  - 'design tokens'
 ---
 
 <script>

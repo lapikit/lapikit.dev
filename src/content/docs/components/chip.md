@@ -1,9 +1,10 @@
 ---
-title: "Chip component"
-category: "Components"
+title: 'Chip component'
+category: 'Components'
 head:
-  title: "Chip"
-  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
+  title: 'Chip'
+  description: 'Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants.'
+layout: 'doc_page'
 ---
 
 <script>

@@ -16,7 +16,10 @@
 						<span aria-current="page">{capitalize(item.label)}</span>
 					{:else if item.href}
 						{#if item.label === 'Home'}
-							<kit:icon size="sm"> <House /></kit:icon>
+							<kit:btn icon size="sm" variant="text" href={resolve('/')}>
+								<kit:icon size="sm"> <House /></kit:icon>
+							</kit:btn>
+
 							<kit:icon size="sm"> <ChevronRight /></kit:icon>
 						{:else}
 							<a href={resolve(item.href)} class="underline">{capitalize(item.label)}</a>

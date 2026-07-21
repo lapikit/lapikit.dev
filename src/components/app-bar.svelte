@@ -9,9 +9,10 @@
 	import { CloudDownload, Menu } from 'lucide-svelte';
 	import SearchV2Action from './search-v2-action.svelte';
 	import Logo from './logo.svelte';
+	import LazyRepl from './lazy-repl.svelte';
+	import InstallModal from './install-modal.svelte';
 
 	let openModal: boolean = $state(false);
-	let displayMode: 'cli' | 'manual' = $state('cli');
 
 	const nav = getContext<{ open: boolean; toggle: () => void }>('nav');
 </script>
@@ -61,22 +62,7 @@
 	</div>
 </kit:appbar>
 
-<kit:modal bind:open={openModal} contain>
-	<kit:card>
-		<kit:card-title>Install Lapikit on your project</kit:card-title>
-
-		{#if displayMode === 'cli'}
-			<kit:card-content> CLI install </kit:card-content>
-		{:else if displayMode === 'manual'}
-			<kit:card-content> Manual install </kit:card-content>
-		{/if}
-
-		<kit:card-actions>
-			<kit:spacer />
-			<kit:btn onclick={() => (openModal = false)}>Close</kit:btn>
-		</kit:card-actions>
-	</kit:card>
-</kit:modal>
+<InstallModal bind:open={openModal} />
 
 <style>
 	:global(header > .app-bar-documentation) {
@@ -118,5 +104,10 @@
 		:global(.logo-lapikit) {
 			margin: initial;
 		}
+	}
+
+	:global(.install-modal-toggle) {
+		display: inline-flex;
+		gap: 0.25rem;
 	}
 </style>

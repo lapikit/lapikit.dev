@@ -1,9 +1,10 @@
 ---
-title: "Toolbar component"
-category: "Components"
+title: 'Toolbar component'
+category: 'Components'
 head:
-  title: "Toolbar"
-  description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
+  title: 'Toolbar'
+  description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
+layout: 'doc_page'
 ---
 
 <script>

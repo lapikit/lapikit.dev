@@ -1,9 +1,10 @@
 ---
-title: "Roadmap"
-category: "Release"
+title: 'Roadmap'
+category: 'Release'
 head:
-  title: "roadmap"
-  description: "Discover the future developments and enhancements planned for Lapikit. Stay informed about upcoming features and improvements to our component library."
+  title: 'roadmap'
+  description: 'Discover the future developments and enhancements planned for Lapikit. Stay informed about upcoming features and improvements to our component library.'
+layout: 'doc_page'
 ---
 
 Lapikit keeps moving forward. This page gives you a clear view of what’s coming next: new components, design updates, and small things that make your workflow smoother. The goal stays the same: keep Lapikit simple, fast, and built for you developers.

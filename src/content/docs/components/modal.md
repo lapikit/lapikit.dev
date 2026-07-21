@@ -1,9 +1,10 @@
 ---
-title: "Modal component"
-category: "Components"
+title: 'Modal component'
+category: 'Components'
 head:
-  title: "Modal"
-  description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
+  title: 'Modal'
+  description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
+layout: 'doc_page'
 ---
 
 <script>

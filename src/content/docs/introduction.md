@@ -1,14 +1,15 @@
 ---
-title: "More about Lapikit Svelte Library"
-category: "Getting Started"
+title: 'More about Lapikit Svelte Library'
+category: 'Getting Started'
 head:
-  title: "introduction"
-  description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
+  title: 'introduction'
+  description: 'Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte.'
+layout: 'doc_page'
 keywords:
-  - "why lapikit"
-  - "acknowledgements"
-  - "discover"
-  - "lapikit"
+  - 'why lapikit'
+  - 'acknowledgements'
+  - 'discover'
+  - 'lapikit'
 ---
 
 <script>

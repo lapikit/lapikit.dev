@@ -1,9 +1,10 @@
 ---
-title: "Discover the Lapikit hooks"
-category: "Stores and Hooks"
+title: 'Discover the Lapikit hooks'
+category: 'Stores and Hooks'
 head:
-  title: "Hooks stores and actions"
-  descriptions: "Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluent."
+  title: 'Hooks stores and actions'
+  descriptions: 'Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluent.'
+layout: 'doc_page'
 ---
 
 <script>
