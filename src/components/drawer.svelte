@@ -65,7 +65,7 @@
 		</div>
 	</div>
 
-	<nav class="h-[calc(100dvh-154px)] overflow-auto pb-38.5 lg:h-[calc(100dvh-75px)]">
+	<nav class="h-[calc(100dvh-154px)] overflow-auto lg:h-[calc(100dvh-75px)]">
 		{#each docsNavigation as { label, icon, pages } (label)}
 			<kit:list
 				class="mx-auto mb-2 w-67.5"
