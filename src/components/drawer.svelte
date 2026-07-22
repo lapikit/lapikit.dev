@@ -100,9 +100,9 @@
 				{/each}
 			</kit:list>
 		{/each}
-	</nav>
 
-	<DrawerRelease />
+		<DrawerRelease />
+	</nav>
 </div>
 
 <style>
