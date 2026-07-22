@@ -11,7 +11,7 @@
 	let displayMode: 'cli' | 'manual' = $state('cli');
 </script>
 
-<kit:modal bind:open contain size="lg">
+<kit:modal bind:open contain size="lg" classContent="install-modal-content">
 	<kit:card id="quick-start-modal">
 		<kit:card-title class="mb-2 text-2xl font-black"> Install Lapikit </kit:card-title>
 
@@ -39,7 +39,7 @@
 			</kit:btn>
 		</kit:card-content>
 
-		<kit:card-container class="h-full max-h-[64vh] overflow-auto">
+		<kit:card-container class="install-modal-body">
 			{#if displayMode === 'cli'}
 				<kit:card-content class="mt-2 mb-4 grid! gap-5!">
 					<p class="install-modal-step">1. Install Lapikit in your project:</p>
@@ -144,5 +144,23 @@
 
 	:global(#quick-start-modal .kit-accordion-item__title) {
 		font-weight: 600;
+	}
+
+	/* Only the tab content should scroll — title, tabs and actions stay put. */
+	:global(.install-modal-content) {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	:global(.install-modal-content #quick-start-modal) {
+		flex: 1;
+		min-height: 0;
+	}
+
+	:global(.install-modal-body) {
+		flex: 1;
+		min-height: 0;
+		overflow-y: auto;
 	}
 </style>

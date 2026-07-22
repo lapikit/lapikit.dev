@@ -33,8 +33,9 @@
 <div
 	bind:this={el}
 	class={[
-		'transition-lapikit fixed top-0 z-100 h-full w-75 overflow-y-auto transition-transform duration-300',
-		'lg:sticky lg:z-auto lg:h-[calc(100vh-75px)] lg:translate-x-0 lg:overflow-y-auto lg:transition-none',
+		'transition-lapikit fixed top-0 z-100 h-full w-75  transition-transform duration-300',
+		// 'lg:sticky lg:z-auto lg:h-[calc(100vh-75px)] lg:translate-x-0 lg:overflow-y-auto lg:transition-none',
+		'lg:sticky lg:z-auto lg:h-[calc(100vh-75px)] lg:translate-x-0 lg:transition-none',
 		side === 'left' ? 'left-0' : 'right-0',
 		side === 'left'
 			? open
@@ -64,7 +65,7 @@
 		</div>
 	</div>
 
-	<nav>
+	<nav class="h-[calc(100vh-154px)] overflow-auto pb-38.5 lg:h-[calc(100vh-75px)]">
 		{#each docsNavigation as { label, icon, pages } (label)}
 			<kit:list
 				class="mx-auto mb-2 w-67.5"

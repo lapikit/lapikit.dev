@@ -5,6 +5,7 @@
 	// components
 	import Drawer from '$components/drawer.svelte';
 	import AppBar from '$components/app-bar.svelte';
+	import DrawerRelease from '$components/drawer-release.svelte';
 
 	let { children } = $props();
 
@@ -32,6 +33,8 @@
 
 <div class="layout transition-lapikit" bind:this={layoutEl}>
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left" />
+
+	<!-- <DrawerRelease /> -->
 
 	<div class="content transition-lapikit">
 		{@render children()}

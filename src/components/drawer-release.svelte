@@ -28,7 +28,7 @@
 </script>
 
 <kit:card
-	class="sticky! bottom-6 mx-auto w-67.5"
+	class="fixed! bottom-3.5 left-3.5 w-67.5"
 	background="accent"
 	density="comfortable"
 	elevation="2"
