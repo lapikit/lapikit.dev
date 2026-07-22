@@ -34,8 +34,6 @@
 <div class="layout transition-lapikit" bind:this={layoutEl}>
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left" />
 
-	<!-- <DrawerRelease /> -->
-
 	<div class="content transition-lapikit">
 		{@render children()}
 
@@ -55,7 +53,7 @@
 <style>
 	.layout {
 		display: grid;
-		height: calc(100dvh - 64px);
+		height: calc(100vh - 64px);
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: 1fr auto;
 		grid-template-areas: 'content';
