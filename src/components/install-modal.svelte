@@ -2,6 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { useAccordion } from 'lapikit/actions';
 	import LazyRepl from './lazy-repl.svelte';
+	import { Lightbulb } from 'lucide-svelte';
 
 	let { open = $bindable(false) } = $props();
 
@@ -73,14 +74,32 @@
 						</kit:accordion-item>
 						<kit:accordion-item
 							index={1}
-							text="2. Add the preprocessor to your svelte.config.js:"
+							text="2. Add the preprocessor to your configuration file:"
 							open={accordion.values.includes(1)}
 							toggle={accordion.toggle}
 						>
+							<kit:alert tone="info" class="mb-4">
+								{#snippet prepend()}
+									<Lightbulb />
+								{/snippet}
+								Starting with SvelteKit 2.62, configuration lives in vite.config.(js|ts) rather than svelte.config.js.
+								Lapikit remains compatible with both.
+							</kit:alert>
 							<LazyRepl
-								lang="js"
-								title="svelte.config.js"
-								content={() => import('$examples/started/svelte-config-js.js?raw')}
+								content={{
+									'svelte.config.js': {
+										code: () => import('$examples/config/config_svelte.config.js?raw'),
+										lang: 'js'
+									},
+									'vite.config.js': {
+										code: () => import('$examples/config/config_vite.config.js?raw'),
+										lang: 'js'
+									},
+									'vite.config.ts': {
+										code: () => import('$examples/config/config_vite.config.ts?raw'),
+										lang: 'ts'
+									}
+								}}
 							/>
 						</kit:accordion-item>
 						<kit:accordion-item

@@ -9,6 +9,14 @@ layout: 'doc_page'
 
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
+
+  // examples
+  import installLapikitNPM from '$examples/config/install_lapikit-npm.txt?raw';
+  import installLapikitYarn from '$examples/config/install_lapikit-yarn.txt?raw';
+  import installLapikitBun from '$examples/config/install_lapikit-bun.txt?raw';
+  import configSvelteConfig from '$examples/config/config_svelte.config.js?raw';
+  import configViteConfigJS from '$examples/config/config_vite.config.js?raw';
+  import configViteConfigTS from '$examples/config/config_vite.config.ts?raw';
 </script>
 
 ## Install Lapikit in your Svelte project
@@ -34,7 +42,22 @@ That said, TypeScript is recommended for a smoother developer experience, especi
 
 To install Lapikit, run the following command in your project directory:
 
-<LazyRepl lang="sh" content={"npm install --save-dev lapikit"} />
+<LazyRepl
+content={{
+    'npm': {
+      code: installLapikitNPM,
+      lang: 'shell'
+    },
+    'yarn': {
+      code: installLapikitYarn,
+      lang: 'shell'
+    },
+    'bun': {
+      code: installLapikitBun,
+      lang: 'shell'
+    }
+  }}
+/>
 
 Once installed, run the setup CLI to automatically configure the required preprocessor:
 
@@ -50,11 +73,45 @@ Configure the preprocessor manually in 3 steps:
 
 1. Install Lapikit:
 
-<LazyRepl lang="sh" content={"npm install --save-dev lapikit"} />
+<LazyRepl
+content={{
+    'npm': {
+      code: installLapikitNPM,
+      lang: 'shell'
+    },
+    'yarn': {
+      code: installLapikitYarn,
+      lang: 'shell'
+    },
+    'bun': {
+      code: installLapikitBun,
+      lang: 'shell'
+    }
+  }}
+/>
 
-2. Update your `svelte.config.js` to include the Lapikit preprocessor:
+2. Update your configuration file to include the Lapikit preprocessor:
 
-<LazyRepl lang="js" title="svelte.config.js" content={() => import('$examples/started/svelte-config-js.js?raw')} />
+> [!NOTE]
+> Starting with SvelteKit 2.62, configuration lives in vite.config.(js|ts) rather than svelte.config.js.
+> Lapikit remains compatible with both.
+
+<LazyRepl
+content={{
+	'svelte.config.js': {
+		code: configSvelteConfig,
+		lang: 'js'
+	},
+	'vite.config.js': {
+		code: configViteConfigJS,
+		lang: 'js'
+	},
+	'vite.config.ts': {
+		code: configViteConfigTS,
+		lang: 'ts'
+	}
+}}
+/>
 
 If you're using packages like TypeScript and eSLint in your project, we recommend checking out the [page on configuring environments](/docs/environments) with Lapikit.
 
