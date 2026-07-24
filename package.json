@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^9.39.4",
-		"@lapikit/repl": "^0.0.0-insiders.6dfd6d6",
+		"@lapikit/repl": "^0.0.0-insiders.417ad1f",
 		"@playwright/test": "^1.61.1",
 		"@sveltejs/adapter-node": "^5.5.7",
 		"@sveltejs/enhanced-img": "^0.10.4",
