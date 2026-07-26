@@ -5,7 +5,6 @@
 	// components
 	import Drawer from '$components/drawer.svelte';
 	import AppBar from '$components/app-bar.svelte';
-	import DrawerRelease from '$components/drawer-release.svelte';
 
 	let { children } = $props();
 

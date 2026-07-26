@@ -5,6 +5,7 @@
 	import Logo from './logo.svelte';
 	import SearchV2Action from './search-v2-action.svelte';
 	import DrawerRelease from './drawer-release.svelte';
+	import { useAccordion } from 'lapikit/actions';
 
 	let {
 		open = $bindable(false),
@@ -15,6 +16,8 @@
 		side?: 'left' | 'right';
 		el?: HTMLDivElement;
 	} = $props();
+
+	const accordion = useAccordion();
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 </script>
@@ -66,39 +69,62 @@
 	</div>
 
 	<nav class="h-[calc(100dvh-154px)] overflow-auto lg:h-[calc(100dvh-75px)]">
-		{#each docsNavigation as { label, icon, pages } (label)}
-			<kit:list
-				class="mx-auto mb-2 w-67.5"
-				variant="text"
-				nav
-				density="compact"
-				s-class_opacity-50={label == 'Deprecated'}
-			>
-				<kit:list-item class="gap-3!">
-					{#snippet prepend()}
-						<kit:icon>
-							{#if typeof icon === 'string'}
-								{@html icon}
-							{:else}
-								{@const Icon = icon}
-								<Icon />
-							{/if}
-						</kit:icon>
-					{/snippet}
-					{label}
-				</kit:list-item>
-
-				{#each pages as page (page.label)}
-					<kit:list-item
-						href={page.url}
-						onclick={() => (open = false)}
-						active={normalizedPath === page.url}
-						color={normalizedPath === page.url && 'accent'}
+		{#each docsNavigation as { label, icon, pages }, index (label)}
+			{#if label == 'Deprecated'}
+				<kit:accordion
+					spacer
+					class="accordion-deprecated"
+					density="compact"
+					s-class_opacity-50={true}
+				>
+					<kit:accordion-item
+						{index}
+						text={label}
+						open={accordion.values.includes(index)}
+						toggle={accordion.toggle}
 					>
-						{page.label}
+						<kit:list rounded="0" variant="text" density="compact">
+							{#each pages as page (page.label)}
+								<kit:list-item
+									href={page.url}
+									onclick={() => (open = false)}
+									active={normalizedPath === page.url}
+									color={normalizedPath === page.url && 'accent'}
+								>
+									{page.label}
+								</kit:list-item>
+							{/each}
+						</kit:list>
+					</kit:accordion-item>
+				</kit:accordion>
+			{:else}
+				<kit:list class="mx-auto mb-2 w-67.5" variant="text" nav density="compact">
+					<kit:list-item class="gap-3!">
+						{#snippet prepend()}
+							<kit:icon>
+								{#if typeof icon === 'string'}
+									{@html icon}
+								{:else}
+									{@const Icon = icon}
+									<Icon />
+								{/if}
+							</kit:icon>
+						{/snippet}
+						{label}
 					</kit:list-item>
-				{/each}
-			</kit:list>
+
+					{#each pages as page (page.label)}
+						<kit:list-item
+							href={page.url}
+							onclick={() => (open = false)}
+							active={normalizedPath === page.url}
+							color={normalizedPath === page.url && 'accent'}
+						>
+							{page.label}
+						</kit:list-item>
+					{/each}
+				</kit:list>
+			{/if}
 		{/each}
 
 		<DrawerRelease />
@@ -109,5 +135,10 @@
 	.backdrop-drawer {
 		background: color-mix(in oklab, var(--kit-color-shadow), transparent 70%);
 		backdrop-filter: blur(2px);
+	}
+
+	:global(.accordion-deprecated) {
+		width: 275px !important;
+		margin: 0 auto;
 	}
 </style>
