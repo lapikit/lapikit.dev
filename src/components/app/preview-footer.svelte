@@ -145,14 +145,14 @@
 		}
 
 		.container {
-			max-width: 1244px;
+			max-width: 1538px;
 			margin-top: 80px;
 			padding-left: 24px;
 			padding-right: 24px;
 		}
 
 		.container_word_lapikit {
-			max-width: 1244px;
+			max-width: 1538px;
 			text-align: center;
 			margin-left: auto;
 			margin-right: auto;
