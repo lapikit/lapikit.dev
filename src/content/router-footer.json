@@ -1,0 +1,62 @@
+[
+	{
+		"title": "Documentation",
+		"child": [
+			{
+				"label": "Environements",
+				"path": "/"
+			},
+			{
+				"label": "Components",
+				"path": "/"
+			},
+			{
+				"label": "Hooks",
+				"path": "/"
+			}
+		]
+	},
+	{
+		"title": "Community",
+		"child": [
+			{
+				"label": "Roadmap",
+				"path": "/"
+			}
+		]
+	},
+	{
+		"title": "Resources",
+		"child": [
+			{
+				"label": "Support",
+				"path": "/"
+			},
+			{
+				"label": "NPM",
+				"url": "https://lapikit.dev"
+			},
+			{
+				"label": "GitHub",
+				"url": "https://lapikit.dev"
+			},
+			{
+				"label": "MIT License",
+				"url": "https://lapikit.dev"
+			}
+		]
+	},
+	{
+		"title": "Policies",
+		"child": [
+			{
+				"label": "Terms & privacy",
+				"path": "/"
+			},
+			{
+				"label": "Cookie settings",
+				"path": "/"
+			}
+		]
+	}
+]

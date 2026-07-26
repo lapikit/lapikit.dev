@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+
+	let { onlyimage }: { onlyimage?: boolean } = $props();
 </script>
 
 <a href={resolve('/')} class="logo-lapikit flex items-center gap-2" aria-label="Lapikit Home">
@@ -10,7 +12,9 @@
 		sizes="100%"
 		loading="lazy"
 	/>
-	<span>Lapikit</span>
+	{#if !onlyimage}
+		<span>Lapikit</span>
+	{/if}
 </a>
 
 <style>

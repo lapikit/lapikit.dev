@@ -1,6 +1,8 @@
 <script lang="ts">
 	import BentoCounter from '$components/app/bento-counter.svelte';
 	import LapikitComponents from '$components/app/lapikit-components.svelte';
+	import PreviewFooter from '$components/app/preview-footer.svelte';
+	import TablePackage from '$components/app/table-package.svelte';
 
 	import LapikitLogo from '$lib/assets/images/lapikit.webp?enhanced';
 	import SvelteLogo from '$lib/assets/images/svelte.webp?enhanced';
@@ -51,6 +53,10 @@
 <BentoCounter />
 
 <LapikitComponents />
+
+<TablePackage />
+
+<PreviewFooter />
 
 <style>
 	section {
