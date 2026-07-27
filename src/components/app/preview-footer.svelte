@@ -45,7 +45,7 @@
 								open={accordion.values.includes(index)}
 								toggle={accordion.toggle}
 							>
-								<kit:list density="compact" rounded="0" background="surface-1">
+								<kit:list density="compact" rounded="0" background="transparent">
 									{#each child as { label, url, path }}
 										{#if url}
 											<kit:list-item href={url} target="_blank" s-style_gap="15px">

@@ -37,7 +37,7 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.20.0",
 		"globals": "^17.7.0",
-		"lapikit": "^0.0.0-insiders.aacf580",
+		"lapikit": "^0.0.0-insiders.b663ce9",
 		"mdsvex": "^0.12.7",
 		"prettier": "^3.9.3",
 		"prettier-plugin-svelte": "^3.5.2",
