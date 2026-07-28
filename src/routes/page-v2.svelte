@@ -4,6 +4,7 @@
 	import Faq from '$components/app/faq.svelte';
 	import LapikitComponents from '$components/app/lapikit-components.svelte';
 	import PreviewFooter from '$components/app/preview-footer.svelte';
+	import PreviewNavbar from '$components/app/preview-navbar.svelte';
 	import TablePackage from '$components/app/table-package.svelte';
 	import Testimonials from '$components/app/testimonials.svelte';
 
@@ -19,6 +20,8 @@
 		bun: 'bun add -D lapikit'
 	};
 </script>
+
+<PreviewNavbar />
 
 <section>
 	<div>
