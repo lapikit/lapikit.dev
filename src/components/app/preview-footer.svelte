@@ -38,7 +38,7 @@
 					<p class="subtitle">Menu</p>
 
 					<kit:accordion variant="text">
-						{#each routerFooter as { title, child }, index}
+						{#each routerFooter as { title, child }, index (index)}
 							<kit:accordion-item
 								{index}
 								text={title}
@@ -46,7 +46,7 @@
 								toggle={accordion.toggle}
 							>
 								<kit:list density="compact" rounded="0" background="transparent">
-									{#each child as { label, url, path }}
+									{#each child as { label, url, path } (label)}
 										{#if url}
 											<kit:list-item href={url} target="_blank" s-style_gap="15px">
 												{label}
@@ -91,10 +91,10 @@
 				</kit:toolbar>
 			</div>
 			<div class="layout_grid_sitemap">
-				{#each routerFooter as { title, child }}
+				{#each routerFooter as { title, child } (title)}
 					<kit:list variant="text" nav density="compact">
 						<kit:list-item class="subtitle">{title}</kit:list-item>
-						{#each child as { label, url, path }}
+						{#each child as { label, url, path } (label)}
 							{#if url}
 								<kit:list-item href={url} target="_blank" s-style_gap="15px">
 									{label}

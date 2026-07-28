@@ -1,4 +1,6 @@
 <script lang="ts">
+	import TablePackageFormat from './table-package-format.svelte';
+
 	let packages = [
 		{ title: 'pkg1', values: ['yes', 'yes', 19, 2, 'open', '0 / 26', 'Monthly', 'yes'] },
 		{ title: 'pkg2', values: ['tailwind', 'yes', 29, 'No', 'yes', '28 / 11', 'Monthly', 'yes'] },
@@ -51,12 +53,30 @@
 <div class="plan_embed">
 	<div class="table_plan_head">
 		<div></div>
-		<div>pk1</div>
-		<div>pk2</div>
+		<div>
+			<enhanced:img
+				src="$lib/assets/images/lapikit.webp?w=38"
+				alt="lapikit"
+				aria-label="Lapikit"
+				sizes="100%"
+				loading="lazy"
+			/>
+			<p>Lapikit</p>
+		</div>
+		<div>
+			<enhanced:img
+				src="$lib/assets/images/svelte.webp?w=38"
+				alt="lapikit"
+				aria-label="Lapikit"
+				sizes="100%"
+				loading="lazy"
+			/>
+			<p>Svelte</p>
+		</div>
 		<!-- <div>pk3</div>
 		<div>pk4</div> -->
 	</div>
-	<div class="table_plan_section">
+	<div class="table_plan_subhead">
 		<div>Features</div>
 	</div>
 	<div class="table_plan_section">
@@ -68,21 +88,21 @@
 
 	<div class="table_plan">
 		<div>Tailwind or UnoCSS required</div>
-		<div>yes</div>
-		<div>yes</div>
+		<div><TablePackageFormat value="yes" /></div>
+		<div><TablePackageFormat value="no" /></div>
 		<!-- <div>yes</div>
 		<div>yes</div> -->
 	</div>
 	<div class="table_plan">
 		<div>Tailwind or UnoCSS required</div>
-		<div>yes</div>
-		<div>yes</div>
+		<div><TablePackageFormat value={true} /></div>
+		<div><TablePackageFormat value={false} /></div>
 		<!-- <div>yes</div>
 		<div>yes</div> -->
 	</div>
 	<div class="table_plan">
 		<div>Tailwind or UnoCSS required</div>
-		<div>yes</div>
+		<div><TablePackageFormat value="partial" /></div>
 		<div>yes</div>
 		<!-- <div>yes</div>
 		<div>yes</div> -->
@@ -130,13 +150,16 @@
 			row-gap: 4px;
 			grid-template-columns: 1.5fr minmax(118px, 118px) minmax(118px, 118px);
 			margin-top: 0px;
-			margin-bottom: -0.8125rem;
+			//margin-bottom: -0.8125rem;
 			padding-bottom: 0px;
 
 			&.table_plan_head {
 				grid-template-rows: 100px;
 
 				> div:not(:nth-child(1)) {
+					display: flex;
+					justify-content: center;
+					flex-direction: column;
 					border-radius: 12px 12px 0 0;
 					border-top: 1px solid cyan;
 					border-left: 1px solid red;
@@ -152,12 +175,29 @@
 				padding-top: 20px;
 				padding-bottom: 20px;
 
+				&:nth-child(1) {
+					padding-left: 20px;
+				}
 				&:not(:nth-child(1)) {
+					display: flex;
+					align-items: center;
+					justify-content: center;
 					border-left: 1px solid red;
 					border-right: 1px solid red;
 				}
 			}
 
+			&.table_plan_subhead {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				padding-left: 20px;
+
+				> div {
+					font-size: var(--kit-font-xl);
+					font-weight: 800;
+					line-height: 1;
+				}
+			}
 			&.table_plan_section {
 				border-left: 1px solid orange;
 				border-bottom: 1px solid blue;
@@ -166,6 +206,20 @@
 
 				> div:nth-child(1) {
 					grid-area: span 1 / span 3 / span 1 / span 3;
+					padding-left: 20px;
+					padding-top: 20px;
+					padding-bottom: 20px;
+
+					p {
+						font-size: var(--kit-font-xl);
+						font-weight: 800;
+						line-height: 1;
+					}
+
+					span {
+						font-size: var(--kit-font-xs);
+						color: var(--kit-color-text-muted);
+					}
 				}
 
 				> div:not(:nth-child(1)) {
