@@ -1,23 +1,91 @@
 <script lang="ts">
 	import TablePackageFormat from './table-package-format.svelte';
 
-	let packages = [
-		{ title: 'pkg1', values: ['yes', 'yes', 19, 2, 'open', '0 / 26', 'Monthly', 'yes'] },
-		{ title: 'pkg2', values: ['tailwind', 'yes', 29, 'No', 'yes', '28 / 11', 'Monthly', 'yes'] },
-		{ title: 'pkg3', values: ['tailwind', 'yes', 59, 'No', 'yes', '4 / 26', 'Monthly', 'yes'] },
-		{ title: 'pkg4', values: ['tailwind', 'yes', 18, 5, 'No', '4 / 39', 'Monthly', 'yes'] }
+	let result = [
+		{
+			title: 'package 1',
+			values: [
+				['yes', 'yes', '0 / 26', 'yes', 'no'],
+				['partial', 'partial'],
+				['yes', 'yes', 18, 'yes', 'no', 59, 'yes', 'partial', 'yes', 'no', 'partial']
+			]
+		},
+		{
+			title: 'package 2',
+			values: [
+				['yes', 'yes', '13 / 43', 'yes', 'no'],
+				['partial', 'partial'],
+				['yes', 'yes', 'no', 18, 32, 'yes', 34, 'partial', 'yes', 'no', 'partial']
+			]
+		},
+		{
+			title: 'package 3',
+			values: [
+				['no', 'no', '34 / 43', 'yes', 'no'],
+				['partial', 'partial'],
+				['yes', 'no', 'no', 18, 22, 'yes', 'nop', 'yes', 'yes', 'no', 'yes']
+			]
+		},
+		{
+			title: 'package 4',
+			values: [
+				['no', 'no', '12 / 9', 'no', 'no'],
+				['yes', 'yes'],
+				['yes', 'partial', 'no', 9, 23, 'yes', 12, 'partial', 'yes', 'no', 'partial']
+			]
+		}
 	];
 
-	let questions = [
-		'Design system support',
-		'Styles variables',
-		'Components',
-		'Utils',
-		'Tailwind or UnoCSS required',
-		'Dependencies (prod/dev)',
-		'Release cadences',
-		'Open source and Free'
+	let content = [
+		{
+			text: 'Section table',
+			subtext: "<a href='/'>test with sepcifique link for test UI</a>",
+			subject: [
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit'
+			]
+		},
+		{
+			text: 'Section table 2',
+			subject: [
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit'
+			]
+		},
+		{
+			text: 'Section table 3',
+			subtext: "<a href='/'>test with sepcifique link for test UI</a>",
+			subject: [
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit',
+				'Discover the power to develop with lapikit'
+			]
+		}
 	];
+
+	let onlyDisplay = $state(1);
+
+	// let questions = [
+	// 	'Design system support',
+	// 	'Styles variables',
+	// 	'Components',
+	// 	'Utils',
+	// 	'Tailwind or UnoCSS required',
+	// 	'Dependencies (prod/dev)',
+	// 	'Release cadences',
+	// 	'Open source and Free'
+	// ];
 </script>
 
 <!-- <table>
@@ -50,92 +118,62 @@
 	</tbody> -->
 <!-- </table> -->
 
+<kit:toolbar>
+	{#each result as { title }, index}
+		{#if index != 0}
+			<kit:btn onclick={() => (onlyDisplay = index)}>{title}</kit:btn>
+		{/if}
+	{/each}
+</kit:toolbar>
+
 <div class="plan_embed">
 	<div class="table_plan_head">
 		<div></div>
-		<div>
-			<enhanced:img
-				src="$lib/assets/images/lapikit.webp?w=38"
-				alt="lapikit"
-				aria-label="Lapikit"
-				sizes="100%"
-				loading="lazy"
-			/>
-			<p>Lapikit</p>
-		</div>
-		<div>
-			<enhanced:img
-				src="$lib/assets/images/svelte.webp?w=38"
-				alt="lapikit"
-				aria-label="Lapikit"
-				sizes="100%"
-				loading="lazy"
-			/>
-			<p>Svelte</p>
-		</div>
-		<!-- <div>pk3</div>
-		<div>pk4</div> -->
+
+		{#each result as { title }, indexResult}
+			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
+				<p>{title}</p>
+			</div>
+		{/each}
+
+		<!-- {#each result as { title }}
+			<div><p>{title}</p></div>
+		{/each} -->
 	</div>
 	<div class="table_plan_subhead">
 		<div>Features</div>
 	</div>
-	<div class="table_plan_section">
-		<div>
-			<p>Section table</p>
-			<span><a href="/">test with sepcifique link for test UI</a></span>
+
+	{#each content as { text, subtext, subject }, index}
+		<div class="table_plan_section">
+			<div>
+				<p>{text}</p>
+				{#if subtext}
+					<span>
+						{@html subtext}
+					</span>
+				{/if}
+			</div>
 		</div>
-	</div>
 
-	<div class="table_plan">
-		<div>Tailwind or UnoCSS required</div>
-		<div><TablePackageFormat value="yes" /></div>
-		<div><TablePackageFormat value="no" /></div>
-		<!-- <div>yes</div>
-		<div>yes</div> -->
-	</div>
-	<div class="table_plan">
-		<div>Tailwind or UnoCSS required</div>
-		<div><TablePackageFormat value={true} /></div>
-		<div><TablePackageFormat value={false} /></div>
-		<!-- <div>yes</div>
-		<div>yes</div> -->
-	</div>
-	<div class="table_plan">
-		<div>Tailwind or UnoCSS required</div>
-		<div><TablePackageFormat value="partial" /></div>
-		<div>yes</div>
-		<!-- <div>yes</div>
-		<div>yes</div> -->
-	</div>
-	<div class="table_plan">
-		<div>Tailwind or UnoCSS required</div>
-		<div>yes</div>
-		<div>yes</div>
-		<!-- <div>yes</div>
-		<div>yes</div> -->
-	</div>
-
-	<div class="table_plan_section">
-		<div>
-			<p>Section table 2</p>
-			<span><a href="/">test with sepcifique link for test UI</a></span>
-		</div>
-	</div>
-
-	<div class="table_plan">
-		<div>Tailwind or UnoCSS required</div>
-		<div>yes</div>
-		<div>yes</div>
-		<!-- <div>yes</div>
-		<div>yes</div> -->
-	</div>
+		{#each subject as element, indexElement}
+			<div class="table_plan">
+				<div>{element}</div>
+				{#each result as items, indexResult}
+					<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
+						{items.values[index][indexElement]}
+					</div>
+				{/each}
+			</div>
+		{/each}
+	{/each}
 
 	<div class="table_plan_footer">
 		<div></div>
-		<div></div>
-		<div></div>
-		<!-- <div>yes</div>
-		<div>yes</div> -->
+
+		{#each result as items, indexResult}
+			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}></div>
+		{/each}
 	</div>
 </div>
 
@@ -237,25 +275,26 @@
 					border-radius: 0 0 12px 12px;
 				}
 			}
+		}
 
-			/* &:not(.table_plan_head) > div {
-				padding-top: 20px;
-				padding-bottom: 20px;
+		@media (max-width: 766px) {
+			.table_hidden_content {
+				display: none !important;
 			}
+		}
 
-			&:not(.table_plan_head) > div:nth-child(1) {
-				border-left: 1px solid orange;
-				border-bottom: 1px solid blue;
-				border-top: 1px solid blue;
-				border-radius: 12px 0 0 12px;
+		@media (min-width: 767px) {
+			> div {
+				grid-template-columns:
+					1.5fr minmax(118px, 118px) minmax(118px, 118px) minmax(118px, 118px)
+					minmax(118px, 118px);
+
+				&.table_plan {
+					grid-template-columns:
+						1.5fr minmax(118px, 118px) minmax(118px, 118px) minmax(118px, 118px)
+						minmax(118px, 118px);
+				}
 			}
-
-			&.table_plan_head > div:not(:nth-child(1)) {
-				border-top: 1px solid pink;
-				border-left: 1px solid purple;
-				border-right: 1px solid purple;
-				border-radius: 12px 12px 0 0;
-			} */
 		}
 	}
 	/* table {
