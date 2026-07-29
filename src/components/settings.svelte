@@ -1,8 +1,15 @@
 <script lang="ts">
 	import type { ModelPopoverProps } from 'lapikit/components';
 	import { Moon, Settings, Sun, SunMoon } from 'lucide-svelte';
-
 	import { createGlobalTheme, useTheme } from 'lapikit/actions';
+
+	let {
+		density,
+		variant
+	}: {
+		density?: string;
+		variant?: string;
+	} = $props();
 
 	const app = createGlobalTheme();
 
@@ -15,7 +22,12 @@
 
 <kit:popover>
 	{#snippet activator({ toggle }: ModelPopoverProps)}
-		<kit:btn icon onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
+		<kit:btn
+			{variant}
+			{density}
+			icon
+			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+		>
 			<kit:icon>
 				<Settings />
 			</kit:icon>
