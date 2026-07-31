@@ -1,13 +1,27 @@
 <script lang="ts">
+	// assets
 	import { Star } from 'lucide-svelte';
+	import ViteJsIcon from '$lib/assets/icons/vite.js.svg?raw';
+	import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
+	import WebpackIcon from '$lib/assets/icons/webpack.svg?raw';
 </script>
 
 <div id="bento-counter">
 	<kit:card class="card-integrations" density="comfortable">
 		<kit:card-content>
-			<kit:chip>
-				<kit:icon><Star /></kit:icon>
-			</kit:chip>
+			<kit:btn icon>
+				<kit:icon size="xl">{@html ViteJsIcon}</kit:icon>
+			</kit:btn>
+			<kit:tooltip label="Coming soon">
+				<kit:btn icon disabled>
+					<kit:icon size="xl">{@html RollupIcon}</kit:icon>
+				</kit:btn>
+			</kit:tooltip>
+			<kit:tooltip label="Coming soon">
+				<kit:btn icon disabled>
+					<kit:icon size="xl">{@html WebpackIcon}</kit:icon>
+				</kit:btn>
+			</kit:tooltip>
 		</kit:card-content>
 		<kit:card-container>
 			<kit:card-title class="lpk-title-2xl">Integrations</kit:card-title>

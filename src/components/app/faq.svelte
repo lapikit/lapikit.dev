@@ -20,7 +20,7 @@
 		</p>
 
 		<kit:accordion spacer>
-			{#each faqContext as { question, message }, index}
+			{#each faqContext as { question, message }, index (question)}
 				<kit:accordion-item
 					{index}
 					text={question}
