@@ -1,5 +1,8 @@
 <script lang="ts">
+	import ChartDownload from './chart-download.svelte';
+
 	// asset
+	import CustomizeCover from '$lib/assets/images/bento-card-themes.png';
 	import ComponentsCover from '$lib/assets/images/bento-card-components.png';
 	import ViteJsIcon from '$lib/assets/icons/vite.js.svg?raw';
 	import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
@@ -28,7 +31,13 @@
 			<kit:card-content>Use your favorites builder with lapikit</kit:card-content>
 		</kit:card-container>
 	</kit:card>
-	<kit:card class="card-customize" density="comfortable">
+	<kit:card
+		class="card-customize"
+		density="comfortable"
+		s-style_background-image={`url(${CustomizeCover})`}
+		s-style_background-size="cover"
+		s-style_background-position="center"
+	>
 		<kit:card-content> </kit:card-content>
 		<kit:card-container>
 			<kit:card-title class="lpk-title-2xl">Customize</kit:card-title>
@@ -60,6 +69,7 @@
 		</kit:card-container>
 	</kit:card>
 	<kit:card class="card-opensource" density="comfortable">
+		<ChartDownload />
 		<kit:card-content> </kit:card-content>
 		<kit:card-container>
 			<kit:card-title class="lpk-title-2xl">Open Source</kit:card-title>
@@ -87,6 +97,10 @@
 		grid-template-areas:
 			'integrations components hooks     opensource'
 			'customize    components lowdeps   lowdeps';
+		max-width: 1538px;
+		margin: -100px auto 0;
+		padding-left: 24px;
+		padding-right: 24px;
 	}
 
 	#bento-counter > :global(.card-integrations),
@@ -102,6 +116,11 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+	}
+
+	#bento-counter > :global(.card-opensource .kit-card-container) {
+		position: relative;
+		z-index: 1;
 	}
 
 	.counter {

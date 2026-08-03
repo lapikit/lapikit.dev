@@ -7,7 +7,7 @@
 
 	let { appNavigation, ...rest } = $props();
 
-	const btnRefWidth: number = 150;
+	const btnRefWidth: number = 160;
 	const dropdownRefWidth: number = 38;
 	let navigationDisplayedItems: number = $state(appNavigation.length);
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
