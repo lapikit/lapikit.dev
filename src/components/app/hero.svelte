@@ -1,11 +1,16 @@
 <script lang="ts">
+	import { copyToClipboard } from '$lib/utils';
+
 	// assets
-	import LapikitLogo from '$lib/assets/images/lapikit.webp?enhanced';
-	import SvelteLogo from '$lib/assets/images/svelte.webp?enhanced';
+	import { BookMarked, Check, Copy, Rocket, Terminal } from 'lucide-svelte';
+	import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
+	import yarnIcon from '$lib/assets/icons/yarn_color.svg?raw';
+	import bunIcon from '$lib/assets/icons/bun_color.svg?raw';
 
 	// states
-	let shellCommand: string = $state('npm install -D lapikit');
+	let shellCommand: string = $state('npm install --save-dev lapikit');
 	let possibility: string = $state('components');
+	let hasCopied: boolean = $state(false);
 
 	let shellList = {
 		npm: 'npm install --save-dev lapikit',
@@ -24,18 +29,28 @@
 
 		return () => clearInterval(interval);
 	});
+
+	function handleCopy(value: string) {
+		hasCopied = true;
+		copyToClipboard(value);
+		setTimeout(() => {
+			hasCopied = false;
+		}, 2000);
+	}
 </script>
 
 <section>
 	<div>
 		<div>
-			<kit:chip size="xs">This app was made with Lapikit</kit:chip>
+			<kit:chip size="xs">
+				{#snippet prepend()}
+					<span class="dot"></span>
+				{/snippet}
+				This app was made with Lapikit</kit:chip
+			>
 			<div class="headline_hero">
 				<h1>
-					<div>
-						<enhanced:img src={LapikitLogo} alt="Lapikit logo" class="no-select w-9.5 min-w-9.5" />
-						Simple, optimized
-					</div>
+					<div>Simple, optimized</div>
 					<div class="tilted-box">
 						<span class="possibility">
 							{possibility}
@@ -43,28 +58,89 @@
 					</div>
 
 					<div>
-						for Svelte
-						<enhanced:img src={SvelteLogo} alt="Lapikit logo" class="no-select w-9.5 min-w-9.5" />
+						for <span class="svelte">Svelte</span>
 					</div>
 				</h1>
 			</div>
-			<p>
+			<p class="paragraphe-ws">
 				A library of accessible, high-performance, versatile components that let you develop fast,
-				fully customizable interfaces.
-			</p>
-			<p>
-				<kit:chip>svelte</kit:chip> and <kit:chip>sveltekit</kit:chip>
+				fully customizable interfaces. <span class="svelte">svelte</span> and
+				<span class="svelte">sveltekit</span> ready.
 			</p>
 			<div>
-				<kit:btn>Discover the power</kit:btn>
-				<kit:btn>Install Guide</kit:btn>
+				<kit:btn density="comfortable" rounded="lg" background="accent" color="on-accent">
+					{#snippet prepend()}
+						<kit:icon>
+							<Rocket />
+						</kit:icon>
+					{/snippet}
+					Discover the power
+				</kit:btn>
+				<kit:btn density="comfortable" rounded="lg" variant="outline" color="accent">
+					{#snippet prepend()}
+						<kit:icon>
+							<BookMarked />
+						</kit:icon>
+					{/snippet}
+					Install Guide
+				</kit:btn>
 			</div>
-			<div>
-				<kit:btn>{shellCommand}</kit:btn>
+			<div class="code-command-wrapper">
+				<kit:btn onclick={() => handleCopy(shellCommand)}>
+					{#snippet prepend()}
+						<kit:icon><Terminal /></kit:icon>
+					{/snippet}
+					{shellCommand}
+					{#snippet append()}
+						<kit:icon color={hasCopied && 'success'}>
+							{#if hasCopied}
+								<Check />
+							{:else}
+								<Copy />
+							{/if}
+						</kit:icon>
+					{/snippet}
+				</kit:btn>
 				<div>
-					<kit:btn onclick={() => (shellCommand = shellList['npm'])}>npm</kit:btn>
-					<kit:btn onclick={() => (shellCommand = shellList['yarn'])}>yarn</kit:btn>
-					<kit:btn onclick={() => (shellCommand = shellList['bun'])}>bun</kit:btn>
+					<kit:btn
+						onclick={() => (shellCommand = shellList['npm'])}
+						active={shellList['npm'] === shellCommand}
+						size="xs"
+						variant="text"
+					>
+						{#snippet prepend()}
+							<kit:icon>
+								{@html npmIcon}
+							</kit:icon>
+						{/snippet}
+						npm
+					</kit:btn>
+					<kit:btn
+						onclick={() => (shellCommand = shellList['yarn'])}
+						active={shellList['yarn'] === shellCommand}
+						size="xs"
+						variant="text"
+					>
+						{#snippet prepend()}
+							<kit:icon>
+								{@html yarnIcon}
+							</kit:icon>
+						{/snippet}
+						yarn
+					</kit:btn>
+					<kit:btn
+						onclick={() => (shellCommand = shellList['bun'])}
+						active={shellList['bun'] === shellCommand}
+						size="xs"
+						variant="text"
+					>
+						{#snippet prepend()}
+							<kit:icon>
+								{@html bunIcon}
+							</kit:icon>
+						{/snippet}
+						bun
+					</kit:btn>
 				</div>
 			</div>
 		</div>
@@ -90,7 +166,7 @@
 			-1px -1px,
 			-0.5px -0.5px,
 			-0.5px -0.5px;
-		padding-top: 75px;
+		padding-top: 156px;
 		margin-top: -75px;
 
 		& > div {
@@ -128,7 +204,12 @@
 				display: flex;
 				width: fit-content;
 				margin: 0 auto;
+				gap: 8px;
 			}
+		}
+
+		span.svelte {
+			color: var(--kit-color-svelte);
 		}
 
 		.tilted-box {
@@ -147,28 +228,16 @@
 			display: inline-block;
 		}
 
-		/* .tilted-box {
-			display: inline-block;
-			transform: rotate(-3deg);
-			overflow: hidden;
-			height: 1.5em;
-			padding: 0.5rem 1rem;
-			background: #222;
-			color: #fff;
-			border-radius: 6px;
+		.code-command-wrapper {
+			display: grid;
+			gap: 8px;
 		}
 
-		.track {
-			transition: transform 0.4s ease;
-		}
-
-		.possibility {
-			height: 1.5em;
-			line-height: 1.5em;
-		} */
 		p.paragraphe-ws {
 			max-width: 80%;
 			margin: 0 auto;
+			font-size: 22px;
+			font-weight: 200;
 		}
 
 		@media (min-width: 640px) {
@@ -187,6 +256,34 @@
 				padding-left: 40px;
 				padding-right: 40px;
 			}
+		}
+	}
+
+	.dot {
+		position: relative;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--kit-color-success);
+	}
+
+	.dot::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: inherit;
+		animation: pulse 1.6s ease-out infinite;
+	}
+
+	@keyframes pulse {
+		0% {
+			transform: scale(1);
+			opacity: 0.6;
+		}
+		100% {
+			transform: scale(2.5);
+			opacity: 0;
 		}
 	}
 </style>

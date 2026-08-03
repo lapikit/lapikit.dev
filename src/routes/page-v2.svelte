@@ -15,9 +15,9 @@
 
 <Hero />
 
-<Discover />
-
 <BentoCounter />
+
+<Discover />
 
 <LapikitComponents />
 

@@ -1,6 +1,8 @@
 :root {
 	--kit-color-bg-inverse: var(--kit-color-text);
 	--kit-color-fg-inverse: var(--kit-color-surface);
+	--kit-color-svelte: hsl(14.02deg 96.06% 49.8%);
+	--kit-color-svelte-2: hsl(17.14deg 63.64% 97.84%);
 }
 
 .transition-lapikit {

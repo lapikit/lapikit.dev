@@ -1,6 +1,6 @@
 <script lang="ts">
-	// assets
-	import { Star } from 'lucide-svelte';
+	// asset
+	import ComponentsCover from '$lib/assets/images/bento-card-components.png';
 	import ViteJsIcon from '$lib/assets/icons/vite.js.svg?raw';
 	import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
 	import WebpackIcon from '$lib/assets/icons/webpack.svg?raw';
@@ -35,7 +35,15 @@
 			<kit:card-content>Support themes and design system with global variables</kit:card-content>
 		</kit:card-container>
 	</kit:card>
-	<kit:card class="card-components" density="comfortable">
+	<kit:card
+		class="card-components"
+		density="comfortable"
+		s-style_background-image={`url(${ComponentsCover})`}
+		s-style_background-size="cover"
+		s-style_background-position="center"
+		href="/docs/components"
+	>
+		<!-- <enhanced:img src={ComponentsCover} alt="Components cover" class="components-cover" /> -->
 		<kit:card-title class="lpk-title-2xl"> Components</kit:card-title>
 		<kit:card-container>
 			<div class="counter">25</div>
