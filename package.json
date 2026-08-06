@@ -4,15 +4,15 @@
 	"version": "0.1.0",
 	"type": "module",
 	"scripts": {
-		"dev": "bun run sync-docs && vite dev",
-		"build": "bun run sync-docs && vite build",
-		"build-srv": "bun run sync-docs && bun run sync-changelog && bun run sync-robots && vite build",
+		"dev": "bun run sync-content && vite dev",
+		"build": "bun run sync-content && vite build",
+		"build-srv": "bun run sync-content && bun run sync-changelog && bun run sync-robots && vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"sync-docs": "node --experimental-strip-types scripts/sync-docs/index.ts",
+		"sync-content": "node --experimental-strip-types scripts/mdsvx/index.ts",
 		"sync-changelog": "node --experimental-strip-types scripts/sync-changelog/index.ts",
 		"sync-robots": "node --experimental-strip-types scripts/sync-robots/index.ts",
-		"check": "bun run sync-docs && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check": "bun run sync-content && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^9.39.4",
-		"@lapikit/repl": "^0.0.0-insiders.fbbe434",
+		"@lapikit/repl": "^0.0.0-insiders.417ad1f",
 		"@playwright/test": "^1.61.1",
 		"@sveltejs/adapter-node": "^5.5.7",
 		"@sveltejs/enhanced-img": "^0.10.4",
@@ -37,11 +37,12 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.20.0",
 		"globals": "^17.7.0",
-		"lapikit": "^0.0.0-insiders.bd3f1f3",
+		"lapikit": "^0.0.0-insiders.b663ce9",
 		"mdsvex": "^0.12.7",
 		"prettier": "^3.9.3",
 		"prettier-plugin-svelte": "^3.5.2",
 		"prettier-plugin-tailwindcss": "^0.7.4",
+		"sass": "^1.102.0",
 		"svelte": "^5.56.4",
 		"svelte-check": "^4.7.1",
 		"tailwindcss": "^4.3.2",
@@ -53,6 +54,7 @@
 	"dependencies": {
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@fontsource-variable/outfit": "^5.2.8",
+		"chart.js": "^4.5.1",
 		"lucide-svelte": "^1.0.1"
 	}
 }

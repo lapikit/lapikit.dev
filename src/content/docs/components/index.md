@@ -1,14 +1,15 @@
 ---
-title: "Components"
-description: "Find out more about Lapikit Svelte components."
-layout: "section"
+title: 'Discover the Lapikit components'
+category: 'Components'
+head:
+  title: 'Components'
+  description: 'Find out more about Lapikit Svelte components.'
+layout: 'doc_section'
 ---
 
 <script>
     import ListComponents from "$components/list-components.svelte";
 </script>
-
-# Discover the Lapikit components
 
 Components are at the heart of Lapikit. Without them, the library won’t exist. Each component is a reusable block of code that handles an entire user interface element, in perfect alignment with the design system defined by Lapikit.
 

@@ -1,6 +1,10 @@
 ---
-title: "Appbar"
-description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
+title: 'Appbar component'
+category: 'Components'
+head:
+  title: 'Appbar'
+  description: 'Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -11,8 +15,6 @@ description: "Add an elegant, responsive application bar to your interfaces. Per
 	import Density from '$examples/components/appbar/density.svelte';
 	import ClassContent from '$examples/components/appbar/class-content.svelte';
 </script>
-
-# Appbar component
 
 The `kit:appbar` is an essential component for structuring an application's header. It provides a dedicated space for displaying elements such as titles, icons, buttons or menus. Thanks to its many customization options, the `kit:appbar` integrates perfectly into a variety of designs, from minimalist to complex.
 

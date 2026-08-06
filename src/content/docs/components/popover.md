@@ -1,6 +1,10 @@
 ---
-title: "Popover"
-description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
+title: 'Popover component'
+category: 'Components'
+head:
+  title: 'Popover'
+  description: 'Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -9,8 +13,6 @@ description: "Show contextual information on click or hover. Ideal for enhancing
 	import Preview from '$examples/components/popover/preview.svelte';
 	import Position from '$examples/components/popover/position.svelte';
 </script>
-
-# Popover component
 
 The `kit:popover` component displays contextual content above an activator. It is useful for providing additional information, options or secondary actions without overloading the main interface.
 

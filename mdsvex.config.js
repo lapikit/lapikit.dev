@@ -33,8 +33,7 @@ export const mdsvexOptions = {
 	highlight: { highlighter },
 	layout: {
 		_: dirname(fileURLToPath(import.meta.url)) + '/src/templates/page.svelte',
-		docs: dirname(fileURLToPath(import.meta.url)) + '/src/templates/doc.svelte',
-		section: dirname(fileURLToPath(import.meta.url)) + '/src/templates/section.svelte',
-		legacy: dirname(fileURLToPath(import.meta.url)) + '/src/templates/legacy.svelte'
+		doc_page: dirname(fileURLToPath(import.meta.url)) + '/src/templates/doc-page.svelte',
+		doc_section: dirname(fileURLToPath(import.meta.url)) + '/src/templates/doc-section.svelte'
 	}
 };

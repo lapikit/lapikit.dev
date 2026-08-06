@@ -32,4 +32,4 @@ docker-compose.yml
 Dockerfile
 
 # Markdown
-src/pages.docs.json
+src/manifest.json

@@ -1,50 +1,29 @@
 import { error } from '@sveltejs/kit';
 
 // types
-import type {
-	ContentEntry,
-	ContentSummary,
-	DocComponent,
-	DocSummary,
-	MarkdownComponent,
-	SeoEntry
-} from './@types';
+import type { DocComponent, DocEntry, DocSummary } from './@types';
 
 // datas
-import docsMetadataJson from '../pages.docs.json';
+import manifest from '../manifest.json';
 
-export function createRegistry<T extends ContentSummary>(
-	metadata: T[],
-	modules: Record<string, MarkdownComponent>,
-	buildSeo: (doc: T) => SeoEntry = defaultSeoBuilder
-) {
+export function createRegistry(docsList: DocSummary[], modules: Record<string, DocComponent>) {
 	const paths: string[] = [];
-	const byPath = new Map<string, T>();
-	const seoByPath: Record<string, SeoEntry> = {};
-	const entries: ContentEntry<T>[] = [];
+	const byPath = new Map<string, DocEntry>();
+	const entries: DocEntry[] = [];
 
-	for (const doc of metadata) {
-		paths.push(doc.path);
-		byPath.set(doc.path, doc);
-		seoByPath[doc.path] = buildSeo(doc);
+	for (const doc of docsList) {
+		const component = modules[`/${doc.path.sourcePath}`];
+		if (!component) throw error(500, `Missing compiled module for: ${doc.path.sourcePath}`);
 
-		const component = modules[`/${doc.sourcePath}`];
-		if (!component) throw error(500, `Missing compiled module for: ${doc.sourcePath}`);
-		entries.push({ ...doc, component });
+		const entry: DocEntry = { ...doc, component };
+		paths.push(doc.path.pathname);
+		byPath.set(doc.path.pathname, entry);
+		entries.push(entry);
 	}
 
-	const bySlug = new Map(entries.map((entry) => [entry.slug, entry] as const));
+	const bySlug = new Map(entries.map((entry) => [entry.path.slug, entry] as const));
 
-	return { paths, byPath, seoByPath, entries, bySlug };
-}
-
-function defaultSeoBuilder<T extends ContentSummary>(doc: T): SeoEntry {
-	const description =
-		typeof doc.metadata.description === 'string' && doc.metadata.description.trim()
-			? doc.metadata.description
-			: `Read ${doc.metadata.title}.`;
-
-	return { title: doc.metadata.title, description, type: 'article' };
+	return { paths, byPath, entries, bySlug };
 }
 
 /**
@@ -57,23 +36,13 @@ const docModules = import.meta.glob('/src/content/docs/**/*.md', {
 	import: 'default'
 }) as Record<string, DocComponent>;
 
-export const docsMetadata: DocSummary[] = docsMetadataJson as DocSummary[];
-
-const { paths, byPath, seoByPath, entries, bySlug } = createRegistry(
-	docsMetadata,
-	docModules,
-	(doc) => ({
-		title: doc.metadata.title,
-		description:
-			typeof doc.metadata.description === 'string' && doc.metadata.description.trim()
-				? doc.metadata.description
-				: `Read ${doc.metadata.title} in the Lapikit documentation.`,
-		type: 'article'
-	})
+export const docsMetadata: DocSummary[] = (manifest as DocSummary[]).filter((doc) =>
+	doc.path.sourcePath.startsWith('src/content/docs/')
 );
+
+const { paths, byPath, entries, bySlug } = createRegistry(docsMetadata, docModules);
 
 export const docsPaths = paths;
 export const docsByPath = byPath;
-export const docsSeoByPath = seoByPath;
 export const docs = entries;
 export const docsBySlug = bySlug;

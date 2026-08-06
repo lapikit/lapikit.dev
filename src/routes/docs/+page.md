@@ -1,9 +1,10 @@
 ---
-title: Documentation
-description: Browse Lapikit documentation, including components, hooks and theming resources.
+title: 'Documentation'
+category: 'Lapikit'
+head:
+  title: 'Documentation'
+  description: 'Browse Lapikit documentation, including components, hooks and theming resources.'
 ---
-
-# Lapikit documentation
 
 Lapikit documentation is organized as simple HTML pages so search engines and users can discover the project quickly.
 

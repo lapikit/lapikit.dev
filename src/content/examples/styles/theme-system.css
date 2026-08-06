@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: light) {
+	:global([data-kit-theme='system']) {
+		color-scheme: light;
+
+		/* color-light */
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:global([data-kit-theme='system']) {
+		color-scheme: dark;
+
+		/* color-dark */
+	}
+}

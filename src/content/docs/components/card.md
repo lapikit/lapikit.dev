@@ -1,6 +1,10 @@
 ---
-title: "Card"
-description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+title: 'Card component'
+category: 'Components'
+head:
+  title: 'Card'
+  description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -13,8 +17,6 @@ description: "Organize and display content in visually coherent blocks. The Lapi
 	import Structure from '$examples/components/card/structure.svelte';
 	import Elevation from '$examples/components/card/elevation.svelte';
 </script>
-
-# Card component
 
 The `kit:card` component is a versatile container used to group together information or actions in a user interface. It can be used to display content, images, buttons or links, while offering advanced customization to suit various styles and contexts.
 
@@ -128,21 +130,23 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:card-title`**
 
-| props         | type                                                                        | description                                     | default |
-| ------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
-| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element. | `null`  |
-| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                          | `'div'` |
-| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card title.                   |         |
-| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card title.                      |         |
+| props         | type                                                                        | description                                        | default |
+| ------------- | --------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element.    | `null`  |
+| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                             | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card title.                      |         |
+| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card title.                         |         |
+| color         | `string`                                                                    | Foreground color override (`--kit-card-title-fg`). |         |
 
 **`kit:card-content`**
 
-| props         | type                                                                        | description                                     | default |
-| ------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
-| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element. | `null`  |
-| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                          | `'div'` |
-| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card content.                 |         |
-| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card content.                    |         |
+| props         | type                                                                        | description                                          | default |
+| ------------- | --------------------------------------------------------------------------- | ---------------------------------------------------- | ------- |
+| ref $bindable | `HTMLElement`                                                               | Bindable reference to the rendered DOM element.      | `null`  |
+| is            | `'div' \| 'p' \| 'span' \| 'h1' \| 'h2' \| 'h3'  \| 'h4'  \| 'h5'  \| 'h6'` | HTML element to render                               | `'div'` |
+| s-class       | `'string' \| 'array' \| 'object'`                                           | Sets className on card content.                      |         |
+| s-style       | `'string' \| 'array' \| 'object'`                                           | Sets styles on card content.                         |         |
+| color         | `string`                                                                    | Foreground color override (`--kit-card-content-fg`). |         |
 
 **`kit:card-media`**
 

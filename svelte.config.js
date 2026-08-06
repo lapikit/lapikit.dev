@@ -1,5 +1,6 @@
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvexOptions } from './mdsvex.config.js';
 import { lapikitPreprocess } from 'lapikit/preprocess';
 
@@ -16,7 +17,7 @@ const config = {
 			$examples: 'src/content/examples'
 		}
 	},
-	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] })],
+	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] }), vitePreprocess()],
 	extensions: ['.svelte', '.svx', '.md']
 };
 

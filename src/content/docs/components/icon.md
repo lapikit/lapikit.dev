@@ -1,6 +1,10 @@
 ---
-title: "Icon"
-description: "Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components."
+title: 'Icon component'
+category: 'Components'
+head:
+  title: 'Icon'
+  description: 'Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -11,8 +15,6 @@ description: "Insert icons easily with Lapikit. Manage sizes, colors, states and
 	import Color from '$examples/components/icon/color.svelte';
 	import Src from '$examples/components/icon/src.svelte';
 </script>
-
-# Icon component
 
 The `kit:icon` component is a sizing and accessibility wrapper for icons. It supports three rendering modes: SVG component via `children`, image via `src`, or CSS icon font via `name`.
 

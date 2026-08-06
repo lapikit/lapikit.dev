@@ -1,13 +1,15 @@
 ---
-title: "Class and Style"
-description: "Learn how to use s-class and s-style in Lapikit to dynamically manage classes and inline styles on Svelte components with a syntax close to native Svelte directives."
+title: 'Class and Style binding'
+category: 'Essentials'
+head:
+  title: 'Class and Style'
+  description: 'Learn how to use s-class and s-style in Lapikit to dynamically manage classes and inline styles on Svelte components with a syntax close to native Svelte directives.'
+layout: 'doc_page'
 ---
 
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 </script>
-
-# Class and Style binding
 
 Lapikit components expose two dedicated props - `s-class` and `s-style` - for dynamically binding class names and inline styles. They are designed to be as close as possible to Svelte's native `class:` and `style:` directives, within the limits of what Svelte's parser allows on components.
 

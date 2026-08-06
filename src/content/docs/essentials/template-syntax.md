@@ -1,13 +1,15 @@
 ---
-title: "Template Syntax"
-description: "Learn how the Lapikit preprocessor extends Svelte template syntax component system, automatic imports, and dynamic styling helpers for cleaner Svelte and SvelteKit projects."
+title: 'Understanding the Lapikit template syntax'
+category: 'Essentials'
+head:
+  title: 'Template Syntax'
+  description: 'Learn how the Lapikit preprocessor extends Svelte template syntax component system, automatic imports, and dynamic styling helpers for cleaner Svelte and SvelteKit projects.'
+layout: 'doc_page'
 ---
 
 <script>
 	import LazyRepl from '$components/lazy-repl.svelte';
 </script>
-
-# Understanding the Lapikit template syntax
 
 ## Using the Lapikit component syntax
 

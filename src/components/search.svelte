@@ -8,21 +8,20 @@
 	import { ChevronRight, Search, Puzzle, NotebookText, SquareFunction } from 'lucide-svelte';
 
 	const searchEntries: SearchEntry[] = docsMetadata.map((doc) => {
-		const title = doc.metadata.title;
-		const description =
-			getMetadataString(doc.metadata.description) ?? `Open ${title} documentation.`;
-		const section = toTitle(doc.section ?? 'documentation');
-		const keywords = [title, description, section, ...doc.slugSegments].join(' ');
+		const title = doc.title;
+		const description = getMetadataString(doc.description) ?? `Open ${title} documentation.`;
+		const section = toTitle(doc.path.slugSegments[0] ?? 'documentation');
+		const keywords = [title, description, section, ...doc.path.slugSegments].join(' ');
 
 		return {
 			title,
 			description,
-			path: doc.path,
-			slug: doc.slug,
+			path: doc.path.pathname,
+			slug: doc.path.slug,
 			section,
 			normalizedTitle: normalize(title),
 			normalizedDescription: normalize(description),
-			normalizedPath: normalize(doc.path),
+			normalizedPath: normalize(doc.path.pathname),
 			normalizedSection: normalize(section),
 			normalizedKeywords: normalize(keywords)
 		};

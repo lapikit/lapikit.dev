@@ -1,6 +1,10 @@
 ---
-title: "Tooltip"
-description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
+title: 'Tooltip component'
+category: 'Components'
+head:
+  title: 'Tooltip'
+  description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -11,8 +15,6 @@ description: "Provide additional info without cluttering the UI. Display on hove
 	import Arrow from '$examples/components/tooltip/arrow.svelte';
 	import Custom from '$examples/components/tooltip/custom.svelte';
 </script>
-
-# Tooltip component
 
 Display elegant tooltips with `kit:tooltip`. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components
 The `kit:tooltip` component can be used to display a tooltip on hover, focus or via a controlled opening. It's designed to provide a simple, accessible way of delivering contextual information to the user, without cluttering up the interface.

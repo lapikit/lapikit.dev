@@ -1,6 +1,10 @@
 ---
-title: "Toolbar"
-description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
+title: 'Toolbar component'
+category: 'Components'
+head:
+  title: 'Toolbar'
+  description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -11,8 +15,6 @@ description: "Group actions in a compact, coherent space. Ideal for headers, lis
 	import Density from '$examples/components/toolbar/density.svelte';
 	import Orientation from '$examples/components/toolbar/orientation.svelte';
 </script>
-
-# Toolbar component
 
 The `kit:toolbar` component creates a flexible, customizable toolbar, ideal for organizing actions, titles, filters or other navigation content. It is designed to adapt to different contexts thanks to its layout, style and density options.
 

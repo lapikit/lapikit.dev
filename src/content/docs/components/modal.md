@@ -1,6 +1,10 @@
 ---
-title: "Modal"
-description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
+title: 'Modal component'
+category: 'Components'
+head:
+  title: 'Modal'
+  description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -11,8 +15,6 @@ description: "Display stacked content in a responsive modal window. Manages posi
 	import Size from '$examples/components/modal/size.svelte';
 	import Persistent from '$examples/components/modal/persistent.svelte';
 </script>
-
-# Modal component
 
 The `kit:modal` component displays an overlay panel above the main content. It is designed for dialogs, contextual messages, forms or alerts requiring direct interaction.
 

@@ -1,6 +1,10 @@
 ---
-title: "Alert"
-description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
+title: 'Alert component'
+category: 'Components'
+head:
+  title: 'Alert'
+  description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -14,8 +18,6 @@ description: "Display alert or status messages. Manage variants, densities and i
 	import PrependAppend from '$examples/components/alert/prepend-append.svelte';
 	import Close from '$examples/components/alert/close.svelte';
 </script>
-
-# Alert component
 
 The `kit:alert` component displays a contextual message to the user. It supports multiple tones, visual variants, and optional snippets for custom prepend, append, and close content. It is ideal for providing feedback, warnings, or important information in a way that stands out from the rest of the interface.
 

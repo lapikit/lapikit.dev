@@ -1,6 +1,10 @@
 ---
-title: "Dropdown"
-description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
+title: 'Dropdown component'
+category: 'Components'
+head:
+  title: 'Dropdown'
+  description: 'Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -10,8 +14,6 @@ description: "Flexible drop-down menu for actions or selections. Manages focus, 
 	import Position from '$examples/components/dropdown/position.svelte';
 	import Hover from '$examples/components/dropdown/hover.svelte';
 </script>
-
-# Dropdown component
 
 The `kit:dropdown` component displays a menu or contextual content when opened, positioned around a trigger element. It can be opened by clicking or hovering, and closes automatically according to selected parameters (**closeOnClick**, **openOnHover**, etc.).
 

@@ -1,6 +1,10 @@
 ---
-title: "List"
-description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
+title: 'List component'
+category: 'Components'
+head:
+  title: 'List'
+  description: 'Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -11,8 +15,6 @@ description: "Structure your data with a stylized list. Ideal for menus, hierarc
 	import PrependAppend from '$examples/components/list/prepend-append.svelte';
 	import Nav from '$examples/components/list/nav.svelte';
 </script>
-
-# List component
 
 The `kit:list` and `kit:list-item` components render structured vertical lists. Items are interactive automatically when `onclick` is attached or `href` is set.
 

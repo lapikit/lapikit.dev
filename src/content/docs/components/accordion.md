@@ -1,6 +1,10 @@
 ---
-title: "Accordion"
-description: "Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable."
+title: 'Accordion component'
+category: 'Components'
+head:
+  title: 'Accordion'
+  description: 'Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable.'
+layout: 'doc_page'
 ---
 
 <script>
@@ -15,8 +19,6 @@ description: "Display expandable content in a seamless interface. The Lapikit ac
 	import Activator from '$examples/components/accordion/activator.svelte';
     import Indicator from '$examples/components/accordion/indicator.svelte';
 </script>
-
-# Accordion component
 
 An `kit:accordion` lets you group content into collapsible sections. It improves legibility and saves space in an interface, while offering precise control over the display of information. It is composed of two parts: `kit:accordion` as the container and `kit:accordion-item` for each collapsible entry.
 
