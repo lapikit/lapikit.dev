@@ -4,6 +4,8 @@
 	import LapikitLogo from '$lib/assets/images/lapikit.webp';
 	import SvelteLogo from '$lib/assets/images/svelte.webp';
 	import type { ModelDropdownProps } from 'lapikit/components';
+	import TablePackageRepl from './table-package-repl.svelte';
+	import GetStarted from './get-started.svelte';
 
 	// states
 	let onlyDisplay = $state(1);
@@ -108,7 +110,31 @@
 					{/each}
 				</ul>
 			</div>
-			<div class="picture_on_grid">picture ?</div>
+			<div class="picture_on_grid">
+				<TablePackageRepl />
+			</div>
+		</div>
+		<div class="layout_grid_2_column">
+			<div>
+				<GetStarted />
+			</div>
+			<div>
+				<h2>Why Lapikit ?</h2>
+				<p class="paragraphe-ws">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi culpa odit, quisquam
+					reprehenderit sunt officiis necessitatibus! Aliquid quod odit esse. Perferendis repellat
+					reiciendis molestias est! Eveniet sint quaerat consequatur facere?
+				</p>
+
+				<ul>
+					{#each validArg as argument (argument)}
+						<li>
+							<kit:icon color="success"><BadgeCheck /></kit:icon>
+							{@html argument}
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
 		<div class="plan_embed">
 			<div class="table_plan_head">

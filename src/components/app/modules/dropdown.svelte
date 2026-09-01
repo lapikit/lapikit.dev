@@ -8,8 +8,6 @@
 </script>
 
 <div>
-	<p>State*</p>
-
 	<kit:dropdown closeOnClick>
 		{#snippet activator({ open, toggle }: ModelDropdownProps)}
 			<kit:btn

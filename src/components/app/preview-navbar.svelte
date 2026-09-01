@@ -30,7 +30,7 @@
 	let openDrawer: boolean = $state(false);
 </script>
 
-<kit:appbar id="appbar-lapikit" rounded="lg" density="compact" elevation="4">
+<kit:appbar id="appbar-lapikit" rounded="lg" elevation="4">
 	<a href={resolve('/')}>
 		<enhanced:img src={LogoLapikit} alt="Lapikit logo" class="lapikit-logo" />
 		<span class="lapikit-name">Lapikit</span>
@@ -72,7 +72,7 @@
 				</kit:icon>
 			{/snippet}
 
-			50.0k
+			<span class="counter">50.0k</span>
 		</kit:btn>
 
 		<SearchV2Action class="hidden_action_appbar" onlyBtn />
@@ -122,13 +122,18 @@
 	}
 
 	:global(#appbar-lapikit) {
-		max-width: calc(100% - 1rem);
-		margin: 1rem auto 0;
+		--p: 12px;
+		--ft: 1.325rem;
+		--fc: 14px;
+		max-width: calc(100% - calc(var(--p) * 2));
+		margin: var(--p) auto 0;
 		border-radius: 8px;
 		overflow: visible;
 		z-index: 2000;
 		position: sticky;
 		top: 1rem;
+		height: var(--h);
+		font-size: var(--f);
 	}
 
 	.lapikit-logo {
@@ -139,10 +144,19 @@
 
 	.lapikit-name {
 		font-weight: 700;
-		font-size: 1.325rem;
+		font-size: var(--ft);
 		margin-left: 60px;
 	}
 
+	.counter {
+		font-size: var(--fc);
+	}
+
+	@media (max-width: 350px) {
+		.counter {
+			display: none !important;
+		}
+	}
 	@media (max-width: 600px) {
 		:global(.hidden-mobile) {
 			display: none !important;
@@ -152,6 +166,14 @@
 	@media (min-width: 600px) {
 		:global(.hidden-desktop) {
 			display: none !important;
+		}
+
+		:global(#appbar-lapikit) {
+			--p: 12px;
+			--f: 1.125rem;
+			--ft: 1.725rem;
+			--fc: 1.125rem;
+			--h: 68px;
 		}
 	}
 </style>

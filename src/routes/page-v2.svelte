@@ -19,7 +19,7 @@
 
 <Discover />
 
-<LapikitComponents />
+<!-- <LapikitComponents /> -->
 
 <TablePackage />
 
