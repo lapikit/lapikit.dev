@@ -91,12 +91,16 @@
 <style>
 	#bento-counter {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(1, 1fr);
 		grid-auto-rows: minmax(180px, auto);
 		gap: 1rem;
 		grid-template-areas:
-			'integrations components hooks     opensource'
-			'customize    components lowdeps   lowdeps';
+			'integrations'
+			'components  '
+			'customize   '
+			'hooks       '
+			'opensource  '
+			'lowdeps     ';
 		max-width: 1538px;
 		margin: -100px auto 0;
 		padding-left: 24px;
@@ -145,5 +149,41 @@
 	}
 	#bento-counter > :global(.card-lowdeps) {
 		grid-area: lowdeps;
+	}
+
+	@media (min-width: 500px) {
+		#bento-counter {
+			grid-template-columns: repeat(2, 1fr);
+			grid-auto-rows: minmax(180px, auto);
+			gap: 1rem;
+			grid-template-areas:
+				'integrations customize '
+				'components   components'
+				'opensource   hooks     '
+				'lowdeps      lowdeps   ';
+		}
+	}
+
+	@media (min-width: 730px) {
+		#bento-counter {
+			grid-template-columns: repeat(3, 1fr);
+			grid-auto-rows: minmax(180px, auto);
+			gap: 1rem;
+			grid-template-areas:
+				'integrations customize   hooks'
+				'components   components  components'
+				'opensource      lowdeps     lowdeps';
+		}
+	}
+
+	@media (min-width: 1024px) {
+		#bento-counter {
+			grid-template-columns: repeat(4, 1fr);
+			grid-auto-rows: minmax(180px, auto);
+			gap: 1rem;
+			grid-template-areas:
+				'integrations components hooks     opensource'
+				'customize    components lowdeps   lowdeps';
+		}
 	}
 </style>

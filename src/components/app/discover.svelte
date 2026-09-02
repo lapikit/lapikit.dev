@@ -19,9 +19,9 @@
 	<div class="grid_discover_components">
 		<kit:card id="card-span-7" background="surface-2">
 			<kit:card-container>
-				<Btn />
+				<Toolbar />
 			</kit:card-container>
-			<Actions title="btn" path="/" />
+			<Actions title="toolbar" path="/" />
 		</kit:card>
 		<kit:card id="card-span-5" background="surface-2">
 			<kit:card-container>
@@ -37,9 +37,9 @@
 		</kit:card>
 		<kit:card id="card-span-4" background="surface-2">
 			<kit:card-container>
-				<Toolbar />
+				<Btn />
 			</kit:card-container>
-			<Actions title="toolbar" path="/" />
+			<Actions title="btn" path="/" />
 		</kit:card>
 	</div>
 </section>

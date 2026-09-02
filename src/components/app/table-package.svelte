@@ -6,6 +6,7 @@
 	import type { ModelDropdownProps } from 'lapikit/components';
 	import TablePackageRepl from './table-package-repl.svelte';
 	import GetStarted from './get-started.svelte';
+	import Functionalities from './functionalities.svelte';
 
 	// states
 	let onlyDisplay = $state(1);
@@ -119,22 +120,26 @@
 				<GetStarted />
 			</div>
 			<div>
-				<h2>Why Lapikit ?</h2>
+				<h2>Get started in seconds</h2>
 				<p class="paragraphe-ws">
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi culpa odit, quisquam
-					reprehenderit sunt officiis necessitatibus! Aliquid quod odit esse. Perferendis repellat
-					reiciendis molestias est! Eveniet sint quaerat consequatur facere?
+					reprehenderit sunt officiis necessitatibus!
 				</p>
 
-				<ul>
-					{#each validArg as argument (argument)}
-						<li>
-							<kit:icon color="success"><BadgeCheck /></kit:icon>
-							{@html argument}
-						</li>
-					{/each}
-				</ul>
+				<kit:btn>Installation guide</kit:btn>
+
+				<p>Works with Vite</p>
 			</div>
+		</div>
+		<div>
+			<div>
+				<h2>Discover what functionalities are available for your application</h2>
+				<p>
+					Lapikit is a component library with a variety of features to help you create beautiful and
+					functional web applications. Here are some of the features you can make use of:
+				</p>
+			</div>
+			<Functionalities />
 		</div>
 		<div class="plan_embed">
 			<div class="table_plan_head">
@@ -315,9 +320,19 @@
 			}
 		}
 	}
+
 	.plan_embed {
 		$border-color-section: var(--kit-color-fill);
 		$border-color-lapikit: var(--kit-color-accent);
+		--table_plan_head-template-row: 80px;
+		--table_plan_head_content-template-row: 56px auto;
+		--plan_embed_div-template-columns: 1.5fr minmax(80px, 80px) minmax(80px, 80px);
+		--table_plan-template-columns: 2fr minmax(80px, 80px) minmax(80px, 80px);
+		--table_plan-div-padding: 10px;
+		--table_plan_section-div-padding: 10px;
+		--table_plan_subhead-div-padding: 10px;
+		--logo-size: 30px;
+		--font-size: 12px;
 
 		width: 100%;
 		position: relative;
@@ -326,7 +341,7 @@
 			display: grid;
 			column-gap: 4px;
 			row-gap: 4px;
-			grid-template-columns: 1.5fr minmax(118px, 118px) minmax(118px, 118px);
+			grid-template-columns: var(--plan_embed_div-template-columns);
 
 			&.table_plan_head > div:nth-child(2),
 			&.table_plan_subhead > div:nth-child(2),
@@ -345,7 +360,7 @@
 			}
 
 			&.table_plan_head {
-				grid-template-rows: 125px;
+				grid-template-rows: var(--table_plan_head-template-row);
 				> div:not(:nth-child(1)) {
 					text-align: center;
 					display: flex;
@@ -364,15 +379,16 @@
 						width: fit-content;
 						margin: 0 auto;
 						display: grid;
-						grid-template-rows: 80px auto;
+						grid-template-rows: var(--table_plan_head_content-template-row);
 						align-items: center;
 
 						p {
 							font-weight: 800;
+							font-size: var(--font-size);
 						}
 
 						img {
-							width: 54px;
+							width: var(--logo-size);
 							margin: 0 auto;
 						}
 					}
@@ -381,14 +397,15 @@
 
 			&.table_plan {
 				column-gap: 4px;
-				grid-template-columns: 2fr minmax(118px, 118px) minmax(118px, 118px);
+				grid-template-columns: var(--table_plan-template-columns);
+				font-size: var(--font-size);
 			}
 			&.table_plan > div {
-				padding-top: 20px;
-				padding-bottom: 20px;
+				padding-top: var(--table_plan-div-padding);
+				padding-bottom: var(--table_plan-div-padding);
 
 				&:nth-child(1) {
-					padding-left: 20px;
+					padding-left: var(--table_plan-div-padding);
 				}
 				&:not(:nth-child(1)) {
 					display: flex;
@@ -411,11 +428,11 @@
 					font-size: var(--kit-font-xl);
 					font-weight: 800;
 					line-height: 1;
-					padding-top: 20px;
-					padding-bottom: 20px;
+					padding-top: var(--table_plan_subhead-div-padding);
+					padding-bottom: var(--table_plan_subhead-div-padding);
 
 					&:nth-child(1) {
-						padding-left: 20px;
+						padding-left: var(--table_plan_subhead-div-padding);
 					}
 
 					&:not(:nth-child(1)) {
@@ -437,9 +454,9 @@
 				border-radius: 12px 0 0 12px;
 
 				> div:nth-child(1) {
-					padding-left: 20px;
-					padding-top: 20px;
-					padding-bottom: 20px;
+					padding-left: var(--table_plan_section-div-padding);
+					padding-top: var(--table_plan_section-div-padding);
+					padding-bottom: var(--table_plan_section-div-padding);
 
 					p {
 						font-size: var(--kit-font-xl);
@@ -503,6 +520,20 @@
 					display: none;
 				}
 			}
+		}
+	}
+
+	@media (min-width: 500px) {
+		.plan_embed {
+			--table_plan_head-template-row: 125px !important;
+			--table_plan_head_content-template-row: 80px auto !important;
+			--plan_embed_div-template-columns: 1.5fr minmax(118px, 118px) minmax(118px, 118px) !important;
+			--table_plan-template-columns: 2fr minmax(118px, 118px) minmax(118px, 118px) !important;
+			--table_plan-div-padding: 20px !important;
+			--table_plan_section-div-padding: 20px !important;
+			--table_plan_subhead-div-padding: 20px !important;
+			--logo-size: 54px !important;
+			--font-size: 16px !important;
 		}
 	}
 </style>
