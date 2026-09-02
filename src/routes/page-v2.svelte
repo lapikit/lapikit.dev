@@ -9,7 +9,10 @@
 	import PreviewNavbar from '$components/app/preview-navbar.svelte';
 	import TablePackage from '$components/app/table-package.svelte';
 	import Testimonials from '$components/app/testimonials.svelte';
+	import ClickSpark from '$components/click-spark.svelte';
 </script>
+
+<ClickSpark sparkColor="hsl(220 90% 56%)" sparkCount={8} sparkRadius={20} duration={500} />
 
 <PreviewNavbar />
 

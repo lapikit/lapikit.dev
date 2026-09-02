@@ -6,6 +6,7 @@
 	import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
 	import yarnIcon from '$lib/assets/icons/yarn_color.svg?raw';
 	import bunIcon from '$lib/assets/icons/bun_color.svg?raw';
+	import PixelBlast from '$components/pixel-blast.svelte';
 
 	// states
 	let shellCommand: string = $state('npm install --save-dev lapikit');
@@ -38,6 +39,16 @@
 		}, 2000);
 	}
 </script>
+
+<div style="position:absolute; inset:0; z-index:0;">
+	<PixelBlast
+		pixelSize={6}
+		colorRGB="167,139,250"
+		threshold={0.35}
+		noiseScale={0.006}
+		evolveSpeed={0.00034}
+	/>
+</div>
 
 <section>
 	<div>
