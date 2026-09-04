@@ -1,0 +1,6 @@
+/** EFFECT **/
+.glass-background {
+	backdrop-filter: blur(15px);
+	background: rgba(255, 255, 255, 0.05) !important;
+	transition: 0.3s;
+}

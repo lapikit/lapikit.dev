@@ -25,23 +25,25 @@
 	import DrawerNav from './drawer-nav.svelte';
 	import SearchV2Action from '$components/search-v2-action.svelte';
 	import Settings from '$components/settings.svelte';
+	import { router } from '$lib';
+	import { npmState } from '$lib/stores/npm.svelte';
 
 	// assets
 	let openDrawer: boolean = $state(false);
 </script>
 
-<kit:appbar id="appbar-lapikit" rounded="lg" elevation="4">
+<kit:appbar id="appbar-lapikit" class="glass-background" rounded="lg" elevation="4">
 	<a href={resolve('/')}>
 		<enhanced:img src={LogoLapikit} alt="Lapikit logo" class="lapikit-logo" />
 		<span class="lapikit-name">Lapikit</span>
 	</a>
 
-	<DesktopNav {appNavigation} />
+	<DesktopNav data={router.app} />
 
 	<kit:spacer />
 
 	<div id="appbar-lapikit-actions">
-		<kit:dropdown closeOnClick>
+		<!-- <kit:dropdown closeOnClick>
 			{#snippet activator({ open, toggle }: ModelDropdownProps)}
 				<kit:btn
 					class="hidden_action_appbar"
@@ -63,23 +65,27 @@
 					{/snippet}
 				</kit:btn>
 			{/snippet}
-		</kit:dropdown>
+		</kit:dropdown> -->
 
-		<kit:btn density="compact" variant="text">
+		<kit:btn density="compact" variant="text" icon={!npmState.downloads}>
 			{#snippet append()}
 				<kit:icon>
 					{@html githubIcon}
 				</kit:icon>
 			{/snippet}
 
-			<span class="counter">50.0k</span>
+			{#if npmState.downloads}
+				<span class="counter">{npmState.downloads}</span>
+			{/if}
 		</kit:btn>
 
 		<SearchV2Action class="hidden_action_appbar" onlyBtn />
 
-		<kit:btn density="compact" class="hidden_action_appbar">
+		<kit:btn density="compact" class="hidden_action_appbar" variant="outline" color="accent">
 			{#snippet prepend()}
-				{@html discordIcon}
+				<kit:icon>
+					{@html discordIcon}
+				</kit:icon>
 			{/snippet}
 			Join to community
 		</kit:btn>
@@ -92,7 +98,7 @@
 	</div>
 </kit:appbar>
 
-<DrawerNav bind:open={openDrawer} side="right" />
+<DrawerNav data={router.app} bind:open={openDrawer} side="right" />
 
 <style lang="scss">
 	:global(#appbar-lapikit) {
@@ -110,13 +116,12 @@
 			}
 		}
 
-		@media (min-width: 1124px) {
-			:global(.drawer_nav_appbar) {
-				display: none !important;
-			}
-
+		@media (min-width: 900px) {
 			:global(#navigation-app) {
 				display: flex;
+			}
+			:global(.drawer_nav_appbar) {
+				display: none !important;
 			}
 		}
 	}
@@ -124,7 +129,7 @@
 	:global(#appbar-lapikit) {
 		--p: 12px;
 		--ft: 1.325rem;
-		--fc: 14px;
+		--fc: 12px;
 		max-width: calc(100% - calc(var(--p) * 2));
 		margin: var(--p) auto 0;
 		border-radius: 8px;
@@ -172,7 +177,7 @@
 			--p: 12px;
 			--f: 1.125rem;
 			--ft: 1.725rem;
-			--fc: 1.125rem;
+			--fc: 14px;
 			--h: 68px;
 		}
 	}

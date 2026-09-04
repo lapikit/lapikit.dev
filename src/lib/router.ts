@@ -1,4 +1,4 @@
-import type { NavSection } from './@types';
+import type { AppNavItem, NavSection } from './@types';
 
 import { Container, Eraser, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
 
@@ -21,6 +21,29 @@ import textfieldImage from '$lib/assets/images/components/textfield.webp';
 import toolbarImage from '$lib/assets/images/components/toolbar.webp';
 import tooltipImage from '$lib/assets/images/components/tooltip.webp';
 import applicationImage from '$lib/assets/images/components/application.webp';
+
+const appNavigation: AppNavItem[] = [
+	{
+		label: 'quick start',
+		path: '/docs/getting-started'
+	},
+	{
+		label: 'customize',
+		path: '/docs/customize'
+	},
+	{
+		label: 'components',
+		path: '/docs/components'
+	},
+	{
+		label: 'tools',
+		path: '/docs/hooks'
+	}
+];
+
+export const router = {
+	app: appNavigation
+};
 
 export const docsNavigation: NavSection[] = [
 	{

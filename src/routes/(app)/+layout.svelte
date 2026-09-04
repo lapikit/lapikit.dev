@@ -1,9 +1,9 @@
 <script lang="ts">
-	import AppBarGlobal from '$components/app-bar-global.svelte';
+	import NavbarApp from '$lib/components/navbar-app.svelte';
 
 	let { children } = $props();
 </script>
 
-<AppBarGlobal />
+<NavbarApp />
 
 {@render children()}

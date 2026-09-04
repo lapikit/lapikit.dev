@@ -1,66 +1,61 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
 	import { capitalize } from '$lib/utils';
+	import type { AppNavItem } from '$lib/@types';
 	import type { ModelDropdownHandleProps, ModelDropdownProps } from 'lapikit/components';
 
-	// import { appNavigation } from '$lib';
+	// assets
 	import { ChevronDown, ChevronUp, Ellipsis } from 'lucide-svelte';
-	import { innerWidth } from 'svelte/reactivity/window';
 
-	let { data, ...rest } = $props();
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		data: AppNavItem[];
+		overflowWidth?: number;
+	}
 
-	const btnRefWidth: number = 125;
-	const dropdownRefWidth: number = 38;
-	let navigationDisplayedItems: number = $state(data.length);
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	let innerWidthValue: number = $state(0);
+	let { data, overflowWidth = 38, class: className, ...rest }: Props = $props();
+
+	let wrapper: HTMLElement | undefined = $state();
+	let available: number = $state(0);
+	let gap: number = $state(0);
+	let itemWidths: number[] = $state([]);
+
+	const visibleCount: number = $derived.by(() => {
+		if (!available || itemWidths.length !== data.length) return data.length;
+
+		let used = 0;
+		for (let index = 0; index < data.length; index++) {
+			used += itemWidths[index] + (index > 0 ? gap : 0);
+			const reserve = index < data.length - 1 ? gap + overflowWidth : 0;
+			if (used + reserve > available) return index;
+		}
+
+		return data.length;
+	});
 
 	$effect(() => {
-		innerWidthValue = innerWidth.current ?? 0;
+		if (!wrapper) return;
+		const element = wrapper;
 
-		// states
-		let logowidth = 130;
-		let spacer = 90;
-
-		if (innerWidthValue < 500) {
-			navigationDisplayedItems = data.length;
-			return;
-		}
-
-		const element = document.getElementById('navigation-app');
-		const actionWrapper = document.getElementById('appbar-lapikit-actions');
-
-		if (element && actionWrapper) {
-			const currentElementRect = element.getBoundingClientRect();
-			const currentActionElementRect = actionWrapper.getBoundingClientRect();
-
-			// navigationDisplayedItems = Math.floor(
-			// 	(currentElementRect.width - dropdownRefWidth) / btnRefWidth
-			// );
-			console.log(
-				navigationDisplayedItems,
-				innerWidthValue,
-				currentElementRect.width,
-				dropdownRefWidth
+		const measure = () => {
+			available = element.clientWidth;
+			gap = parseFloat(getComputedStyle(element).columnGap) || 0;
+			itemWidths = [...element.querySelectorAll<HTMLElement>('[data-nav-item]')].map(
+				(item) => item.offsetWidth
 			);
-			console.log(
-				'Calcule',
-				currentElementRect.width - dropdownRefWidth,
-				currentActionElementRect.width,
-				innerWidthValue - (logowidth + currentActionElementRect.width + spacer)
-			);
+		};
 
-			navigationDisplayedItems = Math.floor(
-				(innerWidthValue -
-					(logowidth + currentActionElementRect.width + spacer + dropdownRefWidth)) /
-					btnRefWidth
-			);
-		}
+		measure();
+
+		const observer = new ResizeObserver(measure);
+		observer.observe(element);
+
+		return () => observer.disconnect();
 	});
 </script>
 
-<div id="navigation-app" {...rest}>
+<div bind:this={wrapper} class={['navbar-list', className]} {...rest}>
 	{#each data as { label, path, child }, index (label)}
-		{#if index < navigationDisplayedItems}
+		<div data-nav-item class:is-hidden={index >= visibleCount}>
 			{#if path}
 				<kit:btn density="compact" is="button" variant="text" href={path}>
 					{capitalize(label)}
@@ -94,18 +89,18 @@
 					{/snippet}
 
 					<kit:list>
-						{#each child as item, index (item.label)}
-							<kit:list-item href={item.url}>
+						{#each child as item (item.label)}
+							<kit:list-item href={item.path}>
 								{capitalize(item.label)}
 							</kit:list-item>
 						{/each}
 					</kit:list>
 				</kit:dropdown>
 			{/if}
-		{/if}
+		</div>
 	{/each}
 
-	{#if navigationDisplayedItems < data.length}
+	{#if visibleCount < data.length}
 		<kit:dropdown closeOnClick>
 			{#snippet activator({ open, toggle }: ModelDropdownProps)}
 				<kit:btn
@@ -121,13 +116,13 @@
 
 			<kit:list>
 				{#each data as { label, path, child }, index (label)}
-					{#if index >= navigationDisplayedItems}
+					{#if index >= visibleCount}
 						{#if path}
 							<kit:list-item href={path}>
 								{capitalize(label)}
 							</kit:list-item>
-						{:else}
-							{#each child as item, index (item.label)}
+						{:else if child}
+							{#each child as item (item.label)}
 								<kit:list-item href={item.path}>
 									{capitalize(item.label)}
 								</kit:list-item>
@@ -140,14 +135,17 @@
 	{/if}
 </div>
 
-<style>
-	#navigation-app {
-		width: 100%;
+<style lang="scss">
+	.navbar-list {
+		position: relative;
 		display: flex;
-	}
+		flex: 1 1 0;
+		min-width: 0;
 
-	#navigation-app :global(.kit-list-item) {
-		font-size: 18px;
-		font-weight: 300;
+		.is-hidden {
+			position: absolute;
+			visibility: hidden;
+			pointer-events: none;
+		}
 	}
 </style>

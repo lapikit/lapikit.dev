@@ -22,6 +22,7 @@
 	const app = createGlobalTheme();
 
 	import './layout.css';
+	import '$lib/assets/styles/layout.scss';
 	import SearchV2 from '$components/search-v2.svelte';
 
 	onMount(() => {

@@ -13,3 +13,14 @@ export type NavSection = {
 	icon: string | IconComponent;
 	pages: NavPage[];
 };
+
+export type AppNavChild = {
+	label: string;
+	path: string;
+};
+
+export type AppNavItem = {
+	label: string;
+	path?: string;
+	child?: AppNavChild[];
+};

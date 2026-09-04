@@ -4,29 +4,18 @@
 	import Logo from '../logo.svelte';
 	import SearchV2Action from '../search-v2-action.svelte';
 	import { useAccordion } from 'lapikit/actions';
-
-	const appNavigation = [
-		{ label: 'Label Menu Page1', url: '/' },
-		{
-			label: 'Label Menu Page2',
-			child: [
-				{ label: 'Label Menu Page2-1', url: '/' },
-				{ label: 'Label Menu Page2-2', url: '/' }
-			]
-		},
-		{ label: 'Label Menu Page3', url: '/' },
-		{ label: 'Label Menu Page4', url: '/' },
-		{ label: 'Label Menu Page5', url: '/' }
-	];
+	import { capitalize } from '$lib/utils';
 
 	let {
 		open = $bindable(false),
 		side = 'left',
-		el = $bindable(undefined as HTMLDivElement | undefined)
+		el = $bindable(undefined as HTMLDivElement | undefined),
+		data
 	}: {
 		open?: boolean;
 		side?: 'left' | 'right';
 		el?: HTMLDivElement;
+		data: any;
 	} = $props();
 
 	const accordion = useAccordion();
@@ -79,16 +68,16 @@
 	</div>
 
 	<nav class="h-[calc(100dvh-154px)] overflow-auto">
-		{#each appNavigation as { label, url, child }, index (label)}
-			{#if url}
+		{#each data as { label, path, child }, index (label)}
+			{#if path}
 				<kit:list class="mx-auto w-67.5" variant="text" nav density="compact">
 					<kit:list-item
-						href={url}
+						href={path}
 						onclick={() => (open = false)}
-						active={normalizedPath === url}
-						color={normalizedPath === url && 'accent'}
+						active={normalizedPath === path}
+						color={normalizedPath === path && 'accent'}
 					>
-						{label}
+						{capitalize(label)}
 					</kit:list-item>
 				</kit:list>
 			{:else if child}
@@ -102,12 +91,12 @@
 						<kit:list rounded="0" variant="text">
 							{#each child as page (page.label)}
 								<kit:list-item
-									href={page.url}
+									href={page.path}
 									onclick={() => (open = false)}
-									active={normalizedPath === page.url}
-									color={normalizedPath === page.url && 'accent'}
+									active={normalizedPath === page.path}
+									color={normalizedPath === page.path && 'accent'}
 								>
-									{page.label}
+									{capitalize(page.label)}
 								</kit:list-item>
 							{/each}
 						</kit:list>
