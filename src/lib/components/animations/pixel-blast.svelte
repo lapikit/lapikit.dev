@@ -13,8 +13,12 @@
 		evolveSpeed?: number;
 		/** Fondu sur les bords du canvas, en fraction de la largeur/hauteur. 0 = désactivé. */
 		edgeFade?: number;
-		/** Ondes de choc au clic / au survol. */
+		/** Impact dégradé au clic. */
 		ripple?: boolean;
+		/** Vitesse d'étalement de l'impact, en px/seconde. */
+		rippleSpeed?: number;
+		/** Opacité de l'impact en son centre, 0 → 1. À 1 le coeur devient un aplat. */
+		rippleStrength?: number;
 		class?: string;
 	}
 
@@ -26,12 +30,14 @@
 		evolveSpeed = 0.00035,
 		edgeFade = 0.3,
 		ripple = true,
+		rippleSpeed = 260,
+		rippleStrength = 0.9,
 		class: className = ''
 	}: Props = $props();
 
 	// constants
 	const MAX_RIPPLES = 10;
-	const RIPPLE_LIFE = 2.6; // secondes
+	const RIPPLE_LIFE = 1.2; // secondes
 
 	const VERTEX_SHADER = `#version 300 es
 	void main() {
@@ -53,6 +59,8 @@
 	uniform float uNoiseScale;
 	uniform float uEvolveSpeed;
 	uniform float uEdgeFade;
+	uniform float uRippleSpeed;
+	uniform float uRippleStrength;
 	uniform vec3 uRipples[${MAX_RIPPLES}];
 
 	// --- simplex noise 3D (Ashima Arts, MIT) ---------------------------------
@@ -153,20 +161,27 @@
 		float n = fbm(vec3(cellCenter * uNoiseScale, uTime * uEvolveSpeed));
 		n = n * 0.5 + 0.5;
 
-		// ondes de choc : elles perturbent le champ de bruit, pas la géométrie
+		// impact au clic : un disque dégradé qui s'étale et se dilue
+		float life = ${RIPPLE_LIFE.toFixed(1)};
+		float impact = 0.0;
 		for (int i = 0; i < ${MAX_RIPPLES}; i++) {
 			vec3 r = uRipples[i];
 			float age = (uTime - r.z) * 0.001;
-			if (r.z < 0.0 || age < 0.0 || age > ${RIPPLE_LIFE.toFixed(1)}) continue;
+			if (r.z < 0.0 || age < 0.0 || age > life) continue;
 
 			float d = distance(cellCenter, r.xy);
-			float wave = sin(d * 0.06 - age * 9.0);
-			float falloff = exp(-age * 1.7) * exp(-d * 0.0035);
-			n += wave * falloff * 0.55;
+			float radius = 30.0 + age * uRippleSpeed;                    // le disque s'étale
+			float core = 1.0 - smoothstep(radius * 0.3, radius, d);      // coeur plein, bord dégradé
+			float fade = 1.0 - smoothstep(0.4, 1.0, age / life);         // tient, puis se dilue
+			impact = max(impact, core * fade * uRippleStrength);
 		}
 
 		// remise à l'échelle par le seuil : sous le seuil, plus rien ne s'allume
 		float v = clamp((n - uThreshold) / max(1.0 - uThreshold, 0.001), 0.0, 1.0);
+
+		// l'impact tire vers le plein au lieu de s'ajouter au bruit : le dégradé
+		// reste lisible quelle que soit la valeur du bruit dessous
+		v = mix(v, 1.0, clamp(impact, 0.0, 1.0));
 
 		if (uEdgeFade > 0.0) {
 			vec2 uv = frag / uResolution;
@@ -252,6 +267,8 @@
 			noiseScale: gl.getUniformLocation(program, 'uNoiseScale'),
 			evolveSpeed: gl.getUniformLocation(program, 'uEvolveSpeed'),
 			edgeFade: gl.getUniformLocation(program, 'uEdgeFade'),
+			rippleSpeed: gl.getUniformLocation(program, 'uRippleSpeed'),
+			rippleStrength: gl.getUniformLocation(program, 'uRippleStrength'),
 			ripples: gl.getUniformLocation(program, 'uRipples')
 		};
 
@@ -279,6 +296,8 @@
 			gl.uniform1f(u.noiseScale, noiseScale / dpr);
 			gl.uniform1f(u.evolveSpeed, evolveSpeed);
 			gl.uniform1f(u.edgeFade, edgeFade);
+			gl.uniform1f(u.rippleSpeed, rippleSpeed * dpr);
+			gl.uniform1f(u.rippleStrength, rippleStrength);
 			gl.uniform3fv(u.ripples, ripples);
 
 			gl.clearColor(0, 0, 0, 0);
@@ -327,17 +346,21 @@
 		});
 		observer.observe(el);
 
-		// on ne fait pas tourner le GPU quand le hero est hors écran
+		// on ne fait pas tourner le GPU quand le hero est hors écran ou l'onglet caché
+		const sync = () => {
+			if (visible && !document.hidden) start();
+			else stop();
+		};
+
 		const intersection = new IntersectionObserver(([entry]) => {
 			visible = entry.isIntersecting;
-			visible && !document.hidden ? start() : stop();
+			sync();
 		});
 		intersection.observe(el);
 
-		const onVisibility = () => (document.hidden || !visible ? stop() : start());
-		document.addEventListener('visibilitychange', onVisibility);
+		document.addEventListener('visibilitychange', sync);
 		el.addEventListener('pointerdown', addRipple);
-		reduced.addEventListener('change', onVisibility);
+		reduced.addEventListener('change', sync);
 
 		resize();
 		start();
@@ -346,9 +369,9 @@
 			stop();
 			observer.disconnect();
 			intersection.disconnect();
-			document.removeEventListener('visibilitychange', onVisibility);
+			document.removeEventListener('visibilitychange', sync);
 			el.removeEventListener('pointerdown', addRipple);
-			reduced.removeEventListener('change', onVisibility);
+			reduced.removeEventListener('change', sync);
 			gl.deleteProgram(program);
 			gl.deleteShader(vs);
 			gl.deleteShader(fs);
