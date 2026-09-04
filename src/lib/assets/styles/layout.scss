@@ -1,6 +1,15 @@
+:root {
+	--app-container-size: 1538px;
+}
+
 /** EFFECT **/
 .glass-background {
 	backdrop-filter: blur(15px);
 	background: rgba(255, 255, 255, 0.05) !important;
 	transition: 0.3s;
+}
+
+/** UI FONT **/
+.subtitle {
+	font-weight: 900;
 }

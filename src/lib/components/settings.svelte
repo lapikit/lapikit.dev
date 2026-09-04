@@ -4,7 +4,7 @@
 	import { capitalize } from '$lib/utils';
 
 	//data
-	import { lang_manager, pkg_manager, themes } from '$lib/constants';
+	import { lang_manager, pkg_manager, themes, type ThemeManager } from '$lib/constants';
 	import { application, type LangManager, type PkgManager } from '$lib/stores/app.svelte';
 
 	// assets
@@ -20,6 +20,7 @@
 
 	const app = createGlobalTheme();
 
+	const themeList = Object.entries(themes) as [ThemeManager, (typeof themes)[ThemeManager]][];
 	const managers = Object.entries(pkg_manager) as [PkgManager, (typeof pkg_manager)[PkgManager]][];
 	const managersLang = Object.entries(lang_manager) as [
 		LangManager,
@@ -43,16 +44,16 @@
 
 	<kit:list density="none">
 		<kit:list-item>
-			{#each themes as option (option)}
-				{@const Icon = option?.icon}
-				<kit:btn active={option.key === app.active} onclick={() => useTheme(option.key)}>
+			{#each themeList as [key, values] (key)}
+				{@const Icon = values?.icon}
+				<kit:btn active={key === app.active} onclick={() => useTheme(key)}>
 					{#snippet prepend()}
 						<kit:icon>
 							<Icon />
 						</kit:icon>
 					{/snippet}
 
-					{capitalize(option.key)}
+					{capitalize(values.label)}
 				</kit:btn>
 			{/each}
 		</kit:list-item>
@@ -156,6 +157,8 @@
 
 <style lang="scss">
 	:global(.settings-app) {
+		width: 290px !important;
+
 		:global(.kit-separator) {
 			margin: 5px 0;
 		}

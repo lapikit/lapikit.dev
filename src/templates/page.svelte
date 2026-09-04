@@ -127,7 +127,8 @@
 				100vh - (75px + var(--lpk-page-padding-top) + var(--lpk-page-padding-bottom))
 			);
 			position: sticky;
-			top: var(--lpk-page-padding-top);
+			/* top: var(--lpk-page-padding-top); */
+			top: 112px;
 			height: fit-content;
 			width: 100%;
 		}

@@ -32,6 +32,8 @@ export const socialMediaLinks = [
 
 export const manifestPage = manifest;
 
+export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
+
 export type LinkName = keyof typeof links;
 
 export const links = {
@@ -39,6 +41,24 @@ export const links = {
 		label: 'github',
 		url: 'https://github.com/lapikit/lapikit',
 		icon: githubIcon,
+		_styles: {
+			color: 'on-error',
+			background: 'error'
+		}
+	},
+	github: {
+		label: 'github',
+		url: 'https://github.com/lapikit',
+		icon: githubIcon,
+		_styles: {
+			color: 'on-error',
+			background: 'error'
+		}
+	},
+	npm: {
+		label: 'npm',
+		url: 'https://www.npmjs.com/package/lapikit',
+		icon: npmIcon,
 		_styles: {
 			color: 'on-error',
 			background: 'error'
@@ -55,11 +75,13 @@ export const links = {
 	}
 };
 
-export const themes = [
-	{ key: 'light', label: 'light', icon: Sun },
-	{ key: 'dark', label: 'dark', icon: Moon },
-	{ key: 'system', label: 'system', icon: SunMoon }
-];
+export type ThemeManager = keyof typeof themes;
+
+export const themes = {
+	light: { label: 'light', icon: Sun },
+	dark: { label: 'dark', icon: Moon },
+	system: { label: 'system', icon: SunMoon }
+};
 
 export const pkg_manager = {
 	npm: {

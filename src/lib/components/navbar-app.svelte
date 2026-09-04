@@ -82,13 +82,12 @@
 
 <style lang="scss">
 	:global(#navbar) {
-		$font-logo-size: 1.325rem;
-		$font-counter-size: 12px;
 		$padding: 12px;
 
 		position: sticky;
 		top: 1rem;
-		max-width: calc(100% - calc($padding * 2));
+		max-width: var(--app-container-size);
+		width: calc(100% - calc($padding * 2));
 		margin: $padding auto 0;
 		overflow: visible;
 		z-index: 2000;
@@ -107,14 +106,14 @@
 
 			span {
 				font-weight: 700;
-				font-size: $font-logo-size;
+				font-size: 1.325rem;
 				margin-left: 60px;
 			}
 		}
 
 		:global(.github-dll-counter) {
 			span {
-				font-size: $font-counter-size;
+				font-size: 12px;
 			}
 		}
 
@@ -140,6 +139,18 @@
 
 		@media (min-width: 600px) {
 			height: 68px;
+
+			:global(.github-dll-counter) {
+				span {
+					font-size: 1rem;
+				}
+			}
+
+			a:first-child {
+				span {
+					font-size: 1.5rem;
+				}
+			}
 		}
 
 		@media (min-width: 780px) {

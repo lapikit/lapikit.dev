@@ -21,6 +21,7 @@ import textfieldImage from '$lib/assets/images/components/textfield.webp';
 import toolbarImage from '$lib/assets/images/components/toolbar.webp';
 import tooltipImage from '$lib/assets/images/components/tooltip.webp';
 import applicationImage from '$lib/assets/images/components/application.webp';
+import { links, urlLapikitLicense } from './constants';
 
 const appNavigation: AppNavItem[] = [
 	{
@@ -41,8 +42,72 @@ const appNavigation: AppNavItem[] = [
 	}
 ];
 
+const footerNavigation: AppNavItem[] = [
+	{
+		label: 'documentation',
+		child: [
+			{
+				label: 'environements',
+				path: '/'
+			},
+			{
+				label: 'components',
+				path: '/'
+			},
+			{
+				label: 'hooks',
+				path: '/'
+			}
+		]
+	},
+	{
+		label: 'community',
+		child: [
+			{
+				label: 'roadmap',
+				path: '/'
+			}
+		]
+	},
+	{
+		label: 'resources',
+		child: [
+			{
+				label: 'support',
+				path: '/'
+			},
+			{
+				label: links['npm'].label,
+				path: links['npm'].url
+			},
+			{
+				label: links['github'].label,
+				path: links['github'].url
+			},
+			{
+				label: 'MIT License',
+				path: urlLapikitLicense
+			}
+		]
+	},
+	{
+		label: 'policies',
+		child: [
+			{
+				label: 'terms & privacy',
+				path: '/'
+			},
+			{
+				label: 'cookie settings',
+				path: '/'
+			}
+		]
+	}
+];
+
 export const router = {
-	app: appNavigation
+	app: appNavigation,
+	footer: footerNavigation
 };
 
 export const docsNavigation: NavSection[] = [
