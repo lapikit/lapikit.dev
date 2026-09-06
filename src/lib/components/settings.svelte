@@ -59,7 +59,7 @@
 		</kit:list-item>
 	</kit:list>
 	<kit:separator />
-	<kit:list>
+	<kit:list background="surface">
 		<kit:list-item>
 			<p>Package</p>
 			<kit:dropdown closeOnClick>
@@ -115,6 +115,7 @@
 						density="compact"
 						is="button"
 						variant="text"
+						disabled
 						active={open}
 						onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
 					>

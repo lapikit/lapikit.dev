@@ -1,87 +1,78 @@
 <script lang="ts">
+	import type { ModelDropdownProps } from 'lapikit/components';
+
 	// assets
 	import { Check, OctagonAlert, Pen, X } from 'lucide-svelte';
 	import LapikitLogo from '$lib/assets/images/lapikit.webp';
-	import SvelteLogo from '$lib/assets/images/svelte.webp';
-	import type { ModelDropdownProps } from 'lapikit/components';
+	import MeltUI from '$lib/assets/images/melt-ui.webp';
+	import ShadcnSvelte from '$lib/assets/images/shadcn-svelte.webp';
+	import Skeleton from '$lib/assets/images/skeleton.webp';
+	import { nbComponents, nbHooks } from '$lib/constants';
 
 	// states
 	let onlyDisplay = $state(1);
 
 	let result = [
 		{
-			title: 'package 1',
+			title: 'Lapikit',
 			logo: LapikitLogo,
 			values: [
-				['yes', 'yes', '0 / 26', 'yes', 'no'],
-				['partial', 'partial'],
-				['yes', 'yes', 18, 'yes', 'no', 59, 'yes', 'partial', 'yes', 'no', 'partial']
+				[nbComponents, 'yes', nbHooks],
+				['yes', 'yes', 'yes', 'yes', 'yes', '27 / 1', 'yes'],
+				['yes', 'yes', 'Bi-Monthly']
 			]
 		},
 		{
-			title: 'package 2',
-			logo: SvelteLogo,
+			title: 'Skeleton',
+			logo: Skeleton,
 			values: [
-				['yes', 'yes', '13 / 43', 'yes', 'no'],
-				['partial', 'partial'],
-				['yes', 'yes', 'no', 18, 32, 'yes', 34, 'partial', 'yes', 'no', 'partial']
+				[42, 'yes', 'no'],
+				['yes', 'no', 'yes', 'partial', 'yes', '0 / 32', 'yes'],
+				['yes', 'yes', 'Bi-Monthly']
 			]
 		},
 		{
-			title: 'package 3',
-			logo: SvelteLogo,
+			title: 'Shadcn Svelte',
+			logo: ShadcnSvelte,
 			values: [
-				['no', 'no', '34 / 43', 'yes', 'no'],
-				['partial', 'partial'],
-				['yes', 'no', 'no', 18, 22, 'yes', 'nop', 'yes', 'yes', 'no', 'yes']
+				[62, 'yes', 2],
+				['yes', 'no', 'yes', 'no', 'yes', '25 / 4', 'yes'],
+				['yes', 'yes', 'Bi-Monthly']
 			]
 		},
 		{
-			title: 'package 4',
-			logo: SvelteLogo,
+			title: 'Melt UI',
+			logo: MeltUI,
 			values: [
-				['no', 'no', '12 / 9', 'no', 'no'],
-				['yes', 'yes'],
-				['yes', 'partial', 'no', 9, 23, 'yes', 12, 'partial', 'yes', 'no', 'partial']
+				[18, 'yes', 'no'],
+				['partial', 'no', 'yes', 'partial', 'yes', '10 / 5', 'yes'],
+				['yes', 'yes', 'Monthly']
 			]
 		}
 	];
 
 	let content = [
 		{
-			text: 'Section table',
+			text: 'Features and possibility',
 			subtext: "<a href='/'>test with sepcifique link for test UI</a>",
+			subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
+		},
+		{
+			text: 'Environnements',
 			subject: [
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit'
+				'Runes support',
+				'No Tailwind dependances',
+				'Tailwind support',
+				'UnoCss support',
+				'CSS standard support',
+				'Dependencies dev/build',
+				'Eslint support'
 			]
 		},
 		{
-			text: 'Section table 2',
-			subject: [
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit'
-			]
-		},
-		{
-			text: 'Section table 3',
+			text: 'Integration and support',
 			subtext: "<a href='/'>test with sepcifique link for test UI</a>",
-			subject: [
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit',
-				'Discover the power to develop with lapikit'
-			]
+			subject: ['CLI integrated', 'Full open and free', 'Release cadence']
 		}
 	];
 </script>
@@ -273,6 +264,7 @@
 						img {
 							width: var(--logo-size);
 							margin: 0 auto;
+							border-radius: 8px;
 						}
 					}
 				}

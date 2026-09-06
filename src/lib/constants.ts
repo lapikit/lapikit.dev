@@ -12,6 +12,7 @@ import xIcon from '$lib/assets/icons/x.svg?raw';
 import discordIcon from '$lib/assets/icons/discord.svg?raw';
 import buymyecoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
 import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
+import npmIconMono from '$lib/assets/icons/npm.svg?raw';
 import yarnIcon from '$lib/assets/icons/yarn_color.svg?raw';
 import bunIcon from '$lib/assets/icons/bun_color.svg?raw';
 import typescriptIcon from '$lib/assets/icons/typescript_color.svg?raw';
@@ -47,8 +48,8 @@ export const links = {
 		url: 'https://github.com/lapikit/lapikit',
 		icon: githubIcon,
 		_styles: {
-			color: 'on-error',
-			background: 'error'
+			color: 'on-github',
+			background: 'github'
 		}
 	},
 	github: {
@@ -56,17 +57,17 @@ export const links = {
 		url: 'https://github.com/lapikit',
 		icon: githubIcon,
 		_styles: {
-			color: 'on-error',
-			background: 'error'
+			color: 'on-github',
+			background: 'github'
 		}
 	},
 	npm: {
 		label: 'npm',
 		url: 'https://www.npmjs.com/package/lapikit',
-		icon: npmIcon,
+		icon: npmIconMono,
 		_styles: {
-			color: 'on-error',
-			background: 'error'
+			color: 'on-npm',
+			background: 'npm'
 		}
 	},
 	discord: {
@@ -74,8 +75,8 @@ export const links = {
 		url: 'https://discord.gg/c8vp54EnGD',
 		icon: discordIcon,
 		_styles: {
-			color: 'on-error',
-			background: 'error'
+			color: 'on-discord',
+			background: 'discord'
 		}
 	},
 	buymeacoffee: {
@@ -83,8 +84,8 @@ export const links = {
 		url: 'https://buymeacoffee.com/nycolaide',
 		icon: buymyecoffeeIcon,
 		_styles: {
-			color: 'on-error',
-			background: 'error'
+			color: 'on-buymeacoffee',
+			background: 'buymeacoffee'
 		}
 	}
 };

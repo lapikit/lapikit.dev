@@ -24,7 +24,9 @@
 					</kit:card-content>
 				</kit:card-container>
 				<kit:card-actions>
-					<kit:btn href="/docs">Enter in the DDev docs</kit:btn>
+					<kit:btn href="/docs" color="on-accent" background="accent">
+						Enter in the DDev docs
+					</kit:btn>
 				</kit:card-actions>
 			</kit:card>
 			<kit:card>
@@ -36,7 +38,14 @@
 					</kit:card-content>
 				</kit:card-container>
 				<kit:card-actions>
-					<kit:btn href={links['discord'].url} target="_blank">Join the server</kit:btn>
+					<kit:btn
+						href={links['discord'].url}
+						target="_blank"
+						color={links['discord']._styles.color}
+						background={links['discord']._styles.background}
+					>
+						Join the server
+					</kit:btn>
 				</kit:card-actions>
 			</kit:card>
 			<kit:card>

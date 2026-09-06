@@ -1,14 +1,24 @@
 :root {
 	--app-container-size: 1538px;
 
-	--kit-color-svelte: hsl(14.59deg 100% 50.02%);
-
 	// bento
 	--kit-color-bento-integration: #e46b39;
 	--kit-color-bento-hooks: #b2adeb;
 	--kit-color-bento-opensource: #d7dadf;
 	--kit-color-bento-on-integration: white;
 	--kit-color-bento-on-opensource: black;
+
+	// socials
+	--kit-color-svelte: hsl(14.59deg 100% 50.02%);
+	--kit-color-on-svelte: hsl(0deg 0% 96.86%);
+	--kit-color-discord: hsl(234.21deg 73.6% 61.37%);
+	--kit-color-on-discord: hsl(0deg 0% 96.86%);
+	--kit-color-buymeacoffee: hsl(51.98deg 100% 48.43%);
+	--kit-color-on-buymeacoffee: hsl(242.73deg 50% 8.63%);
+	--kit-color-npm: hsl(357.69deg 71.56% 42.75%);
+	--kit-color-on-npm: hsl(0deg 0% 96.86%);
+	--kit-color-github: hsl(0deg 0% 0%);
+	--kit-color-on-github: hsl(0deg 0% 96.86%);
 }
 
 /** EFFECT **/

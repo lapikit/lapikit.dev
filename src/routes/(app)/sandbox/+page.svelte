@@ -84,7 +84,13 @@
 
 <Features />
 
-<Table />
+<section>
+	<h2>Why choose Lapikit over other Svelte component libraries?</h2>
+
+	<p>Here's how Lapikit compares to other popular Svelte libraries:</p>
+
+	<Table />
+</section>
 
 <Testimonials />
 
@@ -100,7 +106,15 @@
 		</p>
 
 		<div>
-			<kit:btn href="/docs/getting-started">Get started with Lapikit</kit:btn>
+			<kit:btn
+				href="/docs/getting-started"
+				color="on-accent"
+				background="accent"
+				rounded="lg"
+				size="lg"
+			>
+				Get started with Lapikit
+			</kit:btn>
 		</div>
 	</div>
 </section>
