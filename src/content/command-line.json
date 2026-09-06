@@ -1,0 +1,11 @@
+{
+	"npm": {
+		"install-lapikit": "npm install -D lapikit"
+	},
+	"yarn": {
+		"install-lapikit": "yarn add -D lapikit"
+	},
+	"bun": {
+		"install-lapikit": "bund add -D lapikit"
+	}
+}

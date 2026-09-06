@@ -3,6 +3,7 @@ import type { DocSummary } from './@types';
 
 // datas
 import manifest from '../manifest.json';
+import commandLine from '../content/command-line.json';
 
 // icons
 import { Moon, Sun, SunMoon } from 'lucide-svelte';
@@ -31,6 +32,8 @@ export const socialMediaLinks = [
 ];
 
 export const manifestPage = manifest;
+export const command = commandLine;
+export const nbComponents = 19;
 
 export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
 
