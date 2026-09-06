@@ -10,7 +10,7 @@
 	import { command, nbComponents } from '$lib/constants';
 
 	// assets
-	import PixelBlast from '$lib/components/animations/pixel-blast.svelte';
+	// import PixelBlast from '$lib/components/animations/pixel-blast.svelte';
 	import { ArrowRight, Check, Copy } from 'lucide-svelte';
 
 	// states
@@ -26,7 +26,7 @@
 </script>
 
 <section>
-	<div>
+	<!-- <div>
 		<PixelBlast
 			pixelSize={2}
 			colorRGB="161,192,255"
@@ -36,7 +36,7 @@
 			ripple={false}
 			edgeFade={0}
 		/>
-	</div>
+	</div> -->
 
 	<div>
 		<div>
