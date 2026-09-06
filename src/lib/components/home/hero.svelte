@@ -125,15 +125,15 @@
 			inset: 0;
 			z-index: 0;
 			top: 0;
-			mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-			-webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+			// mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+			// -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
 		}
 
 		> div:last-child {
 			display: grid;
 			grid-template-columns: 1fr;
 			text-align: center;
-			padding-top: 180px;
+			padding-top: 100px;
 			padding-right: 40px;
 			padding-left: 40px;
 			max-width: var(--app-container-size);
@@ -177,6 +177,7 @@
 			}
 
 			@media (min-width: 1024px) {
+				padding-top: 180px;
 				grid-template-columns: minmax(510px, 1fr) auto;
 				text-align: start;
 
