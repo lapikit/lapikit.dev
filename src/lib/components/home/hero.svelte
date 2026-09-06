@@ -164,7 +164,7 @@
 					font-size: 16px;
 					font-weight: 600;
 					line-height: 1.6;
-					color: var(--kit-color-text-muted);
+					color: var(--kit-color-text);
 					margin: 0;
 					max-width: 42ch;
 				}
