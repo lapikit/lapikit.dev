@@ -33,7 +33,7 @@
 			threshold={0.2}
 			noiseScale={0.005}
 			evolveSpeed={0.00002}
-			ripple={true}
+			ripple={false}
 			edgeFade={0}
 		/>
 	</div>
