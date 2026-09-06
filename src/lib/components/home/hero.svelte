@@ -103,6 +103,7 @@
 
 			<div class="indicator-lapikit">
 				<p>{nbComponents} components</p>
+				<p>•</p>
 				<p>Free forever</p>
 			</div>
 		</div>
@@ -117,7 +118,7 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
-		min-height: 90vh;
+		min-height: 70vh;
 		top: -80px;
 
 		> div:first-child {
@@ -139,7 +140,6 @@
 			max-width: var(--app-container-size);
 			margin: 0 auto;
 			width: 100%;
-			gap: 16px;
 
 			> div:first-child {
 				display: flex;
@@ -204,6 +204,10 @@
 
 		.svelte {
 			color: var(--kit-color-svelte);
+		}
+
+		@media (min-width: 1024px) {
+			min-height: 90vh;
 		}
 	}
 </style>

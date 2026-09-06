@@ -10,6 +10,7 @@ import { Moon, Sun, SunMoon } from 'lucide-svelte';
 import githubIcon from '$lib/assets/icons/github.svg?raw';
 import xIcon from '$lib/assets/icons/x.svg?raw';
 import discordIcon from '$lib/assets/icons/discord.svg?raw';
+import buymyecoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
 import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
 import yarnIcon from '$lib/assets/icons/yarn_color.svg?raw';
 import bunIcon from '$lib/assets/icons/bun_color.svg?raw';
@@ -34,6 +35,7 @@ export const socialMediaLinks = [
 export const manifestPage = manifest;
 export const command = commandLine;
 export const nbComponents = 19;
+export const nbHooks = 3;
 
 export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
 
@@ -71,6 +73,15 @@ export const links = {
 		label: 'discord',
 		url: 'https://discord.gg/c8vp54EnGD',
 		icon: discordIcon,
+		_styles: {
+			color: 'on-error',
+			background: 'error'
+		}
+	},
+	buymeacoffee: {
+		label: 'buymeacoffee',
+		url: 'https://buymeacoffee.com/nycolaide',
+		icon: buymyecoffeeIcon,
 		_styles: {
 			color: 'on-error',
 			background: 'error'

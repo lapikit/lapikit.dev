@@ -47,16 +47,20 @@ const footerNavigation: AppNavItem[] = [
 		label: 'documentation',
 		child: [
 			{
-				label: 'environements',
-				path: '/'
+				label: 'quick start',
+				path: '/docs/getting-started'
+			},
+			{
+				label: 'customize',
+				path: '/docs/customize'
 			},
 			{
 				label: 'components',
-				path: '/'
+				path: '/docs/components'
 			},
 			{
-				label: 'hooks',
-				path: '/'
+				label: 'stores and hooks',
+				path: '/docs/hooks'
 			}
 		]
 	},
@@ -65,7 +69,7 @@ const footerNavigation: AppNavItem[] = [
 		child: [
 			{
 				label: 'roadmap',
-				path: '/'
+				path: '/docs/roadmap'
 			}
 		]
 	},
@@ -74,7 +78,11 @@ const footerNavigation: AppNavItem[] = [
 		child: [
 			{
 				label: 'support',
-				path: '/'
+				path: links['discord'].url
+			},
+			{
+				label: 'changelog',
+				path: '/docs/changelog'
 			},
 			{
 				label: links['npm'].label,
@@ -95,11 +103,11 @@ const footerNavigation: AppNavItem[] = [
 		child: [
 			{
 				label: 'terms & privacy',
-				path: '/'
+				path: '/terms'
 			},
 			{
 				label: 'cookie settings',
-				path: '/'
+				path: 'cookie-settings'
 			}
 		]
 	}

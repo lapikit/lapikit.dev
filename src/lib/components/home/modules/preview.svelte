@@ -176,6 +176,7 @@
 		$spacing-indent: 20px;
 		background-color: color-mix(in srgb, var(--kit-color-surface-2) 5%, transparent) !important;
 		backdrop-filter: blur(30px);
+		border: 1px solid var(--kit-color-border);
 
 		:global(.kit-card-container) {
 			:global(> .kit-card-content:first-child) {

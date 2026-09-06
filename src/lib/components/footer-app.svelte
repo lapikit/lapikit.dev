@@ -1,19 +1,20 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { useAccordion } from 'lapikit/actions';
+	import { capitalize } from '$lib/utils';
 
 	// modules
 	import SocialLink from './modules/social-link.svelte';
 	import SelectTheme from './modules/select-theme.svelte';
 
 	// data
+	import { router } from '$lib/router';
 	import { urlLapikitLicense, type LinkName } from '$lib/constants';
+	import { openConsentPreferences } from '$lib/stores/consent.svelte';
 
 	// assets
 	import LapikitFooter from '$lib/assets/images/lapikit-footer.svg';
-	import { router } from '$lib/router';
 	import { ExternalLink } from 'lucide-svelte';
-	import { capitalize } from '$lib/utils';
 
 	const accordion = useAccordion();
 
@@ -55,6 +56,10 @@
 												<ExternalLink />
 											</kit:icon>
 										</kit:list-item>
+									{:else if path === 'cookie-settings'}
+										<kit:list-item onclick={openConsentPreferences}>
+											{capitalize(label)}
+										</kit:list-item>
 									{:else}
 										<kit:list-item href={path}>{capitalize(label)}</kit:list-item>
 									{/if}
@@ -85,6 +90,8 @@
 									<ExternalLink />
 								</kit:icon>
 							</kit:list-item>
+						{:else if path === 'cookie-settings'}
+							<kit:list-item onclick={openConsentPreferences}>{capitalize(label)}</kit:list-item>
 						{:else}
 							<kit:list-item href={path}>{capitalize(label)}</kit:list-item>
 						{/if}

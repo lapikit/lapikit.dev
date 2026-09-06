@@ -16,7 +16,7 @@
 
 	// states
 	const currentPath = $derived(page.url.pathname.replace(/\/$/, ''));
-	const socials: LinkName[] = ['discord'];
+	const socials: LinkName[] = ['discord', 'github', 'npm'];
 
 	const close = () => (open = false);
 
@@ -157,6 +157,7 @@
 			padding: 16px 20px 0;
 			display: flex;
 			justify-content: center;
+			gap: 4px;
 		}
 
 		nav {

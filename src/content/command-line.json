@@ -1,11 +1,14 @@
 {
 	"npm": {
-		"install-lapikit": "npm install -D lapikit"
+		"install-lapikit": "npm install -D lapikit",
+		"launch-cli": "npx lapikit"
 	},
 	"yarn": {
-		"install-lapikit": "yarn add -D lapikit"
+		"install-lapikit": "yarn add -D lapikit",
+		"launch-cli": "npx lapikit"
 	},
 	"bun": {
-		"install-lapikit": "bund add -D lapikit"
+		"install-lapikit": "bun add -D lapikit",
+		"launch-cli": "npx lapikit"
 	}
 }
