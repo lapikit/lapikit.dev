@@ -175,8 +175,19 @@
 	:global(#hero-component-preview) {
 		$spacing-indent: 20px;
 		background-color: color-mix(in srgb, var(--kit-color-surface-2) 5%, transparent) !important;
-		backdrop-filter: blur(30px);
 		border: 1px solid var(--kit-color-border);
+		position: relative;
+		isolation: isolate;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			border-radius: inherit;
+			backdrop-filter: blur(30px);
+			pointer-events: none;
+		}
 
 		:global(.kit-card-container) {
 			:global(> .kit-card-content:first-child) {
