@@ -5,11 +5,12 @@
 
 	// modules
 	import Hero from '$lib/components/home/hero.svelte';
+	import VsCodeUi from '$lib/components/home/modules/ide-code/vs-code-ui.svelte';
 	import ReplComponentList from '$lib/components/home/repl-component-list.svelte';
 	import ReplShortInstall from '$lib/components/home/repl-short-install.svelte';
 	import Table from '$lib/components/home/table.svelte';
 	import Testimonials from '$lib/components/home/testimonials.svelte';
-	import VsCode from '$lib/components/home/vs-code.svelte';
+	// import VsCode from '$lib/components/home/vs-code.svelte';
 	import { ArrowRight, BadgeCheck } from 'lucide-svelte';
 
 	// states
@@ -25,7 +26,9 @@
 
 <BentoCounter />
 
-<VsCode />
+<!-- <VsCode /> -->
+
+<VsCodeUi />
 
 <section>
 	<div>

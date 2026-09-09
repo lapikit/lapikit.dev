@@ -7,7 +7,7 @@
 </script>
 
 <div id="preview-vscode" use:themePreviewVscode.action={{ name: 'light' }}>
-	<kit:appbar is="div" density="compact">
+	<kit:appbar is="div" density="compact" elevation="2">
 		<img src={Logo} alt="alt logo lapikit" />
 		<kit:spacer />
 		<kit:btn variant="text" size="sm">Features</kit:btn>
@@ -50,8 +50,8 @@
 			<p>Build your interface with low code</p>
 
 			<div>
-				<kit:btn>Get started</kit:btn>
-				<kit:btn variant="outline">Learn more</kit:btn>
+				<kit:btn rounded="lg" background="warning" color="on-warning"> Get started </kit:btn>
+				<kit:btn variant="outline" rounded="lg" color="warning"> Learn more </kit:btn>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,117 @@
+$ref-indent: 8px;
+$let: #ae5651;
+$letName: #b8bfc7;
+$state: #b893df;
+$parentheseState: #c567c2;
+$accolade: #f0cb05;
+$import: #be81b9;
+$path: #9ac9ef;
+$param: #97d5f7;
+$var: #75b9f7;
+$indicator: #e16d66;
+$typeSnippet: #8e73ad;
+$dom: #74d37c;
+$char: #7d7d7d;
+$id: #d3b67b;
+$cssValue: #c58b73;
+$cssSize: #a6bc99;
+$cssVar: #d7d7a5;
+
+.vs-indent-1 {
+	padding-left: $ref-indent * 1;
+}
+
+.vs-indent-2 {
+	padding-left: $ref-indent * 2.5;
+}
+
+.vs-indent-3 {
+	padding-left: $ref-indent * 4.5;
+}
+
+.vs-indent-4 {
+	padding-left: $ref-indent * 6.5;
+}
+
+.vs-indent-5 {
+	padding-left: $ref-indent * 8.5;
+}
+
+.vs-indent-6 {
+	padding-left: $ref-indent * 10.5;
+}
+
+.vs-ide {
+	color: var(--kit-color-font-vs-tertiary);
+	font-size: 14px;
+	font-weight: 300;
+
+	p {
+		span {
+			margin-left: -1px;
+			margin-right: -1px;
+		}
+	}
+
+	.char {
+		color: $char;
+	}
+	.param,
+	.css-param {
+		color: $param;
+	}
+	.dom {
+		color: $dom;
+	}
+	.import {
+		color: $import;
+	}
+	.accolade {
+		color: $accolade;
+	}
+	.path {
+		color: $path;
+	}
+	.const,
+	.let {
+		color: $let;
+	}
+	.const-name,
+	.let-name {
+		color: $letName;
+	}
+	.var-name {
+		color: $var;
+	}
+	.state,
+	.function {
+		color: $state;
+	}
+	.function-par {
+		color: $parentheseState;
+	}
+
+	.snippet {
+		color: $typeSnippet;
+	}
+	.instruction {
+		color: $indicator;
+	}
+	.css-id,
+	.css-dom,
+	.css-class {
+		color: #d3b67b;
+	}
+	.css-var {
+		color: #d7d7a5;
+	}
+	.css-value {
+		color: #c58b73;
+	}
+	.css-value-num {
+		color: #a6bc99;
+	}
+	.return-line {
+		margin-bottom: 10px;
+	}
+}

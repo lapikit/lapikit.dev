@@ -1,6 +1,5 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 1,
   "workspaces": {
     "": {
       "name": "lapikit.dev",
@@ -13,7 +12,7 @@
       "devDependencies": {
         "@eslint/compat": "^2.1.0",
         "@eslint/js": "^9.39.4",
-        "@lapikit/repl": "^0.0.0-insiders.417ad1f",
+        "@lapikit/repl": "^0.0.6",
         "@playwright/test": "^1.61.1",
         "@sveltejs/adapter-node": "^5.5.7",
         "@sveltejs/enhanced-img": "^0.10.4",
@@ -193,7 +192,7 @@
 
     "@kurkle/color": ["@kurkle/color@0.3.4", "", {}, "sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w=="],
 
-    "@lapikit/repl": ["@lapikit/repl@0.0.0-insiders.417ad1f", "", { "dependencies": { "@lucide/svelte": "^0.562.0", "shiki": "^3.20.0" }, "peerDependencies": { "@sveltejs/kit": "^2.0.0", "lapikit": "^0.6.7", "svelte": "^5.0.0" } }, "sha512-2pqjnEMjs7yFrwvqUaT1ZhKm6b2k/rrkIGDDbzfkvtfE7ebx/MqBc3bcFX6cOoxkRIPVzCP+KgmRKyEEgXvLZQ=="],
+    "@lapikit/repl": ["@lapikit/repl@0.0.6", "", { "dependencies": { "@lucide/svelte": "^0.562.0", "shiki": "^3.20.0" }, "peerDependencies": { "@sveltejs/kit": "^2.0.0", "svelte": "^5.0.0" } }, "sha512-0wOiBBJVuyi7CN1diI/YKmW4SMj/MUSuwVr0KzCq/3VRIInaN/LYCusw7SzCxOIsGedHyurLWJrkWDfi+jDIAA=="],
 
     "@lucide/svelte": ["@lucide/svelte@0.562.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-wDMULwtTFN2Sc/TFBm6gfuVCNb4Y5P9LDrwxNnUbV52+IEU7NXZmvxwXoz+vrrpad6Xupq+Hw5eUlqIHEGhouw=="],
 
