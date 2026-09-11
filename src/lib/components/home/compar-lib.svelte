@@ -133,8 +133,6 @@
 	.table-clip {
 		position: relative;
 
-		// table.svelte ships its own full-page <section> spacing —
-		// strip it so it sits cleanly inside the card
 		:global(section) {
 			padding: 0;
 			max-width: none;
@@ -144,7 +142,6 @@
 			max-height: var(--clip-height);
 			overflow: hidden;
 
-			// soft fade so the cut isn't abrupt
 			&::after {
 				content: '';
 				position: absolute;

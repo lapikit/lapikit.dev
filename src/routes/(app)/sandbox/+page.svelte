@@ -5,8 +5,8 @@
 	import Features from '$lib/components/home/features.svelte';
 
 	// modules
-	import Hero from '$lib/components/home/hero.svelte';
-	import VsCodeUi from '$lib/components/home/modules/ide-code/vs-code-ui.svelte';
+	// import Hero from '$lib/components/home/hero.svelte';
+	// import VsCodeUi from '$lib/components/home/modules/vs-code/vs-code.svelte';
 	import ReplComponentList from '$lib/components/home/repl-component-list.svelte';
 	import ReplShortInstall from '$lib/components/home/repl-short-install.svelte';
 	import Table from '$lib/components/home/table.svelte';
@@ -23,13 +23,14 @@
 	];
 </script>
 
-<Hero />
+<!-- 
+<Hero /> -->
 
 <BentoCounter />
 
 <!-- <VsCode /> -->
 
-<VsCodeUi />
+<!-- <VsCodeUi /> -->
 
 <Components />
 

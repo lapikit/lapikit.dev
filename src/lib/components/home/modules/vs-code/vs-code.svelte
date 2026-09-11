@@ -12,30 +12,63 @@
 	let view = $state('+layout.svelte');
 </script>
 
-<div id="vs-code">
-	<Header />
-	<div>
+<div class="vs-code-viewport">
+	<div id="vs-code">
+		<Header />
 		<div>
-			<Aside />
 			<div>
-				<div class="title">Explorer</div>
-				<Explorer bind:view />
+				<Aside />
+				<div>
+					<div class="title">Explorer</div>
+					<Explorer bind:view />
+				</div>
+			</div>
+			<div>
+				<TabFiles {view} />
+				<div>
+					<Ide {view} />
+				</div>
+			</div>
+			<div>
+				<Render />
 			</div>
 		</div>
-		<div>
-			<TabFiles {view} />
-			<div>
-				<Ide {view} />
-			</div>
-		</div>
-		<div>
-			<Render />
-		</div>
+		<Footer />
 	</div>
-	<Footer />
 </div>
 
 <style lang="scss">
+	.vs-code-viewport {
+		container-type: inline-size;
+		max-width: 1280px;
+		width: 100%;
+		margin: -108px auto 0;
+		position: relative;
+		padding-inline: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	@media (max-width: 380px) {
+		.vs-code-viewport {
+			margin: -70px auto 0;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.vs-code-viewport {
+			pointer-events: none;
+		}
+	}
+
+	@media (min-width: 640px) {
+		.vs-code-viewport {
+			padding-inline: 40px;
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+	}
+
 	#vs-code {
 		--kit-color-font-vs-primary: #757575;
 		--kit-color-font-vs-secondary: #8c8c8c;
@@ -52,11 +85,12 @@
 		$height-tabs: 52px;
 		$height-content: 640px;
 
-		max-width: 1200px;
-		background-color: var(--kit-color-vs-background);
-		border-radius: var(--vs-shape);
+		width: 1200px;
+		// background-color: var(--kit-color-vs-background);
+		// border-radius: var(--vs-shape);
 		z-index: 1;
 		position: relative;
+		zoom: min(1, calc(100cqw / 1200px));
 
 		&::before {
 			content: '';

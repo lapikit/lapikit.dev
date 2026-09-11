@@ -1,22 +1,28 @@
 <script lang="ts">
-	import { npmState } from '$lib/stores/npm.svelte';
-
 	// assets
 	import { ArrowRight, BookMarked, Rocket } from 'lucide-svelte';
 	import LogoLapikit from '$lib/assets/images/lapikit.webp?enhanced';
 	import LogoSvelte from '$lib/assets/images/svelte.webp?enhanced';
 	import ImgLove from '$lib/assets/images/love.png?enhanced';
+	import { untrack } from 'svelte';
+
+	let {
+		version = '0.0.0',
+		list = ['components']
+	}: {
+		list: Array<string>;
+		version?: string;
+	} = $props();
 
 	// states
-	let possibility: string = $state('components');
-	let possibilities = ['components', 'api', 'hooks', 'themes', 'actions'];
+	let text: string = $state(untrack(() => list[0]));
 
 	$effect(() => {
-		let index = possibilities.indexOf(possibility);
+		let index = list.indexOf(text);
 
 		const interval = setInterval(() => {
-			index = (index + 1) % possibilities.length;
-			possibility = possibilities[index];
+			index = (index + 1) % list.length;
+			text = list[index];
 		}, 3500);
 
 		return () => clearInterval(interval);
@@ -37,7 +43,7 @@
 				<kit:chip size="sm" rounded="md" background="accent" color="on-accent"> New </kit:chip>
 			{/snippet}
 
-			{npmState.version.latest}
+			{version}
 
 			{#snippet append()}
 				<kit:icon>
@@ -50,7 +56,7 @@
 			Simple, optimized <br />
 			<div class="tilted-box">
 				<span class="possibility">
-					{possibility || 'components'}
+					{text || 'components'}
 				</span>
 			</div>
 			<span>for <span class="svelte-text">Svelte</span></span>
@@ -94,7 +100,7 @@
 		--kit-color-surface: transparent;
 
 		position: relative;
-		height: 100vh;
+		height: 90vh;
 		width: 100%;
 		background-image:
 			linear-gradient(var(--kit-color-fill) 1px, transparent 1px),
@@ -112,10 +118,11 @@
 			-0.5px -0.5px,
 			-0.5px -0.5px;
 	}
+
 	.wrapper {
 		z-index: 1;
 		display: grid;
-		padding-top: 130px; // appbar sticky
+		padding-top: var(--home-appbar-affect-wrapper);
 		gap: 20px;
 	}
 

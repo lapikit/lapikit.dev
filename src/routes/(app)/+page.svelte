@@ -1,56 +1,92 @@
 <script>
-	import Shell from '$lib/components/shell.svelte';
-	import { ChevronRight } from 'lucide-svelte';
-	import { command } from '$lib/constants';
-	import { application } from '$lib/stores/app.svelte';
-	import SupportProject from '$lib/components/home/support-project.svelte';
-	import ComparLib from '$lib/components/home/compar-lib.svelte';
-	import Faq from '$lib/components/home/faq.svelte';
+	// import { npmState } from '$lib/stores/npm.svelte';
+
+	// import Shell from '$lib/components/shell.svelte';
+	// import { ChevronRight } from 'lucide-svelte';
+	// import { command } from '$lib/constants';
+	// import { application } from '$lib/stores/app.svelte';
+	// import SupportProject from '$lib/components/home/support-project.svelte';
+	// import ComparLib from '$lib/components/home/compar-lib.svelte';
+	// import Faq from '$lib/components/home/faq.svelte';
+	//
+	// import Components from '$lib/components/home/components.svelte';
+	// import Header from '$lib/components/home/header.svelte';
+	// import VsCode from '$lib/components/home/modules/vs-code/vs-code.svelte';
+	// import PreprocessSchema from '$lib/components/home/preprocess-schema.svelte';
+	// import Repl from '$lib/components/home/repl.svelte';
+	import GridDirective from '$lib/components/home/grid-directive.svelte';
 	import BentoCounter from '$lib/components/home/bento-counter.svelte';
-	import Components from '$lib/components/home/components.svelte';
-	import Header from '$lib/components/home/header.svelte';
-	import VsCodeUi from '$lib/components/home/modules/ide-code/vs-code-ui.svelte';
+	// import VsCodeUi from '$lib/components/home/modules/ide-code/vs-code-ui.svelte';
+
+	// const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
 </script>
 
-<main class="homepage">
+<!-- <main class="homepage">
 	<section id="header-homepage">
 		<div class="ambient" aria-hidden="true">
 			<span class="glow-orb orb-1"></span>
 			<span class="glow-orb orb-2"></span>
 			<span class="glow-orb orb-3"></span>
 		</div>
-		<Header />
+		<Header version={npmState.version.latest} list={h1} />
 	</section>
-</main>
 
-<!-- 
-<section id="vscode-homepage">
+	<section class="container-wrapper">
 		<div>
-			<VsCodeUi />
+			<VsCode />
 		</div>
 	</section>
-	
+</main> -->
+
+<section id="vscode-homepage"></section>
+
+<section id="plugins-vs-code">
+	<!-- <PreprocessSchema /> -->
+
+	<h2>Expande your possibility</h2>
+
+	<div>
+		<p>
+			Since version 5.16, Svelte has offered directives for the `style` and `class` properties. This
+			allows you to define class properties with conditions written directly within the element,
+			without having to use either a long string with ternary operators or functions that directly
+			modify the element. However, this feature is not natively supported in Svelte components; with
+			Lapikit’s lili preprocessor, this limitation is overcome for components in the Lapikit
+			library. Two directives `s-style` and `s-class` are available to provide the same convenience
+			as native HTML elements.
+		</p>
+
+		<div>
+			<kit:btn>Discover this feature</kit:btn>
+		</div>
+	</div>
+
+	<GridDirective />
+
+	<p>It's not magic, It's Lapikit</p>
+
+	<!-- <Components /> -->
+</section>
+
 <section id="bento-counter">
 	<BentoCounter />
 </section>
 
-<section id="grid-components">
-	<Components />
-</section>
+<section id="grid-components"></section>
 
-<section id="compare-with-other-lib">
+<!-- <section id="compare-with-other-lib">
 	<ComparLib />
-</section>
+</section> -->
 
-<section id="faq">
+<!-- <section id="faq">
 	<Faq />
 </section>
 
 <section id="support-project">
 	<SupportProject />
-</section>
+</section> -->
 
-<section id="footer-banner">
+<!-- <section id="footer-banner">
 	<div class="wrapper">
 		<div>
 			<div>
@@ -104,6 +140,9 @@
 			max-width: 1200px;
 			width: 100%;
 		}
+	}
+	#plugins-vs-code {
+		padding: 110px 40px;
 	}
 	#grid-components {
 		padding: 110px 40px;
