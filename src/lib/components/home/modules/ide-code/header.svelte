@@ -52,6 +52,9 @@
 		grid-template-columns: min-content 1fr auto;
 		align-items: center;
 		color: var(--kit-color-font-vs-primary);
+		background-color: var(--kit-color-vs-background);
+		border-top-left-radius: var(--vs-shape);
+		border-top-right-radius: var(--vs-shape);
 		padding: 0 10px;
 
 		> div {

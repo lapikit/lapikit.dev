@@ -12,16 +12,24 @@
 	import VsCodeUi from '$lib/components/home/modules/ide-code/vs-code-ui.svelte';
 </script>
 
-<section id="header-homepage">
-	<Header />
-</section>
+<main class="homepage">
+	<section id="header-homepage">
+		<div class="ambient" aria-hidden="true">
+			<span class="glow-orb orb-1"></span>
+			<span class="glow-orb orb-2"></span>
+			<span class="glow-orb orb-3"></span>
+		</div>
+		<Header />
+	</section>
+</main>
 
+<!-- 
 <section id="vscode-homepage">
-	<div>
-		<VsCodeUi />
-	</div>
-</section>
-
+		<div>
+			<VsCodeUi />
+		</div>
+	</section>
+	
 <section id="bento-counter">
 	<BentoCounter />
 </section>
@@ -87,12 +95,12 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <style lang="scss">
 	#vscode-homepage {
 		div {
-			margin: 70px auto 0;
+			margin: -135px auto 0;
 			max-width: 1200px;
 			width: 100%;
 		}
@@ -117,11 +125,143 @@
 	}
 
 	#header-homepage {
+		position: relative;
+		overflow: hidden;
 		width: 100%;
-		height: 70vh;
-		background-color: aliceblue;
-		margin-top: -80px;
-		padding-bottom: 80px;
+		margin-top: -80px; // appbar sticky
+		// height: 70vh;
+		// margin-top: -80px;
+		// padding-bottom: 80px;
+		//background: linear-gradient(180deg, #04031a 0%, #0a0834 60%, #140b3f 100%);
+
+		.ambient {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+
+			// &::before {
+			// 	// sparkles / stars
+			// 	content: '';
+			// 	position: absolute;
+			// 	inset: 0;
+			// 	background-repeat: no-repeat;
+			// 	// background-image:
+			// 	// 	radial-gradient(1.5px 1.5px at 20% 30%, #fff, transparent),
+			// 	// 	radial-gradient(1px 1px at 60% 18%, #fff, transparent),
+			// 	// 	radial-gradient(1.5px 1.5px at 80% 42%, #fff, transparent),
+			// 	// 	radial-gradient(2px 2px at 33% 60%, #fff, transparent),
+			// 	// 	radial-gradient(1px 1px at 12% 72%, #fff, transparent),
+			// 	// 	radial-gradient(1.5px 1.5px at 70% 68%, #fff, transparent),
+			// 	// 	radial-gradient(1px 1px at 92% 20%, #fff, transparent),
+			// 	// 	radial-gradient(1.5px 1.5px at 45% 12%, #fff, transparent),
+			// 	// 	radial-gradient(1px 1px at 5% 45%, #fff, transparent),
+			// 	// 	radial-gradient(1.5px 1.5px at 55% 50%, #fff, transparent);
+			// 	opacity: 0.7;
+			// 	animation: header-sparkle 4s ease-in-out infinite alternate;
+			// }
+
+			// &::after {
+			// 	// fade the ambient scene into the page background at the bottom edge
+			// 	content: '';
+			// 	position: absolute;
+			// 	inset-inline: 0;
+			// 	bottom: 0;
+			// 	height: 200px;
+			// 	background: linear-gradient(to bottom, transparent, #fff);
+			// }
+		}
+
+		.glow-orb {
+			position: absolute;
+			border-radius: 50%;
+			filter: blur(50px);
+			animation: orb-float ease-in-out infinite alternate;
+		}
+
+		.orb-1 {
+			width: 300px;
+			height: 300px;
+			top: 62%;
+			left: 58%;
+			// background: radial-gradient(
+			// 	circle at 35% 35%,
+			// 	hsl(275 95% 88%),
+			// 	hsl(262 88% 62%) 45%,
+			// 	transparent 72%
+			// );
+			background: radial-gradient(
+				circle at 35% 35%,
+				var(--kit-color-svelte),
+				var(--kit-color-accent) 45%,
+				transparent 72%
+			);
+			animation-duration: 11s;
+		}
+
+		.orb-2 {
+			width: 220px;
+			height: 220px;
+			top: 68%;
+			left: 30%;
+			// background: radial-gradient(
+			// 	circle at 35% 35%,
+			// 	hsl(220 95% 88%),
+			// 	hsl(238 88% 62%) 45%,
+			// 	transparent 72%
+			// );
+			background: radial-gradient(
+				circle at 35% 35%,
+				var(--kit-color-accent),
+				var(--kit-color-svelte),
+				transparent 72%
+			);
+			animation-duration: 9s;
+			animation-delay: -3s;
+		}
+
+		.orb-3 {
+			width: 640px;
+			height: 380px;
+			bottom: -18%;
+			left: 24%;
+			filter: blur(75px);
+			background: radial-gradient(
+				ellipse at 50% 50%,
+				var(--kit-color-svelte),
+				var(--kit-color-accent) 50%,
+				transparent 75%
+			);
+			animation-duration: 14s;
+			animation-delay: -6s;
+		}
+	}
+
+	@keyframes header-sparkle {
+		0% {
+			opacity: 0.4;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes orb-float {
+		0% {
+			transform: translateY(0) scale(1);
+		}
+		100% {
+			transform: translateY(-22px) scale(1.05);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#header-homepage {
+			.ambient::before,
+			.glow-orb {
+				animation: none;
+			}
+		}
 	}
 
 	#footer-banner {

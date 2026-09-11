@@ -19,7 +19,7 @@
 	let openDrawer: boolean = $state(false);
 </script>
 
-<kit:appbar id="navbar" class="glass-background" rounded="lg" elevation="4">
+<kit:appbar id="navbar" rounded="lg" elevation="4">
 	<a href={resolve('/')}>
 		<enhanced:img src={LogoLapikit} alt="Lapikit logo" />
 		<span>Lapikit</span>
@@ -51,8 +51,8 @@
 			target="_blank"
 			class="h-xs"
 			density="compact"
-			variant="outline"
-			color={links['discord']._styles.background}
+			color={links['discord']._styles.color}
+			background={links['discord']._styles.background}
 		>
 			{#snippet prepend()}
 				<kit:icon>

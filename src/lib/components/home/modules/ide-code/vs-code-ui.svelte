@@ -45,6 +45,7 @@
 		--kit-color-vs-fill: #262728;
 		--kit-color-vs-background: #191a1a;
 		--kit-color-vs-ide: #121414;
+		--vs-shape: 12px;
 
 		$height-header: 32px;
 		$height-footer: 34px;
@@ -53,9 +54,27 @@
 
 		max-width: 1200px;
 		background-color: var(--kit-color-vs-background);
-		border-radius: 8px;
+		border-radius: var(--vs-shape);
 		z-index: 1;
 		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: -6px;
+			z-index: -1;
+			border-radius: inherit;
+			background: linear-gradient(
+				135deg,
+				var(--kit-color-accent),
+				var(--kit-color-svelte),
+				var(--kit-color-accent)
+			);
+			filter: blur(36px);
+			opacity: 0.55;
+			pointer-events: none;
+			animation: vs-code-glow 6s ease-in-out infinite;
+		}
 
 		.title {
 			font-weight: 500;
@@ -65,6 +84,7 @@
 		> div {
 			display: grid;
 			grid-template-columns: auto calc(50% - (290px / 2)) calc(50% - (290px / 2));
+			background-color: var(--kit-color-vs-background);
 			width: 100%;
 			height: $height-content + $height-footer + $height-header;
 			overflow: hidden;
@@ -79,6 +99,7 @@
 				grid-template-columns: auto 220px;
 				gap: 4px;
 				border: 1px solid var(--kit-color-vs-fill);
+				background-color: var(--kit-color-vs-background);
 				border-radius: 8px;
 
 				> div {
@@ -106,6 +127,24 @@
 				border-radius: 8px;
 				overflow: hidden;
 			}
+		}
+	}
+
+	@keyframes vs-code-glow {
+		0%,
+		100% {
+			opacity: 0.4;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.75;
+			transform: scale(1.04);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#vs-code::before {
+			animation: none;
 		}
 	}
 </style>

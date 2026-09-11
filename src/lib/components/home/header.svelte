@@ -3,6 +3,9 @@
 
 	// assets
 	import { ArrowRight, BookMarked, Rocket } from 'lucide-svelte';
+	import LogoLapikit from '$lib/assets/images/lapikit.webp?enhanced';
+	import LogoSvelte from '$lib/assets/images/svelte.webp?enhanced';
+	import ImgLove from '$lib/assets/images/love.png?enhanced';
 
 	// states
 	let possibility: string = $state('components');
@@ -20,23 +23,18 @@
 	});
 </script>
 
-<div class="wrapper">
-	<div>
+<div class=" background-header">
+	<div class="wrapper">
 		<kit:chip
 			href="/docs/changelog"
-			size="xl"
+			size="md"
 			rounded="lg"
 			s-style_--kit-chip-p="6px"
 			s-style_width="fit-content"
 			s-style_margin="0 auto"
 		>
 			{#snippet prepend()}
-				<kit:chip rounded="md" background="accent" color="on-accent">
-					{#snippet prepend()}
-						<span class="dot"></span>
-					{/snippet}
-					Current version
-				</kit:chip>
+				<kit:chip size="sm" rounded="md" background="accent" color="on-accent"> New </kit:chip>
 			{/snippet}
 
 			{npmState.version.latest}
@@ -47,25 +45,23 @@
 				</kit:icon>
 			{/snippet}
 		</kit:chip>
-		<div class="headline_hero">
-			<h1>
-				<div>Simple, optimized</div>
-				<div class="tilted-box">
-					<span class="possibility">
-						{possibility}
-					</span>
-				</div>
 
-				<div>
-					for <span class="svelte">Svelte</span>
-				</div>
-			</h1>
-		</div>
-		<p class="paragraphe-ws">
+		<h1>
+			Simple, optimized <br />
+			<div class="tilted-box">
+				<span class="possibility">
+					{possibility || 'components'}
+				</span>
+			</div>
+			<span>for <span class="svelte-text">Svelte</span></span>
+		</h1>
+
+		<p class="subtitle-h1">
 			A library of accessible, high-performance, versatile components that let you develop fast,
-			fully customizable interfaces. <span class="svelte">svelte</span> and
-			<span class="svelte">sveltekit</span> ready.
+			fully customizable interfaces <span class="svelte-text">svelte</span> and
+			<span class="svelte-text">sveltekit</span> ready.
 		</p>
+
 		<div class="headline_actions">
 			<kit:btn density="comfortable" rounded="lg" background="accent" color="on-accent">
 				{#snippet prepend()}
@@ -84,12 +80,18 @@
 				Install Guide
 			</kit:btn>
 		</div>
+
+		<div class="headline_lapinosaure">
+			<enhanced:img src={LogoLapikit} alt="Lapikit logo" />
+			<enhanced:img src={ImgLove} alt="Lapikit love Svelte" />
+			<enhanced:img src={LogoSvelte} alt="Svelte logo" />
+		</div>
 	</div>
 </div>
 
 <style lang="scss">
-	.wrapper {
-		--fade-height: 180px;
+	.background-header {
+		--kit-color-surface: transparent;
 
 		position: relative;
 		height: 100vh;
@@ -109,138 +111,100 @@
 			-1px -1px,
 			-0.5px -0.5px,
 			-0.5px -0.5px;
-		padding-top: 156px;
-		margin-top: -75px;
+	}
+	.wrapper {
+		z-index: 1;
+		display: grid;
+		padding-top: 130px; // appbar sticky
+		gap: 20px;
+	}
 
-		&::after {
-			content: '';
-			position: absolute;
-			inset-inline: 0;
-			bottom: 0;
-			height: var(--fade-height);
-			background: linear-gradient(to bottom, transparent, var(--kit-color-surface));
-			pointer-events: none;
-			z-index: 0;
-		}
+	h1 {
+		width: fit-content;
+		margin: 0 auto;
+		display: grid;
+		gap: 14px;
+		text-align: center;
+	}
 
-		& > div {
+	.tilted-box {
+		display: inline-block;
+		transform: rotate(-3deg);
+		overflow: hidden;
+		padding: 0.5rem 1rem;
+		background: var(--kit-color-accent);
+		color: var(--kit-color-on-accent);
+		border-radius: 6px;
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	.possibility {
+		display: inline-block;
+	}
+
+	p {
+		max-width: 750px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.headline_actions {
+		gap: 20px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.headline_lapinosaure {
+		display: flex;
+		flex-direction: row;
+		margin-top: 40px;
+		justify-content: center;
+		gap: 23px;
+
+		:global(picture) {
 			position: relative;
-			z-index: 1;
-			display: grid;
-			// max-width: 1538px;
-			margin: 0 auto;
-			padding-left: 24px;
-			padding-right: 24px;
-
-			& > div {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				text-align: center;
-				align-items: center;
-				gap: 23px;
-			}
+			width: 48px;
 		}
 
-		.headline_hero {
-			display: flex;
+		:global(picture:first-child) {
+			transform: rotate(347deg);
+			animation: lapinosaure-float 3.4s ease-in-out infinite;
 		}
 
-		h1 {
-			font-size: 32px;
-			line-height: 1;
-			width: fit-content;
-			margin: 0 auto;
-			display: grid;
-			gap: 14px;
-			font-weight: 900;
-
-			> div:first-child,
-			> div:last-child {
-				display: flex;
-				width: fit-content;
-				margin: 0 auto;
-				gap: 8px;
-			}
+		:global(picture:nth-child(2)) {
+			top: 35px;
 		}
 
-		span.svelte {
-			color: var(--kit-color-svelte);
+		:global(picture:last-child) {
+			transform: rotate(7deg);
+			animation: lapinosaure-float 4.2s ease-in-out infinite;
+			animation-delay: -1.8s;
 		}
+	}
 
-		.tilted-box {
-			display: inline-block;
-			transform: rotate(-3deg);
-			overflow: hidden;
-			padding: 0.5rem 1rem;
-			background: var(--kit-color-accent);
-			color: var(--kit-color-on-accent);
-			border-radius: 6px;
-			width: fit-content;
-			margin: 0 auto;
+	@media (prefers-reduced-motion: reduce) {
+		.headline_lapinosaure :global(picture) {
+			animation: none;
 		}
+	}
 
-		.possibility {
-			display: inline-block;
-		}
-
-		p.paragraphe-ws {
-			max-width: 750px;
-			margin: 0 auto;
-			font-size: 22px;
-			font-weight: 200;
+	@media (min-width: 480px) {
+		.wrapper {
+			gap: 23px;
 		}
 
 		.headline_actions {
-			gap: 20px;
-			display: flex;
 			flex-direction: row;
-		}
-
-		@media (min-width: 640px) {
-			> div {
-				gap: 40px;
-			}
-
-			h1 {
-				font-size: 56px;
-				line-height: 1;
-			}
-		}
-
-		@media (min-width: 767px) {
-			> div {
-				padding-left: 40px;
-				padding-right: 40px;
-			}
+			justify-content: center;
 		}
 	}
 
-	.dot {
-		position: relative;
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background: var(--kit-color-success);
-	}
-
-	.dot::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 50%;
-		background: inherit;
-		animation: pulse 1.6s ease-out infinite;
-	}
-
-	@keyframes pulse {
-		0% {
-			transform: scale(1);
-			opacity: 0.6;
-		}
-		100% {
-			transform: scale(2.5);
-			opacity: 0;
+	@media (min-width: 640px) {
+		.headline_lapinosaure {
+			:global(picture) {
+				width: 58px;
+			}
 		}
 	}
 </style>

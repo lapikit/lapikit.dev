@@ -38,11 +38,29 @@
 	transition: 0.3s;
 }
 
-/** UI FONT **/
-// .subtitle {
-// 	font-weight: 900;
-// }
+/** ANIMATIONS **/
+@keyframes lapinosaure-float {
+	0%,
+	100% {
+		translate: 0 0;
+	}
+	50% {
+		translate: 0 -8px;
+	}
+}
 
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 0.6;
+	}
+	100% {
+		transform: scale(2.5);
+		opacity: 0;
+	}
+}
+
+/** UI FONT **/
 .subtitle {
 	margin: 20px 0;
 }
@@ -57,4 +75,52 @@
 
 .svelte-text {
 	color: var(--kit-color-svelte) !important;
+}
+
+//TEMPS
+.homepage {
+	.wrapper {
+		position: relative;
+		margin: 0 auto;
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+
+	h1 {
+		font-size: 32px;
+		line-height: 1;
+		font-weight: 900;
+	}
+
+	p.subtitle-h1 {
+		font-size: 16px;
+		font-weight: 200;
+	}
+
+	@media (min-width: 480px) {
+		h1 {
+			font-size: 48px;
+		}
+
+		p.subtitle-h1 {
+			font-size: 18px;
+		}
+	}
+
+	@media (min-width: 640px) {
+		h1 {
+			font-size: 56px;
+		}
+
+		p.subtitle-h1 {
+			font-size: 22px;
+		}
+	}
+
+	@media (min-width: 767px) {
+		.wrapper {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
 }

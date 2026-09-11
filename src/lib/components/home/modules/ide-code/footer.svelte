@@ -52,8 +52,10 @@
 	#vs-code-footer {
 		width: 100%;
 		height: 34px;
-
+		background-color: var(--kit-color-vs-background);
 		color: var(--kit-color-font-vs-primary);
+		border-bottom-left-radius: var(--vs-shape);
+		border-bottom-right-radius: var(--vs-shape);
 		display: flex;
 		justify-content: space-between;
 		padding: 0 10px;
