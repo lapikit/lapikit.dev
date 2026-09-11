@@ -113,11 +113,6 @@ const footerNavigation: AppNavItem[] = [
 	}
 ];
 
-export const router = {
-	app: appNavigation,
-	footer: footerNavigation
-};
-
 export const docsNavigation: NavSection[] = [
 	{
 		label: 'Getting Started',
@@ -146,114 +141,133 @@ export const docsNavigation: NavSection[] = [
 				url: '/docs/components'
 			},
 			{
+				name: 'kit:app',
 				label: 'Application',
 				url: '/docs/components/application',
 				description: 'Root wrapper that initializes the Lapikit theme and global styles.',
 				image: applicationImage
 			},
 			{
+				name: 'kit:accordion',
 				label: 'Accordion',
 				url: '/docs/components/accordion',
 				description: 'Collapsible sections to progressively reveal content.',
 				image: accordionImage
 			},
 			{
+				name: 'kit:alert',
 				label: 'Alert',
 				url: '/docs/components/alert',
 				description: 'Contextual feedback messages for user actions.',
 				image: alertImage
 			},
 			{
+				name: 'kit:appbar',
 				label: 'Appbar',
 				url: '/docs/components/appbar',
 				description: 'Top navigation bar with slots for branding and actions.',
 				image: appbarImage
 			},
 			{
+				name: 'kit:aspect-ratio',
 				label: 'Aspect ratio',
 				url: '/docs/components/aspect-ratio',
 				description: 'Constrains content to a fixed width-to-height ratio.',
 				image: aspectRatioImage
 			},
 			{
+				name: 'kit:avatar',
 				label: 'Avatar',
 				url: '/docs/components/avatar',
 				description: 'User profile picture with fallback initials.',
 				image: avatarImage
 			},
 			{
+				name: 'kit:btn',
 				label: 'Button',
 				url: '/docs/components/button',
 				description: 'Interactive element with multiple variants and sizes.',
 				image: buttonImage
 			},
 			{
+				name: 'kit:card',
 				label: 'Card',
 				url: '/docs/components/card',
 				description: 'Surface container for grouped, related content.',
 				image: cardImage
 			},
 			{
+				name: 'kit:chip',
 				label: 'Chip',
 				url: '/docs/components/chip',
 				description: 'Compact element for tags, filters or selections.',
 				image: chipImage
 			},
 			{
+				name: 'kit:dialog',
 				label: 'Dialog',
 				url: '/docs/components/dialog',
 				description: 'Accessible modal dialog for confirmations and forms.',
 				image: dialogImage
 			},
 			{
+				name: 'kit:dropdown',
 				label: 'Dropdown',
 				url: '/docs/components/dropdown',
 				description: 'Floating menu triggered by a reference element.',
 				image: dropdownImage
 			},
 			{
+				name: 'kit:icon',
 				label: 'Icon',
 				url: '/docs/components/icon',
 				description: 'SVG icon wrapper with size and color control.',
 				image: iconImage
 			},
 			{
+				name: 'kit:list',
 				label: 'List',
 				url: '/docs/components/list',
 				description: 'Vertical list of items with optional leading and trailing slots.',
 				image: listImage
 			},
 			{
+				name: 'kit:modal',
 				label: 'Modal',
 				url: '/docs/components/modal',
 				description: 'Full-screen overlay for focused tasks or content.',
 				image: modalImage
 			},
 			{
+				name: 'kit:popover',
 				label: 'Popover',
 				url: '/docs/components/popover',
 				description: 'Lightweight floating panel anchored to a trigger.',
 				image: popoverImage
 			},
 			{
+				name: 'kit:separator',
 				label: 'Separator',
 				url: '/docs/components/separator',
 				description: 'Visual divider between sections or list items.',
 				image: separatorImage
 			},
 			{
+				name: 'kit:textfield',
 				label: 'Textfield',
 				url: '/docs/components/textfield',
 				description: 'Text input with label, helper text and validation states.',
 				image: textfieldImage
 			},
 			{
+				name: 'kit:toolbar',
 				label: 'Toolbar',
 				url: '/docs/components/toolbar',
 				description: 'Horizontal bar grouping actions and controls.',
 				image: toolbarImage
 			},
 			{
+				name: 'kit:tooltip',
 				label: 'Tooltip',
 				url: '/docs/components/tooltip',
 				description: 'Short contextual hint shown on hover or focus.',
@@ -300,3 +314,9 @@ export const docsNavigation: NavSection[] = [
 		]
 	}
 ];
+
+export const router = {
+	app: appNavigation,
+	footer: footerNavigation,
+	documentation: docsNavigation
+};

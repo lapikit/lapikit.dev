@@ -8,7 +8,26 @@
 	import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
 	import WebpackIcon from '$lib/assets/icons/webpack.svg?raw';
 	import { nbComponents, nbHooks, urlLapikitLicense } from '$lib/constants';
+	import { ChevronRight } from 'lucide-svelte';
 </script>
+
+<div class="wrapper">
+	<h2>One library, <span class="accent-text">infinite possibility</span></h2>
+	<div>
+		<div>
+			<p>paragraphe 1</p>
+			<p>paragraphe 2</p>
+		</div>
+		<kit:btn href="/docs" variant="outline" rounded="lg">
+			Explore the library
+			{#snippet append()}
+				<kit:icon>
+					<ChevronRight />
+				</kit:icon>
+			{/snippet}
+		</kit:btn>
+	</div>
+</div>
 
 <div id="bento-counter">
 	<kit:card
@@ -103,6 +122,28 @@
 </div>
 
 <style>
+	.wrapper {
+		position: relative;
+		display: grid;
+		max-width: var(--app-container-size-compact);
+		margin: 0 auto;
+		padding: 0 24px 40px;
+		gap: 40px;
+
+		h2 {
+			font-size: 2.5rem;
+			letter-spacing: -0.01em;
+			line-height: 1.15;
+			font-weight: 900;
+		}
+
+		> div {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			align-items: center;
+		}
+	}
+
 	#bento-counter {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
@@ -115,8 +156,7 @@
 			'hooks       '
 			'opensource  '
 			'lowdeps     ';
-		max-width: 1538px;
-		margin: -50px auto 0;
+		margin: 0 auto;
 		padding-left: 24px;
 		padding-right: 24px;
 	}

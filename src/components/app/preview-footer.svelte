@@ -9,7 +9,7 @@
 
 	// assets
 	import { ExternalLink } from 'lucide-svelte';
-	import LapikitFooter from '$lib/assets/images/lapikit-footer.svg';
+	import LapikitFooter from '$lib/assets/images/lapikit-footer.svg?raw';
 	import githubIcon from '$lib/assets/icons/github.svg?raw';
 	import discordIcon from '$lib/assets/icons/discord.svg?raw';
 	import npmIcon from '$lib/assets/icons/npm.svg?raw';
@@ -112,7 +112,9 @@
 		</div>
 	</div>
 	<div class="container_word_lapikit">
-		<img src={LapikitFooter} loading="lazy" aria-label="Lapikit" alt="Lapikit" />
+		<span class="lapikit-wordmark" role="img" aria-label="Lapikit">
+			{@html LapikitFooter}
+		</span>
 	</div>
 
 	<div class="container_copyright">
@@ -157,12 +159,19 @@
 			margin-left: auto;
 			margin-right: auto;
 
-			img {
+			.lapikit-wordmark {
 				display: inline-block;
 				max-width: 100%;
 				position: relative;
 				margin-top: 40px;
 				padding: 76px 40px 40px;
+				color: var(--kit-color-text);
+
+				:global(svg) {
+					display: block;
+					max-width: 100%;
+					height: auto;
+				}
 			}
 		}
 

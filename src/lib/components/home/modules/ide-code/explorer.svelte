@@ -93,9 +93,9 @@
 			<kit:list-item
 				s-class_vs-indent-={String(item.indentation)}
 				s-style_background-color={item.view === view ? 'var(--kit-color-vs-active)' : 'transparent'}
-				s-style_border-radius={'4px'}
-				s-style_font-size={'14px'}
-				s-style_font-weight={'300'}
+				s-style_border-radius="4px"
+				s-style_font-size="14px"
+				s-style_font-weight="300"
 				color="font-vs-tertiary"
 				onclick={() => (view = item.view)}
 			>
@@ -117,14 +117,18 @@
 				{/snippet}
 
 				{item.value}
+
+				{#snippet append()}
+					<div class="circle-edit"></div>
+				{/snippet}
 			</kit:list-item>
 		{:else}
 			<kit:list-item
 				s-class_vs-indent-={String(item.indentation)}
-				s-style_background-color={'transparent'}
-				s-style_border-radius={'4px'}
-				s-style_font-size={'14px'}
-				s-style_font-weight={'300'}
+				s-style_background-color="transparent"
+				s-style_border-radius="4px"
+				s-style_font-size="14px"
+				s-style_font-weight="300"
 				color="font-vs-tertiary"
 			>
 				{#snippet prepend()}
@@ -149,3 +153,13 @@
 		{/if}
 	{/each}
 </kit:list>
+
+<style lang="scss">
+	.circle-edit {
+		width: 10px;
+		height: 10px;
+		background-color: color-mix(in oklab, var(--kit-color-accent) 100%, transparent 90%);
+		margin-right: 6px;
+		border-radius: 10px;
+	}
+</style>

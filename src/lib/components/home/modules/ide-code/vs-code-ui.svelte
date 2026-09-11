@@ -9,7 +9,7 @@
 	import Render from './render.svelte';
 
 	// states
-	let view = $state('+page.svelte');
+	let view = $state('+layout.svelte');
 </script>
 
 <div id="vs-code">
@@ -54,6 +54,8 @@
 		max-width: 1200px;
 		background-color: var(--kit-color-vs-background);
 		border-radius: 8px;
+		z-index: 1;
+		position: relative;
 
 		.title {
 			font-weight: 500;

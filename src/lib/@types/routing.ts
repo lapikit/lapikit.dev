@@ -1,5 +1,6 @@
 export type NavPage = {
 	label: string;
+	name?: string;
 	url: string;
 	description?: string;
 	image?: string;

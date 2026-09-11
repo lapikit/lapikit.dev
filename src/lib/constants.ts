@@ -39,6 +39,7 @@ export const nbComponents = 19;
 export const nbHooks = 3;
 
 export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
+export const urlJoinLapikitTeam = 'https://github.com/lapikit';
 
 export type LinkName = keyof typeof links;
 
@@ -80,7 +81,7 @@ export const links = {
 		}
 	},
 	buymeacoffee: {
-		label: 'buymeacoffee',
+		label: 'buy the team a coffee',
 		url: 'https://buymeacoffee.com/nycolaide',
 		icon: buymyecoffeeIcon,
 		_styles: {

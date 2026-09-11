@@ -54,7 +54,7 @@
 	let content = [
 		{
 			text: 'Features and possibility',
-			subtext: "<a href='/'>test with sepcifique link for test UI</a>",
+			// subtext: "<a href='/'>test with sepcifique link for test UI</a>",
 			subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
 		},
 		{
@@ -71,131 +71,127 @@
 		},
 		{
 			text: 'Integration and support',
-			subtext: "<a href='/'>test with sepcifique link for test UI</a>",
+			// subtext: "<a href='/'>test with sepcifique link for test UI</a>",
 			subject: ['CLI integrated', 'Full open and free', 'Release cadence']
 		}
 	];
 </script>
 
-<section>
-	<div class="plan_embed">
-		<div class="table_plan_head">
-			<div></div>
-			{#each result as { title, logo }, indexResult (indexResult)}
-				<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
-					<div class="table_plan_head_content">
-						<img src={logo} alt={title} loading="lazy" />
-						<p>{title}</p>
-					</div>
+<div class="plan_embed">
+	<div class="table_plan_head">
+		<div></div>
+		{#each result as { title, logo }, indexResult (indexResult)}
+			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
+				<div class="table_plan_head_content">
+					<img src={logo} alt={title} loading="lazy" />
+					<p>{title}</p>
 				</div>
-			{/each}
-		</div>
-		<div class="table_plan_subhead">
-			<div>Features</div>
-			{#each result as items, indexResult (items)}
-				<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
-					{#if indexResult != 0}
-						<kit:dropdown closeOnClick>
-							{#snippet activator({ open, toggle }: ModelDropdownProps)}
-								<kit:btn
-									icon
-									active={open}
-									onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-									rounded="full"
-									size="sm"
-									class="hidden_btn"
-								>
-									<kit:icon><Pen /></kit:icon>
-								</kit:btn>
-							{/snippet}
-
-							<kit:list>
-								{#each result as { title }, index (title)}
-									{#if index != 0}
-										<kit:list-item
-											active={onlyDisplay === index}
-											onclick={() => (onlyDisplay = index)}
-										>
-											{title}
-										</kit:list-item>
-									{/if}
-								{/each}
-							</kit:list>
-						</kit:dropdown>
-					{/if}
-				</div>
-			{/each}
-		</div>
-
-		{#each content as { text, subtext, subject }, index (index)}
-			<div class="table_plan_section">
-				<div>
-					<p>{text}</p>
-					{#if subtext}
-						<span>
-							{@html subtext}
-						</span>
-					{/if}
-				</div>
-				{#each result as _, indexResult (_)}
-					<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}></div>
-				{/each}
 			</div>
-
-			{#each subject as element, indexElement (indexElement)}
-				<div class="table_plan">
-					<div>{element}</div>
-					{#each result as items, indexResult (indexResult)}
-						{@const value = items.values[index][indexElement]}
-						<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
-							{#if value == 'yes'}
-								<kit:tooltip label="Supported">
-									<kit:icon color="success">
-										<Check />
-									</kit:icon>
-								</kit:tooltip>
-							{:else if value == 'no'}
-								<kit:tooltip label="Unsupported">
-									<kit:icon color="error">
-										<X />
-									</kit:icon>
-								</kit:tooltip>
-							{:else if value == 'partial'}
-								<kit:tooltip label="Partial supported">
-									<kit:icon color="warning">
-										<OctagonAlert />
-									</kit:icon>
-								</kit:tooltip>
-							{:else}
-								{value}
-							{/if}
-						</div>
-					{/each}
-				</div>
-			{/each}
 		{/each}
+	</div>
+	<div class="table_plan_subhead">
+		<!-- <div>Features</div> -->
+		<div></div>
+		{#each result as items, indexResult (items)}
+			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
+				{#if indexResult != 0}
+					<kit:dropdown closeOnClick>
+						{#snippet activator({ open, toggle }: ModelDropdownProps)}
+							<kit:btn
+								icon
+								active={open}
+								onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+								rounded="full"
+								size="sm"
+								class="hidden_btn"
+							>
+								<kit:icon><Pen /></kit:icon>
+							</kit:btn>
+						{/snippet}
 
-		<div class="table_plan_footer">
-			<div></div>
+						<kit:list>
+							{#each result as { title }, index (title)}
+								{#if index != 0}
+									<kit:list-item
+										active={onlyDisplay === index}
+										onclick={() => (onlyDisplay = index)}
+									>
+										{title}
+									</kit:list-item>
+								{/if}
+							{/each}
+						</kit:list>
+					</kit:dropdown>
+				{/if}
+			</div>
+		{/each}
+	</div>
+
+	{#each content as { text, subject }, index (index)}
+		<div class="table_plan_section">
+			<div>
+				<p>{text}</p>
+				<!-- {#if subtext}
+					<span>
+						{@html subtext}
+					</span>
+				{/if} -->
+			</div>
 			{#each result as _, indexResult (_)}
 				<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}></div>
 			{/each}
 		</div>
+
+		{#each subject as element, indexElement (indexElement)}
+			<div class="table_plan">
+				<div>{element}</div>
+				{#each result as items, indexResult (indexResult)}
+					{@const value = items.values[index][indexElement]}
+					<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
+						{#if value == 'yes'}
+							<kit:tooltip label="Supported">
+								<div class="circle circle-success">
+									<kit:icon color="success">
+										<Check />
+									</kit:icon>
+								</div>
+							</kit:tooltip>
+						{:else if value == 'no'}
+							<kit:tooltip label="Unsupported">
+								<div class="circle circle-error">
+									<kit:icon color="error">
+										<X />
+									</kit:icon>
+								</div>
+							</kit:tooltip>
+						{:else if value == 'partial'}
+							<kit:tooltip label="Partial supported">
+								<div class="circle circle-warning">
+									<kit:icon color="warning">
+										<OctagonAlert />
+									</kit:icon>
+								</div>
+							</kit:tooltip>
+						{:else}
+							{value}
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/each}
+	{/each}
+
+	<div class="table_plan_footer">
+		<div></div>
+		{#each result as _, indexResult (_)}
+			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}></div>
+		{/each}
 	</div>
-</section>
+</div>
 
 <style lang="scss">
-	section {
-		padding-top: 8.75rem;
-		padding-bottom: 8.75rem;
-		max-width: 1538px;
-		margin: 0 auto;
-		padding-left: 24px;
-		padding-right: 24px;
-	}
-
 	.plan_embed {
-		$border-color-section: var(--kit-color-fill);
+		$border-color-section: var(--kit-color-border);
 		$border-color-lapikit: var(--kit-color-accent);
 		--table_plan_head-template-row: 80px;
 		--table_plan_head_content-template-row: 56px auto;
@@ -210,6 +206,27 @@
 		width: 100%;
 		position: relative;
 		gap: 0;
+
+		.circle {
+			width: 30px;
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 9999px;
+		}
+
+		.circle-success {
+			background-color: color-mix(in oklab, var(--kit-color-success) 20%, transparent 100%);
+		}
+
+		.circle-error {
+			background-color: color-mix(in oklab, var(--kit-color-error) 20%, transparent 100%);
+		}
+
+		.circle-warning {
+			background-color: color-mix(in oklab, var(--kit-color-warning) 20%, transparent 100%);
+		}
 
 		> div {
 			display: grid;

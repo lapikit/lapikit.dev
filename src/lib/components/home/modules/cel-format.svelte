@@ -8,7 +8,9 @@
 </script>
 
 {#if value == 'true' || value == 'yes' || (typeof value === 'boolean' && value)}
-	<kit:icon color="success"><Check /></kit:icon>
+	<div>
+		<kit:icon color="success"><Check /></kit:icon>
+	</div>
 {:else if value == 'false' || value == 'no' || (typeof value === 'boolean' && !value)}
 	<kit:icon color="error"><X /></kit:icon>
 {:else if value == 'partial'}
@@ -18,3 +20,9 @@
 {:else}
 	{@render children?.()}
 {/if}
+
+<style lang="scss">
+	div {
+		background-color: orange;
+	}
+</style>

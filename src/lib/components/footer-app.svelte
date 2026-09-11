@@ -13,7 +13,7 @@
 	import { openConsentPreferences } from '$lib/stores/consent.svelte';
 
 	// assets
-	import LapikitFooter from '$lib/assets/images/lapikit-footer.svg';
+	import LapikitFooter from '$lib/assets/images/lapikit-footer.svg?raw';
 	import { ExternalLink } from 'lucide-svelte';
 
 	const accordion = useAccordion();
@@ -101,7 +101,9 @@
 		</div>
 	</div>
 	<div>
-		<img src={LapikitFooter} loading="lazy" aria-label="Lapikit" alt="Lapikit" />
+		<span class="lapikit-wordmark" role="img" aria-label="Lapikit">
+			{@html LapikitFooter}
+		</span>
 	</div>
 	<div>
 		Copyright © 2025 - {year} Lapikit -
@@ -120,13 +122,21 @@
 		> div:nth-child(2) {
 			text-align: center;
 			user-select: none;
-			img {
+
+			.lapikit-wordmark {
 				display: inline-block;
 				max-width: 100%;
 				position: relative;
 				margin-top: 40px;
 				padding: 76px 40px 40px;
 				user-select: none;
+				color: var(--kit-color-text);
+
+				:global(svg) {
+					display: block;
+					max-width: 100%;
+					height: auto;
+				}
 			}
 		}
 

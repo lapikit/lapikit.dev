@@ -1,5 +1,6 @@
 <script lang="ts">
 	import BentoCounter from '$lib/components/home/bento-counter.svelte';
+	import Components from '$lib/components/home/components.svelte';
 	import Faq from '$lib/components/home/faq.svelte';
 	import Features from '$lib/components/home/features.svelte';
 
@@ -29,6 +30,8 @@
 <!-- <VsCode /> -->
 
 <VsCodeUi />
+
+<Components />
 
 <section>
 	<div>

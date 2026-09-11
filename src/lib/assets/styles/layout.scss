@@ -1,5 +1,13 @@
 :root {
 	--app-container-size: 1538px;
+	--app-container-size-compact: 1418px;
+
+	--kit-color-shell: hsl(240deg 4.76% 12.35%);
+	--kit-colot-on-shell: hsl(0 0% 100%);
+
+	// fixed color
+	--kit-color-text-on-light: hsl(222 20% 10%);
+	--kit-color-text-on-dark: hsl(0 0% 100%);
 
 	// bento
 	--kit-color-bento-integration: #e46b39;
@@ -31,6 +39,22 @@
 }
 
 /** UI FONT **/
+// .subtitle {
+// 	font-weight: 900;
+// }
+
 .subtitle {
-	font-weight: 900;
+	margin: 20px 0;
+}
+
+.accent-text {
+	color: var(--kit-color-accent) !important;
+}
+
+.muted-text {
+	color: var(--kit-color-text-muted) !important;
+}
+
+.svelte-text {
+	color: var(--kit-color-svelte) !important;
 }
