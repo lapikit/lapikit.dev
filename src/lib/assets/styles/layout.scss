@@ -82,15 +82,25 @@
 	--home-appbar-affect-wrapper: 130px;
 
 	.wrapper {
+		display: grid;
+		max-width: var(--app-container-size-compact);
 		position: relative;
 		margin: 0 auto;
 		padding-left: 24px;
 		padding-right: 24px;
+		gap: 25px;
 	}
 
 	h1 {
 		font-size: 32px;
 		line-height: 1;
+		font-weight: 900;
+	}
+
+	h2 {
+		font-size: 28px;
+		letter-spacing: -0.01em;
+		line-height: 1.15;
 		font-weight: 900;
 	}
 
@@ -104,6 +114,11 @@
 			font-size: 48px;
 		}
 
+		h2 {
+			font-size: 42px;
+			line-height: 1.15;
+		}
+
 		p.subtitle-h1 {
 			font-size: 18px;
 		}
@@ -112,6 +127,10 @@
 	@media (min-width: 640px) {
 		h1 {
 			font-size: 56px;
+		}
+
+		h2 {
+			font-size: 48px;
 		}
 
 		p.subtitle-h1 {
@@ -123,6 +142,7 @@
 		.wrapper {
 			padding-left: 40px;
 			padding-right: 40px;
+			gap: 40px;
 		}
 	}
 }

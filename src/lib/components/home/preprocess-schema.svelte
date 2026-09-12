@@ -1,14 +1,16 @@
 <script lang="ts">
+	//assets
 	import LogoLapikit from '$lib/assets/images/lapikit.webp?enhanced';
 	import LogoSvelte from '$lib/assets/images/svelte.webp?enhanced';
 	import ViteJsIcon from '$lib/assets/icons/vite.js.svg?raw';
-	import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
-	import WebpackIcon from '$lib/assets/icons/webpack.svg?raw';
+	// import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
+	// import WebpackIcon from '$lib/assets/icons/webpack.svg?raw';
 
+	// states
 	const orbitSatellites = [
-		{ name: 'Vite.js', icon: ViteJsIcon, angle: -90 },
-		{ name: 'rollup', icon: RollupIcon, angle: 30 },
-		{ name: 'Webpack', icon: WebpackIcon, angle: 150 }
+		{ name: 'Vite.js', icon: ViteJsIcon, angle: -90 }
+		// { name: 'rollup', icon: RollupIcon, angle: 30 },
+		// { name: 'Webpack', icon: WebpackIcon, angle: 150 }
 	];
 
 	const satellites = orbitSatellites.map((satellite) => ({
@@ -240,7 +242,7 @@
 	/* website mockup */
 	.node-website {
 		width: 100%;
-		max-width: 320px;
+		max-width: 260px;
 	}
 
 	.mockup-window {
@@ -349,10 +351,6 @@
 		.orbit-track-circle--horizontal {
 			display: block;
 		}
-
-		.node-website {
-			max-width: 340px;
-		}
 	}
 
 	@media (min-width: 1024px) {
@@ -370,8 +368,9 @@
 			}
 		}
 
-		.node-website {
-			max-width: 380px;
+		.node-svelte {
+			max-width: 260px;
+			width: 100%;
 		}
 	}
 </style>

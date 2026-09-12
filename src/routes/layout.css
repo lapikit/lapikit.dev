@@ -23,3 +23,11 @@
 		font-size: calc(var(--kit-font-xl) * 1.25);
 	}
 }
+
+// OVERWRITE tailwindcss
+
+@layer utilities {
+	.outline {
+		outline-width: 0 !important;
+	}
+}
