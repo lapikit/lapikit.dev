@@ -10,6 +10,8 @@
 		alt: string;
 	};
 
+	let { children } = $props();
+
 	const images: SupportImage[] = [
 		{
 			src: nycolaideImage,
@@ -37,7 +39,7 @@
 	});
 </script>
 
-<div class="wrapper">
+<div class="support-project">
 	<ul class="fan">
 		{#each cards as card, index (index)}
 			<li style:--rotate="{card.rotate}deg" style:--lift="{card.lift}px" style:z-index={card.z}>
@@ -48,14 +50,9 @@
 		{/each}
 	</ul>
 	<div>
-		<h2>
-			<span class="muted-text">Free</span> and <span class="muted-text">open-source</span>,
-			<br /> Built by the <span class="accent-text">community</span>
-		</h2>
-
-		<p class="subtitle">Lapikit welcomes contributions from developers around the world</p>
+		{@render children()}
 	</div>
-	<div>
+	<div class="support-project_actions">
 		{#each socials as name (name)}
 			{@const link = links[name]}
 			<kit:btn
@@ -86,60 +83,85 @@
 </div>
 
 <style lang="scss">
-	.wrapper {
+	.support-project {
 		display: grid;
-		grid-template-columns: min-content 1fr auto;
-		align-items: center;
-		max-width: var(--app-container-size-compact);
-		margin: 0 auto;
-		padding-left: 24px;
-		padding-right: 24px;
-
-		h2 {
-			font-size: 2.5rem;
-			letter-spacing: -0.01em;
-			line-height: 1.15;
-			font-weight: 900;
-		}
-
-		> ul {
-			padding-left: 50px;
-			padding-right: 50px;
-		}
-	}
-
-	.fan {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		grid-template-columns: 1fr;
+		gap: 20px;
 		list-style: none;
-		padding: 48px 0;
-		margin: 0;
+		justify-content: center;
+		text-align: center;
 
-		li {
-			--size: 94px;
-			width: var(--size);
-			flex: 0 0 auto;
-			transform: translateY(var(--lift)) rotate(var(--rotate));
-			transition: transform 0.25s ease;
+		.fan {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			list-style: none;
+			padding: 48px 0;
+			margin: 0;
 
-			&:not(:first-child) {
-				margin-left: calc(var(--size) * -0.36);
+			li {
+				--size: 64px;
+				width: var(--size);
+				flex: 0 0 auto;
+				transform: translateY(var(--lift)) rotate(var(--rotate));
+				transition: transform 0.25s ease;
+
+				&:not(:first-child) {
+					margin-left: calc(var(--size) * -0.36);
+				}
+			}
+
+			a {
+				display: block;
+				border-radius: 18px;
+				overflow: hidden;
+				border: 1px solid var(--kit-color-border);
+			}
+
+			img {
+				display: block;
+				width: 100%;
+				aspect-ratio: 1;
+				object-fit: cover;
 			}
 		}
 
-		a {
-			display: block;
-			border-radius: 18px;
-			overflow: hidden;
-			border: 1px solid var(--kit-color-border);
+		.support-project_actions {
+			display: grid;
+			justify-content: center;
+			row-gap: 20px;
 		}
 
-		img {
-			display: block;
-			width: 100%;
-			aspect-ratio: 1;
-			object-fit: cover;
+		@media (min-width: 540px) {
+			.support-project_actions {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+			}
+		}
+
+		@media (min-width: 720px) {
+			grid-template-columns: auto 1fr min-content;
+			gap: 40px;
+
+			ul {
+				padding-left: 40px !important;
+				padding-right: 40px !important;
+
+				li {
+					--size: 94px;
+				}
+			}
+
+			> div:nth-child(2) {
+				display: grid;
+				text-align: start;
+				align-items: center;
+			}
+
+			.support-project_actions {
+				flex-direction: column;
+			}
 		}
 	}
 </style>

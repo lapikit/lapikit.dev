@@ -113,6 +113,10 @@
 
 <style lang="scss">
 	footer {
+		.subtitle,
+		:global(.subtitle) {
+			font-weight: 900;
+		}
 		> div:last-child {
 			width: 100%;
 			text-align: center;

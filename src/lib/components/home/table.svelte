@@ -53,8 +53,7 @@
 
 	let content = [
 		{
-			text: 'Features and possibility',
-			// subtext: "<a href='/'>test with sepcifique link for test UI</a>",
+			text: 'Features',
 			subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
 		},
 		{
@@ -71,7 +70,6 @@
 		},
 		{
 			text: 'Integration and support',
-			// subtext: "<a href='/'>test with sepcifique link for test UI</a>",
 			subject: ['CLI integrated', 'Full open and free', 'Release cadence']
 		}
 	];
@@ -317,7 +315,7 @@
 				> div {
 					display: flex;
 					align-items: center;
-					font-size: var(--kit-font-xl);
+					// font-size: var(--kit-font-xl);
 					font-weight: 800;
 					line-height: 1;
 					padding-top: var(--table_plan_subhead-div-padding);
@@ -351,7 +349,7 @@
 					padding-bottom: var(--table_plan_section-div-padding);
 
 					p {
-						font-size: var(--kit-font-xl);
+						// font-size: var(--kit-font-xl);
 						font-weight: 800;
 						line-height: 1;
 					}

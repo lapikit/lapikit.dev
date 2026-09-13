@@ -6,6 +6,8 @@
 
 	const accordion = useAccordion();
 
+	let { children } = $props();
+
 	accordion.toggle(0);
 
 	// states
@@ -52,10 +54,9 @@
 	];
 </script>
 
-<div class="wrapper">
+<div class="faq-lapikit">
 	<div>
-		<h2><span class="accent-text">Common</span> questions</h2>
-		<p class="subtitle">Not covered here? Reach out and we'll help</p>
+		{@render children()}
 
 		<kit:list density="comfortable">
 			<kit:list-item href="mailto:contact@lapikit.dev">
@@ -115,55 +116,36 @@
 		</kit:list>
 	</div>
 
-	<div>
-		<kit:accordion spacer density="comfortable">
-			{#each faqContext as { question, message }, index (question)}
-				<kit:accordion-item
-					{index}
-					text={question}
-					open={accordion.values.includes(index)}
-					toggle={accordion.toggle}
-				>
-					{#snippet indicator({ open }: ModelAccordionItemProps)}
-						<kit:icon>
-							{#if open}
-								<X />
-							{:else}
-								<Plus />
-							{/if}
-						</kit:icon>
-					{/snippet}
-					{message}
-				</kit:accordion-item>
-			{/each}
-		</kit:accordion>
-	</div>
+	<kit:accordion spacer density="comfortable">
+		{#each faqContext as { question, message }, index (question)}
+			<kit:accordion-item
+				{index}
+				text={question}
+				open={accordion.values.includes(index)}
+				toggle={accordion.toggle}
+			>
+				{#snippet indicator({ open }: ModelAccordionItemProps)}
+					<kit:icon>
+						{#if open}
+							<X />
+						{:else}
+							<Plus />
+						{/if}
+					</kit:icon>
+				{/snippet}
+				{message}
+			</kit:accordion-item>
+		{/each}
+	</kit:accordion>
 </div>
 
 <style lang="scss">
-	.wrapper {
-		position: relative;
+	.faq-lapikit {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		max-width: var(--app-container-size-compact);
-		margin: 0 auto;
-		padding-left: 24px;
-		padding-right: 24px;
-		gap: 40px;
-
-		h2 {
-			font-size: 2.5rem;
-			letter-spacing: -0.01em;
-			line-height: 1.15;
-			font-weight: 900;
-		}
+		grid-template-columns: 1fr;
+		gap: 25px;
 
 		> div:first-child {
-			position: sticky;
-			top: 100px;
-			max-width: 80%;
-			height: fit-content;
-
 			div {
 				> p {
 					margin: 0;
@@ -182,6 +164,18 @@
 
 		:global(.kit-accordion-item__title) {
 			font-weight: 600;
+		}
+
+		@media (min-width: 720px) {
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+
+			> div:first-child {
+				position: sticky;
+				top: 100px;
+				max-width: 80%;
+				height: fit-content;
+			}
 		}
 	}
 </style>
