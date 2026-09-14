@@ -107,7 +107,9 @@
 	</div>
 	<div>
 		Copyright © 2025 - {year} Lapikit -
-		<a href={urlLapikitLicense} target="_blank" rel="external noreferrer"> MIT License </a>
+		<a href={urlLapikitLicense} target="_blank" rel="external noreferrer" class="accent-text">
+			MIT License
+		</a>
 	</div>
 </footer>
 
@@ -131,8 +133,8 @@
 				display: inline-block;
 				max-width: 100%;
 				position: relative;
-				margin-top: 40px;
-				padding: 76px 40px 40px;
+				margin-top: 20px;
+				padding: 43px 0;
 				user-select: none;
 				color: var(--kit-color-text);
 
@@ -147,8 +149,8 @@
 		> div:nth-child(2),
 		.grid-footer {
 			max-width: var(--app-container-size);
-			padding-left: 24px;
-			padding-right: 24px;
+			padding-left: var(--app-spacing-container);
+			padding-right: var(--app-spacing-container);
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -172,6 +174,10 @@
 					margin-bottom: 20px;
 				}
 
+				> div:nth-child(2) {
+					width: 100%;
+				}
+
 				> div:last-child {
 					display: flex;
 					gap: 4px;
@@ -183,9 +189,6 @@
 			}
 
 			@media (min-width: 767px) {
-				padding-left: 40px;
-				padding-right: 40px;
-
 				> div:first-child {
 					grid-column: span 4;
 
@@ -205,6 +208,11 @@
 						grid-column: span 4;
 					}
 				}
+
+				.lapikit-wordmark {
+					margin-top: 40px;
+					padding: 76px 40px 40px;
+				}
 			}
 
 			@media (min-width: 1064px) {
@@ -215,7 +223,7 @@
 				> div:last-child {
 					grid-column: span 10;
 					display: grid;
-					grid-template-columns: repeat(10, 1fr);
+					grid-template-columns: repeat(8, 1fr);
 					gap: 16px;
 
 					> :global(*) {

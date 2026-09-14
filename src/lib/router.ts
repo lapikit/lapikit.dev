@@ -1,27 +1,45 @@
 import type { AppNavItem, NavSection } from './@types';
-
+import { links, urlLapikitLicense } from './constants';
 import { Container, Eraser, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
 
 import accordionImage from '$lib/assets/images/components/accordion.webp';
+import accordionIcon from '$lib/assets/images/components/accordion_icon.png';
 import alertImage from '$lib/assets/images/components/alert.webp';
+import alertIcon from '$lib/assets/images/components/alert_icon.png';
 import appbarImage from '$lib/assets/images/components/appbar.webp';
+import appbarIcon from '$lib/assets/images/components/appbar_icon.png';
 import aspectRatioImage from '$lib/assets/images/components/aspect-ratio.webp';
+import aspectRatioIcon from '$lib/assets/images/components/aspect-ratio_icon.png';
 import avatarImage from '$lib/assets/images/components/avatar.webp';
+import avatarIcon from '$lib/assets/images/components/avatar_icon.png';
 import buttonImage from '$lib/assets/images/components/button.webp';
+import buttonIcon from '$lib/assets/images/components/button_icon.png';
 import cardImage from '$lib/assets/images/components/card.webp';
+import cardIcon from '$lib/assets/images/components/card_icon.png';
 import chipImage from '$lib/assets/images/components/chip.webp';
+import chipIcon from '$lib/assets/images/components/chip_icon.png';
 import dialogImage from '$lib/assets/images/components/dialog.webp';
+import dialogIcon from '$lib/assets/images/components/dialog_icon.png';
 import dropdownImage from '$lib/assets/images/components/dropdown.webp';
+import dropdownIcon from '$lib/assets/images/components/dropdown_icon.png';
 import iconImage from '$lib/assets/images/components/icon.webp';
+import iconIcon from '$lib/assets/images/components/icon_icon.png';
 import listImage from '$lib/assets/images/components/list.webp';
+import listIcon from '$lib/assets/images/components/list_icon.png';
 import modalImage from '$lib/assets/images/components/modal.webp';
+import modalIcon from '$lib/assets/images/components/modal_icon.png';
 import popoverImage from '$lib/assets/images/components/popover.webp';
+import popoverIcon from '$lib/assets/images/components/popover_icon.png';
 import separatorImage from '$lib/assets/images/components/separator.webp';
+import separatorIcon from '$lib/assets/images/components/separator_icon.png';
 import textfieldImage from '$lib/assets/images/components/textfield.webp';
+import textfieldIcon from '$lib/assets/images/components/textfield_icon.png';
 import toolbarImage from '$lib/assets/images/components/toolbar.webp';
+import toolbarIcon from '$lib/assets/images/components/toolbar_icon.png';
 import tooltipImage from '$lib/assets/images/components/tooltip.webp';
+import tooltipIcon from '$lib/assets/images/components/tooltip_icon.png';
 import applicationImage from '$lib/assets/images/components/application.webp';
-import { links, urlLapikitLicense } from './constants';
+import applicationIcon from '$lib/assets/images/components/application_icon.png';
 
 const appNavigation: AppNavItem[] = [
 	{
@@ -145,133 +163,152 @@ export const docsNavigation: NavSection[] = [
 				label: 'Application',
 				url: '/docs/components/application',
 				description: 'Root wrapper that initializes the Lapikit theme and global styles.',
-				image: applicationImage
+				image: applicationImage,
+				icon: applicationIcon
 			},
 			{
 				name: 'kit:accordion',
 				label: 'Accordion',
 				url: '/docs/components/accordion',
 				description: 'Collapsible sections to progressively reveal content.',
-				image: accordionImage
+				image: accordionImage,
+				icon: accordionIcon
 			},
 			{
 				name: 'kit:alert',
 				label: 'Alert',
 				url: '/docs/components/alert',
 				description: 'Contextual feedback messages for user actions.',
-				image: alertImage
+				image: alertImage,
+				icon: alertIcon
 			},
 			{
 				name: 'kit:appbar',
 				label: 'Appbar',
 				url: '/docs/components/appbar',
 				description: 'Top navigation bar with slots for branding and actions.',
-				image: appbarImage
+				image: appbarImage,
+				icon: appbarIcon
 			},
 			{
 				name: 'kit:aspect-ratio',
 				label: 'Aspect ratio',
 				url: '/docs/components/aspect-ratio',
 				description: 'Constrains content to a fixed width-to-height ratio.',
-				image: aspectRatioImage
+				image: aspectRatioImage,
+				icon: aspectRatioIcon
 			},
 			{
 				name: 'kit:avatar',
 				label: 'Avatar',
 				url: '/docs/components/avatar',
 				description: 'User profile picture with fallback initials.',
-				image: avatarImage
+				image: avatarImage,
+				icon: avatarIcon
 			},
 			{
 				name: 'kit:btn',
 				label: 'Button',
 				url: '/docs/components/button',
 				description: 'Interactive element with multiple variants and sizes.',
-				image: buttonImage
+				image: buttonImage,
+				icon: buttonIcon
 			},
 			{
 				name: 'kit:card',
 				label: 'Card',
 				url: '/docs/components/card',
 				description: 'Surface container for grouped, related content.',
-				image: cardImage
+				image: cardImage,
+				icon: cardIcon
 			},
 			{
 				name: 'kit:chip',
 				label: 'Chip',
 				url: '/docs/components/chip',
 				description: 'Compact element for tags, filters or selections.',
-				image: chipImage
+				image: chipImage,
+				icon: chipIcon
 			},
 			{
 				name: 'kit:dialog',
 				label: 'Dialog',
 				url: '/docs/components/dialog',
 				description: 'Accessible modal dialog for confirmations and forms.',
-				image: dialogImage
+				image: dialogImage,
+				icon: dialogIcon
 			},
 			{
 				name: 'kit:dropdown',
 				label: 'Dropdown',
 				url: '/docs/components/dropdown',
 				description: 'Floating menu triggered by a reference element.',
-				image: dropdownImage
+				image: dropdownImage,
+				icon: dropdownIcon
 			},
 			{
 				name: 'kit:icon',
 				label: 'Icon',
 				url: '/docs/components/icon',
 				description: 'SVG icon wrapper with size and color control.',
-				image: iconImage
+				image: iconImage,
+				icon: iconIcon
 			},
 			{
 				name: 'kit:list',
 				label: 'List',
 				url: '/docs/components/list',
 				description: 'Vertical list of items with optional leading and trailing slots.',
-				image: listImage
+				image: listImage,
+				icon: listIcon
 			},
 			{
 				name: 'kit:modal',
 				label: 'Modal',
 				url: '/docs/components/modal',
 				description: 'Full-screen overlay for focused tasks or content.',
-				image: modalImage
+				image: modalImage,
+				icon: modalIcon
 			},
 			{
 				name: 'kit:popover',
 				label: 'Popover',
 				url: '/docs/components/popover',
 				description: 'Lightweight floating panel anchored to a trigger.',
-				image: popoverImage
+				image: popoverImage,
+				icon: popoverIcon
 			},
 			{
 				name: 'kit:separator',
 				label: 'Separator',
 				url: '/docs/components/separator',
 				description: 'Visual divider between sections or list items.',
-				image: separatorImage
+				image: separatorImage,
+				icon: separatorIcon
 			},
 			{
 				name: 'kit:textfield',
 				label: 'Textfield',
 				url: '/docs/components/textfield',
 				description: 'Text input with label, helper text and validation states.',
-				image: textfieldImage
+				image: textfieldImage,
+				icon: textfieldIcon
 			},
 			{
 				name: 'kit:toolbar',
 				label: 'Toolbar',
 				url: '/docs/components/toolbar',
 				description: 'Horizontal bar grouping actions and controls.',
-				image: toolbarImage
+				image: toolbarImage,
+				icon: toolbarIcon
 			},
 			{
 				name: 'kit:tooltip',
 				label: 'Tooltip',
 				url: '/docs/components/tooltip',
 				description: 'Short contextual hint shown on hover or focus.',
-				image: tooltipImage
+				image: tooltipImage,
+				icon: tooltipIcon
 			}
 		]
 	},

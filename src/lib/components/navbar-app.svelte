@@ -91,6 +91,8 @@
 		margin: $padding auto 0;
 		overflow: visible;
 		z-index: 2000;
+		// backdrop-filter: blur(20px);
+		// background: rgb(59 66 98 / 80%);
 
 		.navbar-actions {
 			display: flex;

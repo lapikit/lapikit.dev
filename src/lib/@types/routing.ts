@@ -4,6 +4,7 @@ export type NavPage = {
 	url: string;
 	description?: string;
 	image?: string;
+	icon?: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

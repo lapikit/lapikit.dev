@@ -1,24 +1,19 @@
 <script lang="ts">
 	import { router } from '$lib';
+	import type { NavPage } from '$lib/@types';
 
-	type ComponentItem = {
-		name: string;
-		label: string;
-		url: string;
-		image?: string;
-	};
+	// states
+	const ROWS = 3;
 
 	const section = router.documentation.find((entry) => entry.label === 'Components');
 
-	const components: ComponentItem[] = (section?.pages ?? []).filter((page): page is ComponentItem =>
+	const components: NavPage[] = (section?.pages ?? []).filter((page): page is NavPage =>
 		Boolean(page.image && page.name)
 	);
 
-	const ROWS = 3;
-
-	function fill(items: ComponentItem[], min = 14): ComponentItem[] {
+	function fill(items: NavPage[], min = 14): NavPage[] {
 		if (items.length === 0) return items;
-		const out: ComponentItem[] = [];
+		const out: NavPage[] = [];
 		while (out.length < min) out.push(...items);
 		return out;
 	}
@@ -34,11 +29,11 @@
 	});
 </script>
 
-<section aria-label="Lapikit components">
-	<div class="marquee">
+<div id="list-components">
+	<div>
 		{#each rows as { items, duration, reverse }, row (row)}
-			<div class="marquee-row" class:reverse style:--duration="{duration}s">
-				<ul class="marquee-track">
+			<div class:reverse style:--duration="{duration}s">
+				<ul>
 					{#each [...items, ...items] as component, index (row + '-' + index)}
 						<li>
 							<kit:chip
@@ -46,19 +41,25 @@
 								aria-hidden={index >= items.length}
 								tabindex={index >= items.length ? -1 : 0}
 								density="comfortable"
+								rounded="md"
 								size="lg"
 							>
 								{#snippet prepend()}
-									<kit:avatar s-style_--kit-avatar-h="28px" s-style_margin-left="-8px">
+									<kit:avatar
+										rounded="sm"
+										s-style_--kit-avatar-h="28px"
+										s-style_margin-left="-8px"
+										s-style_margin-right="4px"
+									>
 										<img
-											src={component.image}
+											src={component.icon ? component.icon : component.image}
 											alt={component.name}
 											loading="lazy"
 											decoding="async"
 										/>
 									</kit:avatar>
 								{/snippet}
-								<span>&lt;&nbsp;{component.name}&nbsp;/&gt;</span>
+								<span class="text-code">&lt;{component.name}/&gt;</span>
 							</kit:chip>
 						</li>
 					{/each}
@@ -66,62 +67,47 @@
 			</div>
 		{/each}
 	</div>
-</section>
+</div>
 
 <style lang="scss">
-	section {
-		padding-top: 5rem;
-		padding-bottom: 5rem;
+	#list-components {
 		overflow: hidden;
-	}
 
-	.marquee {
-		display: grid;
-		gap: 16px;
-		mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-		-webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-	}
+		> div {
+			display: grid;
+			gap: 16px;
+			mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+			-webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 
-	.marquee-row {
-		overflow: hidden;
-		overflow: clip;
-		overflow-clip-margin: 6px;
+			> div {
+				overflow: hidden;
+				overflow: clip;
+				overflow-clip-margin: 6px;
 
-		&.reverse .marquee-track {
-			animation-direction: reverse;
-		}
-	}
+				&.reverse ul {
+					animation-direction: reverse;
+				}
 
-	.marquee-track {
-		display: flex;
-		width: max-content;
-		gap: 12px;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		animation: marquee-scroll var(--duration, 50s) linear infinite;
-		will-change: transform;
+				ul {
+					display: flex;
+					width: max-content;
+					gap: 12px;
+					padding: 0;
+					margin: 0;
+					list-style: none;
+					animation: scroll-horizontal-chip var(--duration, 50s) linear infinite;
+					will-change: transform;
 
-		&:hover {
-			animation-play-state: paused;
-		}
-	}
-
-	li {
-		flex: 0 0 auto;
-	}
-
-	@keyframes marquee-scroll {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(-50%);
+					&:hover {
+						animation-play-state: paused;
+					}
+				}
+			}
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.marquee-track {
+		ul {
 			animation: none;
 		}
 	}

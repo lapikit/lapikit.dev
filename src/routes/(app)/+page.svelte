@@ -131,7 +131,7 @@
 				</div>
 			</div>
 		</div>
-		<div>
+		<div class="spacing-wrapper">
 			<Components />
 		</div>
 		<div class="wrapper app-center-content">
@@ -200,6 +200,10 @@
 		row-gap: 25px;
 		max-width: 640px;
 		margin: 0 auto;
+	}
+
+	.spacing-wrapper {
+		padding: 110px 0 40px;
 	}
 
 	section:first-child {
