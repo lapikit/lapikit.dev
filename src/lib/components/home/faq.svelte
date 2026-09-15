@@ -36,109 +36,118 @@
 	];
 </script>
 
-<!-- <div class="faq-lapikit"> -->
-<div>
-	{@render children()}
+<div class="grid-faq">
+	<div>
+		<div>
+			{@render children()}
+		</div>
 
-	<kit:list id="custom-list-contact" density="comfortable">
-		{#each contact as item, index (index)}
-			<kit:list-item href={item.url}>
-				{#snippet prepend()}
-					<kit:avatar size="xs" background={item.background}>
+		<kit:list id="custom-list-contact" density="comfortable">
+			{#each contact as item, index (index)}
+				<kit:list-item href={item.url}>
+					{#snippet prepend()}
+						<kit:avatar size="xs" background={item.background}>
+							<kit:icon>
+								{#if typeof item.icon === 'string'}
+									{@html item.icon}
+								{:else}
+									{@const Icon = item.icon}
+									<Icon />
+								{/if}
+							</kit:icon>
+						</kit:avatar>
+					{/snippet}
+					<div>
+						<p class="text-sm">{item.label}</p>
+						<p class="muted-text text-xs">{capitalize(item.description)}</p>
+					</div>
+					{#snippet append()}
 						<kit:icon>
-							{#if typeof item.icon === 'string'}
-								{@html item.icon}
-							{:else}
-								{@const Icon = item.icon}
-								<Icon />
-							{/if}
+							<ArrowUpRight />
 						</kit:icon>
-					</kit:avatar>
-				{/snippet}
-				<div>
-					<p class="text-sm">{item.label}</p>
-					<p class="muted-text text-xs">{capitalize(item.description)}</p>
-				</div>
-				{#snippet append()}
+					{/snippet}
+				</kit:list-item>
+			{/each}
+		</kit:list>
+	</div>
+
+	<kit:accordion spacer density="comfortable">
+		{#each faqHome as { question, message }, index (question)}
+			<kit:accordion-item
+				{index}
+				text={question}
+				open={accordion.values.includes(index)}
+				toggle={accordion.toggle}
+				elevation="1"
+			>
+				{#snippet indicator({ open }: ModelAccordionItemProps)}
 					<kit:icon>
-						<ArrowUpRight />
+						{#if open}
+							<X />
+						{:else}
+							<Plus />
+						{/if}
 					</kit:icon>
 				{/snippet}
-			</kit:list-item>
+				{message}
+			</kit:accordion-item>
 		{/each}
-	</kit:list>
+	</kit:accordion>
 </div>
 
-<kit:accordion spacer density="comfortable">
-	{#each faqHome as { question, message }, index (question)}
-		<kit:accordion-item
-			{index}
-			text={question}
-			open={accordion.values.includes(index)}
-			toggle={accordion.toggle}
-			elevation={2}
-		>
-			{#snippet indicator({ open }: ModelAccordionItemProps)}
-				<kit:icon>
-					{#if open}
-						<X />
-					{:else}
-						<Plus />
-					{/if}
-				</kit:icon>
-			{/snippet}
-			{message}
-		</kit:accordion-item>
-	{/each}
-</kit:accordion>
-
-<!-- </div> -->
-
 <style lang="scss">
-	div {
-		width: 100%;
-		> p:last-child {
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
+	.grid-faq {
+		display: grid;
+		gap: 20px;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'title'
+			'faq'
+			'contact';
+
+		div:nth-child(1) {
+			display: contents;
+
+			> div:nth-child(1) {
+				grid-area: title;
+			}
+
+			:global(.kit-list) {
+				grid-area: contact;
+			}
+
+			:global(.kit-list-item__content > div) {
+				width: 100%;
+			}
+
+			:global(.kit-list-item__content p:last-child) {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+
+		> :global(.kit-accordion) {
+			grid-area: faq;
+		}
+
+		@media (min-width: 720px) {
+			gap: 40px;
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas: 'sticky-col faq';
+			align-items: start;
+
+			div:nth-child(1) {
+				grid-area: sticky-col !important;
+				display: flex;
+				flex-direction: column;
+				position: sticky;
+				top: 100px;
+			}
+		}
+
+		:global(.kit-accordion-item__title) {
+			font-weight: 600 !important;
 		}
 	}
-	// .faq-lapikit {
-	// 	display: grid;
-	// 	grid-template-columns: 1fr;
-	// 	gap: 25px;
-
-	// 	> div:first-child {
-	// 		div {
-	// 			> p {
-	// 				margin: 0;
-	// 				line-height: 1.25;
-
-	// 				&:first-child {
-	// 					font-weight: 600;
-	// 				}
-
-	// 				&:last-child {
-	// 					font-weight: 300;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-
-	// 	:global(.kit-accordion-item__title) {
-	// 		font-weight: 600;
-	// 	}
-
-	// 	@media (min-width: 720px) {
-	// 		grid-template-columns: 1fr 1fr;
-	// 		gap: 40px;
-
-	// 		> div:first-child {
-	// 			position: sticky;
-	// 			top: 100px;
-	// 			max-width: 80%;
-	// 			height: fit-content;
-	// 		}
-	// 	}
-	// }
 </style>

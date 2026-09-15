@@ -158,7 +158,7 @@
 	</section>
 
 	<section>
-		<div class="wrapper app-grids">
+		<div class="wrapper">
 			<Faq>
 				<h2 class="title-xl"><span class="accent-text">Common</span> questions</h2>
 				<p class="subtitle">Not covered here? Reach out and we'll help</p>
