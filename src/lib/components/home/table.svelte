@@ -1,96 +1,30 @@
 <script lang="ts">
 	import type { ModelDropdownProps } from 'lapikit/components';
+	import { tableHome, tableHomeList } from '../../../content/app/libs';
 
 	// assets
 	import { Check, OctagonAlert, Pen, X } from 'lucide-svelte';
-	import LapikitLogo from '$lib/assets/images/lapikit.webp';
-	import MeltUI from '$lib/assets/images/melt-ui.webp';
-	import ShadcnSvelte from '$lib/assets/images/shadcn-svelte.webp';
-	import Skeleton from '$lib/assets/images/skeleton.webp';
-	import { nbComponents, nbHooks } from '$lib/constants';
 
 	// states
 	let onlyDisplay = $state(1);
-
-	let result = [
-		{
-			title: 'Lapikit',
-			logo: LapikitLogo,
-			values: [
-				[nbComponents, 'yes', nbHooks],
-				['yes', 'yes', 'yes', 'yes', 'yes', '27 / 1', 'yes'],
-				['yes', 'yes', 'Bi-Monthly']
-			]
-		},
-		{
-			title: 'Skeleton',
-			logo: Skeleton,
-			values: [
-				[42, 'yes', 'no'],
-				['yes', 'no', 'yes', 'partial', 'yes', '0 / 32', 'yes'],
-				['yes', 'yes', 'Bi-Monthly']
-			]
-		},
-		{
-			title: 'Shadcn Svelte',
-			logo: ShadcnSvelte,
-			values: [
-				[62, 'yes', 2],
-				['yes', 'no', 'yes', 'no', 'yes', '25 / 4', 'yes'],
-				['yes', 'yes', 'Bi-Monthly']
-			]
-		},
-		{
-			title: 'Melt UI',
-			logo: MeltUI,
-			values: [
-				[18, 'yes', 'no'],
-				['partial', 'no', 'yes', 'partial', 'yes', '10 / 5', 'yes'],
-				['yes', 'yes', 'Monthly']
-			]
-		}
-	];
-
-	let content = [
-		{
-			text: 'Features',
-			subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
-		},
-		{
-			text: 'Environnements',
-			subject: [
-				'Runes support',
-				'No Tailwind dependances',
-				'Tailwind support',
-				'UnoCss support',
-				'CSS standard support',
-				'Dependencies dev/build',
-				'Eslint support'
-			]
-		},
-		{
-			text: 'Integration and support',
-			subject: ['CLI integrated', 'Full open and free', 'Release cadence']
-		}
-	];
 </script>
 
 <div class="plan_embed">
 	<div class="table_plan_head">
 		<div></div>
-		{#each result as { title, logo }, indexResult (indexResult)}
+		{#each tableHomeList as { title, logo }, indexResult (indexResult)}
 			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
 				<div class="table_plan_head_content">
 					<img src={logo} alt={title} loading="lazy" />
-					<p>{title}</p>
+					<p class="text-sm">{title}</p>
 				</div>
 			</div>
 		{/each}
 	</div>
 	<div class="table_plan_subhead">
-		<!-- <div>Features</div> -->
 		<div></div>
-		{#each result as items, indexResult (items)}
+		<div></div>
+		{#each tableHome as items, indexResult (items)}
 			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
 				{#if indexResult != 0}
 					<kit:dropdown closeOnClick>
@@ -108,7 +42,7 @@
 						{/snippet}
 
 						<kit:list>
-							{#each result as { title }, index (title)}
+							{#each tableHomeList as { title }, index (title)}
 								{#if index != 0}
 									<kit:list-item
 										active={onlyDisplay === index}
@@ -125,17 +59,12 @@
 		{/each}
 	</div>
 
-	{#each content as { text, subject }, index (index)}
+	{#each tableHome as { text, subject }, index (index)}
 		<div class="table_plan_section">
 			<div>
 				<p>{text}</p>
-				<!-- {#if subtext}
-					<span>
-						{@html subtext}
-					</span>
-				{/if} -->
 			</div>
-			{#each result as _, indexResult (_)}
+			{#each tableHomeList as _, indexResult (_)}
 				<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}></div>
 			{/each}
 		</div>
@@ -143,7 +72,7 @@
 		{#each subject as element, indexElement (indexElement)}
 			<div class="table_plan">
 				<div>{element}</div>
-				{#each result as items, indexResult (indexResult)}
+				{#each tableHomeList as items, indexResult (indexResult)}
 					{@const value = items.values[index][indexElement]}
 					<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}>
 						{#if value == 'yes'}
@@ -181,7 +110,7 @@
 
 	<div class="table_plan_footer">
 		<div></div>
-		{#each result as _, indexResult (_)}
+		{#each tableHomeList as _, indexResult (_)}
 			<div class:table_hidden_content={indexResult != 0 && onlyDisplay != indexResult}></div>
 		{/each}
 	</div>
@@ -272,8 +201,7 @@
 						align-items: center;
 
 						p {
-							font-weight: 800;
-							font-size: var(--font-size);
+							font-weight: 700;
 						}
 
 						img {
