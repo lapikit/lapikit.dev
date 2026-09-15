@@ -28,7 +28,8 @@
 	--kit-color-github: hsl(0deg 0% 0%);
 	--kit-color-on-github: hsl(0deg 0% 96.86%);
 
-	--app-spacing-container: 24px;
+	--app-spacing-x-container: 24px;
+	--app-spacing-y-container: 80px;
 }
 
 @import '@fontsource-variable/archivo';
@@ -41,7 +42,8 @@
 
 @media (min-width: 767px) {
 	:root {
-		--app-spacing-container: 40px;
+		--app-spacing-x-container: 40px;
+		--app-spacing-y-container: 110px;
 	}
 }
 
@@ -105,51 +107,51 @@
 		gap: 25px;
 	}
 
-	h1 {
-		font-size: 32px;
-		line-height: 1;
-		font-weight: 900;
-	}
+	// h1 {
+	// 	font-size: 32px;
+	// 	line-height: 1;
+	// 	font-weight: 900;
+	// }
 
-	h2 {
-		font-size: 28px;
-		letter-spacing: -0.01em;
-		line-height: 1.15;
-		font-weight: 900;
-	}
+	// h2 {
+	// 	font-size: 28px;
+	// 	letter-spacing: -0.01em;
+	// 	line-height: 1.15;
+	// 	font-weight: 900;
+	// }
 
-	p.subtitle-h1 {
-		font-size: 16px;
-		font-weight: 200;
-	}
+	// p.subtitle-h1 {
+	// 	font-size: 16px;
+	// 	font-weight: 200;
+	// }
 
 	@media (min-width: 480px) {
-		h1 {
-			font-size: 48px;
-		}
+		// h1 {
+		// 	font-size: 48px;
+		// }
 
-		h2 {
-			font-size: 42px;
-			line-height: 1.15;
-		}
+		// h2 {
+		// 	font-size: 42px;
+		// 	line-height: 1.15;
+		// }
 
-		p.subtitle-h1 {
-			font-size: 18px;
-		}
+		// p.subtitle-h1 {
+		// 	font-size: 18px;
+		// }
 	}
 
 	@media (min-width: 640px) {
-		h1 {
-			font-size: 56px;
-		}
+		// h1 {
+		// 	font-size: 56px;
+		// }
 
-		h2 {
-			font-size: 48px;
-		}
+		// h2 {
+		// 	font-size: 48px;
+		// }
 
-		p.subtitle-h1 {
-			font-size: 22px;
-		}
+		// p.subtitle-h1 {
+		// 	font-size: 22px;
+		// }
 	}
 
 	@media (min-width: 767px) {

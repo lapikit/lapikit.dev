@@ -1,74 +1,70 @@
 <script lang="ts">
-	import { ChevronRight } from 'lucide-svelte';
+	import type { Snippet } from 'svelte';
+
+	// modules
 	import Shell from '../shell.svelte';
+
+	// assets
+	import { ChevronRight } from 'lucide-svelte';
 
 	let {
 		commandLine = 'npx',
 		children
 	}: {
 		commandLine?: string;
-		children?: any;
+		children: Snippet;
 	} = $props();
 </script>
 
-<div class="prepend-footer">
-	<div>
-		{@render children()}
-	</div>
-	<div>
-		<p>
-			Install Lapikit, open the project you were already working on, and run
-			<span class="accent-text">{commandLine}</span>. In fee minutes you can code with lapikit
-			directly in your project
-		</p>
+<div>
+	{@render children?.()}
+</div>
+<div>
+	<p>
+		Install Lapikit, open the project you were already working on, and run
+		<span class="accent-text">{commandLine}</span>. In fee minutes you can code with lapikit
+		directly in your project
+	</p>
 
-		<Shell
-			textLink="View install script"
-			pathLink="/docs/getting-started#install-lapikit-in-your-project-directory"
-			dark
-		/>
+	<Shell
+		textLink="View install script"
+		pathLink="/docs/getting-started#install-lapikit-in-your-project-directory"
+		dark
+	/>
 
-		<div>
-			<kit:btn
-				size="lg"
-				rounded="lg"
-				href="/docs/getting-started"
-				background="accent"
-				color="on-accent"
-			>
-				Quickstart
-				{#snippet append()}
-					<ChevronRight />
-				{/snippet}
-			</kit:btn>
-			<kit:btn
-				size="lg"
-				rounded="lg"
-				variant="outline"
-				href="/docs/components"
-				color="text-on-dark"
-			>
-				All components
-			</kit:btn>
-		</div>
+	<div>
+		<kit:btn
+			size="lg"
+			rounded="lg"
+			href="/docs/getting-started"
+			background="accent"
+			color="on-accent"
+		>
+			Quickstart
+			{#snippet append()}
+				<ChevronRight />
+			{/snippet}
+		</kit:btn>
+		<kit:btn size="lg" rounded="lg" variant="outline" href="/docs/components" color="text-on-dark">
+			All components
+		</kit:btn>
 	</div>
 </div>
 
 <style lang="scss">
-	.prepend-footer {
-		--kit-color-on-footer-banner: hsl(0 0% 100%);
-
+	div {
+		gap: 20px;
 		display: grid;
-		grid-template-columns: 1fr;
-		color: var(--kit-color-on-footer-banner);
 
-		> div:last-child {
+		> div {
 			display: grid;
-			gap: 20px;
-		}
+			grid-template-columns: 1fr;
+			gap: 10px;
 
-		@media (min-width: 720px) {
-			grid-template-columns: 1fr 1fr;
+			@media (min-width: 450px) {
+				margin-top: 20px;
+				display: flex;
+			}
 		}
 	}
 </style>

@@ -13,9 +13,11 @@
 	import ReplDirective from '$lib/components/home/repl-directive.svelte';
 	import Components from '$lib/components/home/components.svelte';
 	import ComparLib from '$lib/components/home/compar-lib.svelte';
+
 	import Faq from '$lib/components/home/faq.svelte';
-	import SupportProject from '$lib/components/home/support-project.svelte';
+	import OpenSource from '$lib/components/home/open-source.svelte';
 	import PrependFooter from '$lib/components/home/prepend-footer.svelte';
+
 	import Header from '$lib/components/home/header.svelte';
 	import VsCode from '$lib/components/home/modules/vs-code/vs-code.svelte';
 
@@ -155,31 +157,33 @@
 		</div>
 	</section>
 
-	<section id="faq-homepage">
-		<div class="wrapper">
+	<section>
+		<div class="wrapper app-grids">
 			<Faq>
-				<h2><span class="accent-text">Common</span> questions</h2>
+				<h2 class="title-xl"><span class="accent-text">Common</span> questions</h2>
 				<p class="subtitle">Not covered here? Reach out and we'll help</p>
 			</Faq>
 		</div>
 	</section>
-	<section id="support">
+	<section>
 		<div class="wrapper">
-			<SupportProject>
-				<h2>
+			<OpenSource>
+				<h2 class="title-xl">
 					<span class="muted-text">Free</span> and <span class="muted-text">open-source</span>,
 					<br /> Built by the <span class="accent-text">community</span>
 				</h2>
 
 				<p class="subtitle">Lapikit welcomes contributions from developers around the world</p>
-			</SupportProject>
+			</OpenSource>
 		</div>
 	</section>
 
 	<section>
-		<div class="wrapper">
+		<div class="wrapper app-grids">
 			<PrependFooter commandLine={command[application.pkg_selected]['launch-cli']}>
-				<h2>Try it on your project and <span class="accent-text">write low , code more</span></h2>
+				<h2 class="title-xl">
+					Try it on your project and <span class="accent-text">write low , code more</span>
+				</h2>
 			</PrependFooter>
 		</div>
 	</section>
@@ -227,12 +231,17 @@
 	#support {
 		padding: 110px 40px;
 	}
+
 	section:last-child {
 		--kit-color-footer-banner: hsl(320deg 13.04% 4.51%);
 		--kit-color-on-footer-banner: hsl(0 0% 100%);
 		background-color: var(--kit-color-footer-banner);
 		color: var(--kit-color-on-footer-banner);
-		padding: 110px 40px;
+	}
+
+	.wrapper {
+		padding-top: var(--app-spacing-y-container);
+		padding-bottom: var(--app-spacing-y-container);
 	}
 
 	p {

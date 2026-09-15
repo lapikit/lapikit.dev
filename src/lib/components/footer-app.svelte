@@ -149,8 +149,8 @@
 		> div:nth-child(2),
 		.grid-footer {
 			max-width: var(--app-container-size);
-			padding-left: var(--app-spacing-container);
-			padding-right: var(--app-spacing-container);
+			padding-left: var(--app-spacing-x-container);
+			padding-right: var(--app-spacing-x-container);
 			margin-left: auto;
 			margin-right: auto;
 		}

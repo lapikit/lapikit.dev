@@ -1,6 +1,11 @@
 import { nbComponents, nbHooks } from '$lib';
 
-export const faqHome = [
+type Faq = {
+	question: string;
+	message: string;
+};
+
+export const faqHome: Faq[] = [
 	{
 		question: 'What actually include in Lapikit?',
 		message: `You'll start with ${nbComponents} lapikit components, ${nbHooks} utility functions, and a full-featured preprocessor that will allow you to harness the full power of Lapikit directly within your project. The goal is to offer you new components with each release to ensure support for new needs. All of this is open-source and free.`
