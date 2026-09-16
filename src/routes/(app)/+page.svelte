@@ -12,7 +12,7 @@
 	import ReplComponents from '$lib/components/home/repl-components.svelte';
 	import ReplDirective from '$lib/components/home/repl-directive.svelte';
 	import Components from '$lib/components/home/components.svelte';
-	import ComparLib from '$lib/components/home/compar-lib.svelte';
+	import ComparLib from '$lib/components/home/datatable.svelte';
 
 	import Faq from '$lib/components/home/faq.svelte';
 	import OpenSource from '$lib/components/home/open-source.svelte';
@@ -146,7 +146,7 @@
 			<kit:card elevation="3" s-style_overflow="hidden">
 				<kit:card-container>
 					<div class="app-center-content">
-						<h2>
+						<h2 class="title-xl">
 							Why choose <span class="accent-text">Lapikit</span> over other Svelte component libraries?
 						</h2>
 						<p class="subtitle">Here's how Lapikit compares to other popular Svelte libraries:</p>
@@ -222,7 +222,7 @@
 	}
 	#card-home {
 		:global(.kit-card) {
-			padding: 40px;
+			padding: 24px;
 		}
 	}
 	#faq-homepage {
@@ -279,6 +279,12 @@
 
 		.app-center-content {
 			row-gap: 40px;
+		}
+
+		#card-home {
+			:global(.kit-card) {
+				padding: 40px;
+			}
 		}
 
 		p {

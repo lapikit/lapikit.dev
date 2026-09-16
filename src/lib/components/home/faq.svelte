@@ -17,7 +17,9 @@
 			icon: Mail,
 			label: 'contact@lapikit.dev',
 			url: 'mailto:contact@lapikit.dev',
-			description: 'priority replies for Sponsor customers'
+			description: 'priority replies for Sponsor customers',
+			color: 'on-accent',
+			background: 'accent'
 		},
 		{
 			icon: links['discord'].icon,
@@ -31,14 +33,16 @@
 			icon: TrafficCone,
 			label: 'See the roadmap',
 			url: '/docs/roadmap',
-			description: 'what the plan for 2026 ?'
+			description: 'what the plan for 2026 ?',
+			color: 'on-svelte',
+			background: 'svelte'
 		}
 	];
 </script>
 
 <div class="grid-faq">
 	<div>
-		<div>
+		<div style:display="block">
 			{@render children()}
 		</div>
 
@@ -47,7 +51,7 @@
 				<kit:list-item href={item.url}>
 					{#snippet prepend()}
 						<kit:avatar size="xs" background={item.background}>
-							<kit:icon>
+							<kit:icon color={item.color}>
 								{#if typeof item.icon === 'string'}
 									{@html item.icon}
 								{:else}
@@ -118,6 +122,7 @@
 
 			:global(.kit-list-item__content > div) {
 				width: 100%;
+				display: block;
 			}
 
 			:global(.kit-list-item__content p:last-child) {

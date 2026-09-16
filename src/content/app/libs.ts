@@ -23,7 +23,7 @@ export const tableHome: TableHome[] = [
 		subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
 	},
 	{
-		text: 'Environnements (TEMP Big title Section ? OMG is good or no..., you can do it ! Answer ! big name) ',
+		text: 'Environnements',
 		subject: [
 			'Runes support',
 			'No Tailwind dependances',
@@ -31,7 +31,7 @@ export const tableHome: TableHome[] = [
 			'UnoCss support',
 			'CSS standard support',
 			'Dependencies dev/build',
-			'Eslint support (testTEMP long value for testing css , soooo looooonnngg ! yeah ! LEROYYYYYY JEYYYKINNNNNNSSSS !!!!!) '
+			'Eslint support'
 		]
 	},
 	{

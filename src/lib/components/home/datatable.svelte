@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ChevronDown, ChevronUp } from 'lucide-svelte';
-	import Table from './table.svelte';
+	import Table from './modules/table.svelte';
 
 	let showFullTable: boolean = $state(false);
 </script>
