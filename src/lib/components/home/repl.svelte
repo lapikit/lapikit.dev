@@ -2,95 +2,22 @@
 	//assets
 	import { Minus, PictureInPicture2, X } from 'lucide-svelte';
 
-	const codeData = [
-		{ content: "<script lang='ts'>", indent: 0 },
-		{ content: '...', indent: 1 },
-		{
-			content: '<' + '/script>',
-			indent: 0
-		},
-		{
-			content: '',
-			indent: 0
-		},
-		{
-			content: '<kit:list density="compact">',
-			lapikit: true,
-			indent: 0
-		},
-		{
-			content: '{#each data as item (item)}',
-			indent: 1
-		},
-		{
-			content: '<kit:list-item>',
-			lapikit: true,
-			indent: 2
-		},
-		{
-			content: '{item}',
-			indent: 3
-		},
-		{
-			content: '</kit:list-item>',
-			lapikit: true,
-			indent: 2
-		},
-		{
-			content: '{/each}',
-			indent: 1
-		},
-		{
-			content: '</kit:list>',
-			lapikit: true,
-			indent: 0
-		}
-	];
+	type Code = {
+		content: string;
+		lapikit?: boolean;
+		indent: number;
+	};
 
-	const compiledData = [
-		{ content: "<script lang='ts'>", indent: 0 },
-		{ content: 'import {', indent: 1, lapikit: true },
-		{ content: 'KitList,', indent: 2, lapikit: true },
-		{ content: 'KitListItem', indent: 2, lapikit: true },
-		{ content: "} from 'lapikit/components';", indent: 1, lapikit: true },
-		{
-			content: '',
-			indent: 0
-		},
-		{ content: '...', indent: 1 },
-		{
-			content: '<' + '/script>',
-			indent: 0
-		},
-		{
-			content: '',
-			indent: 0
-		},
-		{
-			content: '<KitList density="compact">',
-			lapikit: true,
-			indent: 0
-		},
-		{
-			content: '{#each data as item (item)}',
-			indent: 1
-		},
-		{ content: '<KitListItem>', lapikit: true, indent: 2 },
-		{ content: '{item}', indent: 3 },
-		{ content: '</KitListItem>', lapikit: true, indent: 2 },
-		{
-			content: '{/each}',
-			indent: 1
-		},
-		{
-			content: '</KitList>',
-			lapikit: true,
-			indent: 0
-		}
-	];
+	let {
+		code,
+		render
+	}: {
+		code: Code[];
+		render: Code[];
+	} = $props();
 </script>
 
-<kit:card id="home-preview-components" background="surface-2">
+<kit:card class="home-repl" background="surface-2">
 	<kit:card-actions>
 		<kit:spacer />
 
@@ -113,7 +40,7 @@
 	<kit:separator />
 	<kit:card-container>
 		<kit:card-content>
-			{#each codeData as { content, indent, lapikit }, index (index)}
+			{#each code as { content, indent, lapikit }, index (index)}
 				<div class="line-code">
 					<span class="line-number">{index + 1}</span>
 					<span class:is-lapikit={lapikit} style:padding-left={16 * indent + 'px'}>{content}</span>
@@ -122,7 +49,7 @@
 		</kit:card-content>
 
 		<kit:card-content>
-			{#each compiledData as { content, indent, lapikit }, index (index)}
+			{#each render as { content, indent, lapikit }, index (index)}
 				<div class="line-code">
 					<span class="line-number">{index + 1}</span>
 					<span class:is-lapikit={lapikit} style:padding-left={16 * indent + 'px'}>{content}</span>
@@ -133,7 +60,8 @@
 </kit:card>
 
 <style lang="scss">
-	:global(#home-preview-components) {
+	:global(.home-repl) {
+		font-family: var(--font-mono);
 		border-color: var(--kit-color-border);
 		border-style: solid;
 		border-width: 1px;
@@ -141,6 +69,7 @@
 		font-size: 12px;
 		height: fit-content;
 		max-width: 540px;
+		margin-left: auto;
 
 		:global(.kit-card-container) {
 			display: grid;
@@ -166,7 +95,6 @@
 		}
 
 		@media (max-width: 720px) {
-			margin-left: auto;
 			margin-right: auto;
 		}
 
@@ -176,7 +104,7 @@
 			}
 		}
 
-		@media (min-width: 960px) {
+		@media (min-width: 1100px) {
 			:global(.kit-card-container) {
 				grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 			}

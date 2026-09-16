@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ModelDropdownProps } from 'lapikit/components';
+	import { capitalize } from '$lib/utils';
 
 	// modules
 	import Sheet from './sheet.svelte';
@@ -20,7 +21,7 @@
 		{#each tableHomeList as { title, logo }, indexResult (indexResult)}
 			<div class="node-element" class:hidden-col={indexResult != 0 && onlyDisplay != indexResult}>
 				<img src={logo} alt={title} loading="lazy" />
-				<p>{title}</p>
+				<p>{capitalize(title)}</p>
 			</div>
 		{/each}
 	</div>
@@ -52,7 +53,7 @@
 										active={onlyDisplay === index}
 										onclick={() => (onlyDisplay = index)}
 									>
-										{title}
+										{capitalize(title)}
 									</kit:list-item>
 								{/if}
 							{/each}
@@ -66,14 +67,14 @@
 	{#each tableHome as { text, subject }, index (index)}
 		<div class="datatable-th">
 			<div>
-				<p>{text}</p>
+				<p>{capitalize(text)}</p>
 			</div>
 		</div>
 
 		{#each subject as element, indexElement (indexElement)}
 			<div class="datatable-tr">
 				<div>
-					<p>{element}</p>
+					<p>{capitalize(element)}</p>
 				</div>
 				{#each tableHomeList as items, indexResult (indexResult)}
 					{@const value = items.values[index][indexElement]}

@@ -1,8 +1,21 @@
-import { nbComponents, nbHooks } from '$lib';
+import { links, nbComponents, nbHooks } from '$lib';
+import type { Icon as IconType } from 'lucide-svelte';
+
+// assets
+import { Mail, TrafficCone } from 'lucide-svelte';
 
 type Faq = {
 	question: string;
 	message: string;
+};
+
+type Contact = {
+	icon: typeof IconType | string;
+	label: string;
+	url: string;
+	description: string;
+	color: string;
+	background: string;
 };
 
 export const faqHome: Faq[] = [
@@ -44,5 +57,32 @@ export const faqHome: Faq[] = [
 		question: 'How often is Lapikit updated?',
 		message:
 			'Lapikit is maintained by a small team of two people in their spare time. We try to release a new version every two months and provide patch notes every two weeks.'
+	}
+];
+
+export const faqContact: Contact[] = [
+	{
+		icon: Mail,
+		label: 'contact@lapikit.dev',
+		url: 'mailto:contact@lapikit.dev',
+		description: 'priority replies for Sponsor customers',
+		color: 'on-accent',
+		background: 'accent'
+	},
+	{
+		icon: links['discord'].icon,
+		label: '@discord/lapikit',
+		url: links['discord'].url,
+		description: "share, support and news with Lapikit Team's",
+		color: links['discord']._styles.color,
+		background: links['discord']._styles.background
+	},
+	{
+		icon: TrafficCone,
+		label: 'See the roadmap',
+		url: '/docs/roadmap',
+		description: 'what the plan for 2026 ?',
+		color: 'on-svelte',
+		background: 'svelte'
 	}
 ];

@@ -1,43 +1,24 @@
 <script lang="ts">
-	import { links } from '$lib/constants';
+	import type { Snippet } from 'svelte';
 	import { useAccordion } from 'lapikit/actions';
 	import { type ModelAccordionItemProps } from 'lapikit/components';
-	import { ArrowUpRight, Mail, Plus, TrafficCone, X } from 'lucide-svelte';
-	import { faqHome } from '../../../content/app/faq-home';
 	import { capitalize } from '$lib/utils';
+
+	// data
+	import { faqContact, faqHome } from '../../../content/app/faq-home';
+
+	// assets
+	import { ArrowUpRight, Plus, X } from 'lucide-svelte';
 
 	const accordion = useAccordion();
 
-	let { children } = $props();
+	let {
+		children
+	}: {
+		children: Snippet;
+	} = $props();
 
 	accordion.toggle(0);
-
-	const contact = [
-		{
-			icon: Mail,
-			label: 'contact@lapikit.dev',
-			url: 'mailto:contact@lapikit.dev',
-			description: 'priority replies for Sponsor customers',
-			color: 'on-accent',
-			background: 'accent'
-		},
-		{
-			icon: links['discord'].icon,
-			label: '@discord/lapikit',
-			url: links['discord'].url,
-			description: "share, support and news with Lapikit Team's",
-			color: links['discord']._styles.color,
-			background: links['discord']._styles.background
-		},
-		{
-			icon: TrafficCone,
-			label: 'See the roadmap',
-			url: '/docs/roadmap',
-			description: 'what the plan for 2026 ?',
-			color: 'on-svelte',
-			background: 'svelte'
-		}
-	];
 </script>
 
 <div class="grid-faq">
@@ -47,7 +28,7 @@
 		</div>
 
 		<kit:list id="custom-list-contact" density="comfortable">
-			{#each contact as item, index (index)}
+			{#each faqContact as item, index (index)}
 				<kit:list-item href={item.url}>
 					{#snippet prepend()}
 						<kit:avatar size="xs" background={item.background}>

@@ -9,8 +9,6 @@
 	// modules
 	import Advantage from '$lib/components/home/advantage.svelte';
 	import PreprocessSchema from '$lib/components/home/preprocess-schema.svelte';
-	import ReplComponents from '$lib/components/home/repl-components.svelte';
-	import ReplDirective from '$lib/components/home/repl-directive.svelte';
 	import Components from '$lib/components/home/components.svelte';
 	import ComparLib from '$lib/components/home/datatable.svelte';
 
@@ -20,6 +18,13 @@
 
 	import Header from '$lib/components/home/header.svelte';
 	import VsCode from '$lib/components/home/modules/vs-code/vs-code.svelte';
+	import Repl from '$lib/components/home/repl.svelte';
+	import {
+		replComponentPreCompil,
+		replComponentSvelte,
+		replDirectivePreCompil,
+		replDirectiveSvelte
+	} from '../../content/app/code';
 
 	// states
 	const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
@@ -65,7 +70,7 @@
 				</div>
 			</div>
 			<div class="app-center-content">
-				<h2><span class="accent-text">Lili</span> preprocessor</h2>
+				<h2 class="title-xl"><span class="accent-text">Lili</span> preprocessor</h2>
 
 				<p>
 					The Lili preprocessor is at the heart of Lapikit. It ensures that Lapikit components are
@@ -73,7 +78,7 @@
 					directives on Lapikit components. It works as an add-on to the Svelte preprocessor.
 				</p>
 
-				<p class="muted-text">
+				<p class="muted-text text-sm">
 					Currently, it only works with Vite.js. However, we plan to make it compatible with Webpack
 					and Rollup soon.
 				</p>
@@ -83,7 +88,7 @@
 				<PreprocessSchema />
 			</div>
 
-			<h2>
+			<h2 class="title-xl">
 				The directive <span class="accent-text">class</span> and
 				<span class="accent-text">styles</span>
 			</h2>
@@ -107,15 +112,15 @@
 					</p>
 				</div>
 				<div>
-					<ReplDirective />
+					<Repl code={replDirectiveSvelte} render={replDirectivePreCompil} />
 				</div>
 			</div>
 
-			<h2>Use a <span class="accent-text">Lapikit components</span></h2>
+			<h2 class="title-xl">Use a <span class="accent-text">Lapikit components</span></h2>
 
 			<div class="app-grids inverse-order">
 				<div>
-					<ReplComponents />
+					<Repl code={replComponentSvelte} render={replComponentPreCompil} />
 				</div>
 				<div>
 					<p>
@@ -135,15 +140,16 @@
 		</div>
 		<div class="spacing-wrapper">
 			<Components />
-		</div>
-		<div class="wrapper app-center-content">
-			<p class="devise">It's not magic, It's Lapikit</p>
+
+			<div class="app-center-content">
+				<p class="devise">It's not magic, It's Lapikit</p>
+			</div>
 		</div>
 	</section>
 
-	<section id="card-home">
+	<section>
 		<div class="wrapper">
-			<kit:card elevation="3" s-style_overflow="hidden">
+			<kit:card elevation="3" s-style_overflow="hidden" s-style_padding="24px">
 				<kit:card-container>
 					<div class="app-center-content">
 						<h2 class="title-xl">
@@ -207,7 +213,9 @@
 	}
 
 	.spacing-wrapper {
-		padding: 110px 0 40px;
+		padding: 30px 0 0;
+		display: grid;
+		gap: 40px;
 	}
 
 	section:first-child {
@@ -220,11 +228,11 @@
 	#lapikit-explore {
 		padding: 110px 40px;
 	}
-	#card-home {
-		:global(.kit-card) {
-			padding: 24px;
-		}
-	}
+	// #card-home {
+	// 	:global(.kit-card) {
+	// 		padding: 24px;
+	// 	}
+	// }
 	#faq-homepage {
 		padding: 110px 40px;
 	}
@@ -244,11 +252,11 @@
 		padding-bottom: var(--app-spacing-y-container);
 	}
 
-	p {
-		margin-bottom: 15px;
-		line-height: 1.5;
-		font-size: 1rem;
-	}
+	// p {
+	// 	margin-bottom: 15px;
+	// 	line-height: 1.5;
+	// 	font-size: 1rem;
+	// }
 
 	.devise {
 		font-size: 1.75rem;
@@ -287,11 +295,11 @@
 			}
 		}
 
-		p {
-			margin-bottom: 20px;
-			line-height: 1.6;
-			font-size: 1.1rem;
-		}
+		// p {
+		// 	margin-bottom: 20px;
+		// 	line-height: 1.6;
+		// 	font-size: 1.1rem;
+		// }
 
 		.diagram {
 			padding: 20px 0 50px;
