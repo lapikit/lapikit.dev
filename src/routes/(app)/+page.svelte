@@ -17,7 +17,7 @@
 	import PrependFooter from '$lib/components/home/prepend-footer.svelte';
 
 	import Header from '$lib/components/home/header.svelte';
-	import VsCode from '$lib/components/home/modules/vs-code/vs-code.svelte';
+	import VsCode from '$lib/components/home/vs-code/vs-code.svelte';
 	import Repl from '$lib/components/home/repl.svelte';
 	import {
 		replComponentPreCompil,
@@ -46,9 +46,9 @@
 	<section>
 		<VsCode />
 	</section>
-	<section id="lapikit-explore">
+	<section>
 		<div class="wrapper">
-			<h2>The <span class="accent-text">power</span> to Lapikit</h2>
+			<h2 class="title-xl">The <span class="accent-text">power</span> to Lapikit</h2>
 			<div class="app-grids">
 				<div>
 					<p>
