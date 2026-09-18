@@ -1,9 +1,17 @@
 <script lang="ts">
 	import { createTheme } from 'lapikit/actions';
+
+	// assets
 	import { ArrowRight, Moon, Sun } from 'lucide-svelte';
 	import Logo from '$lib/assets/images/lapikit.webp';
 
 	const themePreviewVscode = createTheme();
+
+	let {
+		version = '0.0.0'
+	}: {
+		version?: string;
+	} = $props();
 </script>
 
 <div id="preview-vscode" use:themePreviewVscode.action={{ name: 'light' }}>
@@ -38,7 +46,7 @@
 					</kit:chip>
 				{/snippet}
 
-				1.0.0
+				{version}
 
 				{#snippet append()}
 					<kit:icon>

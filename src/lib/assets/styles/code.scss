@@ -43,14 +43,10 @@ $cssVar: #d7d7a5;
 
 .vs-ide {
 	color: var(--kit-color-font-vs-tertiary);
-	font-size: 14px;
 	font-weight: 300;
 
 	p {
-		span {
-			// margin-left: -4px;
-			// margin-right: -4px;
-		}
+		font-size: 12px;
 	}
 
 	.char {

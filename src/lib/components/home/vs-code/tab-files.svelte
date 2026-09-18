@@ -83,7 +83,7 @@
 			align-items: center;
 			gap: 4px;
 			color: var(--kit-color-font-vs-primary);
-			font-size: 14px;
+			font-size: 12px;
 		}
 	}
 </style>

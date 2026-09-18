@@ -3,6 +3,15 @@
 	import { application } from '$lib/stores/app.svelte';
 	import { npmState } from '$lib/stores/npm.svelte';
 
+	// data
+	import {
+		replComponentPreCompil,
+		replComponentSvelte,
+		replDirectivePreCompil,
+		replDirectiveSvelte
+	} from '../../content/app/code';
+	import { advantageHome } from '../../content/app/advantage';
+
 	// animations
 	import GlowOrb from '$lib/components/animations/glow-orb.svelte';
 
@@ -11,31 +20,15 @@
 	import PreprocessSchema from '$lib/components/home/preprocess-schema.svelte';
 	import Components from '$lib/components/home/components.svelte';
 	import ComparLib from '$lib/components/home/datatable.svelte';
-
 	import Faq from '$lib/components/home/faq.svelte';
 	import OpenSource from '$lib/components/home/open-source.svelte';
 	import PrependFooter from '$lib/components/home/prepend-footer.svelte';
-
 	import Header from '$lib/components/home/header.svelte';
 	import VsCode from '$lib/components/home/vs-code/vs-code.svelte';
 	import Repl from '$lib/components/home/repl.svelte';
-	import {
-		replComponentPreCompil,
-		replComponentSvelte,
-		replDirectivePreCompil,
-		replDirectiveSvelte
-	} from '../../content/app/code';
 
 	// states
 	const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
-	const advantage = [
-		'Your code will be cleaner, with simpler and more legible syntax',
-		'Faster, thanks to reuse components and uniform styling',
-		'More consistently, with pre-optimized Svelte + TypeScript integration',
-		'Stop copying and duplicating CSS classes and start shipping better user interfaces',
-		'Take advantage of Svelte 5’s style and class directives directly within your components',
-		'The Lili preprocessor handles component imports for you'
-	];
 </script>
 
 <main class="homepage">
@@ -44,7 +37,7 @@
 		<Header version={npmState.version.latest} list={h1} />
 	</section>
 	<section>
-		<VsCode />
+		<VsCode version={npmState.version.latest} />
 	</section>
 	<section>
 		<div class="wrapper">
@@ -66,7 +59,7 @@
 					<p>Write less, code more!</p>
 				</div>
 				<div>
-					<Advantage list={advantage} />
+					<Advantage list={advantageHome} />
 				</div>
 			</div>
 			<div class="app-center-content">
@@ -225,21 +218,6 @@
 		margin-top: -80px; // appbar sticky
 	}
 
-	#lapikit-explore {
-		padding: 110px 40px;
-	}
-	// #card-home {
-	// 	:global(.kit-card) {
-	// 		padding: 24px;
-	// 	}
-	// }
-	#faq-homepage {
-		padding: 110px 40px;
-	}
-	#support {
-		padding: 110px 40px;
-	}
-
 	section:last-child {
 		--kit-color-footer-banner: hsl(320deg 13.04% 4.51%);
 		--kit-color-on-footer-banner: hsl(0 0% 100%);
@@ -251,12 +229,6 @@
 		padding-top: var(--app-spacing-y-container);
 		padding-bottom: var(--app-spacing-y-container);
 	}
-
-	// p {
-	// 	margin-bottom: 15px;
-	// 	line-height: 1.5;
-	// 	font-size: 1rem;
-	// }
 
 	.devise {
 		font-size: 1.75rem;
@@ -288,18 +260,6 @@
 		.app-center-content {
 			row-gap: 40px;
 		}
-
-		#card-home {
-			:global(.kit-card) {
-				padding: 40px;
-			}
-		}
-
-		// p {
-		// 	margin-bottom: 20px;
-		// 	line-height: 1.6;
-		// 	font-size: 1.1rem;
-		// }
 
 		.diagram {
 			padding: 20px 0 50px;

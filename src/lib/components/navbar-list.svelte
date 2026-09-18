@@ -57,7 +57,7 @@
 	{#each data as { label, path, child }, index (label)}
 		<div data-nav-item class:is-hidden={index >= visibleCount}>
 			{#if path}
-				<kit:btn class="text-lg" density="compact" is="button" variant="text" href={path}>
+				<kit:btn class="text-md" density="compact" is="button" variant="text" href={path}>
 					{capitalize(label)}
 				</kit:btn>
 			{:else if child}

@@ -52,7 +52,7 @@
 			{/snippet}
 		</kit:chip>
 
-		<h1>
+		<h1 class="title-2xl">
 			Simple, optimized <br />
 			<div class="tilted-box">
 				<span class="possibility">
@@ -77,7 +77,7 @@
 				{/snippet}
 				Discover the power
 			</kit:btn>
-			<kit:btn density="comfortable" rounded="lg" variant="outline" color="accent">
+			<kit:btn density="comfortable" rounded="lg" color="accent" background="on-accent">
 				{#snippet prepend()}
 					<kit:icon>
 						<BookMarked />

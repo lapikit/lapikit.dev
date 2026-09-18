@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
+
+	// assets
 	import { Search } from 'lucide-svelte';
 
 	let {

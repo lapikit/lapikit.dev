@@ -94,7 +94,7 @@
 				s-class_vs-indent-={String(item.indentation)}
 				s-style_background-color={item.view === view ? 'var(--kit-color-vs-active)' : 'transparent'}
 				s-style_border-radius="4px"
-				s-style_font-size="14px"
+				s-style_font-size="12px"
 				s-style_font-weight="300"
 				color="font-vs-tertiary"
 				onclick={() => (view = item.view)}
@@ -127,7 +127,7 @@
 				s-class_vs-indent-={String(item.indentation)}
 				s-style_background-color="transparent"
 				s-style_border-radius="4px"
-				s-style_font-size="14px"
+				s-style_font-size="12px"
 				s-style_font-weight="300"
 				color="font-vs-tertiary"
 			>

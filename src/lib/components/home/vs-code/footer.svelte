@@ -1,4 +1,5 @@
 <script lang="ts">
+	// assets
 	import { Bell, CircleX, Code, GitBranch, GitFork, RefreshCw, TriangleAlert } from 'lucide-svelte';
 </script>
 

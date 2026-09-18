@@ -8,6 +8,12 @@
 	import Aside from './aside.svelte';
 	import Render from './render.svelte';
 
+	let {
+		version = '0.0.0'
+	}: {
+		version?: string;
+	} = $props();
+
 	// states
 	let view = $state('+layout.svelte');
 </script>
@@ -30,7 +36,7 @@
 				</div>
 			</div>
 			<div>
-				<Render />
+				<Render {version} />
 			</div>
 		</div>
 		<Footer />
@@ -124,7 +130,7 @@
 			overflow: hidden;
 			gap: 4px;
 			padding: 2px 6px;
-			font-size: 14px;
+			font-size: 12px;
 			font-weight: 300;
 
 			> div:nth-child(1) {

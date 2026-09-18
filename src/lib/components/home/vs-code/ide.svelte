@@ -1,4 +1,5 @@
 <script lang="ts">
+	// data
 	import { replVSCodeFiles } from '../../../../content/app/code';
 
 	let { view }: { view: string } = $props();

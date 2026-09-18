@@ -209,10 +209,10 @@
 					}
 				}
 
-				.lapikit-wordmark {
-					margin-top: 40px;
-					padding: 76px 40px 40px;
-				}
+				// .lapikit-wordmark {
+				// 	margin-top: 40px;
+				// 	padding: 76px 40px 40px;
+				// }
 			}
 
 			@media (min-width: 1064px) {
