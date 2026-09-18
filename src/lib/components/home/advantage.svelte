@@ -10,11 +10,11 @@
 </script>
 
 <kit:list
+	class="advantage-list_custom"
 	variant="outline"
 	nav
 	s-style_gap="8px"
 	s-style_--kit-list-item-bd="var(--kit-color-border)"
-	density="compact"
 >
 	{#each list as argument (argument)}
 		<kit:list-item>

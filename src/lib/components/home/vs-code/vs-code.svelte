@@ -48,17 +48,11 @@
 		container-type: inline-size;
 		max-width: 1280px;
 		width: 100%;
-		margin: -108px auto 0;
+		margin: 0 auto 0;
 		position: relative;
 		padding-inline: 20px;
 		padding-top: 20px;
 		padding-bottom: 20px;
-	}
-
-	@media (max-width: 380px) {
-		.vs-code-viewport {
-			margin: -70px auto 0;
-		}
 	}
 
 	@media (max-width: 640px) {
@@ -71,7 +65,7 @@
 		.vs-code-viewport {
 			padding-inline: 40px;
 			padding-top: 40px;
-			padding-bottom: 40px;
+			padding-bottom: 90px;
 		}
 	}
 

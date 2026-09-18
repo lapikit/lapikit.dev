@@ -1,15 +1,20 @@
 <script lang="ts">
+	import { untrack, type Snippet } from 'svelte';
+
 	// assets
 	import { ArrowRight, BookMarked, Rocket } from 'lucide-svelte';
 	import LogoLapikit from '$lib/assets/images/lapikit.webp?enhanced';
 	import LogoSvelte from '$lib/assets/images/svelte.webp?enhanced';
 	import ImgLove from '$lib/assets/images/love.png?enhanced';
-	import { untrack } from 'svelte';
 
 	let {
+		children,
+		animation,
 		version = '0.0.0',
 		list = ['components']
 	}: {
+		children?: Snippet;
+		animation?: Snippet;
 		list: Array<string>;
 		version?: string;
 	} = $props();
@@ -29,7 +34,10 @@
 	});
 </script>
 
-<div class=" background-header">
+<div>
+	<div class="background-header">
+		{@render animation?.()}
+	</div>
 	<div class="wrapper">
 		<kit:chip
 			href="/docs/changelog"
@@ -92,6 +100,10 @@
 			<enhanced:img src={ImgLove} alt="Lapikit love Svelte" />
 			<enhanced:img src={LogoSvelte} alt="Svelte logo" />
 		</div>
+
+		<div>
+			{@render children?.()}
+		</div>
 	</div>
 </div>
 
@@ -99,8 +111,9 @@
 	.background-header {
 		--kit-color-surface: transparent;
 
-		position: relative;
-		height: 90vh;
+		position: absolute;
+		min-height: 90vh;
+		height: calc(100% - 50vh);
 		width: 100%;
 		background-image:
 			linear-gradient(var(--kit-color-fill) 1px, transparent 1px),
@@ -121,9 +134,8 @@
 
 	.wrapper {
 		z-index: 1;
-		display: grid;
 		padding-top: var(--home-appbar-affect-wrapper);
-		gap: 20px;
+		padding-bottom: calc(var(--home-appbar-affect-wrapper) - 30px);
 	}
 
 	h1 {

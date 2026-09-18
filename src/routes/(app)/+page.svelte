@@ -33,14 +33,16 @@
 
 <main class="homepage">
 	<section>
-		<GlowOrb />
-		<Header version={npmState.version.latest} list={h1} />
+		<Header version={npmState.version.latest} list={h1}>
+			{#snippet animation()}
+				<GlowOrb />
+			{/snippet}
+			<VsCode version={npmState.version.latest} />
+		</Header>
 	</section>
+
 	<section>
-		<VsCode version={npmState.version.latest} />
-	</section>
-	<section>
-		<div class="wrapper">
+		<div class="wrapper compact-top-wrapper">
 			<h2 class="title-xl">The <span class="accent-text">power</span> to Lapikit</h2>
 			<div class="app-grids">
 				<div>
@@ -209,6 +211,10 @@
 		padding: 30px 0 0;
 		display: grid;
 		gap: 40px;
+	}
+
+	.compact-top-wrapper {
+		padding-top: 0 !important;
 	}
 
 	section:first-child {
