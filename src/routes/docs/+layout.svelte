@@ -2,9 +2,11 @@
 	import { setContext } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 
+	// modules
+	import NavbarDocs from '$lib/components/navbar-docs.svelte';
+
 	// components
 	import Drawer from '$components/drawer.svelte';
-	import AppBar from '$components/app-bar.svelte';
 
 	let { children } = $props();
 
@@ -28,7 +30,7 @@
 	});
 </script>
 
-<AppBar />
+<NavbarDocs />
 
 <div class="layout transition-lapikit" bind:this={layoutEl}>
 	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left" />

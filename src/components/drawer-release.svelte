@@ -18,7 +18,7 @@
 		},
 		{
 			key: 'insider',
-			label: 'insider',
+			label: 'insiders',
 			background: 'warning',
 			color: 'on-warning',
 			version: npmState.version.insiders?.replace('v0.0.0-', '') || 'insiders-000000',
