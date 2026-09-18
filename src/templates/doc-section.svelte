@@ -30,15 +30,15 @@
 </script>
 
 <main>
-	<article class="kit-prose transition-lapikit">
+	<article class="markdown">
 		<header>
 			<Breadcrumbs items={breadcrumbs} />
 
 			{#if category}
-				<div class="kit-prose-section">{category}</div>
+				<div class="markdown-section">{category}</div>
 			{/if}
 			{#if title}
-				<h1 id={slugify(title)} class="kit-prose-title">
+				<h1 id={slugify(title)} class="markdown-title">
 					{capitalize(title)}
 				</h1>
 			{/if}
@@ -48,7 +48,7 @@
 
 		{#if data?.doc?.state !== 'deprecated' && (data.prevDoc || data.nextDoc)}
 			<kit:separator />
-			<footer class="mt-8 grid sm:flex sm:justify-between">
+			<footer>
 				{#if data.prevDoc}
 					<kit:btn
 						variant="text"
@@ -83,31 +83,37 @@
 	</article>
 </main>
 
-<style>
+<style lang="scss">
 	main {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
+		margin: var(--app-spacing-y-page-top) var(--app-spacing-x-page) var(--app-spacing-y-page-bottom);
 		gap: 1rem 2rem;
-		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
+		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
+
+		@media (min-width: 1260px) {
+			grid-template-columns: calc(var(--md-max-width + 20rem));
+			grid-template-rows: 1fr auto;
+			align-items: start;
+
+			@media (min-width: 1460px) {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
 	}
 
 	article {
 		width: 100%;
 	}
 
-	@media (min-width: 1260px) {
-		main {
-			grid-template-columns: calc(var(--md-max-width + 20rem));
-			grid-template-rows: 1fr auto;
-			align-items: start;
-		}
+	footer {
+		margin-top: 2rem;
+		display: grid;
 
-		@media (min-width: 1460px) {
-			main {
-				margin-left: auto;
-				margin-right: auto;
-			}
+		@media (min-width: 640px) {
+			display: flex;
+			justify-content: space-between;
 		}
 	}
 </style>

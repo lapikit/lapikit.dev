@@ -4,7 +4,7 @@
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
-	import { createGlobalTheme } from 'lapikit/actions';
+
 	import { getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
 	import { capitalize } from '$lib/utils';
 
@@ -18,8 +18,6 @@
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
-
-	const app = createGlobalTheme();
 
 	import './layout.css';
 	import '$lib/assets/styles/layout.scss';
@@ -114,8 +112,8 @@
 
 <style>
 	:global(:root) {
-		--lpk-page-padding-side: 2rem;
-		--lpk-page-padding-top: 2rem;
-		--lpk-page-padding-bottom: 4rem;
+		--app-spacing-x-page: 2rem;
+		--app-spacing-y-page-top: 2rem;
+		--app-spacing-y-page-bottom: 4rem;
 	}
 </style>

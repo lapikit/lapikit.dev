@@ -3,7 +3,9 @@
  *
  * Future directly on lapikit !
  */
-
+:root {
+	--kit-color-transparent: transparent;
+}
 .kit-list.advantage-list_custom {
 	.kit-list-item__content {
 		white-space: initial;

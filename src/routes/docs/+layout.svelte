@@ -69,8 +69,8 @@
 
 	footer {
 		grid-area: footer;
-		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
-		margin: 0 var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
+		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
+		margin: 0 var(--app-spacing-x-page) var(--app-spacing-y-page-bottom);
 	}
 
 	@media (min-width: 1023px) {
@@ -93,7 +93,7 @@
 	@media (min-width: 1460px) {
 		footer {
 			width: 100%;
-			margin: 0 auto var(--lpk-page-padding-bottom);
+			margin: 0 auto var(--app-spacing-y-page-bottom);
 		}
 	}
 </style>

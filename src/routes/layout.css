@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/outfit';
 @import '@fontsource-variable/jetbrains-mono';
-@import './md.css';
+/**@import './md.css';**/
 @import './theme.css';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-@theme {
+/* @theme {
 	--font-sans: 'Outfit Variable', sans-serif;
 	--font-mono: 'JetBrains Mono Variable', monospace;
-}
+} */
 
 @layer base {
 	body,

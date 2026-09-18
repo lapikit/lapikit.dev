@@ -9,11 +9,11 @@
 
 	const accordion = useAccordion();
 
-	// components
+	// modules
 	import Breadcrumbs from '../components/breadcrumbs.svelte';
 	import TableOfContent from '../components/table-of-content.svelte';
 
-	// icon
+	// assets
 	import { TextAlignStart } from 'lucide-svelte';
 
 	let {
@@ -33,27 +33,27 @@
 </script>
 
 <main>
-	<article class="kit-prose transition-lapikit">
+	<article class="markdown">
 		<header>
 			<Breadcrumbs items={breadcrumbs} />
 
 			{#if category}
-				<div class="kit-prose-section">{category}</div>
+				<div class="markdown-section">{category}</div>
 			{/if}
 			{#if title}
-				<h1 id={slugify(title)} class="kit-prose-title">
+				<h1 id={slugify(title)} class="markdown-title">
 					{capitalize(title)}
 				</h1>
 			{/if}
 		</header>
 
 		{#if summary.length > 0}
-			<kit:accordion size="sm" class="kit-prose-summary">
+			<kit:accordion size="sm" class="markdown-summary">
 				<kit:accordion-item
 					index={0}
 					open={accordion.values.includes(0)}
 					toggle={accordion.toggle}
-					style="--kit-accordion-item-bg: transparent;"
+					background="transparent"
 					color="text-muted"
 				>
 					{#snippet activator()}
@@ -86,59 +86,54 @@
 	{/if}
 </main>
 
-<style>
+<style lang="scss">
 	main {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
+		margin: var(--app-spacing-y-page-top) var(--app-spacing-x-page) var(--app-spacing-y-page-bottom);
 		gap: 1rem 2rem;
-		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
+		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
 		min-height: calc(
-			100dvh - 64px - var(--lpk-page-padding-top) - var(--lpk-page-padding-bottom) - 88px
+			100dvh - 64px - var(--app-spacing-y-page-top) - var(--app-spacing-y-page-bottom) - 88px
 		);
-	}
 
-	main > aside {
-		display: none;
-	}
-
-	@media (min-width: 1260px) {
-		main {
-			grid-template-columns: minmax(0, 1fr) 20rem;
-			grid-template-rows: auto 1fr;
-			align-items: start;
-		}
-
-		main > aside {
-			display: flex;
-			height: 100%;
-			width: 100%;
-			position: relative;
-		}
-
-		main :global(.kit-prose-summary) {
+		> aside {
 			display: none;
 		}
 
-		main :global(.table-of-content-wrapper) {
-			display: grid;
+		@media (min-width: 1260px) {
+			grid-template-columns: minmax(0, 1fr) 20rem;
 			grid-template-rows: auto 1fr;
-			max-height: calc(
-				100vh - (75px + var(--lpk-page-padding-top) + var(--lpk-page-padding-bottom))
-			);
-			position: sticky;
-			/* top: var(--lpk-page-padding-top); */
-			top: 112px;
-			height: fit-content;
-			width: 100%;
-		}
+			align-items: start;
 
-		main :global(.table-of-content-wrapper .kit-card-content) {
-			overflow-y: auto;
-		}
+			> aside {
+				display: flex;
+				height: 100%;
+				width: 100%;
+				position: relative;
+			}
 
-		@media (min-width: 1460px) {
-			main {
+			:global(.markdown-summary) {
+				display: none;
+			}
+
+			:global(.table-of-content-wrapper) {
+				display: grid;
+				grid-template-rows: auto 1fr;
+				max-height: calc(
+					100vh - (75px + var(--app-spacing-y-page-top) + var(--app-spacing-y-page-bottom))
+				);
+				position: sticky;
+				top: 112px;
+				height: fit-content;
+				width: 100%;
+
+				:global(.kit-card-content) {
+					overflow-y: auto;
+				}
+			}
+
+			@media (min-width: 1460px) {
 				margin-left: auto;
 				margin-right: auto;
 			}

@@ -1,6 +1,8 @@
 :root {
 	--app-container-size: 1538px;
 	--app-container-size-compact: 1418px;
+	--app-spacing-x-container: 24px;
+	--app-spacing-y-container: 80px;
 
 	--kit-color-shell: hsl(240deg 4.76% 12.35%);
 	--kit-colot-on-shell: hsl(0 0% 100%);
@@ -27,9 +29,6 @@
 	--kit-color-on-npm: hsl(0deg 0% 96.86%);
 	--kit-color-github: hsl(0deg 0% 0%);
 	--kit-color-on-github: hsl(0deg 0% 96.86%);
-
-	--app-spacing-x-container: 24px;
-	--app-spacing-y-container: 80px;
 }
 
 @import '@fontsource-variable/archivo';
@@ -39,6 +38,7 @@
 @import url('./_fonts.scss');
 @import url('./_lapikit.scss');
 @import url('./_animations.scss');
+@import url('./_markdown.scss');
 
 @media (min-width: 767px) {
 	:root {
