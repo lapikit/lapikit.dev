@@ -1,6 +1,6 @@
 <script>
-	import { KitBtn } from 'lapikit/components';
+	import { KitBtn as KitBtnManual } from 'lapikit/components';
 </script>
 
 <kit:btn>Auto-imported button</kit:btn>
-<KitBtn>Manually imported button</KitBtn>
+<KitBtnManual>Manually imported button</KitBtnManual>

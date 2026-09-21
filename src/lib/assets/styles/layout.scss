@@ -29,6 +29,8 @@
 	--kit-color-on-npm: hsl(0deg 0% 96.86%);
 	--kit-color-github: hsl(0deg 0% 0%);
 	--kit-color-on-github: hsl(0deg 0% 96.86%);
+	--kit-color-bg-inverse: var(--kit-color-text);
+	--kit-color-fg-inverse: var(--kit-color-surface);
 }
 
 @import '@fontsource-variable/archivo';

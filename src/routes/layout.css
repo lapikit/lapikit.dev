@@ -1,17 +1,17 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/outfit';
-@import '@fontsource-variable/jetbrains-mono';
+/* @import '@fontsource-variable/outfit';
+@import '@fontsource-variable/jetbrains-mono'; */
 /**@import './md.css';**/
-@import './theme.css';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
+/* @import './theme.css'; */
+/* @plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography'; */
 
 /* @theme {
 	--font-sans: 'Outfit Variable', sans-serif;
 	--font-mono: 'JetBrains Mono Variable', monospace;
 } */
 
-@layer base {
+/* @layer base {
 	body,
 	#kit-app {
 		font-family: var(--font-sans);
@@ -22,12 +22,12 @@
 	.lpk-title-2xl {
 		font-size: calc(var(--kit-font-xl) * 1.25);
 	}
-}
+} */
 
-// OVERWRITE tailwindcss
+/* // OVERWRITE tailwindcss
 
 @layer utilities {
 	.outline {
 		outline-width: 0 !important;
 	}
-}
+} */
