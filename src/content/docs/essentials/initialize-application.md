@@ -8,7 +8,7 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 </script>
 
 Lapikit provides a global application context that can be accessed by all components across your Svelte or SvelteKit application. To initialize this context, wrap your application in the `<kit:app>` component:

@@ -13,7 +13,7 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
   // examples
   import SStyleComponent from '$examples/started/s-style-component.svelte';

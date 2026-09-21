@@ -8,7 +8,7 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/aspect-ratio/preview.svelte';
 	import Ratios from '$examples/components/aspect-ratio/ratios.svelte';

@@ -8,7 +8,7 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/toolbar/preview.svelte';
 	import Variants from '$examples/components/toolbar/variants.svelte';

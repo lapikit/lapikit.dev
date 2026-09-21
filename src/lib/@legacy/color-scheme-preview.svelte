@@ -66,7 +66,7 @@
 
 <div id="color-scheme-preview" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 	<div
-		class="container-drag-drop-hero rounded-lg"
+		class="container-drag-drop-hero"
 		bind:this={containerRef}
 		onmousedown={handleMouseDown}
 		ontouchstart={handleTouchStart}

@@ -137,41 +137,41 @@
 	<kit:dialog bind:open={consentState.open} persistent size="sm">
 		{#if consentState.view === 'summary'}
 			<kit:toolbar>
-				<p>Privacy</p>
+				<p class="consent-label">Privacy</p>
 				<kit:spacer />
 				<kit:btn variant="link" size="sm" onclick={() => void applyConsent('refuse', true)}>
 					Decline non-essential cookies
 				</kit:btn>
 			</kit:toolbar>
 
-			<p class="text-xl font-bold">Choose what Lapikit can store on your device.</p>
-			<p class="my-4">
+			<p class="consent-title">Choose what Lapikit can store on your device.</p>
+			<p class="consent-text">
 				Lapikit and our partners use cookies or similar technologies to enable us to improve the
 				site, your experience and to ensure the proper functioning of the site, to collect
 				statistics in order to optimize the services offered, and to adapt Lapikit's content. Then
 				change it later from the the cookie settings button.
 			</p>
-			<kit:toolbar classContent="justify-end!">
+			<kit:toolbar classContent="consent-actions">
 				<kit:btn variant="text" onclick={() => (consentState.view = 'customize')}>Customize</kit:btn
 				>
 				<kit:btn onclick={() => void applyConsent('accept', true)}>Accept all</kit:btn>
 			</kit:toolbar>
 		{:else}
 			<kit:toolbar>
-				<p>Cookie preferences</p>
+				<p class="consent-label">Cookie preferences</p>
 				<kit:spacer />
 				<kit:btn variant="link" onclick={() => (consentState.view = 'summary')}>Back</kit:btn>
 			</kit:toolbar>
-			<h2 class="text-xl font-bold">Fine-tune your consent.</h2>
-			<p class="my-4">
+			<h2 class="consent-title">Fine-tune your consent.</h2>
+			<p class="consent-text">
 				Only the audience measurement category is optional on this site. Required cookies stay
 				active because they are needed for core features like saving your consent choice.
 			</p>
-			<kit:list class="max-w-[80%]">
+			<kit:list class="consent-list">
 				<kit:list-item>
 					<div>
 						<strong>Necessary cookies</strong>
-						<p class="whitespace-normal">
+						<p class="consent-description">
 							Required for core site functions and for storing your privacy preference. These are
 							always active.
 						</p>
@@ -183,7 +183,7 @@
 				<kit:list-item>
 					<div>
 						<strong>Audience measurement</strong>
-						<p class="whitespace-normal">
+						<p class="consent-description">
 							Helps us measure visits and understand which pages are useful, using Google tagging
 							tools only after your consent.
 						</p>
@@ -198,7 +198,7 @@
 				</kit:list-item>
 			</kit:list>
 
-			<kit:toolbar classContent="justify-end!">
+			<kit:toolbar classContent="consent-actions">
 				<kit:btn variant="outline" onclick={() => void applyConsent('refuse', true)}>
 					Only necessary cookies
 				</kit:btn>
@@ -208,7 +208,40 @@
 	</kit:dialog>
 {/if}
 
-<style>
+<style lang="scss">
+	.consent-label {
+		margin: 0;
+	}
+
+	.consent-title {
+		margin: 0;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+
+	.consent-text {
+		margin-block: 1rem;
+	}
+
+	.consent-description {
+		margin: 0;
+		white-space: normal;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
+	// Toggle
 	.toggle {
 		position: relative;
 		display: inline-block;
@@ -218,27 +251,35 @@
 		background-color: #e4e4e7;
 		transition: background-color 0.2s;
 		flex-shrink: 0;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 20px;
+			height: 20px;
+			border-radius: 9999px;
+			background-color: rgb(255, 255, 255);
+			box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.08);
+			transition: transform 0.2s;
+		}
+
+		&.on {
+			background-color: #18181b;
+
+			&::after {
+				transform: translateX(1rem);
+			}
+		}
 	}
 
-	.toggle::after {
-		content: '';
-		position: absolute;
-		top: 2px;
-		left: 2px;
-		width: 20px;
-		height: 20px;
-		border-radius: 9999px;
-		background-color: rgb(255, 255, 255);
-		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.08);
-		transition: transform 0.2s;
+	:global(.consent-list) {
+		max-width: 80%;
 	}
 
-	.toggle.on {
-		background-color: #18181b;
-	}
-
-	.toggle.on::after {
-		transform: translateX(1rem);
+	:global(.consent-actions) {
+		justify-content: flex-end !important;
 	}
 
 	:global(.consent-settings-btn) {

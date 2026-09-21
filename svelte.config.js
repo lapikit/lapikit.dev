@@ -13,7 +13,6 @@ const config = {
 			envPrefix: ''
 		}),
 		alias: {
-			$components: 'src/components',
 			$examples: 'src/content/examples'
 		}
 	},

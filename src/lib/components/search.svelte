@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import type { Pathname } from '$app/types';
 	import { manifestPage } from '$lib';
 	import { capitalize } from '$lib/utils';
 	import {
@@ -25,7 +26,7 @@
 	let fieldRef: HTMLElement | null = $state(null);
 
 	$effect(() => {
-		results; // dépendance
+		void results; // dépendance
 		selectedIndex = 0;
 	});
 
@@ -94,7 +95,7 @@
 
 	function navigateTo(page: (typeof manifestPage)[number]) {
 		handleClose();
-		goto(page.path.pathname);
+		goto(resolve(page.path.pathname as Pathname));
 	}
 
 	function scrollToSelected() {
@@ -109,7 +110,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <kit:modal id="search-modal" bind:open contain size="lg">
-	<div class="flex gap-2.5">
+	<div class="search-header">
 		<kit:textfield
 			bind:ref={fieldRef}
 			type="search"
@@ -117,15 +118,15 @@
 			bind:value={query}
 			clearable
 		/>
-		<kit:btn icon density="comfortable">ESC</kit:btn>
+		<kit:btn icon density="comfortable" onclick={() => handleClose()}>ESC</kit:btn>
 	</div>
 
 	{#if results.length > 0}
 		<kit:card class="search-result" density="none">
 			<kit:list density="comfortable">
-				{#each results as result, i}
+				{#each results as result, i (i)}
 					<kit:list-item
-						class="gap-4!"
+						class="search-item"
 						href={result?.path?.pathname}
 						active={i === selectedIndex}
 						data-selected={i === selectedIndex}
@@ -152,7 +153,7 @@
 							</kit:icon>
 						{/snippet}
 
-						<div class="grid leading-5">
+						<div class="search-content">
 							<span>{capitalize(result?.head?.title)}</span>
 							<span class="description">{result?.head?.description}</span>
 						</div>
@@ -163,7 +164,24 @@
 	{/if}
 </kit:modal>
 
-<style>
+<style lang="scss">
+	.search-header {
+		display: flex;
+		gap: 0.625rem;
+	}
+
+	.search-content {
+		display: grid;
+		line-height: 1.25rem;
+
+		.description {
+			color: var(--kit-color-text-muted);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
 	:global(#search-modal.kit-modal__content) {
 		--kit-modal-top: 15%;
 		--kit-modal-translate-y: -15%;
@@ -172,17 +190,14 @@
 	:global(.search-result) {
 		margin-top: 25px;
 		overflow: hidden;
+
+		:global(.kit-list) {
+			max-height: 400px;
+			overflow-x: auto;
+		}
 	}
 
-	:global(.search-result .kit-list) {
-		max-height: 400px;
-		overflow-x: auto;
-	}
-
-	span.description {
-		color: var(--kit-color-text-muted);
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+	:global(.search-item) {
+		gap: 1rem !important;
 	}
 </style>

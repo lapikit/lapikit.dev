@@ -6,7 +6,7 @@
 	// modules
 	import Settings from '$lib/components/settings.svelte';
 	import InstallModal from '$lib/components/docs/install-modal.svelte';
-	import SearchV2Action from '../../components/search-v2-action.svelte';
+	import SearchBtn from './modules/search-btn.svelte';
 
 	// assets
 	import { CloudDownload, Menu } from 'lucide-svelte';
@@ -37,7 +37,7 @@
 	</a>
 
 	<div class="navbar--actions">
-		<SearchV2Action />
+		<SearchBtn />
 	</div>
 
 	<div class="navbar--links">

@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	export { default as blockquote } from '$components/markdown/blockquote.svelte';
+	export { default as blockquote } from '$lib/components/markdown/blockquote.svelte';
 </script>
 
 <script lang="ts">
@@ -7,7 +7,7 @@
 	import { page } from '$app/state';
 	import { mount, unmount } from 'svelte';
 	import type { Snippet } from 'svelte';
-	import EnumChip from '../components/enum-chip.svelte';
+
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../routes/docs/[...slug]/$types';
 	import { getBreadcrumbs } from '$lib';
@@ -15,8 +15,9 @@
 
 	const accordion = useAccordion();
 	// Components
-	import TableOfContent from '../components/table-of-content.svelte';
-	import Breadcrumbs from '../components/breadcrumbs.svelte';
+	import TableOfContent from '$lib/components/table-of-content.svelte';
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
+	import EnumChip from '$lib/components/docs/enum-chip.svelte';
 	import { ChevronLeft, ChevronRight, TextAlignStart } from 'lucide-svelte';
 	import { capitalize, slugify } from '$lib/utils';
 

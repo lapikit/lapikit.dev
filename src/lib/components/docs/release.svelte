@@ -28,11 +28,12 @@
 </script>
 
 <kit:card
-	class="sticky! bottom-3.5 mx-auto mt-5.5 w-67.5"
-	background="accent"
+	class="release-card"
+	background="surface-2"
 	density="comfortable"
-	elevation="2"
-	s-style_color="white"
+	elevation="3"
+	s-style_color="text"
+	s-style_border="2px solid var(--kit-color-accent)"
 >
 	<kit:card-title>
 		Release
@@ -44,7 +45,7 @@
 	</kit:card-title>
 	<kit:list density="compact">
 		{#each releases as release (release.key)}
-			<kit:list-item class="grid-cols-[94px_1fr]!" background="accent" s-style_color="white">
+			<kit:list-item class="release-item">
 				{#snippet prepend()}
 					<kit:chip size="sm" background={release.background} color={release.color}>
 						{#snippet prepend()}
@@ -56,7 +57,7 @@
 					</kit:chip>
 				{/snippet}
 
-				<div class="metainfo grid">
+				<div class="metainfo">
 					<span>{release.version}</span>
 					<span>published {formatPublishDate(release.publish)}</span>
 				</div>
@@ -65,17 +66,30 @@
 	</kit:list>
 </kit:card>
 
-<style>
+<style lang="scss">
 	.metainfo {
+		display: grid; // équivalent grid
 		line-height: 1.15;
+
+		span:first-child {
+			font-size: var(--kit-font-sm);
+		}
+
+		span:last-child {
+			font-size: var(--kit-font-xs);
+			color: rgb(75, 75, 75);
+		}
 	}
 
-	.metainfo span:first-child {
-		font-size: var(--kit-font-sm);
+	:global(.release-card) {
+		position: sticky !important;
+		bottom: 0.875rem;
+		margin-inline: auto;
+		margin-top: 1.375rem;
+		width: 16.875rem;
 	}
 
-	.metainfo span:last-child {
-		font-size: var(--kit-font-xs);
-		color: rgb(75, 75, 75);
+	:global(.release-item) {
+		grid-template-columns: 94px 1fr !important;
 	}
 </style>

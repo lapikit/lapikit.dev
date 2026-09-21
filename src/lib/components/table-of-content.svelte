@@ -74,7 +74,7 @@
 			{#if title}
 				<kit:list-item
 					href={`#${titleSlug}`}
-					class={`depth-1`}
+					class="depth-1"
 					active={activeSlug === titleSlug}
 					color={activeSlug === titleSlug && 'accent'}
 				>

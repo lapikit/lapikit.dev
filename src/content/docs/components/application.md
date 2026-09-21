@@ -8,7 +8,7 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	// images
 	import picture from '$lib/assets/images/use-kit-app.webp';

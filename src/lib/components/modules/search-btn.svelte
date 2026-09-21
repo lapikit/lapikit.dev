@@ -6,10 +6,12 @@
 
 	let {
 		onlyBtn,
-		class: className
+		class: className,
+		block
 	}: {
 		onlyBtn?: boolean;
 		class?: string;
+		block?: boolean;
 	} = $props();
 
 	const search = getContext<{ open: boolean; toggle: () => void }>('search');
@@ -22,7 +24,7 @@
 		</kit:icon>
 	</kit:btn>
 {:else}
-	<kit:btn class={className} onclick={() => search.toggle()} block>
+	<kit:btn class={className} onclick={() => search.toggle()} {block}>
 		{#snippet prepend()}
 			<kit:icon>
 				<Search />

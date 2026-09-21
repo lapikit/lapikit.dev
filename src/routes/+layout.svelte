@@ -9,7 +9,7 @@
 	import { capitalize } from '$lib/utils';
 
 	// components
-	import ConsentMode from '../components/consent-mode.svelte';
+	import ConsentMode from '$lib/components/consent-modal.svelte';
 
 	// api
 	import { loadNpmData } from '$lib/stores/npm.svelte';
@@ -21,7 +21,9 @@
 
 	import './layout.css';
 	import '$lib/assets/styles/layout.scss';
-	import SearchV2 from '$components/search-v2.svelte';
+	// import SearchV2 from '$components/search-v2.svelte';
+	import Search from '$lib/components/search.svelte';
+	import ClickSpark from '$lib/components/animations/click-spark.svelte';
 
 	onMount(() => {
 		if (browser) loadNpmData();
@@ -100,6 +102,8 @@
 	{@html breadcrumbSchemaTag}
 </svelte:head>
 
+<ClickSpark sparkColor="#2a6df4" />
+
 <kit:app>
 	<!-- <p>Thème actif : {app.active}</p> -->
 	<!-- <main> -->
@@ -107,7 +111,7 @@
 	<!-- </main> -->
 
 	<ConsentMode />
-	<SearchV2 bind:open={searchOpen} />
+	<Search bind:open={searchOpen} />
 </kit:app>
 
 <style>

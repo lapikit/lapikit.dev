@@ -8,10 +8,10 @@
 </script>
 
 {#if items.length > 1}
-	<nav aria-label="Breadcrumb">
-		<ol class="flex flex-wrap items-center gap-2 text-sm">
+	<nav class="breadcrumb" aria-label="Breadcrumb">
+		<ol class="breadcrumb__list">
 			{#each items as item, index (`${item.href ?? item.label}-${index}`)}
-				<li class="flex items-center gap-2">
+				<li class="breadcrumb__item">
 					{#if index === items.length - 1}
 						<span aria-current="page">{capitalize(item.label)}</span>
 					{:else if item.href}
@@ -22,7 +22,7 @@
 
 							<kit:icon size="sm"> <ChevronRight /></kit:icon>
 						{:else}
-							<a href={resolve(item.href)} class="underline">{capitalize(item.label)}</a>
+							<a href={resolve(item.href)} class="breadcrumb__link">{capitalize(item.label)}</a>
 							<kit:icon size="sm"> <ChevronRight /></kit:icon>
 						{/if}
 					{:else}
@@ -35,12 +35,29 @@
 	</nav>
 {/if}
 
-<style>
-	nav ol {
-		padding-left: 0;
-	}
+<style lang="scss">
+	.breadcrumb {
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.5rem; // équivalent gap-2
+			margin: 0;
+			padding-left: 0;
+			list-style: none;
+			font-size: 0.875rem; // équivalent text-sm
+			line-height: 1.25rem;
+		}
 
-	nav ol a {
-		color: var(--kit-color-text);
+		&__item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		&__link {
+			color: var(--kit-color-text);
+			text-decoration: underline;
+		}
 	}
 </style>

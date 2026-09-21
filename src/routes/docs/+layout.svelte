@@ -4,9 +4,7 @@
 
 	// modules
 	import NavbarDocs from '$lib/components/navbar-docs.svelte';
-
-	// components
-	import Drawer from '$components/drawer.svelte';
+	import DrawerDocs from '$lib/components/navbar-drawer-docs.svelte';
 
 	let { children } = $props();
 
@@ -33,7 +31,7 @@
 <NavbarDocs />
 
 <div class="layout transition-lapikit" bind:this={layoutEl}>
-	<Drawer bind:open={navOpen} bind:el={sidebarEl} side="left" />
+	<DrawerDocs bind:open={navOpen} bind:el={sidebarEl} side="left" />
 
 	<div class="content transition-lapikit">
 		{@render children()}

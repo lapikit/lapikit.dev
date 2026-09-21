@@ -28,3 +28,6 @@ declare module '*.md' {
 }
 
 export {};
+
+// FOR EXAMPLES DOCUMENTATION
+declare module 'eslint-config-lapikit';

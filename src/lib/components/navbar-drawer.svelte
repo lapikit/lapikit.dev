@@ -53,7 +53,7 @@
 	</header>
 
 	<div class="drawer-nav__search">
-		<SearchBtn />
+		<SearchBtn block />
 	</div>
 
 	<kit:separator />

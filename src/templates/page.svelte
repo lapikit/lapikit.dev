@@ -10,8 +10,8 @@
 	const accordion = useAccordion();
 
 	// modules
-	import Breadcrumbs from '../components/breadcrumbs.svelte';
-	import TableOfContent from '../components/table-of-content.svelte';
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
+	import TableOfContent from '$lib/components/table-of-content.svelte';
 
 	// assets
 	import { TextAlignStart } from 'lucide-svelte';

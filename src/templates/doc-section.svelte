@@ -5,7 +5,7 @@
 	import { getBreadcrumbs } from '$lib';
 	import { capitalize, slugify } from '$lib/utils';
 	// Components
-	import Breadcrumbs from '../components/breadcrumbs.svelte';
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import type { PageData } from '../routes/docs/[...slug]/$types';
 	import { ChevronLeft, ChevronRight } from 'lucide-svelte';
 

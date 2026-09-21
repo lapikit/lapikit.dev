@@ -46,7 +46,7 @@
 		{/if}
 	</blockquote>
 {:else}
-	<kit:alert multiline tone={type} class="mb-4">
+	<kit:alert multiline tone={type} s-style_margin-bottom="12px">
 		{#snippet prepend()}
 			{#if type === 'info'}
 				<kit:icon><Info /></kit:icon>
