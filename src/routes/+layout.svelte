@@ -19,7 +19,8 @@
 
 	let { children } = $props();
 
-	import './layout.css';
+	import '@fontsource-variable/archivo';
+	import '@fontsource-variable/jetbrains-mono';
 	import '$lib/assets/styles/layout.scss';
 	// import SearchV2 from '$components/search-v2.svelte';
 	import Search from '$lib/components/search.svelte';

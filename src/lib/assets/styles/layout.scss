@@ -33,9 +33,7 @@
 	--kit-color-fg-inverse: var(--kit-color-surface);
 }
 
-@import '@fontsource-variable/archivo';
-@import '@fontsource-variable/jetbrains-mono';
-
+@import url('./_reset.scss');
 @import url(./code.scss);
 @import url('./_fonts.scss');
 @import url('./_lapikit.scss');
