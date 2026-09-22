@@ -22,7 +22,7 @@
 
 	import '@fontsource-variable/archivo';
 	import '@fontsource-variable/jetbrains-mono';
-	import '$lib/assets/styles/layout.scss';
+	import '$lib/styles/layout.scss';
 
 	import Search from '$lib/components/search.svelte';
 	import ClickSpark from '$lib/components/animations/click-spark.svelte';

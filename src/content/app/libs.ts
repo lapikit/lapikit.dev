@@ -2,9 +2,9 @@ import { nbComponents, nbHooks } from '$lib/constants';
 
 // assets
 import LapikitLogo from '$lib/assets/images/lapikit.webp';
-import MeltUI from '$lib/assets/images/melt-ui.webp';
-import ShadcnSvelte from '$lib/assets/images/shadcn-svelte.webp';
-import Skeleton from '$lib/assets/images/skeleton.webp';
+import MeltUI from '$lib/assets/images/libs/melt-ui.webp';
+import ShadcnSvelte from '$lib/assets/images/libs/shadcn-svelte.webp';
+import Skeleton from '$lib/assets/images/libs/skeleton.webp';
 
 type TableHome = {
 	text: string;

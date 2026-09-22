@@ -149,7 +149,7 @@
 	}
 
 	/* ── Links ──────────────────────────────────────────────────── */
-	a {
+	a:not(.kit-*) {
 		color: var(--md-color-link);
 		text-decoration: underline;
 		text-underline-offset: 2px;

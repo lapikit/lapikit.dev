@@ -11,7 +11,7 @@ layout: 'doc_page'
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	// images
-	import picture from '$lib/assets/images/use-kit-app.webp';
+	import picture from '$lib/assets/images/docs/use-kit-app.webp';
 </script>
 
 The `kit:app` component is an root layout for all component Lapikit. It acts as a global provider, initializing and centralizing everything Lapikit needs to function properly.

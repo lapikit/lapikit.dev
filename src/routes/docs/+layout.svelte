@@ -7,6 +7,7 @@
 	import NavbarDocs from '$lib/components/navbar-docs.svelte';
 	import DrawerDocs from '$lib/components/navbar-drawer-docs.svelte';
 	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
+	import FooterDocs from '$lib/components/footer-docs.svelte';
 
 	let { children } = $props();
 
@@ -14,7 +15,6 @@
 	let navOpen = $state(false);
 	let sidebarEl: HTMLDivElement | undefined = $state();
 	let layoutEl: HTMLDivElement | undefined = $state();
-	let year: number = new Date().getFullYear();
 
 	afterNavigate(({ type }) => {
 		if (type !== 'popstate' && layoutEl) layoutEl.scrollTop = 0;
@@ -38,18 +38,9 @@
 	<div class="content">
 		<FadeTransition url={page.url.pathname}>
 			{@render children()}
-		</FadeTransition>
 
-		<footer>
-			Copyright © 2025 - {year} Lapikit -
-			<a
-				href="https://github.com/lapikit/lapikit/blob/main/LICENSE"
-				target="_blank"
-				style="color: var(--kit-accent)">MIT License</a
-			>
-			- Developed by
-			<a href="https://nycolaide.dev" target="_blank" style="color: var(--kit-accent)">Nycolaide</a>
-		</footer>
+			<FooterDocs />
+		</FadeTransition>
 	</div>
 </div>
 
@@ -71,12 +62,6 @@
 		border-top-right-radius: 36px;
 	}
 
-	footer {
-		grid-area: footer;
-		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
-		margin: 0 var(--app-spacing-x-page) var(--app-spacing-y-page-bottom);
-	}
-
 	@media (min-width: 1023px) {
 		.layout {
 			grid-template-columns: auto minmax(0, 1fr);
@@ -91,13 +76,6 @@
 		.content {
 			border-top-left-radius: 36px;
 			border-top-right-radius: 0;
-		}
-	}
-
-	@media (min-width: 1460px) {
-		footer {
-			width: 100%;
-			margin: 0 auto var(--app-spacing-y-page-bottom);
 		}
 	}
 </style>

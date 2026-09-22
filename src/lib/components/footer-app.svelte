@@ -91,7 +91,9 @@
 								</kit:icon>
 							</kit:list-item>
 						{:else if path === 'cookie-settings'}
-							<kit:list-item onclick={openConsentPreferences}>{capitalize(label)}</kit:list-item>
+							<kit:list-item style="font-size: 15px" onclick={openConsentPreferences}
+								>{capitalize(label)}</kit:list-item
+							>
 						{:else}
 							<kit:list-item href={path}>{capitalize(label)}</kit:list-item>
 						{/if}
