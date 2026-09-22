@@ -4,6 +4,7 @@
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
+	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
 	import { capitalize } from '$lib/utils';
@@ -22,9 +23,11 @@
 	import '@fontsource-variable/archivo';
 	import '@fontsource-variable/jetbrains-mono';
 	import '$lib/assets/styles/layout.scss';
-	// import SearchV2 from '$components/search-v2.svelte';
+
 	import Search from '$lib/components/search.svelte';
 	import ClickSpark from '$lib/components/animations/click-spark.svelte';
+
+	const isDesktop = new MediaQuery('min-width: 1024px');
 
 	onMount(() => {
 		if (browser) loadNpmData();
@@ -103,7 +106,9 @@
 	{@html breadcrumbSchemaTag}
 </svelte:head>
 
-<ClickSpark sparkColor="#2a6df4" />
+{#if isDesktop.current}
+	<ClickSpark sparkColor="#2a6df4" />
+{/if}
 
 <kit:app>
 	<!-- <p>Thème actif : {app.active}</p> -->

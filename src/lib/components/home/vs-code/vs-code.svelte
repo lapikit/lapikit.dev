@@ -16,10 +16,26 @@
 
 	// states
 	let view = $state('+layout.svelte');
+
+	const VS_CODE_WIDTH = 1200;
+	let viewportEl: HTMLDivElement | undefined = $state();
+	let scale = $state(1);
+
+	$effect(() => {
+		if (!viewportEl) return;
+
+		const observer = new ResizeObserver(([entry]) => {
+			const width = entry.contentBoxSize?.[0]?.inlineSize ?? entry.contentRect.width;
+			scale = Math.min(1, width / VS_CODE_WIDTH);
+		});
+		observer.observe(viewportEl);
+
+		return () => observer.disconnect();
+	});
 </script>
 
-<div class="vs-code-viewport">
-	<div id="vs-code">
+<div class="vs-code-viewport" bind:this={viewportEl}>
+	<div id="vs-code" style:--vs-scale={scale}>
 		<Header />
 		<div>
 			<div>
@@ -45,7 +61,7 @@
 
 <style lang="scss">
 	.vs-code-viewport {
-		container-type: inline-size;
+		contain: inline-size;
 		max-width: 1280px;
 		width: 100%;
 		margin: 0 auto 0;
@@ -84,13 +100,17 @@
 		$height-footer: 34px;
 		$height-tabs: 52px;
 		$height-content: 640px;
+		$vs-width: 1200px;
+		$vs-height: 772px;
 
-		width: 1200px;
-		// background-color: var(--kit-color-vs-background);
-		// border-radius: var(--vs-shape);
+		width: $vs-width;
 		z-index: 1;
 		position: relative;
-		zoom: min(1, calc(100cqw / 1200px));
+		left: 50%;
+		margin-left: calc(-1 * #{$vs-width} / 2);
+		transform: scale(var(--vs-scale));
+		transform-origin: top center;
+		margin-bottom: calc(-1 * #{$vs-height} * (1 - var(--vs-scale)));
 
 		&::before {
 			content: '';
