@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/state';
 
 	// modules
 	import NavbarDocs from '$lib/components/navbar-docs.svelte';
 	import DrawerDocs from '$lib/components/navbar-drawer-docs.svelte';
+	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
 
 	let { children } = $props();
 
@@ -30,11 +32,13 @@
 
 <NavbarDocs />
 
-<div class="layout transition-lapikit" bind:this={layoutEl}>
+<div class="layout" bind:this={layoutEl}>
 	<DrawerDocs bind:open={navOpen} bind:el={sidebarEl} side="left" />
 
-	<div class="content transition-lapikit">
-		{@render children()}
+	<div class="content">
+		<FadeTransition url={page.url.pathname}>
+			{@render children()}
+		</FadeTransition>
 
 		<footer>
 			Copyright © 2025 - {year} Lapikit -
