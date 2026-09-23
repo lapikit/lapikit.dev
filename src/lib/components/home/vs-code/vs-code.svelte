@@ -16,10 +16,10 @@
 
 	// states
 	let view = $state('+layout.svelte');
-
 	const VS_CODE_WIDTH = 1200;
 	let viewportEl: HTMLDivElement | undefined = $state();
 	let scale = $state(1);
+	let measured = $state(false);
 
 	$effect(() => {
 		if (!viewportEl) return;
@@ -27,6 +27,7 @@
 		const observer = new ResizeObserver(([entry]) => {
 			const width = entry.contentBoxSize?.[0]?.inlineSize ?? entry.contentRect.width;
 			scale = Math.min(1, width / VS_CODE_WIDTH);
+			measured = true;
 		});
 		observer.observe(viewportEl);
 
@@ -35,27 +36,29 @@
 </script>
 
 <div class="vs-code-viewport" bind:this={viewportEl}>
-	<div id="vs-code" style:--vs-scale={scale}>
-		<Header />
-		<div>
+	<div class="vs-code-frame" class:measured>
+		<div id="vs-code" style:--vs-scale={scale}>
+			<Header />
 			<div>
-				<Aside />
 				<div>
-					<div class="title">Explorer</div>
-					<Explorer bind:view />
+					<Aside />
+					<div>
+						<div class="title">Explorer</div>
+						<Explorer bind:view />
+					</div>
+				</div>
+				<div>
+					<TabFiles {view} />
+					<div>
+						<Ide {view} />
+					</div>
+				</div>
+				<div>
+					<Render {version} />
 				</div>
 			</div>
-			<div>
-				<TabFiles {view} />
-				<div>
-					<Ide {view} />
-				</div>
-			</div>
-			<div>
-				<Render {version} />
-			</div>
+			<Footer />
 		</div>
-		<Footer />
 	</div>
 </div>
 
@@ -85,6 +88,17 @@
 		}
 	}
 
+	.vs-code-frame {
+		position: relative;
+		aspect-ratio: 1200 / 772;
+	}
+
+	@media (max-width: 1279px) {
+		.vs-code-frame:not(.measured) #vs-code {
+			visibility: hidden;
+		}
+	}
+
 	#vs-code {
 		--kit-color-font-vs-primary: #757575;
 		--kit-color-font-vs-secondary: #8c8c8c;
@@ -101,16 +115,15 @@
 		$height-tabs: 52px;
 		$height-content: 640px;
 		$vs-width: 1200px;
-		$vs-height: 772px;
 
 		width: $vs-width;
 		z-index: 1;
-		position: relative;
+		position: absolute;
+		top: 0;
 		left: 50%;
 		margin-left: calc(-1 * #{$vs-width} / 2);
 		transform: scale(var(--vs-scale));
 		transform-origin: top center;
-		margin-bottom: calc(-1 * #{$vs-height} * (1 - var(--vs-scale)));
 
 		&::before {
 			content: '';

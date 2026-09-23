@@ -106,4 +106,19 @@
 		animation-duration: 14s;
 		animation-delay: -6s;
 	}
+
+	@keyframes orb-float {
+		0% {
+			transform: translateY(0) scale(1);
+		}
+		100% {
+			transform: translateY(-22px) scale(1.05);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.glow-orb {
+			animation: none;
+		}
+	}
 </style>

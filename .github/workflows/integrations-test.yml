@@ -39,13 +39,16 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
       - name: Create .env file
         run: cp .env.example .env
 
       - name: Build
         run: bun run build
+
+      - name: Check performance budget
+        run: bun run check-budget
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v7
@@ -66,7 +69,10 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
+
+      - name: Generate content manifest
+        run: bun run sync-content
 
       - name: Download build artifact
         uses: actions/download-artifact@v8
@@ -75,7 +81,12 @@ jobs:
           path: build/
 
       - name: Install Playwright browsers
-        run: bunx playwright install --with-deps chromium
+        run: bunx playwright install --with-deps chromium firefox webkit
 
-      - name: Run smoke tests
+      - name: Run e2e tests
         run: bun run test:e2e
+
+      # report only: visible on the run summary page, never blocks the pipeline
+      - name: Accessibility report
+        run: bun run test:a11y
+        continue-on-error: true

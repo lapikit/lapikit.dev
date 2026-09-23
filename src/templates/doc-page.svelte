@@ -66,20 +66,19 @@
 		<header>
 			<Breadcrumbs items={breadcrumbs} />
 
+			{#if category && data?.doc?.state !== 'deprecated'}
+				<div class="markdown-section">{category}</div>
+			{/if}
+			{#if title}
+				<h1 id={slugify(title)} class="markdown-title">
+					{capitalize(title)}
+				</h1>
+			{/if}
 			{#if data?.doc?.state === 'deprecated'}
 				<kit:alert tone="warning">
 					This feature is deprecated and is no longer supported. Check out the new features and
 					improvements in the documentation.
 				</kit:alert>
-			{:else}
-				{#if category}
-					<div class="markdown-section">{category}</div>
-				{/if}
-				{#if title}
-					<h1 id={slugify(title)} class="markdown-title">
-						{capitalize(title)}
-					</h1>
-				{/if}
 			{/if}
 		</header>
 

@@ -1,3 +1,5 @@
+import { slugify } from '../../src/lib/utils/slugify.js';
+
 /** @typedef {import('$lib/@types').MarkdownHeading} MarkdownHeading */
 /**
  * @typedef {{
@@ -103,16 +105,6 @@ function createUniqueSlug(value, slugCounts) {
 	slugCounts.set(baseSlug, count);
 
 	return count === 1 ? baseSlug : `${baseSlug}-${count}`;
-}
-
-/** @param {string} value */
-function slugify(value) {
-	return value
-		.normalize('NFKD')
-		.replace(/[\u0300-\u036f]/g, '')
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/^-+|-+$/g, '');
 }
 
 /** @param {unknown} value */

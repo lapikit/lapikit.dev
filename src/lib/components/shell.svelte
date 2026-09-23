@@ -35,7 +35,7 @@
 
 <!-- <div class="shell-wrapper"> -->
 <div class="shell-command-line">
-	<p>
+	<p class="text-sm">
 		<span class="accent-text">$</span>
 		{command[application.pkg_selected][commandkey]}
 	</p>
