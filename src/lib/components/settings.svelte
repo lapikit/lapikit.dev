@@ -61,7 +61,7 @@
 	<kit:separator />
 	<kit:list background="surface">
 		<kit:list-item>
-			<p>Package</p>
+			<p class="text-sm">Package</p>
 			<kit:dropdown closeOnClick>
 				{#snippet activator({ open, toggle }: ModelDropdownProps)}
 					<kit:btn
@@ -107,7 +107,7 @@
 			</kit:dropdown>
 		</kit:list-item>
 		<kit:list-item>
-			<p>Language</p>
+			<p class="text-sm">Language</p>
 			<kit:dropdown closeOnClick>
 				{#snippet activator({ open, toggle }: ModelDropdownProps)}
 					<kit:btn
