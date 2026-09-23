@@ -5,15 +5,15 @@ export default defineConfig({
 	webServer: {
 		command: 'node build',
 		port: 3000,
-		reuseExistingServer: !process.env.CI,
+		reuseExistingServer: !process.env.CI
 	},
 	use: {
-		baseURL: 'http://localhost:3000',
+		baseURL: 'http://localhost:3000'
 	},
 	projects: [
 		{
 			name: 'chromium',
-			use: { ...devices['Desktop Chrome'] },
-		},
-	],
+			use: { ...devices['Desktop Chrome'] }
+		}
+	]
 });

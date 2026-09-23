@@ -1,10 +1,5 @@
 export type FrontmatterValue =
-	| string
-	| number
-	| boolean
-	| null
-	| FrontmatterValue[]
-	| { [key: string]: FrontmatterValue };
+	string | number | boolean | null | FrontmatterValue[] | { [key: string]: FrontmatterValue };
 
 export type FrontmatterData = Record<string, FrontmatterValue>;
 

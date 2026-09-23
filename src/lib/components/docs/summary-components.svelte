@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { docsNavigation } from '$lib';
+	import { docsNavigation } from '$lib/router';
 
 	const components = docsNavigation.find((section) => section.label === 'Components')?.pages ?? [];
 </script>

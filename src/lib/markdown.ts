@@ -1,48 +1,31 @@
-import { error } from '@sveltejs/kit';
-
 // types
-import type { DocComponent, DocEntry, DocSummary } from './@types';
+import type { DocComponent, DocSummary } from './@types';
 
 // datas
 import manifest from '../manifest.json';
 
-export function createRegistry(docsList: DocSummary[], modules: Record<string, DocComponent>) {
-	const paths: string[] = [];
-	const byPath = new Map<string, DocEntry>();
-	const entries: DocEntry[] = [];
-
-	for (const doc of docsList) {
-		const component = modules[`/${doc.path.sourcePath}`];
-		if (!component) throw error(500, `Missing compiled module for: ${doc.path.sourcePath}`);
-
-		const entry: DocEntry = { ...doc, component };
-		paths.push(doc.path.pathname);
-		byPath.set(doc.path.pathname, entry);
-		entries.push(entry);
-	}
-
-	const bySlug = new Map(entries.map((entry) => [entry.path.slug, entry] as const));
-
-	return { paths, byPath, entries, bySlug };
-}
-
 /**
- * Documentation registry creator
- * This module provides a utility function `createRegistry` to build a registry of documentation pages.
+ * Documentation registry
+ * Metadata comes from the generated manifest, compiled pages are loaded lazily
+ * so that importing this module never pulls every documentation page into the bundle.
  */
 
 const docModules = import.meta.glob('/src/content/docs/**/*.md', {
-	eager: true,
 	import: 'default'
-}) as Record<string, DocComponent>;
+}) as Record<string, () => Promise<DocComponent>>;
 
 export const docsMetadata: DocSummary[] = (manifest as DocSummary[]).filter((doc) =>
 	doc.path.sourcePath.startsWith('src/content/docs/')
 );
 
-const { paths, byPath, entries, bySlug } = createRegistry(docsMetadata, docModules);
+export const docs = docsMetadata;
+export const docsPaths = docsMetadata.map((doc) => doc.path.pathname);
+export const docsByPath = new Map(docsMetadata.map((doc) => [doc.path.pathname, doc] as const));
+export const docsBySlug = new Map(docsMetadata.map((doc) => [doc.path.slug, doc] as const));
 
-export const docsPaths = paths;
-export const docsByPath = byPath;
-export const docs = entries;
-export const docsBySlug = bySlug;
+export function loadDocComponent(doc: DocSummary): Promise<DocComponent> {
+	const loader = docModules[`/${doc.path.sourcePath}`];
+	if (!loader) throw new Error(`Missing compiled module for: ${doc.path.sourcePath}`);
+
+	return loader();
+}

@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import type { Snippet } from 'svelte';
-	import { getBreadcrumbs } from '$lib';
+	import { getBreadcrumbs } from '$lib/breadcrumbs';
 	import { capitalize, slugify } from '$lib/utils';
 	// Components
 	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
@@ -23,10 +23,6 @@
 
 	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
 	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
-
-	$effect(() => {
-		console.log('GW1 layout section', data);
-	});
 </script>
 
 <main>
@@ -92,7 +88,6 @@
 		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
 
 		@media (min-width: 1260px) {
-			grid-template-columns: calc(var(--md-max-width + 20rem));
 			grid-template-rows: 1fr auto;
 			align-items: start;
 

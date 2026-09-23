@@ -2,7 +2,8 @@
 	import { resolve } from '$app/paths';
 
 	// data
-	import { links, router } from '$lib';
+	import { links } from '$lib/constants';
+	import { router } from '$lib/router';
 	import { npmState } from '$lib/stores/npm.svelte';
 
 	//modules

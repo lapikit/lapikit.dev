@@ -4,7 +4,7 @@
 	import { useAccordion } from 'lapikit/actions';
 
 	// data
-	import { docsNavigation } from '$lib';
+	import { docsNavigation } from '$lib/router';
 
 	// modules
 	import SearchBtn from '$lib/components/modules/search-btn.svelte';

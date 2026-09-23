@@ -10,7 +10,7 @@
 
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../routes/docs/[...slug]/$types';
-	import { getBreadcrumbs } from '$lib';
+	import { getBreadcrumbs } from '$lib/breadcrumbs';
 	import { useAccordion } from 'lapikit/actions';
 
 	const accordion = useAccordion();

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { App } from 'lapikit/components';
+	import { KitApp } from 'lapikit/components';
 </script>
 
-<App>
+<KitApp>
 	<main>
 		<!-- your content -->
 	</main>
-</App>
+</KitApp>

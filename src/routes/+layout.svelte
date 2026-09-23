@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { PUBLIC_DEV } from '$env/static/public';
+	import { PUBLIC_BASE_URL, PUBLIC_DEV } from '$env/static/public';
 
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 
-	import { getBreadcrumbStructuredData, getBreadcrumbs, seoByPath } from '$lib';
+	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
+	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 
 	// components
@@ -38,12 +39,14 @@
 	const seoTitle = $derived(getHeadString(seo.head, 'title') ?? seo.title);
 	const seoDescription = $derived(getHeadString(seo.head, 'description') ?? `Read ${seo.title}.`);
 	const seoType = $derived(seo.type === 'website' ? 'website' : 'article');
-	const canonicalUrl = $derived(`${page.url.origin}${path === '/' ? '' : path}`);
+	// page.url.origin is a placeholder during prerendering, the public URL comes from env
+	const origin = PUBLIC_BASE_URL.replace(/\/$/, '');
+	const canonicalUrl = $derived(`${origin}${path === '/' ? '' : path}`);
 	const pageTitle = $derived(
 		`${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
 	const breadcrumbs = $derived(getBreadcrumbs(path));
-	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, page.url.origin));
+	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, origin));
 	const breadcrumbSchemaTag = $derived(breadcrumbSchema ? toJsonLdScriptTag(breadcrumbSchema) : '');
 
 	function getHeadString(head: unknown, key: 'title' | 'description') {
@@ -61,10 +64,6 @@
 
 	// states
 	let searchOpen = $state(false);
-
-	$effect(() => {
-		console.log('GW1 SEO', seo);
-	});
 
 	setContext('search', {
 		get open() {

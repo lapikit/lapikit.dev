@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { docsNavigation } from '$lib';
+	import { docsNavigation } from '$lib/router';
 
 	let { key = 'Essentials' }: { key: string } = $props();
 

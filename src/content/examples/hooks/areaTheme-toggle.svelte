@@ -1,10 +1,11 @@
 <script lang="ts">
-	import type { ThemeAction } from 'lapikit';
 	import { createTheme } from 'lapikit/actions';
 
 	const areaA = createTheme();
 	const areaB = createTheme();
 	const areaC = createTheme();
+
+	type ThemeAction = ReturnType<typeof createTheme>;
 
 	function toggle(area: ThemeAction) {
 		area.set(area.active === 'dark' ? 'light' : 'dark');

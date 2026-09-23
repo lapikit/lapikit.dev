@@ -8,7 +8,6 @@ User-agent: *
 Disallow: /
 `;
 
-
 function isProd(): boolean {
 	if (!existsSync(ENV_PATH)) return false;
 	const env = readFileSync(ENV_PATH, 'utf-8');

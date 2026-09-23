@@ -11,6 +11,8 @@
 
 	<kit:appbar rounded="md" variant="text">
 		<span style="font-weight: 600;">Text</span>
-		<span style="margin-left: auto; opacity: 0.6; font-size: 0.875rem;">no background, no border</span>
+		<span style="margin-left: auto; opacity: 0.6; font-size: 0.875rem;"
+			>no background, no border</span
+		>
 	</kit:appbar>
 </div>

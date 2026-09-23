@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { docsNavigation, docs, docsByPath, docsBySlug } from '$lib';
+import { docs, docsByPath, docsBySlug, loadDocComponent } from '$lib/markdown';
+import { docsNavigation } from '$lib/router';
 
 export const prerender = true;
 
@@ -9,7 +10,7 @@ export function entries() {
 	return docs.map((doc) => ({ slug: doc.path.slug }));
 }
 
-export function load({ params }) {
+export async function load({ params }) {
 	const doc = docsBySlug.get(params.slug ?? '');
 
 	if (!doc) {
@@ -23,7 +24,9 @@ export function load({ params }) {
 	const prevDoc = prevPath ? toDocLink(prevPath) : null;
 	const nextDoc = nextPath ? toDocLink(nextPath) : null;
 
-	return { doc, prevDoc, nextDoc };
+	const component = await loadDocComponent(doc);
+
+	return { doc: { ...doc, component }, prevDoc, nextDoc };
 }
 
 function toDocLink(pathname: string) {

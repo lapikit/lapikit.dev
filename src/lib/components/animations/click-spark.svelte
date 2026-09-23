@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { prefersReducedMotion } from 'svelte/motion';
+
 	type Easing = 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out';
 
 	interface ClickSparkProps {
@@ -67,7 +69,10 @@
 	}
 
 	function handlePointerDown(e: PointerEvent) {
+		if (prefersReducedMotion.current) return;
 		spawnSparks(e.clientX, e.clientY);
+		// the loop only runs while sparks are alive
+		if (!rafId) rafId = requestAnimationFrame(frame);
 	}
 
 	function frame(time: number) {
@@ -99,14 +104,14 @@
 			}
 			ctx.globalAlpha = 1;
 		}
-		rafId = requestAnimationFrame(frame);
+
+		rafId = sparks.length > 0 ? requestAnimationFrame(frame) : 0;
 	}
 
 	$effect(() => {
 		resize();
 		window.addEventListener('resize', resize);
 		window.addEventListener('pointerdown', handlePointerDown, { capture: true });
-		rafId = requestAnimationFrame(frame);
 
 		return () => {
 			cancelAnimationFrame(rafId);

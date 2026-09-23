@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { router } from '$lib';
+	import { router } from '$lib/router';
 	import type { NavPage } from '$lib/@types';
 
 	// states

@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
-	import { manifestPage } from '$lib';
+	import { manifestPage } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 	import {
 		Gavel,
