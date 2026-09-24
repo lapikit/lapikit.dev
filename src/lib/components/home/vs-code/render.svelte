@@ -3,7 +3,7 @@
 
 	// assets
 	import { ArrowRight, Moon, Sun } from 'lucide-svelte';
-	import Logo from '$lib/assets/images/lapikit.webp?h=64&format=webp';
+	import LogoLinear from '$lib/assets/images/lapikit-inline.svg?raw';
 
 	const themePreviewVscode = createTheme();
 
@@ -16,7 +16,7 @@
 
 <div id="preview-vscode" use:themePreviewVscode.action={{ name: 'light' }}>
 	<kit:appbar is="div" density="compact" elevation="2">
-		<img src={Logo} alt="Lapikit logo" width="22" height="32" />
+		<span class="logo" role="img" aria-label="Lapikit logo">{@html LogoLinear}</span>
 		<kit:spacer />
 		<kit:btn variant="text" size="sm">Features</kit:btn>
 		<kit:btn variant="text" size="sm">About</kit:btn>
@@ -74,8 +74,17 @@
 		color: var(--kit-color-text);
 		background: var(--kit-color-surface);
 
-		img {
-			max-height: 32px;
+		.logo {
+			display: inline-flex;
+			height: 32px;
+			aspect-ratio: 393 / 561;
+
+			// the path has no fill of its own: it follows the text color of the theme
+			:global(svg) {
+				width: 100%;
+				height: 100%;
+				fill: currentColor;
+			}
 		}
 
 		> div {
