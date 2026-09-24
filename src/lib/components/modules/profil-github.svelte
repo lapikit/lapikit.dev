@@ -6,7 +6,7 @@
 	{#each users as user, index (index)}
 		<li style:--rotate="{user.rotate}deg" style:--lift="{user.lift}px" style:z-index={user.z}>
 			<a href={user.href} target="_blank" rel="external noopener noreferrer">
-				<img src={user.src} alt={user} loading="lazy" decoding="async" />
+				<img src={user.src} alt={user.alt} loading="lazy" decoding="async" />
 			</a>
 		</li>
 	{/each}

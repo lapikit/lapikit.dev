@@ -41,7 +41,7 @@
 <aside class:is-open={open} aria-hidden={!open} inert={!open}>
 	<header>
 		<a href={resolve('/')} onclick={close}>
-			<enhanced:img src={LogoLapikit} alt="Lapikit logo" />
+			<enhanced:img src={LogoLapikit} alt="Lapikit logo" sizes="32px" />
 			<span>Lapikit</span>
 		</a>
 

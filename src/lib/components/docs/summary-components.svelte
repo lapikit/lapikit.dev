@@ -28,10 +28,6 @@
 </div>
 
 <style lang="scss">
-	img {
-		border: 0;
-	}
-
 	.components-grid-evol {
 		display: grid;
 		gap: 8px;
@@ -45,6 +41,10 @@
 		@media (min-width: 840px) {
 			grid-template-columns: 1fr 1fr 1fr;
 			gap: 10px;
+		}
+
+		img {
+			border: 0;
 		}
 	}
 

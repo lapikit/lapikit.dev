@@ -1,5 +1,5 @@
-import nycolaideImage from '$lib/assets/images/heros/nycolaide.jpeg';
-import fersimoneImage from '$lib/assets/images/heros/fersimone.jpeg';
+import nycolaideImage from '$lib/assets/images/heros/nycolaide.jpeg?w=196&format=webp';
+import fersimoneImage from '$lib/assets/images/heros/fersimone.jpeg?w=196&format=webp';
 
 type ProfilGithub = {
 	src: string;

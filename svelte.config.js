@@ -12,6 +12,7 @@ const config = {
 			precompress: true,
 			envPrefix: ''
 		}),
+		inlineStyleThreshold: 10240,
 		alias: {
 			$examples: 'src/content/examples'
 		}

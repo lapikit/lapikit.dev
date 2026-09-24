@@ -3,7 +3,7 @@
 
 	// assets
 	import { ArrowRight, Moon, Sun } from 'lucide-svelte';
-	import Logo from '$lib/assets/images/lapikit.webp';
+	import Logo from '$lib/assets/images/lapikit.webp?h=64&format=webp';
 
 	const themePreviewVscode = createTheme();
 
@@ -16,7 +16,7 @@
 
 <div id="preview-vscode" use:themePreviewVscode.action={{ name: 'light' }}>
 	<kit:appbar is="div" density="compact" elevation="2">
-		<img src={Logo} alt="alt logo lapikit" />
+		<img src={Logo} alt="Lapikit logo" width="22" height="32" />
 		<kit:spacer />
 		<kit:btn variant="text" size="sm">Features</kit:btn>
 		<kit:btn variant="text" size="sm">About</kit:btn>

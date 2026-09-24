@@ -14,6 +14,9 @@
 
 	--md-table-head-bg: #f6f8fa;
 	--md-table-stripe-bg: #fafafa;
+
+	--md-color-code-text: var(--kit-color-accent);
+	--md-color-code-background: var(--kit-color-surface);
 }
 
 /* ── Container ────────────────────────────────────── */
@@ -290,7 +293,7 @@
 	}
 
 	thead {
-		background-color: var(--md-table-head-bg);
+		background-color: var(--kit-color-background);
 	}
 
 	th,
@@ -306,12 +309,12 @@
 	}
 
 	/* Lines (zebra striping) */
-	tbody tr:nth-child(even) {
-		background-color: var(--md-table-stripe-bg);
+	tbody tr {
+		background-color: var(--md-color-surface);
 	}
 
-	tbody tr:hover {
-		background-color: var(--md-color-surface);
+	tbody tr:nth-child(even) {
+		background-color: var(--md-color-surface-1);
 	}
 
 	/* ── Pictures ─────────────────────────────────────────────────── */

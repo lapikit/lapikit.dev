@@ -44,8 +44,8 @@
 			);
 		};
 
-		measure();
-
+		// no direct measure() call: the observer runs it once on observe, after layout and before
+		// paint, instead of forcing a synchronous layout during hydration
 		const observer = new ResizeObserver(measure);
 		observer.observe(element);
 

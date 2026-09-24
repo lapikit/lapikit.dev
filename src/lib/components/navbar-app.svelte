@@ -22,7 +22,7 @@
 
 <kit:appbar id="navbar" rounded="lg" elevation="4">
 	<a href={resolve('/')}>
-		<enhanced:img src={LogoLapikit} alt="Lapikit logo" />
+		<enhanced:img src={LogoLapikit} alt="Lapikit logo" sizes="48px" />
 		<span>Lapikit</span>
 	</a>
 

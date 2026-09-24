@@ -108,9 +108,9 @@
 		</div>
 
 		<div class="headline_lapinosaure">
-			<enhanced:img src={LogoLapikit} alt="Lapikit logo" />
-			<enhanced:img src={ImgLove} alt="Lapikit love Svelte" />
-			<enhanced:img src={LogoSvelte} alt="Svelte logo" />
+			<enhanced:img src={LogoLapikit} alt="Lapikit logo" sizes="75px" />
+			<enhanced:img src={ImgLove} alt="Lapikit love Svelte" sizes="58px" />
+			<enhanced:img src={LogoSvelte} alt="Svelte logo" sizes="66px" />
 		</div>
 
 		<div>

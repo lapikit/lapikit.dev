@@ -22,7 +22,7 @@
 
 <div class="ecosystem-diagram">
 	<div class="node node-svelte">
-		<enhanced:img src={LogoSvelte} alt="Svelte logo" />
+		<enhanced:img src={LogoSvelte} alt="Svelte logo" sizes="40px" />
 		<span>Svelte</span>
 	</div>
 
@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="orbit-center">
-				<enhanced:img src={LogoLapikit} alt="Lapikit logo" />
+				<enhanced:img src={LogoLapikit} alt="Lapikit logo" sizes="54px" />
 			</div>
 		</div>
 
