@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import type { ConsentState } from '$lib/hooks';
 	import {
+		loadGTM,
 		loadGtag,
 		sendPageView,
 		sendPageViewGTM,
@@ -105,7 +106,7 @@
 	}
 
 	function loadGtagManager() {
-		return import('$lib/hooks').then(({ loadGTM }) => loadGTM(gtmID));
+		return loadGTM(gtmID);
 	}
 
 	function loadGoogleTag() {

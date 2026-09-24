@@ -152,7 +152,7 @@
 	}
 
 	/* ── Links ──────────────────────────────────────────────────── */
-	a:not(.kit-*) {
+	a:not([class^='kit-']):not([class*=' kit-']) {
 		color: var(--md-color-link);
 		text-decoration: underline;
 		text-underline-offset: 2px;
