@@ -29,15 +29,16 @@
 
 	// states
 	const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
+	const version = $derived(npmState.version.latest || 'v0.0.0');
 </script>
 
 <main class="homepage">
 	<section>
-		<Header version={npmState.version.latest} list={h1}>
+		<Header {version} list={h1}>
 			{#snippet animation()}
 				<GlowOrb />
 			{/snippet}
-			<VsCode version={npmState.version.latest} />
+			<VsCode {version} />
 		</Header>
 	</section>
 

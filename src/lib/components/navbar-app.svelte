@@ -42,7 +42,7 @@
 				</kit:icon>
 			{/snippet}
 
-			<span>{npmState.downloads}</span>
+			<span>{npmState.downloads || '- k'}</span>
 		</kit:btn>
 
 		<SearchBtn class="h-xs" onlyBtn />

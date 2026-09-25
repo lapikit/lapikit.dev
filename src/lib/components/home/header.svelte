@@ -10,7 +10,7 @@
 	let {
 		children,
 		animation,
-		version = '0.0.0',
+		version = 'v0.0.0',
 		list = ['components']
 	}: {
 		children?: Snippet;

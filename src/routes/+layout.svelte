@@ -2,8 +2,7 @@
 	import { PUBLIC_BASE_URL, PUBLIC_DEV } from '$env/static/public';
 
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
-	import { onMount, setContext } from 'svelte';
+	import { setContext } from 'svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
@@ -12,9 +11,6 @@
 
 	// components
 	import ConsentMode from '$lib/components/consent-modal.svelte';
-
-	// api
-	import { loadNpmData } from '$lib/stores/npm.svelte';
 
 	// images
 	import favicon from '$lib/assets/favicon.svg';
@@ -29,11 +25,6 @@
 	import ClickSpark from '$lib/components/animations/click-spark.svelte';
 
 	const isDesktop = new MediaQuery('min-width: 1024px');
-
-	onMount(() => {
-		if (browser) loadNpmData();
-	});
-
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
 	const seo = $derived(seoByPath[path] ?? seoByPath['/']);
 	const seoTitle = $derived(getHeadString(seo.head, 'title') ?? seo.title);

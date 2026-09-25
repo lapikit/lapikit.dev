@@ -8,7 +8,7 @@
 	const themePreviewVscode = createTheme();
 
 	let {
-		version = '0.0.0'
+		version = 'v0.0.0'
 	}: {
 		version?: string;
 	} = $props();

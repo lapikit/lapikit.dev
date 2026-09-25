@@ -21,7 +21,6 @@ import javascriptIcon from '$lib/assets/icons/javascript_color.svg?raw';
 // cookies & storage keys
 export const consent_cookie = '_lapikit_consent';
 export const theme_storage_key = '@lapikit/theme';
-export const npm_stats_storage_key = '@lapikit/npm-stats';
 
 export const seoByPath: Record<string, DocSummary> = Object.fromEntries(
 	(manifest as DocSummary[]).map((doc) => [doc.path.pathname, doc])
