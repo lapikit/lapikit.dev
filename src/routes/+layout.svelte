@@ -13,7 +13,6 @@
 	import ConsentMode from '$lib/components/consent-modal.svelte';
 
 	// images
-	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
 
@@ -68,7 +67,9 @@
 
 <svelte:head>
 	<title>{pageTitle}</title>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/favicon.ico" sizes="48x48" />
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+	<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
 	<link rel="canonical" href={canonicalUrl} />
 	<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 	<meta name="description" content={seoDescription} />
