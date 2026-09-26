@@ -31,7 +31,7 @@
 	const seoType = $derived(seo.type === 'website' ? 'website' : 'article');
 	// page.url.origin is a placeholder during prerendering, the public URL comes from env
 	const origin = PUBLIC_BASE_URL.replace(/\/$/, '');
-	const canonicalUrl = $derived(`${origin}${path === '/' ? '' : path}`);
+	const canonicalUrl = $derived(`${origin}${path}`);
 	const pageTitle = $derived(
 		`${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
