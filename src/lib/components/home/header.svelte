@@ -62,12 +62,12 @@
 
 		<h1 class="title-2xl">
 			Simple, optimized <br />
-			<div class="tilted-box">
+			<span class="tilted-box">
 				<span class="possibility">
 					{text || 'components'}
 				</span>
-			</div>
-			<span>for <span class="svelte-text">Svelte</span></span>
+			</span>
+			<span>library for <span class="svelte-text">Svelte</span></span>
 		</h1>
 
 		<p class="subtitle-h1">

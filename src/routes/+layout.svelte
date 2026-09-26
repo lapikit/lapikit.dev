@@ -12,8 +12,6 @@
 	// components
 	import ConsentMode from '$lib/components/consent-modal.svelte';
 
-	// images
-
 	let { children } = $props();
 
 	import '@fontsource-variable/archivo';
@@ -102,10 +100,7 @@
 {/if}
 
 <kit:app>
-	<!-- <p>Thème actif : {app.active}</p> -->
-	<!-- <main> -->
 	{@render children()}
-	<!-- </main> -->
 
 	<ConsentMode />
 	<Search bind:open={searchOpen} />
