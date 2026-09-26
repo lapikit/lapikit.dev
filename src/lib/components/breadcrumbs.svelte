@@ -41,11 +41,11 @@
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
-			gap: 0.5rem; // équivalent gap-2
+			gap: 0.5rem;
 			margin: 0;
 			padding-left: 0;
 			list-style: none;
-			font-size: 0.875rem; // équivalent text-sm
+			font-size: 0.875rem;
 			line-height: 1.25rem;
 		}
 
@@ -58,6 +58,10 @@
 		&__link {
 			color: var(--kit-color-text);
 			text-decoration: underline;
+
+			&:visited {
+				color: var(--kit-color-text) !important;
+			}
 		}
 	}
 </style>
