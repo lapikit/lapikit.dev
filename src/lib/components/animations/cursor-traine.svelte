@@ -1,5 +1,7 @@
 <script lang="ts">
-	const SIZE = 24;
+	import { Snowflake } from 'lucide-svelte';
+
+	const SIZE = 12;
 	const COLORS = ['#8250df', '#3fb950', '#bf8700', '#ffffff'];
 
 	type Block = { id: number; x: number; y: number; color: string };
@@ -32,8 +34,11 @@
 			style:width="{SIZE}px"
 			style:height="{SIZE}px"
 			style:background={b.color}
+			style:border-radius="5px"
 			onanimationend={() => remove(b.id)}
-		></div>
+		>
+			<Snowflake />
+		</div>
 	{/each}
 </div>
 
@@ -43,6 +48,7 @@
 		inset: 0;
 		pointer-events: none;
 		overflow: hidden;
+		z-index: 9999;
 	}
 	.block {
 		position: absolute;
