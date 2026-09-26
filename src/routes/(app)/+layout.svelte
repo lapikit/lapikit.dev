@@ -5,9 +5,12 @@
 	import FooterApp from '$lib/components/footer-app.svelte';
 	import NavbarApp from '$lib/components/navbar-app.svelte';
 	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
+	import CursorTraine from '$lib/components/animations/cursor-traine.svelte';
 
 	let { children } = $props();
 </script>
+
+<CursorTraine />
 
 <NavbarApp />
 
