@@ -248,6 +248,19 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 25px;
+
+		p {
+			margin: 6px 0;
+
+			&:first-child {
+				margin-top: 0px;
+				margin-bottom: 6px;
+			}
+
+			&:last-of-type {
+				margin-bottom: 16px;
+			}
+		}
 	}
 
 	.app-center-content {

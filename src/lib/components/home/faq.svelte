@@ -74,13 +74,19 @@
 						{/if}
 					</kit:icon>
 				{/snippet}
-				{message}
+				{#each message as paragraph, i (i)}
+					<p>{paragraph}</p>
+				{/each}
 			</kit:accordion-item>
 		{/each}
 	</kit:accordion>
 </div>
 
 <style lang="scss">
+	p {
+		font-size: 15px;
+	}
+
 	.grid-faq {
 		display: grid;
 		gap: 20px;
@@ -90,7 +96,7 @@
 			'faq'
 			'contact';
 
-		div:nth-child(1) {
+		> div:first-child {
 			display: contents;
 
 			> div:nth-child(1) {
@@ -123,17 +129,25 @@
 			grid-template-areas: 'sticky-col faq';
 			align-items: start;
 
-			div:nth-child(1) {
+			> div:first-child {
 				grid-area: sticky-col !important;
 				display: flex;
 				flex-direction: column;
 				position: sticky;
-				top: 100px;
+				top: 90px;
 			}
 		}
 
 		:global(.kit-accordion-item__title) {
 			font-weight: 600 !important;
+		}
+
+		:global(.kit-accordion-item__content-inner p) {
+			margin: 0;
+		}
+
+		:global(.kit-accordion-item__content-inner p + p) {
+			margin-top: 0.75em;
 		}
 	}
 </style>

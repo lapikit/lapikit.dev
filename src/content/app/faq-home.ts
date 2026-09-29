@@ -6,7 +6,7 @@ import { Mail, TrafficCone } from 'lucide-svelte';
 
 type Faq = {
 	question: string;
-	message: string;
+	message: string[];
 };
 
 type Contact = {
@@ -20,43 +20,58 @@ type Contact = {
 
 export const faqHome: Faq[] = [
 	{
-		question: 'What actually include in Lapikit?',
-		message: `You'll start with ${nbComponents} lapikit components, ${nbHooks} utility functions, and a full-featured preprocessor that will allow you to harness the full power of Lapikit directly within your project. The goal is to offer you new components with each release to ensure support for new needs. All of this is open-source and free.`
+		question: 'What is included in Lapikit?',
+		message: [
+			`You'll start with ${nbComponents} Lapikit components, ${nbHooks} utility functions, and a full-featured preprocessor that will allow you to harness the full power of Lapikit directly within your project.`,
+			'The goal is to offer you new components with each release to ensure support for new needs. All of this is open-source and free.'
+		]
 	},
 	{
 		question: 'How easy is Lapikit to use?',
-		message:
-			'Lapikit was designed to address the frustrations encountered in front-end development. That’s why - from installation to configuration, including adherence to standards familiar to developers - every step has been taken into account to make it easier to use in your projects. However, proficiency in JavaScript is essential, and knowledge of Svelte is recommended.'
+		message: [
+			'Lapikit was designed to reduce common frustrations in front-end development. From installation and configuration to familiar component conventions, its workflow is designed to make integration into Svelte projects straightforward.',
+			'JavaScript knowledge is required, and familiarity with Svelte is recommended.'
+		]
 	},
 	{
 		question: 'Does Lapikit support Svelte 5 Runes?',
-		message:
+		message: [
 			'Since Lapikit version 0.4, the core has been based on Svelte 5 and natively supports Runes.'
+		]
 	},
 	{
 		question: 'Can I use TypeScript with Lapikit?',
-		message:
-			'Yes, you can build your project using TypeScript! In fact Lapikit itself is developed using TypeScript. Depending on the components you integrate, some of them natively offer TypeScript interfaces to make your development process easier. '
+		message: [
+			'Yes, you can build your project using TypeScript! In fact, Lapikit itself is developed using TypeScript.',
+			'Depending on the components you integrate, some of them natively offer TypeScript interfaces to make your development process easier.'
+		]
 	},
 	{
 		question: 'Can I use TailwindCSS/UnoCSS/Bootstrap with Lapikit?',
-		message:
-			'Lapikit was designed not to depend on any external libraries to ensure there are no conflicts when used with other libraries. So yes, you can use any libraries with Lapikit. The only limit is your imagination.'
+		message: [
+			'Lapikit was designed not to depend on any external libraries to ensure there are no conflicts when used with other libraries.',
+			'So yes, you can use any libraries with Lapikit. The only limit is your imagination.'
+		]
 	},
 	{
-		question: 'Why does Lapikit have few dependencies? ',
-		message:
-			'This is a broad topic, but the three main reasons: security, maintainability, and compatibility with other libraries. Reducing dependencies makes it simpler to maintain the project while minimizing potential conflicts with other tools used in your application.'
+		question: 'Why does Lapikit have few dependencies?',
+		message: [
+			'This is a broad topic, but there are three main reasons: security, maintainability, and compatibility with other libraries.',
+			'Reducing dependencies makes it simpler to maintain the project while minimizing potential conflicts with other tools used in your application.'
+		]
 	},
 	{
 		question: 'Can I use Lapikit to create a product and sell it?',
-		message:
-			"Yes, Lapikit is licensed under the MIT License. Mentioning Lapikit in your project is appreciated but not required. If you build something with Lapikit, we'd also love to see and share what you've created. "
+		message: [
+			'Yes, Lapikit is licensed under the MIT License. Mentioning Lapikit in your project is appreciated but not required.',
+			"If you build something with Lapikit, we'd also love to see and share what you've created."
+		]
 	},
 	{
 		question: 'How often is Lapikit updated?',
-		message:
+		message: [
 			'We try to release a new version every two months and provide patch notes every two weeks.'
+		]
 	}
 ];
 

@@ -11,6 +11,7 @@
 
 	// components
 	import ConsentMode from '$lib/components/consent-modal.svelte';
+	import ConsoleMessage from '$lib/components/console-message.svelte';
 
 	let { children } = $props();
 
@@ -95,6 +96,8 @@
 
 	{@html breadcrumbSchemaTag}
 </svelte:head>
+
+<ConsoleMessage />
 
 {#if isDesktop.current}
 	<ClickSpark sparkColor="#2a6df4" />
