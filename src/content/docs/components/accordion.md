@@ -18,6 +18,14 @@ layout: 'doc_page'
 	import HideIcon from '$examples/components/accordion/hide-icon.svelte';
 	import Activator from '$examples/components/accordion/activator.svelte';
     import Indicator from '$examples/components/accordion/indicator.svelte';
+
+	import previewCode from '$examples/components/accordion/preview.svelte?raw';
+	import spacerCode from '$examples/components/accordion/spacer.svelte?raw';
+	import multipleCode from '$examples/components/accordion/multiple.svelte?raw';
+	import readOnlyCode from '$examples/components/accordion/read-only.svelte?raw';
+	import hideIconCode from '$examples/components/accordion/hide-icon.svelte?raw';
+	import activatorCode from '$examples/components/accordion/activator.svelte?raw';
+	import indicatorCode from '$examples/components/accordion/indicator.svelte?raw';
 </script>
 
 An `kit:accordion` lets you group content into collapsible sections. It improves legibility and saves space in an interface, while offering precise control over the display of information. It is composed of two parts: `kit:accordion` as the container and `kit:accordion-item` for each collapsible entry.
@@ -29,7 +37,7 @@ An `kit:accordion` lets you group content into collapsible sections. It improves
 - Renders accessible trigger buttons with `aria-expanded`
 - Supports single or multiple open items depending on the hook configuration
 
-<LazyRepl title="accordion.svelte" presentation lang="svelte" content={() => import('$examples/components/accordion/preview.svelte?raw')}>
+<LazyRepl title="accordion.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -49,7 +57,7 @@ The `spacer` prop adds a gap between items, useful when items have a `rounded` r
 
 - **spacer**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/spacer.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={spacerCode}>
 <Spacer/>
 </LazyRepl>
 
@@ -59,7 +67,7 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/use-accordion) to allo
 
 - **multiple**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/multiple.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={multipleCode}>
 <Multiple/>
 </LazyRepl>
 
@@ -70,7 +78,7 @@ Pass `{ multiple: true }` to [`useAccordion`](/docs/hooks/use-accordion) to allo
 - **readOnly**: `boolean` = `false`
 - **disabled**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/read-only.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={readOnlyCode}>
 <ReadOnly/>
 </LazyRepl>
 
@@ -80,7 +88,7 @@ The `hideIcon` prop on `kit:accordion` hides the chevron indicator on all child 
 
 - **hideIcon**: `boolean` = `false`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/hide-icon.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={hideIconCode}>
 <HideIcon/>
 </LazyRepl>
 
@@ -90,7 +98,7 @@ Use the `activator` snippet to fully customize the trigger content - replaces th
 
 - **activator**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/activator.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={activatorCode}>
 <Activator/>
 </LazyRepl>
 
@@ -100,7 +108,7 @@ Use the `indicator` snippet to replace the default chevron with a custom element
 
 - **indicator**: `Snippet<[{ open: boolean }]> | undefined` = `undefined`
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/indicator.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={indicatorCode}>
 <Indicator/>
 </LazyRepl>
 

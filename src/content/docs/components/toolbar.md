@@ -14,11 +14,16 @@ layout: 'doc_page'
 	import Variants from '$examples/components/toolbar/variants.svelte';
 	import Density from '$examples/components/toolbar/density.svelte';
 	import Orientation from '$examples/components/toolbar/orientation.svelte';
+
+	import previewCode from '$examples/components/toolbar/preview.svelte?raw';
+	import variantsCode from '$examples/components/toolbar/variants.svelte?raw';
+	import densityCode from '$examples/components/toolbar/density.svelte?raw';
+	import orientationCode from '$examples/components/toolbar/orientation.svelte?raw';
 </script>
 
 The `kit:toolbar` component creates a flexible, customizable toolbar, ideal for organizing actions, titles, filters or other navigation content. It is designed to adapt to different contexts thanks to its layout, style and density options.
 
-<LazyRepl title="toolbar.svelte" presentation lang="svelte" content={() => import('$examples/components/toolbar/preview.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -37,7 +42,7 @@ Demonstrates the use of visual variants: **filled**, **outline**, **text** or **
 
 - **variant**: `'filled' | 'outline' | 'text' | 'dash'` = `'filled'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('$examples/components/toolbar/variants.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
 </LazyRepl>
 
@@ -51,7 +56,7 @@ Shows how to adjust density (`compact`, `comfortable`, `default`) to manage vert
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('$examples/components/toolbar/density.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" lang="svelte" content={densityCode}>
 <Density/>
 </LazyRepl>
 
@@ -61,7 +66,7 @@ The toolbar can be displayed horizontally (default) or vertically. This example 
 
 - **orientation**: `'horizontal' | 'vertical'` = `'horizontal'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={() => import('$examples/components/toolbar/orientation.svelte?raw')}>
+<LazyRepl title="toolbar.svelte" lang="svelte" content={orientationCode}>
 <Orientation/>
 </LazyRepl>
 

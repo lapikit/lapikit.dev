@@ -14,11 +14,16 @@ layout: 'doc_page'
 	import Variants from '$examples/components/list/variants.svelte';
 	import PrependAppend from '$examples/components/list/prepend-append.svelte';
 	import Nav from '$examples/components/list/nav.svelte';
+
+	import previewCode from '$examples/components/list/preview.svelte?raw';
+	import variantsCode from '$examples/components/list/variants.svelte?raw';
+	import prependAppendCode from '$examples/components/list/prepend-append.svelte?raw';
+	import navCode from '$examples/components/list/nav.svelte?raw';
 </script>
 
 The `kit:list` and `kit:list-item` components render structured vertical lists. Items are interactive automatically when `onclick` is attached or `href` is set.
 
-<LazyRepl title="list.svelte" presentation lang="svelte" content={() => import('$examples/components/list/preview.svelte?raw')}>
+<LazyRepl title="list.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -36,7 +41,7 @@ Shows visual variants (**filled**, **text**, **outline**) to adapt the overall a
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
-<LazyRepl title="list.svelte" lang="svelte" content={() => import('$examples/components/list/variants.svelte?raw')}>
+<LazyRepl title="list.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
 </LazyRepl>
 
@@ -47,7 +52,7 @@ Shows visual variants (**filled**, **text**, **outline**) to adapt the overall a
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="list.svelte" lang="svelte" content={() => import('$examples/components/list/prepend-append.svelte?raw')}>
+<LazyRepl title="list.svelte" lang="svelte" content={prependAppendCode}>
 <PrependAppend/>
 </LazyRepl>
 
@@ -57,7 +62,7 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 
 - **nav**: `boolean` = `false`
 
-<LazyRepl title="list.svelte" lang="svelte" content={() => import('$examples/components/list/nav.svelte?raw')}>
+<LazyRepl title="list.svelte" lang="svelte" content={navCode}>
 
 <Nav/>
 </LazyRepl>

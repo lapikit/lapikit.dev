@@ -16,11 +16,18 @@ layout: 'doc_page'
 	import Interactive from '$examples/components/card/interactive.svelte';
 	import Structure from '$examples/components/card/structure.svelte';
 	import Elevation from '$examples/components/card/elevation.svelte';
+
+	import previewCode from '$examples/components/card/preview.svelte?raw';
+	import structureCode from '$examples/components/card/structure.svelte?raw';
+	import variantsCode from '$examples/components/card/variants.svelte?raw';
+	import densityCode from '$examples/components/card/density.svelte?raw';
+	import interactiveCode from '$examples/components/card/interactive.svelte?raw';
+	import elevationCode from '$examples/components/card/elevation.svelte?raw';
 </script>
 
 The `kit:card` component is a versatile container used to group together information or actions in a user interface. It can be used to display content, images, buttons or links, while offering advanced customization to suit various styles and contexts.
 
-<LazyRepl title="card.svelte" presentation lang="svelte" content={() => import('$examples/components/card/preview.svelte?raw')}>
+<LazyRepl title="card.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -34,7 +41,7 @@ The `kit:card` component is a versatile container used to group together informa
 | `kit:card-actions`   | Flex bar for action buttons.                                   |
 | `kit:card-container` | Main container for the card content.                           |
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/structure.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={structureCode}>
 <Structure/>
 </LazyRepl>
 
@@ -48,7 +55,7 @@ The `kit:card` component is a versatile container used to group together informa
 - `outline` - transparent background with accent border.
 - `text` - no background or border, accent text color.
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/variants.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
 </LazyRepl>
 
@@ -58,7 +65,7 @@ The `kit:card` component is a versatile container used to group together informa
 
 - **density**: `'none' | 'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/density.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={densityCode}>
 <Density/>
 </LazyRepl>
 
@@ -74,7 +81,7 @@ An interactive card lifts on hover and shows a ripple on click. This behaviour i
 
 > When `disabled` is `true` on an `<a>` card, `href` is removed and `tabindex="-1"` is set.
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/interactive.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={interactiveCode}>
 <Interactive/>
 </LazyRepl>
 
@@ -85,7 +92,7 @@ The Elevation property allows you to apply a `box shadow` effect to the **Card**
 - **elevation**: `'0' | '1' | '2' | '3' | '4' | '5'` = `'undefined'`
 - **elevation** (multi-state): `{base: value, hover: value, active: value}`
 
-<LazyRepl title="card.svelte" lang="svelte" content={() => import('$examples/components/card/elevation.svelte?raw')}>
+<LazyRepl title="card.svelte" lang="svelte" content={elevationCode}>
 <Elevation/>
 </LazyRepl>
 

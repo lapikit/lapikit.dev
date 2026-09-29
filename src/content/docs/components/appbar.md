@@ -14,11 +14,16 @@ layout: 'doc_page'
 	import Variants from '$examples/components/appbar/variants.svelte';
 	import Density from '$examples/components/appbar/density.svelte';
 	import ClassContent from '$examples/components/appbar/class-content.svelte';
+
+	import previewCode from '$examples/components/appbar/preview.svelte?raw';
+	import variantsCode from '$examples/components/appbar/variants.svelte?raw';
+	import densityCode from '$examples/components/appbar/density.svelte?raw';
+	import classContentCode from '$examples/components/appbar/class-content.svelte?raw';
 </script>
 
 The `kit:appbar` is an essential component for structuring an application's header. It provides a dedicated space for displaying elements such as titles, icons, buttons or menus. Thanks to its many customization options, the `kit:appbar` integrates perfectly into a variety of designs, from minimalist to complex.
 
-<LazyRepl title="appbar.svelte" presentation lang="svelte" content={() => import('$examples/components/appbar/preview.svelte?raw')}>
+<LazyRepl title="appbar.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -32,7 +37,7 @@ The `variant` prop controls the background and border style.
 
 - **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('$examples/components/appbar/variants.svelte?raw')}>
+<LazyRepl title="appbar.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
 </LazyRepl>
 
@@ -42,7 +47,7 @@ The `variant` prop controls the background and border style.
 
 - **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('$examples/components/appbar/density.svelte?raw')}>
+<LazyRepl title="appbar.svelte" lang="svelte" content={densityCode}>
 <Density/>
 </LazyRepl>
 
@@ -52,7 +57,7 @@ The `variant` prop controls the background and border style.
 
 - **classContent**: `string | string[]` = `''`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={() => import('$examples/components/appbar/class-content.svelte?raw')}>
+<LazyRepl title="appbar.svelte" lang="svelte" content={classContentCode}>
 <ClassContent/>
 </LazyRepl>
 

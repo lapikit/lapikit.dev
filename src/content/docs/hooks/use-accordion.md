@@ -11,6 +11,8 @@ layout: 'doc_page'
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Multiple from '$examples/components/accordion/multiple.svelte';
+
+	import multipleCode from '$examples/components/accordion/multiple.svelte?raw';
 </script>
 
 `useAccordion` is a state hook from `lapikit/actions` that manages the open/close state of a [`kit:accordion`](/docs/components/accordion). It returns a reactive `values` array and a `toggle` function to wire up to your accordion items.
@@ -48,7 +50,7 @@ Pass `accordion.values.includes(index)` to each item's `open` prop, and `accordi
 
 ## Usage example: multiple accordion mode
 
-<LazyRepl title="accordion.svelte" lang="svelte" content={() => import('$examples/components/accordion/multiple.svelte?raw')}>
+<LazyRepl title="accordion.svelte" lang="svelte" content={multipleCode}>
 <Multiple/>
 </LazyRepl>
 

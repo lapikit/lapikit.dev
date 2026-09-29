@@ -125,7 +125,7 @@
 							</kit:icon>
 						{/snippet}
 						{lang_manager[application.lang_selected].label}
-						{#snippet append()}
+						<!-- {#snippet append()}
 							<kit:icon>
 								{#if open}
 									<ChevronUp />
@@ -133,7 +133,7 @@
 									<ChevronDown />
 								{/if}
 							</kit:icon>
-						{/snippet}
+						{/snippet} -->
 					</kit:btn>
 				{/snippet}
 

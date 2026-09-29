@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { onMount, type Snippet } from 'svelte';
 
-	type FileContent = { code: string | ContentLoader; lang?: string };
-	type ContentLoader = () => Promise<{ default: string }>;
+	type FileContent = { code: string; lang?: string };
 	type ContentMap = Record<string, string | FileContent>;
-	type ContentType = string | ContentMap | ContentLoader;
+	type ContentType = string | ContentMap;
 
 	let {
 		content = '' as ContentType,
@@ -20,40 +19,14 @@
 		lang?: 'sh' | 'svelte' | 'js' | 'html' | 'css' | 'json' | 'bash';
 	} = $props();
 
-	let resolvedContent = $state<string | ContentMap>('');
 	let container = $state<HTMLElement | null>(null);
 	let loaded = $state(false);
 
-	$effect(() => {
-		if (typeof content === 'function') {
-			(content as ContentLoader)().then((m) => {
-				resolvedContent = m.default;
-			});
-		} else if (content !== null && typeof content === 'object') {
-			const entries = Object.entries(content as ContentMap);
-			Promise.all(
-				entries.map(async ([name, val]) => {
-					if (typeof val === 'string') return [name, val] as const;
-					if (typeof val.code === 'function') {
-						const m = await (val.code as ContentLoader)();
-						return [name, { code: m.default, lang: val.lang }] as const;
-					}
-					return [name, val] as const;
-				})
-			).then((resolved) => {
-				resolvedContent = Object.fromEntries(resolved);
-			});
-		} else {
-			resolvedContent = content as string;
-		}
-	});
-
 	// Flatten content to plain text for SEO (rendered during SSR, indexed by crawlers)
-	// Utilise resolvedContent partout à la place de content
 	const staticCode = $derived(
-		typeof resolvedContent === 'string'
-			? resolvedContent
-			: Object.entries(resolvedContent as Record<string, string | FileContent>)
+		typeof content === 'string'
+			? content
+			: Object.entries(content)
 					.map(([name, file]) => {
 						const code = typeof file === 'string' ? file : file.code;
 						return `// ${name}\n${code}`;
@@ -80,9 +53,7 @@
 <div bind:this={container} class="lazy-repl">
 	{#if loaded}
 		{@const replContent =
-			typeof resolvedContent === 'string'
-				? { Root: { code: resolvedContent, lang: lang } }
-				: resolvedContent}
+			typeof content === 'string' ? { Root: { code: content, lang: lang } } : content}
 		{#if children}
 			<kit:repl content={replContent} {presentation} {title}>
 				{@render children()}

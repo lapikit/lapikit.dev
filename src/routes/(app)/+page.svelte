@@ -80,16 +80,7 @@
 					of the Svelte preprocessor.
 				</p>
 
-				<!-- <p>
-					The Lili preprocessor is at the heart of Lapikit. It ensures that Lapikit components are
-					properly structured and allows you to use features such as the `class` and `style`
-					directives on Lapikit components. It works as an add-on to the Svelte preprocessor.
-				</p> -->
-
-				<p class="muted-text text-sm">
-					Currently, it only works with Vite.js. However, we plan to make it compatible with Webpack
-					and Rollup soon.
-				</p>
+				<p class="muted-text text-sm">Coming soon: compatibility with Webpack and Rollup</p>
 
 				<kit:btn
 					href="/docs/essentials/class-and-style"
@@ -103,7 +94,7 @@
 							<BookOpenText />
 						</kit:icon>
 					{/snippet}
-					Read more on preprocessor
+					Learn more about the preprocessor
 				</kit:btn>
 			</div>
 
@@ -189,6 +180,15 @@
 
 			<div class="app-center-content">
 				<p class="devise">It's not magic, It's Lapikit</p>
+
+				<p>
+					Lapikit includes reusable Svelte components for interface patterns such as buttons, text
+					fields, cards, dialog boxes, drop-down menus, accordions, lists, tooltips, navigation
+					elements, and more. These components work in tandem with Lapikit themes, stylesheets,
+					hooks, and the Lili preprocessor.
+				</p>
+
+				<kit:btn href="/docs/components"> Explore all Svelte components </kit:btn>
 			</div>
 		</div>
 	</section>

@@ -6,6 +6,9 @@
 
 	// modules
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import svelteConfigCode from '$examples/config/config_svelte.config.js?raw';
+	import viteConfigJsCode from '$examples/config/config_vite.config.js?raw';
+	import viteConfigTsCode from '$examples/config/config_vite.config.ts?raw';
 
 	// assets
 	import { Lightbulb } from 'lucide-svelte';
@@ -95,15 +98,15 @@
 							<LazyRepl
 								content={{
 									'svelte.config.js': {
-										code: () => import('$examples/config/config_svelte.config.js?raw'),
+										code: svelteConfigCode,
 										lang: 'js'
 									},
 									'vite.config.js': {
-										code: () => import('$examples/config/config_vite.config.js?raw'),
+										code: viteConfigJsCode,
 										lang: 'js'
 									},
 									'vite.config.ts': {
-										code: () => import('$examples/config/config_vite.config.ts?raw'),
+										code: viteConfigTsCode,
 										lang: 'ts'
 									}
 								}}

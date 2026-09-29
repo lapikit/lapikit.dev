@@ -14,6 +14,11 @@ layout: 'doc_page'
 	import Location from '$examples/components/tooltip/location.svelte';
 	import Arrow from '$examples/components/tooltip/arrow.svelte';
 	import Custom from '$examples/components/tooltip/custom.svelte';
+
+	import previewCode from '$examples/components/tooltip/preview.svelte?raw';
+	import locationCode from '$examples/components/tooltip/location.svelte?raw';
+	import arrowCode from '$examples/components/tooltip/arrow.svelte?raw';
+	import customCode from '$examples/components/tooltip/custom.svelte?raw';
 </script>
 
 Display elegant tooltips with `kit:tooltip`. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components
@@ -23,7 +28,7 @@ The `kit:tooltip` component can be used to display a tooltip on hover, focus or 
 
 It is particularly useful for enhancing the user experience by explaining icons, specifying actions or providing secondary details.
 
-<LazyRepl title="tooltip.svelte" presentation lang="svelte" content={() => import('$examples/components/tooltip/preview.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -37,7 +42,7 @@ The tooltip can be positioned in four directions relative to the trigger element
 
 - **location**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('$examples/components/tooltip/location.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" lang="svelte" content={locationCode}>
 <Location/>
 </LazyRepl>
 
@@ -47,7 +52,7 @@ Add `variant="arrow"` to render a directional arrow on the tooltip panel.
 
 - **variant**: `'arrow' | undefined` = `''`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('$examples/components/tooltip/arrow.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" lang="svelte" content={arrowCode}>
 <Arrow/>
 </LazyRepl>
 
@@ -57,7 +62,7 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 - **tooltip**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={() => import('$examples/components/tooltip/custom.svelte?raw')}>
+<LazyRepl title="tooltip.svelte" lang="svelte" content={customCode}>
 <Custom/>
 </LazyRepl>
 
