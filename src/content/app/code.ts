@@ -321,13 +321,13 @@ export const replVSCodeFiles: Record<string, VsLine[]> = {
 		line(
 			3,
 			span('<', 'char'),
-			span('p', 'dom'),
+			span('h2', 'dom'),
 			span('>', 'char'),
 			' ',
-			'Build your interface with low code',
+			'Build your interface with less code',
 			' ',
 			span('</', 'char'),
-			span('p', 'dom'),
+			span('h2', 'dom'),
 			span('>', 'char')
 		),
 		blank,

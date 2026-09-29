@@ -120,7 +120,7 @@ const footerNavigation: AppNavItem[] = [
 		label: 'policies',
 		child: [
 			{
-				label: 'terms & privacy',
+				label: 'terms and privacy',
 				path: '/terms'
 			},
 			{

@@ -26,7 +26,7 @@ export const faqHome: Faq[] = [
 	{
 		question: 'How easy is Lapikit to use?',
 		message:
-			'Lapikit is designed to be easy to install, configure, and use. It was built to comply with standards common to other component libraries. Once installed, you’ll feel right at home while taking full advantage of Lapikit’s unique features! Knowledge of JavaScript is required, and familiarity with Svelte is strongly recommended before using Lapikit.'
+			'Lapikit was designed to address the frustrations encountered in front-end development. That’s why - from installation to configuration, including adherence to standards familiar to developers - every step has been taken into account to make it easier to use in your projects. However, proficiency in JavaScript is essential, and knowledge of Svelte is recommended.'
 	},
 	{
 		question: 'Does Lapikit support Svelte 5 Runes?',
@@ -36,7 +36,7 @@ export const faqHome: Faq[] = [
 	{
 		question: 'Can I use TypeScript with Lapikit?',
 		message:
-			'Yes, absolutely! You can build your project using TypeScript! Keep in mind that Lapikit itself is developed using TypeScript. Depending on the components you integrate, some of them natively offer TypeScript interfaces to make your development process easier.'
+			'Yes, you can build your project using TypeScript! In fact Lapikit itself is developed using TypeScript. Depending on the components you integrate, some of them natively offer TypeScript interfaces to make your development process easier. '
 	},
 	{
 		question: 'Can I use TailwindCSS/UnoCSS/Bootstrap with Lapikit?',
@@ -44,19 +44,19 @@ export const faqHome: Faq[] = [
 			'Lapikit was designed not to depend on any external libraries to ensure there are no conflicts when used with other libraries. So yes, you can use any libraries with Lapikit. The only limit is your imagination.'
 	},
 	{
-		question: 'Why does Lapikit have few dependencies for its development and use? ',
+		question: 'Why does Lapikit have few dependencies? ',
 		message:
-			'This is a broad topic, but the three main reasons are security, maintainability, and compatibility with other libraries.'
+			'This is a broad topic, but the three main reasons: security, maintainability, and compatibility with other libraries. Reducing dependencies makes it simpler to maintain the project while minimizing potential conflicts with other tools used in your application.'
 	},
 	{
 		question: 'Can I use Lapikit to create a product and sell it?',
 		message:
-			'Yes, Lapikit is licensed under the MIT License. However, we’d appreciate it if you could mention in your project that you’re using Lapikit and especially if you could share a link to your project with us! We’re always thrilled to see the creations you’ve made with Lapikit!'
+			"Yes, Lapikit is licensed under the MIT License. Mentioning Lapikit in your project is appreciated but not required. If you build something with Lapikit, we'd also love to see and share what you've created. "
 	},
 	{
 		question: 'How often is Lapikit updated?',
 		message:
-			'Lapikit is maintained by a small team of two people in their spare time. We try to release a new version every two months and provide patch notes every two weeks.'
+			'We try to release a new version every two months and provide patch notes every two weeks.'
 	}
 ];
 
@@ -73,7 +73,7 @@ export const faqContact: Contact[] = [
 		icon: links['discord'].icon,
 		label: '@discord/lapikit',
 		url: links['discord'].url,
-		description: "share, support and news with Lapikit Team's",
+		description: 'share, support and news with Lapikit Team',
 		color: links['discord']._styles.color,
 		background: links['discord']._styles.background
 	},

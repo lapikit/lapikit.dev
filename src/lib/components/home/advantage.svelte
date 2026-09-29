@@ -21,7 +21,13 @@
 			{#snippet prepend()}
 				<kit:icon color="success"><BadgeCheck /></kit:icon>
 			{/snippet}
-			{@html argument}
+			<span>{@html argument}</span>
 		</kit:list-item>
 	{/each}
 </kit:list>
+
+<style lang="scss">
+	span {
+		font-weight: 500;
+	}
+</style>

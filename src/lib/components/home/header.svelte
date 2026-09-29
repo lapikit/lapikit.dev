@@ -71,9 +71,9 @@
 		</h1>
 
 		<p class="subtitle-h1">
-			A library of accessible, high-performance, versatile components that let you develop fast,
-			fully customizable interfaces <span class="svelte-text">svelte</span> and
-			<span class="svelte-text">sveltekit</span> ready.
+			Lapikit is an open-source Svelte component library for building accessible, high-performance,
+			and fully customizable interfaces with <span class="svelte-text">Svelte</span> and
+			<span class="svelte-text">SvelteKit</span>.
 		</p>
 
 		<div class="headline_actions">

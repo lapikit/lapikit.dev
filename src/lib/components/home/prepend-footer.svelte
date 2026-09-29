@@ -8,7 +8,7 @@
 	import { ChevronRight } from 'lucide-svelte';
 
 	let {
-		commandLine = 'npx',
+		commandLine = 'npx lapikit',
 		children
 	}: {
 		commandLine?: string;
@@ -21,9 +21,9 @@
 </div>
 <div>
 	<p>
-		Install Lapikit, open the project you were already working on, and run
-		<span class="accent-text">{commandLine}</span>. In fee minutes you can code with lapikit
-		directly in your project
+		Install Lapikit in your existing Svelte or SvelteKit project and run the CLI with <span
+			class="accent-text">{commandLine}</span
+		> command to get started.
 	</p>
 
 	<Shell

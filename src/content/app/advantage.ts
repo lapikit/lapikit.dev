@@ -1,8 +1,8 @@
 export const advantageHome: Array<string> = [
 	'Your code will be cleaner, with simpler and more legible syntax',
-	'Faster, thanks to reuse components and uniform styling',
-	'More consistently, with pre-optimized Svelte + TypeScript integration',
+	'Build faster with reusable components and consistent styling',
+	'Use Lapikit with Svelte and TypeScript all projects',
 	'Stop copying and duplicating CSS classes and start shipping better user interfaces',
-	'Take advantage of Svelte 5’s style and class directives directly within your components',
+	'Take advantage of the last version from Svelte  style and class directives directly within your components',
 	'The Lili preprocessor handles component imports for you'
 ];

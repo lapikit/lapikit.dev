@@ -26,6 +26,7 @@
 	import Header from '$lib/components/home/header.svelte';
 	import VsCode from '$lib/components/home/vs-code/vs-code.svelte';
 	import Repl from '$lib/components/home/repl.svelte';
+	import { BookOpenText } from 'lucide-svelte';
 
 	// states
 	const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
@@ -44,13 +45,13 @@
 
 	<section>
 		<div class="wrapper compact-top-wrapper">
-			<h2 class="title-xl">The <span class="accent-text">power</span> to Lapikit</h2>
+			<h2 class="title-xl">The <span class="accent-text">power</span> of Lapikit</h2>
 			<div class="app-grids">
 				<div>
 					<p>
-						Lapikit is a Svelte component library designed by a front-end developer, for front-end
-						developers. Lapikit’s goal is to free you from repetitive tasks such as managing
-						component imports, duplicate CSS classes, and global components that have to be
+						Lapikit is an open-source Svelte component library built by front-end developer, for
+						front-end developers. The goal of Lapikit is to free you from repetitive tasks such as
+						managing component imports, duplicate CSS classes, and global components that have to be
 						reinvented for every project.
 					</p>
 					<p>
@@ -58,26 +59,52 @@
 						focus on what really matters: building accessible, high-performance, and consistent
 						interfaces, without ever sacrificing the flexibility of your code.
 					</p>
-
-					<p>Write less, code more!</p>
 				</div>
 				<div>
 					<Advantage list={advantageHome} />
 				</div>
 			</div>
 			<div class="app-center-content">
-				<h2 class="title-xl"><span class="accent-text">Lili</span> preprocessor</h2>
+				<h2 class="title-xl">
+					<span class="accent-text">Lili</span> preprocessor: it’s at the core of Lapikit
+				</h2>
 
 				<p>
+					Lili is the Svelte preprocessor used by Lapikit to transform its custom component syntax
+					at compile time.
+				</p>
+
+				<p>
+					It ensures that Lapikit components are properly structured and allows you to use features
+					such as the `class` and `style` directives on Lapikit components; it works as an extension
+					of the Svelte preprocessor.
+				</p>
+
+				<!-- <p>
 					The Lili preprocessor is at the heart of Lapikit. It ensures that Lapikit components are
 					properly structured and allows you to use features such as the `class` and `style`
 					directives on Lapikit components. It works as an add-on to the Svelte preprocessor.
-				</p>
+				</p> -->
 
 				<p class="muted-text text-sm">
 					Currently, it only works with Vite.js. However, we plan to make it compatible with Webpack
 					and Rollup soon.
 				</p>
+
+				<kit:btn
+					href="/docs/essentials/class-and-style"
+					variant="outline"
+					color="accent"
+					s-style_width="fit-content"
+					s-style_margin="0 auto"
+				>
+					{#snippet prepend()}
+						<kit:icon>
+							<BookOpenText />
+						</kit:icon>
+					{/snippet}
+					Read more on preprocessor
+				</kit:btn>
 			</div>
 
 			<div class="diagram">
@@ -85,20 +112,24 @@
 			</div>
 
 			<h2 class="title-xl">
-				The directive <span class="accent-text">class</span> and
-				<span class="accent-text">styles</span>
+				Class and Style Binding with <span class="accent-text">s-class</span> and
+				<span class="accent-text">s-style</span>
 			</h2>
 
 			<div class="app-grids">
 				<div>
 					<p>
-						Since <span class="svelte-text">version 5.16</span>, Svelte has offered directives for
-						the <span class="muted-text">`style`</span> and <span class="muted-text">`class`</span>
-						properties. This allows you to define class properties with conditions written directly within
-						the element, without having to use either a long string with ternary operators or functions
-						that directly modify the element. However, this feature is not natively supported in Svelte
-						components; with Lapikit’s lili preprocessor, this limitation is overcome for components in
-						the Lapikit library.
+						Svelte offers a directive-based approach for the <span class="muted-text">`style`</span>
+						and <span class="muted-text">`class`</span> properties through its new directives dedicated
+						to these properties. You can now define your dynamic classes directly within your elements,
+						which makes the code much more fluid and readable by eliminating the need for complex ternary
+						operators or tedious manipulations.
+					</p>
+					<p>But what role does the Lili preprocessor play in all of this?</p>
+					<p>
+						To top it all off, the Lapikit Lili preprocessor further enhances this experience by
+						extending this handy feature to all components in the Lapikit library, giving you
+						optimal flexibility for your projects!
 					</p>
 					<p>
 						Two directives
@@ -112,7 +143,9 @@
 				</div>
 			</div>
 
-			<h2 class="title-xl">Use a <span class="accent-text">Lapikit components</span></h2>
+			<h2 class="title-xl">
+				Use Lapikit components with the <span class="accent-text">&lt;kit:*&gt;</span> syntax
+			</h2>
 
 			<div class="app-grids inverse-order">
 				<div>
@@ -120,17 +153,34 @@
 				</div>
 				<div>
 					<p>
-						With Lapikit and its Lili preprocessor, you can focus on writing your code and calling
+						With Lapikit and the Lili preprocessor, you can focus on writing your code and calling
 						components using the <span class="accent-text">`&lt;kit:*&gt;`</span> directives the preprocessor
 						will handle the rest, including imports, proper naming conventions for using Svelte components,
 						snippet adaptations, and more.
 					</p>
 					<p>
-						This example gives you a brief overview of how to use Lapikit components. You call a
-						list and its children using <span class="accent-text">`&lt;kit:list&gt;`</span> and
-						<span class="accent-text">`&lt;kit:list-item&gt;`</span>. Once saved, during
-						compilation, the preprocessor formats it for Svelte.
+						Here's a quick example of how Lapikit components work. Use <span class="accent-text"
+							>`&lt;kit:list&gt;`</span
+						>
+						and <span class="accent-text">`&lt;kit:list-item&gt;`</span> directly in your Svelte template,
+						and Lili transforms the syntax at compile time while handling the corresponding component
+						imports.
 					</p>
+
+					<p>
+						The example below shows the same List component using the <span class="accent-text"
+							>`&lt;kit:*&gt;`</span
+						> syntax and standard Svelte imports.
+					</p>
+
+					<kit:btn variant="outline" color="accent" href="/docs/essentials/template-syntax">
+						{#snippet prepend()}
+							<kit:icon>
+								<BookOpenText />
+							</kit:icon>
+						{/snippet}
+						Learn more about the Lapikit template syntax
+					</kit:btn>
 				</div>
 			</div>
 		</div>
@@ -162,8 +212,10 @@
 	<section>
 		<div class="wrapper">
 			<Faq>
-				<h2 class="title-xl"><span class="accent-text">Common</span> questions</h2>
-				<p class="subtitle">Not covered here? Reach out and we'll help</p>
+				<h2 class="title-xl"><span class="accent-text">Common questions</span> about Lapikit</h2>
+				<p class="subtitle">
+					Can't find the answer to your question here? Contact us we're here to help.
+				</p>
 			</Faq>
 		</div>
 	</section>
@@ -184,7 +236,7 @@
 		<div class="wrapper app-grids">
 			<PrependFooter commandLine={command[application.pkg_selected]['launch-cli']}>
 				<h2 class="title-xl">
-					Try it on your project and <span class="accent-text">write low , code more</span>
+					Try it on your project and <span class="accent-text">write less , code more</span>
 				</h2>
 			</PrependFooter>
 		</div>

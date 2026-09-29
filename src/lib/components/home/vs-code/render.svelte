@@ -55,7 +55,7 @@
 				{/snippet}
 			</kit:chip>
 
-			<p>Build your interface with low code</p>
+			<h2>Build your interface with less code</h2>
 
 			<div>
 				<kit:btn rounded="lg" background="warning" color="on-warning"> Get started </kit:btn>
@@ -97,7 +97,7 @@
 			> div {
 				text-align: center;
 
-				p {
+				h2 {
 					font-size: 32px;
 					margin: 10px 0 20px;
 				}
