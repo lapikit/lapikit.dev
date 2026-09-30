@@ -30,9 +30,10 @@
 	const seoTitle = $derived(getHeadString(seo.head, 'title') ?? seo.title);
 	const seoDescription = $derived(getHeadString(seo.head, 'description') ?? `Read ${seo.title}.`);
 	const seoType = $derived(seo.type === 'website' ? 'website' : 'article');
-	// page.url.origin is a placeholder during prerendering, the public URL comes from env
 	const origin = PUBLIC_BASE_URL.replace(/\/$/, '');
 	const canonicalUrl = $derived(`${origin}${path}`);
+	const ogImage = `${origin}/og/default.png`;
+	const ogImageAlt = 'Lapikit, simple and optimized components library for Svelte';
 	const pageTitle = $derived(
 		`${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
@@ -92,9 +93,16 @@
 	<meta property="og:description" content={seoDescription} />
 	<meta property="og:type" content={seoType} />
 	<meta property="og:url" content={canonicalUrl} />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content={ogImageAlt} />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={seoDescription} />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:image:alt" content={ogImageAlt} />
 
 	<meta name="color-scheme" content="light dark" />
 
