@@ -5,7 +5,7 @@
 		users = [],
 		more = false,
 		moreHref = '#',
-		moreLabel = 'Voir plus'
+		moreLabel = ''
 	}: {
 		users?: { src: string; alt: string; href: string }[];
 		more?: boolean;

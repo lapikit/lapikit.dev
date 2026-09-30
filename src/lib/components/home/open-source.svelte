@@ -21,7 +21,12 @@
 </script>
 
 <div>
-	<ProfilGithub users={images} more />
+	<ProfilGithub
+		users={images}
+		more
+		moreHref="/docs/contributing"
+		moreLabel="Contribute for Lapikit"
+	/>
 	<div>
 		{@render children?.()}
 	</div>
