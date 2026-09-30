@@ -34,8 +34,14 @@
 	const canonicalUrl = $derived(`${origin}${path}`);
 	const ogImage = `${origin}/og/default.png`;
 	const ogImageAlt = 'Lapikit, simple and optimized components library for Svelte';
+	// error pages must not be indexed nor declare the URL they failed on as canonical
+	const isError = $derived(page.status >= 400);
+	// deprecated pages stay reachable for existing links but leave the index (and the sitemap)
+	const noIndex = $derived(isError || seo.state === 'deprecated');
 	const pageTitle = $derived(
-		`${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
+		isError
+			? `${page.status === 404 ? 'Page not found' : 'Error'} • Lapikit`
+			: `${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
 	);
 	const breadcrumbs = $derived(getBreadcrumbs(path));
 	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, origin));
@@ -76,13 +82,17 @@
 	<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/manifest.webmanifest" />
-	<link rel="canonical" href={canonicalUrl} />
+	{#if !isError}
+		<link rel="canonical" href={canonicalUrl} />
+	{/if}
 	<meta name="description" content={seoDescription} />
 	<meta
 		name="robots"
 		content={PUBLIC_DEV === 'true'
 			? 'noindex, nofollow'
-			: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+			: noIndex
+				? 'noindex, follow'
+				: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
 	/>
 	<meta name="generator" content="Lapikit" />
 	<meta name="application-name" content="Lapikit" />
@@ -106,7 +116,9 @@
 
 	<meta name="color-scheme" content="light dark" />
 
-	{@html breadcrumbSchemaTag}
+	{#if !isError}
+		{@html breadcrumbSchemaTag}
+	{/if}
 </svelte:head>
 
 <ConsoleMessage />

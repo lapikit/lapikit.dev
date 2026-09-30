@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 import { readFrontmatter } from './frontmatter.ts';
@@ -38,8 +39,9 @@ async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix
 			const frontmatter = readFrontmatter(content);
 			const path = deriveSource(filePath, baseDir, urlPrefix);
 			const title = asOptionalTitle(frontmatter.title) ?? fallbackTitle(path.slugSegments);
+			const lastModified = getLastModified(path.sourcePath);
 
-			return { ...frontmatter, title, path };
+			return { ...frontmatter, title, ...(lastModified && { lastModified }), path };
 		})
 	);
 }
@@ -56,6 +58,21 @@ async function collectManualEntries(): Promise<ManifestEntry[]> {
 
 		return { ...frontmatter, title, path: { sourcePath, slug, slugSegments, pathname } };
 	});
+}
+
+// date of the last commit touching the file (sitemap lastmod, structured data).
+// Left out when git has no answer: untracked file, or no .git in the build context
+function getLastModified(sourcePath: string) {
+	try {
+		const date = execFileSync('git', ['log', '-1', '--format=%cI', '--', sourcePath], {
+			encoding: 'utf8',
+			stdio: ['ignore', 'pipe', 'ignore']
+		}).trim();
+
+		return date || undefined;
+	} catch {
+		return undefined;
+	}
 }
 
 function asOptionalTitle(value: FrontmatterData['title']) {

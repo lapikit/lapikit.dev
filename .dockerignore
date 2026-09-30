@@ -1,6 +1,6 @@
 node_modules
+# .git stays in the context: scripts/mdsvx reads the last commit date of each page
 *.log
-.git
 .gitignore
 .github
 .vscode

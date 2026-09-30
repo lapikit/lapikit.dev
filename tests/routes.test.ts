@@ -38,3 +38,14 @@ test('default social image is served', async ({ request }) => {
 	expect(response.status()).toBe(200);
 	expect(response.headers()['content-type']).toBe('image/png');
 });
+
+for (const pathname of ['/this-page-does-not-exist', '/docs/this-page-does-not-exist']) {
+	test(`${pathname} returns a non-indexable 404 page`, async ({ page }) => {
+		const response = await page.goto(pathname);
+
+		expect(response?.status()).toBe(404);
+		await expect(page.locator('h1')).toHaveText('Page not found');
+		await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+		await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+	});
+}
