@@ -6,12 +6,11 @@
 	"scripts": {
 		"dev": "bun run sync-content && vite dev",
 		"build": "bun run sync-content && vite build",
-		"build-srv": "bun run sync-content && bun run sync-changelog && bun run sync-robots && vite build",
+		"build-srv": "bun run sync-content && bun run sync-changelog && vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"sync-content": "node --experimental-strip-types scripts/mdsvx/index.ts",
 		"sync-changelog": "node --experimental-strip-types scripts/sync-changelog/index.ts",
-		"sync-robots": "node --experimental-strip-types scripts/sync-robots/index.ts",
 		"check-budget": "node --experimental-strip-types scripts/check-budget/index.ts",
 		"check": "bun run sync-content && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
