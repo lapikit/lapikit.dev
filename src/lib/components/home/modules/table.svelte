@@ -134,7 +134,7 @@
 
 		> div {
 			display: grid;
-			grid-template-columns: 1fr 50px 50px;
+			grid-template-columns: 1fr 56px 56px;
 			column-gap: 4px;
 			row-gap: 4px;
 			overflow: hidden;
@@ -154,6 +154,7 @@
 
 				p {
 					font-size: 12px;
+					line-height: 1.2;
 				}
 			}
 		}

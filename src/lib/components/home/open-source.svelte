@@ -17,22 +17,11 @@
 	} = $props();
 
 	const images = profilGithub.slice(0, 5);
-	const mid = (images.length - 1) / 2;
 	const socials: LinkName[] = ['buymeacoffee'];
-
-	const cards = images.map((image, index) => {
-		const offset = index - mid;
-		return {
-			...image,
-			rotate: offset * 8,
-			lift: Math.abs(offset) * 6,
-			z: images.length - Math.abs(Math.round(offset))
-		};
-	});
 </script>
 
 <div>
-	<ProfilGithub users={cards} />
+	<ProfilGithub users={images} more />
 	<div>
 		{@render children?.()}
 	</div>

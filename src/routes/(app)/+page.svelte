@@ -26,7 +26,7 @@
 	import Header from '$lib/components/home/header.svelte';
 	import VsCode from '$lib/components/home/vs-code/vs-code.svelte';
 	import Repl from '$lib/components/home/repl.svelte';
-	import { BookOpenText } from 'lucide-svelte';
+	import { BookOpenText, Boxes } from 'lucide-svelte';
 
 	// states
 	const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
@@ -88,13 +88,14 @@
 					color="accent"
 					s-style_width="fit-content"
 					s-style_margin="0 auto"
+					rounded="lg"
 				>
 					{#snippet prepend()}
 						<kit:icon>
 							<BookOpenText />
 						</kit:icon>
 					{/snippet}
-					Learn more about the preprocessor
+					Learn more about <br class="mobile-break" />the preprocessor
 				</kit:btn>
 			</div>
 
@@ -164,13 +165,18 @@
 						> syntax and standard Svelte imports.
 					</p>
 
-					<kit:btn variant="outline" color="accent" href="/docs/essentials/template-syntax">
+					<kit:btn
+						variant="outline"
+						color="accent"
+						href="/docs/essentials/template-syntax"
+						rounded="lg"
+					>
 						{#snippet prepend()}
 							<kit:icon>
 								<BookOpenText />
 							</kit:icon>
 						{/snippet}
-						Learn more about the Lapikit template syntax
+						Learn more about the Lapikit <br class="mobile-break" />template syntax
 					</kit:btn>
 				</div>
 			</div>
@@ -178,7 +184,7 @@
 		<div class="spacing-wrapper">
 			<Components />
 
-			<div class="app-center-content">
+			<div class="app-center-content wrapper-gutter">
 				<p class="devise">It's not magic, It's Lapikit</p>
 
 				<p>
@@ -188,13 +194,27 @@
 					hooks, and the Lili preprocessor.
 				</p>
 
-				<kit:btn href="/docs/components"> Explore all Svelte components </kit:btn>
+				<kit:btn
+					href="/docs/components"
+					variant="outline"
+					color="accent"
+					s-style_width="fit-content"
+					s-style_margin="0 auto"
+					rounded="lg"
+				>
+					{#snippet prepend()}
+						<kit:icon>
+							<Boxes />
+						</kit:icon>
+					{/snippet}
+					Explore all Svelte components
+				</kit:btn>
 			</div>
 		</div>
 	</section>
 
 	<section>
-		<div class="wrapper">
+		<div class="wrapper wrapper-compact">
 			<kit:card elevation="3" s-style_overflow="hidden" s-style_padding="24px">
 				<kit:card-container>
 					<div class="app-center-content">
@@ -227,7 +247,14 @@
 					<br /> Built by the <span class="accent-text">community</span>
 				</h2>
 
-				<p class="subtitle">Lapikit welcomes contributions from developers around the world</p>
+				<p class="subtitle">
+					Already {npmState.downloads || '- k'} downloads on <span class="npm-text">NPM</span>.
+				</p>
+
+				<p class="subtitle">
+					Why not you? We welcome contributions from developers around the world. <br />
+					Help grow the community and share your projects built with Lapikit with us.
+				</p>
 			</OpenSource>
 		</div>
 	</section>
@@ -302,6 +329,16 @@
 		padding-bottom: var(--app-spacing-y-container);
 	}
 
+	.wrapper-compact {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+	.wrapper-gutter {
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+
 	.devise {
 		font-size: 1.75rem;
 		color: var(--kit-color-text-subtle);
@@ -324,6 +361,10 @@
 	}
 
 	@media (min-width: 720px) {
+		.mobile-break {
+			display: none;
+		}
+
 		.app-grids {
 			grid-template-columns: 1fr 1fr;
 			gap: 40px;

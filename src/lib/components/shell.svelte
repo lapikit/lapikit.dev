@@ -74,7 +74,9 @@
 					</kit:icon>
 				{/snippet}
 
-				{manager.label}
+				<span style:margin-left="4px">
+					{manager.label}
+				</span>
 			</kit:btn>
 		{/each}
 	</div>
