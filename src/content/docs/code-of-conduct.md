@@ -7,4 +7,4 @@ head:
 layout: 'doc_page'
 ---
 
-<p>code-of-conduct Content</p>
+<p>Code of Conduct Content</p>
