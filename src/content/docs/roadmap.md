@@ -61,7 +61,7 @@ Ideas, suggestions, and contributions are welcome. Suggest a feature, start a di
 
 <p style="font-weight: bold; font-size: 1.2em; margin-top: 1em; display: block;">What’s next steps</p>
 
-After these updates, the focus will shift to: you can track progress on [GitHub](https://github.com/lapikit/lapikit) and join discussions about what’s next on [Discord](https://discord.gg/gn9ZGtDtK4).
+After these updates, the focus will shift to: you can track progress on [GitHub](https://github.com/lapikit/lapikit) and join discussions about what’s next on [Discord](https://discord.gg/c8vp54EnGD).
 
 ## Contribute to the Lapikit library and it's development
 

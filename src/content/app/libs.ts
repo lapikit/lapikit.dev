@@ -1,4 +1,4 @@
-import { nbComponents, nbHooks } from '$lib/constants';
+import { nbComponents, nbHooks } from '$lib/router';
 
 // assets
 import LapikitLogo from '$lib/assets/images/lapikit.webp?h=124&format=webp';

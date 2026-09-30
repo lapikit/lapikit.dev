@@ -6,7 +6,7 @@ This is the monorepo for Lapikit, a Svelte component library and design system. 
 
 Lapikit is a Svelte component library that provides a set of reusable user interfaces components and design patterns to help developers build consistent and visually appealing web applications quickly. It’s designed to be flexible, customizable and easy to use.
 
-Learn more at [lapikit.dev](https://lapikit.dev) or join our community on [Discord](https://discord.gg/gn9ZGtDtK4).
+Learn more at [lapikit.dev](https://lapikit.dev) or join our community on [Discord](https://discord.gg/c8vp54EnGD).
 
 ### Overview
 

@@ -352,6 +352,12 @@ export const docsNavigation: NavSection[] = [
 	}
 ];
 
+const sectionPages = (label: string) =>
+	docsNavigation.find((section) => section.label === label)?.pages ?? [];
+
+export const nbComponents = sectionPages('Components').filter((page) => page.name).length;
+export const nbHooks = sectionPages('Stores and Hooks').filter((page) => page.description).length;
+
 export const router = {
 	app: appNavigation,
 	footer: footerNavigation,

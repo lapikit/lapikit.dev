@@ -8,7 +8,6 @@ import commandLine from '../content/command-line.json';
 // icons
 import { Moon, Sun, SunMoon } from 'lucide-svelte';
 import githubIcon from '$lib/assets/icons/github.svg?raw';
-import xIcon from '$lib/assets/icons/x.svg?raw';
 import discordIcon from '$lib/assets/icons/discord.svg?raw';
 import buymyecoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
 import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
@@ -26,16 +25,8 @@ export const seoByPath: Record<string, DocSummary> = Object.fromEntries(
 	(manifest as DocSummary[]).map((doc) => [doc.path.pathname, doc])
 );
 
-export const socialMediaLinks = [
-	{ label: 'Twitter', url: 'https://x.com/lapikit', icon: xIcon },
-	{ label: 'GitHub', url: 'https://github.com/lapikit', icon: githubIcon },
-	{ label: 'Discord', url: 'https://discord.gg/lapikit', icon: discordIcon }
-];
-
 export const manifestPage = manifest;
 export const command = commandLine;
-export const nbComponents = 19;
-export const nbHooks = 3;
 
 export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
 export const urlJoinLapikitTeam = 'https://github.com/lapikit';

@@ -1,4 +1,5 @@
-import { links, nbComponents, nbHooks } from '$lib/constants';
+import { links } from '$lib/constants';
+import { nbComponents, nbHooks } from '$lib/router';
 import type { Icon as IconType } from 'lucide-svelte';
 
 // assets

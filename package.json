@@ -3,6 +3,9 @@
 	"private": true,
 	"version": "0.1.0",
 	"type": "module",
+	"engines": {
+		"node": ">=22.18.0"
+	},
 	"scripts": {
 		"dev": "bun run sync-content && vite dev",
 		"build": "bun run sync-content && vite build",
