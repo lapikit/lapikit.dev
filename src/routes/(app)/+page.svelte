@@ -95,7 +95,7 @@
 							<BookOpenText />
 						</kit:icon>
 					{/snippet}
-					Learn more about <br class="mobile-break" />the preprocessor
+					Look over the syntax <br class="mobile-break" />of the templates
 				</kit:btn>
 			</div>
 
@@ -264,9 +264,9 @@
 	<section>
 		<div class="wrapper app-grids">
 			<PrependFooter commandLine={command[application.pkg_selected]['launch-cli']}>
-				<h2 class="title-xl">
+				<p class="title-xl">
 					Try it on your project and <span class="accent-text">write less , code more</span>
-				</h2>
+				</p>
 			</PrependFooter>
 		</div>
 	</section>

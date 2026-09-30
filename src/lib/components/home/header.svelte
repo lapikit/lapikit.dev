@@ -91,7 +91,7 @@
 						<Rocket />
 					</kit:icon>
 				{/snippet}
-				Discover the power
+				Get started
 			</kit:btn>
 			<kit:btn
 				density="comfortable"

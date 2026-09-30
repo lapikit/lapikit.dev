@@ -40,7 +40,7 @@
 			background="accent"
 			color="on-accent"
 		>
-			Quickstart
+			Quick start
 			{#snippet append()}
 				<ChevronRight />
 			{/snippet}
