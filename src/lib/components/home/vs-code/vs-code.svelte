@@ -9,7 +9,7 @@
 	import Render from './render.svelte';
 
 	let {
-		version = 'v0.0.0'
+		version = ''
 	}: {
 		version?: string;
 	} = $props();

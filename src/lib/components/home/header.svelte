@@ -10,7 +10,7 @@
 	let {
 		children,
 		animation,
-		version = 'v0.0.0',
+		version = '',
 		list = ['components']
 	}: {
 		children?: Snippet;
@@ -39,26 +39,28 @@
 		{@render animation?.()}
 	</div>
 	<div class="wrapper">
-		<kit:chip
-			href="/docs/changelog"
-			size="md"
-			rounded="lg"
-			s-style_--kit-chip-p="6px"
-			s-style_width="fit-content"
-			s-style_margin="0 auto"
-		>
-			{#snippet prepend()}
-				<kit:chip size="sm" rounded="md" background="accent" color="on-accent"> New </kit:chip>
-			{/snippet}
+		{#if version}
+			<kit:chip
+				href="/docs/changelog"
+				size="md"
+				rounded="lg"
+				s-style_--kit-chip-p="6px"
+				s-style_width="fit-content"
+				s-style_margin="0 auto"
+			>
+				{#snippet prepend()}
+					<kit:chip size="sm" rounded="md" background="accent" color="on-accent"> New </kit:chip>
+				{/snippet}
 
-			{version}
+				{version}
 
-			{#snippet append()}
-				<kit:icon>
-					<ArrowRight />
-				</kit:icon>
-			{/snippet}
-		</kit:chip>
+				{#snippet append()}
+					<kit:icon>
+						<ArrowRight />
+					</kit:icon>
+				{/snippet}
+			</kit:chip>
+		{/if}
 
 		<h1 class="title-2xl">
 			Simple, optimized <br />

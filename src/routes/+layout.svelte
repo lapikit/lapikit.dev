@@ -1,19 +1,21 @@
 <script lang="ts">
+	import type { LayoutProps } from './$types';
 	import { PUBLIC_BASE_URL, PUBLIC_DEV } from '$env/static/public';
 
 	import { page } from '$app/state';
-	import { setContext } from 'svelte';
+	import { setContext, untrack } from 'svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
 	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
+	import { setNpmStats } from '$lib/stores/npm.svelte';
 
 	// components
 	import ConsentMode from '$lib/components/consent-modal.svelte';
 	import ConsoleMessage from '$lib/components/console-message.svelte';
 
-	let { children } = $props();
+	let { children, data }: LayoutProps = $props();
 
 	import '@fontsource-variable/archivo';
 	import '@fontsource-variable/jetbrains-mono';
@@ -50,6 +52,8 @@
 		// eslint-disable-next-line no-useless-escape
 		return `<script type="application/ld+json">${json}<\/script>`;
 	}
+
+	untrack(() => setNpmStats(data.npm));
 
 	// states
 	let searchOpen = $state(false);

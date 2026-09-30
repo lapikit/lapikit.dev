@@ -4,7 +4,7 @@
 
 	/** @param {string} iso */
 	function formatPublishDate(iso) {
-		return new Date(iso).toLocaleDateString();
+		return new Date(iso).toLocaleDateString('en-US', { timeZone: 'UTC' });
 	}
 
 	const releases = $derived([
@@ -13,7 +13,7 @@
 			label: 'main',
 			background: 'info',
 			color: 'on-info',
-			version: npmState.version.latest || 'v0.0.0',
+			version: npmState.version.latest || '-',
 			publish: npmState.publish.latest
 		},
 		{
@@ -21,7 +21,7 @@
 			label: 'insiders',
 			background: 'warning',
 			color: 'on-warning',
-			version: npmState.version.insiders?.replace('v0.0.0-', '') || 'insiders-000000',
+			version: npmState.version.insiders?.replace('v0.0.0-', '') || '-',
 			publish: npmState.publish.insiders
 		}
 	]);
@@ -38,10 +38,12 @@
 	<kit:card-title>
 		Release
 		<kit:spacer />
-		{npmState.downloads || 0}
-		<kit:icon>
-			<PackageOpen />
-		</kit:icon>
+		{#if npmState.downloads}
+			{npmState.downloads}
+			<kit:icon>
+				<PackageOpen />
+			</kit:icon>
+		{/if}
 	</kit:card-title>
 	<kit:list density="compact">
 		{#each releases as release (release.key)}
@@ -58,8 +60,10 @@
 				{/snippet}
 
 				<div class="metainfo">
-					<span>{release.version}</span>
-					<span>published {formatPublishDate(release.publish)}</span>
+					<span class="version">{release.version}</span>
+					{#if release.publish}
+						<span class="published">published {formatPublishDate(release.publish)}</span>
+					{/if}
 				</div>
 			</kit:list-item>
 		{/each}
@@ -71,11 +75,11 @@
 		display: grid; // équivalent grid
 		line-height: 1.15;
 
-		span:first-child {
+		.version {
 			font-size: var(--kit-font-sm);
 		}
 
-		span:last-child {
+		.published {
 			font-size: var(--kit-font-xs);
 			color: rgb(75, 75, 75);
 		}

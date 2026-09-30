@@ -8,7 +8,7 @@
 	const themePreviewVscode = createTheme();
 
 	let {
-		version = 'v0.0.0'
+		version = ''
 	}: {
 		version?: string;
 	} = $props();
@@ -39,21 +39,23 @@
 
 	<div>
 		<div>
-			<kit:chip size="sm" rounded="sm" s-style_--kit-chip-p="2px">
-				{#snippet prepend()}
-					<kit:chip size="xs" rounded="xs" background="accent" color="on-accent">
-						Current
-					</kit:chip>
-				{/snippet}
+			{#if version}
+				<kit:chip size="sm" rounded="sm" s-style_--kit-chip-p="2px">
+					{#snippet prepend()}
+						<kit:chip size="xs" rounded="xs" background="accent" color="on-accent">
+							Current
+						</kit:chip>
+					{/snippet}
 
-				{version}
+					{version}
 
-				{#snippet append()}
-					<kit:icon>
-						<ArrowRight />
-					</kit:icon>
-				{/snippet}
-			</kit:chip>
+					{#snippet append()}
+						<kit:icon>
+							<ArrowRight />
+						</kit:icon>
+					{/snippet}
+				</kit:chip>
+			{/if}
 
 			<h2>Build your interface with less code</h2>
 

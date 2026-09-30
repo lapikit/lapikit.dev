@@ -30,7 +30,7 @@
 
 	// states
 	const h1 = ['components', 'api', 'hooks', 'themes', 'actions'];
-	const version = $derived(npmState.version.latest || 'v0.0.0');
+	const version = $derived(npmState.version.latest);
 </script>
 
 <main class="homepage">
@@ -247,9 +247,11 @@
 					<br /> Built by the <span class="accent-text">community</span>
 				</h2>
 
-				<p class="subtitle">
-					Already {npmState.downloads || '- k'} downloads on <span class="npm-text">NPM</span>.
-				</p>
+				{#if npmState.downloads}
+					<p class="subtitle">
+						Already {npmState.downloads} downloads on <span class="npm-text">NPM</span>.
+					</p>
+				{/if}
 
 				<p class="subtitle">
 					Why not you? We welcome contributions from developers around the world. <br />
