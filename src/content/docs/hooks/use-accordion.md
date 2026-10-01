@@ -3,7 +3,7 @@ title: 'Learn how to create an accordion'
 category: 'Stores and Hooks'
 head:
   title: 'useAccordion'
-  description: 'Discover the UseAccordion hook from Lapikit: manage expandable sections in Svelte easily, keep state synchronized, and avoid prop drilling or manual event handling.'
+  description: 'The useAccordion hook from Lapikit manages expandable sections in Svelte: synchronized state, no prop drilling and no manual event handling.'
 layout: 'doc_page'
 ---
 

@@ -7,6 +7,7 @@
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
+	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/structured-data';
 	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
@@ -38,14 +39,37 @@
 	const isError = $derived(page.status >= 400);
 	// deprecated pages stay reachable for existing links but leave the index (and the sitemap)
 	const noIndex = $derived(isError || seo.state === 'deprecated');
-	const pageTitle = $derived(
-		isError
-			? `${page.status === 404 ? 'Page not found' : 'Error'} • Lapikit`
-			: `${capitalize(seoTitle)} • ${path === '/' ? 'Svelte Components Library' : 'Lapikit Svelte Components'}`
-	);
+	const pageTitle = $derived(getPageTitle());
 	const breadcrumbs = $derived(getBreadcrumbs(path));
 	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, origin));
-	const breadcrumbSchemaTag = $derived(breadcrumbSchema ? toJsonLdScriptTag(breadcrumbSchema) : '');
+	const structuredData = $derived(
+		[
+			breadcrumbSchema,
+			path === '/' ? getWebsiteStructuredData(origin) : null,
+			path.startsWith('/docs/') && !noIndex
+				? getTechArticleStructuredData(seo, {
+						origin,
+						url: canonicalUrl,
+						headline: capitalize(seoTitle),
+						description: seoDescription,
+						image: ogImage
+					})
+				: null
+		].filter(Boolean)
+	);
+	const structuredDataTags = $derived(structuredData.map(toJsonLdScriptTag).join(''));
+
+	function getPageTitle() {
+		if (isError) return `${page.status === 404 ? 'Page not found' : 'Error'} • Lapikit`;
+		if (path === '/') return `${capitalize(seoTitle)} • Svelte Components Library`;
+		// matches the searched phrase ("svelte button component") rather than the bare name
+		if (path.startsWith('/docs/components/')) {
+			return `Svelte ${capitalize(seoTitle)} Component • Lapikit`;
+		}
+		// hook names are code identifiers: "useTheme" must not become "UseTheme"
+		const title = /^use[A-Z]/.test(seoTitle) ? seoTitle : capitalize(seoTitle);
+		return `${title} • Lapikit Svelte Components`;
+	}
 
 	function getHeadString(head: unknown, key: 'title' | 'description') {
 		if (typeof head !== 'object' || head === null) return undefined;
@@ -117,7 +141,7 @@
 	<meta name="color-scheme" content="light dark" />
 
 	{#if !isError}
-		{@html breadcrumbSchemaTag}
+		{@html structuredDataTags}
 	{/if}
 </svelte:head>
 

@@ -3,7 +3,7 @@ title: 'Initialize Lapikit application context'
 category: 'Essentials'
 head:
   title: 'Initialize Application'
-  description: 'Initialize the Lapikit application context in Svelte and SvelteKit projects with the <kit:app> component, including global styles and shared application structure.'
+  description: 'Initialize Lapikit in Svelte and SvelteKit with the <kit:app> component: application context, global styles and a shared app structure.'
 layout: 'doc_page'
 ---
 

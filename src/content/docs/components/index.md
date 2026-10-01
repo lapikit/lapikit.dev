@@ -3,7 +3,7 @@ title: 'Discover the Lapikit components'
 category: 'Components'
 head:
   title: 'Components'
-  description: 'Find out more about Lapikit Svelte components.'
+  description: 'Browse every Lapikit Svelte component: buttons, cards, dialogs, text fields and more. Accessible, lightweight and customizable for Svelte 5 and SvelteKit.'
 layout: 'doc_section'
 ---
 

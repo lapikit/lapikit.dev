@@ -3,7 +3,7 @@ title: 'Understanding the Lapikit template syntax'
 category: 'Essentials'
 head:
   title: 'Template Syntax'
-  description: 'Learn how the Lapikit preprocessor extends Svelte template syntax component system, automatic imports, and dynamic styling helpers for cleaner Svelte and SvelteKit projects.'
+  description: 'How the Lapikit preprocessor extends Svelte templates: the <kit:*> component syntax, automatic imports and dynamic styling helpers.'
 layout: 'doc_page'
 ---
 

@@ -13,12 +13,18 @@ const extensionsFile = ['md'];
 const routesFile = join(process.cwd(), 'src', 'routes', 'routes.json');
 const manifestFile = join(process.cwd(), 'src', 'manifest.json');
 
+// Google shows roughly 120 to 160 characters: shorter wastes the snippet, longer gets cut.
+// A warning only, so a missing description never blocks a deploy
+const DESCRIPTION_MIN = 70;
+const DESCRIPTION_MAX = 160;
+
 const entries = [
 	...(await Promise.all(folders.map(collectFolderEntries))).flat(),
 	...(await collectManualEntries())
 ].sort((left, right) => left.path.pathname.localeCompare(right.path.pathname));
 
 assertNoDuplicatePaths(entries);
+warnOnWeakDescriptions(entries);
 
 await writeFile(manifestFile, `${JSON.stringify(entries, null, 2)}\n`, 'utf8');
 
@@ -101,6 +107,24 @@ function fallbackTitle(slugSegments: string[]) {
 		.filter(Boolean)
 		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
 		.join(' ');
+}
+
+function warnOnWeakDescriptions(manifestEntries: ManifestEntry[]) {
+	for (const entry of manifestEntries) {
+		if (entry.state === 'deprecated') continue;
+
+		const head = entry.head as { description?: unknown } | undefined;
+		const description = typeof head?.description === 'string' ? head.description.trim() : '';
+		const where = `${entry.path.pathname} (${entry.path.sourcePath})`;
+
+		if (!description) {
+			console.warn(`[mdsvx] missing head.description: ${where}`);
+		} else if (description.length < DESCRIPTION_MIN || description.length > DESCRIPTION_MAX) {
+			console.warn(
+				`[mdsvx] head.description is ${description.length} chars, aim for ${DESCRIPTION_MIN}-${DESCRIPTION_MAX}: ${where}`
+			);
+		}
+	}
 }
 
 function assertNoDuplicatePaths(manifestEntries: ManifestEntry[]) {

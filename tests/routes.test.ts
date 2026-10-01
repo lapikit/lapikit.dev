@@ -49,3 +49,14 @@ for (const pathname of ['/this-page-does-not-exist', '/docs/this-page-does-not-e
 		await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
 	});
 }
+
+test('structured data is valid JSON with the expected types', async ({ page }) => {
+	const typesOn = async (pathname: string) => {
+		await page.goto(pathname);
+		const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+		return blocks.map((block) => JSON.parse(block)['@type']);
+	};
+
+	expect(await typesOn('/')).toEqual(['WebSite']);
+	expect(await typesOn('/docs/components/button')).toEqual(['BreadcrumbList', 'TechArticle']);
+});

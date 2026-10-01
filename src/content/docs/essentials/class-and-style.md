@@ -3,7 +3,7 @@ title: 'Class and Style binding'
 category: 'Essentials'
 head:
   title: 'Class and Style'
-  description: 'Learn how to use s-class and s-style in Lapikit to dynamically manage classes and inline styles on Svelte components with a syntax close to native Svelte directives.'
+  description: 'Use s-class and s-style in Lapikit to manage classes and inline styles on Svelte components, with a syntax close to native Svelte directives.'
 layout: 'doc_page'
 ---
 
