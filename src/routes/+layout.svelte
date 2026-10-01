@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { LayoutProps } from './$types';
-	import { PUBLIC_BASE_URL, PUBLIC_DEV } from '$env/static/public';
+	import { PUBLIC_BASE_URL, PUBLIC_DEV, PUBLIC_GTAG_ID, PUBLIC_GTM_ID } from '$env/static/public';
 
 	import { page } from '$app/state';
-	import { setContext, untrack } from 'svelte';
+	import { onMount, setContext, untrack } from 'svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
@@ -11,9 +11,9 @@
 	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
+	import { consentState } from '$lib/stores/consent.svelte';
 
 	// components
-	import ConsentMode from '$lib/components/consent-modal.svelte';
 	import ConsoleMessage from '$lib/components/console-message.svelte';
 
 	let { children, data }: LayoutProps = $props();
@@ -22,8 +22,11 @@
 	import '@fontsource-variable/jetbrains-mono';
 	import '$lib/styles/layout.scss';
 
-	import Search from '$lib/components/search.svelte';
-	import ClickSpark from '$lib/components/animations/click-spark.svelte';
+	// search, consent modal and click spark are not needed for the first render: loading them
+	// on demand keeps their JS and CSS (modal, textfield, list, card...) out of every page
+	const loadSearch = () => import('$lib/components/search.svelte');
+	const loadConsentModal = () => import('$lib/components/consent-modal.svelte');
+	const loadClickSpark = () => import('$lib/components/animations/click-spark.svelte');
 
 	const isDesktop = new MediaQuery('min-width: 1024px');
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
@@ -88,14 +91,38 @@
 
 	// states
 	let searchOpen = $state(false);
+	let searchLoaded = $state(false);
+	let idle = $state(false);
+
+	const hasTracking = Boolean(PUBLIC_GTM_ID?.trim() || PUBLIC_GTAG_ID?.trim());
+	// the modal also applies a consent saved earlier, so it loads whenever tracking is configured
+	const consentNeeded = $derived((hasTracking && idle) || consentState.open);
+
+	function toggleSearch() {
+		searchLoaded = true;
+		searchOpen = !searchOpen;
+	}
+
+	// once loaded, search.svelte handles CTRL+K itself: this one only covers the first press
+	function handleKeydown(event: KeyboardEvent) {
+		if (searchLoaded) return;
+		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+			event.preventDefault();
+			toggleSearch();
+		}
+	}
+
+	onMount(() => {
+		const done = () => (idle = true);
+		if ('requestIdleCallback' in window) requestIdleCallback(done, { timeout: 2000 });
+		else setTimeout(done, 1000);
+	});
 
 	setContext('search', {
 		get open() {
 			return searchOpen;
 		},
-		toggle() {
-			searchOpen = !searchOpen;
-		}
+		toggle: toggleSearch
 	});
 </script>
 
@@ -145,17 +172,29 @@
 	{/if}
 </svelte:head>
 
+<svelte:window onkeydown={handleKeydown} />
+
 <ConsoleMessage />
 
-{#if isDesktop.current}
-	<ClickSpark sparkColor="#2a6df4" />
+{#if isDesktop.current && idle}
+	{#await loadClickSpark() then { default: ClickSpark }}
+		<ClickSpark sparkColor="#2a6df4" />
+	{/await}
 {/if}
 
 <kit:app>
 	{@render children()}
 
-	<ConsentMode />
-	<Search bind:open={searchOpen} />
+	{#if consentNeeded}
+		{#await loadConsentModal() then { default: ConsentModal }}
+			<ConsentModal />
+		{/await}
+	{/if}
+	{#if searchLoaded}
+		{#await loadSearch() then { default: Search }}
+			<Search bind:open={searchOpen} />
+		{/await}
+	{/if}
 </kit:app>
 
 <style>
