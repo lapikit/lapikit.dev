@@ -11,9 +11,9 @@ const REPO_URL = 'https://github.com/lapikit/lapikit';
 const FALLBACK_BRANCH = 'develop';
 
 const LINKS: Record<string, string> = {
-	'CHANGELOG.md': '/docs/changelog',
-	'CONTRIBUTING.md': '/docs/contributing',
-	'CODE_OF_CONDUCT.md': '/docs/code-of-conduct'
+	'CHANGELOG.md': '/docs/changelog'
+	// 'CONTRIBUTING.md': '/docs/contributing',
+	// 'CODE_OF_CONDUCT.md': '/docs/code-of-conduct'
 };
 
 type SyncSource = {
@@ -27,17 +27,17 @@ const SOURCES: SyncSource[] = [
 		file: 'CHANGELOG.md',
 		target: 'src/content/docs/changelog.md',
 		placeholder: '<p>Changelog Content</p>'
-	},
-	{
-		file: 'CONTRIBUTING.md',
-		target: 'src/content/docs/contributing.md',
-		placeholder: '<p>Contributing Content</p>'
-	},
-	{
-		file: 'CODE_OF_CONDUCT.md',
-		target: 'src/content/docs/code-of-conduct.md',
-		placeholder: '<p>Code of Conduct Content</p>'
 	}
+	// {
+	// 	file: 'CONTRIBUTING.md',
+	// 	target: 'src/content/docs/contributing.md',
+	// 	placeholder: '<p>Contributing Content</p>'
+	// },
+	// {
+	// 	file: 'CODE_OF_CONDUCT.md',
+	// 	target: 'src/content/docs/code-of-conduct.md',
+	// 	placeholder: '<p>Code of Conduct Content</p>'
+	// }
 ];
 
 function git(args: string): string {
