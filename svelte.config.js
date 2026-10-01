@@ -12,9 +12,9 @@ const config = {
 			precompress: true,
 			envPrefix: ''
 		}),
-		// high on purpose: the root layout and homepage CSS (~30 KB each) are then inlined too,
-		// leaving no render-blocking stylesheet. Mobile FCP -330 ms for ~+10 KB of brotli HTML
-		inlineStyleThreshold: 32768,
+		// tested on PageSpeed (2026-10-01): 32768 inlines every stylesheet but doubles TBT
+		// (130 -> 270/320 ms) and drops the scores to 86 mobile / 88 desktop. Keep 10240
+		inlineStyleThreshold: 10240,
 		alias: {
 			$examples: 'src/content/examples'
 		}
