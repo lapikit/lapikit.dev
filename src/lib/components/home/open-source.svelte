@@ -24,7 +24,7 @@
 	<ProfilGithub
 		users={images}
 		more
-		moreHref="/docs/contributing"
+		moreHref={links.discord.url}
 		moreLabel="Contribute for Lapikit"
 	/>
 	<div>
