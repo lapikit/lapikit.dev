@@ -88,6 +88,14 @@ const footerNavigation: AppNavItem[] = [
 			{
 				label: 'roadmap',
 				path: '/docs/roadmap'
+			},
+			{
+				label: 'contributing',
+				path: 'docs/contributing'
+			},
+			{
+				label: 'code of conduct',
+				path: '/docs/code-of-conduct'
 			}
 		]
 	},
