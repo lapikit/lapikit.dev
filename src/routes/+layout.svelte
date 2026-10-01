@@ -8,8 +8,8 @@
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
 	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/structured-data';
-	import { seoByPath } from '$lib/constants';
-	import { capitalize } from '$lib/utils';
+	import { consent_cookie, seoByPath } from '$lib/constants';
+	import { capitalize, getCookie } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
 	import { consentState } from '$lib/stores/consent.svelte';
 
@@ -93,10 +93,12 @@
 	let searchOpen = $state(false);
 	let searchLoaded = $state(false);
 	let idle = $state(false);
+	let consentSaved = $state(true);
 
 	const hasTracking = Boolean(PUBLIC_GTM_ID?.trim() || PUBLIC_GTAG_ID?.trim());
-	// the modal also applies a consent saved earlier, so it loads whenever tracking is configured
-	const consentNeeded = $derived((hasTracking && idle) || consentState.open);
+	// a new visitor must see the modal right away: it is the LCP element, delaying it costs
+	// ~400ms on mobile. With a saved choice it only re-applies consent, so it waits for idle
+	const consentNeeded = $derived((hasTracking && (!consentSaved || idle)) || consentState.open);
 
 	function toggleSearch() {
 		searchLoaded = true;
@@ -113,6 +115,8 @@
 	}
 
 	onMount(() => {
+		consentSaved = Boolean(getCookie(consent_cookie));
+
 		const done = () => (idle = true);
 		if ('requestIdleCallback' in window) requestIdleCallback(done, { timeout: 2000 });
 		else setTimeout(done, 1000);
