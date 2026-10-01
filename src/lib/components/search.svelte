@@ -7,6 +7,7 @@
 	import {
 		Gavel,
 		GitFork,
+		Newspaper,
 		Puzzle,
 		SquareFunction,
 		StickyNote,
@@ -147,6 +148,8 @@
 									<GitFork />
 								{:else if result?.category === 'Terms'}
 									<Gavel />
+								{:else if result?.category === 'Blog'}
+									<Newspaper />
 								{:else}
 									<StickyNote />
 								{/if}

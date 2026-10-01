@@ -1,4 +1,4 @@
-import type { DocSummary } from './@types';
+import type { BlogPostSummary, DocSummary } from './@types';
 
 const SITE_NAME = 'Lapikit';
 
@@ -47,5 +47,33 @@ export function getTechArticleStructuredData(
 		author: organization(origin),
 		publisher: organization(origin),
 		isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: `${origin}/` }
+	};
+}
+
+// blog posts: dates come from the frontmatter, the author is a person rather than the project
+export function getBlogPostingStructuredData(
+	post: BlogPostSummary,
+	{
+		origin,
+		url,
+		headline,
+		description,
+		image
+	}: { origin: string; url: string; headline: string; description: string; image: string }
+) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		headline,
+		description,
+		url,
+		mainEntityOfPage: url,
+		image,
+		inLanguage: 'en',
+		datePublished: post.date,
+		dateModified: post.updated ?? post.date,
+		author: { '@type': 'Person', name: post.author },
+		publisher: organization(origin),
+		isPartOf: { '@type': 'Blog', name: `${SITE_NAME} Blog`, url: `${origin}/blog` }
 	};
 }

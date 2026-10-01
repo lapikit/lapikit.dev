@@ -6,5 +6,13 @@
 			"title": "Lapikit",
 			"description": "Lapikit is a fast Svelte component library with reusable components, hooks, theming tools and documentation built for speed and discoverability."
 		}
+	},
+	"/blog": {
+		"title": "Blog",
+		"type": "website",
+		"head": {
+			"title": "Blog",
+			"description": "News, release notes, guides and behind the scenes of Lapikit, the fast Svelte component library, written by the people who build it."
+		}
 	}
 }

@@ -1,13 +1,21 @@
 import { execFileSync } from 'node:child_process';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
+import { normalizeBlogPost } from './blog.ts';
 import { readFrontmatter } from './frontmatter.ts';
 import { deriveSource } from './source.ts';
 import type { FrontmatterData, ManifestEntry } from './types.ts';
 
-const folders = [
+type Folder = {
+	dir: string;
+	urlPrefix: string;
+	normalize?: (entry: ManifestEntry, content: string) => ManifestEntry;
+};
+
+const folders: Folder[] = [
 	{ dir: 'routes', urlPrefix: '' },
-	{ dir: 'content/docs', urlPrefix: '/docs' }
+	{ dir: 'content/docs', urlPrefix: '/docs' },
+	{ dir: 'content/blog', urlPrefix: '/blog', normalize: normalizeBlogPost }
 ];
 const extensionsFile = ['md'];
 const routesFile = join(process.cwd(), 'src', 'routes', 'routes.json');
@@ -30,7 +38,7 @@ await writeFile(manifestFile, `${JSON.stringify(entries, null, 2)}\n`, 'utf8');
 
 console.log(`Wrote ${entries.length} entries to src/manifest.json`);
 
-async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix: string }) {
+async function collectFolderEntries({ dir, urlPrefix, normalize }: Folder) {
 	const baseDir = join(process.cwd(), 'src', dir);
 	const dirEntries = await readdir(baseDir, { withFileTypes: true, recursive: true });
 
@@ -47,7 +55,9 @@ async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix
 			const title = asOptionalTitle(frontmatter.title) ?? fallbackTitle(path.slugSegments);
 			const lastModified = getLastModified(path.sourcePath);
 
-			return { ...frontmatter, title, ...(lastModified && { lastModified }), path };
+			const manifestEntry = { ...frontmatter, title, ...(lastModified && { lastModified }), path };
+
+			return normalize ? normalize(manifestEntry, content) : manifestEntry;
 		})
 	);
 }

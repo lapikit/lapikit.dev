@@ -31,3 +31,14 @@ export type DocComponent = Component<any>;
 export type DocEntry = DocSummary & {
 	component: DocComponent;
 };
+
+export type BlogPostSummary = DocSummary & {
+	description: string;
+	author: string;
+	/** YYYY-MM-DD */
+	date: string;
+	/** YYYY-MM-DD, only when the post was revised after publication */
+	updated?: string;
+	/** minutes */
+	readingTime: number;
+};

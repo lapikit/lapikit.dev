@@ -7,7 +7,12 @@
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
-	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/structured-data';
+	import type { BlogPostSummary } from '$lib/@types';
+	import {
+		getBlogPostingStructuredData,
+		getTechArticleStructuredData,
+		getWebsiteStructuredData
+	} from '$lib/structured-data';
 	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
@@ -57,6 +62,15 @@
 						description: seoDescription,
 						image: ogImage
 					})
+				: null,
+			path.startsWith('/blog/') && !noIndex
+				? getBlogPostingStructuredData(seo as BlogPostSummary, {
+						origin,
+						url: canonicalUrl,
+						headline: seoTitle,
+						description: seoDescription,
+						image: ogImage
+					})
 				: null
 		].filter(Boolean)
 	);
@@ -69,6 +83,8 @@
 		if (path.startsWith('/docs/components/')) {
 			return `Svelte ${capitalize(seoTitle)} Component • Lapikit`;
 		}
+		// post titles are written as sentences: keep their casing
+		if (path.startsWith('/blog/')) return `${seoTitle} • Lapikit Blog`;
 		// hook names are code identifiers: "useTheme" must not become "UseTheme"
 		const title = /^use[A-Z]/.test(seoTitle) ? seoTitle : capitalize(seoTitle);
 		return `${title} • Lapikit Svelte Components`;
@@ -129,6 +145,7 @@
 	<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/manifest.webmanifest" />
+	<link rel="alternate" type="application/rss+xml" title="Lapikit Blog" href="/blog/rss.xml" />
 	{#if !isError}
 		<link rel="canonical" href={canonicalUrl} />
 	{/if}

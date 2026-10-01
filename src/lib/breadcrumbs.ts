@@ -19,6 +19,14 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 		return [...breadcrumbs, ...getDocsBreadcrumbs(normalizedPath)];
 	}
 
+	if (normalizedPath.startsWith('/blog/')) {
+		return [
+			...breadcrumbs,
+			{ label: 'Blog', href: toPathname('/blog') },
+			{ label: getPathLabel(normalizedPath), href: toPathname(normalizedPath) }
+		];
+	}
+
 	return [
 		...breadcrumbs,
 		{ label: getPathLabel(normalizedPath), href: toPathname(normalizedPath) }

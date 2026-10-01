@@ -57,6 +57,10 @@ const appNavigation: AppNavItem[] = [
 	{
 		label: 'tools',
 		path: '/docs/hooks'
+	},
+	{
+		label: 'blog',
+		path: '/blog'
 	}
 ];
 
@@ -91,7 +95,7 @@ const footerNavigation: AppNavItem[] = [
 			},
 			{
 				label: 'contributing',
-				path: 'docs/contributing'
+				path: '/docs/contributing'
 			},
 			{
 				label: 'code of conduct',
@@ -105,6 +109,10 @@ const footerNavigation: AppNavItem[] = [
 			{
 				label: 'support',
 				path: links['discord'].url
+			},
+			{
+				label: 'blog',
+				path: '/blog'
 			},
 			{
 				label: 'changelog',
