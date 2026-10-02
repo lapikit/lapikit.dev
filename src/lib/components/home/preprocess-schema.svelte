@@ -1,6 +1,6 @@
 <script lang="ts">
 	//assets
-	import LogoLapikit from '$lib/assets/images/lapikit.webp?enhanced';
+	import MascotLapikitStar from '$lib/assets/images/mascot/stars.webp?enhanced';
 	import LogoSvelte from '$lib/assets/images/svelte.webp?enhanced';
 	import ViteJsIcon from '$lib/assets/icons/vite.js.svg?raw';
 	// import RollupIcon from '$lib/assets/icons/rollup.js.svg?raw';
@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="orbit-center">
-				<enhanced:img src={LogoLapikit} alt="Lapikit logo" sizes="54px" />
+				<enhanced:img src={MascotLapikitStar} alt="Lapikit logo" sizes="54px" />
 			</div>
 		</div>
 
