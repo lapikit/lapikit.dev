@@ -12,6 +12,6 @@ jobs:
     needs: build
     uses: ./.github/workflows/deploy.yml
     with:
-      path-secret: PATH_CURRENT
+      environment: current
       ref: main
     secrets: inherit

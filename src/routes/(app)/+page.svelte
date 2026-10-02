@@ -265,7 +265,7 @@
 		<div class="wrapper app-grids">
 			<PrependFooter commandLine={command[application.pkg_selected]['launch-cli']}>
 				<p class="title-xl">
-					Try it on your project and <span class="accent-text">write less, code more</span>
+					- Try it on your project and <span class="accent-text">write less, code more</span>
 				</p>
 			</PrependFooter>
 		</div>

@@ -17,6 +17,6 @@ jobs:
     if: github.event_name == 'push'
     uses: ./.github/workflows/deploy.yml
     with:
-      path-secret: PATH_INSIDER
+      environment: insider
       ref: develop
     secrets: inherit
