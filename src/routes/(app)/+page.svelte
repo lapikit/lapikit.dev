@@ -131,7 +131,7 @@
 					</p>
 				</div>
 				<div>
-					<Repl code={replDirectiveSvelte} render={replDirectivePreCompil} />
+					<Repl left code={replDirectiveSvelte} render={replDirectivePreCompil} />
 				</div>
 			</div>
 

@@ -10,14 +10,16 @@
 
 	let {
 		code,
-		render
+		render,
+		left
 	}: {
 		code: Code[];
 		render: Code[];
+		left?: boolean;
 	} = $props();
 </script>
 
-<kit:card class="home-repl" background="surface-2">
+<kit:card class="home-repl" s-class_home-repl-left={left} background="surface-2">
 	<kit:card-actions>
 		<kit:spacer />
 
@@ -60,6 +62,10 @@
 </kit:card>
 
 <style lang="scss">
+	:global(.home-repl.home-repl-left) {
+		margin-left: auto;
+	}
+
 	:global(.home-repl) {
 		font-family: var(--font-mono);
 		border-color: var(--kit-color-border);
@@ -69,7 +75,6 @@
 		font-size: 12px;
 		height: fit-content;
 		max-width: 540px;
-		margin-left: auto;
 
 		:global(.kit-card-container) {
 			display: grid;

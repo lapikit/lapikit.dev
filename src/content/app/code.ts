@@ -109,10 +109,12 @@ export const replComponentSvelte: Code[] = [
 
 export const replComponentPreCompil: Code[] = [
 	{ content: "<script lang='ts'>", indent: 0 },
-	{ content: 'import {', indent: 1, lapikit: true },
-	{ content: 'KitList,', indent: 2, lapikit: true },
-	{ content: 'KitListItem', indent: 2, lapikit: true },
-	{ content: "} from 'lapikit/components';", indent: 1, lapikit: true },
+	{ content: 'import KitList from lapikit/components/list/list.svelte', indent: 1, lapikit: true },
+	{
+		content: 'import KitListItem from lapikit/components/list/modules/list-item.svelte',
+		indent: 1,
+		lapikit: true
+	},
 	{
 		content: '',
 		indent: 0
