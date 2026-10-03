@@ -14,6 +14,7 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"sync-content": "node --experimental-strip-types scripts/mdsvx/index.ts",
 		"sync-changelog": "node --experimental-strip-types scripts/sync-changelog/index.ts",
+		"icons": "node --experimental-strip-types scripts/generate-icons/index.ts",
 		"check-budget": "node --experimental-strip-types scripts/check-budget/index.ts",
 		"check": "bun run sync-content && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
