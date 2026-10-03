@@ -1,0 +1,168 @@
+:root {
+	--app-container-size: 1538px;
+	--app-container-size-compact: 1418px;
+	--app-spacing-x-container: 24px;
+	--app-spacing-y-container: 80px;
+
+	--kit-color-shell: hsl(240deg 4.76% 12.35%);
+	--kit-colot-on-shell: hsl(0 0% 100%);
+
+	// fixed color
+	--kit-color-text-on-light: hsl(222 20% 10%);
+	--kit-color-text-on-dark: hsl(0 0% 100%);
+
+	// bento
+	--kit-color-bento-integration: #e46b39;
+	--kit-color-bento-hooks: #b2adeb;
+	--kit-color-bento-opensource: #d7dadf;
+	--kit-color-bento-on-integration: white;
+	--kit-color-bento-on-opensource: black;
+
+	// socials
+	--kit-color-svelte: hsl(14.59deg 100% 50.02%);
+	--kit-color-on-svelte: hsl(0deg 0% 96.86%);
+	--kit-color-discord: hsl(234.21deg 73.6% 61.37%);
+	--kit-color-on-discord: hsl(0deg 0% 96.86%);
+	--kit-color-buymeacoffee: hsl(51.98deg 100% 48.43%);
+	--kit-color-on-buymeacoffee: hsl(242.73deg 50% 8.63%);
+	--kit-color-npm: hsl(357.69deg 71.56% 42.75%);
+	--kit-color-on-npm: hsl(0deg 0% 96.86%);
+	--kit-color-github: hsl(0deg 0% 0%);
+	--kit-color-on-github: hsl(0deg 0% 96.86%);
+	--kit-color-bg-inverse: var(--kit-color-text);
+	--kit-color-fg-inverse: var(--kit-color-surface);
+}
+
+@import url('./_reset.scss');
+@import url(./_code.scss);
+@import url('./_fonts.scss');
+@import url('./_lapikit.scss');
+@import url('./_animations.scss');
+@import url('./_markdown.scss');
+
+@media (min-width: 767px) {
+	:root {
+		--app-spacing-x-container: 40px;
+		--app-spacing-y-container: 110px;
+	}
+}
+
+/** EFFECT **/
+.glass-background {
+	backdrop-filter: blur(15px);
+	background: rgba(255, 255, 255, 0.05) !important;
+	transition: 0.3s;
+}
+
+/** ANIMATIONS **/
+@keyframes lapinosaure-float {
+	0%,
+	100% {
+		translate: 0 0;
+	}
+	50% {
+		translate: 0 -8px;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 0.6;
+	}
+	100% {
+		transform: scale(2.5);
+		opacity: 0;
+	}
+}
+
+/** UI FONT **/
+.subtitle {
+	margin: 20px 0;
+}
+
+.accent-text {
+	color: var(--kit-color-accent) !important;
+}
+
+.muted-text {
+	color: var(--kit-color-text-muted) !important;
+}
+
+.svelte-text {
+	color: var(--kit-color-svelte) !important;
+}
+
+.npm-text {
+	color: var(--kit-color-npm) !important;
+}
+
+//TEMPS
+.homepage {
+	--home-appbar-affect-wrapper: 130px;
+
+	.wrapper {
+		display: grid;
+		max-width: var(--app-container-size-compact);
+		position: relative;
+		margin: 0 auto;
+		padding-left: 24px;
+		padding-right: 24px;
+		gap: 25px;
+	}
+
+	// h1 {
+	// 	font-size: 32px;
+	// 	line-height: 1;
+	// 	font-weight: 900;
+	// }
+
+	// h2 {
+	// 	font-size: 28px;
+	// 	letter-spacing: -0.01em;
+	// 	line-height: 1.15;
+	// 	font-weight: 900;
+	// }
+
+	// p.subtitle-h1 {
+	// 	font-size: 16px;
+	// 	font-weight: 200;
+	// }
+
+	@media (min-width: 480px) {
+		// h1 {
+		// 	font-size: 48px;
+		// }
+
+		// h2 {
+		// 	font-size: 42px;
+		// 	line-height: 1.15;
+		// }
+
+		// p.subtitle-h1 {
+		// 	font-size: 18px;
+		// }
+	}
+
+	@media (min-width: 640px) {
+		// h1 {
+		// 	font-size: 56px;
+		// }
+
+		// h2 {
+		// 	font-size: 48px;
+		// }
+
+		// p.subtitle-h1 {
+		// 	font-size: 22px;
+		// }
+	}
+
+	@media (min-width: 767px) {
+		.wrapper {
+			padding-left: 40px;
+			padding-right: 40px;
+			gap: 40px;
+		}
+	}
+}

@@ -1,4 +1,5 @@
 import { relative } from 'node:path';
+import { slugify } from '../../src/lib/utils/slugify.js';
 
 export type SourceMeta = {
 	sourcePath: string;
@@ -27,15 +28,6 @@ export function deriveSource(filePath: string, baseDir: string, urlPrefix: strin
 
 function isIndexLike(segment: string) {
 	return segment === 'index' || segment.startsWith('+');
-}
-
-function slugify(value: string) {
-	return value
-		.normalize('NFKD')
-		.replace(/[\u0300-\u036f]/g, '')
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/^-+|-+$/g, '');
 }
 
 function toPosixPath(value: string) {

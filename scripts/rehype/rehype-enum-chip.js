@@ -73,10 +73,7 @@ function jsonAttr(value) {
 /** Recursively replace ` \| ` with ` | ` in all text nodes under a cell. @param {HastNode} node */
 function stripEscapedPipes(node) {
 	if (node.type === 'text') {
-		/** @type {any} */ (node).value = (/** @type {any} */ (node).value ?? '').replace(
-			/ \\\| /g,
-			' | '
-		);
+		node.value = (node.value ?? '').replace(/ \\\| /g, ' | ');
 		return;
 	}
 	if (Array.isArray(node.children)) {
@@ -178,7 +175,7 @@ function walk(node, visitor, parent = null) {
 
 /** @param {HastNode} node @returns {string} */
 function getTextContent(node) {
-	if (node.type === 'text') return /** @type {any} */ (node).value ?? '';
+	if (node.type === 'text') return node.value ?? '';
 	if (!Array.isArray(node.children)) return '';
 	return node.children.map(getTextContent).join('');
 }

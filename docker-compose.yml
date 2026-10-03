@@ -1,0 +1,53 @@
+name: lapikit-${LAPIKIT_ENV:?LAPIKIT_ENV is required}
+
+services:
+  app:
+    image: lapikit-${LAPIKIT_ENV}:latest
+    container_name: lapikit_${LAPIKIT_ENV}
+    build:
+      context: .
+      args:
+        BUILD_ID: ${BUILD_ID:-local}
+    restart: unless-stopped
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.services.lapikit_${LAPIKIT_ENV}.loadbalancer.server.port=3000'
+
+      # HTTP -> HTTPS
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_http.rule=Host(`${LAPIKIT_HOST:?LAPIKIT_HOST is required}`)'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_http.entrypoints=web'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_http.middlewares=lapikit_${LAPIKIT_ENV}_https'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_http.service=lapikit_${LAPIKIT_ENV}'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_https.redirectscheme.scheme=https'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_https.redirectscheme.permanent=true'
+
+      # HTTPS: pages (short cache, revalidated)
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}.rule=Host(`${LAPIKIT_HOST}`)'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}.entrypoints=websecure'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}.service=lapikit_${LAPIKIT_ENV}'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}.middlewares=lapikit_${LAPIKIT_ENV}_compress,lapikit_${LAPIKIT_ENV}_headers,lapikit_${LAPIKIT_ENV}_cache'
+
+      # HTTPS: hashed assets keep the 1 year immutable cache set by SvelteKit
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_assets.rule=Host(`${LAPIKIT_HOST}`) && PathPrefix(`/_app/immutable/`)'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_assets.entrypoints=websecure'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_assets.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_assets.service=lapikit_${LAPIKIT_ENV}'
+      - 'traefik.http.routers.lapikit_${LAPIKIT_ENV}_assets.middlewares=lapikit_${LAPIKIT_ENV}_compress,lapikit_${LAPIKIT_ENV}_headers'
+
+      # Middlewares
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_compress.compress=true'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_cache.headers.customresponseheaders.Cache-Control=public, max-age=0, must-revalidate'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.stsSeconds=31536000'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.stsIncludeSubdomains=true'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.contentTypeNosniff=true'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.frameDeny=true'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.referrerPolicy=strict-origin-when-cross-origin'
+      - 'traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.customResponseHeaders.Cross-Origin-Opener-Policy=same-origin'
+      - "traefik.http.middlewares.lapikit_${LAPIKIT_ENV}_headers.headers.contentSecurityPolicy=default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; connect-src 'self' https:;"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true

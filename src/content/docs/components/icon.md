@@ -8,17 +8,22 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/icon/preview.svelte';
 	import Size from '$examples/components/icon/size.svelte';
 	import Color from '$examples/components/icon/color.svelte';
 	import Src from '$examples/components/icon/src.svelte';
+
+	import previewCode from '$examples/components/icon/preview.svelte?raw';
+	import sizeCode from '$examples/components/icon/size.svelte?raw';
+	import colorCode from '$examples/components/icon/color.svelte?raw';
+	import srcCode from '$examples/components/icon/src.svelte?raw';
 </script>
 
 The `kit:icon` component is a sizing and accessibility wrapper for icons. It supports three rendering modes: SVG component via `children`, image via `src`, or CSS icon font via `name`.
 
-<LazyRepl title="icon.svelte" presentation lang="svelte" content={() => import('$examples/components/icon/preview.svelte?raw')}>
+<LazyRepl title="icon.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -34,7 +39,7 @@ When no `size` is set, the icon inherits the font-size of its parent useful insi
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `inherits`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={() => import('$examples/components/icon/size.svelte?raw')}>
+<LazyRepl title="icon.svelte" lang="svelte" content={sizeCode}>
 <Size/>
 </LazyRepl>
 
@@ -44,7 +49,7 @@ Pass a CSS color value to `color`. It sets both `color` and `--kit-icon-color` s
 
 - **color**: `string` = `''`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={() => import('$examples/components/icon/color.svelte?raw')}>
+<LazyRepl title="icon.svelte" lang="svelte" content={colorCode}>
 <Color/>
 </LazyRepl>
 
@@ -56,7 +61,7 @@ Pass an image URL to `src`. For SVG sources, `colorMode="mask"` applies `current
 - **colorMode**: `'auto' | 'mask' | 'filter' | 'none'` = `'auto'`
 - **imgFilter**: `string` = `''`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={() => import('$examples/components/icon/src.svelte?raw')}>
+<LazyRepl title="icon.svelte" lang="svelte" content={srcCode}>
 <Src/>
 </LazyRepl>
 

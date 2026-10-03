@@ -8,16 +8,20 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/separator/preview.svelte';
 	import Orientation from '$examples/components/separator/orientation.svelte';
 	import Inset from '$examples/components/separator/inset.svelte';
+
+	import previewCode from '$examples/components/separator/preview.svelte?raw';
+	import orientationCode from '$examples/components/separator/orientation.svelte?raw';
+	import insetCode from '$examples/components/separator/inset.svelte?raw';
 </script>
 
 The `kit:separator` component renders a thin horizontal or vertical dividing line.
 
-<LazyRepl title="separator.svelte" presentation lang="svelte" content={() => import('$examples/components/separator/preview.svelte?raw')}>
+<LazyRepl title="separator.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -31,7 +35,7 @@ The `kit:separator` component renders a thin horizontal or vertical dividing lin
 
 Vertical separators are inline-flex and stretch to fill their container's height.
 
-<LazyRepl title="separator.svelte" lang="svelte" content={() => import('$examples/components/separator/orientation.svelte?raw')}>
+<LazyRepl title="separator.svelte" lang="svelte" content={orientationCode}>
 <Orientation/>
 </LazyRepl>
 
@@ -41,7 +45,7 @@ Adds a leading margin to indent the separator from the left edge useful inside l
 
 - **inset**: `boolean` = `false`
 
-<LazyRepl title="separator.svelte" lang="svelte" content={() => import('$examples/components/separator/inset.svelte?raw')}>
+<LazyRepl title="separator.svelte" lang="svelte" content={insetCode}>
 <Inset/>
 </LazyRepl>
 

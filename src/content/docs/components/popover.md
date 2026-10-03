@@ -8,17 +8,20 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/popover/preview.svelte';
 	import Position from '$examples/components/popover/position.svelte';
+
+	import previewCode from '$examples/components/popover/preview.svelte?raw';
+	import positionCode from '$examples/components/popover/position.svelte?raw';
 </script>
 
 The `kit:popover` component displays contextual content above an activator. It is useful for providing additional information, options or secondary actions without overloading the main interface.
 
 Popovers open dynamically from an activator and can be positioned in several directions: _top_, bottom, left or right. It is bindable and customizable in terms of theme, density, color, etc.
 
-<LazyRepl title="popover.svelte" presentation lang="svelte" content={() => import('$examples/components/popover/preview.svelte?raw')}>
+<LazyRepl title="popover.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -38,7 +41,7 @@ activator(model: ModelPopoverProps)
 
 - **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="popover.svelte" lang="svelte" content={() => import('$examples/components/popover/position.svelte?raw')}>
+<LazyRepl title="popover.svelte" lang="svelte" content={positionCode}>
 <Position/>
 </LazyRepl>
 

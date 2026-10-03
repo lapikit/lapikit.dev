@@ -5,7 +5,7 @@
 
 <KitDropdown closeOnClick>
 	{#snippet activator({ toggle, open }: ModelDropdownProps)}
-		<KitBtn onclick={(e) => toggle(e.currentTarget)}>
+		<KitBtn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
 			{#if open}
 				Component Open
 			{:else}

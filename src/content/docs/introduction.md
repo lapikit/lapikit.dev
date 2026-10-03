@@ -13,10 +13,14 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
   // examples
   import IntroductionLapikit from '$examples/started/introduction-lapikit.svelte';
+
+	import introductionLapikitCode from '$examples/started/introduction-lapikit.svelte?raw';
+	import sClassPreprocessorCode from '$examples/started/s-class-preprocessor.svelte?raw';
+	import sStylePreprocessorCode from '$examples/started/s-style-preprocessor.svelte?raw';
 </script>
 
 ## What is Lapikit?
@@ -35,7 +39,7 @@ All of this combined makes our Lapinausore an excellent tool for work that is si
 
 Want to learn more? Here's a quick example of how to use Lapikit
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/introduction-lapikit.svelte?raw')}>
+<LazyRepl title="lapikit.svelte" lang="svelte" content={introductionLapikitCode}>
 </LazyRepl>
 
 **Result**
@@ -83,12 +87,12 @@ Lapikit solves this problem by providing built-in styling properties for each co
 
 - **`s-class`** - conditionally apply classes, just like `class:{property}={condition}`:
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/s-class-preprocessor.svelte?raw')}>
+<LazyRepl title="lapikit.svelte" lang="svelte" content={sClassPreprocessorCode}>
 </LazyRepl>
 
 - **`s-style`** - conditionally apply inline styles, just like `style:{property}={value}`:
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={() => import('$examples/started/s-style-preprocessor.svelte?raw')}>
+<LazyRepl title="lapikit.svelte" lang="svelte" content={sStylePreprocessorCode}>
 </LazyRepl>
 
 Both props also accept a plain `string` or `string[]` when no conditions are needed.

@@ -8,18 +8,22 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/dropdown/preview.svelte';
 	import Position from '$examples/components/dropdown/position.svelte';
 	import Hover from '$examples/components/dropdown/hover.svelte';
+
+	import previewCode from '$examples/components/dropdown/preview.svelte?raw';
+	import positionCode from '$examples/components/dropdown/position.svelte?raw';
+	import hoverCode from '$examples/components/dropdown/hover.svelte?raw';
 </script>
 
 The `kit:dropdown` component displays a menu or contextual content when opened, positioned around a trigger element. It can be opened by clicking or hovering, and closes automatically according to selected parameters (**closeOnClick**, **openOnHover**, etc.).
 
 It's designed to offer great flexibility: configurable positioning, customizable appearance, and a customizable activator for total trigger control.
 
-<LazyRepl title="dropdown.svelte" presentation lang="svelte" content={() => import('$examples/components/dropdown/preview.svelte?raw')}>
+<LazyRepl title="dropdown.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -44,7 +48,7 @@ The `position` prop sets the preferred position of the dropdown panel relative t
 
 - **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('$examples/components/dropdown/position.svelte?raw')}>
+<LazyRepl title="dropdown.svelte" lang="svelte" content={positionCode}>
 <Position/>
 </LazyRepl>
 
@@ -54,7 +58,7 @@ When `openOnHover` is set, wire `handleMouse` to `onmouseenter` and `onmouseleav
 
 - **openOnHover**: `boolean` = `false`
 
-<LazyRepl title="dropdown.svelte" lang="svelte" content={() => import('$examples/components/dropdown/hover.svelte?raw')}>
+<LazyRepl title="dropdown.svelte" lang="svelte" content={hoverCode}>
 <Hover/>
 </LazyRepl>
 

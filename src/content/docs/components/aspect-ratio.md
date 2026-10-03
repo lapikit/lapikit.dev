@@ -8,17 +8,22 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/aspect-ratio/preview.svelte';
 	import Ratios from '$examples/components/aspect-ratio/ratios.svelte';
 	import Fit from '$examples/components/aspect-ratio/fit.svelte';
 	import Inline from '$examples/components/aspect-ratio/inline.svelte';
+
+	import previewCode from '$examples/components/aspect-ratio/preview.svelte?raw';
+	import ratiosCode from '$examples/components/aspect-ratio/ratios.svelte?raw';
+	import fitCode from '$examples/components/aspect-ratio/fit.svelte?raw';
+	import inlineCode from '$examples/components/aspect-ratio/inline.svelte?raw';
 </script>
 
 The `kit:aspect-ratio` component maintains a constant aspect ratio for an element, whatever its content. It is particularly useful for videos, images or any other content requiring a proportional layout. Thanks to its flexible options, it can be easily integrated into different design contexts
 
-<LazyRepl title="aspect-ratio.svelte" presentation lang="svelte" content={() => import('$examples/components/aspect-ratio/preview.svelte?raw')}>
+<LazyRepl title="aspect-ratio.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -35,7 +40,7 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 - **ratio**: `string | number` = `'16/9'`
 - **aspectRatio**: `string | number` = `'16/9'`
 
-<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('$examples/components/aspect-ratio/ratios.svelte?raw')}>
+<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={ratiosCode}>
 <Ratios/>
 </LazyRepl>
 
@@ -45,7 +50,7 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
 - **fit**: `'cover' | 'contain' | 'fill'` = `'cover'`
 
-<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('$examples/components/aspect-ratio/fit.svelte?raw')}>
+<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={fitCode}>
 <Fit/>
 </LazyRepl>
 
@@ -55,7 +60,7 @@ The `inline` property displays the component in the text flow, as an inline elem
 
 - **inline**: `boolean` = `false`
 
-<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={() => import('$examples/components/aspect-ratio/inline.svelte?raw')}>
+<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={inlineCode}>
 <Inline/>
 </LazyRepl>
 

@@ -12,8 +12,8 @@
 		toggle={accordion.toggle}
 		readOnly
 	>
-		This item is open by default and cannot be collapsed. Use <code>readOnly</code> to lock an item
-		in its current state without applying disabled styling.
+		This item is open by default and cannot be collapsed. Use <code>readOnly</code> to lock an item in
+		its current state without applying disabled styling.
 	</kit:accordion-item>
 
 	<kit:accordion-item

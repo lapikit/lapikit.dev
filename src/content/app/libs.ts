@@ -1,0 +1,80 @@
+import { nbComponents, nbHooks } from '$lib/router';
+
+// assets
+import LapikitLogo from '$lib/assets/images/lapikit.webp?h=124&format=webp';
+import MeltUI from '$lib/assets/images/libs/melt-ui.webp?h=124&format=webp';
+import ShadcnSvelte from '$lib/assets/images/libs/shadcn-svelte.webp?h=124&format=webp';
+import Skeleton from '$lib/assets/images/libs/skeleton.webp?h=124&format=webp';
+
+type TableHome = {
+	text: string;
+	subject: Array<string>;
+};
+
+type TableHomeList = {
+	title: string;
+	logo: string;
+	values: Array<Array<string | number>>;
+};
+
+export const tableHome: TableHome[] = [
+	{
+		text: 'Features',
+		subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
+	},
+	{
+		text: 'Environnements',
+		subject: [
+			'Runes support',
+			'No Tailwind dependances',
+			'Tailwind support',
+			'UnoCss support',
+			'CSS standard support',
+			'Dependencies dev/build',
+			'Eslint support'
+		]
+	},
+	{
+		text: 'Integration and support',
+		subject: ['CLI integrated', 'Full open and free', 'Release cadence']
+	}
+];
+
+export const tableHomeList: TableHomeList[] = [
+	{
+		title: 'Lapikit',
+		logo: LapikitLogo,
+		values: [
+			[nbComponents, 'yes', nbHooks],
+			['yes', 'yes', 'yes', 'yes', 'yes', '27 / 1', 'yes'],
+			['yes', 'yes', 'Bi-Monthly']
+		]
+	},
+	{
+		title: 'Skeleton',
+		logo: Skeleton,
+		values: [
+			[42, 'yes', 'no'],
+			['yes', 'no', 'yes', 'partial', 'yes', '0 / 32', 'yes'],
+			['yes', 'yes', 'Bi-Monthly']
+		]
+	},
+	{
+		title: 'Shadcn Svelte',
+		logo: ShadcnSvelte,
+		values: [
+			[62, 'yes', 2],
+			['yes', 'no', 'yes', 'no', 'yes', '25 / 4', 'yes'],
+			['yes', 'yes', 'Bi-Monthly']
+		]
+	},
+	{
+		title: 'Melt UI',
+		logo: MeltUI,
+		values: [
+			[18, 'yes', 'no'],
+			['partial', 'no', 'yes', 'partial', 'yes', '10 / 5', 'yes'],
+			['yes', 'yes', 'Monthly']
+		]
+	}
+];

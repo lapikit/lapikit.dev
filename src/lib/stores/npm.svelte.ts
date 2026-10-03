@@ -1,19 +1,5 @@
-import { SvelteDate } from 'svelte/reactivity';
-import { npm_stats_storage_key } from '$lib';
-
-const NPM_CACHE_TTL = 4 * 60 * 60 * 1000;
-
-type NpmCache = {
-	version: { latest: string; insiders: string };
-	publish: { latest: string; insiders: string };
-	downloads: string;
-	cachedAt: number;
-};
-
-function formatDownloads(n: number): string {
-	if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
-	return String(n);
-}
+import { browser } from '$app/environment';
+import type { NpmStats } from '$lib/@types';
 
 export const npmState = $state({
 	version: {
@@ -27,57 +13,29 @@ export const npmState = $state({
 	downloads: ''
 });
 
-export async function loadNpmData() {
-	const raw = localStorage.getItem(npm_stats_storage_key);
-	if (raw) {
-		const cache: NpmCache = JSON.parse(raw);
-		if (Date.now() - cache.cachedAt < NPM_CACHE_TTL) {
-			npmState.version.latest = cache.version.latest;
-			npmState.version.insiders = cache.version.insiders;
-			npmState.publish.latest = cache.publish.latest;
-			npmState.publish.insiders = cache.publish.insiders;
-			npmState.downloads = cache.downloads;
-			return;
-		}
-	}
-
-	const today = new SvelteDate().toISOString().slice(0, 10);
-	const [dlRes, packumentRes] = await Promise.all([
-		fetch(`https://api.npmjs.org/downloads/point/2025-04-19:${today}/lapikit`),
-		fetch('https://registry.npmjs.org/lapikit')
-	]);
-
-	const [dlData, packument] = await Promise.all([dlRes.json(), packumentRes.json()]);
-
-	const distTagLatest = packument['dist-tags']?.latest;
-	const distTagInsider = packument['dist-tags']?.insiders;
-
-	const versionMain = distTagLatest ? `v${distTagLatest}` : '';
-	const versionInsider = distTagInsider ? `v${distTagInsider}` : '';
-	const downloads = formatDownloads(dlData.downloads);
-
-	const publishMain = packument.time?.[distTagLatest] ?? '';
-	const publishInsider = packument.time?.[distTagInsider] ?? '';
-
-	npmState.version.latest = versionMain;
-	npmState.version.insiders = versionInsider;
-	npmState.publish.latest = publishMain;
-	npmState.publish.insiders = publishInsider;
-	npmState.downloads = downloads;
-
-	localStorage.setItem(
-		npm_stats_storage_key,
-		JSON.stringify({
-			version: {
-				latest: versionMain,
-				insiders: versionInsider
-			},
-			publish: {
-				latest: publishMain,
-				insiders: publishInsider
-			},
-			downloads,
-			cachedAt: Date.now()
-		})
-	);
+// only known values are applied: an empty answer (npm unreachable) never erases the
+// values that were rendered at build time
+export function setNpmStats(stats: NpmStats) {
+	if (stats.version.latest) npmState.version.latest = stats.version.latest;
+	if (stats.version.insiders) npmState.version.insiders = stats.version.insiders;
+	if (stats.publish.latest) npmState.publish.latest = stats.publish.latest;
+	if (stats.publish.insiders) npmState.publish.insiders = stats.publish.insiders;
+	if (stats.downloads) npmState.downloads = stats.downloads;
 }
+
+// the packument is fetched and cached by /api/npm: the browser only pulls the few fields it needs
+export async function loadNpmData() {
+	try {
+		const response = await fetch('/api/npm');
+		if (!response.ok) throw new Error(String(response.status));
+
+		setNpmStats(await response.json());
+	} catch (error) {
+		// npm stats are decorative: keep the page working if the endpoint is unreachable
+		console.warn('[npm] unable to load package stats', error);
+	}
+}
+
+// kicked off at module evaluation rather than from onMount: the request then runs alongside
+// hydration instead of waiting for it. `browser` keeps it out of SSR and prerendering.
+if (browser) void loadNpmData();

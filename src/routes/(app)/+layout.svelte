@@ -1,9 +1,18 @@
 <script lang="ts">
-	import AppBarGlobal from '$components/app-bar-global.svelte';
+	import { page } from '$app/state';
+
+	// modules
+	import FooterApp from '$lib/components/footer-app.svelte';
+	import NavbarApp from '$lib/components/navbar-app.svelte';
+	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
 
 	let { children } = $props();
 </script>
 
-<AppBarGlobal />
+<NavbarApp />
 
-{@render children()}
+<FadeTransition url={page.url.pathname}>
+	{@render children()}
+</FadeTransition>
+
+<FooterApp />

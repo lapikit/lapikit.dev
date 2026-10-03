@@ -8,7 +8,7 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/btn/preview.svelte';
 	import Variants from '$examples/components/btn/variants.svelte';
@@ -18,13 +18,22 @@ layout: 'doc_page'
 	import States from '$examples/components/btn/states.svelte';
 	import Block from '$examples/components/btn/block.svelte';
 	import AsLink from '$examples/components/btn/as-link.svelte';
+
+	import previewCode from '$examples/components/btn/preview.svelte?raw';
+	import variantsCode from '$examples/components/btn/variants.svelte?raw';
+	import sizeCode from '$examples/components/btn/size.svelte?raw';
+	import iconCode from '$examples/components/btn/icon.svelte?raw';
+	import prependAppendCode from '$examples/components/btn/prepend-append.svelte?raw';
+	import statesCode from '$examples/components/btn/states.svelte?raw';
+	import blockCode from '$examples/components/btn/block.svelte?raw';
+	import asLinkCode from '$examples/components/btn/as-link.svelte?raw';
 </script>
 
 The `kit:btn` component is a central component of Lapikit. It allows you to create buttons that are adaptable, accessible and easily customized, either via props or CSS variables.
 
 It automatically manages variants, states (`active`, `loading`, etc.), accessibility, colors, sizes, and integrates with icons or additional content (`prepend`, `append`, `load`).
 
-<LazyRepl title="button.svelte" presentation lang="svelte" content={() => import('$examples/components/btn/preview.svelte?raw')}>
+<LazyRepl title="button.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -41,7 +50,7 @@ Variants control the overall style of the button. They enable adaptation to diff
 
 - **variant**: `'filled' | 'outline' | 'text' | 'link'` = `'filled'`
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/variants.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
 </LazyRepl>
 
@@ -51,7 +60,7 @@ The `size` prop adjusts the button's height and font size. It allows you to crea
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/size.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={sizeCode}>
 <Size/>
 </LazyRepl>
 
@@ -61,7 +70,7 @@ Add `icon` to render a square button width equals height. Useful for icon-only a
 
 - **icon**: `boolean` = `false`
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/icon.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={iconCode}>
 <Icon/>
 </LazyRepl>
 
@@ -72,7 +81,7 @@ Use `prepend` and `append` to place icons or elements on either side of the labe
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/prepend-append.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={prependAppendCode}>
 <PrependAppend/>
 </LazyRepl>
 
@@ -88,7 +97,7 @@ Here are the main states available:
 
 Each state can be styled automatically via Lapikit themes or customized via CSS classes or variables.
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/states.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={statesCode}>
 <States/>
 </LazyRepl>
 
@@ -103,7 +112,7 @@ Use the `load` snippet to replace the default `...` spinner with custom content.
 - **block**: `boolean` = `false`
 - **wide**: `boolean` = `false`
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/block.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={blockCode}>
 <Block/>
 </LazyRepl>
 
@@ -113,7 +122,7 @@ Pass `href` to render the button as an `<a>` element. The `disabled` prop remove
 
 - **href**: `string | undefined` = `undefined`
 
-<LazyRepl title="button.svelte" lang="svelte" content={() => import('$examples/components/btn/as-link.svelte?raw')}>
+<LazyRepl title="button.svelte" lang="svelte" content={asLinkCode}>
 <AsLink/>
 </LazyRepl>
 

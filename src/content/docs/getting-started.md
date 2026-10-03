@@ -8,15 +8,17 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import CommandRepl from '$lib/components/command-repl.svelte';
+	import { command } from '$lib/constants';
+	import { application } from '$lib/stores/app.svelte';
 
   // examples
-  import installLapikitNPM from '$examples/config/install_lapikit-npm.txt?raw';
-  import installLapikitYarn from '$examples/config/install_lapikit-yarn.txt?raw';
-  import installLapikitBun from '$examples/config/install_lapikit-bun.txt?raw';
   import configSvelteConfig from '$examples/config/config_svelte.config.js?raw';
   import configViteConfigJS from '$examples/config/config_vite.config.js?raw';
   import configViteConfigTS from '$examples/config/config_vite.config.ts?raw';
+
+	import startYourProjectWithLapikitCode from '$examples/started/start-your-project-with-lapikit.svelte?raw';
 </script>
 
 ## Install Lapikit in your Svelte project
@@ -42,26 +44,11 @@ That said, TypeScript is recommended for a smoother developer experience, especi
 
 To install Lapikit, run the following command in your project directory:
 
-<LazyRepl
-content={{
-    'npm': {
-      code: installLapikitNPM,
-      lang: 'shell'
-    },
-    'yarn': {
-      code: installLapikitYarn,
-      lang: 'shell'
-    },
-    'bun': {
-      code: installLapikitBun,
-      lang: 'shell'
-    }
-  }}
-/>
+<CommandRepl commandkey="install-lapikit" />
 
 Once installed, run the setup CLI to automatically configure the required preprocessor:
 
-<LazyRepl lang="sh" content={"npx lapikit"} />
+<LazyRepl lang="sh" content={command[application.pkg_selected]['launch-cli']} />
 
 **Note: If you are using SvelteKit, the CLI will detect your setup automatically and apply the recommended configuration. For other setups, follow the manual configuration steps below.**
 
@@ -73,22 +60,7 @@ Configure the preprocessor manually in 3 steps:
 
 1. Install Lapikit:
 
-<LazyRepl
-content={{
-    'npm': {
-      code: installLapikitNPM,
-      lang: 'shell'
-    },
-    'yarn': {
-      code: installLapikitYarn,
-      lang: 'shell'
-    },
-    'bun': {
-      code: installLapikitBun,
-      lang: 'shell'
-    }
-  }}
-/>
+<CommandRepl commandkey="install-lapikit" />
 
 2. Update your configuration file to include the Lapikit preprocessor:
 
@@ -119,7 +91,7 @@ If you're using packages like TypeScript and eSLint in your project, we recommen
 
 You can now start using Lapikit components in your Svelte project. For example:
 
-<LazyRepl lang="svelte" title="+layout.svelte" content={() => import('$examples/started/start-your-project-with-lapikit.svelte?raw')} />
+<LazyRepl lang="svelte" title="+layout.svelte" content={startYourProjectWithLapikitCode} />
 
 ## Explore the Lapikit documentation
 

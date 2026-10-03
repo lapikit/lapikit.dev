@@ -13,7 +13,7 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
   // examples
   import SStyleComponent from '$examples/started/s-style-component.svelte';
@@ -22,6 +22,10 @@ keywords:
   import StyleThemeLight from '$examples/styles/theme-light.css?raw';
   import StyleThemeDark from '$examples/styles/theme-dark.css?raw';
   import StyleThemeSystem from '$examples/styles/theme-system.css?raw';
+
+	import overrideStyleCode from '$examples/started/override-style.css?raw';
+	import overrideStyleComponentCode from '$examples/started/override-style-component.css?raw';
+	import sStyleComponentCode from '$examples/started/s-style-component.svelte?raw';
 </script>
 
 ## Theme customization
@@ -53,7 +57,7 @@ content={{
 
 You can apply your own values directly in your stylesheet and integrate Lapikit into an existing design system **without having to rewrite the components.**
 
-<LazyRepl title="style.css" lang="css" content={() => import('$examples/started/override-style.css?raw')} />
+<LazyRepl title="style.css" lang="css" content={overrideStyleCode} />
 
 <!-- ### Dark mode support
 
@@ -108,7 +112,7 @@ Each Lapikit component uses variables prefixed with the component name (e.g. `--
 
 Example:
 
-<LazyRepl title="layout.css" lang="css" content={() => import('$examples/started/override-style-component.css?raw')} />
+<LazyRepl title="layout.css" lang="css" content={overrideStyleComponentCode} />
 
 This will apply to every instance of `<kit:btn>` across your app.
 
@@ -116,7 +120,7 @@ This approach allows you to customize a specific component without affecting the
 
 For per-instance customization, use the s-style prop directly on the component instance:
 
-<LazyRepl title="btn" lang="css" content={() => import('$examples/started/s-style-component.svelte?raw')}>
+<LazyRepl title="btn" lang="css" content={sStyleComponentCode}>
 <SStyleComponent/>
 </LazyRepl>
 

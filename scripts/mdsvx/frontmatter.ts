@@ -14,11 +14,7 @@ export function readFrontmatter(content: string): FrontmatterData {
 	return parseObject(lines, { line: 0 }, 0);
 }
 
-function parseObject(
-	lines: string[],
-	cursor: { line: number },
-	indent: number
-): FrontmatterData {
+function parseObject(lines: string[], cursor: { line: number }, indent: number): FrontmatterData {
 	const result: FrontmatterData = {};
 
 	while (cursor.line < lines.length) {
@@ -50,11 +46,7 @@ function parseObject(
 	return result;
 }
 
-function parseArray(
-	lines: string[],
-	cursor: { line: number },
-	indent: number
-): FrontmatterValue[] {
+function parseArray(lines: string[], cursor: { line: number }, indent: number): FrontmatterValue[] {
 	const result: FrontmatterValue[] = [];
 
 	while (cursor.line < lines.length) {

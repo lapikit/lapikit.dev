@@ -1,6 +1,5 @@
 <script lang="ts" module>
-	import blockquote from '$components/markdown/blockquote.svelte';
-	export { blockquote };
+	export { default as blockquote } from '$lib/components/markdown/blockquote.svelte';
 </script>
 
 <script lang="ts">
@@ -8,16 +7,17 @@
 	import { page } from '$app/state';
 	import { mount, unmount } from 'svelte';
 	import type { Snippet } from 'svelte';
-	import EnumChip from '../components/enum-chip.svelte';
+
 	import type { MarkdownHeading } from '$lib/@types';
 	import type { PageData } from '../routes/docs/[...slug]/$types';
-	import { getBreadcrumbs } from '$lib';
+	import { getBreadcrumbs } from '$lib/breadcrumbs';
 	import { useAccordion } from 'lapikit/actions';
 
 	const accordion = useAccordion();
 	// Components
-	import TableOfContent from '../components/table-of-content.svelte';
-	import Breadcrumbs from '../components/breadcrumbs.svelte';
+	import TableOfContent from '$lib/components/table-of-content.svelte';
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
+	import EnumChip from '$lib/components/docs/enum-chip.svelte';
 	import { ChevronLeft, ChevronRight, TextAlignStart } from 'lucide-svelte';
 	import { capitalize, slugify } from '$lib/utils';
 
@@ -62,34 +62,33 @@
 </script>
 
 <main>
-	<article class="kit-prose transition-lapikit" use:enhanceEnumChips>
+	<article class="markdown" use:enhanceEnumChips>
 		<header>
 			<Breadcrumbs items={breadcrumbs} />
 
+			{#if category && data?.doc?.state !== 'deprecated'}
+				<div class="markdown-section">{category}</div>
+			{/if}
+			{#if title}
+				<h1 id={slugify(title)} class="markdown-title">
+					{capitalize(title)}
+				</h1>
+			{/if}
 			{#if data?.doc?.state === 'deprecated'}
 				<kit:alert tone="warning">
 					This feature is deprecated and is no longer supported. Check out the new features and
 					improvements in the documentation.
 				</kit:alert>
-			{:else}
-				{#if category}
-					<div class="kit-prose-section">{category}</div>
-				{/if}
-				{#if title}
-					<h1 id={slugify(title)} class="kit-prose-title">
-						{capitalize(title)}
-					</h1>
-				{/if}
 			{/if}
 		</header>
 
 		{#if summary.length > 0}
-			<kit:accordion size="sm" class="kit-prose-summary">
+			<kit:accordion size="sm" class="markdown-summary">
 				<kit:accordion-item
 					index={0}
 					open={accordion.values.includes(0)}
 					toggle={accordion.toggle}
-					style="--kit-accordion-item-bg: transparent;"
+					background="transparent"
 					color="text-muted"
 				>
 					{#snippet activator()}
@@ -111,7 +110,7 @@
 
 		{#if data?.doc?.state !== 'deprecated' && (data.prevDoc || data.nextDoc)}
 			<kit:separator />
-			<footer class="mt-8 grid sm:flex sm:justify-between">
+			<footer>
 				{#if data.prevDoc}
 					<kit:btn
 						variant="text"
@@ -157,65 +156,71 @@
 	{/if}
 </main>
 
-<style>
+<style lang="scss">
 	main {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		margin: var(--lpk-page-padding-top) var(--lpk-page-padding-side) var(--lpk-page-padding-bottom);
+		margin: var(--app-spacing-y-page-top) var(--app-spacing-x-page) var(--app-spacing-y-page-bottom);
 		gap: 1rem 2rem;
-		max-width: calc(700px + var(--lpk-page-padding-side) * 2 + 20rem);
+		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
 		min-height: calc(
-			100dvh - 64px - var(--lpk-page-padding-top) - var(--lpk-page-padding-bottom) - 88px
+			100dvh - 64px - var(--app-spacing-y-page-top) - var(--app-spacing-y-page-bottom) - 88px
 		);
+
+		> aside {
+			display: none;
+		}
+
+		@media (min-width: 1260px) {
+			grid-template-columns: minmax(0, 1fr) 20rem;
+			grid-template-rows: auto 1fr;
+			align-items: start;
+
+			> aside {
+				display: flex;
+				height: 100%;
+				width: 100%;
+				position: relative;
+			}
+
+			:global(.markdown-summary) {
+				display: none;
+			}
+
+			:global(.table-of-content-wrapper) {
+				display: grid;
+				grid-template-rows: auto 1fr;
+				max-height: calc(
+					100vh - (75px + var(--app-spacing-y-page-top) + var(--app-spacing-y-page-bottom))
+				);
+				position: sticky;
+				top: var(--app-spacing-y-page-top);
+				height: fit-content;
+				width: 100%;
+
+				:global(.kit-card-content) {
+					overflow-y: auto;
+				}
+			}
+
+			@media (min-width: 1460px) {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
 	}
 
 	article {
 		width: 100%;
 	}
 
-	main > aside {
-		display: none;
-	}
+	footer {
+		margin-top: 2rem;
+		display: grid;
 
-	@media (min-width: 1260px) {
-		main {
-			grid-template-columns: minmax(0, 1fr) 20rem;
-			grid-template-rows: auto 1fr;
-			align-items: start;
-		}
-
-		main > aside {
+		@media (min-width: 640px) {
 			display: flex;
-			height: 100%;
-			width: 100%;
-			position: relative;
-		}
-
-		main :global(.kit-prose-summary) {
-			display: none;
-		}
-
-		main :global(.table-of-content-wrapper) {
-			display: grid;
-			grid-template-rows: auto 1fr;
-			max-height: calc(
-				100vh - (75px + var(--lpk-page-padding-top) + var(--lpk-page-padding-bottom))
-			);
-			position: sticky;
-			top: var(--lpk-page-padding-top);
-			height: fit-content;
-			width: 100%;
-		}
-
-		main :global(.table-of-content-wrapper .kit-card-content) {
-			overflow-y: auto;
-		}
-
-		@media (min-width: 1460px) {
-			main {
-				margin-left: auto;
-				margin-right: auto;
-			}
+			justify-content: space-between;
 		}
 	}
 </style>

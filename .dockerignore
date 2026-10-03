@@ -1,7 +1,18 @@
 node_modules
-packages/*/node_modules
-apps/*/node_modules
+# .git stays in the context: scripts/mdsvx reads the last commit date of each page
 *.log
-.vscode
-.git
 .gitignore
+.github
+.vscode
+.claude
+.codex
+
+# local build output, rebuilt in the image
+build
+.svelte-kit
+.tmp-changelog
+test-results
+reports
+
+# the image only needs .env (PUBLIC_* are baked in at build time)
+.env.*

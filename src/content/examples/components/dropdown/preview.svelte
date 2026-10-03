@@ -6,7 +6,12 @@
 
 <kit:dropdown closeOnClick>
 	{#snippet activator({ open, toggle }: ModelDropdownProps)}
-		<kit:btn variant="outline" is="button" active={open} onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
+		<kit:btn
+			variant="outline"
+			is="button"
+			active={open}
+			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+		>
 			Account
 			{#snippet append()}
 				<kit:icon size="sm"><ChevronDown /></kit:icon>

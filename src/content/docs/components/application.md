@@ -8,10 +8,13 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	// images
-	import picture from '$lib/assets/images/use-kit-app.webp';
+	import picture from '$lib/assets/images/docs/use-kit-app.webp';
+
+	import rootCode from '$examples/components/application/root.svelte?raw';
+	import withClassicImportCode from '$examples/components/application/with-classic-import.svelte?raw';
 </script>
 
 The `kit:app` component is an root layout for all component Lapikit. It acts as a global provider, initializing and centralizing everything Lapikit needs to function properly.
@@ -35,13 +38,13 @@ If you're using SvelteKit, you can rely on the layout system. Each main layout c
 
 To get started or continue your project with Lapikit, define the entry point where Lapikit components will be used. The most common approach is to initialize them directly in your project's root `+layout.svelte` file.
 
-<LazyRepl lang="svelte" content={() => import('$examples/components/application/root.svelte?raw')} />
+<LazyRepl lang="svelte" content={rootCode} />
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, you can import it the usual way with:
 
-<LazyRepl lang="svelte" content={() => import('$examples/components/application/with-classic-import.svelte?raw')} />
+<LazyRepl lang="svelte" content={withClassicImportCode} />
 
 ## API References
 

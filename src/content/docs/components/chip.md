@@ -8,7 +8,7 @@ layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
 	import Preview from '$examples/components/chip/preview.svelte';
 	import Variants from '$examples/components/chip/variants.svelte';
@@ -16,12 +16,19 @@ layout: 'doc_page'
 	import PrependAppend from '$examples/components/chip/prepend-append.svelte';
 	import States from '$examples/components/chip/states.svelte';
 	import LabelStyle from '$examples/components/chip/label-style.svelte';
+
+	import previewCode from '$examples/components/chip/preview.svelte?raw';
+	import variantsCode from '$examples/components/chip/variants.svelte?raw';
+	import sizeCode from '$examples/components/chip/size.svelte?raw';
+	import prependAppendCode from '$examples/components/chip/prepend-append.svelte?raw';
+	import statesCode from '$examples/components/chip/states.svelte?raw';
+	import labelStyleCode from '$examples/components/chip/label-style.svelte?raw';
 </script>
 
 The `kit:chip` component displays small interactive labels, perfect for representing status, categories, filters or actions. Compact, stylable and highly flexible, it can be clicked, disabled, loaded, closed or enriched with snippets.
 It supports different variants, states, densities and sizes, to suit all UI contexts. It can be used alone, in groups, or as the basis for a tag or filter system.
 
-<LazyRepl title="chip.svelte" presentation lang="svelte" content={() => import('$examples/components/chip/preview.svelte?raw')}>
+<LazyRepl title="chip.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
@@ -40,7 +47,7 @@ Shows visual variants (**filled**, **text**, **outline**, **link**) to adapt the
 
 - **variant**: `'filled' | 'outline' | 'text' | 'link` = `'filled'`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={() => import('$examples/components/chip/variants.svelte?raw')}>
+<LazyRepl title="chip.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
 </LazyRepl>
 
@@ -50,7 +57,7 @@ With `size`, adjust the chip's height and font size. From compact tags to larger
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={() => import('$examples/components/chip/size.svelte?raw')}>
+<LazyRepl title="chip.svelte" lang="svelte" content={sizeCode}>
 <Size/>
 </LazyRepl>
 
@@ -61,7 +68,7 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={() => import('$examples/components/chip/prepend-append.svelte?raw')}>
+<LazyRepl title="chip.svelte" lang="svelte" content={prependAppendCode}>
 <PrependAppend/>
 </LazyRepl>
 
@@ -73,7 +80,7 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 - **disabled**: `boolean` = `false`
 - **readonly**: `boolean` = `false`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={() => import('$examples/components/chip/states.svelte?raw')}>
+<LazyRepl title="chip.svelte" lang="svelte" content={statesCode}>
 <States/>
 </LazyRepl>
 
@@ -83,7 +90,7 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 
 - **labelStyle**: `labelStyle` = `false`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={() => import('$examples/components/chip/label-style.svelte?raw')}>
+<LazyRepl title="chip.svelte" lang="svelte" content={labelStyleCode}>
 <LabelStyle/>
 </LazyRepl>
 

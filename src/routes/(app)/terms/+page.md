@@ -39,7 +39,7 @@ However:
 - The name “**Lapikit**,” the **logo**, **the visual identity**, and the **lapikit.dev** website remain the exclusive property of their author, **Nycolaide**.
 - Any reproduction, use, or distribution of these elements without express authorization is prohibited.
 
-## Personal data & GDPR
+## Personal data and GDPR
 
 The lapikit.dev website may collect certain personal data (for example, via a contact form).
 This data is used solely for communication between the publisher and the user, and is not transferred to third parties under any circumstances.
@@ -48,7 +48,7 @@ In accordance with the General Data Protection Regulation (GDPR), you have the r
 
 To exercise these rights, you can write to: [contact@lapikit.dev](mailto:contact@lapikit.dev)
 
-### Cookies & audience measurement
+### Cookies and audience measurement
 
 The site uses:
 

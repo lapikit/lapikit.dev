@@ -1,26 +1,143 @@
-import type { NavSection } from './@types';
-
+import type { AppNavItem, NavSection } from './@types';
+import { links, urlLapikitLicense } from './constants';
 import { Container, Eraser, Puzzle, SquareFunction, ToolCase, VectorSquare } from 'lucide-svelte';
 
-import accordionImage from '$lib/assets/images/components/accordion.webp';
-import alertImage from '$lib/assets/images/components/alert.webp';
-import appbarImage from '$lib/assets/images/components/appbar.webp';
-import aspectRatioImage from '$lib/assets/images/components/aspect-ratio.webp';
-import avatarImage from '$lib/assets/images/components/avatar.webp';
-import buttonImage from '$lib/assets/images/components/button.webp';
-import cardImage from '$lib/assets/images/components/card.webp';
-import chipImage from '$lib/assets/images/components/chip.webp';
-import dialogImage from '$lib/assets/images/components/dialog.webp';
-import dropdownImage from '$lib/assets/images/components/dropdown.webp';
-import iconImage from '$lib/assets/images/components/icon.webp';
-import listImage from '$lib/assets/images/components/list.webp';
-import modalImage from '$lib/assets/images/components/modal.webp';
-import popoverImage from '$lib/assets/images/components/popover.webp';
-import separatorImage from '$lib/assets/images/components/separator.webp';
-import textfieldImage from '$lib/assets/images/components/textfield.webp';
-import toolbarImage from '$lib/assets/images/components/toolbar.webp';
-import tooltipImage from '$lib/assets/images/components/tooltip.webp';
-import applicationImage from '$lib/assets/images/components/application.webp';
+import accordionImage from '$lib/assets/images/components/accordion.webp?no-inline';
+import accordionIcon from '$lib/assets/images/components/accordion_icon.png?format=webp';
+import alertImage from '$lib/assets/images/components/alert.webp?no-inline';
+import alertIcon from '$lib/assets/images/components/alert_icon.png?format=webp';
+import appbarImage from '$lib/assets/images/components/appbar.webp?no-inline';
+import appbarIcon from '$lib/assets/images/components/appbar_icon.png?format=webp';
+import aspectRatioImage from '$lib/assets/images/components/aspect-ratio.webp?no-inline';
+import aspectRatioIcon from '$lib/assets/images/components/aspect-ratio_icon.png?format=webp';
+import avatarImage from '$lib/assets/images/components/avatar.webp?no-inline';
+import avatarIcon from '$lib/assets/images/components/avatar_icon.png?format=webp';
+import buttonImage from '$lib/assets/images/components/button.webp?no-inline';
+import buttonIcon from '$lib/assets/images/components/button_icon.png?format=webp';
+import cardImage from '$lib/assets/images/components/card.webp?no-inline';
+import cardIcon from '$lib/assets/images/components/card_icon.png?format=webp';
+import chipImage from '$lib/assets/images/components/chip.webp?no-inline';
+import chipIcon from '$lib/assets/images/components/chip_icon.png?format=webp';
+import dialogImage from '$lib/assets/images/components/dialog.webp?no-inline';
+import dialogIcon from '$lib/assets/images/components/dialog_icon.png?format=webp';
+import dropdownImage from '$lib/assets/images/components/dropdown.webp?no-inline';
+import dropdownIcon from '$lib/assets/images/components/dropdown_icon.png?format=webp';
+import iconImage from '$lib/assets/images/components/icon.webp?no-inline';
+import iconIcon from '$lib/assets/images/components/icon_icon.png?format=webp';
+import listImage from '$lib/assets/images/components/list.webp?no-inline';
+import listIcon from '$lib/assets/images/components/list_icon.png?format=webp';
+import modalImage from '$lib/assets/images/components/modal.webp?no-inline';
+import modalIcon from '$lib/assets/images/components/modal_icon.png?format=webp';
+import popoverImage from '$lib/assets/images/components/popover.webp?no-inline';
+import popoverIcon from '$lib/assets/images/components/popover_icon.png?format=webp';
+import separatorImage from '$lib/assets/images/components/separator.webp?no-inline';
+import separatorIcon from '$lib/assets/images/components/separator_icon.png?format=webp';
+import textfieldImage from '$lib/assets/images/components/textfield.webp?no-inline';
+import textfieldIcon from '$lib/assets/images/components/textfield_icon.png?format=webp';
+import toolbarImage from '$lib/assets/images/components/toolbar.webp?no-inline';
+import toolbarIcon from '$lib/assets/images/components/toolbar_icon.png?format=webp';
+import tooltipImage from '$lib/assets/images/components/tooltip.webp?no-inline';
+import tooltipIcon from '$lib/assets/images/components/tooltip_icon.png?format=webp';
+import applicationImage from '$lib/assets/images/components/application.webp?no-inline';
+import applicationIcon from '$lib/assets/images/components/application_icon.png?format=webp';
+
+const appNavigation: AppNavItem[] = [
+	{
+		label: 'quick start',
+		path: '/docs/getting-started'
+	},
+	{
+		label: 'customize',
+		path: '/docs/customize'
+	},
+	{
+		label: 'components',
+		path: '/docs/components'
+	},
+	{
+		label: 'tools',
+		path: '/docs/hooks'
+	}
+];
+
+const footerNavigation: AppNavItem[] = [
+	{
+		label: 'documentation',
+		child: [
+			{
+				label: 'quick start',
+				path: '/docs/getting-started'
+			},
+			{
+				label: 'customize',
+				path: '/docs/customize'
+			},
+			{
+				label: 'components',
+				path: '/docs/components'
+			},
+			{
+				label: 'stores and hooks',
+				path: '/docs/hooks'
+			}
+		]
+	},
+	{
+		label: 'community',
+		child: [
+			{
+				label: 'roadmap',
+				path: '/docs/roadmap'
+			}
+			// {
+			// 	label: 'contributing',
+			// 	path: 'docs/contributing'
+			// },
+			// {
+			// 	label: 'code of conduct',
+			// 	path: '/docs/code-of-conduct'
+			// }
+		]
+	},
+	{
+		label: 'resources',
+		child: [
+			{
+				label: 'support',
+				path: links['discord'].url
+			},
+			{
+				label: 'changelog',
+				path: '/docs/changelog'
+			},
+			{
+				label: links['npm'].label,
+				path: links['npm'].url
+			},
+			{
+				label: links['github'].label,
+				path: links['github'].url
+			},
+			{
+				label: 'MIT License',
+				path: urlLapikitLicense
+			}
+		]
+	},
+	{
+		label: 'policies',
+		child: [
+			{
+				label: 'terms and privacy',
+				path: '/terms'
+			},
+			{
+				label: 'cookie settings',
+				path: 'cookie-settings'
+			}
+		]
+	}
+];
 
 export const docsNavigation: NavSection[] = [
 	{
@@ -50,118 +167,156 @@ export const docsNavigation: NavSection[] = [
 				url: '/docs/components'
 			},
 			{
+				name: 'kit:app',
 				label: 'Application',
 				url: '/docs/components/application',
 				description: 'Root wrapper that initializes the Lapikit theme and global styles.',
-				image: applicationImage
+				image: applicationImage,
+				icon: applicationIcon
 			},
 			{
+				name: 'kit:accordion',
 				label: 'Accordion',
 				url: '/docs/components/accordion',
 				description: 'Collapsible sections to progressively reveal content.',
-				image: accordionImage
+				image: accordionImage,
+				icon: accordionIcon
 			},
 			{
+				name: 'kit:alert',
 				label: 'Alert',
 				url: '/docs/components/alert',
 				description: 'Contextual feedback messages for user actions.',
-				image: alertImage
+				image: alertImage,
+				icon: alertIcon
 			},
 			{
+				name: 'kit:appbar',
 				label: 'Appbar',
 				url: '/docs/components/appbar',
 				description: 'Top navigation bar with slots for branding and actions.',
-				image: appbarImage
+				image: appbarImage,
+				icon: appbarIcon
 			},
 			{
+				name: 'kit:aspect-ratio',
 				label: 'Aspect ratio',
 				url: '/docs/components/aspect-ratio',
 				description: 'Constrains content to a fixed width-to-height ratio.',
-				image: aspectRatioImage
+				image: aspectRatioImage,
+				icon: aspectRatioIcon
 			},
 			{
+				name: 'kit:avatar',
 				label: 'Avatar',
 				url: '/docs/components/avatar',
 				description: 'User profile picture with fallback initials.',
-				image: avatarImage
+				image: avatarImage,
+				icon: avatarIcon
 			},
 			{
+				name: 'kit:btn',
 				label: 'Button',
 				url: '/docs/components/button',
 				description: 'Interactive element with multiple variants and sizes.',
-				image: buttonImage
+				image: buttonImage,
+				icon: buttonIcon
 			},
 			{
+				name: 'kit:card',
 				label: 'Card',
 				url: '/docs/components/card',
 				description: 'Surface container for grouped, related content.',
-				image: cardImage
+				image: cardImage,
+				icon: cardIcon
 			},
 			{
+				name: 'kit:chip',
 				label: 'Chip',
 				url: '/docs/components/chip',
 				description: 'Compact element for tags, filters or selections.',
-				image: chipImage
+				image: chipImage,
+				icon: chipIcon
 			},
 			{
+				name: 'kit:dialog',
 				label: 'Dialog',
 				url: '/docs/components/dialog',
 				description: 'Accessible modal dialog for confirmations and forms.',
-				image: dialogImage
+				image: dialogImage,
+				icon: dialogIcon
 			},
 			{
+				name: 'kit:dropdown',
 				label: 'Dropdown',
 				url: '/docs/components/dropdown',
 				description: 'Floating menu triggered by a reference element.',
-				image: dropdownImage
+				image: dropdownImage,
+				icon: dropdownIcon
 			},
 			{
+				name: 'kit:icon',
 				label: 'Icon',
 				url: '/docs/components/icon',
 				description: 'SVG icon wrapper with size and color control.',
-				image: iconImage
+				image: iconImage,
+				icon: iconIcon
 			},
 			{
+				name: 'kit:list',
 				label: 'List',
 				url: '/docs/components/list',
 				description: 'Vertical list of items with optional leading and trailing slots.',
-				image: listImage
+				image: listImage,
+				icon: listIcon
 			},
 			{
+				name: 'kit:modal',
 				label: 'Modal',
 				url: '/docs/components/modal',
 				description: 'Full-screen overlay for focused tasks or content.',
-				image: modalImage
+				image: modalImage,
+				icon: modalIcon
 			},
 			{
+				name: 'kit:popover',
 				label: 'Popover',
 				url: '/docs/components/popover',
 				description: 'Lightweight floating panel anchored to a trigger.',
-				image: popoverImage
+				image: popoverImage,
+				icon: popoverIcon
 			},
 			{
+				name: 'kit:separator',
 				label: 'Separator',
 				url: '/docs/components/separator',
 				description: 'Visual divider between sections or list items.',
-				image: separatorImage
+				image: separatorImage,
+				icon: separatorIcon
 			},
 			{
+				name: 'kit:textfield',
 				label: 'Textfield',
 				url: '/docs/components/textfield',
 				description: 'Text input with label, helper text and validation states.',
-				image: textfieldImage
+				image: textfieldImage,
+				icon: textfieldIcon
 			},
 			{
+				name: 'kit:toolbar',
 				label: 'Toolbar',
 				url: '/docs/components/toolbar',
 				description: 'Horizontal bar grouping actions and controls.',
-				image: toolbarImage
+				image: toolbarImage,
+				icon: toolbarIcon
 			},
 			{
+				name: 'kit:tooltip',
 				label: 'Tooltip',
 				url: '/docs/components/tooltip',
 				description: 'Short contextual hint shown on hover or focus.',
-				image: tooltipImage
+				image: tooltipImage,
+				icon: tooltipIcon
 			}
 		]
 	},
@@ -204,3 +359,15 @@ export const docsNavigation: NavSection[] = [
 		]
 	}
 ];
+
+const sectionPages = (label: string) =>
+	docsNavigation.find((section) => section.label === label)?.pages ?? [];
+
+export const nbComponents = sectionPages('Components').filter((page) => page.name).length;
+export const nbHooks = sectionPages('Stores and Hooks').filter((page) => page.description).length;
+
+export const router = {
+	app: appNavigation,
+	footer: footerNavigation,
+	documentation: docsNavigation
+};
