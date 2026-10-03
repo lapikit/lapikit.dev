@@ -26,7 +26,10 @@ function magick(...args: string[]) {
 
 // 1. Square favicon.svg: same drawing, square and centered viewBox
 const svg = readFileSync(SOURCE, 'utf8');
-const viewBox = svg.match(/viewBox="([^"]+)"/)?.[1].split(/[\s,]+/).map(Number);
+const viewBox = svg
+	.match(/viewBox="([^"]+)"/)?.[1]
+	.split(/[\s,]+/)
+	.map(Number);
 if (!viewBox || viewBox.length !== 4) throw new Error(`No viewBox found in ${SOURCE}`);
 
 const [x, y, width, height] = viewBox;
