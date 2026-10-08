@@ -20,7 +20,7 @@
 
 	// states
 	let year: number = new Date().getFullYear();
-	const socials: LinkName[] = ['discord', 'github', 'npm'];
+	const socials: LinkName[] = ['instagram', 'discord', 'github', 'npm'];
 </script>
 
 <footer>

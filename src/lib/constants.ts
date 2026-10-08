@@ -10,6 +10,7 @@ import { Moon, Sun, SunMoon } from 'lucide-svelte';
 import githubIcon from '$lib/assets/icons/github.svg?raw';
 import discordIcon from '$lib/assets/icons/discord.svg?raw';
 import buymyecoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
+import instagramIcon from '$lib/assets/icons/instagram.svg?raw';
 import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
 import npmIconMono from '$lib/assets/icons/npm.svg?raw';
 import yarnIcon from '$lib/assets/icons/yarn_color.svg?raw';
@@ -77,6 +78,15 @@ export const links = {
 		_styles: {
 			color: 'on-buymeacoffee',
 			background: 'buymeacoffee'
+		}
+	},
+	instagram: {
+		label: 'instagram',
+		url: 'https://www.instagram.com/lapikit',
+		icon: instagramIcon,
+		_styles: {
+			color: 'on-instagram',
+			background: 'instagram'
 		}
 	}
 };
