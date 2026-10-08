@@ -6,7 +6,7 @@
 	{#each variant as item (item)}
 		<div class="shape-item">
 			<kit:card class="shape-card" rounded={item}>{item}</kit:card>
-			<span>--shape-{item}</span>
+			<span class="text-xs">--shape-{item}</span>
 		</div>
 	{/each}
 </div>
@@ -16,6 +16,8 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
 		gap: 1.5rem;
+		margin-top: 30px;
+		margin-bottom: 30px;
 	}
 
 	.shape-item {

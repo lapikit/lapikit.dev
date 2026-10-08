@@ -2,7 +2,7 @@
 	{#each { length: 6 }, index}
 		<div class="elevation-item">
 			<kit:card class="elevation-card" rounded="lg" elevation={String(index)}>{index}</kit:card>
-			<span>[data-elevation='{index}']</span>
+			<span class="text-xs">data-elevation='{index}'</span>
 		</div>
 	{/each}
 </div>
@@ -12,6 +12,8 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
 		gap: 1.5rem;
+		margin-top: 30px;
+		margin-bottom: 30px;
 	}
 
 	.elevation-item {
