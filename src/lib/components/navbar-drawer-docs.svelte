@@ -235,5 +235,6 @@
 
 	:global(.drawer-list-title) {
 		gap: 0.75rem !important;
+		font-weight: 600;
 	}
 </style>
