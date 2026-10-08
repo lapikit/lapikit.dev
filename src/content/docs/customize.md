@@ -136,7 +136,7 @@ For example, raise both opacities in a dark theme, where shadows are harder to s
 
 ### Shape
 
-Shape controls the corner radius of components. The scale goes from square corners to fully rounded pills, and each step is a `--kit-shape-*` CSS variable.
+Shape controls the corner radius of components. The scale goes from square corners to fully rounded pills, and each step is a `--shape-*` CSS variable.
 
 <ShapePreview/>
 
@@ -238,15 +238,15 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 
 #### Shape
 
-| Variable           | Value    | Role                        |
-| ------------------ | -------- | --------------------------- |
-| `--kit-shape-none` | `0`      | Square corners              |
-| `--kit-shape-xs`   | `4px`    | Chips, badges, small inputs |
-| `--kit-shape-sm`   | `6px`    | Buttons, inputs             |
-| `--kit-shape-md`   | `10px`   | Cards, panels               |
-| `--kit-shape-lg`   | `14px`   | Sheets, large containers    |
-| `--kit-shape-xl`   | `18px`   | Modals, dialogs             |
-| `--kit-shape-full` | `9999px` | Pills and circular elements |
+| Variable       | Value      | Role                        |
+| -------------- | ---------- | --------------------------- |
+| `--shape-none` | `0`        | Square corners              |
+| `--shape-xs`   | `0.25rem`  | Chips, badges, small inputs |
+| `--shape-sm`   | `0.375rem` | Buttons, inputs             |
+| `--shape-md`   | `0.625rem` | Cards, panels               |
+| `--shape-lg`   | `0.875rem` | Sheets, large containers    |
+| `--shape-xl`   | `1.125rem` | Modals, dialogs             |
+| `--shape-full` | `9999px`   | Pills and circular elements |
 
 #### Typography
 

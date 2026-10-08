@@ -5,7 +5,7 @@
 <div class="shape-grid">
 	{#each variant as item (item)}
 		<div class="shape-item">
-			<kit:card class="shape-card" rounded={item}>{item}</kit:card>
+			<kit:sheet class="shape-card" rounded={item}>{item}</kit:sheet>
 			<span class="text-xs">--shape-{item}</span>
 		</div>
 	{/each}

@@ -111,7 +111,7 @@
 		color: var(--kit-color-on-shell);
 		padding: 10px 14px;
 		justify-content: space-between;
-		border-radius: var(--kit-shape-lg);
+		border-radius: var(--shape-lg);
 
 		p > span {
 			margin-right: 5px;

@@ -1,7 +1,7 @@
 <div class="elevation-grid">
 	{#each { length: 6 }, index}
 		<div class="elevation-item">
-			<kit:card class="elevation-card" rounded="lg" elevation={String(index)}>{index}</kit:card>
+			<kit:sheet class="elevation-card" rounded="lg" elevation={String(index)}>{index}</kit:sheet>
 			<span class="text-xs">data-elevation='{index}'</span>
 		</div>
 	{/each}
