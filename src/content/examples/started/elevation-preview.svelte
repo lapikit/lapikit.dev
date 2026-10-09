@@ -9,14 +9,16 @@
 
 <style lang="scss">
 	.elevation-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1.5rem;
 		margin-top: 30px;
 		margin-bottom: 30px;
 	}
 
 	.elevation-item {
+		width: 8rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

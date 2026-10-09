@@ -134,7 +134,7 @@
 
 	.node-svelte {
 		padding: 22px;
-		border-radius: var(--shape-sm, 12px);
+		border-radius: var(--kit-shape-sm, 12px);
 
 		:global(picture) {
 			width: 40px;
@@ -247,7 +247,7 @@
 
 	.mockup-window {
 		width: 100%;
-		border-radius: var(--shape-sm, 12px);
+		border-radius: var(--kit-shape-sm, 12px);
 		border: 1px solid var(--kit-color-fill);
 		background-color: var(--kit-color-surface-1);
 		padding: 14px;
@@ -284,14 +284,14 @@
 			flex-shrink: 0;
 			width: 30px;
 			height: 30px;
-			border-radius: var(--shape-sm, 8px);
+			border-radius: var(--kit-shape-sm, 8px);
 			background-color: var(--kit-color-accent);
 		}
 	}
 
 	.mockup-body {
 		height: 120px;
-		border-radius: var(--shape-sm, 8px);
+		border-radius: var(--kit-shape-sm, 8px);
 		background-color: var(--kit-color-fill);
 	}
 
