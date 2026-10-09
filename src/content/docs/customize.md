@@ -31,6 +31,7 @@ keywords:
 	import ElevationPreview from '$examples/started/elevation-preview.svelte';
 	import ElevationEventsPreview from '$examples/started/elevation-events-preview.svelte';
 	import ShapePreview from '$examples/started/shape-preview.svelte';
+	import KitThemeColor from '$examples/kit-theme-color.svelte';
 </script>
 
 ## Theme customization
@@ -73,6 +74,8 @@ Our recommendation is to base your approach on how you manage themes in your exi
 ### Theme mode support
 
 Lapikit resolves its color tokens through the data-kit-theme attribute. Set it to `light` or `dark` on the element you want to theme usually `<html>`, but any container works. Because it's a plain attribute, you keep full control: toggle it from your own logic, persist the choice, or scope a dark section inside an otherwise light page with function [`useTheme()`](/docs/hooks/use-theme).
+
+<KitThemeColor/>
 
 <LazyRepl
 content={{
@@ -215,7 +218,7 @@ For per-instance customization, use the s-style prop directly on the component i
 | `--kit-color-text-subtle`   | Low-emphasis text (placeholders, hints) |
 | `--kit-color-text-disabled` | Text on disabled elements               |
 
-#### Colors (fills & lines)
+#### Colors (fills and lines)
 
 | Variable                  | Role                                                   |
 | ------------------------- | ------------------------------------------------------ |
@@ -262,7 +265,7 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 | `--kit-font-lg` | `16px`       | Emphasized body text       |
 | `--kit-font-xl` | `17px`       | Headings, titles           |
 
-#### Spacing & density
+#### Spacing and density
 
 `space` sets the base spacing unit; `density` is an additive offset applied on top of a component's computed size.
 
@@ -275,7 +278,7 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 | `--kit-density-default`     | `0px`  | Leaves component size untouched |
 | `--kit-density-comfortable` | `4px`  | Expands component size          |
 
-#### Elevation & states
+#### Elevation and states
 
 | Variable                       | Value  | Role                                 |
 | ------------------------------ | ------ | ------------------------------------ |
