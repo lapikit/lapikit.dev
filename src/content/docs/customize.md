@@ -26,6 +26,10 @@ keywords:
 	import overrideStyleCode from '$examples/started/override-style.css?raw';
 	import overrideStyleComponentCode from '$examples/started/override-style-component.css?raw';
 	import sStyleComponentCode from '$examples/started/s-style-component.svelte?raw';
+
+	// preview
+	import ElevationPreview from '$examples/started/elevation-preview.svelte';
+	import ShapePreview from '$examples/started/shape-preview.svelte';
 </script>
 
 ## Theme customization
@@ -82,7 +86,7 @@ content={{
 }}
 />
 
-### Media colorscheme support
+### Media color scheme support
 
 If you'd rather follow the operating system preference, override the tokens inside a `prefers-color-scheme` media query instead. No state to manage, no toggle to build:
 
@@ -91,6 +95,67 @@ If you'd rather follow the operating system preference, override the tokens insi
 The trade-off is that users can't switch themes from within your app the choice belongs to the system.
 
 Our recommendation is to follow whatever your project already does. If you're starting fresh, both approaches are valid: pick the attribute-based one if you plan to offer a theme switcher, and the media query if you just want to respect the user's system setting.
+
+## CSS utilities
+
+On top of colors, Lapikit ships two shared visual scales: elevation for depth and shape for corner radius. Every component uses them, so changing a token once updates your whole interface.
+
+### Elevation
+
+Elevation tells users which surfaces sit above others: a card above the page, a menu above the card, a dialog above everything. Lapikit gives you six shadow levels, from `0` (flat) to `5` (floating).
+
+<ElevationPreview/>
+
+Set the level with the `elevation` prop on any component that supports it, such as cards, buttons, chips, alerts, app bars, dropdowns and dialogs:
+
+```svelte
+<kit:card elevation="2">Product details</kit:card>
+```
+
+The elevation can change with the interaction state. Pass an object with `base`, `hover` and `active` keys to lift a surface on hover and press it down on click:
+
+```svelte
+<kit:card elevation={{ base: '1', hover: '3', active: '0' }}>Hover me</kit:card>
+```
+
+Under the hood, the prop sets `data-elevation`, `data-elevation-hover` and `data-elevation-active` attributes. The matching styles are global and loaded by [`<kit:app>`](/docs/essentials/initialize-application), so you can also put these attributes on your own HTML elements:
+
+```svelte
+<aside data-elevation="1">Custom panel</aside>
+```
+
+Each level combines two `box-shadow` layers: a short, sharp shadow and a wider, softer ambient one. Both are built from the same three tokens, so you can restyle every shadow in your app from one place:
+
+| Variable                       | Default | Role                                      |
+| ------------------------------ | ------- | ----------------------------------------- |
+| `--kit-color-shadow`           | theme   | Base color of every shadow                |
+| `--kit-shadow-opacity`         | `30%`   | Strength of the short, sharp shadow layer |
+| `--kit-shadow-ambient-opacity` | `15%`   | Strength of the wide, soft ambient layer  |
+
+For example, raise both opacities in a dark theme, where shadows are harder to see on dark surfaces.
+
+### Shape
+
+Shape controls the corner radius of components. The scale goes from square corners to fully rounded pills, and each step is a `--shape-*` CSS variable.
+
+<ShapePreview/>
+
+Pick a step with the `rounded` prop:
+
+```svelte
+<kit:btn rounded="sm">Save</kit:btn>
+<kit:card rounded="xl">Large rounded card</kit:card>
+```
+
+Use the same tokens in your own styles so your custom elements match the components:
+
+```css
+.promo-banner {
+	border-radius: var(--kit-shape-lg);
+}
+```
+
+To change the overall look of your app, override the scale in `:root`. Lower values give a sharp, technical interface and higher values a softer, friendlier one, without touching any component. The full list of values is in the [shape reference](#shape-2) below.
 
 ## Component styling
 
@@ -173,15 +238,15 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 
 #### Shape
 
-| Variable           | Value    | Role                        |
-| ------------------ | -------- | --------------------------- |
-| `--kit-shape-none` | `0`      | Square corners              |
-| `--kit-shape-xs`   | `4px`    | Chips, badges, small inputs |
-| `--kit-shape-sm`   | `6px`    | Buttons, inputs             |
-| `--kit-shape-md`   | `10px`   | Cards, panels               |
-| `--kit-shape-lg`   | `14px`   | Sheets, large containers    |
-| `--kit-shape-xl`   | `18px`   | Modals, dialogs             |
-| `--kit-shape-full` | `9999px` | Pills and circular elements |
+| Variable       | Value      | Role                        |
+| -------------- | ---------- | --------------------------- |
+| `--shape-none` | `0`        | Square corners              |
+| `--shape-xs`   | `0.25rem`  | Chips, badges, small inputs |
+| `--shape-sm`   | `0.375rem` | Buttons, inputs             |
+| `--shape-md`   | `0.625rem` | Cards, panels               |
+| `--shape-lg`   | `0.875rem` | Sheets, large containers    |
+| `--shape-xl`   | `1.125rem` | Modals, dialogs             |
+| `--shape-full` | `9999px`   | Pills and circular elements |
 
 #### Typography
 

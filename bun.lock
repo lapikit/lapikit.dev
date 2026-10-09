@@ -25,7 +25,7 @@
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-svelte": "^3.20.0",
         "globals": "^17.7.0",
-        "lapikit": "^0.0.0-insiders.cf7cdca",
+        "lapikit": "^0.0.0-insiders.ebcc81f",
         "mdsvex": "^0.12.7",
         "prettier": "^3.9.3",
         "prettier-plugin-svelte": "^3.5.2",
@@ -518,7 +518,7 @@
 
     "known-css-properties": ["known-css-properties@0.37.0", "", {}, "sha512-JCDrsP4Z1Sb9JwG0aJ8Eo2r7k4Ou5MwmThS/6lcIe1ICyb7UBJKGRIUUdqc2ASdE/42lgz6zFUnzAIhtXnBVrQ=="],
 
-    "lapikit": ["lapikit@0.0.0-insiders.cf7cdca", "", { "peerDependencies": { "svelte": "^5.0.0" }, "bin": { "lapikit": "bin/index.js" } }, "sha512-sBRaMWht3sW+3HJi6ZZBPFCKOOBIl1tArRPPz8IOcCLqM1lYRls818uWrxu0BFpbsJ1Nj2Hyh5trH+UE76C0fg=="],
+    "lapikit": ["lapikit@0.0.0-insiders.ebcc81f", "", { "peerDependencies": { "svelte": "^5.0.0" }, "bin": { "lapikit": "bin/index.js" } }, "sha512-LV7eIO2qLo9qz/CUMEL1laISAZqmFRCJxlZR41607ZUGFbyWCrpk++ae6Lz0s3kr2ngC9WIo41Fzny2BeATt1g=="],
 
     "levn": ["levn@0.4.1", "", { "dependencies": { "prelude-ls": "^1.2.1", "type-check": "~0.4.0" } }, "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ=="],
 

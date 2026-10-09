@@ -84,7 +84,7 @@
 				rounded="lg"
 				background="accent"
 				color="on-accent"
-				href="/docs"
+				href="/docs/introduction"
 			>
 				{#snippet prepend()}
 					<kit:icon>

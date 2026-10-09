@@ -63,6 +63,6 @@ Lapikit provides two dedicated props - `s-class` and `s-style` - for binding cla
 - **`s-style`** accepts a CSS property object to apply inline styles dynamically.
 - Both also have a directive shorthand (`s-class_*`, `s-style_*`) for per-property control.
 
-Consult the [Class & Style binding](/docs/essentials/class-and-style) for a complete reference that includes all forms and examples
+Consult the [Class and Style binding](/docs/essentials/class-and-style) for a complete reference that includes all forms and examples
 
 Now that the template syntax is configured, you can start exploring Lapikit components and build interfaces more quickly inside your Svelte or SvelteKit projects.
