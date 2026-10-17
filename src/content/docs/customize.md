@@ -274,9 +274,11 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 | `--kit-space-compact`       | `2px`  | Base unit, compact scale        |
 | `--kit-space-default`       | `4px`  | Base unit, default scale        |
 | `--kit-space-comfortable`   | `6px`  | Base unit, comfortable scale    |
+| `--kit-density-dense`       | `-8px` | Shrinks component size          |
 | `--kit-density-compact`     | `-4px` | Shrinks component size          |
 | `--kit-density-default`     | `0px`  | Leaves component size untouched |
 | `--kit-density-comfortable` | `4px`  | Expands component size          |
+| `--kit-density-spacious`    | `8px`  | Expands component size          |
 
 #### Elevation and states
 
