@@ -3,7 +3,7 @@
 </script>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-	<kit:card color="primary">
+	<kit:card color="accent">
 		<kit:card-title>Palette</kit:card-title>
 		<kit:card-content>A color of the palette, the text color follows.</kit:card-content>
 	</kit:card>
@@ -15,7 +15,7 @@
 
 	<kit:card
 		variant="outline"
-		color={{ base: 'primary', active: 'success' }}
+		color={{ base: 'accent', active: 'success' }}
 		active={selected}
 		onclick={() => (selected = !selected)}
 	>
