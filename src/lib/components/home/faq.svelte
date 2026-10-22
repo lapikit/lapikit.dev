@@ -31,7 +31,7 @@
 			{#each faqContact as item, index (index)}
 				<kit:list-item href={item.url}>
 					{#snippet prepend()}
-						<kit:avatar size="xs" background={item.background}>
+						<kit:avatar size="xs" color={item.background}>
 							<kit:icon color={item.color}>
 								{#if typeof item.icon === 'string'}
 									{@html item.icon}

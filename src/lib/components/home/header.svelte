@@ -49,7 +49,7 @@
 				s-style_margin="0 auto"
 			>
 				{#snippet prepend()}
-					<kit:chip size="sm" rounded="md" background="accent" color="on-accent"> New </kit:chip>
+					<kit:chip size="sm" rounded="md" color="accent"> New </kit:chip>
 				{/snippet}
 
 				{version}

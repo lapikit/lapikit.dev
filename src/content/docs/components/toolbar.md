@@ -33,14 +33,16 @@ The `kit:toolbar` component creates a flexible, customizable toolbar, ideal for 
 
 ### Variants
 
-Demonstrates the use of visual variants: **filled**, **outline**, **text** or **dash** to adapt the style of the bar to different UI contexts.
+Visual variants adapt the style of the bar to different UI contexts.
 
-- **filled** (default): solid background.
-- **outline**: visible border.
-- **text** : transparent background.
-- **dash** : dashed border.
+- **filled** (default): surface background (`--kit-color-surface-1`), or the `color` with a contrasted text.
+- **tonal**: light tint of the color, text in the color.
+- **outline**: transparent background with a border.
+- **surface**: very light tint of the color with a soft border.
+- **text**: transparent background, text in the color.
 
-- **variant**: `'filled' | 'outline' | 'text' | 'dash'` = `'filled'`
+- **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
+- **color**: `string | false | { base?, active? }` = `undefined`
 
 <LazyRepl title="toolbar.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
@@ -48,13 +50,9 @@ Demonstrates the use of visual variants: **filled**, **outline**, **text** or **
 
 ### density
 
-Shows how to adjust density (`compact`, `comfortable`, `default`) to manage vertical spacing within the bar. Useful for optimizing the interface according to available space.
+`density` adjusts the height and the padding of the bar, from `-4px` (`dense`) to `+4px` (`spacious`). Useful for optimizing the interface according to available space.
 
-- **compact**: reduced margins and padding, useful for lists or tables.
-- **comfortable**: a visual compromise.
-- **default**: standard spacing.
-
-- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
+- **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
 <LazyRepl title="toolbar.svelte" lang="svelte" content={densityCode}>
 <Density/>
@@ -86,21 +84,22 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:toolbar`**
 
-| props         | type                                                       | description                                     | default        |
-| ------------- | ---------------------------------------------------------- | ----------------------------------------------- | -------------- |
-| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element. | `null`         |
-| is            | `'div' \| 'header' \| 'nav'`                               | HTML element to render.                         | `'div'`        |
-| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on toolbar.                      |                |
-| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on toolbar.                         |                |
-| variant       | `'filled' \| 'outline' \| 'text'`                          | Visual style.                                   | `'filled'`     |
-| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Field size.                                     | `'md'`         |
-| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding and size density.                       | `'default'`    |
-| orientation   | `'horizontal' \| 'vertical'`                               | Layout direction.                               | `'horizontal'` |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                  | `'md'`         |
-| classContent  | `string \| string[]`                                       | Class(es) applied to the inner wrapper.         |                |
-| color         | `string`                                                   | Foreground color override (`--kit-toolbar-fg`). |                |
-| background    | `string`                                                   | Background color override (`--kit-toolbar-bg`). |                |
-| children      | `Snippet`                                                  | Toolbar content.                                |                |
-| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                              |                |
+| props         | type                                                               | description                                              | default        |
+| ------------- | ------------------------------------------------------------------ | -------------------------------------------------------- | -------------- |
+| ref $bindable | `HTMLElement`                                                      | Bindable reference to the rendered DOM element.          | `null`         |
+| is            | `'div' \| 'header' \| 'nav'`                                       | HTML element to render.                                  | `'div'`        |
+| class         | `string \| array \| object`                                        | Classes of the toolbar, with the rules of Svelte (clsx). |                |
+| style         | `string`                                                           | Inline style of the toolbar.                             |                |
+| s-class       | `string \| array \| object`                                        | Classes of the toolbar, merged with `class`.             |                |
+| s-style       | `object`                                                           | Inline style as an object of property / value pairs.     |                |
+| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text'`          | Visual style.                                            | `'filled'`     |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                             | Height, padding, gap and font size (in `rem`).           | `'md'`         |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Height and padding, from `-4px` to `+4px`.               | `'default'`    |
+| orientation   | `'horizontal' \| 'vertical'`                                       | Layout direction, also set as `aria-orientation`.        | `'horizontal'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                           | `'md'`         |
+| classContent  | `string \| array \| object`                                        | Classes of the inner wrapper (clsx).                     |                |
+| color         | `string \| false \| { base?, active? }`                            | Toolbar color, its use depends on the variant.           |                |
+| children      | `Snippet`                                                          | Toolbar content.                                         |                |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                       |                |
 
 `kit:toolbar` is the right place to group [Buttons](/docs/components/button), [Chips](/docs/components/chip) and [Icons](/docs/components/icon) in a coherent space.

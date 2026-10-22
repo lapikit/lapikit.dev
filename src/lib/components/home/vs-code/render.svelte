@@ -58,7 +58,7 @@
 			<h2>Build your interface with less code</h2>
 
 			<div>
-				<kit:btn rounded="lg" background="warning" color="on-warning"> Get started </kit:btn>
+				<kit:btn rounded="lg" color="warning"> Get started </kit:btn>
 				<kit:btn variant="outline" rounded="lg" color="warning"> Learn more </kit:btn>
 			</div>
 		</div>

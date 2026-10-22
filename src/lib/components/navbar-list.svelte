@@ -109,6 +109,7 @@
 					active={open}
 					onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
 					icon
+					color={{ active: 'surface-2' }}
 				>
 					<kit:icon><Ellipsis /></kit:icon>
 				</kit:btn>

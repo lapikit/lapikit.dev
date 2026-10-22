@@ -27,7 +27,7 @@ The `kit:aspect-ratio` component maintains a constant aspect ratio for an elemen
 <Preview/>
 </LazyRepl>
 
-`kit:aspect-ratio` sets `aspect-ratio` on the container and stretches child media elements (`img`, `video`, `iframe`, `canvas`, `svg`) to fill it via `object-fit`. The `ratio` prop accepts a number, a `/`-separated string (`"16/9"`), or a `:`-separated string (`"16:9"`). It falls back to `16/9` if the value is invalid.
+`kit:aspect-ratio` sets `aspect-ratio` on the container and stretches its direct child media elements (`img`, `video`, `iframe`, `canvas`, `svg`, `picture`) to fill it via `object-fit`. A media deeper in the content (an icon over a video...) keeps its own size. The `ratio` prop accepts a number, a `/`-separated string (`"16/9"`), or a `:`-separated string (`"16:9"`). It falls back to `16/9` if the value is invalid.
 
 > `aspectRatio` is an alias for `ratio` both are equivalent.
 
@@ -74,16 +74,18 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:aspect-ratio`**
 
-| props         | type                                                    | description                                          | default   |
-| ------------- | ------------------------------------------------------- | ---------------------------------------------------- | --------- |
-| ref $bindable | `HTMLElement`                                           | Bindable reference to the rendered DOM element.      | `null`    |
-| is            | `'div' \| 'span' \| 'figure' \| 'section' \| 'article'` | HTML element to render.                              | `'div'`   |
-| s-class       | `'string' \| 'array' \| 'object'`                       | Sets className on aspect-ratio.                      |           |
-| s-style       | `'string' \| 'array' \| 'object'`                       | Sets styles on aspect-ratio.                         |           |
-| ratio         | `string \| number`                                      | Aspect ratio. Accepts `"w/h"`, `"w:h"`, or a number. | `16/9`    |
-| aspectRatio   | `string \| number`                                      | Alias for `ratio`.                                   | `16/9`    |
-| fit           | `'cover' \| 'contain' \| 'fill'`                        | `object-fit` applied to child media elements.        | `'cover'` |
-| inline        | `boolean`                                               | Renders as `inline-block` with `width: auto`.        | `false`   |
-| children      | `Snippet`                                               | Content to constrain.                                |           |
+| props         | type                                                    | description                                                          | default   |
+| ------------- | ------------------------------------------------------- | -------------------------------------------------------------------- | --------- |
+| ref $bindable | `HTMLElement`                                           | Bindable reference to the rendered DOM element.                      | `null`    |
+| is            | `'div' \| 'span' \| 'figure' \| 'section' \| 'article'` | HTML element to render.                                              | `'div'`   |
+| class         | `string \| array \| object`                             | Classes of the aspect-ratio, with the rules of Svelte (clsx).        |           |
+| style         | `string`                                                | Inline style of the aspect-ratio, can override `--kit-aspect-ratio`. |           |
+| s-class       | `string \| array \| object`                             | Classes of the aspect-ratio, merged with `class`.                    |           |
+| s-style       | `object`                                                | Inline style as an object of property / value pairs.                 |           |
+| ratio         | `string \| number`                                      | Aspect ratio. Accepts `"w/h"`, `"w:h"`, or a number.                 | `16/9`    |
+| aspectRatio   | `string \| number`                                      | Alias for `ratio`.                                                   | `16/9`    |
+| fit           | `'cover' \| 'contain' \| 'fill'`                        | `object-fit` applied to child media elements.                        | `'cover'` |
+| inline        | `boolean`                                               | Renders as `inline-block` with `width: auto`.                        | `false`   |
+| children      | `Snippet`                                               | Content to constrain.                                                |           |
 
 Use `kit:aspect-ratio` on [Icon](/docs/components/icon) to visually structure your media components in a [Card](/docs/components/card).

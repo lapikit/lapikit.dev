@@ -14,6 +14,145 @@ keywords:
 
 Learn how to migrate from older Lapikit versions to the latest release.
 
+## Guide to migrating to version 0.7.4
+
+Version **0.7.4** of Lapikit moves every component to a common structure: the same color system, the same densities, sizes in `rem` and `class` with the rules of Svelte. Most of your code keeps working, but some props, values and CSS variables change. This guide lists them, from the most common to the rarest.
+
+### `background` is removed, use `color`
+
+The `background` prop is removed from every component (`kit:btn`, `kit:card`, `kit:chip`, `kit:alert`, `kit:avatar`, `kit:list`, `kit:toolbar`, `kit:appbar`, `kit:accordion`, `kit:dialog`, `kit:modal`, `kit:textfield`, `kit:tooltip`, `kit:popover`, `kit:dropdown`). `color` now gives the main color of the component, and the text color follows it: the `on-` color of the palette, or a contrasted color for any CSS color.
+
+**Before (≤ 0.7.3)**
+
+```svelte
+<kit:btn background="accent" color="on-accent">Get started</kit:btn>
+```
+
+**After (≥ 0.7.4)**
+
+```svelte
+<kit:btn color="accent">Get started</kit:btn>
+```
+
+For a transparent background, use a variant instead: `variant="text"` (or `outline`, `plain`...).
+
+### `color` is the main color, not the text color
+
+Before 0.7.4, `color` only changed the text color. It is now the main color of the component, used according to the variant:
+
+- `filled`: the background, with a contrasted text;
+- `tonal` and `surface`: a tint of the color, with the text in the color;
+- `outline`: the border and the text;
+- `text` and `plain`: the text.
+
+**Before (≤ 0.7.3)**
+
+```svelte
+<!-- a surface button with a primary text -->
+<kit:btn color="primary">Save</kit:btn>
+```
+
+**After (≥ 0.7.4)**
+
+```svelte
+<!-- a primary button with a contrasted text -->
+<kit:btn color="primary">Save</kit:btn>
+
+<!-- to keep a colored text -->
+<kit:btn variant="text" color="primary">Save</kit:btn>
+```
+
+`color` also accepts `{ base, active }` for the active state, and `false` for no color: `color={isActive && 'accent'}`.
+
+### `kit:alert`: `tone` and role
+
+`tone` keeps working and gives the default color of the alert; `color` overrides it. The role now follows the tone: `role="alert"` for `warning` and `error`, `role="status"` for `default`, `info` and `success`, so the screen readers no longer interrupt the user for a simple information. Pass `role="alert"` to keep the previous behavior.
+
+### Densities
+
+Every component now has five densities: `dense`, `compact`, `default`, `comfortable` and `spacious`. The value `none` is removed. It had no style: by accident, it removed the padding and the minimal height of the component. Use `dense` for a tighter component, or set the size variables to `0` to keep the previous rendering.
+
+**Before (≤ 0.7.3)**
+
+```svelte
+<kit:list density="none">...</kit:list>
+```
+
+**After (≥ 0.7.4)**
+
+```svelte
+<!-- a tighter list -->
+<kit:list density="dense">...</kit:list>
+
+<!-- the same rendering as density="none": no padding, no minimal height -->
+<kit:list s-style={{ '--kit-list-item-h': '0px', '--kit-list-item-p': '0px' }}>...</kit:list>
+```
+
+`default` keeps the same rendering. `compact` and `comfortable` of `kit:list` and `kit:modal` change slightly: they now use the same offsets as the other components (`-4px` and `+4px`).
+
+### Sizes in `rem`
+
+The sizes of the components and the `--kit-font-*` variables are now in `rem`: they follow the font size set in the browser. With the default font size (16px), the rendering is the same, with two exceptions:
+
+- the text of `kit:btn` follows its `size` (`14px` in `md`) instead of inheriting the font size of its parent;
+- the icons in `kit:btn` and `kit:chip` now follow the size of the button.
+
+### Renamed CSS variables and classes
+
+If you style the internal parts of a component, update these names:
+
+| component       | before                                                     | after                                                    |
+| --------------- | ---------------------------------------------------------- | -------------------------------------------------------- |
+| `kit:textfield` | `--kit-textfield-*`                                        | `--kit-field-*`                                          |
+| `kit:textfield` | `.kit-textfield__field`                                    | `.kit-field__box`                                        |
+| `kit:popover`   | `--kit-popover-bg`, `--kit-popover-fg`                     | `--kit-popover-content-bg`, `--kit-popover-content-fg`   |
+| `kit:dropdown`  | `--kit-dropdown-bg`, `--kit-dropdown-fg`                   | `--kit-dropdown-content-bg`, `--kit-dropdown-content-fg` |
+| `kit:tooltip`   | `.kit-tooltip__content` in a `.kit-tooltip` wrapper        | `.kit-tooltip` (no wrapper)                              |
+| `kit:separator` | `--kit-separator-top-width`, `--kit-separator-right-width` | `--kit-separator-thickness`                              |
+| every component | `--kit-*-hover-bg`, `--kit-*-active-bg`, `--kit-*-bd`      | `--kit-*-hover`, `--kit-*-active`, `--kit-*-border`      |
+
+To change the color of a component globally, prefer its color variable: it keeps the contrast and the states.
+
+```css
+.kit-btn {
+	--kit-btn-color: hsl(262 80% 50%);
+}
+```
+
+The default values of the variables now have a zero specificity: a simple selector is enough to override them, see [Customize](/docs/customize).
+
+### `class` and `s-class`
+
+`class` and `s-class` now accept a string, an array or an object, with the rules of Svelte (clsx), on every component. In the object form of `s-class`, a string value no longer replaces the class name: `s-class={{ theme: 'dark' }}` gives the class `theme`. To get the class `dark`, use an array: `s-class={['dark']}`, or a condition: `s-class={{ dark: isDark }}`.
+
+On `kit:tooltip`, `class` and `s-class` both go on the tooltip (before, `s-class` went on its trigger).
+
+### `kit:textfield` attributes go on the input
+
+The attributes of an input (`required`, `pattern`, `oninput`, `onchange`, `aria-label`...) now go on the `<input>`, like on a native input. Before, only `id`, `name`, `autocomplete` and `inputmode` reached it. `class`, `style`, `s-class` and `s-style` stay on the field. If you passed an attribute meant for the wrapper (a `data-*` attribute for your tests, for example), it is now on the input.
+
+`kit:textfield` is now built on the new [Field](/docs/components/field) component, which you can use to wrap your own controls.
+
+### `kit:tooltip`, `kit:popover` and `kit:dropdown`
+
+These components now use the Popover API: they are displayed in the top layer of the page, above every element, so a `z-index` is no longer needed. `kit:popover` and `kit:dropdown` follow their activator when the page scrolls instead of closing, and close with `Escape`.
+
+### `kit:toolbar`
+
+`variant` and `orientation` no longer accept an object (a remain of the breakpoints, removed in 0.5): use a single value.
+
+### Migration steps summary to 0.7.4
+
+1. Replace `background` with `color`, and remove the `on-*` colors that came with it.
+2. Check the components where `color` was used alone: add `variant="text"` to keep a colored text.
+3. Replace `density="none"` with `density="dense"`, or with the size variables set to `0` to keep the same rendering.
+4. Rename the CSS variables and classes listed above in your styles.
+5. Replace `s-class={{ name: 'value' }}` with an array or a condition (`s-class={{ value: true }}`).
+6. Check the attributes passed to `kit:textfield`, and the `role` of your alerts.
+7. Restart your dev server.
+
+---
+
 ## Guide to migrating from version from 0.2.x to 0.5
 
 Version **0.5** of Lapikit introduces several significant changes related to the preprocessor, component syntax, and styles are loaded. This guide outlines each of these changes and provides detailed instructions for updating your configuration.

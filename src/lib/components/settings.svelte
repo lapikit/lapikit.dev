@@ -42,7 +42,7 @@
 		</kit:btn>
 	{/snippet}
 
-	<kit:list density="none">
+	<kit:list s-style={{ '--kit-list-item-h': '0px', '--kit-list-item-p': '0px' }}>
 		<kit:list-item>
 			{#each themeList as [key, values] (key)}
 				{@const Icon = values?.icon}
@@ -59,7 +59,7 @@
 		</kit:list-item>
 	</kit:list>
 	<kit:separator />
-	<kit:list background="surface">
+	<kit:list color="surface">
 		<kit:list-item>
 			<p class="text-sm">Package</p>
 			<kit:dropdown closeOnClick>

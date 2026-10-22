@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Bold, Italic, Underline } from 'lucide-svelte';
-	const densities = ['compact', 'default', 'comfortable'] as const;
+	const densities = ['dense', 'compact', 'default', 'comfortable', 'spacious'] as const;
 </script>
 
 <div style="display: flex; flex-direction: column; gap: 1rem;">

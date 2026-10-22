@@ -68,6 +68,8 @@ Closes the dropdown automatically when any element inside the panel is clicked.
 
 - **closeOnClick**: `boolean` = `false`
 
+> The dropdown menu is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its activator when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
@@ -78,21 +80,22 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:dropdown`**
 
-| props         | type                                                       | description                                           | default     |
-| ------------- | ---------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.       | `null`      |
-| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on dropdown.                           |             |
-| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on dropdown.                              |             |
-| position      | `'top' \| 'bottom' \| 'left' \| 'right'`                   | Preferred position relative to the activator.         | `'bottom'`  |
-| openOnHover   | `boolean`                                                  | Opens on mouse enter wire `handleMouse` on activator. | `false`     |
-| closeOnClick  | `boolean`                                                  | Closes when content inside the panel is clicked.      | `false`     |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' `               | Border radius of the floating panel.                  |             |
-| color         | `string`                                                   | Foreground color override (`--kit-dropdown-fg`).      |             |
-| background    | `string`                                                   | Background color override (`--kit-dropdown-bg`).      |             |
-| activator     | `Snippet<[model, handleMouse]>`                            | Trigger element. Receives model and mouse handler.    |             |
-| children      | `Snippet`                                                  | Floating panel content.                               |             |
-| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Height and horizontal padding.                        | `'default'` |
-| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                    |             |
+| props         | type                                                               | description                                                               | default     |
+| ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                      | Bindable reference to the rendered DOM element.                           | `null`      |
+| class         | `string \| array \| object`                                        | Classes of the dropdown, with the rules of Svelte (clsx).                 |             |
+| style         | `string`                                                           | Inline style of the dropdown.                                             |             |
+| s-class       | `string \| array \| object`                                        | Classes of the dropdown, merged with `class`.                             |             |
+| s-style       | `object`                                                           | Inline style as an object of property / value pairs.                      |             |
+| position      | `'top' \| 'bottom' \| 'left' \| 'right'`                           | Preferred position relative to the activator.                             | `'bottom'`  |
+| openOnHover   | `boolean`                                                          | Opens on mouse enter wire `handleMouse` on activator.                     | `false`     |
+| closeOnClick  | `boolean`                                                          | Closes when content inside the panel is clicked.                          | `false`     |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                                            | `'md'`      |
+| color         | `string \| false \| { base?, active? }`                            | Background color, the text follows its `on-` color or a contrasted color. |             |
+| activator     | `Snippet<[model, handleMouse]>`                                    | Trigger element. Receives model and mouse handler.                        |             |
+| children      | `Snippet`                                                          | Floating panel content.                                                   |             |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Padding, from `-4px` to `+4px`.                                           | `'default'` |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                                        |             |
 
 **ModelDropdownProps**
 

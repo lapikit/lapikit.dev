@@ -1,1 +1,1 @@
-<kit:btn s-style={{ '--kit-btn-bg': 'orange' }}>Hello !</kit:btn>
+<kit:btn color="orange" s-style={{ '--kit-btn-radius': '999px' }}>Hello !</kit:btn>

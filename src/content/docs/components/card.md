@@ -78,7 +78,7 @@ The `kit:card` component is a versatile container used to group together informa
 
 ### Colors
 
-`color` accepts a color of the palette (`primary`, `success`...) or any CSS color. With a palette color, the text color follows its `on-` color; otherwise a contrasted color is computed.
+`color` accepts a color of the palette (`accent`, `success`...) or any CSS color. With a palette color, the text color follows its `on-` color; otherwise a contrasted color is computed.
 
 Pass an object to use another color when the card is `active`.
 

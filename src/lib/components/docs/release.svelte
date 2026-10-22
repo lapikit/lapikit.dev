@@ -11,16 +11,14 @@
 		{
 			key: 'main',
 			label: 'main',
-			background: 'info',
-			color: 'on-info',
+			color: 'info',
 			version: npmState.version.latest || '-',
 			publish: npmState.publish.latest
 		},
 		{
 			key: 'insider',
 			label: 'insiders',
-			background: 'warning',
-			color: 'on-warning',
+			color: 'warning',
 			version: npmState.version.insiders?.replace('v0.0.0-', '') || '-',
 			publish: npmState.publish.insiders
 		}
@@ -49,7 +47,7 @@
 		{#each releases as release (release.key)}
 			<kit:list-item class="release-item">
 				{#snippet prepend()}
-					<kit:chip size="sm" background={release.background} color={release.color}>
+					<kit:chip size="sm" color={release.color}>
 						{#snippet prepend()}
 							<kit:icon size="xs">
 								<GitMerge />

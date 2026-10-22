@@ -295,6 +295,14 @@ export const docsNavigation: NavSection[] = [
 				icon: separatorIcon
 			},
 			{
+				name: 'kit:field',
+				label: 'Field',
+				url: '/docs/components/field',
+				description: 'Base of the form fields, wraps any control.',
+				image: textfieldImage,
+				icon: textfieldIcon
+			},
+			{
 				name: 'kit:textfield',
 				label: 'Textfield',
 				url: '/docs/components/textfield',

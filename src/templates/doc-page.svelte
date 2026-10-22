@@ -88,7 +88,7 @@
 					index={0}
 					open={accordion.values.includes(0)}
 					toggle={accordion.toggle}
-					background="transparent"
+					s-style_--kit-accordion-item-bg="transparent"
 					color="text-muted"
 				>
 					{#snippet activator()}

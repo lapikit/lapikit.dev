@@ -33,9 +33,16 @@ The `kit:appbar` is an essential component for structuring an application's head
 
 ### Base
 
-The `variant` prop controls the background and border style.
+The `variant` prop controls the background and border style, `color` gives the color.
 
-- **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
+- **filled** (default): surface background (`--kit-color-surface-1`), or the `color` with a contrasted text.
+- **tonal**: light tint of the color, text in the color.
+- **outline**: transparent background with a border.
+- **surface**: very light tint of the color with a soft border.
+- **text**: transparent background, text in the color.
+
+- **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
+- **color**: `string | false | { base?, active? }` = `undefined`
 
 <LazyRepl title="appbar.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
@@ -43,9 +50,9 @@ The `variant` prop controls the background and border style.
 
 ### Density
 
-`density` adjusts the height and horizontal padding of the appbar.
+`density` adjusts the height and the padding of the appbar, from `-4px` (`dense`) to `+4px` (`spacious`).
 
-- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
+- **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
 <LazyRepl title="appbar.svelte" lang="svelte" content={densityCode}>
 <Density/>
@@ -55,7 +62,7 @@ The `variant` prop controls the background and border style.
 
 `classContent` applies a CSS class to the inner content wrapper. Use it to constrain the max-width of the content while the appbar background spans the full width.
 
-- **classContent**: `string | string[]` = `''`
+- **classContent**: `string | array | object` = `undefined`
 
 <LazyRepl title="appbar.svelte" lang="svelte" content={classContentCode}>
 <ClassContent/>
@@ -71,20 +78,21 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:appbar`**
 
-| props         | type                                                       | description                                     | default     |
-| ------------- | ---------------------------------------------------------- | ----------------------------------------------- | ----------- |
-| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element. | `null`      |
-| is            | `'div' \| 'header' \| 'nav'`                               | HTML element to render.                         | `'header'`  |
-| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on appbar.                       |             |
-| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on appbar.                          |             |
-| variant       | `'filled' \| 'outline' \| 'text'`                          | Visual style of the appbar.                     | `'filled'`  |
-| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Height and horizontal padding.                  | `'default'` |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                  | `0`         |
-| color         | `string`                                                   | Foreground color override (`--kit-appbar-fg`).  |             |
-| background    | `string`                                                   | Background color override (`--kit-appbar-bg`).  |             |
-| classContent  | `string \| string[]`                                       | Class(es) applied to the inner content wrapper. |             |
-| children      | `Snippet`                                                  | Appbar content.                                 |             |
-| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                              |             |
-| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Sizing height, font and gap for appbar.         | `'md'`      |
+| props         | type                                                               | description                                             | default     |
+| ------------- | ------------------------------------------------------------------ | ------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                      | Bindable reference to the rendered DOM element.         | `null`      |
+| is            | `'div' \| 'header' \| 'nav'`                                       | HTML element to render.                                 | `'header'`  |
+| class         | `string \| array \| object`                                        | Classes of the appbar, with the rules of Svelte (clsx). |             |
+| style         | `string`                                                           | Inline style of the appbar.                             |             |
+| s-class       | `string \| array \| object`                                        | Classes of the appbar, merged with `class`.             |             |
+| s-style       | `object`                                                           | Inline style as an object of property / value pairs.    |             |
+| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text'`          | Visual style of the appbar.                             | `'filled'`  |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Height and padding, from `-4px` to `+4px`.              | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                          | `0`         |
+| color         | `string \| false \| { base?, active? }`                            | Appbar color, its use depends on the variant.           |             |
+| classContent  | `string \| array \| object`                                        | Classes of the inner content wrapper (clsx).            |             |
+| children      | `Snippet`                                                          | Appbar content.                                         |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                      |             |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                             | Sizing height, font and gap for appbar.                 | `'md'`      |
 
 An effective `kit:appbar` goes well with [Dropdown](/docs/components/dropdown) for menus and [Avatars](/docs/components/avatar) for identification.
