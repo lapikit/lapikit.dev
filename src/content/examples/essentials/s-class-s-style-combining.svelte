@@ -7,9 +7,9 @@
 <kit:btn
 	variant="filled"
 	s-class={['my-btn', { active: isActive }]}
-	s-class_theme={`--${theme}`}
+	class:theme={`--${theme}`}
 	s-style={{ 'border-radius': '99px' }}
-	s-style_--kit-accent={accentColor}
+	style:--kit-accent={accentColor}
 	onclick={() => (isActive = !isActive)}
 >
 	Toggle
