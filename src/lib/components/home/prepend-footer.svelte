@@ -33,19 +33,13 @@
 	/>
 
 	<div>
-		<kit:btn
-			size="lg"
-			rounded="lg"
-			href="/docs/getting-started"
-			background="accent"
-			color="on-accent"
-		>
+		<kit:btn size="lg" rounded="lg" href="/docs/getting-started" color="accent">
 			Quick start
 			{#snippet append()}
 				<ChevronRight />
 			{/snippet}
 		</kit:btn>
-		<kit:btn size="lg" rounded="lg" variant="outline" href="/docs/components" color="text-on-dark">
+		<kit:btn size="lg" rounded="lg" variant="outline" href="/docs/components" color="surface">
 			All components
 		</kit:btn>
 	</div>

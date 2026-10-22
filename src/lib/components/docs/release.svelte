@@ -29,10 +29,10 @@
 
 <kit:card
 	class="release-card"
-	background="surface-2"
+	color="surface-2"
 	density="comfortable"
 	elevation="3"
-	s-style_color="text"
+	// s-style_color="text"
 	s-style_border="2px solid var(--kit-color-accent)"
 >
 	<kit:card-title>

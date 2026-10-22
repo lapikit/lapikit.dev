@@ -10,12 +10,7 @@
 </div>
 
 <div class="toggle" class:on-fade={!showFullTable}>
-	<kit:btn
-		onclick={() => (showFullTable = !showFullTable)}
-		rounded="lg"
-		color="surface"
-		background="text"
-	>
+	<kit:btn onclick={() => (showFullTable = !showFullTable)} rounded="lg" color="text">
 		{#if showFullTable}
 			Show less
 		{:else}

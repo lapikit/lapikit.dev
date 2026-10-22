@@ -115,6 +115,7 @@
 					<kit:btn
 						variant="text"
 						size="sm"
+						density="compact"
 						href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}
 					>
 						{#snippet prepend()}

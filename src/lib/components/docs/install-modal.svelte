@@ -36,7 +36,7 @@
 				variant="text"
 				active={displayMode === 'cli'}
 				onclick={() => (displayMode = 'cli')}
-				color={displayMode === 'cli' && 'accent'}
+				color={displayMode === 'cli' ? 'accent' : ''}
 			>
 				CLI
 			</kit:btn>
@@ -44,7 +44,7 @@
 				variant="text"
 				active={displayMode === 'manual'}
 				onclick={() => (displayMode = 'manual')}
-				color={displayMode === 'manual' && 'accent'}
+				color={displayMode === 'manual' ? 'accent' : ''}
 			>
 				Manual
 			</kit:btn>
@@ -148,7 +148,7 @@
 				More details
 			</kit:btn>
 			<kit:spacer />
-			<kit:btn onclick={() => (open = false)} background="accent" color="fg-inverse">Close</kit:btn>
+			<kit:btn onclick={() => (open = false)} color="bg-inverse">Close</kit:btn>
 		</kit:card-actions>
 	</kit:card>
 </kit:modal>

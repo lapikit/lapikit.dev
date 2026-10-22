@@ -19,7 +19,7 @@
 	} = $props();
 </script>
 
-<kit:card class="home-repl" s-class_home-repl-left={left} background="surface-2">
+<kit:card class="home-repl" s-class_home-repl-left={left} color="surface-2">
 	<kit:card-actions>
 		<kit:spacer />
 

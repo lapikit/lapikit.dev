@@ -42,9 +42,7 @@
 			{#if version}
 				<kit:chip size="sm" rounded="sm" s-style_--kit-chip-p="2px">
 					{#snippet prepend()}
-						<kit:chip size="xs" rounded="xs" background="accent" color="on-accent">
-							Current
-						</kit:chip>
+						<kit:chip size="xs" rounded="xs" color="accent"> Current </kit:chip>
 					{/snippet}
 
 					{version}

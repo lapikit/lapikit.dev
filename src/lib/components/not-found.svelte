@@ -78,7 +78,7 @@
 	{/if}
 
 	<div class="actions">
-		<kit:btn density="comfortable" rounded="lg" background="accent" color="on-accent" href="/">
+		<kit:btn density="comfortable" rounded="lg" color="accent" href="/">
 			{#snippet prepend()}
 				<kit:icon>
 					<ArrowLeft />

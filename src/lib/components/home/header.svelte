@@ -79,13 +79,7 @@
 		</p>
 
 		<div class="headline_actions">
-			<kit:btn
-				density="comfortable"
-				rounded="lg"
-				background="accent"
-				color="on-accent"
-				href="/docs/introduction"
-			>
+			<kit:btn density="comfortable" rounded="lg" color="accent" href="/docs/introduction">
 				{#snippet prepend()}
 					<kit:icon>
 						<Rocket />
@@ -97,7 +91,7 @@
 				density="comfortable"
 				rounded="lg"
 				color="accent"
-				background="on-accent"
+				variant="surface"
 				href="/docs/getting-started"
 			>
 				{#snippet prepend()}
