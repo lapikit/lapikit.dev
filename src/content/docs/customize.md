@@ -280,16 +280,16 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 
 `space` sets the base spacing unit; `density` is an additive offset applied on top of a component's computed size.
 
-| Variable                    | Value  | Role                            |
-| --------------------------- | ------ | ------------------------------- |
-| `--kit-space-compact`       | `2px`  | Base unit, compact scale        |
-| `--kit-space-default`       | `4px`  | Base unit, default scale        |
-| `--kit-space-comfortable`   | `6px`  | Base unit, comfortable scale    |
-| `--kit-density-dense`       | `-8px` | Shrinks component size          |
-| `--kit-density-compact`     | `-4px` | Shrinks component size          |
-| `--kit-density-default`     | `0px`  | Leaves component size untouched |
-| `--kit-density-comfortable` | `4px`  | Expands component size          |
-| `--kit-density-spacious`    | `8px`  | Expands component size          |
+| Variable                    | Value             | Role                            |
+| --------------------------- | ----------------- | ------------------------------- |
+| `--kit-space-compact`       | `0.125rem` (2px)  | Base unit, compact scale        |
+| `--kit-space-default`       | `0.25rem` (4px)   | Base unit, default scale        |
+| `--kit-space-comfortable`   | `0.375rem` (6px)  | Base unit, comfortable scale    |
+| `--kit-density-dense`       | `-0.5rem` (-8px)  | Shrinks component size          |
+| `--kit-density-compact`     | `-0.25rem` (-4px) | Shrinks component size          |
+| `--kit-density-default`     | `0rem` (0px)      | Leaves component size untouched |
+| `--kit-density-comfortable` | `0.25rem` (4px)   | Expands component size          |
+| `--kit-density-spacious`    | `0.5rem` (8px)    | Expands component size          |
 
 #### Elevation and states
 

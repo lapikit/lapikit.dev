@@ -11,7 +11,12 @@
 		dirty={country !== ''}
 		onclear={() => (country = '')}
 	>
-		{#snippet children(control)}
+		{#snippet children(control: {
+			id: string;
+			'aria-describedby': string | undefined;
+			'aria-invalid': true | undefined;
+			disabled: boolean;
+		})}
 			<select
 				{...control}
 				bind:value={country}

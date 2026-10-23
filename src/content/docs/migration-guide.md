@@ -18,6 +18,14 @@ Learn how to migrate from older Lapikit versions to the latest release.
 
 Version **0.7.4** of Lapikit moves every component to a common structure: the same color system, the same densities, sizes in `rem` and `class` with the rules of Svelte. Most of your code keeps working, but some props, values and CSS variables change. This guide lists them, from the most common to the rarest.
 
+### Svelte 5.20 or later
+
+Lapikit 0.7.4 needs **Svelte 5.20 or later** (`peerDependencies`: `svelte@^5.20.0`): the components use `$props.id()` to give the same ids on the server and the client. Update Svelte if your project uses an older version:
+
+```bash
+npm install svelte@latest
+```
+
 ### `background` is removed, use `color`
 
 The `background` prop is removed from every component (`kit:btn`, `kit:card`, `kit:chip`, `kit:alert`, `kit:avatar`, `kit:list`, `kit:toolbar`, `kit:appbar`, `kit:accordion`, `kit:dialog`, `kit:modal`, `kit:textfield`, `kit:tooltip`, `kit:popover`, `kit:dropdown`). `color` now gives the main color of the component, and the text color follows it: the `on-` color of the palette, or a contrasted color for any CSS color.
@@ -143,13 +151,14 @@ These components now use the Popover API: they are displayed in the top layer of
 
 ### Migration steps summary to 0.7.4
 
-1. Replace `background` with `color`, and remove the `on-*` colors that came with it.
-2. Check the components where `color` was used alone: add `variant="text"` to keep a colored text.
-3. Replace `density="none"` with `density="dense"`, or with the size variables set to `0` to keep the same rendering.
-4. Rename the CSS variables and classes listed above in your styles.
-5. Replace `s-class={{ name: 'value' }}` with an array or a condition (`s-class={{ value: true }}`).
-6. Check the attributes passed to `kit:textfield`, and the `role` of your alerts.
-7. Restart your dev server.
+1. Update Svelte to 5.20 or later.
+2. Replace `background` with `color`, and remove the `on-*` colors that came with it.
+3. Check the components where `color` was used alone: add `variant="text"` to keep a colored text.
+4. Replace `density="none"` with `density="dense"`, or with the size variables set to `0` to keep the same rendering.
+5. Rename the CSS variables and classes listed above in your styles.
+6. Replace `s-class={{ name: 'value' }}` with an array or a condition (`s-class={{ value: true }}`).
+7. Check the attributes passed to `kit:textfield`, and the `role` of your alerts.
+8. Restart your dev server.
 
 ---
 
