@@ -31,8 +31,10 @@ The `kit:avatar` component is used to display images, icons or initials represen
 
 `kit:avatar` has two rendering modes:
 
-- **Label mode** - when `label` is set, the text is displayed uppercase and centered. `size` and `density` scale the avatar in this mode.
-- **Image mode** - when `children` is provided instead, the content (typically an `<img>`) fills the circle. `size` and `density` have no effect in this mode.
+- **Label mode** - when `label` is set, the text is displayed uppercase and centered, its font size follows `size`.
+- **Image mode** - when `children` is provided instead, the content fills the avatar: a direct child `<img>` covers it.
+
+`size` and `density` set the diameter in both modes. `color` sets the background, the text follows its `on-` color or a contrasted color.
 
 ## Examples of avatar
 
@@ -66,9 +68,9 @@ Controls the diameter and font size in label mode.
 
 ### density
 
-Scales the diameter by a multiplier on top of `size`, in label mode only.
+Adjusts the diameter on top of `size`, from `-4px` (`dense`) to `+4px` (`spacious`).
 
-- **density**: `'compact' | 'default' | 'comfortable'` = `'default'`
+- **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
 <LazyRepl title="avatar.svelte" lang="svelte" content={densityCode}>
 <Density/>
@@ -84,18 +86,19 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:avatar`**
 
-| props         | type                                                       | description                                             | default     |
-| ------------- | ---------------------------------------------------------- | ------------------------------------------------------- | ----------- |
-| ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.         | `null`      |
-| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on avatar.                               |             |
-| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on avatar.                                  |             |
-| label         | `string`                                                   | Text displayed inside the avatar (uppercased).          |             |
-| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Diameter and font size. Label mode only.                | `'md'`      |
-| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Size multiplier applied on top of `size`. Label only.   | `'default'` |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`      | Border radius.                                          | `'full'`    |
-| children      | `Snippet`                                                  | Content when `label` is not set (typically an `<img>`). |             |
-| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                      |             |
-| color         | `string`                                                   | Foreground color override (`--kit-avatar-fg`).          |             |
-| background    | `string`                                                   | Background color override (`--kit-avatar-bg`).          |             |
+| props         | type                                                               | description                                                               | default     |
+| ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                      | Bindable reference to the rendered DOM element.                           | `null`      |
+| class         | `string \| array \| object`                                        | Classes of the avatar, with the rules of Svelte (clsx).                   |             |
+| style         | `string`                                                           | Inline style of the avatar.                                               |             |
+| s-class       | `string \| array \| object`                                        | Classes of the avatar, merged with `class`.                               |             |
+| s-style       | `object`                                                           | Inline style as an object of property / value pairs.                      |             |
+| label         | `string`                                                           | Text displayed inside the avatar (uppercased).                            |             |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                             | Diameter (`2rem` to `4rem`) and font size of the label.                   | `'md'`      |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Diameter from `-4px` to `+4px` on top of `size`.                          | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                                            | `'full'`    |
+| children      | `Snippet`                                                          | Content when `label` is not set (typically an `<img>`).                   |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                                        |             |
+| color         | `string \| false \| { base?, active? }`                            | Background color, the text follows its `on-` color or a contrasted color. |             |
 
 Associate `kit:avatar` with user [Cards](/docs/components/card) or [Chips](/docs/components/chip) to display roles or status.

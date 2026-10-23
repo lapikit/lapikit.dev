@@ -31,19 +31,24 @@ Instead of reinventing textfield logic, Lapikit Textfield enables you to focus o
 <Preview/>
 </LazyRepl>
 
-`kit:textfield` wraps a native `<input>` inside a styled container. It uses a grid layout to slot `prepend`/`append` (outside the field) and `prependInner`/`appendInner` (inside the field border). The `value` prop is bindable.
+`kit:textfield` is a [Field](/docs/components/field) with a native `<input>`: the field slots `prepend`/`append` (outside the box) and `prependInner`/`appendInner` (inside the box). The `value` prop is bindable.
+
+The attributes of an input (`required`, `pattern`, `oninput`, `onchange`, `aria-label`...) go on the `<input>`, like on a native input. `class`, `style`, `s-class` and `s-style` stay on the field.
 
 ## Examples of textfield
 
 ### Variants
 
-Shows visual variants of the textfield: **outlined**, **filled**, or **text** to match different design systems and UI contexts.
+Visual variants match different design systems and UI contexts.
 
-- **filled** (default): solid background.
-- **outline**: visible border.
-- **text** : transparent background.
+- **filled** (default): surface background (`--kit-color-surface-2`), or the `color` with a contrasted text.
+- **tonal**: light tint of the color, text in the color.
+- **outline**: transparent background with a border.
+- **surface**: very light tint of the color with a soft border.
+- **text**: transparent background with a line under the input.
 
-- **variant**: `'filled' | 'outline' | 'text'` = `'filled'`
+- **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
+- **color**: `string | false | { base?, active? }` = `undefined`
 
 <LazyRepl title="textfield.svelte" lang="svelte" content={variantsCode}>
 <Variants/>
@@ -57,8 +62,8 @@ Show helper text or validation errors below the field. The message is visible on
 - **errorMessage**: `string` => Message shown when `error` is `true`.
 - **error**: `boolean` => Activates the error state (red border + message).
 - **persistentMessage**: `boolean` => Always shows the message (not only on focus).
-- **counter**: `string` => Shows character count. Use with `max` for limit.
-- **max**: `string` => Maximum character count.
+- **counter**: `boolean` => Shows the character count. Use with `max` for a limit.
+- **max**: `number` => Maximum character count.
 
 <LazyRepl title="textfield.svelte" lang="svelte" content={messageCode}>
 <Message/>
@@ -98,44 +103,43 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:textfield`**
 
-| props             | type                                                       | description                                        | default     |
-| ----------------- | ---------------------------------------------------------- | -------------------------------------------------- | ----------- |
-| ref $bindable     | `HTMLElement`                                              | Bindable reference to the rendered DOM element.    | `null`      |
-| s-class           | `'string' \| 'array' \| 'object'`                          | Sets className on textfield.                       |             |
-| s-style           | `'string' \| 'array' \| 'object'`                          | Sets styles on textfield.                          |             |
-| value $bindable   | `string \| number`                                         | Input value.                                       |             |
-| type              | `'text' \| 'email' \| 'password' \| 'number'`              | Input type.                                        | `'text'`    |
-| placeholder       | `string`                                                   | Placeholder text.                                  |             |
-| variant           | `'filled' \| 'outline' \| 'text'`                          | Visual style.                                      | `'filled'`  |
-| size              | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                     | Field size.                                        | `'md'`      |
-| density           | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding density.                                   | `'default'` |
-| rounded           | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Border radius.                                     | `'md'`      |
-| error             | `boolean`                                                  | Activates error state.                             | `false`     |
-| errorMessage      | `string`                                                   | Message shown when `error` is `true`.              |             |
-| message           | `string`                                                   | Helper text below the field.                       |             |
-| messagePrefix     | `string`                                                   | Leading text in the message row.                   |             |
-| messageSuffix     | `string`                                                   | Trailing text in the message row.                  |             |
-| persistentMessage | `boolean`                                                  | Always shows the message, not only on focus.       | `false`     |
-| counter           | `boolean`                                                  | Shows character counter.                           | `false`     |
-| min               | `number`                                                   | Minimum character count.                           |             |
-| max               | `number`                                                   | Maximum character count.                           |             |
-| clearable         | `boolean`                                                  | Shows a clear button when the field has a value.   | `false`     |
-| persistentClear   | `boolean`                                                  | Always shows the clear button.                     | `false`     |
-| disabled          | `boolean`                                                  | Disables the input.                                | `false`     |
-| readonly          | `boolean`                                                  | Makes the input read-only.                         | `false`     |
-| hideSpinButtons   | `boolean`                                                  | Hides the spin buttons on `type="number"` inputs.  | `false`     |
-| prefix            | `string`                                                   | Static text before the input value.                |             |
-| suffix            | `string`                                                   | Static text after the input value.                 |             |
-| name              | `string`                                                   | Input `name` attribute.                            |             |
-| id                | `string`                                                   | Input `id` attribute.                              |             |
-| autocomplete      | `string`                                                   | Input `autocomplete` attribute.                    |             |
-| inputmode         | `string`                                                   | Input `inputmode` attribute.                       |             |
-| color             | `string`                                                   | Foreground color override (`--kit-textfield-fg`).  |             |
-| background        | `string`                                                   | Background color override (`--kit-textfield-bg`).  |             |
-| prepend           | `Snippet`                                                  | Content outside the field, before it.              |             |
-| append            | `Snippet`                                                  | Content outside the field, after it.               |             |
-| prependInner      | `Snippet`                                                  | Content inside the field border, before the input. |             |
-| appendInner       | `Snippet`                                                  | Content inside the field border, after the input.  |             |
-| elevation         | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                                 |             |
+| props             | type                                                                        | description                                                                  | default     |
+| ----------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------- |
+| ref $bindable     | `HTMLElement`                                                               | Bindable reference to the rendered DOM element.                              | `null`      |
+| class             | `string \| array \| object`                                                 | Classes of the field, with the rules of Svelte (clsx).                       |             |
+| style             | `string`                                                                    | Inline style of the field.                                                   |             |
+| s-class           | `string \| array \| object`                                                 | Classes of the field, merged with `class`.                                   |             |
+| s-style           | `object`                                                                    | Inline style as an object of property / value pairs.                         |             |
+| value $bindable   | `string \| number`                                                          | Input value.                                                                 |             |
+| type              | `'text' \| 'email' \| 'password' \| 'number' \| 'search' \| 'tel' \| 'url'` | Input type.                                                                  | `'text'`    |
+| placeholder       | `string`                                                                    | Placeholder text.                                                            |             |
+| variant           | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text'`                   | Visual style.                                                                | `'filled'`  |
+| size              | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                      | Height, padding, font and icon size (in `rem`).                              | `'md'`      |
+| density           | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'`          | Height and padding, from `-4px` to `+4px`.                                   | `'default'` |
+| rounded           | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                       | Border radius.                                                               | `'md'`      |
+| error             | `boolean`                                                                   | Activates error state.                                                       | `false`     |
+| errorMessage      | `string`                                                                    | Message shown when `error` is `true`.                                        |             |
+| message           | `string`                                                                    | Helper text below the field.                                                 |             |
+| messagePrefix     | `string`                                                                    | Leading text in the message row.                                             |             |
+| messageSuffix     | `string`                                                                    | Trailing text in the message row.                                            |             |
+| persistentMessage | `boolean`                                                                   | Always shows the message, not only on focus.                                 | `false`     |
+| counter           | `boolean`                                                                   | Shows character counter.                                                     | `false`     |
+| min               | `number`                                                                    | Minimum character count.                                                     |             |
+| max               | `number`                                                                    | Maximum character count.                                                     |             |
+| clearable         | `boolean`                                                                   | Shows a clear button when the field has a value.                             | `false`     |
+| persistentClear   | `boolean`                                                                   | Always shows the clear button.                                               | `false`     |
+| disabled          | `boolean`                                                                   | Disables the input.                                                          | `false`     |
+| readonly          | `boolean`                                                                   | Makes the input read-only.                                                   | `false`     |
+| hideSpinButtons   | `boolean`                                                                   | Hides the spin buttons on `type="number"` inputs.                            | `false`     |
+| prefix            | `string`                                                                    | Static text before the input value.                                          |             |
+| suffix            | `string`                                                                    | Static text after the input value.                                           |             |
+| id                | `string`                                                                    | Input `id` attribute, generated when empty.                                  |             |
+| ...attributes     | `HTMLInputAttributes`                                                       | The other attributes go on the `<input>` (`name`, `required`, `oninput`...). |             |
+| color             | `string \| false \| { base?, active? }`                                     | Color of the field, its use depends on the variant.                          |             |
+| prepend           | `Snippet`                                                                   | Content outside the field, before it.                                        |             |
+| append            | `Snippet`                                                                   | Content outside the field, after it.                                         |             |
+| prependInner      | `Snippet`                                                                   | Content inside the field border, before the input.                           |             |
+| appendInner       | `Snippet`                                                                   | Content inside the field border, after the input.                            |             |
+| elevation         | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                  | Add shadow effect.                                                           |             |
 
 `kit:textfield` works great with Form validation and can be enhanced with [Icons](/docs/components/icon) and [Buttons](/docs/components/button) using snippets.

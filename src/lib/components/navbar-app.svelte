@@ -54,8 +54,7 @@
 			target="_blank"
 			class="h-xs"
 			density="compact"
-			color={links['discord']._styles.color}
-			background={links['discord']._styles.background}
+			color={links['discord']._styles.background}
 		>
 			{#snippet prepend()}
 				<kit:icon>

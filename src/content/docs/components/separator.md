@@ -25,7 +25,7 @@ The `kit:separator` component renders a thin horizontal or vertical dividing lin
 <Preview/>
 </LazyRepl>
 
-`kit:separator` renders as `<hr>` by default. It sets `role="separator"` and `aria-orientation` automatically. The color and opacity are token-based and can be overridden per-instance.
+`kit:separator` renders as `<hr>` by default, which is a separator natively; with `is="div"` it sets `role="separator"`. `aria-orientation` is set automatically. The color (`--kit-color-border`) and the thickness can be overridden per-instance with `color` and `thickness`, or globally with the `--kit-separator-color` and `--kit-separator-thickness` variables.
 
 ## Examples of separator
 
@@ -59,15 +59,17 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:separator`**
 
-| props         | type                              | description                                      | default        |
-| ------------- | --------------------------------- | ------------------------------------------------ | -------------- |
-| ref $bindable | `HTMLElement`                     | Bindable reference to the rendered DOM element.  | `null`         |
-| is            | `'div' \| 'hr'`                   | HTML element to render.                          | `'hr'`         |
-| s-class       | `'string' \| 'array' \| 'object'` | Sets className on separator.                     |                |
-| s-style       | `'string' \| 'array' \| 'object'` | Sets styles on separator.                        |                |
-| orientation   | `'horizontal' \| 'vertical'`      | Direction of the separator.                      | `'horizontal'` |
-| inset         | `boolean`                         | Adds a leading indent.                           | `false`        |
-| thickness     | `string \| number`                | Border width override (px number or CSS string). |                |
-| color         | `string`                          | Color override (`--kit-separator-color`).        |                |
+| props         | type                         | description                                                                | default        |
+| ------------- | ---------------------------- | -------------------------------------------------------------------------- | -------------- |
+| ref $bindable | `HTMLElement`                | Bindable reference to the rendered DOM element.                            | `null`         |
+| is            | `'div' \| 'hr'`              | HTML element to render.                                                    | `'hr'`         |
+| class         | `string \| array \| object`  | Classes of the separator, with the rules of Svelte (clsx).                 |                |
+| style         | `string`                     | Inline style of the separator.                                             |                |
+| s-class       | `string \| array \| object`  | Classes of the separator, merged with `class`.                             |                |
+| s-style       | `object`                     | Inline style as an object of property / value pairs.                       |                |
+| orientation   | `'horizontal' \| 'vertical'` | Direction of the separator.                                                | `'horizontal'` |
+| inset         | `boolean`                    | Adds a leading indent.                                                     | `false`        |
+| thickness     | `string \| number`           | Border width: a number in px or a CSS width (`--kit-separator-thickness`). | `'thin'`       |
+| color         | `string \| false`            | A color of the palette or any CSS color (`--kit-separator-color`).         |                |
 
 To organize your data, combine Separators with [List](/docs/components/list) for greater legibility.

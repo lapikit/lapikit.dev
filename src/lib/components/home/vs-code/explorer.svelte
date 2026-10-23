@@ -85,13 +85,21 @@
 			view: 'vite.config.ts'
 		}
 	];
+
+	// the same steps as the vs-indent-* classes of the code
+	const indentSteps = [0, 8, 20, 36, 52, 68, 84];
+	const indent = (level: number) => `${indentSteps[level] ?? 0}px`;
 </script>
 
-<kit:list density="none" rounded="0">
+<kit:list
+	variant="text"
+	rounded="0"
+	s-style={{ '--kit-list-item-h': '0px', '--kit-list-item-p': '0px', '--kit-list-item-gap': '4px' }}
+>
 	{#each treemap as item, index (index)}
 		{#if item.view}
 			<kit:list-item
-				s-class_vs-indent-={String(item.indentation)}
+				s-style_padding-inline-start={indent(item.indentation)}
 				s-style_background-color={item.view === view ? 'var(--kit-color-vs-active)' : 'transparent'}
 				s-style_border-radius="4px"
 				s-style_font-size="12px"
@@ -124,7 +132,7 @@
 			</kit:list-item>
 		{:else}
 			<kit:list-item
-				s-class_vs-indent-={String(item.indentation)}
+				s-style_padding-inline-start={indent(item.indentation)}
 				s-style_background-color="transparent"
 				s-style_border-radius="4px"
 				s-style_font-size="12px"

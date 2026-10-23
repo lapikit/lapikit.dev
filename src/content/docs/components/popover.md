@@ -45,6 +45,8 @@ activator(model: ModelPopoverProps)
 <Position/>
 </LazyRepl>
 
+> The popover is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its activator when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
@@ -55,20 +57,21 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:popover`**
 
-| props          | type                                                       | description                                     | default     |
-| -------------- | ---------------------------------------------------------- | ----------------------------------------------- | ----------- |
-| ref $bindable  | `HTMLElement`                                              | Bindable reference to the rendered DOM element. | `null`      |
-| s-class        | `'string' \| 'array' \| 'object'`                          | Sets className on popover.                      |             |
-| s-style        | `'string' \| 'array' \| 'object'`                          | Sets styles on popover.                         |             |
-| open $bindable | `boolean`                                                  | Controls visibility. Bindable.                  | `false`     |
-| position       | `'top' \| 'bottom' \| 'left' \| 'right'`                   | Preferred position relative to the activator.   | `'bottom'`  |
-| rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' `               | Border radius of the floating panel.            |             |
-| color          | `string`                                                   | Foreground color override (`--kit-popover-fg`). |             |
-| background     | `string`                                                   | Background color override (`--kit-popover-bg`). |             |
-| activator      | `Snippet<[model]>`                                         | Trigger element. Receives model with `toggle`.  |             |
-| children       | `Snippet`                                                  | Floating panel content.                         |             |
-| elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect.                              | `'2'`       |
-| density        | `'none' \| 'compact' \| 'default' \| 'comfortable'`        | Padding inside the content panel.               | `'default'` |
+| props          | type                                                               | description                                                               | default     |
+| -------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- | ----------- |
+| ref $bindable  | `HTMLElement`                                                      | Bindable reference to the rendered DOM element.                           | `null`      |
+| class          | `string \| array \| object`                                        | Classes of the popover, with the rules of Svelte (clsx).                  |             |
+| style          | `string`                                                           | Inline style of the popover.                                              |             |
+| s-class        | `string \| array \| object`                                        | Classes of the popover, merged with `class`.                              |             |
+| s-style        | `object`                                                           | Inline style as an object of property / value pairs.                      |             |
+| open $bindable | `boolean`                                                          | Controls visibility. Bindable.                                            | `false`     |
+| position       | `'top' \| 'bottom' \| 'left' \| 'right'`                           | Preferred position relative to the activator.                             | `'bottom'`  |
+| rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                                            | `'md'`      |
+| color          | `string \| false \| { base?, active? }`                            | Background color, the text follows its `on-` color or a contrasted color. |             |
+| activator      | `Snippet<[model]>`                                                 | Trigger element. Receives model with `toggle`.                            |             |
+| children       | `Snippet`                                                          | Floating panel content.                                                   |             |
+| elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                                        | `'2'`       |
+| density        | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Padding, from `-4px` to `+4px`.                                           | `'default'` |
 
 **ModelPopoverProps**
 

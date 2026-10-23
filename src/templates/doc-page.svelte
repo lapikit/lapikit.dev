@@ -88,7 +88,7 @@
 					index={0}
 					open={accordion.values.includes(0)}
 					toggle={accordion.toggle}
-					background="transparent"
+					s-style_--kit-accordion-item-bg="transparent"
 					color="text-muted"
 				>
 					{#snippet activator()}
@@ -115,6 +115,7 @@
 					<kit:btn
 						variant="text"
 						size="sm"
+						density="compact"
 						href={resolve('/docs/[...slug]', { slug: data.prevDoc.slug })}
 					>
 						{#snippet prepend()}

@@ -42,9 +42,7 @@
 			{#if version}
 				<kit:chip size="sm" rounded="sm" s-style_--kit-chip-p="2px">
 					{#snippet prepend()}
-						<kit:chip size="xs" rounded="xs" background="accent" color="on-accent">
-							Current
-						</kit:chip>
+						<kit:chip size="xs" rounded="xs" color="accent"> Current </kit:chip>
 					{/snippet}
 
 					{version}
@@ -60,7 +58,7 @@
 			<h2>Build your interface with less code</h2>
 
 			<div>
-				<kit:btn rounded="lg" background="warning" color="on-warning"> Get started </kit:btn>
+				<kit:btn rounded="lg" color="warning"> Get started </kit:btn>
 				<kit:btn variant="outline" rounded="lg" color="warning"> Learn more </kit:btn>
 			</div>
 		</div>

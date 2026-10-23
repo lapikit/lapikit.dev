@@ -55,12 +55,7 @@
 
 		<Settings />
 
-		<kit:btn
-			class="navbar--desktop-action"
-			onclick={() => (openModal = true)}
-			color="fg-inverse"
-			background="bg-inverse"
-		>
+		<kit:btn class="navbar--desktop-action" onclick={() => (openModal = true)} color="bg-inverse">
 			{#snippet prepend()}
 				<kit:icon>
 					<CloudDownload />

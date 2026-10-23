@@ -185,11 +185,20 @@ Example:
 
 <LazyRepl title="layout.css" lang="css" content={overrideStyleComponentCode} />
 
-This will apply to every instance of `<kit:btn>` across your app.
+This will apply to every instance of `<kit:btn>` across your app: `--kit-btn-color` is the color of the button (the same as the `color` prop), the text color follows it.
 
 This approach allows you to customize a specific component without affecting the rest of the design system. To redefine them globally, limit the scope of the variables to the component’s root class.
 
-For per-instance customization, use the s-style prop directly on the component instance:
+#### Why a simple selector is enough
+
+Lapikit declares the default value of its variables with a zero specificity (`:where()`): a simple `.kit-btn` or `:root` selector in your CSS overrides them, no `!important` and no stronger selector needed. The same goes for the theme variables (`--kit-color-*`, `--kit-shape-*`...).
+
+The styles that use these variables keep a normal specificity: the resets of other libraries (Bootstrap, Tailwind preflight...) do not break the Lapikit components.
+
+> [!NOTE]
+> The components move to this structure as they are updated: `kit:accordion`, `kit:alert`, `kit:app`, `kit:appbar`, `kit:aspect-ratio`, `kit:avatar`, `kit:btn`, `kit:card`, `kit:chip`, `kit:dialog`, `kit:dropdown`, `kit:field`, `kit:icon`, `kit:list`, `kit:modal`, `kit:popover`, `kit:separator`, `kit:textfield`, `kit:toolbar` and `kit:tooltip` already use it.
+
+For per-instance customization, use the props or the s-style prop directly on the component instance:
 
 <LazyRepl title="btn" lang="css" content={sStyleComponentCode}>
 <SStyleComponent/>
@@ -256,29 +265,31 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 
 #### Typography
 
-| Variable        | Value        | Role                       |
-| --------------- | ------------ | -------------------------- |
-| `--kit-font`    | system stack | Base font stack            |
-| `--kit-font-xs` | `13px`       | Captions, helper text      |
-| `--kit-font-sm` | `14px`       | Dense UI, secondary labels |
-| `--kit-font-md` | `15px`       | Default body size          |
-| `--kit-font-lg` | `16px`       | Emphasized body text       |
-| `--kit-font-xl` | `17px`       | Headings, titles           |
+| Variable        | Value              | Role                       |
+| --------------- | ------------------ | -------------------------- |
+| `--kit-font`    | system stack       | Base font stack            |
+| `--kit-font-xs` | `0.8125rem` (13px) | Captions, helper text      |
+| `--kit-font-sm` | `0.875rem` (14px)  | Dense UI, secondary labels |
+| `--kit-font-md` | `0.9375rem` (15px) | Default body size          |
+| `--kit-font-lg` | `1rem` (16px)      | Emphasized body text       |
+| `--kit-font-xl` | `1.0625rem` (17px) | Headings, titles           |
+
+> The sizes are in `rem`: they follow the font size set in the browser. The values in px are for the default size (16px).
 
 #### Spacing and density
 
 `space` sets the base spacing unit; `density` is an additive offset applied on top of a component's computed size.
 
-| Variable                    | Value  | Role                            |
-| --------------------------- | ------ | ------------------------------- |
-| `--kit-space-compact`       | `2px`  | Base unit, compact scale        |
-| `--kit-space-default`       | `4px`  | Base unit, default scale        |
-| `--kit-space-comfortable`   | `6px`  | Base unit, comfortable scale    |
-| `--kit-density-dense`       | `-8px` | Shrinks component size          |
-| `--kit-density-compact`     | `-4px` | Shrinks component size          |
-| `--kit-density-default`     | `0px`  | Leaves component size untouched |
-| `--kit-density-comfortable` | `4px`  | Expands component size          |
-| `--kit-density-spacious`    | `8px`  | Expands component size          |
+| Variable                    | Value             | Role                            |
+| --------------------------- | ----------------- | ------------------------------- |
+| `--kit-space-compact`       | `0.125rem` (2px)  | Base unit, compact scale        |
+| `--kit-space-default`       | `0.25rem` (4px)   | Base unit, default scale        |
+| `--kit-space-comfortable`   | `0.375rem` (6px)  | Base unit, comfortable scale    |
+| `--kit-density-dense`       | `-0.5rem` (-8px)  | Shrinks component size          |
+| `--kit-density-compact`     | `-0.25rem` (-4px) | Shrinks component size          |
+| `--kit-density-default`     | `0rem` (0px)      | Leaves component size untouched |
+| `--kit-density-comfortable` | `0.25rem` (4px)   | Expands component size          |
+| `--kit-density-spacious`    | `0.5rem` (8px)    | Expands component size          |
 
 #### Elevation and states
 

@@ -26,6 +26,8 @@ layout: 'doc_page'
 	import hideIconCode from '$examples/components/accordion/hide-icon.svelte?raw';
 	import activatorCode from '$examples/components/accordion/activator.svelte?raw';
 	import indicatorCode from '$examples/components/accordion/indicator.svelte?raw';
+	import Variants from '$examples/components/accordion/variants.svelte';
+	import variantsCode from '$examples/components/accordion/variants.svelte?raw';
 </script>
 
 An `kit:accordion` lets you group content into collapsible sections. It improves legibility and saves space in an interface, while offering precise control over the display of information. It is composed of two parts: `kit:accordion` as the container and `kit:accordion-item` for each collapsible entry.
@@ -50,6 +52,23 @@ Each `kit:accordion-item` requires a unique `index` (string or number).
 > `kit:accordion-item` does nothing without a `toggle` function - state is always external.
 
 ## Examples of accordion
+
+### Variants
+
+The variant and the `color` of the accordion apply to all its items. A `kit:accordion-item` can override the color with its own `color`.
+
+- **filled** (default): surface background (`--kit-color-surface-1`), or the `color` with a contrasted text.
+- **tonal**: light tint of the color, text in the color.
+- **outline**: transparent background with a border, items separated by a line.
+- **surface**: very light tint of the color with a soft border.
+- **text**: transparent background, no radius, items separated by a line.
+
+- **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
+- **color**: `string | false` = `undefined`
+
+<LazyRepl title="accordion.svelte" lang="svelte" content={variantsCode}>
+<Variants/>
+</LazyRepl>
 
 ### Spacer
 
@@ -122,22 +141,22 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:accordion`**
 
-| props         | type                                                  | description                                            | default     |
-| ------------- | ----------------------------------------------------- | ------------------------------------------------------ | ----------- |
-| ref $bindable | `HTMLElement`                                         | Bindable reference to the rendered DOM element.        | `null`      |
-| is            | `div`                                                 | Defines the HTML tag used as the root element.         | `'div'`     |
-| s-class       | `'string' \| 'array' \| 'object'`                     | Sets className on accordion                            |             |
-| s-style       | `'string' \| 'array' \| 'object'`                     | Sets styles on accordion                               |             |
-| spacer        | `boolean`                                             | Adds a gap between items.                              |             |
-| hideIcon      | `boolean`                                             | Hides the indicator icon on all child items.           |             |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Border radius applied to all items.                    | `'md'`      |
-| text          | `string`                                              | Applies a text color CSS variable.                     |             |
-| density       | `'none' \| 'compact' \| 'default' \| 'comfortable'`   | Spacing inside accordion.                              | `'default'` |
-| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                | Sizing height, font and gap for accordion items.       | `'md'`      |
-| variant       | `'filled' \| 'outline' \| 'text'`                     | Visual style of the accordion items.                   | `'filled'`  |
-| color         | `string`                                              | Foreground color override (`--kit-accordion-item-fg`). |             |
-| background    | `string`                                              | Background color override (`--kit-accordion-item-bg`). |             |
-| children      | `Snippet`                                             | Accordion items to render.                             |             |
+| props         | type                                                               | description                                                | default     |
+| ------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                      | Bindable reference to the rendered DOM element.            | `null`      |
+| is            | `div`                                                              | Defines the HTML tag used as the root element.             | `'div'`     |
+| class         | `string \| array \| object`                                        | Classes of the accordion, with the rules of Svelte (clsx). |             |
+| style         | `string`                                                           | Inline style of the accordion.                             |             |
+| s-class       | `string \| array \| object`                                        | Classes of the accordion, merged with `class`.             |             |
+| s-style       | `object`                                                           | Inline style as an object of property / value pairs.       |             |
+| spacer        | `boolean`                                                          | Adds a gap between items.                                  |             |
+| hideIcon      | `boolean`                                                          | Hides the indicator icon on all child items.               |             |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius applied to all items.                        | `'md'`      |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Height and padding of the items, from `-4px` to `+4px`.    | `'default'` |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                             | Height, padding, font and gap of the items (in `rem`).     | `'md'`      |
+| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text'`          | Visual style of the accordion items.                       | `'filled'`  |
+| color         | `string \| false`                                                  | Color of all the items, its use depends on the variant.    |             |
+| children      | `Snippet`                                                          | Accordion items to render.                                 |             |
 
 **`kit:accordion-item`**
 
@@ -145,8 +164,10 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | ------------- | ---------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | ref $bindable | `HTMLElement`                                              | Bindable reference to the rendered DOM element.                  | `null`  |
 | is            | `div`                                                      | Defines the HTML tag used as the root element.                   | `'div'` |
-| s-class       | `'string' \| 'array' \| 'object'`                          | Sets className on accordion item                                 |         |
-| s-style       | `'string' \| 'array' \| 'object'`                          | Sets styles on accordion item                                    |         |
+| class         | `string \| array \| object`                                | Classes of the item, with the rules of Svelte (clsx).            |         |
+| style         | `string`                                                   | Inline style of the item.                                        |         |
+| s-class       | `string \| array \| object`                                | Classes of the item, merged with `class`.                        |         |
+| s-style       | `object`                                                   | Inline style as an object of property / value pairs.             |         |
 | index         | `string \| number`                                         | Unique identifier for this item. **Required.**                   |         |
 | open          | `boolean`                                                  | Whether the item is expanded.                                    | `false` |
 | toggle        | `(index: string \| number) => void`                        | Called when the trigger is clicked. Receives the item's `index`. |         |
@@ -155,8 +176,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | indicator     | `Snippet<[{ open: boolean }]>`                             | Custom indicator - replaces the default chevron icon.            |         |
 | disabled      | `boolean`                                                  | Prevents the item from being toggled.                            | `false` |
 | readOnly      | `boolean`                                                  | Renders the item as non-interactive without disabled styling.    | `false` |
-| color         | `string`                                                   | Foreground color override (`--kit-accordion-item-fg`).           |         |
-| background    | `string`                                                   | Background color override (`--kit-accordion-item-bg`).           |         |
+| color         | `string \| false \| { base?, active? }`                    | Color of the item, overrides the color of the accordion.         |         |
 | children      | `Snippet`                                                  | Content revealed when the item is open.                          |         |
 | elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState` | Add shadow effect                                                |         |
 

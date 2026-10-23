@@ -36,8 +36,7 @@
 			<kit:btn
 				href={link.url}
 				target="_blank"
-				color={link._styles.color}
-				background={link._styles.background}
+				color={link._styles.background}
 				rounded="lg"
 				size="lg"
 			>

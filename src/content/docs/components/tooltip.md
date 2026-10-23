@@ -66,6 +66,8 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 <Custom/>
 </LazyRepl>
 
+> The tooltip is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its activator when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
@@ -76,21 +78,20 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:tooltip`**
 
-| props           | type                                                  | description                                       | default     |
-| --------------- | ----------------------------------------------------- | ------------------------------------------------- | ----------- |
-| label           | `string`                                              | Plain text content of the tooltip.                |             |
-| location        | `'top' \| 'bottom' \| 'left' \| 'right'`              | Preferred position relative to the trigger.       | `'bottom'`  |
-| variant         | `'arrow'`                                             | Renders a directional arrow on the tooltip panel. |             |
-| delayDuration   | `number`                                              | Hover delay before the tooltip appears (ms).      | `850`       |
-| open            | `boolean`                                             | Controls visibility. Bindable.                    | `false`     |
-| disabled        | `boolean`                                             | Prevents the tooltip from showing.                | `false`     |
-| forceMount      | `boolean`                                             | Keeps the tooltip in the DOM when closed.         | `false`     |
-| avoidCollisions | `boolean`                                             | Flips position to stay within the viewport.       | `true`      |
-| density         | `'none' \| 'compact' \| 'default' \| 'comfortable'`   | Padding density.                                  | `'default'` |
-| rounded         | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | Border radius.                                    | `'xs'`      |
-| color           | `string`                                              | Foreground color override (`--kit-tooltip-fg`).   |             |
-| background      | `string`                                              | Background color override (`--kit-tooltip-bg`).   |             |
-| tooltip         | `Snippet`                                             | Rich content rendered inside the tooltip panel.   |             |
-| children        | `Snippet`                                             | The trigger element.                              |             |
+| props           | type                                                               | description                                                               | default     |
+| --------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- | ----------- |
+| label           | `string`                                                           | Plain text content of the tooltip.                                        |             |
+| location        | `'top' \| 'bottom' \| 'left' \| 'right'`                           | Preferred position relative to the trigger.                               | `'bottom'`  |
+| variant         | `'arrow'`                                                          | Renders a directional arrow on the tooltip panel.                         |             |
+| delayDuration   | `number`                                                           | Hover delay before the tooltip appears (ms).                              | `850`       |
+| open            | `boolean`                                                          | Controls visibility. Bindable.                                            | `false`     |
+| disabled        | `boolean`                                                          | Prevents the tooltip from showing.                                        | `false`     |
+| forceMount      | `boolean`                                                          | Keeps the tooltip in the DOM when closed.                                 | `false`     |
+| avoidCollisions | `boolean`                                                          | Flips position to stay within the viewport.                               | `true`      |
+| density         | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Padding, from `-4px` to `+4px`.                                           | `'default'` |
+| rounded         | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                                            | `'xs'`      |
+| color           | `string \| false \| { base?, active? }`                            | Background color, the text follows its `on-` color or a contrasted color. |             |
+| tooltip         | `Snippet`                                                          | Rich content rendered inside the tooltip panel.                           |             |
+| children        | `Snippet`                                                          | The trigger element.                                                      |             |
 
 Tooltips complement your [Buttons](/docs/components/button) or [Icons](/docs/components/icon) by providing discreet but useful context for users.

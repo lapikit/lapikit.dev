@@ -1,6 +1,5 @@
 <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-	<kit:btn variant="filled">Filled</kit:btn>
-	<kit:btn variant="outline">Outline</kit:btn>
-	<kit:btn variant="text">Text</kit:btn>
-	<kit:btn variant="link">Link</kit:btn>
+	{#each ['filled', 'tonal', 'outline', 'surface', 'text', 'plain', 'link'] as variant (variant)}
+		<kit:btn {variant} color="accent">{variant}</kit:btn>
+	{/each}
 </div>
