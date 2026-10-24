@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { FieldControlProps } from 'lapikit/components';
+
 	let country = $state('');
 </script>
 
@@ -11,12 +13,7 @@
 		dirty={country !== ''}
 		onclear={() => (country = '')}
 	>
-		{#snippet children(control: {
-			id: string;
-			'aria-describedby': string | undefined;
-			'aria-invalid': true | undefined;
-			disabled: boolean;
-		})}
+		{#snippet children(control: FieldControlProps)}
 			<select
 				{...control}
 				bind:value={country}

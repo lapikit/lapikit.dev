@@ -42,6 +42,20 @@ The `children` snippet receives the attributes to spread on the control:
 </kit:field>
 ```
 
+In TypeScript, type the parameter with `FieldControlProps`:
+
+```svelte
+<script lang="ts">
+	import type { FieldControlProps } from 'lapikit/components';
+</script>
+
+<kit:field message="Help">
+	{#snippet children(control: FieldControlProps)}
+		<input {...control} bind:value />
+	{/snippet}
+</kit:field>
+```
+
 The field does not know the value of the control: pass `dirty` to show the clear button, `onclear` to empty the value, and `counter` for the text at the end of the message line.
 
 ### Without preprocess Lapikit
