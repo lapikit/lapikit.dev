@@ -3,9 +3,6 @@ import type { NpmStats } from '$lib/@types';
 const CACHE_TTL = 15 * 60 * 1000;
 const RETRY_DELAY = 60 * 1000;
 const FETCH_TIMEOUT = 5000;
-const FIRST_PUBLISH_DATE = '2025-04-19';
-const DOWNLOADS_WINDOW_DAYS = 365;
-const DAY_MS = 24 * 60 * 60 * 1000;
 
 export const emptyNpmStats: NpmStats = {
 	version: { latest: '', insiders: '' },
@@ -22,23 +19,6 @@ function formatDownloads(n: number): string {
 	return String(n);
 }
 
-function toIsoDate(timestamp: number) {
-	return new Date(timestamp).toISOString().slice(0, 10);
-}
-
-function getDownloadRanges(from: string, to: number) {
-	const ranges: string[] = [];
-	let start = Date.parse(`${from}T00:00:00Z`);
-
-	while (start <= to) {
-		const end = Math.min(start + (DOWNLOADS_WINDOW_DAYS - 1) * DAY_MS, to);
-		ranges.push(`${toIsoDate(start)}:${toIsoDate(end)}`);
-		start = end + DAY_MS;
-	}
-
-	return ranges;
-}
-
 async function fetchJson(url: string) {
 	const response = await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT) });
 	if (!response.ok) throw new Error(`${response.status} ${url}`);
@@ -46,19 +26,13 @@ async function fetchJson(url: string) {
 }
 
 async function collectStats(): Promise<NpmStats> {
-	const ranges = getDownloadRanges(FIRST_PUBLISH_DATE, Date.now());
-	const [packument, ...downloadPoints] = await Promise.all([
+	const [packument, downloadStats] = await Promise.all([
 		fetchJson('https://registry.npmjs.org/lapikit'),
-		...ranges.map((range) => fetchJson(`https://api.npmjs.org/downloads/point/${range}/lapikit`))
+		fetchJson('https://api.lapikit.dev/lapikit/nbDll')
 	]);
 
 	const distTagLatest = packument['dist-tags']?.latest;
 	const distTagInsider = packument['dist-tags']?.insiders;
-
-	const totalDownloads = downloadPoints.reduce(
-		(total: number, point: { downloads?: number }) => total + (point.downloads ?? 0),
-		0
-	);
 
 	return {
 		version: {
@@ -69,7 +43,7 @@ async function collectStats(): Promise<NpmStats> {
 			latest: packument.time?.[distTagLatest] ?? '',
 			insiders: packument.time?.[distTagInsider] ?? ''
 		},
-		downloads: formatDownloads(totalDownloads)
+		downloads: formatDownloads(downloadStats.downloads ?? 0)
 	};
 }
 
