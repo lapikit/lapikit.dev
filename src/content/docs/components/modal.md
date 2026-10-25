@@ -21,15 +21,15 @@ layout: 'doc_page'
 	import persistentCode from '$examples/components/modal/persistent.svelte?raw';
 </script>
 
-The `kit:modal` component displays an overlay panel above the main content. It is designed for dialogs, contextual messages, forms or alerts requiring direct interaction.
+The `kit:modal` component displays a floating window above the main content, without blocking the page: the user can still click, scroll and type behind it. It is designed for chat panels, tool panels, notices or any content that lives next to the page.
 
-The modal can be centered, fixed at the top or bottom of the screen, and closes in different ways depending on the options activated (outside click, Escape key, etc.). It is a flexible alternative to [`kit:dialog`](/docs/components/dialog) when you need more control over the structure, behavior or styling of the modal content, or when you want to manage the backdrop at the application level.
+The modal can be centered or fixed to a corner or an edge of the screen, and closes with the Escape key (the top modal first). When the page must wait for an answer, use [`kit:dialog`](/docs/components/dialog) instead: it blocks the page, traps the focus and has a backdrop.
 
 <LazyRepl title="modal.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
-`kit:modal` is a div-based overlay positioned fixed over the viewport. Unlike `kit:dialog`, it does not use the native `<dialog>` element and has no built-in backdrop a global backdrop is typically managed at the application level. Use `contain` to embed the modal relative to its parent instead.
+`kit:modal` renders a native `<dialog>` opened with `show()`: it is announced as a dialog, takes the focus when it opens and gives it back when it closes, but it does not lock the scroll and has no backdrop. Use `contain` to embed the modal in its parent, with an overlay over that parent only.
 
 > `open` is bindable set it to `true` to open, `false` to close, or bind it to react to closes.
 
@@ -77,7 +77,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 | props          | type                                                                                                                                    | description                                                                              | default     |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------- |
-| ref $bindable  | `HTMLElement`                                                                                                                           | Bindable reference to the rendered DOM element.                                          | `null`      |
+| ref $bindable  | `HTMLDialogElement`                                                                                                                     | Bindable reference to the `<dialog>` element.                                            | `null`      |
 | class          | `string \| array \| object`                                                                                                             | Classes of the modal, with the rules of Svelte (clsx).                                   |             |
 | style          | `string`                                                                                                                                | Inline style of the modal.                                                               |             |
 | s-class        | `string \| array \| object`                                                                                                             | Classes of the modal, merged with `class`.                                               |             |

@@ -34,11 +34,29 @@ Then add it to your `eslint.config.js`:
 
 <LazyRepl title="eslint.config.js" lang="js" content={eslintConfigLapikitCode} />
 
-This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-specific snippets such as `activator`, `indicator`, `append`, `prepend`, `close`, `load`, and `tooltip`.
+This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-specific snippets such as `activator`, `indicator`, `append`, `prepend`, `close`, `load`, `tooltip` and `children` (with a parameter, as in `kit:field`).
 
 > **Note:** `eslint-config-lapikit` configures the `@typescript-eslint/no-unused-vars` rule. If you already have a custom configuration for this rule, place the lapikit config first so your own rules take precedence:
 
 <LazyRepl title="eslint.config.js" lang="js" content={eslintConfigNoUnusedVarsCode} />
+
+## Use the types of the components
+
+`lapikit/components` exports the props type of every component (`ButtonProps`, `CardProps`, `TextfieldProps`...), the types of the snippet parameters (`FieldControlProps`, `ModelDropdownProps`...) and the shared types (`ColorProps`, `ElevationProps`, `RoundedType`, `DensityType`...). Use them to type a snippet parameter or to build your own component on top of a Lapikit one:
+
+```svelte
+<script lang="ts">
+	import type { ButtonProps } from 'lapikit/components';
+
+	let { children, ...rest }: ButtonProps = $props();
+</script>
+
+<kit:btn variant="tonal" {...rest}>
+	{@render children?.()}
+</kit:btn>
+```
+
+The labs components export theirs from `lapikit/labs/components` (`SheetProps`).
 
 ## Known TypeScript and editor limitations
 

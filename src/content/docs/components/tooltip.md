@@ -32,7 +32,7 @@ It is particularly useful for enhancing the user experience by explaining icons,
 <Preview/>
 </LazyRepl>
 
-`kit:tooltip` wraps its `children` in a `<span>` that listens for `mouseenter`, `mouseleave`, `focusin`, and `focusout`. The tooltip appears after `delayDuration` milliseconds (default 850ms) and is positioned fixed via a separate element. Set `label` for a plain text tooltip, or use the `tooltip` snippet for rich content.
+`kit:tooltip` wraps its `children` in a `<span>` that listens for `mouseenter`, `mouseleave`, `focusin`, and `focusout`. The tooltip appears after `delayDuration` milliseconds on hover (default 850ms), right away on focus, and is shown in the top layer next to its trigger. The pointer can move onto the tooltip without closing it, and Escape closes it, as required by [WCAG 1.4.13](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html). Set `label` for a plain text tooltip, or use the `tooltip` snippet for rich content.
 
 ## Examples of tooltip
 
