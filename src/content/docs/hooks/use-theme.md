@@ -17,36 +17,57 @@ layout: 'doc_page'
 
 ## Discover the useTheme action in Lapikit
 
-The `useTheme` function allows you to dynamically change your application's theme by modifying the CSS class applied to the root HTML element. This makes it easy to implement dark or light themes, thereby improving the user experience.
+The `useTheme` function changes the theme of your application: it sets the `data-kit-theme` attribute on the `<html>` element and keeps the choice in `localStorage`. Every Lapikit component follows it.
 
-You can use this action by calling `useTheme` with the desired theme name. For example, `useTheme('dark')` will apply the dark theme by adding the corresponding class to the HTML element.
+Call `useTheme` with the name of the theme: `useTheme('dark')`, `useTheme('light')`, or `useTheme('system')` to follow the setting of the operating system (`prefers-color-scheme`).
 
 <LazyRepl title="useThemeToggle.svelte" lang="svelte" content={useThemeToggleCode}>
 <UseThemeToggle/>
 </LazyRepl>
 
-You can also customize the storage key in localStorage by passing a second argument to the `useTheme` function. By default, this key is set to `@lapikit/theme`.
-
 See the [themes](/docs/customize) documentation to learn about all the available options for customizing Lapikit for your application.
 
 ## API References
 
-| parameter | type     | description         | default          |
-| --------- | -------- | ------------------- | ---------------- |
-| name      | `string` | set the theme name  |                  |
-| key       | `string` | set the storage key | `@lapikit/theme` |
+| parameter | type     | description                                        | default |
+| --------- | -------- | -------------------------------------------------- | ------- |
+| name      | `string` | The theme name: `'light'`, `'dark'`, `'system'`... |         |
 
 ## Choose where Lapikit stores the theme
 
-This allows Lapikit to preserve the selected theme between page reloads and browser sessions.
+Lapikit keeps the selected theme between page reloads and browser sessions, under the `@lapikit/theme` key of `localStorage`. To change the key, pass it once to `createGlobalTheme`:
 
-You can customize the storage key by passing a second argument to `useTheme`.
+```svelte
+<script>
+	import { createGlobalTheme } from 'lapikit/actions';
 
-This is particularly useful when:
+	createGlobalTheme({ key: 'my-app/theme', name: 'system' });
+</script>
+```
+
+`name` is the theme used when nothing is stored yet. A custom key is useful when:
 
 - Managing multiple applications ;
 - Isolating environments ;
 - Testing different theme configurations ;
 - Or integrating Lapikit into an existing storage architecture.
+
+When `localStorage` is not available (private browsing, blocked storage), the theme still applies, without being kept.
+
+## Avoid the flash of the wrong theme
+
+With SSR, the page is painted before Svelte runs: the default theme shows for a moment, then the stored one. `themeScript()` returns an inline script that applies the stored theme before the first paint. Add it to the `<head>` of your root layout, with the same options as `createGlobalTheme`:
+
+```svelte
+<script>
+	import { themeScript } from 'lapikit/actions';
+</script>
+
+<svelte:head>
+	{@html themeScript({ key: 'my-app/theme', name: 'system' })}
+</svelte:head>
+```
+
+> If your site sets a Content Security Policy that blocks inline scripts, allow this script with a nonce or a hash.
 
 Because the theme is centralized, all Lapikit components automatically stay synchronized with the active theme across your Svelte or SvelteKit application.

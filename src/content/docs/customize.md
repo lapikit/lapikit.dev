@@ -73,7 +73,7 @@ Our recommendation is to base your approach on how you manage themes in your exi
 
 ### Theme mode support
 
-Lapikit resolves its color tokens through the data-kit-theme attribute. Set it to `light` or `dark` on the element you want to theme usually `<html>`, but any container works. Because it's a plain attribute, you keep full control: toggle it from your own logic, persist the choice, or scope a dark section inside an otherwise light page with function [`useTheme()`](/docs/hooks/use-theme).
+Lapikit resolves its color tokens through the data-kit-theme attribute. Set it to `light`, `dark` or `system` (follows `prefers-color-scheme`) on the element you want to theme usually `<html>`, but any container works. Because it's a plain attribute, you keep full control: toggle it from your own logic, persist the choice, or scope a dark section inside an otherwise light page with function [`useTheme()`](/docs/hooks/use-theme). With SSR, [`themeScript()`](/docs/hooks/use-theme#avoid-the-flash-of-the-wrong-theme) applies the stored theme before the first paint.
 
 <KitThemeColor/>
 

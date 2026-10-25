@@ -28,7 +28,8 @@ layout: 'doc_page'
 Before installing Lapikit, make sure you have:
 
 - basic familiarity with the command line
-- an existing Svelte project (SvelteKit, Vite, or another Svelte setup)
+- an existing Svelte project (SvelteKit, Vite, or another Svelte setup) with Svelte 5.20 or later
+- Node 20.19 or later (Node 22.12 or later on the 22 branch), as required by Vite 7
 
 SvelteKit is recommended for the best experience, but Lapikit works with any Svelte project.
 
