@@ -14,6 +14,34 @@ keywords:
 
 Learn how to migrate from older Lapikit versions to the latest release.
 
+## Updating to versions 0.7.6 and 0.7.7
+
+These versions keep the API of 0.7.4, with two changes of behavior and one removal.
+
+### `kit:modal` is a non-blocking window
+
+`kit:modal` is meant for content that lives next to the page (chat, tool panel, notice): the page stays usable behind it. Since 0.7.6 it is built on a native `<dialog>` opened with `show()`, so it no longer locks the scroll and no longer announces itself as `aria-modal`. `ref` is now the `<dialog>` element (`HTMLDialogElement`).
+
+If your modal must block the page until the user answers, use [`kit:dialog`](/docs/components/dialog) instead: it has a backdrop, traps the focus and locks the scroll.
+
+### The `theme` store is removed
+
+The `theme` store of `lapikit/actions` never followed the active theme. Read the theme with `createGlobalTheme().active`, and change it with [`useTheme()`](/docs/hooks/use-theme):
+
+```svelte
+<script>
+	import { createGlobalTheme, useTheme } from 'lapikit/actions';
+
+	const app = createGlobalTheme();
+</script>
+
+<kit:btn onclick={() => useTheme(app.active === 'dark' ? 'light' : 'dark')}>
+	Theme: {app.active}
+</kit:btn>
+```
+
+With SSR, add [`themeScript()`](/docs/hooks/use-theme#avoid-the-flash-of-the-wrong-theme) to your root layout to apply the stored theme before the first paint.
+
 ## Guide to migrating to version 0.7.4
 
 Version **0.7.4** of Lapikit moves every component to a common structure: the same color system, the same densities, sizes in `rem` and `class` with the rules of Svelte. Most of your code keeps working, but some props, values and CSS variables change. This guide lists them, from the most common to the rarest.

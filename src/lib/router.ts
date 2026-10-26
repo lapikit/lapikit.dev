@@ -359,12 +359,7 @@ export const docsNavigation: NavSection[] = [
 	{
 		label: 'Deprecated',
 		icon: Eraser,
-		pages: [
-			{ label: 'Breakpoints', url: '/docs/breakpoints' },
-			{ label: '$breakpoints', url: '/docs/hooks/store-breakpoints' },
-			{ label: '$devices', url: '/docs/hooks/store-devices' },
-			{ label: '$theme', url: '/docs/hooks/store-theme' }
-		]
+		pages: []
 	}
 ];
 

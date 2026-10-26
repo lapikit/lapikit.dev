@@ -16,6 +16,8 @@ export type DocPath = {
 export type DocSummary = {
 	title: string;
 	state?: 'deprecated';
+	category?: string;
+	keywords?: string[];
 	/** ISO date of the last commit on the source file, missing when git is unavailable */
 	lastModified?: string;
 	head?: {
