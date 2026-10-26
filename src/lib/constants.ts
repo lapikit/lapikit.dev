@@ -26,7 +26,7 @@ export const seoByPath: Record<string, DocSummary> = Object.fromEntries(
 	(manifest as DocSummary[]).map((doc) => [doc.path.pathname, doc])
 );
 
-export const manifestPage = manifest;
+export const manifestPage = manifest as DocSummary[];
 export const command = commandLine;
 
 export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
