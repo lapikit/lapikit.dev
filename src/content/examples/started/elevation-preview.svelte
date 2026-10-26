@@ -2,13 +2,6 @@
 	{#each { length: 6 }, index}
 		<div class="elevation-item">
 			<kit:sheet class="elevation-card" rounded="lg" elevation={String(index)}>{index}</kit:sheet>
-			<kit:sheet
-				class="elevation-card"
-				rounded="lg"
-				elevation={String(index)}
-				variant="tonal"
-				color="warning">{index}</kit:sheet
-			>
 			<span class="text-xs">data-elevation='{index}'</span>
 		</div>
 	{/each}
