@@ -3,14 +3,6 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script>
-			try {
-				var theme = localStorage.getItem('@lapikit/theme');
-				if (theme === 'light' || theme === 'dark' || theme === 'system') {
-					document.documentElement.setAttribute('data-kit-theme', theme);
-				}
-			} catch (e) {}
-		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

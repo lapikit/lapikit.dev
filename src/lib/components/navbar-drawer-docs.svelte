@@ -71,27 +71,29 @@
 	<nav class="drawer__nav">
 		{#each docsNavigation as { label, icon, pages }, index (label)}
 			{#if label == 'Deprecated'}
-				<kit:accordion spacer class="accordion-deprecated" density="compact">
-					<kit:accordion-item
-						{index}
-						text={label}
-						open={accordion.values.includes(index)}
-						toggle={accordion.toggle}
-					>
-						<kit:list rounded="0" variant="text" density="compact">
-							{#each pages as page (page.label)}
-								<kit:list-item
-									href={page.url}
-									onclick={() => (open = false)}
-									active={normalizedPath === page.url}
-									color={normalizedPath === page.url && 'accent'}
-								>
-									{page.label}
-								</kit:list-item>
-							{/each}
-						</kit:list>
-					</kit:accordion-item>
-				</kit:accordion>
+				{#if pages && pages.length > 0}
+					<kit:accordion spacer class="accordion-deprecated" density="compact">
+						<kit:accordion-item
+							{index}
+							text={label}
+							open={accordion.values.includes(index)}
+							toggle={accordion.toggle}
+						>
+							<kit:list rounded="0" variant="text" density="compact">
+								{#each pages as page (page.label)}
+									<kit:list-item
+										href={page.url}
+										onclick={() => (open = false)}
+										active={normalizedPath === page.url}
+										color={normalizedPath === page.url && 'accent'}
+									>
+										{page.label}
+									</kit:list-item>
+								{/each}
+							</kit:list>
+						</kit:accordion-item>
+					</kit:accordion>
+				{/if}
 			{:else}
 				<kit:list class="drawer-list" variant="text" nav density="compact">
 					<kit:list-item class="drawer-list-title">

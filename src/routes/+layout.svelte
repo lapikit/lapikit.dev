@@ -4,6 +4,7 @@
 
 	import { page } from '$app/state';
 	import { onMount, setContext, untrack } from 'svelte';
+	import { themeScript } from 'lapikit/actions';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
@@ -123,6 +124,7 @@
 </script>
 
 <svelte:head>
+	{@html themeScript()}
 	<title>{pageTitle}</title>
 	<link rel="icon" href="/favicon.ico" sizes="48x48" />
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
