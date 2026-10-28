@@ -147,6 +147,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | s-style        | `object`                                                           | Inline style as an object of property / value pairs.   |             |
 | open $bindable | `boolean`                                                          | Controls visibility. Bindable.                         | `true`      |
 | closable       | `boolean`                                                          | Adds a close button that sets `open` to `false`.       | `false`     |
+| closeLabel     | `string`                                                           | Accessible name of the close button.                   | `'Close'`   |
 | variant        | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text'`          | Visual style of the alert.                             | `'filled'`  |
 | density        | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Padding and minimal height.                            | `'default'` |
 | tone           | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'`         | Semantic tone: default color and role.                 | `'default'` |
