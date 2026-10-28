@@ -94,7 +94,7 @@
 		{/each}
 	</div>
 	<div style:margin-top="15px">
-		<p class="muted-text text-sm">**Last updated: September 2026</p>
+		<p class="muted-text text-sm">**Last updated: October 2026</p>
 	</div>
 </div>
 

@@ -90,6 +90,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | counter           | `string`                                                           | Trailing text in the message row, replaces `messageSuffix`. |             |
 | persistentMessage | `boolean`                                                          | Always shows the message, not only on focus.                | `false`     |
 | clearable         | `boolean`                                                          | Shows a clear button.                                       | `false`     |
+| clearLabel        | `string`                                                           | Accessible name of the clear button.                        | `'Clear'`   |
 | persistentClear   | `boolean`                                                          | Always shows the clear button.                              | `false`     |
 | dirty             | `boolean`                                                          | The control holds a value: shows the clear button.          | `false`     |
 | onclear           | `() => void`                                                       | Called by the clear button.                                 |             |

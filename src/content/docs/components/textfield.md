@@ -127,6 +127,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | min               | `number`                                                                    | Minimum character count.                                                     |             |
 | max               | `number`                                                                    | Maximum character count.                                                     |             |
 | clearable         | `boolean`                                                                   | Shows a clear button when the field has a value.                             | `false`     |
+| clearLabel        | `string`                                                                    | Accessible name of the clear button.                                         | `'Clear'`   |
 | persistentClear   | `boolean`                                                                   | Always shows the clear button.                                               | `false`     |
 | disabled          | `boolean`                                                                   | Disables the input.                                                          | `false`     |
 | readonly          | `boolean`                                                                   | Makes the input read-only.                                                   | `false`     |
