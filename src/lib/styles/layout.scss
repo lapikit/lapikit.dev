@@ -4,6 +4,9 @@
 	--app-spacing-x-container: 24px;
 	--app-spacing-y-container: 80px;
 
+	--lapikit-container-size: 1800px;
+	--lapikit-spacing-block: 1.5rem;
+
 	--kit-color-shell: hsl(240deg 4.76% 12.35%);
 	--kit-color-on-shell: hsl(0 0% 100%);
 
@@ -167,4 +170,30 @@
 			gap: 40px;
 		}
 	}
+}
+
+/** BORDER **/
+
+.border-full {
+	border: 2px solid gray;
+}
+.border-top {
+	border-top: 2px solid gray;
+}
+.border-bottom {
+	border-bottom: 2px solid gray;
+}
+.border-left {
+	border-left: 2px solid gray;
+}
+.border-right {
+	border-right: 2px solid gray;
+}
+.border-x {
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
+}
+.border-y {
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
 }
