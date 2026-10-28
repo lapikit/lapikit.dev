@@ -46,7 +46,7 @@ export const tableHomeList: TableHomeList[] = [
 		logo: LapikitLogo,
 		values: [
 			[nbComponents, 'yes', nbHooks],
-			['yes', 'yes', 'yes', 'yes', 'yes', '27 / 1', 'yes'],
+			['yes', 'yes', 'yes', 'yes', 'yes', '23 / 2', 'yes'],
 			['yes', 'yes', 'Bi-Monthly']
 		]
 	},
