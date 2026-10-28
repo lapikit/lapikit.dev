@@ -14,6 +14,66 @@ keywords:
 
 Learn how to migrate from older Lapikit versions to the latest release.
 
+## Updating to version 0.8.0
+
+### `trigger` replaces `activator` and the `children` of `kit:tooltip`
+
+`kit:tooltip`, `kit:dropdown` and `kit:popover` share one `trigger(props)` snippet. Spread `props` on your trigger element: it holds the ARIA attributes and the handlers, so you no longer write `onclick={(e) => toggle(e.currentTarget)}`. `kit:tooltip` no longer wraps its trigger in a `<span>`.
+
+```svelte
+<!-- before -->
+<kit:tooltip label="Save">
+	<kit:btn>Save</kit:btn>
+</kit:tooltip>
+
+<kit:dropdown>
+	{#snippet activator({ open, toggle }: ModelDropdownProps)}
+		<kit:btn active={open} onclick={(e) => toggle(e.currentTarget)}>Menu</kit:btn>
+	{/snippet}
+	...
+</kit:dropdown>
+
+<!-- after -->
+<kit:tooltip label="Save">
+	{#snippet trigger(props: TooltipTriggerProps)}
+		<kit:btn {...props}>Save</kit:btn>
+	{/snippet}
+</kit:tooltip>
+
+<kit:dropdown>
+	{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+		<kit:btn {...props} active={open}>Menu</kit:btn>
+	{/snippet}
+	...
+</kit:dropdown>
+```
+
+- `openOnHover`: the `handleMouse` argument is gone, `props` holds the pointer handlers.
+- Context menu: `toggle(event)` becomes `openAt(event)`, from the second argument of the dropdown `trigger`.
+- Types: `ModelDropdownProps` and `ModelDropdownHandleProps` become `DropdownTriggerProps` and `DropdownTriggerModel`, `ModelPopoverProps` becomes `PopoverTriggerProps`, and `TooltipTriggerProps` is new.
+- `kit:tooltip`: `forceMount` is removed (the tooltip is always in the DOM) and `ref` is now the tooltip panel.
+- With `eslint-config-lapikit`, update it to know the `trigger` snippet.
+
+For a simple text on a button, a chip or an icon, the new [`tooltip` prop](/docs/components/tooltip#the-tooltip-prop) replaces `kit:tooltip`:
+
+```svelte
+<kit:btn icon tooltip="Save"><Save /></kit:btn>
+```
+
+### `kit:textfield`: `min` and `max` become `minlength` and `maxlength`
+
+`min` and `max` set the length of the value, and `max` cut the value when it was too long. `kit:textfield` now uses the native attributes: `minlength` and `maxlength` limit the length, and the counter shows `maxlength`. `min` and `max` go to the input, as the bounds of a `type="number"` field.
+
+```svelte
+<!-- before -->
+<kit:textfield max={20} counter />
+
+<!-- after -->
+<kit:textfield maxlength={20} counter />
+```
+
+A value set by code is no longer cut: `maxlength` only stops the user from typing more.
+
 ## Updating to versions 0.7.6 and 0.7.7
 
 These versions keep the API of 0.7.4, with two changes of behavior and one removal.

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ModelDropdownProps } from 'lapikit/components';
+	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 </script>
 
 <div
@@ -7,13 +7,8 @@
 >
 	{#each ['top', 'bottom', 'left', 'right'] as pos (pos)}
 		<kit:dropdown position={pos} closeOnClick>
-			{#snippet activator({ open, toggle }: ModelDropdownProps)}
-				<kit:btn
-					variant="outline"
-					is="button"
-					active={open}
-					onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-				>
+			{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+				<kit:btn variant="outline" is="button" active={open} {...props}>
 					{pos}
 				</kit:btn>
 			{/snippet}

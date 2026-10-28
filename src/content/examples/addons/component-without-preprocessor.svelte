@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { KitBtn, KitDropdown, KitList, KitListItem } from 'lapikit/components';
-	import type { ModelDropdownProps } from 'lapikit/components';
 </script>
 
 <KitDropdown closeOnClick>
-	{#snippet activator({ toggle, open }: ModelDropdownProps)}
-		<KitBtn onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
+	{#snippet trigger(props, { open })}
+		<KitBtn {...props}>
 			{#if open}
 				Component Open
 			{:else}

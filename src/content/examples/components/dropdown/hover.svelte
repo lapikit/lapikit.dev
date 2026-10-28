@@ -1,19 +1,11 @@
 <script lang="ts">
+	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 	import { ChevronDown } from 'lucide-svelte';
-
-	import type { ModelDropdownProps, ModelDropdownHandleProps } from 'lapikit/components';
 </script>
 
 <kit:dropdown openOnHover closeOnClick>
-	{#snippet activator({ open, toggle }: ModelDropdownProps, handleMouse: ModelDropdownHandleProps)}
-		<kit:btn
-			variant="outline"
-			is="button"
-			active={open}
-			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-			onmouseenter={(e: MouseEvent) => handleMouse('open', e.currentTarget as HTMLElement)}
-			onmouseleave={() => handleMouse('close', null)}
-		>
+	{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+		<kit:btn variant="outline" is="button" active={open} {...props}>
 			Hover me
 			{#snippet append()}
 				<kit:icon size="sm"><ChevronDown /></kit:icon>

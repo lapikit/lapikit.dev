@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { TooltipTriggerProps } from 'lapikit/components';
 	// assets
 	import { Check, OctagonAlert, X } from 'lucide-svelte';
 
@@ -6,28 +7,34 @@
 </script>
 
 {#if value == 'yes'}
-	<kit:tooltip label="Supported">
-		<div class="success">
-			<kit:icon color="success">
-				<Check />
-			</kit:icon>
-		</div>
+	<kit:tooltip label="Supported" asLabel>
+		{#snippet trigger(props: TooltipTriggerProps)}
+			<div class="success" role="img" {...props}>
+				<kit:icon color="success">
+					<Check />
+				</kit:icon>
+			</div>
+		{/snippet}
 	</kit:tooltip>
 {:else if value == 'no'}
-	<kit:tooltip label="Unsupported">
-		<div class="error">
-			<kit:icon color="error">
-				<X />
-			</kit:icon>
-		</div>
+	<kit:tooltip label="Unsupported" asLabel>
+		{#snippet trigger(props: TooltipTriggerProps)}
+			<div class="error" role="img" {...props}>
+				<kit:icon color="error">
+					<X />
+				</kit:icon>
+			</div>
+		{/snippet}
 	</kit:tooltip>
 {:else if value == 'partial'}
-	<kit:tooltip label="Partial supported">
-		<div class="warning">
-			<kit:icon color="warning">
-				<OctagonAlert />
-			</kit:icon>
-		</div>
+	<kit:tooltip label="Partial supported" asLabel>
+		{#snippet trigger(props: TooltipTriggerProps)}
+			<div class="warning" role="img" {...props}>
+				<kit:icon color="warning">
+					<OctagonAlert />
+				</kit:icon>
+			</div>
+		{/snippet}
 	</kit:tooltip>
 {:else}
 	<p>{value}</p>

@@ -83,6 +83,12 @@ By default icons are hidden from assistive technologies (`decorative={true}`, `a
 - **label**: `string | undefined` = `undefined`
 - **alt**: `string | undefined` = `undefined`
 
+### tooltip
+
+Add a tooltip to the icon with the `tooltip` prop: a text, or options (`location`, `variant`, `delayDuration`...). See [the tooltip prop](/docs/components/tooltip#the-tooltip-prop).
+
+<LazyRepl lang="svelte" content={'<kit:icon tooltip="More information">...</kit:icon>'} />
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
@@ -93,26 +99,27 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:icon`**
 
-| props         | type                                                | description                                                     | default     |
-| ------------- | --------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| ref $bindable | `HTMLElement`                                       | Bindable reference to the rendered DOM element.                 | `null`      |
-| is            | `'i' \| 'span'`                                     | HTML element to render.                                         | `'i'`       |
-| class         | `string \| array \| object`                         | Classes of the icon, with the rules of Svelte (clsx).           |             |
-| style         | `string`                                            | Inline style of the icon.                                       |             |
-| s-class       | `string \| array \| object`                         | Classes of the icon, merged with `class`.                       |             |
-| s-style       | `object`                                            | Inline style as an object of property / value pairs.            |             |
-| size          | `'default' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Icon size. `'default'` follows the parent component, else `md`. | `'default'` |
-| src           | `string`                                            | Image URL. Used instead of `children`.                          |             |
-| name          | `string`                                            | CSS class name for icon fonts.                                  |             |
-| icon          | `string`                                            | Alias treated as `src` if it contains `/`, else `name`.         |             |
-| color         | `string \| false`                                   | A color of the palette or any CSS color (`--kit-icon-color`).   |             |
-| colorMode     | `'auto' \| 'mask' \| 'filter' \| 'none'`            | How `color` is applied to image icons.                          | `'auto'`    |
-| imgFilter     | `string`                                            | CSS `filter` value used in `filter` mode.                       |             |
-| decorative    | `boolean`                                           | Hides from assistive tech when `true`.                          | `true`      |
-| label         | `string`                                            | Accessible label when `decorative={false}`.                     |             |
-| alt           | `string`                                            | Alt text for image icons.                                       | `''`        |
-| loading       | `'eager' \| 'lazy'`                                 | Image loading strategy.                                         | `'eager'`   |
-| decoding      | `'sync' \| 'async' \| 'auto'`                       | Image decoding hint.                                            | `'async'`   |
-| children      | `Snippet`                                           | SVG icon component (e.g. from lucide-svelte).                   |             |
+| props         | type                                                | description                                                                                                                                 | default     |
+| ------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                       | Bindable reference to the rendered DOM element.                                                                                             | `null`      |
+| is            | `'i' \| 'span'`                                     | HTML element to render.                                                                                                                     | `'i'`       |
+| class         | `string \| array \| object`                         | Classes of the icon, with the rules of Svelte (clsx).                                                                                       |             |
+| style         | `string`                                            | Inline style of the icon.                                                                                                                   |             |
+| s-class       | `string \| array \| object`                         | Classes of the icon, merged with `class`.                                                                                                   |             |
+| s-style       | `object`                                            | Inline style as an object of property / value pairs.                                                                                        |             |
+| size          | `'default' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Icon size. `'default'` follows the parent component, else `md`.                                                                             | `'default'` |
+| src           | `string`                                            | Image URL. Used instead of `children`.                                                                                                      |             |
+| name          | `string`                                            | CSS class name for icon fonts.                                                                                                              |             |
+| icon          | `string`                                            | Alias treated as `src` if it contains `/`, else `name`.                                                                                     |             |
+| color         | `string \| false`                                   | A color of the palette or any CSS color (`--kit-icon-color`).                                                                               |             |
+| colorMode     | `'auto' \| 'mask' \| 'filter' \| 'none'`            | How `color` is applied to image icons.                                                                                                      | `'auto'`    |
+| imgFilter     | `string`                                            | CSS `filter` value used in `filter` mode.                                                                                                   |             |
+| decorative    | `boolean`                                           | Hides from assistive tech when `true`.                                                                                                      | `true`      |
+| label         | `string`                                            | Accessible label when `decorative={false}`.                                                                                                 |             |
+| tooltip       | `string \| TooltipOptions`                          | Tooltip on hover, see [the tooltip prop](/docs/components/tooltip#the-tooltip-prop). The icon is then named by the tooltip, not decorative. |             |
+| alt           | `string`                                            | Alt text for image icons.                                                                                                                   | `''`        |
+| loading       | `'eager' \| 'lazy'`                                 | Image loading strategy.                                                                                                                     | `'eager'`   |
+| decoding      | `'sync' \| 'async' \| 'auto'`                       | Image decoding hint.                                                                                                                        | `'async'`   |
+| children      | `Snippet`                                           | SVG icon component (e.g. from lucide-svelte).                                                                                               |             |
 
 Add `kit:icon` to your [Buttons](/docs/components/button), [Cards](/docs/components/card) or [Chips](/docs/components/chip) to visually guide your users.

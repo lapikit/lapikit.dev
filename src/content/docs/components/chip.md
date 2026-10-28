@@ -168,6 +168,12 @@ The other attributes (`name`, `onchange`...) go on the `<input>`, so the chip wo
 <Input/>
 </LazyRepl>
 
+### tooltip
+
+Add a tooltip to the chip with the `tooltip` prop: a text, or options (`location`, `variant`, `delayDuration`...). See [the tooltip prop](/docs/components/tooltip#the-tooltip-prop).
+
+<LazyRepl lang="svelte" content={'<kit:chip tooltip="More information">...</kit:chip>'} />
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
@@ -178,37 +184,38 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:chip`**
 
-| props         | type                                                                 | description                                                                                       | default     |
-| ------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------- |
-| ref $bindable | `HTMLElement`                                                        | Bindable reference to the rendered DOM element.                                                   | `null`      |
-| is            | `'div' \| 'a' \| 'button' \| 'input'`                                | HTML element. Overridden by `href` or event handlers; `'input'` is the same as `input`.           | `'div'`     |
-| class         | `string \| array \| object`                                          | Classes of the chip, with the rules of Svelte (clsx).                                             |             |
-| style         | `string`                                                             | Inline style of the chip.                                                                         |             |
-| s-class       | `string \| array \| object`                                          | Classes of the chip, merged with `class`.                                                         |             |
-| s-style       | `object`                                                             | Inline style as an object of property / value pairs.                                              |             |
-| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text' \| 'plain'` | Visual style.                                                                                     | `'filled'`  |
-| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                               | Height, padding, font size and gap.                                                               | `'md'`      |
-| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'`   | Height and horizontal padding.                                                                    | `'default'` |
-| interactive   | `boolean \| undefined`                                               | `undefined` detects, `true` forces, `false` disables the visual feedback.                         | `undefined` |
-| href          | `string`                                                             | Renders as `<a>`. Cleared when `disabled` or `readonly`, the link leaves the keyboard navigation. |             |
-| type          | `'button' \| 'submit' \| 'reset' \| 'checkbox' \| 'radio'`           | Type of the button or of the input.                                                               |             |
-| input         | `boolean`                                                            | Renders an `<input>` in a wrapper (a `<label>` for a checkbox or a radio).                        |             |
-| value         | `string \| number \| boolean`                                        | Value of the input.                                                                               |             |
-| checked       | `boolean`                                                            | Checked state of a checkbox or a radio input.                                                     |             |
-| label         | `string`                                                             | Text of the input, `value` when empty.                                                            |             |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                | Border radius.                                                                                    | `'full'`    |
-| active        | `boolean`                                                            | Applies the active color.                                                                         | `false`     |
-| disabled      | `boolean`                                                            | Dims and blocks all interaction.                                                                  | `false`     |
-| readonly      | `boolean`                                                            | Blocks interaction without disabled styling.                                                      | `false`     |
-| labelStyle    | `boolean`                                                            | Uppercase, bold, letter-spacing for badges and categories.                                        | `false`     |
-| loading       | `boolean`                                                            | Shows a spinner, hides content, sets `aria-busy`.                                                 |             |
-| noRipple      | `boolean`                                                            | Disables the ripple animation on click.                                                           |             |
-| prepend       | `Snippet`                                                            | Content before the label.                                                                         |             |
-| append        | `Snippet`                                                            | Content after the label.                                                                          |             |
-| load          | `Snippet`                                                            | Custom spinner content shown while loading.                                                       |             |
-| children      | `Snippet`                                                            | Chip label.                                                                                       |             |
-| color         | `string \| false \| { base?, active? }`                              | Chip color, its use depends on the variant.                                                       |             |
-| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`           | Add shadow effect.                                                                                |             |
+| props         | type                                                                 | description                                                                                                                                             | default     |
+| ------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                        | Bindable reference to the rendered DOM element.                                                                                                         | `null`      |
+| is            | `'div' \| 'a' \| 'button' \| 'input'`                                | HTML element. Overridden by `href` or event handlers; `'input'` is the same as `input`.                                                                 | `'div'`     |
+| class         | `string \| array \| object`                                          | Classes of the chip, with the rules of Svelte (clsx).                                                                                                   |             |
+| style         | `string`                                                             | Inline style of the chip.                                                                                                                               |             |
+| s-class       | `string \| array \| object`                                          | Classes of the chip, merged with `class`.                                                                                                               |             |
+| s-style       | `object`                                                             | Inline style as an object of property / value pairs.                                                                                                    |             |
+| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text' \| 'plain'` | Visual style.                                                                                                                                           | `'filled'`  |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                               | Height, padding, font size and gap.                                                                                                                     | `'md'`      |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'`   | Height and horizontal padding.                                                                                                                          | `'default'` |
+| interactive   | `boolean \| undefined`                                               | `undefined` detects, `true` forces, `false` disables the visual feedback.                                                                               | `undefined` |
+| href          | `string`                                                             | Renders as `<a>`. Cleared when `disabled` or `readonly`, the link leaves the keyboard navigation.                                                       |             |
+| type          | `'button' \| 'submit' \| 'reset' \| 'checkbox' \| 'radio'`           | Type of the button or of the input.                                                                                                                     |             |
+| input         | `boolean`                                                            | Renders an `<input>` in a wrapper (a `<label>` for a checkbox or a radio).                                                                              |             |
+| value         | `string \| number \| boolean`                                        | Value of the input.                                                                                                                                     |             |
+| checked       | `boolean`                                                            | Checked state of a checkbox or a radio input.                                                                                                           |             |
+| label         | `string`                                                             | Text of the input, `value` when empty.                                                                                                                  |             |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                | Border radius.                                                                                                                                          | `'full'`    |
+| active        | `boolean`                                                            | Applies the active color.                                                                                                                               | `false`     |
+| disabled      | `boolean`                                                            | Dims and blocks all interaction.                                                                                                                        | `false`     |
+| tooltip       | `string \| TooltipOptions`                                           | Tooltip on hover and keyboard focus, see [the tooltip prop](/docs/components/tooltip#the-tooltip-prop). A disabled chip with a tooltip stays focusable. |             |
+| readonly      | `boolean`                                                            | Blocks interaction without disabled styling.                                                                                                            | `false`     |
+| labelStyle    | `boolean`                                                            | Uppercase, bold, letter-spacing for badges and categories.                                                                                              | `false`     |
+| loading       | `boolean`                                                            | Shows a spinner, hides content, sets `aria-busy`.                                                                                                       |             |
+| noRipple      | `boolean`                                                            | Disables the ripple animation on click.                                                                                                                 |             |
+| prepend       | `Snippet`                                                            | Content before the label.                                                                                                                               |             |
+| append        | `Snippet`                                                            | Content after the label.                                                                                                                                |             |
+| load          | `Snippet`                                                            | Custom spinner content shown while loading.                                                                                                             |             |
+| children      | `Snippet`                                                            | Chip label.                                                                                                                                             |             |
+| color         | `string \| false \| { base?, active? }`                              | Chip color, its use depends on the variant.                                                                                                             |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`           | Add shadow effect.                                                                                                                                      |             |
 
 > `class:` and `style:` directives also work on `kit:chip` with the Lapikit preprocessor, see [Class and Style](/docs/essentials/class-and-style).
 

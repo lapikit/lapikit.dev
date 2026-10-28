@@ -1,17 +1,11 @@
 <script lang="ts">
+	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 	import { Settings, User, LogOut, ChevronDown } from 'lucide-svelte';
-
-	import type { ModelDropdownProps } from 'lapikit/components';
 </script>
 
 <kit:dropdown closeOnClick>
-	{#snippet activator({ open, toggle }: ModelDropdownProps)}
-		<kit:btn
-			variant="outline"
-			is="button"
-			active={open}
-			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-		>
+	{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+		<kit:btn variant="outline" is="button" active={open} {...props}>
 			Account
 			{#snippet append()}
 				<kit:icon size="sm"><ChevronDown /></kit:icon>

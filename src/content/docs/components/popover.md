@@ -17,23 +17,34 @@ layout: 'doc_page'
 	import positionCode from '$examples/components/popover/position.svelte?raw';
 </script>
 
-The `kit:popover` component displays contextual content above an activator. It is useful for providing additional information, options or secondary actions without overloading the main interface.
+The `kit:popover` component displays contextual content next to a trigger. It is useful for providing additional information, options or secondary actions without overloading the main interface.
 
-Popovers open dynamically from an activator and can be positioned in several directions: _top_, bottom, left or right. It is bindable and customizable in terms of theme, density, color, etc.
+Popovers open from a trigger and can be positioned in several directions: _top_, bottom, left or right. It is bindable and customizable in terms of theme, density, color, etc.
 
 <LazyRepl title="popover.svelte" presentation lang="svelte" content={previewCode}>
 <Preview/>
 </LazyRepl>
 
-`kit:popover` renders the `activator` snippet inline and the panel in a fixed-position `<div>` when open. The panel position is computed from the activator's bounding rect and updates on scroll and resize. Scrolling the page while a popover is open closes it automatically.
+`kit:popover` renders the `trigger` snippet inline and the panel in the top layer when open. The `trigger` snippet receives the props to spread on your trigger element:
 
-The `activator` snippet receives one argument:
-
-```ts
-activator(model: ModelPopoverProps)
+```svelte
+<kit:popover aria-label="Settings">
+	{#snippet trigger(props)}
+		<kit:btn {...props}>Settings</kit:btn>
+	{/snippet}
+	...
+</kit:popover>
 ```
 
-- **model.toggle**: `(element: HTMLElement) => void`
+`props` gives the trigger `aria-haspopup="dialog"`, `aria-expanded`, `aria-controls` and the click handler that opens and closes the popover.
+
+### Focus
+
+The panel is a `role="dialog"`. Give it a name with `aria-label` or `aria-labelledby`, passed to the panel.
+
+- On open, the focus moves to the first focusable element of the panel (or the panel itself).
+- `Escape` closes the popover and gives the focus back to the trigger.
+- The popover closes when the focus moves to another element of the page, or on a click outside.
 
 ## Examples of popover
 
@@ -45,7 +56,7 @@ activator(model: ModelPopoverProps)
 <Position/>
 </LazyRepl>
 
-> The popover is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its activator when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
+> The popover is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its trigger when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
 
 ### Without preprocess Lapikit
 
@@ -65,23 +76,23 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | s-class        | `string \| array \| object`                                        | Classes of the popover, merged with `class`.                              |             |
 | s-style        | `object`                                                           | Inline style as an object of property / value pairs.                      |             |
 | open $bindable | `boolean`                                                          | Controls visibility. Bindable.                                            | `false`     |
-| position       | `'top' \| 'bottom' \| 'left' \| 'right'`                           | Preferred position relative to the activator.                             | `'bottom'`  |
+| position       | `'top' \| 'bottom' \| 'left' \| 'right'`                           | Preferred position relative to the trigger.                               | `'bottom'`  |
 | rounded        | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius.                                                            | `'md'`      |
 | color          | `string \| false \| { base?, active? }`                            | Background color, the text follows its `on-` color or a contrasted color. |             |
-| activator      | `Snippet<[model]>`                                                 | Trigger element. Receives model with `toggle`.                            |             |
+| trigger        | `Snippet<[PopoverTriggerProps]>`                                   | The trigger element, receives the props to spread on it.                  |             |
 | children       | `Snippet`                                                          | Floating panel content.                                                   |             |
 | elevation      | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                                        | `'2'`       |
 | density        | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Padding, from `-4px` to `+4px`.                                           | `'default'` |
 
-**ModelPopoverProps**
+**PopoverTriggerProps**
 
-The `ModelPopoverProps` interface provides the properties passed to the activator slot. It allows you to access the Popover's current state (open), manipulate it dynamically (state) and retrieve the trigger element or linked event (element).
+The props to spread on the trigger element.
 
-You can use it to create fully customized activators that finely control Popover opening/closing.
-
-| props  | type                             | description                                                                                                                                                   |
-| ------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| open   | `boolean`                        | Whether the popover is currently open.                                                                                                                        |
-| toggle | `(element: HTMLElement) => void` | Function to toggle the popover visibility. Call it with the trigger element to open/close the popover. The element is used for positioning the popover panel. |
+| props         | type                          | description                  |
+| ------------- | ----------------------------- | ---------------------------- |
+| aria-haspopup | `'dialog'`                    | The trigger opens a dialog.  |
+| aria-expanded | `boolean`                     | Whether the popover is open. |
+| aria-controls | `string`                      | The id of the popover.       |
+| onclick       | `(event: MouseEvent) => void` | Opens or closes the popover. |
 
 `kit:popover` are the ideal complement to [Dialogs](/docs/components/dialog) or [Buttons](/docs/components/button) in modern interfaces.

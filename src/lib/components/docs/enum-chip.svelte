@@ -1,18 +1,13 @@
 <script lang="ts">
-	import type { ModelPopoverProps } from 'lapikit/components';
+	import type { PopoverTriggerProps } from 'lapikit/components';
 	import { Info } from 'lucide-svelte';
 
 	let { values }: { values: string[] } = $props();
 </script>
 
 <kit:popover>
-	{#snippet activator({ toggle }: ModelPopoverProps)}
-		<kit:chip
-			size="xs"
-			variant="outline"
-			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-			aria-label={`enum: ${values.join(', ')}`}
-		>
+	{#snippet trigger(props: PopoverTriggerProps)}
+		<kit:chip size="xs" variant="outline" {...props} aria-label={`enum: ${values.join(', ')}`}>
 			Enum
 
 			{#snippet append()}

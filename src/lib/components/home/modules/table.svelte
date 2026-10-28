@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ModelDropdownProps } from 'lapikit/components';
+	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 	import { capitalize } from '$lib/utils';
 
 	// modules
@@ -33,15 +33,8 @@
 			{:else}
 				<div class:hidden-col={indexResult != 0 && onlyDisplay != indexResult}>
 					<kit:dropdown closeOnClick>
-						{#snippet activator({ open, toggle }: ModelDropdownProps)}
-							<kit:btn
-								icon
-								active={open}
-								onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-								rounded="full"
-								size="sm"
-								class="hidden_btn"
-							>
+						{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+							<kit:btn icon active={open} {...props} rounded="full" size="sm" class="hidden_btn">
 								<kit:icon><Pen /></kit:icon>
 							</kit:btn>
 						{/snippet}

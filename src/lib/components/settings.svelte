@@ -1,5 +1,9 @@
 <script lang="ts">
-	import type { ModelDropdownProps, ModelPopoverProps } from 'lapikit/components';
+	import type {
+		DropdownTriggerModel,
+		DropdownTriggerProps,
+		PopoverTriggerProps
+	} from 'lapikit/components';
 	import { createGlobalTheme, useTheme } from 'lapikit/actions';
 	import { capitalize } from '$lib/utils';
 
@@ -29,13 +33,8 @@
 </script>
 
 <kit:popover class="settings-app">
-	{#snippet activator({ toggle }: ModelPopoverProps)}
-		<kit:btn
-			{variant}
-			{density}
-			icon
-			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-		>
+	{#snippet trigger(props: PopoverTriggerProps)}
+		<kit:btn {variant} {density} icon {...props}>
 			<kit:icon>
 				<Settings />
 			</kit:icon>
@@ -63,14 +62,14 @@
 		<kit:list-item>
 			<p class="text-sm">Package</p>
 			<kit:dropdown closeOnClick>
-				{#snippet activator({ open, toggle }: ModelDropdownProps)}
+				{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 					<kit:btn
 						class="hidden_action_appbar"
 						density="compact"
 						is="button"
 						variant="text"
 						active={open}
-						onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+						{...props}
 					>
 						{#snippet prepend()}
 							<kit:icon>
@@ -109,7 +108,7 @@
 		<kit:list-item>
 			<p class="text-sm">Language</p>
 			<kit:dropdown closeOnClick>
-				{#snippet activator({ open, toggle }: ModelDropdownProps)}
+				{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 					<kit:btn
 						class="hidden_action_appbar"
 						density="compact"
@@ -117,7 +116,7 @@
 						variant="text"
 						disabled
 						active={open}
-						onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+						{...props}
 					>
 						{#snippet prepend()}
 							<kit:icon>

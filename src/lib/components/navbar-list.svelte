@@ -1,8 +1,8 @@
 <script lang="ts">
+	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { capitalize } from '$lib/utils';
 	import type { AppNavItem } from '$lib/@types';
-	import type { ModelDropdownHandleProps, ModelDropdownProps } from 'lapikit/components';
 
 	// assets
 	import { ChevronDown, ChevronUp, Ellipsis } from 'lucide-svelte';
@@ -62,19 +62,8 @@
 				</kit:btn>
 			{:else if child}
 				<kit:dropdown closeOnClick openOnHover>
-					{#snippet activator(
-						{ open, toggle }: ModelDropdownProps,
-						handleMouse: ModelDropdownHandleProps
-					)}
-						<kit:btn
-							is="button"
-							variant="text"
-							density="compact"
-							active={open}
-							onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-							onmouseenter={(e: MouseEvent) => handleMouse('open', e.currentTarget as HTMLElement)}
-							onmouseleave={() => handleMouse('close', null)}
-						>
+					{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+						<kit:btn is="button" variant="text" density="compact" active={open} {...props}>
 							{capitalize(label)}
 							{#snippet append()}
 								<kit:icon>
@@ -102,12 +91,12 @@
 
 	{#if visibleCount < data.length}
 		<kit:dropdown closeOnClick>
-			{#snippet activator({ open, toggle }: ModelDropdownProps)}
+			{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 				<kit:btn
 					density="compact"
 					is="button"
 					active={open}
-					onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
+					{...props}
 					icon
 					color={{ active: 'surface-2' }}
 				>

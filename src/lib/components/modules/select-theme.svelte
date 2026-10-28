@@ -1,6 +1,6 @@
 <script lang="ts">
+	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 	import { capitalize } from '$lib/utils';
-	import type { ModelDropdownProps } from 'lapikit/components';
 	import { createGlobalTheme, useTheme } from 'lapikit/actions';
 
 	//data
@@ -17,11 +17,8 @@
 </script>
 
 <kit:dropdown closeOnClick>
-	{#snippet activator({ toggle, open }: ModelDropdownProps)}
-		<kit:btn
-			onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}
-			s-style_max-width="254px"
-		>
+	{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
+		<kit:btn {...props} s-style_max-width="254px">
 			{#snippet prepend()}
 				<kit:icon>
 					<CurrentIcon />

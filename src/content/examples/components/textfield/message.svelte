@@ -16,7 +16,8 @@
 	<kit:textfield
 		placeholder="Username"
 		message="3–20 characters"
-		max={20}
+		minlength={3}
+		maxlength={20}
 		counter
 		persistentMessage
 	/>

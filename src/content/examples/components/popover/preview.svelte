@@ -1,12 +1,10 @@
 <script lang="ts">
-	import type { ModelPopoverProps } from 'lapikit/components';
+	import type { PopoverTriggerProps } from 'lapikit/components';
 </script>
 
 <kit:popover>
-	{#snippet activator({ toggle }: ModelPopoverProps)}
-		<kit:btn variant="outline" onclick={(e: MouseEvent) => toggle(e.currentTarget as HTMLElement)}>
-			Open popover
-		</kit:btn>
+	{#snippet trigger(props: PopoverTriggerProps)}
+		<kit:btn variant="outline" {...props}> Open popover </kit:btn>
 	{/snippet}
 
 	<div style="min-width: 14rem;">

@@ -185,6 +185,12 @@ The other attributes (`name`, `onchange`...) go on the `<input>`, so the button 
 <Input/>
 </LazyRepl>
 
+### tooltip
+
+Add a tooltip to the button with the `tooltip` prop: a text, or options (`location`, `variant`, `delayDuration`...). An icon button gets the text as its accessible name. See [the tooltip prop](/docs/components/tooltip#the-tooltip-prop).
+
+<LazyRepl lang="svelte" content={'<kit:btn tooltip="More information">...</kit:btn>'} />
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
@@ -195,37 +201,38 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 **`kit:btn`**
 
-| props         | type                                                                           | description                                                                     | default     |
-| ------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ----------- |
-| ref $bindable | `HTMLElement`                                                                  | Bindable reference to the rendered DOM element.                                 | `null`      |
-| is            | `'button' \| 'a' \| 'input'`                                                   | HTML element to render. Overridden by `href`; `'input'` is the same as `input`. | `'button'`  |
-| class         | `string \| array \| object`                                                    | Classes of the button, with the rules of Svelte (clsx).                         |             |
-| style         | `string`                                                                       | Inline style of the button.                                                     |             |
-| s-class       | `string \| array \| object`                                                    | Classes of the button, merged with `class`.                                     |             |
-| s-style       | `object`                                                                       | Inline style as an object of property / value pairs.                            |             |
-| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text' \| 'plain' \| 'link'` | Visual style.                                                                   | `'filled'`  |
-| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                         | Height, padding, font size and gap.                                             | `'md'`      |
-| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'`             | Height and horizontal padding.                                                  | `'default'` |
-| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                          | Border radius.                                                                  | `'sm'`      |
-| href          | `string`                                                                       | Renders as `<a>`. Cleared when `disabled`.                                      |             |
-| type          | `'button' \| 'submit' \| 'reset' \| 'checkbox' \| 'radio'`                     | Type of the button or of the input.                                             | `'button'`  |
-| input         | `boolean`                                                                      | Renders an `<input>` in a wrapper (a `<label>` for a checkbox or a radio).      |             |
-| value         | `string \| number \| boolean`                                                  | Value of the input.                                                             |             |
-| checked       | `boolean`                                                                      | Checked state of a checkbox or a radio input.                                   |             |
-| label         | `string`                                                                       | Text of the input, `value` when empty.                                          |             |
-| disabled      | `boolean`                                                                      | Prevents interaction, dims the button.                                          | `false`     |
-| loading       | `boolean`                                                                      | Shows a spinner, hides content, sets `aria-busy`.                               |             |
-| active        | `boolean`                                                                      | Applies the pressed background.                                                 | `false`     |
-| icon          | `boolean`                                                                      | Makes width equal height for icon-only buttons.                                 |             |
-| block         | `boolean`                                                                      | Stretches to full container width.                                              |             |
-| wide          | `boolean`                                                                      | Caps width at `16rem`.                                                          |             |
-| noRipple      | `boolean`                                                                      | Disables the ripple animation on click.                                         |             |
-| prepend       | `Snippet`                                                                      | Content before the label.                                                       |             |
-| append        | `Snippet`                                                                      | Content after the label.                                                        |             |
-| load          | `Snippet`                                                                      | Custom spinner content shown while loading.                                     |             |
-| children      | `Snippet`                                                                      | Button label.                                                                   |             |
-| color         | `string \| false \| { base?, active? }`                                        | Button color, its use depends on the variant.                                   |             |
-| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                     | Add shadow effect.                                                              |             |
+| props         | type                                                                           | description                                                                                                                                               | default     |
+| ------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| ref $bindable | `HTMLElement`                                                                  | Bindable reference to the rendered DOM element.                                                                                                           | `null`      |
+| is            | `'button' \| 'a' \| 'input'`                                                   | HTML element to render. Overridden by `href`; `'input'` is the same as `input`.                                                                           | `'button'`  |
+| class         | `string \| array \| object`                                                    | Classes of the button, with the rules of Svelte (clsx).                                                                                                   |             |
+| style         | `string`                                                                       | Inline style of the button.                                                                                                                               |             |
+| s-class       | `string \| array \| object`                                                    | Classes of the button, merged with `class`.                                                                                                               |             |
+| s-style       | `object`                                                                       | Inline style as an object of property / value pairs.                                                                                                      |             |
+| variant       | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text' \| 'plain' \| 'link'` | Visual style.                                                                                                                                             | `'filled'`  |
+| size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                         | Height, padding, font size and gap.                                                                                                                       | `'md'`      |
+| density       | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'`             | Height and horizontal padding.                                                                                                                            | `'default'` |
+| rounded       | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                          | Border radius.                                                                                                                                            | `'sm'`      |
+| href          | `string`                                                                       | Renders as `<a>`. Cleared when `disabled`.                                                                                                                |             |
+| type          | `'button' \| 'submit' \| 'reset' \| 'checkbox' \| 'radio'`                     | Type of the button or of the input.                                                                                                                       | `'button'`  |
+| input         | `boolean`                                                                      | Renders an `<input>` in a wrapper (a `<label>` for a checkbox or a radio).                                                                                |             |
+| value         | `string \| number \| boolean`                                                  | Value of the input.                                                                                                                                       |             |
+| checked       | `boolean`                                                                      | Checked state of a checkbox or a radio input.                                                                                                             |             |
+| label         | `string`                                                                       | Text of the input, `value` when empty.                                                                                                                    |             |
+| disabled      | `boolean`                                                                      | Prevents interaction, dims the button.                                                                                                                    | `false`     |
+| tooltip       | `string \| TooltipOptions`                                                     | Tooltip on hover and keyboard focus, see [the tooltip prop](/docs/components/tooltip#the-tooltip-prop). A disabled button with a tooltip stays focusable. |             |
+| loading       | `boolean`                                                                      | Shows a spinner, hides content, sets `aria-busy`.                                                                                                         |             |
+| active        | `boolean`                                                                      | Applies the pressed background.                                                                                                                           | `false`     |
+| icon          | `boolean`                                                                      | Makes width equal height for icon-only buttons.                                                                                                           |             |
+| block         | `boolean`                                                                      | Stretches to full container width.                                                                                                                        |             |
+| wide          | `boolean`                                                                      | Caps width at `16rem`.                                                                                                                                    |             |
+| noRipple      | `boolean`                                                                      | Disables the ripple animation on click.                                                                                                                   |             |
+| prepend       | `Snippet`                                                                      | Content before the label.                                                                                                                                 |             |
+| append        | `Snippet`                                                                      | Content after the label.                                                                                                                                  |             |
+| load          | `Snippet`                                                                      | Custom spinner content shown while loading.                                                                                                               |             |
+| children      | `Snippet`                                                                      | Button label.                                                                                                                                             |             |
+| color         | `string \| false \| { base?, active? }`                                        | Button color, its use depends on the variant.                                                                                                             |             |
+| elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                     | Add shadow effect.                                                                                                                                        |             |
 
 > `class:` and `style:` directives also work on `kit:btn` with the Lapikit preprocessor, see [Class and Style](/docs/essentials/class-and-style).
 

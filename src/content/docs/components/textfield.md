@@ -62,8 +62,8 @@ Show helper text or validation errors below the field. The message is visible on
 - **errorMessage**: `string` => Message shown when `error` is `true`.
 - **error**: `boolean` => Activates the error state (red border + message).
 - **persistentMessage**: `boolean` => Always shows the message (not only on focus).
-- **counter**: `boolean` => Shows the character count. Use with `max` for a limit.
-- **max**: `number` => Maximum character count.
+- **counter**: `boolean` => Shows the character count. Use with `maxlength` for a limit.
+- **minlength** / **maxlength**: `number` => Minimum and maximum character count, native attributes of the input.
 
 <LazyRepl title="textfield.svelte" lang="svelte" content={messageCode}>
 <Message/>
@@ -124,8 +124,8 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | messageSuffix     | `string`                                                                    | Trailing text in the message row.                                            |             |
 | persistentMessage | `boolean`                                                                   | Always shows the message, not only on focus.                                 | `false`     |
 | counter           | `boolean`                                                                   | Shows character counter.                                                     | `false`     |
-| min               | `number`                                                                    | Minimum character count.                                                     |             |
-| max               | `number`                                                                    | Maximum character count.                                                     |             |
+| minlength         | `number`                                                                    | Minimum character count, checked by the browser on submit.                   |             |
+| maxlength         | `number`                                                                    | Maximum character count, also shown by the counter.                          |             |
 | clearable         | `boolean`                                                                   | Shows a clear button when the field has a value.                             | `false`     |
 | clearLabel        | `string`                                                                    | Accessible name of the clear button.                                         | `'Clear'`   |
 | persistentClear   | `boolean`                                                                   | Always shows the clear button.                                               | `false`     |
@@ -142,5 +142,6 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | prependInner      | `Snippet`                                                                   | Content inside the field border, before the input.                           |             |
 | appendInner       | `Snippet`                                                                   | Content inside the field border, after the input.                            |             |
 | elevation         | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                  | Add shadow effect.                                                           |             |
+| label             | `string`                                                                    | Label above the field, linked to the input with `for`.                       |             |
 
 `kit:textfield` works great with Form validation and can be enhanced with [Icons](/docs/components/icon) and [Buttons](/docs/components/button) using snippets.

@@ -82,6 +82,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | rounded           | `0 \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`              | Border radius of the box.                                   | `'md'`      |
 | color             | `string \| false \| { base?, active? }`                            | Color of the box, its use depends on the variant.           |             |
 | elevation         | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect on the box.                               |             |
+| label             | `string`                                                           | Label above the field, linked to the control with `for`.    |             |
 | error             | `boolean`                                                          | Error state: error color on the border and the message.     | `false`     |
 | errorMessage      | `string`                                                           | Message shown when `error` is `true`.                       |             |
 | message           | `string`                                                           | Helper text below the field.                                |             |

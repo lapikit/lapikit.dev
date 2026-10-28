@@ -34,7 +34,7 @@ Then add it to your `eslint.config.js`:
 
 <LazyRepl title="eslint.config.js" lang="js" content={eslintConfigLapikitCode} />
 
-This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-specific snippets such as `activator`, `indicator`, `append`, `prepend`, `close`, `load`, `tooltip` and `children` (with a parameter, as in `kit:field`).
+This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-specific snippets such as `trigger`, `activator`, `indicator`, `append`, `prepend`, `close`, `load`, `tooltip` and `children` (with a parameter, as in `kit:field`).
 
 > **Note:** `eslint-config-lapikit` configures the `@typescript-eslint/no-unused-vars` rule. If you already have a custom configuration for this rule, place the lapikit config first so your own rules take precedence:
 
@@ -42,7 +42,7 @@ This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-spe
 
 ## Use the types of the components
 
-`lapikit/components` exports the props type of every component (`ButtonProps`, `CardProps`, `TextfieldProps`...), the types of the snippet parameters (`FieldControlProps`, `ModelDropdownProps`...) and the shared types (`ColorProps`, `ElevationProps`, `RoundedType`, `DensityType`...). Use them to type a snippet parameter or to build your own component on top of a Lapikit one:
+`lapikit/components` exports the props type of every component (`ButtonProps`, `CardProps`, `TextfieldProps`...), the types of the snippet parameters (`FieldControlProps`, `DropdownTriggerProps`...) and the shared types (`ColorProps`, `ElevationProps`, `RoundedType`, `DensityType`...). Use them to type a snippet parameter or to build your own component on top of a Lapikit one:
 
 ```svelte
 <script lang="ts">
@@ -62,11 +62,11 @@ The labs components export theirs from `lapikit/labs/components` (`SheetProps`).
 
 ### Snippet warnings in TypeScript
 
-When using lapikit snippets like `activator`, your IDE may display the following warning `ts(6133)`:
+When using lapikit snippets like `trigger`, your IDE may display the following warning `ts(6133)`:
 
-<LazyRepl lang="sh" content={"'activator' is declared but its value is never read. ts(6133)"} />
+<LazyRepl lang="sh" content={"'trigger' is declared but its value is never read. ts(6133)"} />
 
-This is a **known false positive**. Lapikit's `<kit:*>` syntax is transformed into standard Svelte components by its preprocessor at build time, but IDE language servers analyze your source files directly without running the preprocessor. As a result, they cannot determine that snippets like `activator` are consumed by the transformed component.
+This is a **known false positive**. Lapikit's `<kit:*>` syntax is transformed into standard Svelte components by its preprocessor at build time, but IDE language servers analyze your source files directly without running the preprocessor. As a result, they cannot determine that snippets like `trigger` are consumed by the transformed component.
 
 Your code is correct and will work as expected - this warning can be safely ignored.
 
