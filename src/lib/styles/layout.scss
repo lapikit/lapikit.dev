@@ -174,26 +174,30 @@
 
 /** BORDER **/
 
+:root {
+	--lapikit-border: 2px solid gray !important;
+}
+
 .border-full {
-	border: 2px solid gray;
+	border: 2px solid gray !important;
 }
 .border-top {
-	border-top: 2px solid gray;
+	border-top: 2px solid gray !important;
 }
 .border-bottom {
-	border-bottom: 2px solid gray;
+	border-bottom: 2px solid gray !important;
 }
 .border-left {
-	border-left: 2px solid gray;
+	border-left: 2px solid gray !important;
 }
 .border-right {
-	border-right: 2px solid gray;
+	border-right: 2px solid gray !important;
 }
 .border-x {
-	border-top: 2px solid gray;
-	border-bottom: 2px solid gray;
+	border-top: 2px solid gray !important;
+	border-bottom: 2px solid gray !important;
 }
 .border-y {
-	border-left: 2px solid gray;
-	border-right: 2px solid gray;
+	border-left: 2px solid gray !important;
+	border-right: 2px solid gray !important;
 }
