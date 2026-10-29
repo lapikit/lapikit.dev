@@ -1,32 +1,93 @@
 <script lang="ts">
-	// data
+	import type { AppNavChild } from '$lib/@types';
+	import { capitalize, isExternal } from '$lib/utils';
+	import { useAccordion } from 'lapikit/actions';
+	import { openConsentPreferences } from '$lib/stores/consent.svelte';
+
 	import { type LinkName } from '$lib/constants';
+	import { router } from '$lib/router';
 
-	// assets
 	import LapikitFooter from '$lib/assets/images/lapikit-footer-v2.svg?raw';
-	import { Heart } from 'lucide-svelte';
+	import { ExternalLink, Heart } from 'lucide-svelte';
 
-	// modules
 	import SocialLink from './modules/social-link.svelte';
 	import BtnGameLapinosaure from './modules/btn-game-lapinosaure.svelte';
 	import SheetSpacer from './modules/sheet-spacer.svelte';
+	import ThemeSwitcher from './modules/theme-switcher.svelte';
 
-	//states
+	const accordion = useAccordion();
+
 	const socials: LinkName[] = ['instagram', 'discord', 'github', 'npm'];
-	let year: number = new Date().getFullYear();
+	const year = new Date().getFullYear();
 </script>
 
-<footer>
-	<SheetSpacer innerTop innerBottom />
-	<div>
-		<div class="wordmark">
+{#snippet footerLink({ label, path }: AppNavChild)}
+	{#if isExternal(path)}
+		<kit:list-item href={path} target="_blank" rel="noopener noreferrer">
+			{capitalize(label)}
+			<kit:icon size="xs" color="text-muted" s-style_margin-left="7px">
+				<ExternalLink />
+			</kit:icon>
+		</kit:list-item>
+	{:else if path === 'cookie-settings'}
+		<kit:list-item onclick={openConsentPreferences}>{capitalize(label)}</kit:list-item>
+	{:else}
+		<kit:list-item href={path}>{capitalize(label)}</kit:list-item>
+	{/if}
+{/snippet}
+
+<footer class="footer">
+	<div class="footer-container">
+		<nav class="footer-nav" aria-label="Footer">
+			<div class="footer-brand">
+				<p class="footer-brand-name">Lapikit</p>
+
+				<div class="footer-theme">
+					<span class="footer-theme-label" aria-hidden="true">Theme</span>
+					<ThemeSwitcher />
+				</div>
+			</div>
+
+			<kit:accordion class="footer-accordion" variant="text" rounded="0">
+				{#each router.footer as { label, child }, index (label)}
+					<kit:accordion-item
+						{index}
+						text={capitalize(label)}
+						open={accordion.values.includes(index)}
+						toggle={accordion.toggle}
+					>
+						<kit:list density="compact" rounded="0" variant="text">
+							{#each child ?? [] as link (link.label)}
+								{@render footerLink(link)}
+							{/each}
+						</kit:list>
+					</kit:accordion-item>
+				{/each}
+			</kit:accordion>
+
+			{#each router.footer as { label, child } (label)}
+				<kit:list class="footer-column" variant="text" rounded="0">
+					<kit:list-item class="footer-column-title">{capitalize(label)}</kit:list-item>
+					{#each child ?? [] as link (link.label)}
+						{@render footerLink(link)}
+					{/each}
+				</kit:list>
+			{/each}
+		</nav>
+	</div>
+
+	<SheetSpacer innerBottom />
+
+	<div class="footer-container">
+		<div class="footer-wordmark">
 			<span role="img" aria-label="Lapikit">
 				{@html LapikitFooter}
 			</span>
 		</div>
-		<div class="append-footer">
-			<ul class="regular-links">
-				<li><span class="copyright">© {year} Lapikit</span></li>
+
+		<div class="footer-bar">
+			<ul class="footer-legal">
+				<li><span class="footer-copyright">© {year} Lapikit</span></li>
 				<li>
 					<kit:btn variant="plain" noRipple>MIT License</kit:btn>
 				</li>
@@ -41,10 +102,12 @@
 					</kit:btn>
 				</li>
 			</ul>
-			<div class="social-links">
+
+			<div class="footer-socials">
 				<SocialLink data={socials} variant="plain" size="lg" monochrome />
 			</div>
-			<div class="game-lapikit">
+
+			<div class="footer-game">
 				<BtnGameLapinosaure />
 			</div>
 		</div>
@@ -52,164 +115,242 @@
 </footer>
 
 <style lang="scss">
-	footer {
-		border-top: var(--lapikit-border);
+	@use '$lib/styles/breakpoints' as *;
 
-		> div {
-			max-width: var(--lapikit-container-size);
-			margin: 0 auto;
-		}
+	.footer {
+		border-top: var(--lapikit-border);
 
 		:global(.kit-btn) {
 			font-weight: 600;
 			font-size: 16px;
 		}
+	}
 
-		> div {
-			padding-left: 24px;
-			padding-right: 24px;
+	.footer-container {
+		max-width: var(--lapikit-container-size);
+		margin: 0 auto;
+		padding: 0 var(--lapikit-spacing-block);
+	}
+
+	.footer-nav {
+		:global(.kit-list-item) {
+			padding: 0 var(--lapikit-spacing-block);
 		}
 
-		.copyright {
-			color: var(--kit-color-text-subtle);
+		:global(button.kit-list-item) {
+			font-size: var(--kit-list-item-font);
 		}
 
-		.regular-links {
-			display: flex;
-			align-items: center;
-			line-height: 1;
-			flex-wrap: wrap;
-			justify-content: start;
-			flex-grow: 1;
-			row-gap: 6px;
-
-			li {
-				position: relative;
-				padding: 0px;
-				white-space: nowrap;
-
-				&:not(:last-child) {
-					border-right: var(--lapikit-border);
-				}
-
-				> span {
-					padding: 0 10px;
-					height: fit-content;
-					display: flex;
-					align-items: center;
-				}
-
-				:global(.kit-btn) {
-					height: fit-content;
-					padding: 0 10px;
-				}
-			}
-		}
-
-		.wordmark {
+		:global(.kit-accordion-item) {
 			border-left: var(--lapikit-border);
 			border-right: var(--lapikit-border);
-			border-bottom: var(--lapikit-border);
 
-			> span {
-				display: inline-block;
-				max-width: 100%;
-				position: relative;
-				user-select: none;
-				color: var(--kit-color-text);
-				padding: var(--lapikit-spacing-block);
-			}
-
-			:global(svg) {
-				display: block;
-				max-width: 100%;
-				height: auto;
+			&:not(:last-child) {
+				border-bottom: var(--lapikit-border);
 			}
 		}
 
-		.append-footer {
+		:global(.kit-accordion-item__trigger) {
+			padding-left: var(--lapikit-spacing-block);
+		}
+
+		:global(.kit-accordion-item__content-inner) {
+			padding: 0;
+		}
+
+		> :global(.footer-column) {
+			display: none;
+		}
+
+		@include up(md) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
 			border-left: var(--lapikit-border);
-			border-right: var(--lapikit-border);
-			border-bottom: var(--lapikit-border);
 
-			> ul {
-				padding: var(--lapikit-spacing-block);
+			> :global(.footer-accordion) {
+				display: none;
 			}
 
-			> div:nth-child(2) {
-				padding: 0 var(--lapikit-spacing-block);
-			}
-
-			> *:not(:last-child) {
+			> :global(.footer-column) {
+				display: flex;
+				padding: var(--lapikit-spacing-block) 0;
+				border-right: var(--lapikit-border);
 				border-bottom: var(--lapikit-border);
 			}
 
-			> .regular-links {
-				grid-area: regular-links;
+			:global(.footer-column-title) {
+				font-size: 18px;
+				font-weight: 600;
 			}
-			> .social-links {
-				grid-area: social-links;
-			}
-			> .game-lapikit {
-				grid-area: game-lapikit;
-			}
+		}
 
-			@media (min-width: 718px) {
-				display: grid;
-				grid-template-columns: 1fr auto;
-				grid-template-areas:
-					'regular-links regular-links'
-					'social-links game-lapikit';
+		@include up(lg) {
+			grid-template-columns: repeat(3, 1fr);
+		}
 
-				.social-links,
-				.game-lapikit {
-					min-height: 72px;
-					display: flex;
-					align-items: center;
-					border-bottom: 0;
+		@include up(xl) {
+			grid-template-columns: 1.4fr repeat(4, 1fr);
+		}
+	}
+
+	.footer-brand {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: var(--lapikit-spacing-block);
+		border: var(--lapikit-border);
+		border-top: 0;
+
+		@include up(md) {
+			grid-column: 1 / -1;
+			border-left: 0;
+		}
+
+		@include up(lg) {
+			grid-column: 1;
+			grid-row: span 2;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		@include up(xl) {
+			grid-row: auto;
+		}
+	}
+
+	.footer-brand-name {
+		font-size: 56px;
+		font-weight: 440;
+		line-height: 1.1;
+	}
+
+	.footer-theme {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.footer-theme-label {
+		font-size: 14px;
+		color: var(--kit-color-text-subtle);
+	}
+
+	.footer-wordmark {
+		border: var(--lapikit-border);
+		border-top: 0;
+
+		> span {
+			display: inline-block;
+			max-width: 100%;
+			padding: var(--lapikit-spacing-block);
+			color: var(--kit-color-text);
+			user-select: none;
+		}
+
+		:global(svg) {
+			display: block;
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	.footer-bar {
+		border: var(--lapikit-border);
+		border-top: 0;
+
+		@include up(md) {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			grid-template-areas:
+				'legal legal'
+				'socials game';
+		}
+
+		@include up(xl) {
+			grid-template-columns: auto 1fr auto;
+			grid-template-areas: 'legal socials game';
+		}
+	}
+
+	.footer-legal {
+		grid-area: legal;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		row-gap: 6px;
+		padding: var(--lapikit-spacing-block);
+		line-height: 1;
+		border-bottom: var(--lapikit-border);
+
+		li {
+			white-space: nowrap;
+
+			&:not(:last-child) {
+				border-right: var(--lapikit-border);
+			}
+		}
+
+		:global(.kit-btn) {
+			height: fit-content;
+			padding: 0 10px;
+		}
+
+		@include up(xl) {
+			padding: 0 var(--lapikit-spacing-block);
+			border-bottom: 0;
+
+			li {
+				display: flex;
+				align-items: center;
+				height: 100%;
+				padding: 0 var(--lapikit-spacing-block);
+				border-right: var(--lapikit-border);
+
+				&:first-child {
+					padding-left: 0;
 				}
 			}
+		}
+	}
 
-			@media (min-width: 1400px) {
-				grid-template-columns: auto 1fr auto;
-				grid-template-areas: 'regular-links social-links game-lapikit';
+	.footer-copyright {
+		display: flex;
+		align-items: center;
+		padding: 0 10px;
+		color: var(--kit-color-text-subtle);
 
-				.regular-links {
-					border-bottom: 0;
+		@include up(xl) {
+			padding: 0;
+		}
+	}
 
-					li {
-						border-right: var(--lapikit-border);
-						height: 100%;
-						display: flex;
-						align-items: center;
+	.footer-socials {
+		grid-area: socials;
+		padding: 0 var(--lapikit-spacing-block);
+		border-bottom: var(--lapikit-border);
 
-						&:first-child {
-							padding: 0 var(--lapikit-spacing-block) 0 0;
-						}
+		@include up(md) {
+			display: flex;
+			align-items: center;
+			min-height: 72px;
+			border-bottom: 0;
+		}
 
-						&:not(:first-child) {
-							padding: 0 var(--lapikit-spacing-block);
-						}
+		@include up(xl) {
+			justify-content: end;
+			border-right: var(--lapikit-border);
+		}
+	}
 
-						span {
-							padding: 0;
-						}
-					}
-				}
+	.footer-game {
+		grid-area: game;
 
-				> * {
-					padding: 0 var(--lapikit-spacing-block) !important;
-				}
-
-				.social-links {
-					justify-content: end;
-					border-right: var(--lapikit-border);
-				}
-
-				.game-lapikit {
-					padding: 0 !important;
-				}
-			}
+		@include up(md) {
+			display: flex;
+			align-items: center;
+			min-height: 72px;
 		}
 	}
 </style>
