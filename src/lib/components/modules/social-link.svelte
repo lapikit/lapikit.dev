@@ -5,12 +5,12 @@
 	let {
 		data,
 		density = 'compact',
-		text,
+		monochrome,
 		...rest
 	}: {
 		data: LinkName[];
 		density?: string;
-		text?: boolean;
+		monochrome?: boolean;
 		[key: string]: unknown;
 	} = $props();
 </script>
@@ -19,11 +19,11 @@
 	{@const link = links[name]}
 	<kit:btn
 		href={link.url}
-		variant={text && 'text'}
 		target="_blank"
 		{density}
-		color={link._styles.background}
+		color={!monochrome && link._styles.background}
 		icon
+		noRipple={monochrome}
 		{...rest}
 	>
 		<kit:icon>
