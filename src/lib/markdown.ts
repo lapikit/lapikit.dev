@@ -2,7 +2,7 @@
 import type { DocComponent, DocSummary } from './@types';
 
 // datas
-import manifest from '../manifest.json';
+import manifest from '$lib/generated/manifest.json';
 
 /**
  * Documentation registry

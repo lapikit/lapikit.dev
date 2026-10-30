@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import type { DocSummary } from '../src/lib/@types';
 
-const manifest: DocSummary[] = JSON.parse(readFileSync('src/manifest.json', 'utf8'));
+const manifest: DocSummary[] = JSON.parse(readFileSync('src/lib/generated/manifest.json', 'utf8'));
 
 test('sitemap only lists live pages', async ({ request }) => {
 	const response = await request.get('/sitemap.xml');

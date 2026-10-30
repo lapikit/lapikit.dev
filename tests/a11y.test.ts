@@ -7,7 +7,7 @@ import { appendFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync } f
 // and compares its numbers with the previous report to show the evolution.
 
 const manifest: { path: { pathname: string } }[] = JSON.parse(
-	readFileSync('src/manifest.json', 'utf8')
+	readFileSync('src/lib/generated/manifest.json', 'utf8')
 );
 
 type Issue = { impact: string; help: string; url: string; pages: string[]; elements: string[] };

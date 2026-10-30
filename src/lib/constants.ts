@@ -2,7 +2,7 @@
 import type { DocSummary } from './@types';
 
 // datas
-import manifest from '../manifest.json';
+import manifest from '$lib/generated/manifest.json';
 import commandLine from '../content/command-line.json';
 
 // icons

@@ -1,4 +1,4 @@
-import manifest from '../../manifest.json';
+import manifest from '$lib/generated/manifest.json';
 import { PUBLIC_BASE_URL } from '$env/static/public';
 import type { DocSummary } from '$lib/@types';
 

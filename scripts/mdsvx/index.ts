@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
-import { readdir, readFile, writeFile } from 'node:fs/promises';
-import { extname, join } from 'node:path';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, extname, join } from 'node:path';
 import { readFrontmatter } from './frontmatter.ts';
 import { deriveSource } from './source.ts';
 import type { FrontmatterData, ManifestEntry } from './types.ts';
@@ -10,8 +10,8 @@ const folders = [
 	{ dir: 'content/docs', urlPrefix: '/docs' }
 ];
 const extensionsFile = ['md'];
-const routesFile = join(process.cwd(), 'src', 'routes', 'routes.json');
-const manifestFile = join(process.cwd(), 'src', 'manifest.json');
+const pagesFile = join(process.cwd(), 'src', 'content', 'pages.json');
+const manifestFile = join(process.cwd(), 'src', 'lib', 'generated', 'manifest.json');
 
 // Google shows roughly 120 to 160 characters: shorter wastes the snippet, longer gets cut.
 // A warning only, so a missing description never blocks a deploy
@@ -26,9 +26,10 @@ const entries = [
 assertNoDuplicatePaths(entries);
 warnOnWeakDescriptions(entries);
 
+await mkdir(dirname(manifestFile), { recursive: true });
 await writeFile(manifestFile, `${JSON.stringify(entries, null, 2)}\n`, 'utf8');
 
-console.log(`Wrote ${entries.length} entries to src/manifest.json`);
+console.log(`Wrote ${entries.length} entries to src/lib/generated/manifest.json`);
 
 async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix: string }) {
 	const baseDir = join(process.cwd(), 'src', dir);
@@ -53,9 +54,9 @@ async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix
 }
 
 async function collectManualEntries(): Promise<ManifestEntry[]> {
-	const content = await readFile(routesFile, 'utf8');
+	const content = await readFile(pagesFile, 'utf8');
 	const routes: Record<string, FrontmatterData> = JSON.parse(content);
-	const sourcePath = 'src/routes/routes.json';
+	const sourcePath = 'src/content/pages.json';
 
 	return Object.entries(routes).map(([pathname, frontmatter]) => {
 		const slug = pathname === '/' ? '' : pathname.replace(/^\//, '');

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
 const manifest: { path: { pathname: string } }[] = JSON.parse(
-	readFileSync('src/manifest.json', 'utf8')
+	readFileSync('src/lib/generated/manifest.json', 'utf8')
 );
 
 for (const { path } of manifest) {
