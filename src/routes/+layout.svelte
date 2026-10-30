@@ -3,6 +3,7 @@
 	import { PUBLIC_BASE_URL, PUBLIC_DEV } from '$env/static/public';
 
 	import { page } from '$app/state';
+	import { afterNavigate } from '$app/navigation';
 	import { onMount, setContext, untrack } from 'svelte';
 	import { themeScript } from 'lapikit/actions';
 	import { MediaQuery } from 'svelte/reactivity';
@@ -12,12 +13,14 @@
 	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
+	import { NavState, setNavContext } from '$lib/stores/nav.svelte';
 
 	// components
 	// consent stays static: for a new visitor it is the LCP element, a dynamic import would add
 	// a network round trip before it can paint
 	import ConsentModal from '$lib/components/consent-modal.svelte';
 	import ConsoleMessage from '$lib/components/console-message.svelte';
+	import Header from '$lib/components/layout/header.svelte';
 
 	let { children, data }: LayoutProps = $props();
 
@@ -115,6 +118,14 @@
 		else setTimeout(done, 1000);
 	});
 
+	const nav = setNavContext(new NavState());
+
+	afterNavigate(() => nav.close());
+
+	$effect(() => {
+		if (searchOpen) nav.close();
+	});
+
 	setContext('search', {
 		get open() {
 			return searchOpen;
@@ -181,6 +192,8 @@
 {/if}
 
 <kit:app>
+	<Header />
+
 	{@render children()}
 
 	<ConsentModal />

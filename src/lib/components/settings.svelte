@@ -34,7 +34,7 @@
 
 <kit:popover class="settings-app">
 	{#snippet trigger(props: PopoverTriggerProps)}
-		<kit:btn {variant} {density} icon {...props}>
+		<kit:btn {variant} {density} icon aria-label="Settings" {...props}>
 			<kit:icon>
 				<Settings />
 			</kit:icon>

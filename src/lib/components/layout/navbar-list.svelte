@@ -1,16 +1,30 @@
 <script lang="ts">
 	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { capitalize } from '$lib/utils';
+	import { page } from '$app/state';
+	import { capitalize, isActivePath, isCurrentPath } from '$lib/utils';
 	import type { AppNavItem } from '$lib/@types';
 
-	// assets
 	import { ChevronDown, ChevronUp, Ellipsis } from 'lucide-svelte';
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		data: AppNavItem[];
 		overflowWidth?: number;
 	}
+
+	type NavLink = {
+		label: string;
+		path: string;
+		active: boolean;
+		current: 'page' | 'true' | undefined;
+	};
+
+	type NavEntry = {
+		label: string;
+		link?: NavLink;
+		children: NavLink[];
+		active: boolean;
+	};
 
 	let { data, overflowWidth = 38, class: className, ...rest }: Props = $props();
 
@@ -19,51 +33,92 @@
 	let gap: number = $state(0);
 	let itemWidths: number[] = $state([]);
 
+	function toLink(label: string, path: string): NavLink {
+		const active = isActivePath(page.url.pathname, path);
+		const current = isCurrentPath(page.url.pathname, path) ? 'page' : active ? 'true' : undefined;
+
+		return { label, path, active, current };
+	}
+
+	const entries: NavEntry[] = $derived(
+		data.map(({ label, path, child }) => {
+			const link = path ? toLink(label, path) : undefined;
+			const children = (child ?? []).map((item) => toLink(item.label, item.path));
+
+			return { label, link, children, active: !!link?.active || children.some((c) => c.active) };
+		})
+	);
+
 	const visibleCount: number = $derived.by(() => {
-		if (!available || itemWidths.length !== data.length) return data.length;
+		if (!available || itemWidths.length !== entries.length) return entries.length;
 
 		let used = 0;
-		for (let index = 0; index < data.length; index++) {
+		for (let index = 0; index < entries.length; index++) {
 			used += itemWidths[index] + (index > 0 ? gap : 0);
-			const reserve = index < data.length - 1 ? gap + overflowWidth : 0;
+			const reserve = index < entries.length - 1 ? gap + overflowWidth : 0;
 			if (used + reserve > available) return index;
 		}
 
-		return data.length;
+		return entries.length;
 	});
+
+	const hiddenEntries = $derived(entries.slice(visibleCount));
+	const hiddenLinks = $derived(
+		hiddenEntries.flatMap(({ link, children }) => (link ? [link] : children))
+	);
+	const hasActiveHidden = $derived(hiddenEntries.some((entry) => entry.active));
 
 	$effect(() => {
 		if (!wrapper) return;
 		const element = wrapper;
+		const items = [...element.querySelectorAll<HTMLElement>('[data-nav-item]')];
 
 		const measure = () => {
 			available = element.clientWidth;
 			gap = parseFloat(getComputedStyle(element).columnGap) || 0;
-			itemWidths = [...element.querySelectorAll<HTMLElement>('[data-nav-item]')].map(
-				(item) => item.offsetWidth
-			);
+			itemWidths = items.map((item) => item.offsetWidth);
 		};
 
 		// no direct measure() call: the observer runs it once on observe, after layout and before
 		// paint, instead of forcing a synchronous layout during hydration
 		const observer = new ResizeObserver(measure);
 		observer.observe(element);
+		for (const item of items) observer.observe(item);
 
 		return () => observer.disconnect();
 	});
 </script>
 
+{#snippet navLink({ label, path, active, current }: NavLink)}
+	<kit:list-item href={path} {active} aria-current={current}>
+		{capitalize(label)}
+	</kit:list-item>
+{/snippet}
+
 <div bind:this={wrapper} class={['navbar-list', className]} {...rest}>
-	{#each data as { label, path, child }, index (label)}
+	{#each entries as { label, link, children, active }, index (label)}
 		<div data-nav-item class:is-hidden={index >= visibleCount}>
-			{#if path}
-				<kit:btn class="text-md" density="compact" is="button" variant="text" href={path}>
+			{#if link}
+				<kit:btn
+					density="compact"
+					is="button"
+					variant="text"
+					href={link.path}
+					active={link.active}
+					aria-current={link.current}
+				>
 					{capitalize(label)}
 				</kit:btn>
-			{:else if child}
+			{:else if children.length}
 				<kit:dropdown closeOnClick openOnHover>
 					{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
-						<kit:btn is="button" variant="text" density="compact" active={open} {...props}>
+						<kit:btn
+							is="button"
+							variant="text"
+							density="compact"
+							active={open || active}
+							{...props}
+						>
 							{capitalize(label)}
 							{#snippet append()}
 								<kit:icon>
@@ -78,10 +133,8 @@
 					{/snippet}
 
 					<kit:list>
-						{#each child as item (item.label)}
-							<kit:list-item href={item.path}>
-								{capitalize(item.label)}
-							</kit:list-item>
+						{#each children as child (child.path)}
+							{@render navLink(child)}
 						{/each}
 					</kit:list>
 				</kit:dropdown>
@@ -89,13 +142,13 @@
 		</div>
 	{/each}
 
-	{#if visibleCount < data.length}
+	{#if hiddenEntries.length}
 		<kit:dropdown closeOnClick>
 			{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 				<kit:btn
 					density="compact"
 					is="button"
-					active={open}
+					active={open || hasActiveHidden}
 					{...props}
 					icon
 					color={{ active: 'surface-2' }}
@@ -105,20 +158,8 @@
 			{/snippet}
 
 			<kit:list>
-				{#each data as { label, path, child }, index (label)}
-					{#if index >= visibleCount}
-						{#if path}
-							<kit:list-item href={path}>
-								{capitalize(label)}
-							</kit:list-item>
-						{:else if child}
-							{#each child as item (item.label)}
-								<kit:list-item href={item.path}>
-									{capitalize(item.label)}
-								</kit:list-item>
-							{/each}
-						{/if}
-					{/if}
+				{#each hiddenLinks as link (link.path)}
+					{@render navLink(link)}
 				{/each}
 			</kit:list>
 		</kit:dropdown>
@@ -138,4 +179,8 @@
 			pointer-events: none;
 		}
 	}
+
+	// [data-nav-item] > :global([aria-current]) {
+	// 	font-weight: 800;
+	// }
 </style>

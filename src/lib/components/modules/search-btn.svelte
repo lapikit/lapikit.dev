@@ -7,24 +7,33 @@
 	let {
 		onlyBtn,
 		class: className,
-		block
+		block,
+		density
 	}: {
 		onlyBtn?: boolean;
 		class?: string;
 		block?: boolean;
+		density?: string;
 	} = $props();
 
 	const search = getContext<{ open: boolean; toggle: () => void }>('search');
 </script>
 
 {#if onlyBtn}
-	<kit:btn class={className} onclick={() => search.toggle()} icon density="compact" variant="text">
+	<kit:btn
+		class={className}
+		onclick={() => search.toggle()}
+		icon
+		density="compact"
+		variant="text"
+		aria-label="Search the documentation"
+	>
 		<kit:icon>
 			<Search />
 		</kit:icon>
 	</kit:btn>
 {:else}
-	<kit:btn class={className} onclick={() => search.toggle()} {block}>
+	<kit:btn class={className} onclick={() => search.toggle()} {block} {density}>
 		{#snippet prepend()}
 			<kit:icon>
 				<Search />

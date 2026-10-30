@@ -1,39 +1,27 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 
 	// modules
-	import NavbarDocs from '$lib/components/navbar-docs.svelte';
 	import DrawerDocs from '$lib/components/navbar-drawer-docs.svelte';
 	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
 	import FooterDocs from '$lib/components/footer-docs.svelte';
+	import { getNavContext } from '$lib/stores/nav.svelte';
 
 	let { children } = $props();
 
 	// states
-	let navOpen = $state(false);
+	const nav = getNavContext();
 	let sidebarEl: HTMLDivElement | undefined = $state();
 	let layoutEl: HTMLDivElement | undefined = $state();
 
 	afterNavigate(({ type }) => {
 		if (type !== 'popstate' && layoutEl) layoutEl.scrollTop = 0;
 	});
-
-	setContext('nav', {
-		get open() {
-			return navOpen;
-		},
-		toggle() {
-			navOpen = !navOpen;
-		}
-	});
 </script>
 
-<NavbarDocs />
-
 <div class="layout" bind:this={layoutEl}>
-	<DrawerDocs bind:open={navOpen} bind:el={sidebarEl} side="left" />
+	<DrawerDocs bind:open={nav.open} bind:el={sidebarEl} side="left" />
 
 	<div class="content">
 		<FadeTransition url={page.url.pathname}>
@@ -47,7 +35,7 @@
 <style>
 	.layout {
 		display: grid;
-		height: calc(100dvh - 64px);
+		height: calc(100dvh - var(--header-height));
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: 1fr auto;
 		grid-template-areas: 'content';
