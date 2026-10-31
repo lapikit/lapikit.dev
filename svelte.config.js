@@ -4,8 +4,20 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvexOptions } from './mdsvex.config.js';
 import { lapikitPreprocess } from 'lapikit/preprocess';
 
+const keyboardWidgetWarnings = [
+	'a11y_no_noninteractive_tabindex',
+	'a11y_no_noninteractive_element_interactions'
+];
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	compilerOptions: {
+		warningFilter: (warning) =>
+			!(
+				warning.filename?.endsWith('lapinosaure-game.svelte') &&
+				keyboardWidgetWarnings.includes(warning.code)
+			)
+	},
 	kit: {
 		adapter: adapter({
 			out: 'build',

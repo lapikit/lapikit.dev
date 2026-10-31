@@ -1,9 +1,28 @@
 <script lang="ts">
 	import { ArrowUpRight } from 'lucide-svelte';
+
+	let {
+		ref = $bindable(null),
+		expanded = false,
+		controls,
+		onclick
+	}: {
+		ref?: HTMLElement | null;
+		expanded?: boolean;
+		controls?: string;
+		onclick?: () => void;
+	} = $props();
 </script>
 
 <div class="lapinosaure">
-	<kit:btn rounded="0" variant="text">
+	<kit:btn
+		bind:ref
+		rounded="0"
+		variant="text"
+		aria-expanded={expanded}
+		aria-controls={controls}
+		{onclick}
+	>
 		<span class="label label-short">echo "lapinosaure-game"</span>
 		<span class="label label-idle">echo "run-lapinosaure-game"</span>
 		<span class="label label-hover">echo "i m a winner" &gt;&gt; launch game!</span>

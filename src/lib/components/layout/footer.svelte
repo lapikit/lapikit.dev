@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import type { AppNavChild } from '$lib/@types';
 	import { capitalize, isExternal } from '$lib/utils';
 	import { useAccordion } from 'lapikit/actions';
@@ -19,6 +20,16 @@
 
 	const socials: LinkName[] = ['instagram', 'discord', 'github', 'npm'];
 	const year = new Date().getFullYear();
+	const loadGame = () => import('$lib/components/game/lapinosaure-game.svelte');
+
+	let gameOpen = $state(false);
+	let gameButton: HTMLElement | null = $state(null);
+
+	async function closeGame() {
+		gameOpen = false;
+		await tick();
+		gameButton?.focus();
+	}
 </script>
 
 {#snippet footerLink({ label, path }: AppNavChild)}
@@ -79,10 +90,16 @@
 	<SheetSpacer innerBottom />
 
 	<div class="footer-container">
-		<div class="footer-wordmark">
-			<span role="img" aria-label="Lapikit">
-				{@html LapikitFooter}
-			</span>
+		<div id="footer-wordmark" class="footer-wordmark">
+			{#if gameOpen}
+				{#await loadGame() then { default: LapinosaureGame }}
+					<LapinosaureGame onclose={closeGame} />
+				{/await}
+			{:else}
+				<span role="img" aria-label="Lapikit">
+					{@html LapikitFooter}
+				</span>
+			{/if}
 		</div>
 
 		<div class="footer-bar">
@@ -122,7 +139,12 @@
 			</div>
 
 			<div class="footer-game">
-				<BtnGameLapinosaure />
+				<BtnGameLapinosaure
+					bind:ref={gameButton}
+					expanded={gameOpen}
+					controls="footer-wordmark"
+					onclick={() => (gameOpen ? closeGame() : (gameOpen = true))}
+				/>
 			</div>
 		</div>
 	</div>
@@ -132,7 +154,9 @@
 	@use '$lib/styles/breakpoints' as *;
 
 	.footer {
-		border-top: var(--lapikit-border);
+		> .footer-container:first-child {
+			border-top: var(--lapikit-border);
+		}
 	}
 
 	.footer-legal,
@@ -161,10 +185,7 @@
 		:global(.kit-accordion-item) {
 			border-left: var(--lapikit-border);
 			border-right: var(--lapikit-border);
-
-			&:not(:last-child) {
-				border-bottom: var(--lapikit-border);
-			}
+			border-bottom: var(--lapikit-border);
 		}
 
 		:global(.kit-accordion-item__trigger) {
@@ -182,7 +203,7 @@
 		@include up(md) {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
-			border-left: var(--lapikit-border);
+			border-inline: var(--lapikit-border);
 
 			> :global(.footer-accordion) {
 				display: none;
@@ -193,6 +214,10 @@
 				padding: var(--lapikit-spacing-block) 0;
 				border-right: var(--lapikit-border);
 				border-bottom: var(--lapikit-border);
+			}
+
+			> :global(.footer-column:nth-child(2n of .footer-column)) {
+				border-right: 0;
 			}
 
 			:global(.footer-column-title) {
@@ -207,6 +232,10 @@
 
 		@include up(xl) {
 			grid-template-columns: 1.4fr repeat(4, 1fr);
+
+			> :global(.footer-column:nth-child(2n of .footer-column):not(:last-child)) {
+				border-right: var(--lapikit-border);
+			}
 		}
 	}
 
@@ -222,12 +251,13 @@
 
 		@include up(md) {
 			grid-column: 1 / -1;
-			border-left: 0;
+			border-inline: 0;
 		}
 
 		@include up(lg) {
 			grid-column: 1;
 			grid-row: span 2;
+			border-right: var(--lapikit-border);
 			flex-direction: column;
 			align-items: flex-start;
 		}
