@@ -36,6 +36,7 @@ export type LinkName = keyof typeof links;
 
 export const links = {
 	'github-repo-lapikit': {
+		name: 'GitHub',
 		label: 'github',
 		url: 'https://github.com/lapikit/lapikit',
 		icon: githubIcon,
@@ -45,6 +46,7 @@ export const links = {
 		}
 	},
 	github: {
+		name: 'GitHub',
 		label: 'github',
 		url: 'https://github.com/lapikit',
 		icon: githubIcon,
@@ -54,6 +56,7 @@ export const links = {
 		}
 	},
 	npm: {
+		name: 'npm',
 		label: 'npm',
 		url: 'https://www.npmjs.com/package/lapikit',
 		icon: npmIconMono,
@@ -63,6 +66,7 @@ export const links = {
 		}
 	},
 	discord: {
+		name: 'Discord',
 		label: 'discord',
 		url: 'https://discord.gg/c8vp54EnGD',
 		icon: discordIcon,
@@ -72,6 +76,7 @@ export const links = {
 		}
 	},
 	buymeacoffee: {
+		name: 'Buy Me a Coffee',
 		label: 'buy the team a coffee',
 		url: 'https://buymeacoffee.com/nycolaide',
 		icon: buymyecoffeeIcon,
@@ -81,6 +86,7 @@ export const links = {
 		}
 	},
 	instagram: {
+		name: 'Instagram',
 		label: 'instagram',
 		url: 'https://www.instagram.com/lapikit',
 		icon: instagramIcon,

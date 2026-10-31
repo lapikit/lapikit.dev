@@ -94,7 +94,9 @@
 		gap: 1rem 2rem;
 		max-width: calc(700px + var(--app-spacing-x-page) * 2 + 20rem);
 		min-height: calc(
-			100dvh - 64px - var(--app-spacing-y-page-top) - var(--app-spacing-y-page-bottom) - 88px
+			100dvh - var(--header-height) - var(--app-spacing-y-page-top) - var(
+					--app-spacing-y-page-bottom
+				)
 		);
 
 		> aside {
@@ -121,7 +123,11 @@
 				display: grid;
 				grid-template-rows: auto 1fr;
 				max-height: calc(
-					100vh - (75px + var(--app-spacing-y-page-top) + var(--app-spacing-y-page-bottom))
+					100dvh -
+						(
+							var(--header-height) + var(--app-spacing-y-page-top) +
+								var(--app-spacing-y-page-bottom)
+						)
 				);
 				position: sticky;
 				top: 112px;

@@ -15,3 +15,7 @@ export function isActivePath(current: string, path?: string) {
 	if (targetPath === '/') return currentPath === '/';
 	return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
 }
+
+export function isExternal(path: string) {
+	return /^https?:\/\//.test(path);
+}

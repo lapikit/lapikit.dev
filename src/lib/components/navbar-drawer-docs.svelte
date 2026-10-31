@@ -188,8 +188,10 @@
 
 		@media (min-width: $breakpoint-lg) {
 			position: sticky;
+			top: var(--header-height);
 			z-index: auto;
-			height: calc(100dvh - 75px);
+			align-self: start;
+			height: calc(100dvh - var(--header-height));
 			transform: translateX(0);
 			transition: none;
 		}
@@ -218,7 +220,7 @@
 			overflow: auto;
 
 			@media (min-width: $breakpoint-lg) {
-				height: calc(100dvh - 75px);
+				height: calc(100dvh - var(--header-height));
 			}
 		}
 	}

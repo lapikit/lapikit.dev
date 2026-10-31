@@ -21,6 +21,7 @@
 	import ConsentModal from '$lib/components/consent-modal.svelte';
 	import ConsoleMessage from '$lib/components/console-message.svelte';
 	import Header from '$lib/components/layout/header.svelte';
+	import Footer from '$lib/components/layout/footer.svelte';
 
 	let { children, data }: LayoutProps = $props();
 
@@ -195,6 +196,8 @@
 	<Header />
 
 	{@render children()}
+
+	<Footer />
 
 	<ConsentModal />
 	{#if searchLoaded}

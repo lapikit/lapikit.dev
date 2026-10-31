@@ -4,11 +4,7 @@
 	import { capitalize, slugify } from '$lib/utils';
 	import { page } from '$app/state';
 
-	let {
-		title,
-		summary = [],
-		inner = false
-	}: { title?: string; summary?: MarkdownHeading[]; inner?: boolean } = $props();
+	let { title, summary = [] }: { title?: string; summary?: MarkdownHeading[] } = $props();
 
 	const isChangelog = $derived(page.url.pathname.includes('changelog'));
 	const summaryItems = $derived(
@@ -53,16 +49,12 @@
 			});
 		};
 
-		const scrollTarget: EventTarget = inner
-			? (document.querySelector('.layout') ?? window)
-			: window;
-
 		updateActiveSlug();
-		scrollTarget.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('scroll', onScroll, { passive: true });
 		window.addEventListener('resize', onScroll);
 
 		return () => {
-			scrollTarget.removeEventListener('scroll', onScroll);
+			window.removeEventListener('scroll', onScroll);
 			window.removeEventListener('resize', onScroll);
 		};
 	});
