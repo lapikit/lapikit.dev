@@ -4,15 +4,21 @@
 	import { capitalize, slugify } from '$lib/utils';
 	import { page } from '$app/state';
 
-	let { title, summary = [] }: { title?: string; summary?: MarkdownHeading[] } = $props();
+	let {
+		title,
+		summary = [],
+		activeSlug = $bindable(null)
+	}: {
+		title?: string;
+		summary?: MarkdownHeading[];
+		activeSlug?: string | null;
+	} = $props();
 
 	const isChangelog = $derived(page.url.pathname.includes('changelog'));
 	const summaryItems = $derived(
 		summary.filter((item) => item.depth >= 1 && item.depth <= (isChangelog ? 2 : 3))
 	);
 	const titleSlug = $derived(title ? slugify(title) : null);
-
-	let activeSlug = $state<string | null>(null);
 
 	// Active item = last heading whose top has crossed a line 35% down the viewport.
 	const ACTIVE_LINE_RATIO = 0.35;

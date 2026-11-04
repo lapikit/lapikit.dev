@@ -54,7 +54,7 @@
 	}
 
 	:global(.component-card-title) {
-		font-size: 1.25rem;
+		font-size: var(--text-xl);
 		line-height: 1.75rem;
 	}
 </style>

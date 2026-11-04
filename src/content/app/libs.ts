@@ -20,23 +20,23 @@ type TableHomeList = {
 export const tableHome: TableHome[] = [
 	{
 		text: 'Features',
-		subject: ['Svelte Components', 'Theming supports', 'Hooks and actions']
+		subject: ['Svelte Components', 'Theming support', 'Hooks and actions', 'Preprocessor']
 	},
 	{
-		text: 'Environnements',
+		text: 'Environments',
 		subject: [
 			'Runes support',
-			'No Tailwind dependances',
+			'No Tailwind dependencies',
 			'Tailwind support',
-			'UnoCss support',
+			'UnoCSS support',
 			'CSS standard support',
-			'Dependencies dev/build',
-			'Eslint support'
+			'Build dependencies',
+			'ESLint support'
 		]
 	},
 	{
 		text: 'Integration and support',
-		subject: ['CLI integrated', 'Full open and free', 'Release cadence']
+		subject: ['CLI integrated', 'Fully open and free', 'Release cadence']
 	}
 ];
 
@@ -45,8 +45,8 @@ export const tableHomeList: TableHomeList[] = [
 		title: 'Lapikit',
 		logo: LapikitLogo,
 		values: [
-			[nbComponents, 'yes', nbHooks],
-			['yes', 'yes', 'yes', 'yes', 'yes', '23 / 2', 'yes'],
+			[nbComponents, 'yes', nbHooks, 'yes'],
+			['yes', 'yes', 'yes', 'yes', 'yes', 2, 'yes'],
 			['yes', 'yes', 'Bi-Monthly']
 		]
 	},
@@ -54,8 +54,8 @@ export const tableHomeList: TableHomeList[] = [
 		title: 'Skeleton',
 		logo: Skeleton,
 		values: [
-			[42, 'yes', 'no'],
-			['yes', 'no', 'yes', 'partial', 'yes', '0 / 32', 'yes'],
+			[42, 'yes', 'no', 'no'],
+			['yes', 'no', 'yes', 'partial', 'yes', 32, 'yes'],
 			['yes', 'yes', 'Bi-Monthly']
 		]
 	},
@@ -63,8 +63,8 @@ export const tableHomeList: TableHomeList[] = [
 		title: 'Shadcn Svelte',
 		logo: ShadcnSvelte,
 		values: [
-			[62, 'yes', 2],
-			['yes', 'no', 'yes', 'no', 'yes', '25 / 4', 'yes'],
+			[62, 'yes', 2, 'no'],
+			['yes', 'no', 'yes', 'no', 'yes', 4, 'yes'],
 			['yes', 'yes', 'Bi-Monthly']
 		]
 	},
@@ -72,8 +72,8 @@ export const tableHomeList: TableHomeList[] = [
 		title: 'Melt UI',
 		logo: MeltUI,
 		values: [
-			[18, 'yes', 'no'],
-			['partial', 'no', 'yes', 'partial', 'yes', '10 / 5', 'yes'],
+			[18, 'yes', 'no', 'no'],
+			['partial', 'no', 'yes', 'partial', 'yes', 5, 'yes'],
 			['yes', 'yes', 'Monthly']
 		]
 	}

@@ -24,6 +24,7 @@
 		<kit:btn
 			size="sm"
 			icon
+			aria-label="Toggle the preview theme"
 			onclick={() =>
 				themePreviewVscode.set(themePreviewVscode.active === 'dark' ? 'light' : 'dark')}
 		>

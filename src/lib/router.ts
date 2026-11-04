@@ -111,6 +111,10 @@ const footerNavigation: AppNavItem[] = [
 				path: '/docs/changelog'
 			},
 			{
+				label: 'LLMs.txt',
+				path: '/llms.txt'
+			},
+			{
 				label: links['npm'].label,
 				path: links['npm'].url
 			},

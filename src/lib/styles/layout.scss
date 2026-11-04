@@ -8,6 +8,7 @@
 	--lapikit-container-size: 1800px;
 	--lapikit-spacing-block: 1.5rem;
 	--sheet-cell-padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+	--sheet-cell-padding-lg: clamp(1.5rem, 0.5rem + 5vw, 5rem);
 	--header-height: calc(64px + var(--lapikit-border-width));
 
 	// text
@@ -69,6 +70,8 @@
 @import url('./_lapikit.scss');
 @import url('./_animations.scss');
 @import url('./_markdown.scss');
+@import url('./_prose.scss');
+@import url('./_repl.scss');
 
 @media (min-width: 767px) {
 	:root {
@@ -195,4 +198,16 @@
 			gap: 40px;
 		}
 	}
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
 }

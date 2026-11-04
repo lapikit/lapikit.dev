@@ -29,6 +29,8 @@ export const seoByPath: Record<string, DocSummary> = Object.fromEntries(
 export const manifestPage = manifest as DocSummary[];
 export const command = commandLine;
 
+export const urlLapikitSiteRepo = 'https://github.com/lapikit/lapikit.dev';
+export const urlLapikitLibraryRepo = 'https://github.com/lapikit/lapikit';
 export const urlLapikitLicense = 'https://github.com/lapikit/lapikit.dev/blob/main/LICENSE';
 export const urlJoinLapikitTeam = 'https://github.com/lapikit';
 

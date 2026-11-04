@@ -71,19 +71,19 @@
 			aria-busy="true"
 			role="region"
 		>
-			{#if title}
-				<div class="lazy-repl__toolbar">
-					<span class="lazy-repl__title">{title}</span>
-				</div>
-			{/if}
-
 			{#if presentation && children}
 				<div class="lazy-repl__preview">
 					{@render children()}
 				</div>
 			{/if}
 
-			<pre><code>{staticCode}</code></pre>
+			<div class="lazy-repl__code">
+				<div class="lazy-repl__toolbar">
+					<span class="lazy-repl__title">{title || lang}</span>
+				</div>
+
+				<pre><code>{staticCode}</code></pre>
+			</div>
 		</div>
 	{/if}
 </div>

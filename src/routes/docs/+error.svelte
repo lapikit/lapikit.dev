@@ -1,6 +1,13 @@
 <script lang="ts">
-	// modules
-	import NotFound from '$lib/components/not-found.svelte';
+	import NotFoundSheet from '$lib/components/not-found-sheet.svelte';
 </script>
 
-<NotFound />
+<main class="docs-error">
+	<NotFoundSheet />
+</main>
+
+<style>
+	.docs-error {
+		border-bottom: var(--lapikit-border);
+	}
+</style>

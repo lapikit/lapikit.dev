@@ -33,7 +33,7 @@
 	];
 </script>
 
-<div class="color-lists">
+<div class="color-lists" data-example>
 	{#each lists as list (list.index)}
 		<div class="color-list">
 			<span class="color-list-title">{list.title}</span>
