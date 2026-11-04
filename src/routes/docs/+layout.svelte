@@ -1,58 +1,63 @@
 <script lang="ts">
 	import { page } from '$app/state';
 
-	// modules
-	import DrawerDocs from '$lib/components/navbar-drawer-docs.svelte';
+	import DocsNav from '$lib/components/docs/docs-nav.svelte';
 	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
-	import { getNavContext } from '$lib/stores/nav.svelte';
+	import SheetSpacer from '$lib/components/modules/sheet-spacer.svelte';
 
 	let { children } = $props();
-
-	// states
-	const nav = getNavContext();
-	let sidebarEl: HTMLDivElement | undefined = $state();
 </script>
 
-<div class="layout">
-	<DrawerDocs bind:open={nav.open} bind:el={sidebarEl} side="left" />
+<div class="docs-shell">
+	<div class="docs-shell-frame">
+		<aside class="docs-shell-sidebar">
+			<DocsNav />
+		</aside>
 
-	<div class="content">
-		<FadeTransition url={page.url.pathname}>
-			{@render children()}
-		</FadeTransition>
+		<div class="docs-shell-content">
+			<FadeTransition url={page.url.pathname}>
+				{@render children()}
+			</FadeTransition>
+		</div>
 	</div>
 </div>
 
-<style>
-	.layout {
+<SheetSpacer innerTop />
+
+<style lang="scss">
+	@use '$lib/styles/breakpoints' as *;
+
+	.docs-shell {
+		max-width: var(--lapikit-container-size);
+		margin: 0 auto;
+		padding: 0 var(--lapikit-spacing-block);
+	}
+
+	.docs-shell-frame {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: 1fr auto;
-		grid-template-areas: 'content';
-		background: var(--kit-color-surface-1);
+		border-inline: var(--lapikit-border);
+
+		@include up(lg) {
+			grid-template-columns: 280px minmax(0, 1fr);
+		}
 	}
 
-	.content {
-		grid-area: content;
-		background: var(--kit-color-surface);
-		border-top-left-radius: 36px;
-		border-top-right-radius: 36px;
+	.docs-shell-sidebar {
+		display: none;
+
+		@include up(lg) {
+			display: block;
+			position: sticky;
+			top: var(--header-height);
+			align-self: start;
+			height: calc(100dvh - var(--header-height));
+			border-inline-end: var(--lapikit-border);
+		}
 	}
 
-	@media (min-width: 1023px) {
-		.layout {
-			grid-template-columns: auto minmax(0, 1fr);
-			grid-template-rows: 1fr auto;
-			grid-template-areas: 'drawer content';
-		}
-
-		.layout > :global(.drawer--persistent) {
-			grid-area: drawer;
-		}
-
-		.content {
-			border-top-left-radius: 36px;
-			border-top-right-radius: 0;
-		}
+	.docs-shell-content {
+		min-width: 0;
+		min-height: calc(100dvh - var(--header-height));
 	}
 </style>

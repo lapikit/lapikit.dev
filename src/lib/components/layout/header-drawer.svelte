@@ -10,6 +10,7 @@
 	import { ArrowRight, X } from 'lucide-svelte';
 
 	import Brand from '$lib/components/layout/brand.svelte';
+	import DocsNav from '$lib/components/docs/docs-nav.svelte';
 	import SearchBtn from '$lib/components/modules/search-btn.svelte';
 	import ThemeSwitcher from '$lib/components/modules/theme-switcher.svelte';
 
@@ -18,6 +19,7 @@
 	let { data }: { data: AppNavItem[] } = $props();
 
 	const nav = getNavContext();
+	const isDocs = $derived(page.route.id?.startsWith('/docs') ?? false);
 	const socials: LinkName[] = ['github', 'discord', 'npm', 'instagram'];
 	const items: DrawerItem[] = $derived(
 		data.flatMap(({ label, path, child }) =>
@@ -35,6 +37,7 @@
 		if (nav.open && !dialog.open) {
 			dialog.showModal();
 			dialog.querySelector<HTMLElement>('[data-drawer-close]')?.focus();
+			dialog.querySelector('[aria-current="page"]')?.scrollIntoView({ block: 'nearest' });
 		} else if (!nav.open && dialog.open) {
 			dialog.close();
 		}
@@ -72,24 +75,30 @@
 			<SearchBtn block />
 		</div>
 
-		<nav class="header-drawer-nav" aria-label="Main">
-			<ul>
-				{#each items as { label, path } (label)}
-					{@const current = isCurrentPath(page.url.pathname, path)}
-					<li>
-						<a
-							href={resolve(path)}
-							class:is-current={current}
-							aria-current={current ? 'page' : undefined}
-							onclick={nav.close}
-						>
-							{capitalize(label)}
-							<kit:icon size="sm"><ArrowRight /></kit:icon>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</nav>
+		{#if isDocs}
+			<div class="header-drawer-docs">
+				<DocsNav onnavigate={nav.close} />
+			</div>
+		{:else}
+			<nav class="header-drawer-nav" aria-label="Main">
+				<ul>
+					{#each items as { label, path } (label)}
+						{@const current = isCurrentPath(page.url.pathname, path)}
+						<li>
+							<a
+								href={resolve(path)}
+								class:is-current={current}
+								aria-current={current ? 'page' : undefined}
+								onclick={nav.close}
+							>
+								{capitalize(label)}
+								<kit:icon size="sm"><ArrowRight /></kit:icon>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		{/if}
 
 		<div class="header-drawer-bottom">
 			<kit:btn href={resolve('/docs/getting-started')} color="accent" block onclick={nav.close}>
@@ -199,6 +208,11 @@
 	.header-drawer-search {
 		padding: 16px;
 		border-bottom: var(--lapikit-border);
+	}
+
+	.header-drawer-docs {
+		flex: 1;
+		min-height: 0;
 	}
 
 	.header-drawer-nav {

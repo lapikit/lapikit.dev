@@ -23,7 +23,7 @@
 	let headerDrawerRequested = $state(false);
 
 	function toggleMenu() {
-		if (!hasDocsMenu) headerDrawerRequested = true;
+		headerDrawerRequested = true;
 		nav.toggle();
 	}
 </script>
@@ -90,7 +90,7 @@
 	</div>
 </kit:appbar>
 
-{#if headerDrawerRequested && !hasDocsMenu}
+{#if headerDrawerRequested}
 	{#await loadHeaderDrawer() then { default: HeaderDrawer }}
 		<HeaderDrawer data={router.app} />
 	{/await}
