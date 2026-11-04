@@ -44,7 +44,7 @@ for (const pathname of ['/this-page-does-not-exist', '/docs/this-page-does-not-e
 		const response = await page.goto(pathname);
 
 		expect(response?.status()).toBe(404);
-		await expect(page.locator('h1')).toHaveText('Page not found');
+		await expect(page.locator('h1')).toHaveText('This page hopped away.');
 		await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
 		await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
 	});
