@@ -27,13 +27,13 @@
 </script>
 
 <main class="home-sheet">
-	<SheetSpacer innerBottom />
+	<SheetSpacer />
 	<Hero {version} />
 
 	{#each sections as Section, index (index)}
-		<SheetSpacer innerTop innerBottom />
+		<SheetSpacer noBorder />
 		<Section />
 	{/each}
 
-	<SheetSpacer innerTop />
+	<SheetSpacer noBorder />
 </main>

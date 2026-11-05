@@ -21,6 +21,8 @@
 		max-width: var(--lapikit-container-size);
 		margin: 0 auto;
 		padding: 0 var(--lapikit-spacing-block);
+		border-top: var(--lapikit-border);
+		border-bottom: var(--lapikit-border);
 	}
 
 	.sheet-section-frame {

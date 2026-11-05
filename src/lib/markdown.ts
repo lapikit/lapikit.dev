@@ -19,7 +19,6 @@ export const docsMetadata: DocSummary[] = (manifest as DocSummary[]).filter((doc
 );
 
 export const docs = docsMetadata;
-export const docsPaths = docsMetadata.map((doc) => doc.path.pathname);
 export const docsByPath = new Map(docsMetadata.map((doc) => [doc.path.pathname, doc] as const));
 export const docsBySlug = new Map(docsMetadata.map((doc) => [doc.path.slug, doc] as const));
 

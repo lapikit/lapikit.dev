@@ -1,6 +1,5 @@
 $ref-indent: 8px;
 $let: #ae5651;
-$letName: #b8bfc7;
 $state: #b893df;
 $parentheseState: #c567c2;
 $accolade: #f0cb05;
@@ -12,10 +11,6 @@ $indicator: #e16d66;
 $typeSnippet: #8e73ad;
 $dom: #74d37c;
 $char: #7d7d7d;
-$id: #d3b67b;
-$cssValue: #c58b73;
-$cssSize: #a6bc99;
-$cssVar: #d7d7a5;
 
 .vs-indent-1 {
 	padding-left: $ref-indent * 1;
@@ -72,10 +67,6 @@ $cssVar: #d7d7a5;
 	.let {
 		color: $let;
 	}
-	.const-name,
-	.let-name {
-		color: $letName;
-	}
 	.var-name {
 		color: $var;
 	}
@@ -93,13 +84,9 @@ $cssVar: #d7d7a5;
 	.instruction {
 		color: $indicator;
 	}
-	.css-id,
 	.css-dom,
 	.css-class {
 		color: #d3b67b;
-	}
-	.css-var {
-		color: #d7d7a5;
 	}
 	.css-value {
 		color: #c58b73;

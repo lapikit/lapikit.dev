@@ -29,7 +29,3 @@ export type DocSummary = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type DocComponent = Component<any>;
-
-export type DocEntry = DocSummary & {
-	component: DocComponent;
-};

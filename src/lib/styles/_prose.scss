@@ -391,25 +391,6 @@
 		font-style: normal;
 		line-height: 1;
 	}
-
-	.enum-chip__list {
-		display: flex;
-		flex-direction: column;
-		gap: 0.2rem;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-
-		li {
-			margin: 0;
-			padding: 0;
-		}
-
-		code {
-			font-size: 0.8rem;
-			white-space: nowrap;
-		}
-	}
 }
 
 .prose .lazy-repl {

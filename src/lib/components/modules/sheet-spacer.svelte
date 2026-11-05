@@ -4,24 +4,27 @@
 		bottom,
 		innerTop,
 		innerBottom,
+		noBorder,
 		...rest
 	}: {
 		top?: boolean;
 		bottom?: boolean;
 		innerTop?: boolean;
 		innerBottom?: boolean;
+		noBorder?: boolean;
 		[key: string]: unknown;
 	} = $props();
 </script>
 
 <div
-	style:border-top={top ? 'var(--lapikit-border)' : ''}
-	style:border-bottom={bottom ? 'var(--lapikit-border)' : ''}
+	style:border-top={top && !noBorder ? 'var(--lapikit-border)' : ''}
+	style:border-bottom={bottom && !noBorder ? 'var(--lapikit-border)' : ''}
 	{...rest}
 >
 	<div
-		style:border-top={innerTop ? 'var(--lapikit-border)' : ''}
-		style:border-bottom={innerBottom ? 'var(--lapikit-border)' : ''}
+		class:sheet-spacer__no-border={noBorder}
+		style:border-top={innerTop && !noBorder ? 'var(--lapikit-border)' : ''}
+		style:border-bottom={innerBottom && !noBorder ? 'var(--lapikit-border)' : ''}
 	></div>
 </div>
 
@@ -32,7 +35,7 @@
 		padding: 0 var(--lapikit-spacing-block);
 		height: calc(32px + var(--lapikit-spacing-block));
 
-		> div {
+		> div:not(.sheet-spacer__no-border) {
 			border-right: var(--lapikit-border);
 			border-left: var(--lapikit-border);
 		}

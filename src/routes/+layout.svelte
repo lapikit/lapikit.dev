@@ -206,11 +206,3 @@
 		{/await}
 	{/if}
 </kit:app>
-
-<style>
-	:global(:root) {
-		--app-spacing-x-page: 2rem;
-		--app-spacing-y-page-top: 2rem;
-		--app-spacing-y-page-bottom: 4rem;
-	}
-</style>
