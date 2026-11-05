@@ -52,7 +52,7 @@
 				{/each}
 			</ul>
 
-			<kit:btn href={resolve('/docs/customize')} variant="outline" color="accent" rounded="md">
+			<kit:btn href={resolve('/docs/customize')} color="accent" size="lg" rounded="md">
 				{#snippet prepend()}
 					<kit:icon><SwatchBook /></kit:icon>
 				{/snippet}

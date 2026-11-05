@@ -269,7 +269,7 @@
 	<SheetGrid>
 		<div class="showcase-marquee">
 			<Components />
-			<kit:btn href={resolve('/docs/components')} variant="outline" color="accent" rounded="md">
+			<kit:btn href={resolve('/docs/components')} color="accent" size="lg" rounded="md">
 				{#snippet prepend()}
 					<kit:icon><Boxes /></kit:icon>
 				{/snippet}

@@ -13,6 +13,7 @@
 	import { seoByPath } from '$lib/constants';
 	import { capitalize } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
+	import { setGithubStats } from '$lib/stores/github.svelte';
 	import { NavState, setNavContext } from '$lib/stores/nav.svelte';
 
 	// components
@@ -92,7 +93,10 @@
 		return `<script type="application/ld+json">${json}<\/script>`;
 	}
 
-	untrack(() => setNpmStats(data.npm));
+	untrack(() => {
+		setNpmStats(data.npm);
+		setGithubStats(data.github);
+	});
 
 	// states
 	let searchOpen = $state(false);

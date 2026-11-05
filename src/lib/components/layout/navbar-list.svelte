@@ -110,7 +110,7 @@
 					{capitalize(label)}
 				</kit:btn>
 			{:else if children.length}
-				<kit:dropdown closeOnClick openOnHover>
+				<kit:dropdown closeOnClick openOnHover elevation="2">
 					{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 						<kit:btn
 							is="button"
@@ -132,7 +132,7 @@
 						</kit:btn>
 					{/snippet}
 
-					<kit:list>
+					<kit:list class="navbar-menu">
 						{#each children as child (child.path)}
 							{@render navLink(child)}
 						{/each}
@@ -143,7 +143,7 @@
 	{/each}
 
 	{#if hiddenEntries.length}
-		<kit:dropdown closeOnClick>
+		<kit:dropdown closeOnClick elevation="2">
 			{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 				<kit:btn
 					density="compact"
@@ -157,7 +157,7 @@
 				</kit:btn>
 			{/snippet}
 
-			<kit:list>
+			<kit:list class="navbar-menu" variant="text">
 				{#each hiddenLinks as link (link.path)}
 					{@render navLink(link)}
 				{/each}
@@ -180,7 +180,8 @@
 		}
 	}
 
-	// [data-nav-item] > :global([aria-current]) {
-	// 	font-weight: 800;
-	// }
+	[data-nav-item] > :global(.kit-btn),
+	:global(.navbar-menu) {
+		font-weight: 600;
+	}
 </style>

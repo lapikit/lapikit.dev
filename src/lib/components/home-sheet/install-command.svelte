@@ -84,6 +84,7 @@
 		min-width: 0;
 		padding: 8px 8px 8px 16px;
 		border: var(--lapikit-border);
+		border-radius: var(--kit-shape-md);
 		font-family: var(--font-mono);
 		font-size: var(--text-sm);
 

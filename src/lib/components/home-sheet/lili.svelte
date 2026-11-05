@@ -86,8 +86,8 @@
 			</p>
 			<kit:btn
 				href={resolve('/docs/essentials/template-syntax')}
-				variant="outline"
 				color="accent"
+				size="lg"
 				rounded="md"
 			>
 				{#snippet prepend()}
@@ -122,8 +122,8 @@
 			</p>
 			<kit:btn
 				href={resolve('/docs/essentials/class-and-style')}
-				variant="outline"
 				color="accent"
+				size="lg"
 				rounded="md"
 			>
 				{#snippet prepend()}
@@ -168,7 +168,8 @@
 		place-items: center;
 		width: 44px;
 		height: 44px;
-		border: var(--lapikit-border);
+		border-radius: var(--kit-shape-md);
+		background-color: color-mix(in oklab, var(--kit-color-accent), transparent 88%);
 		color: var(--kit-color-accent);
 	}
 

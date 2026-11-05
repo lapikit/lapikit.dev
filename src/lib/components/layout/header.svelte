@@ -3,10 +3,10 @@
 	import { resolve } from '$app/paths';
 	import { links } from '$lib/constants';
 	import { router } from '$lib/router';
-	import { npmState } from '$lib/stores/npm.svelte';
+	import { githubState } from '$lib/stores/github.svelte';
 	import { getNavContext } from '$lib/stores/nav.svelte';
 
-	import { Menu } from 'lucide-svelte';
+	import { Menu, Star } from 'lucide-svelte';
 
 	import SearchBtn from '$lib/components/modules/search-btn.svelte';
 	import Settings from '$lib/components/settings.svelte';
@@ -45,11 +45,16 @@
 			rel="noopener noreferrer"
 			variant="text"
 			density="compact"
-			aria-label="Lapikit on GitHub"
+			aria-label={githubState.stars
+				? `Lapikit on GitHub, ${githubState.stars} ${githubState.stars === '1' ? 'star' : 'stars'}`
+				: 'Lapikit on GitHub'}
 		>
 			<kit:icon>{@html github.icon}</kit:icon>
-			{#if npmState.downloads}
-				<span class="header-downloads" aria-hidden="true">{npmState.downloads}</span>
+			{#if githubState.stars}
+				<span class="header-stars" aria-hidden="true">
+					{githubState.stars}
+					<kit:icon size="xs" class="header-star"><Star /></kit:icon>
+				</span>
 			{/if}
 		</kit:btn>
 
@@ -157,11 +162,21 @@
 		}
 	}
 
-	.header-downloads {
+	.header-stars {
 		display: none;
+		align-items: center;
+		gap: 3px;
 		margin-inline-start: 6px;
 		font-size: var(--text-sm);
 		font-variant-numeric: tabular-nums;
+
+		:global(.header-star) {
+			color: var(--kit-color-star);
+		}
+
+		:global(.header-star svg) {
+			fill: currentColor;
+		}
 	}
 
 	.header-search-full,
@@ -176,8 +191,8 @@
 	}
 
 	@include up(md) {
-		.header-downloads {
-			display: inline;
+		.header-stars {
+			display: inline-flex;
 		}
 
 		.header-cta {

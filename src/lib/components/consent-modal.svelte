@@ -15,6 +15,8 @@
 	import { consent_cookie } from '$lib/constants';
 	import { consentState } from '$lib/stores/consent.svelte';
 
+	import { ArrowLeft } from 'lucide-svelte';
+
 	const gtmID = PUBLIC_GTM_ID?.trim() ?? '';
 	const gtagID = PUBLIC_GTAG_ID?.trim() ?? '';
 
@@ -25,6 +27,11 @@
 	let analyticsReady = $state(false);
 	let consent = $state<ConsentState | null>(null);
 	let analyticsEnabled = $state(false);
+	let acceptButton: HTMLElement | null = $state(null);
+
+	$effect(() => {
+		if (consentState.open && consentState.view === 'summary') acceptButton?.focus();
+	});
 
 	onMount(() => {
 		if (!provider) return;
@@ -135,158 +142,271 @@
 </script>
 
 {#if provider && consentState.open}
-	<kit:dialog bind:open={consentState.open} persistent size="sm">
+	<kit:dialog
+		bind:open={consentState.open}
+		persistent
+		size="sm"
+		rounded="0"
+		color="surface"
+		classContent="consent-dialog"
+		aria-labelledby="consent-title"
+	>
 		{#if consentState.view === 'summary'}
-			<kit:toolbar>
-				<p class="consent-label">Privacy</p>
-				<kit:spacer />
-				<kit:btn variant="link" size="sm" onclick={() => void applyConsent('refuse', true)}>
-					Decline non-essential cookies
-				</kit:btn>
-			</kit:toolbar>
+			<header class="consent-head">
+				<p class="consent-eyebrow">// Privacy</p>
+				<h2 id="consent-title" class="consent-title">
+					Choose what Lapikit can store on your device.
+				</h2>
+				<p class="consent-text">
+					Lapikit and our partners use cookies or similar technologies to improve the site and your
+					experience, ensure the site works properly, and collect statistics to optimize the
+					services offered. You can change your choice later from the cookie settings link in the
+					footer.
+				</p>
+			</header>
 
-			<p class="consent-title">Choose what Lapikit can store on your device.</p>
-			<p class="consent-text">
-				Lapikit and our partners use cookies or similar technologies to enable us to improve the
-				site, your experience and to ensure the proper functioning of the site, to collect
-				statistics in order to optimize the services offered, and to adapt Lapikit's content. Then
-				change it later from the the cookie settings button.
-			</p>
-			<kit:toolbar classContent="consent-actions">
-				<kit:btn variant="text" onclick={() => (consentState.view = 'customize')}>Customize</kit:btn
+			<div class="consent-actions">
+				<kit:btn
+					class="consent-customize"
+					variant="text"
+					rounded="md"
+					onclick={() => (consentState.view = 'customize')}
 				>
-				<kit:btn onclick={() => void applyConsent('accept', true)}>Accept all</kit:btn>
-			</kit:toolbar>
+					Customize
+				</kit:btn>
+				<kit:btn variant="outline" rounded="md" onclick={() => void applyConsent('refuse', true)}>
+					Decline
+				</kit:btn>
+				<kit:btn
+					bind:ref={acceptButton}
+					color="accent"
+					rounded="md"
+					onclick={() => void applyConsent('accept', true)}
+				>
+					Accept all
+				</kit:btn>
+			</div>
 		{:else}
-			<kit:toolbar>
-				<p class="consent-label">Cookie preferences</p>
-				<kit:spacer />
-				<kit:btn variant="link" onclick={() => (consentState.view = 'summary')}>Back</kit:btn>
-			</kit:toolbar>
-			<h2 class="consent-title">Fine-tune your consent.</h2>
-			<p class="consent-text">
-				Only the audience measurement category is optional on this site. Required cookies stay
-				active because they are needed for core features like saving your consent choice.
-			</p>
-			<kit:list class="consent-list">
-				<kit:list-item>
+			<header class="consent-head">
+				<div class="consent-head-top">
+					<p class="consent-eyebrow">// Cookie preferences</p>
+					<kit:btn
+						variant="text"
+						size="sm"
+						density="compact"
+						rounded="md"
+						onclick={() => (consentState.view = 'summary')}
+					>
+						{#snippet prepend()}
+							<kit:icon size="sm"><ArrowLeft /></kit:icon>
+						{/snippet}
+						Back
+					</kit:btn>
+				</div>
+				<h2 id="consent-title" class="consent-title">Fine-tune your consent.</h2>
+				<p class="consent-text">
+					Only the audience measurement category is optional on this site. Required cookies stay
+					active because they are needed for core features like saving your consent choice.
+				</p>
+			</header>
+
+			<ul class="consent-categories">
+				<li class="consent-category">
 					<div>
-						<strong>Necessary cookies</strong>
-						<p class="consent-description">
-							Required for core site functions and for storing your privacy preference. These are
-							always active.
+						<p class="consent-category-name">Necessary cookies</p>
+						<p class="consent-category-text">
+							Required for core site functions and for storing your privacy preference.
 						</p>
 					</div>
-					{#snippet append()}
-						<kit:chip variant="filled" disabled>Always on</kit:chip>
-					{/snippet}
-				</kit:list-item>
-				<kit:list-item>
+					<span class="consent-always">Always on</span>
+				</li>
+				<li class="consent-category">
 					<div>
-						<strong>Audience measurement</strong>
-						<p class="consent-description">
+						<p id="consent-analytics" class="consent-category-name">Audience measurement</p>
+						<p id="consent-analytics-text" class="consent-category-text">
 							Helps us measure visits and understand which pages are useful, using Google tagging
 							tools only after your consent.
 						</p>
 					</div>
-					{#snippet append()}
-						<label aria-label="Toggle audience measurement cookies">
-							<span class="sr-only">Enable audience measurement cookies</span>
-							<input type="checkbox" class="sr-only" bind:checked={analyticsEnabled} />
-							<span class="toggle" class:on={analyticsEnabled} aria-hidden="true"></span>
-						</label>
-					{/snippet}
-				</kit:list-item>
-			</kit:list>
+					<label class="consent-switch">
+						<input
+							type="checkbox"
+							role="switch"
+							aria-labelledby="consent-analytics"
+							aria-describedby="consent-analytics-text"
+							bind:checked={analyticsEnabled}
+						/>
+						<span class="consent-switch-track" aria-hidden="true"></span>
+					</label>
+				</li>
+			</ul>
 
-			<kit:toolbar classContent="consent-actions">
-				<kit:btn variant="outline" onclick={() => void applyConsent('refuse', true)}>
-					Only necessary cookies
+			<div class="consent-actions">
+				<kit:btn variant="outline" rounded="md" onclick={() => void applyConsent('refuse', true)}>
+					Only necessary
 				</kit:btn>
-				<kit:btn onclick={saveCustomPreferences}>Save choices</kit:btn>
-			</kit:toolbar>
+				<kit:btn color="accent" rounded="md" onclick={saveCustomPreferences}>Save choices</kit:btn>
+			</div>
 		{/if}
 	</kit:dialog>
 {/if}
 
 <style lang="scss">
-	.consent-label {
+	:global(div.kit-dialog__content.consent-dialog) {
+		padding: 0;
+		border: var(--lapikit-border);
+	}
+
+	.consent-head {
+		display: grid;
+		gap: 10px;
+		padding: var(--lapikit-spacing-block);
+	}
+
+	.consent-head-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.consent-eyebrow {
 		margin: 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		color: var(--kit-color-accent);
 	}
 
 	.consent-title {
 		margin: 0;
-		font-size: 1.25rem;
-		line-height: 1.75rem;
+		font-size: var(--text-2xl);
 		font-weight: 700;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
 	}
 
 	.consent-text {
-		margin-block: 1rem;
-	}
-
-	.consent-description {
 		margin: 0;
-		white-space: normal;
+		color: var(--kit-color-text-muted);
+		font-size: var(--text-sm);
+		line-height: 1.6;
 	}
 
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
+	.consent-categories {
+		margin: 0;
 		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border-width: 0;
+		list-style: none;
+		border-top: var(--lapikit-border);
 	}
 
-	// Toggle
-	.toggle {
-		position: relative;
-		display: inline-block;
-		width: 2.5rem;
-		height: 1.5rem;
-		border-radius: 9999px;
-		background-color: #e4e4e7;
-		transition: background-color 0.2s;
+	.consent-category {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 16px var(--lapikit-spacing-block);
+
+		& + & {
+			border-top: 1px solid var(--kit-color-border);
+		}
+	}
+
+	.consent-category-name {
+		margin: 0;
+		font-weight: 600;
+	}
+
+	.consent-category-text {
+		margin: 4px 0 0;
+		color: var(--kit-color-text-muted);
+		font-size: var(--text-sm);
+		line-height: 1.5;
+	}
+
+	.consent-always {
 		flex-shrink: 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--kit-color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.consent-switch {
+		position: relative;
+		flex-shrink: 0;
+		display: inline-flex;
+		cursor: pointer;
+
+		input {
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			margin: 0;
+			opacity: 0;
+			cursor: inherit;
+		}
+	}
+
+	.consent-switch-track {
+		position: relative;
+		width: 44px;
+		height: 24px;
+		border: var(--lapikit-border);
+		border-radius: 999px;
+		background-color: var(--kit-color-surface-1);
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
 
 		&::after {
 			content: '';
 			position: absolute;
 			top: 2px;
 			left: 2px;
-			width: 20px;
-			height: 20px;
-			border-radius: 9999px;
-			background-color: rgb(255, 255, 255);
-			box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.08);
-			transition: transform 0.2s;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background-color: var(--kit-color-text-muted);
+			transition:
+				transform 0.2s ease,
+				background-color 0.2s ease;
 		}
 
-		&.on {
-			background-color: #18181b;
+		input:checked + & {
+			border-color: var(--kit-color-accent);
+			background-color: var(--kit-color-accent);
 
 			&::after {
-				transform: translateX(1rem);
+				background-color: var(--kit-color-surface);
+				transform: translateX(20px);
+			}
+		}
+
+		input:focus-visible + & {
+			outline: 2px solid var(--kit-color-accent);
+			outline-offset: 2px;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+
+			&::after {
+				transition: none;
 			}
 		}
 	}
 
-	:global(.consent-list) {
-		max-width: 80%;
-	}
+	.consent-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 8px;
+		padding: 16px var(--lapikit-spacing-block);
+		border-top: var(--lapikit-border);
 
-	:global(.consent-actions) {
-		justify-content: flex-end !important;
-	}
-
-	:global(.consent-settings-btn) {
-		position: fixed !important;
-		bottom: 1rem;
-		left: 1rem;
-		z-index: 40;
+		:global(.consent-customize) {
+			margin-right: auto;
+		}
 	}
 </style>

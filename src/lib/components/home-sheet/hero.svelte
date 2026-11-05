@@ -4,6 +4,9 @@
 
 	import { ArrowRight, Rocket, Star } from 'lucide-svelte';
 	import Mascot from '$lib/assets/images/mascot/default.webp?enhanced';
+	import SvelteIcon from '$lib/assets/icons/svelte.svg?raw';
+	import TypescriptIcon from '$lib/assets/icons/typescript_color.svg?url';
+	import ViteIcon from '$lib/assets/icons/vite.js.svg?url';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';
@@ -15,7 +18,12 @@
 
 	const WORDS = ['components', 'themes', 'hooks', 'actions'];
 	const WORD_DURATION = 3000;
-	const STACK = ['Svelte 5', 'SvelteKit', 'TypeScript', 'Vite'];
+	const STACK = [
+		{ label: 'Svelte 5', svg: SvelteIcon },
+		{ label: 'SvelteKit', svg: SvelteIcon },
+		{ label: 'TypeScript', src: TypescriptIcon },
+		{ label: 'Vite', src: ViteIcon }
+	];
 
 	const reducedMotion = new MediaQuery('prefers-reduced-motion: reduce');
 	let wordIndex = $state(0);
@@ -76,12 +84,12 @@
 						href={links['github-repo-lapikit'].url}
 						target="_blank"
 						rel="noopener noreferrer"
-						variant="outline"
+						variant="text"
 						size="lg"
 						rounded="md"
 					>
 						{#snippet prepend()}
-							<kit:icon>
+							<kit:icon class="hero-star">
 								<Star />
 							</kit:icon>
 						{/snippet}
@@ -103,9 +111,20 @@
 		<div class="hero-cell">
 			<p class="hero-cell-label">Built for</p>
 			<ul class="hero-stack">
-				{#each STACK as item (item)}
+				{#each STACK as { label, svg, src } (label)}
 					<li>
-						<kit:chip variant="outline" rounded="full">{item}</kit:chip>
+						<kit:chip variant="outline" rounded="full">
+							{#snippet prepend()}
+								<span class="hero-stack-logo" aria-hidden="true">
+									{#if svg}
+										{@html svg}
+									{:else}
+										<img {src} alt="" width="16" height="16" />
+									{/if}
+								</span>
+							{/snippet}
+							{label}
+						</kit:chip>
 					</li>
 				{/each}
 			</ul>
@@ -194,6 +213,27 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 8px;
+	}
+
+	.hero-stack-logo {
+		display: inline-flex;
+		width: 16px;
+		height: 16px;
+		color: var(--kit-color-svelte);
+
+		:global(svg),
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.hero-actions :global(.hero-star) {
+		color: var(--kit-color-star);
+
+		:global(svg) {
+			fill: currentColor;
+		}
 	}
 
 	.hero-preview {

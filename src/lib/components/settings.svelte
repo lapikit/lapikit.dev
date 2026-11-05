@@ -1,18 +1,11 @@
 <script lang="ts">
-	import type {
-		DropdownTriggerModel,
-		DropdownTriggerProps,
-		PopoverTriggerProps
-	} from 'lapikit/components';
-	import { createGlobalTheme, useTheme } from 'lapikit/actions';
-	import { capitalize } from '$lib/utils';
-
-	//data
-	import { lang_manager, pkg_manager, themes, type ThemeManager } from '$lib/constants';
+	import type { PopoverTriggerProps } from 'lapikit/components';
+	import { lang_manager, pkg_manager } from '$lib/constants';
 	import { application, type LangManager, type PkgManager } from '$lib/stores/app.svelte';
 
-	// assets
-	import { ChevronDown, ChevronUp, Settings } from 'lucide-svelte';
+	import { Settings } from 'lucide-svelte';
+
+	import ThemeSwitcher from '$lib/components/modules/theme-switcher.svelte';
 
 	let {
 		density,
@@ -22,17 +15,32 @@
 		variant?: string;
 	} = $props();
 
-	const app = createGlobalTheme();
-
-	const themeList = Object.entries(themes) as [ThemeManager, (typeof themes)[ThemeManager]][];
 	const managers = Object.entries(pkg_manager) as [PkgManager, (typeof pkg_manager)[PkgManager]][];
-	const managersLang = Object.entries(lang_manager) as [
+	const languages = Object.entries(lang_manager) as [
 		LangManager,
 		(typeof lang_manager)[LangManager]
 	][];
 </script>
 
-<kit:popover class="settings-app">
+{#snippet option(label: string, icon: string, selected: boolean, onclick?: () => void)}
+	<kit:btn
+		size="sm"
+		density="compact"
+		rounded="full"
+		variant={selected ? 'tonal' : 'text'}
+		active={selected}
+		aria-pressed={selected}
+		disabled={!onclick}
+		{onclick}
+	>
+		{#snippet prepend()}
+			<kit:icon size="sm">{@html icon}</kit:icon>
+		{/snippet}
+		{label}
+	</kit:btn>
+{/snippet}
+
+<kit:popover class="settings-panel" rounded="0" color="surface">
 	{#snippet trigger(props: PopoverTriggerProps)}
 		<kit:btn {variant} {density} icon aria-label="Settings" {...props}>
 			<kit:icon>
@@ -41,133 +49,77 @@
 		</kit:btn>
 	{/snippet}
 
-	<kit:list s-style={{ '--kit-list-item-h': '0px', '--kit-list-item-p': '0px' }}>
-		<kit:list-item>
-			{#each themeList as [key, values] (key)}
-				{@const Icon = values?.icon}
-				<kit:btn active={key === app.active} onclick={() => useTheme(key)}>
-					{#snippet prepend()}
-						<kit:icon>
-							<Icon />
-						</kit:icon>
-					{/snippet}
+	<section class="settings-section" aria-labelledby="settings-theme">
+		<p id="settings-theme" class="settings-label">Theme</p>
+		<ThemeSwitcher />
+	</section>
 
-					{capitalize(values.label)}
-				</kit:btn>
+	<section class="settings-section" aria-labelledby="settings-package">
+		<p id="settings-package" class="settings-label">Package manager</p>
+		<div class="settings-options" role="group" aria-labelledby="settings-package">
+			{#each managers as [key, { label, icon }] (key)}
+				{@render option(label, icon, key === application.pkg_selected, () => {
+					application.pkg_selected = key;
+				})}
 			{/each}
-		</kit:list-item>
-	</kit:list>
-	<kit:separator />
-	<kit:list color="surface">
-		<kit:list-item>
-			<p class="text-sm">Package</p>
-			<kit:dropdown closeOnClick>
-				{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
-					<kit:btn
-						class="hidden_action_appbar"
-						density="compact"
-						is="button"
-						variant="text"
-						active={open}
-						{...props}
-					>
-						{#snippet prepend()}
-							<kit:icon>
-								{@html pkg_manager[application.pkg_selected].icon}
-							</kit:icon>
-						{/snippet}
-						{pkg_manager[application.pkg_selected].label}
-						{#snippet append()}
-							<kit:icon>
-								{#if open}
-									<ChevronUp />
-								{:else}
-									<ChevronDown />
-								{/if}
-							</kit:icon>
-						{/snippet}
-					</kit:btn>
-				{/snippet}
+		</div>
+	</section>
 
-				<kit:list density="compact">
-					{#each managers as [key, manager] (key)}
-						{#if key !== application.pkg_selected}
-							<kit:list-item onclick={() => (application.pkg_selected = key)}>
-								{#snippet prepend()}
-									<kit:icon>
-										{@html manager.icon}
-									</kit:icon>
-								{/snippet}
-								{manager.label}
-							</kit:list-item>
-						{/if}
-					{/each}
-				</kit:list>
-			</kit:dropdown>
-		</kit:list-item>
-		<kit:list-item>
-			<p class="text-sm">Language</p>
-			<kit:dropdown closeOnClick>
-				{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
-					<kit:btn
-						class="hidden_action_appbar"
-						density="compact"
-						is="button"
-						variant="text"
-						disabled
-						active={open}
-						{...props}
-					>
-						{#snippet prepend()}
-							<kit:icon>
-								{@html lang_manager[application.lang_selected].icon}
-							</kit:icon>
-						{/snippet}
-						{lang_manager[application.lang_selected].label}
-						<!-- {#snippet append()}
-							<kit:icon>
-								{#if open}
-									<ChevronUp />
-								{:else}
-									<ChevronDown />
-								{/if}
-							</kit:icon>
-						{/snippet} -->
-					</kit:btn>
-				{/snippet}
-
-				<kit:list density="compact">
-					{#each managersLang as [key, manager] (key)}
-						{#if key !== application.lang_selected}
-							<kit:list-item onclick={() => (application.lang_selected = key)}>
-								{#snippet prepend()}
-									<kit:icon>
-										{@html manager.icon}
-									</kit:icon>
-								{/snippet}
-								{manager.label}
-							</kit:list-item>
-						{/if}
-					{/each}
-				</kit:list>
-			</kit:dropdown>
-		</kit:list-item>
-	</kit:list>
+	<section class="settings-section" aria-labelledby="settings-language">
+		<p id="settings-language" class="settings-label">
+			Language
+			<span class="settings-soon">Soon</span>
+		</p>
+		<div class="settings-options" role="group" aria-labelledby="settings-language">
+			{#each languages as [key, { label, icon }] (key)}
+				{@render option(label, icon, key === application.lang_selected)}
+			{/each}
+		</div>
+	</section>
 </kit:popover>
 
 <style lang="scss">
-	:global(.settings-app) {
-		width: 290px !important;
+	:global(div.kit-popover-content.settings-panel) {
+		width: 300px;
+		padding: 0;
+		border: var(--lapikit-border);
+	}
 
-		:global(.kit-separator) {
-			margin: 5px 0;
-		}
+	.settings-section {
+		display: grid;
+		gap: 10px;
+		padding: 16px;
 
-		:global(.kit-list:last-child) {
-			:global(.kit-list-item__content) {
-				display: grid;
-				grid-template-columns: 1fr auto;
-			}
+		& + & {
+			border-top: var(--lapikit-border);
 		}
+	}
+
+	.settings-label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		font-weight: 500;
+		color: var(--kit-color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.settings-soon {
+		padding: 1px 6px;
+		border: 1px solid var(--kit-color-border);
+		border-radius: 999px;
+		font-size: var(--text-2xs);
+		letter-spacing: 0.04em;
+		text-transform: none;
+	}
+
+	.settings-options {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
 	}
 </style>

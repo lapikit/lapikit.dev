@@ -32,7 +32,7 @@
 	--kit-color-on-svelte: hsl(0deg 0% 96.86%);
 	--kit-color-discord: hsl(234.21deg 73.6% 61.37%);
 	--kit-color-on-discord: hsl(0deg 0% 96.86%);
-	--kit-color-buymeacoffee: hsl(51.98deg 100% 48.43%);
+	--kit-color-buymeacoffee: hsl(52deg 100% 50%);
 	--kit-color-on-buymeacoffee: hsl(242.73deg 50% 8.63%);
 	--kit-color-npm: hsl(357.69deg 71.56% 42.75%);
 	--kit-color-on-npm: hsl(0deg 0% 96.86%);
@@ -40,6 +40,7 @@
 	--kit-color-on-github: hsl(0deg 0% 96.86%);
 	--kit-color-instagram: hsl(340, 75%, 54%);
 	--kit-color-on-instagram: hsl(0deg 0% 96.86%);
+	--kit-color-star: hsl(42.22deg 74.31% 57.25%);
 }
 
 @import url('./_reset.scss');

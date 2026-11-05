@@ -31,6 +31,8 @@ The modal can be centered or fixed to a corner or an edge of the screen, and clo
 
 `kit:modal` renders a native `<dialog>` opened with `show()`: it is announced as a dialog, takes the focus when it opens and gives it back when it closes, but it does not lock the scroll and has no backdrop. Use `contain` to embed the modal in its parent, with an overlay over that parent only.
 
+> `contain` is not a full-screen mode: the overlay and the modal scroll with their parent, and the page behind stays interactive. For a search palette, a confirmation or any window that covers the whole screen, use [`kit:dialog`](/docs/components/dialog).
+
 > `open` is bindable set it to `true` to open, `false` to close, or bind it to react to closes.
 
 ## Examples of modal

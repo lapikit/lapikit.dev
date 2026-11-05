@@ -166,7 +166,9 @@
 	}
 
 	.pipeline-card {
+		overflow: hidden;
 		border: 1px solid var(--kit-color-border);
+		border-radius: var(--kit-shape-md);
 		background-color: var(--kit-color-surface-1);
 	}
 
@@ -206,6 +208,7 @@
 		max-width: 520px;
 		padding: 16px;
 		border: 1px dashed var(--kit-color-border);
+		border-radius: var(--kit-shape-lg);
 	}
 
 	.pipeline-bundler-head {
@@ -229,6 +232,7 @@
 		min-height: 32px;
 		padding: 0 10px;
 		border: 1px solid var(--kit-color-border);
+		border-radius: var(--kit-shape-sm);
 		background-color: var(--kit-color-surface);
 		color: var(--kit-color-text);
 		font: inherit;
@@ -252,6 +256,7 @@
 
 	.pipeline-soon {
 		padding: 1px 6px;
+		border-radius: var(--kit-shape-xs);
 		background-color: var(--kit-color-surface-2);
 		color: var(--kit-color-text-muted);
 		font-family: var(--font-mono);
@@ -274,6 +279,7 @@
 		align-items: center;
 		padding: 12px;
 		border: 1px solid var(--kit-color-border);
+		border-radius: var(--kit-shape-md);
 		background-color: var(--kit-color-surface);
 
 		&.is-lili {
@@ -292,6 +298,7 @@
 		justify-content: center;
 		width: 40px;
 		height: 40px;
+		border-radius: var(--kit-shape-sm);
 		background-color: var(--kit-color-accent);
 
 		:global(picture),

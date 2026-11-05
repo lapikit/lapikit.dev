@@ -3,7 +3,7 @@
 	import { npmState } from '$lib/stores/npm.svelte';
 	import { profilGithub } from '../../../content/app/profil-github';
 
-	import { Coffee, Plus, Star } from 'lucide-svelte';
+	import { Plus, Star } from 'lucide-svelte';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';
@@ -30,11 +30,11 @@
 					href={links['github-repo-lapikit'].url}
 					target="_blank"
 					rel="noopener noreferrer"
-					variant="outline"
+					color={links['github-repo-lapikit']._styles.background}
 					rounded="md"
 				>
 					{#snippet prepend()}
-						<kit:icon><Star /></kit:icon>
+						<kit:icon class="community-star"><Star /></kit:icon>
 					{/snippet}
 					Star on GitHub
 				</kit:btn>
@@ -56,11 +56,11 @@
 					href={links.buymeacoffee.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					variant="text"
+					color={links.buymeacoffee._styles.background}
 					rounded="md"
 				>
 					{#snippet prepend()}
-						<kit:icon><Coffee /></kit:icon>
+						<kit:icon>{@html links.buymeacoffee.icon}</kit:icon>
 					{/snippet}
 					Buy the team a coffee
 				</kit:btn>
@@ -126,6 +126,14 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 12px;
+
+		:global(.community-star) {
+			color: var(--kit-color-star);
+		}
+
+		:global(.community-star svg) {
+			fill: currentColor;
+		}
 	}
 
 	.community-visual {
