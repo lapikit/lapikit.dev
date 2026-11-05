@@ -109,16 +109,18 @@
 
 		<div class="lili-feature">
 			<h3 class="lili-feature-title">
-				Class and style binding with <code class="accent-text">s-class</code> and
-				<code class="accent-text">s-style</code>
+				<code class="accent-text">class:</code> and <code class="accent-text">style:</code> directives
+				on every component
 			</h3>
 			<p>
-				Svelte 5 lets you bind classes and styles with directives instead of ternaries. Lili extends
-				that convenience to every Lapikit component.
+				Svelte only accepts <code>class:</code> and <code>style:</code> on native HTML elements.
+				Lili lifts that limit: toggle a class or set a CSS variable on any
+				<code>&lt;kit:*&gt;</code>
+				tag, exactly like on a <code>&lt;div&gt;</code>.
 			</p>
 			<p>
-				Use <code>s-class</code> and <code>s-style</code> on any <code>&lt;kit:*&gt;</code> tag,
-				exactly like <code>class:</code> and <code>style:</code> on a native element.
+				The <code>class</code> attribute takes strings, arrays and objects too. Working without the
+				preprocessor? The <code>s-class</code> and <code>s-style</code> props do the same job.
 			</p>
 			<kit:btn
 				href={resolve('/docs/essentials/class-and-style')}
@@ -131,7 +133,7 @@
 						<BookOpenText />
 					</kit:icon>
 				{/snippet}
-				Read about s-class and s-style
+				Read about class and style
 			</kit:btn>
 		</div>
 	</SheetGrid>

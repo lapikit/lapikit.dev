@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { links } from '$lib/constants';
 
-	import { Coffee } from 'lucide-svelte';
-
 	let { compact = false }: { compact?: boolean } = $props();
 
 	const titleId = $props.id();
@@ -21,12 +19,12 @@
 			href={sponsor.url}
 			target="_blank"
 			rel="noopener noreferrer"
-			color="accent"
+			color={sponsor._styles.background}
 			rounded="md"
 			block={!compact}
 		>
 			{#snippet prepend()}
-				<kit:icon><Coffee /></kit:icon>
+				<kit:icon>{@html sponsor.icon}</kit:icon>
 			{/snippet}
 			Buy the team a coffee
 		</kit:btn>

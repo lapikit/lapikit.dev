@@ -24,7 +24,7 @@
 	const windowActions = [Minus, PictureInPicture2, X];
 </script>
 
-<kit:card class="home-repl" s-class_home-repl-left={left} color="surface-2">
+<kit:card class="home-repl" class:home-repl-left={left} color="surface-2">
 	<kit:card-actions aria-hidden="true">
 		<kit:spacer />
 		{#each windowActions as Action, index (index)}

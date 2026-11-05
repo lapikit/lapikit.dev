@@ -13,52 +13,25 @@ const blank: VsLine = { type: 'blank' };
 
 // SAMPLE TO USE DIRECTIVE LAPIKIT
 export const replDirectiveSvelte: Code[] = [
-	{ content: '<kit:btn s-class_padding="8px">', lapikit: true, indent: 0 },
-	{
-		content: 'Button s-class',
-		indent: 1
-	},
-	{
-		content: '</kit:btn>',
-		lapikit: true,
-		indent: 0
-	},
-	{ content: '<kit:btn s-style_background="purple">', lapikit: true, indent: 0 },
-	{
-		content: 'Button s-style',
-		indent: 1
-	},
-	{
-		content: '</kit:btn>',
-		lapikit: true,
-		indent: 0
-	}
+	{ content: '<kit:btn class:active={selected}>', lapikit: true, indent: 0 },
+	{ content: 'Selected', indent: 1 },
+	{ content: '</kit:btn>', lapikit: true, indent: 0 },
+	{ content: '<kit:btn style:--kit-btn-color={brand}>', lapikit: true, indent: 0 },
+	{ content: 'Brand color', indent: 1 },
+	{ content: '</kit:btn>', lapikit: true, indent: 0 }
 ];
 
 export const replDirectivePreCompil: Code[] = [
-	{ content: '<button class="kit-btn padding-8px">', lapikit: true, indent: 0 },
-	{
-		content: 'Button s-class',
-		indent: 1
-	},
-	{
-		content: '</button>',
-		lapikit: true,
-		indent: 0
-	},
-	{ content: '<button', lapikit: true, indent: 0 },
-	{ content: 'class="kit-btn"', indent: 1 },
-	{ content: 'style="background: purple;"', indent: 1 },
-	{ content: '>', lapikit: true, indent: 0 },
-	{
-		content: 'Button s-style',
-		indent: 1
-	},
-	{
-		content: '</button>',
-		lapikit: true,
-		indent: 0
-	}
+	{ content: "<script lang='ts'>", indent: 0 },
+	{ content: 'import KitBtn from lapikit/components/btn/btn.svelte', indent: 1, lapikit: true },
+	{ content: '<' + '/script>', indent: 0 },
+	{ content: '', indent: 0 },
+	{ content: '<KitBtn s-class_active={selected}>', lapikit: true, indent: 0 },
+	{ content: 'Selected', indent: 1 },
+	{ content: '</KitBtn>', lapikit: true, indent: 0 },
+	{ content: '<KitBtn s-style_--kit-btn-color={brand}>', lapikit: true, indent: 0 },
+	{ content: 'Brand color', indent: 1 },
+	{ content: '</KitBtn>', lapikit: true, indent: 0 }
 ];
 
 // SAMPLE TO USE COMPONENT LAPIKTI

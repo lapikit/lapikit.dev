@@ -8,7 +8,7 @@
 	{#each components as { label, url, description, image } (label)}
 		{#if label !== 'All components'}
 			<kit:card href={url} density="comfortable" elevation={{ base: 0, hover: 2 }}>
-				<kit:card-media s-style_border-color="transparent">
+				<kit:card-media style:border-color="transparent">
 					<kit:aspect-ratio ratio="16/9">
 						<img src={image} alt={label} loading="lazy" decoding="async" />
 					</kit:aspect-ratio>

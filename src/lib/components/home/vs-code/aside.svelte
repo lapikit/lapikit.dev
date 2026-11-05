@@ -33,7 +33,7 @@
 	</div>
 
 	<div>
-		<kit:avatar size="xs" s-style_margin="0 auto">N</kit:avatar>
+		<kit:avatar size="xs" style:margin="0 auto">N</kit:avatar>
 
 		<div class="fake-btn-icon">
 			<kit:icon>

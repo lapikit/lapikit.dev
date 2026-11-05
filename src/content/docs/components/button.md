@@ -99,6 +99,8 @@ The `size` prop adjusts the button's height, padding, font size and the gap betw
 
 `color` accepts a color of the palette (`accent`, `success`...) or any CSS color. With a palette color, the text color follows its `on-` color; otherwise a contrasted color is computed.
 
+`color` sets the `--kit-btn-color` variable. You can also set it yourself, in your CSS or on one button with `style:--kit-btn-color={brand}`.
+
 Pass an object to use another color when the button is `active`, or `false` for no color, handy with a condition: `color={isActive && 'accent'}`.
 
 - **color**: `string | false | { base?: string | false; active?: string | false }` = `undefined`
@@ -231,7 +233,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 | append        | `Snippet`                                                                      | Content after the label.                                                                                                                                  |             |
 | load          | `Snippet`                                                                      | Custom spinner content shown while loading.                                                                                                               |             |
 | children      | `Snippet`                                                                      | Button label.                                                                                                                                             |             |
-| color         | `string \| false \| { base?, active? }`                                        | Button color, its use depends on the variant.                                                                                                             |             |
+| color         | `string \| false \| { base?, active? }`                                        | Button color, its use depends on the variant (`--kit-btn-color`).                                                                                         |             |
 | elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`                     | Add shadow effect.                                                                                                                                        |             |
 
 > `class:` and `style:` directives also work on `kit:btn` with the Lapikit preprocessor, see [Class and Style](/docs/essentials/class-and-style).

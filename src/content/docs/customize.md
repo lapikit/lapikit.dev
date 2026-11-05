@@ -16,7 +16,7 @@ keywords:
 	import LazyRepl from '$lib/components/lazy-repl.svelte';
 
   // examples
-  import SStyleComponent from '$examples/started/s-style-component.svelte';
+  import PerInstanceStyle from '$examples/started/per-instance-style.svelte';
   import StyleRootVariables from '$examples/styles/root.css?raw';
   import StyleThemeDefault from '$examples/styles/theme-default.css?raw';
   import StyleThemeLight from '$examples/styles/theme-light.css?raw';
@@ -25,7 +25,7 @@ keywords:
 
 	import overrideStyleCode from '$examples/started/override-style.css?raw';
 	import overrideStyleComponentCode from '$examples/started/override-style-component.css?raw';
-	import sStyleComponentCode from '$examples/started/s-style-component.svelte?raw';
+	import perInstanceStyleCode from '$examples/started/per-instance-style.svelte?raw';
 
 	// preview
 	import ElevationPreview from '$examples/started/elevation-preview.svelte';
@@ -64,6 +64,8 @@ content={{
 You can apply your own values directly in your stylesheet and integrate Lapikit into an existing design system **without having to rewrite the components.**
 
 <LazyRepl title="style.css" lang="css" content={overrideStyleCode} />
+
+> A value set on `:root` applies to every theme: here the accent stays purple in light and dark mode, while the default accent switches from black to white. To keep a value per theme, override it inside the theme selectors described in [Theme mode support](#theme-mode-support).
 
 <!-- ### Dark mode support
 
@@ -198,10 +200,10 @@ The styles that use these variables keep a normal specificity: the resets of oth
 > [!NOTE]
 > The components move to this structure as they are updated: `kit:accordion`, `kit:alert`, `kit:app`, `kit:appbar`, `kit:aspect-ratio`, `kit:avatar`, `kit:btn`, `kit:card`, `kit:chip`, `kit:dialog`, `kit:dropdown`, `kit:field`, `kit:icon`, `kit:list`, `kit:modal`, `kit:popover`, `kit:separator`, `kit:textfield`, `kit:toolbar` and `kit:tooltip` already use it.
 
-For per-instance customization, use the props or the s-style prop directly on the component instance:
+For per-instance customization, use the props or the `style:` directive directly on the component instance:
 
-<LazyRepl title="btn" lang="css" content={sStyleComponentCode}>
-<SStyleComponent/>
+<LazyRepl title="button.svelte" lang="svelte" content={perInstanceStyleCode}>
+<PerInstanceStyle/>
 </LazyRepl>
 
 > [!NOTE]
@@ -240,7 +242,7 @@ For per-instance customization, use the props or the s-style prop directly on th
 
 #### Colors (semantic)
 
-Each role ships with an `on-` counterpart: the foreground color guaranteed to be readable on top of it.
+Each role ships with an `on-` counterpart: the foreground color guaranteed to be readable on top of it. Success, warning, error and info also have a `-text` shade, a readable version of the color used as text on a surface (text, outline, tonal and plain variants, icons, field error messages).
 
 | Variable                                         | Role                           |
 | ------------------------------------------------ | ------------------------------ |
@@ -249,7 +251,13 @@ Each role ships with an `on-` counterpart: the foreground color guaranteed to be
 | `--kit-color-warning` / `--kit-color-on-warning` | Cautionary feedback            |
 | `--kit-color-error` / `--kit-color-on-error`     | Destructive actions and errors |
 | `--kit-color-info` / `--kit-color-on-info`       | Neutral informational feedback |
+| `--kit-color-success-text`                       | Success color used as text     |
+| `--kit-color-warning-text`                       | Warning color used as text     |
+| `--kit-color-error-text`                         | Error color used as text       |
+| `--kit-color-info-text`                          | Info color used as text        |
 | `--kit-color-focus`                              | Focus ring color               |
+
+In the light theme, the `-text` shades are computed from their color with `color-mix()`: override `--kit-color-success` and its text shade follows. In the dark theme, they are equal to the color itself.
 
 #### Shape
 

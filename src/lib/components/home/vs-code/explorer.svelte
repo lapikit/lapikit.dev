@@ -94,16 +94,18 @@
 <kit:list
 	variant="text"
 	rounded="0"
-	s-style={{ '--kit-list-item-h': '0px', '--kit-list-item-p': '0px', '--kit-list-item-gap': '4px' }}
+	style:--kit-list-item-h="0px"
+	style:--kit-list-item-p="0px"
+	style:--kit-list-item-gap="4px"
 >
 	{#each treemap as item, index (index)}
 		{#if item.view}
 			<kit:list-item
-				s-style_padding-inline-start={indent(item.indentation)}
-				s-style_background-color={item.view === view ? 'var(--kit-color-vs-active)' : 'transparent'}
-				s-style_border-radius="4px"
-				s-style_font-size="12px"
-				s-style_font-weight="300"
+				style:padding-inline-start={indent(item.indentation)}
+				style:background-color={item.view === view ? 'var(--kit-color-vs-active)' : 'transparent'}
+				style:border-radius="4px"
+				style:font-size="12px"
+				style:font-weight="300"
 				color="font-vs-tertiary"
 				onclick={() => (view = item.view)}
 			>
@@ -132,11 +134,11 @@
 			</kit:list-item>
 		{:else}
 			<kit:list-item
-				s-style_padding-inline-start={indent(item.indentation)}
-				s-style_background-color="transparent"
-				s-style_border-radius="4px"
-				s-style_font-size="12px"
-				s-style_font-weight="300"
+				style:padding-inline-start={indent(item.indentation)}
+				style:background-color="transparent"
+				style:border-radius="4px"
+				style:font-size="12px"
+				style:font-weight="300"
 				color="font-vs-tertiary"
 			>
 				{#snippet prepend()}

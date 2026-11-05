@@ -42,7 +42,7 @@
 		Search
 
 		{#snippet append()}
-			<kit:chip size="xs" variant="text" s-style_cursor="pointer"> CTRL + K </kit:chip>
+			<kit:chip size="xs" variant="text" style:cursor="pointer"> CTRL + K </kit:chip>
 		{/snippet}
 	</kit:btn>
 {/if}

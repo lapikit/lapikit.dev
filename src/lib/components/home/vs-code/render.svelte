@@ -41,7 +41,7 @@
 	<div>
 		<div>
 			{#if version}
-				<kit:chip size="sm" rounded="sm" s-style_--kit-chip-p="2px">
+				<kit:chip size="sm" rounded="sm" style:--kit-chip-p="2px">
 					{#snippet prepend()}
 						<kit:chip size="xs" rounded="xs" color="accent"> Current </kit:chip>
 					{/snippet}

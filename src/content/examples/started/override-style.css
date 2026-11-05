@@ -1,6 +1,7 @@
 :root {
-	--kit-accent: hsl(262 80% 50%);
-	--kit-radius-1: 4px;
-	--kit-radius-2: 8px;
+	--kit-color-accent: hsl(262 80% 50%);
+	--kit-color-on-accent: hsl(0 0% 100%);
+	--kit-shape-sm: 4px;
+	--kit-shape-md: 8px;
 	--kit-font: 'Inter', sans-serif;
 }

@@ -43,6 +43,37 @@
 	--kit-color-star: hsl(42.22deg 74.31% 57.25%);
 }
 
+@mixin brand-accent-light {
+	--kit-color-accent: hsl(220 90% 56%);
+	--kit-color-on-accent: hsl(0 0% 100%);
+}
+
+@mixin brand-accent-dark {
+	--kit-color-accent: hsl(220 85% 65%);
+	--kit-color-on-accent: hsl(240 3% 11%);
+}
+
+html:not([data-kit-theme]),
+html[data-kit-theme='light'] {
+	@include brand-accent-light;
+}
+
+html[data-kit-theme='dark'] {
+	@include brand-accent-dark;
+}
+
+@media (prefers-color-scheme: light) {
+	html[data-kit-theme='system'] {
+		@include brand-accent-light;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	html[data-kit-theme='system'] {
+		@include brand-accent-dark;
+	}
+}
+
 @import url('./_reset.scss');
 @import url(./_code.scss);
 @import url('./_fonts.scss');

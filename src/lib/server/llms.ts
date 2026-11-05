@@ -17,7 +17,7 @@ const intro = [
 	'- Use components as `<kit:btn>`, `<kit:card>`, `<kit:accordion>`… without importing them.',
 	'- Hooks and actions come from `lapikit/actions`, component types from `lapikit/components`.',
 	'- Theming relies on CSS custom properties (`--kit-*`) and the `data-kit-theme` attribute.',
-	'- `s-class` and `s-style` work on any `<kit:*>` tag, like `class:` and `style:` on native elements.'
+	'- The `class:` and `style:` directives work on any `<kit:*>` tag, like on native elements. Without the preprocessor, use the `s-class` and `s-style` props.'
 ].join('\n');
 
 const markdownUrl = (doc: DocSummary) => `${siteUrl}${doc.path.pathname}.md`;

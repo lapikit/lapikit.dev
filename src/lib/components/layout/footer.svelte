@@ -36,7 +36,7 @@
 	{#if isExternal(path)}
 		<kit:list-item href={path} target="_blank" rel="noopener noreferrer">
 			{capitalize(label)}
-			<kit:icon size="xs" color="text-muted" s-style_margin-left="7px">
+			<kit:icon size="xs" color="text-muted" style:margin-left="7px">
 				<ExternalLink />
 			</kit:icon>
 		</kit:list-item>

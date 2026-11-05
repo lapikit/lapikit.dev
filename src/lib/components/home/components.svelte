@@ -47,9 +47,9 @@
 								{#snippet prepend()}
 									<kit:avatar
 										rounded="sm"
-										s-style_--kit-avatar-h="28px"
-										s-style_margin-left="-8px"
-										s-style_margin-right="4px"
+										style:--kit-avatar-h="28px"
+										style:margin-left="-8px"
+										style:margin-right="4px"
 									>
 										<img
 											src={component.icon ? component.icon : component.image}
