@@ -52,8 +52,12 @@ content={{
 		code: StyleRootVariables,
 		lang: 'css'
 	},
-	'theme': {
+	'light': {
 		code: StyleThemeDefault,
+		lang: 'css'
+	},
+	'dark': {
+		code: StyleThemeDark,
 		lang: 'css'
 	}
 }}

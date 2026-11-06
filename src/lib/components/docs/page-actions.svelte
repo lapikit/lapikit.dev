@@ -53,7 +53,7 @@
 </script>
 
 <div class="page-actions" role="group" aria-label="Page actions" data-prose-skip>
-	<kit:btn size="sm" variant="outline" rounded="0" onclick={copyForAi}>
+	<kit:btn size="sm" variant="outline" onclick={copyForAi}>
 		{#snippet prepend()}
 			<kit:icon size="sm" color={copied ? 'success' : undefined}>
 				{#if copied}
@@ -66,13 +66,12 @@
 		{copied ? 'Copied' : 'Copy for AI'}
 	</kit:btn>
 
-	<kit:dropdown closeOnClick rounded="0">
+	<kit:dropdown closeOnClick elevation="2">
 		{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
 			<kit:btn
 				icon
 				size="sm"
 				variant="outline"
-				rounded="0"
 				active={open}
 				aria-label="More page actions"
 				{...props}
@@ -81,7 +80,7 @@
 			</kit:btn>
 		{/snippet}
 
-		<kit:list density="compact" rounded="0" class="page-actions-menu">
+		<kit:list density="compact" variant="text" class="page-actions-menu">
 			<kit:list-item href={markdownUrl} download={fileName}>
 				{#snippet prepend()}
 					<kit:icon size="sm"><Download /></kit:icon>

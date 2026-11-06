@@ -45,9 +45,9 @@
 	<div class="sheet-article-grid" class:has-toc={hasToc}>
 		{#if hasToc}
 			<div class="sheet-article-bar">
-				<kit:dropdown closeOnClick rounded="0" class="sheet-article-bar-menu">
+				<kit:dropdown closeOnClick elevation="2" class="sheet-article-bar-menu">
 					{#snippet trigger(props: DropdownTriggerProps, { open }: DropdownTriggerModel)}
-						<kit:btn variant="text" density="compact" rounded="0" active={open} {...props}>
+						<kit:btn variant="text" density="compact" active={open} {...props}>
 							{#snippet prepend()}
 								<kit:icon size="sm"><TextAlignStart /></kit:icon>
 							{/snippet}
@@ -150,13 +150,9 @@
 	}
 
 	.sheet-article-bar-toc {
-		width: min(360px, calc(100vw - 32px));
+		width: min(21rem, calc(100vw - 2rem));
 		max-height: min(60vh, 480px);
-		padding: 8px;
 		overflow-y: auto;
-		border: var(--lapikit-border);
-		background-color: var(--kit-color-surface);
-		box-shadow: 0 16px 40px -12px color-mix(in oklab, var(--kit-color-shadow), transparent 70%);
 	}
 
 	.sheet-article-body {
