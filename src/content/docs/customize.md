@@ -244,20 +244,21 @@ For per-instance customization, use the props or the `style:` directive directly
 
 Each role ships with an `on-` counterpart: the foreground color guaranteed to be readable on top of it. Success, warning, error and info also have a `-text` shade, a readable version of the color used as text on a surface (text, outline, tonal and plain variants, icons, field error messages).
 
-| Variable                                         | Role                           |
-| ------------------------------------------------ | ------------------------------ |
-| `--kit-color-accent` / `--kit-color-on-accent`   | Brand color and its foreground |
-| `--kit-color-success` / `--kit-color-on-success` | Positive feedback              |
-| `--kit-color-warning` / `--kit-color-on-warning` | Cautionary feedback            |
-| `--kit-color-error` / `--kit-color-on-error`     | Destructive actions and errors |
-| `--kit-color-info` / `--kit-color-on-info`       | Neutral informational feedback |
-| `--kit-color-success-text`                       | Success color used as text     |
-| `--kit-color-warning-text`                       | Warning color used as text     |
-| `--kit-color-error-text`                         | Error color used as text       |
-| `--kit-color-info-text`                          | Info color used as text        |
-| `--kit-color-focus`                              | Focus ring color               |
+| Variable                                         | Role                                                     |
+| ------------------------------------------------ | -------------------------------------------------------- |
+| `--kit-color-accent` / `--kit-color-on-accent`   | Brand color and its foreground                           |
+| `--kit-color-success` / `--kit-color-on-success` | Positive feedback                                        |
+| `--kit-color-warning` / `--kit-color-on-warning` | Cautionary feedback                                      |
+| `--kit-color-error` / `--kit-color-on-error`     | Destructive actions and errors                           |
+| `--kit-color-info` / `--kit-color-on-info`       | Neutral informational feedback                           |
+| `--kit-color-accent-text`                        | Optional, accent color used as text (not set by default) |
+| `--kit-color-success-text`                       | Success color used as text                               |
+| `--kit-color-warning-text`                       | Warning color used as text                               |
+| `--kit-color-error-text`                         | Error color used as text                                 |
+| `--kit-color-info-text`                          | Info color used as text                                  |
+| `--kit-color-focus`                              | Focus ring color                                         |
 
-In the light theme, the `-text` shades are computed from their color with `color-mix()`: override `--kit-color-success` and its text shade follows. In the dark theme, they are equal to the color itself.
+`--kit-color-accent-text` is not set by default: the components fall back to `--kit-color-accent`. Set it when your accent is too light to be read as text, for example a yellow. In the light theme, the `-text` shades are computed from their color with `color-mix()`: override `--kit-color-success` and its text shade follows. In the dark theme, they are equal to the color itself.
 
 #### Shape
 
