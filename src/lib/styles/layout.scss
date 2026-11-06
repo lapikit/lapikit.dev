@@ -54,22 +54,26 @@
 }
 
 html:not([data-kit-theme]),
-html[data-kit-theme='light'] {
+html[data-kit-theme='light'],
+.brand-theme[data-kit-theme='light'] {
 	@include brand-accent-light;
 }
 
-html[data-kit-theme='dark'] {
+html[data-kit-theme='dark'],
+.brand-theme[data-kit-theme='dark'] {
 	@include brand-accent-dark;
 }
 
 @media (prefers-color-scheme: light) {
-	html[data-kit-theme='system'] {
+	html[data-kit-theme='system'],
+	.brand-theme[data-kit-theme='system'] {
 		@include brand-accent-light;
 	}
 }
 
 @media (prefers-color-scheme: dark) {
-	html[data-kit-theme='system'] {
+	html[data-kit-theme='system'],
+	.brand-theme[data-kit-theme='system'] {
 		@include brand-accent-dark;
 	}
 }

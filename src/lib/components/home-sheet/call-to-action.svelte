@@ -14,7 +14,7 @@
 
 <SheetSection labelledby="cta-title">
 	<SheetGrid>
-		<div class="cta" use:banner.action={{ name: 'dark', overridden: true }}>
+		<div class="cta brand-theme" use:banner.action={{ name: 'dark', overridden: true }}>
 			<div class="cta-content">
 				<p class="cta-eyebrow">// Ready?</p>
 				<h2 id="cta-title" class="cta-title">
