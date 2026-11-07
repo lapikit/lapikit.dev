@@ -69,7 +69,7 @@
 							<Icon />
 						{/if}
 					</kit:icon>
-					{label}
+					<span class="docs-nav-group-label">{label}</span>
 				</p>
 				<ul>
 					{#each pages as { label: pageLabel, url } (url)}
@@ -185,6 +185,10 @@
 		color: var(--kit-color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
+	}
+
+	.docs-nav-group-label {
+		text-box: trim-both cap alphabetic;
 	}
 
 	.docs-nav-release {

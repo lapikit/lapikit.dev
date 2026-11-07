@@ -9,7 +9,7 @@
 	--lapikit-spacing-block: 1.5rem;
 	--sheet-cell-padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
 	--sheet-cell-padding-lg: clamp(1.5rem, 0.5rem + 5vw, 5rem);
-	--header-height: calc(64px + var(--lapikit-border-width));
+	--header-height: 64px;
 
 	// text
 	--text-2xs: 0.75rem;
