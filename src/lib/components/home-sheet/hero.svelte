@@ -3,7 +3,6 @@
 	import { links } from '$lib/constants';
 
 	import { ArrowRight, Rocket, Star } from 'lucide-svelte';
-	import Mascot from '$lib/assets/images/mascot/default.webp?enhanced';
 	import SvelteIcon from '$lib/assets/icons/svelte.svg?raw';
 	import TypescriptIcon from '$lib/assets/icons/typescript_color.svg?url';
 	import ViteIcon from '$lib/assets/icons/vite.js.svg?url';
@@ -13,6 +12,7 @@
 	import SheetHeading from '$lib/components/sheet/sheet-heading.svelte';
 	import VsCode from '$lib/components/home/vs-code/vs-code.svelte';
 	import InstallCommand from './install-command.svelte';
+	import HeroComputer from './hero-computer.svelte';
 
 	let { version = '' }: { version?: string } = $props();
 
@@ -98,8 +98,8 @@
 				</div>
 			</div>
 
-			<div class="hero-mascot">
-				<enhanced:img src={Mascot} alt="" sizes="(min-width: 1124px) 280px, 0px" />
+			<div class="hero-visual">
+				<HeroComputer />
 			</div>
 		</div>
 
@@ -178,19 +178,19 @@
 		gap: 12px;
 	}
 
-	.hero-mascot {
+	.hero-visual {
 		display: none;
-		flex: 0 0 auto;
-		width: clamp(180px, 16vw, 280px);
+		flex: 1 1 0;
+		justify-content: end;
+		align-self: center;
+		min-width: 0;
 
-		:global(img) {
-			display: block;
-			width: 100%;
-			height: auto;
+		:global(.hero-computer) {
+			width: min(100%, 640px);
 		}
 
 		@include up(lg) {
-			display: block;
+			display: flex;
 		}
 	}
 
