@@ -149,6 +149,15 @@
 	let typed = $state(CODE.length);
 	let compiled = $state(true);
 	let rendered = $state(true);
+	let root: HTMLDivElement | undefined = $state();
+	let visible = $state(false);
+
+	$effect(() => {
+		if (!root) return;
+		const observer = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting));
+		observer.observe(root);
+		return () => observer.disconnect();
+	});
 
 	$effect(() => {
 		if (reducedMotion.current) {
@@ -157,6 +166,8 @@
 			rendered = true;
 			return;
 		}
+
+		if (!visible) return;
 
 		let timer: ReturnType<typeof setTimeout>;
 		const wait = (delay: number, next: () => void) => (timer = setTimeout(next, delay));
@@ -192,7 +203,7 @@
 	});
 </script>
 
-<div class="hero-computer" style:aspect-ratio="{viewWidth} / {viewHeight}">
+<div bind:this={root} class="hero-computer" style:aspect-ratio="{viewWidth} / {viewHeight}">
 	<svg
 		viewBox="{minX} {minY} {viewWidth} {viewHeight}"
 		role="img"
