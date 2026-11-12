@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Dropdown'
   description: 'Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/dropdown/preview.svelte';
 	import Position from '$examples/components/dropdown/position.svelte';

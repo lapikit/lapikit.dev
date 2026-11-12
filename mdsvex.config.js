@@ -1,8 +1,8 @@
 // node
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import remarkHeadings from './scripts/remark/remark-headings.js';
-import rehypeEnumChip from './scripts/rehype/rehype-enum-chip.js';
+import remarkHeadings from './scripts/mdsvex/remark-headings.js';
+import rehypeEnumChip from './scripts/mdsvex/rehype-enum-chip.js';
 
 // prism
 import Prism from 'prismjs';
@@ -31,9 +31,5 @@ export const mdsvexOptions = {
 	remarkPlugins: [remarkHeadings],
 	rehypePlugins: [rehypeEnumChip],
 	highlight: { highlighter },
-	layout: {
-		_: dirname(fileURLToPath(import.meta.url)) + '/src/templates/page.svelte',
-		doc_page: dirname(fileURLToPath(import.meta.url)) + '/src/templates/doc-page.svelte',
-		doc_section: dirname(fileURLToPath(import.meta.url)) + '/src/templates/doc-section.svelte'
-	}
+	layout: dirname(fileURLToPath(import.meta.url)) + '/src/lib/components/markdown/layout.svelte'
 };

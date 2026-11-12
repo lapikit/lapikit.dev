@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Accordion'
   description: 'Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/accordion/preview.svelte';
 	import Spacer from '$examples/components/accordion/spacer.svelte';

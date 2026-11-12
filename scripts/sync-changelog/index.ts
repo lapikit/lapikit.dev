@@ -5,12 +5,12 @@ import { fileURLToPath } from 'node:url';
 import { slugify } from '../../src/lib/utils/slugify.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = join(__dirname, '../..');
-const TEMP_DIR = join(ROOT, '.tmp-changelog');
-const REPO_URL = 'https://github.com/lapikit/lapikit';
-const FALLBACK_BRANCH = 'develop';
+const root = join(__dirname, '../..');
+const temp_dir = join(root, '.tmp-changelog');
+const repo_url = 'https://github.com/lapikit/lapikit';
+const fallback_branch = 'develop';
 
-const LINKS: Record<string, string> = {
+const links: Record<string, string> = {
 	'CHANGELOG.md': '/docs/changelog'
 	// 'CONTRIBUTING.md': '/docs/contributing',
 	// 'CODE_OF_CONDUCT.md': '/docs/code-of-conduct'
@@ -22,7 +22,7 @@ type SyncSource = {
 	placeholder: string;
 };
 
-const SOURCES: SyncSource[] = [
+const sources: SyncSource[] = [
 	{
 		file: 'CHANGELOG.md',
 		target: 'src/content/docs/(core)/changelog.md',
@@ -41,7 +41,7 @@ const SOURCES: SyncSource[] = [
 ];
 
 function git(args: string): string {
-	return execSync(`git ${args}`, { cwd: TEMP_DIR, stdio: 'pipe', encoding: 'utf-8' });
+	return execSync(`git ${args}`, { cwd: temp_dir, stdio: 'pipe', encoding: 'utf-8' });
 }
 
 let fallbackFetched = false;
@@ -51,10 +51,10 @@ function readFromRepository(file: string): string {
 		return git(`show HEAD:${file}`);
 	} catch {
 		if (!fallbackFetched) {
-			git(`fetch --depth 1 --quiet origin ${FALLBACK_BRANCH}`);
+			git(`fetch --depth 1 --quiet origin ${fallback_branch}`);
 			fallbackFetched = true;
 		}
-		console.warn(`[sync-changelog] ${file} not found on main, using ${FALLBACK_BRANCH}.`);
+		console.warn(`[sync-changelog] ${file} not found on main, using ${fallback_branch}.`);
 		return git(`show FETCH_HEAD:${file}`);
 	}
 }
@@ -85,7 +85,7 @@ function toDocContent(markdown: string): string {
 		.replace(/^\s*# .*\n/, '')
 		.replace(/^## Table of Contents\n[\s\S]*?(?=^## )/m, '')
 		.replace(/\]\(\.?\/?([A-Z_]+\.md)(#[^)]*)?\)/g, (match, file: string, hash = '') =>
-			LINKS[file] ? `](${LINKS[file]}${hash})` : match
+			links[file] ? `](${links[file]}${hash})` : match
 		)
 		.trim();
 
@@ -94,7 +94,7 @@ function toDocContent(markdown: string): string {
 
 function syncSource({ file, target, placeholder }: SyncSource) {
 	try {
-		const targetPath = join(ROOT, target);
+		const targetPath = join(root, target);
 		const current = readFileSync(targetPath, 'utf-8');
 
 		if (!current.includes(placeholder)) {
@@ -119,15 +119,15 @@ function syncSource({ file, target, placeholder }: SyncSource) {
 
 async function syncChangelog() {
 	try {
-		if (existsSync(TEMP_DIR)) {
-			rmSync(TEMP_DIR, { recursive: true, force: true });
+		if (existsSync(temp_dir)) {
+			rmSync(temp_dir, { recursive: true, force: true });
 		}
 
-		mkdirSync(TEMP_DIR, { recursive: true });
+		mkdirSync(temp_dir, { recursive: true });
 
-		execSync(`git clone --depth 1 --quiet ${REPO_URL} ${TEMP_DIR}`, { stdio: 'pipe' });
+		execSync(`git clone --depth 1 --quiet ${repo_url} ${temp_dir}`, { stdio: 'pipe' });
 
-		for (const source of SOURCES) {
+		for (const source of sources) {
 			syncSource(source);
 		}
 	} catch (error) {
@@ -136,8 +136,8 @@ async function syncChangelog() {
 			error instanceof Error ? error.message : String(error)
 		);
 	} finally {
-		if (existsSync(TEMP_DIR)) {
-			rmSync(TEMP_DIR, { recursive: true, force: true });
+		if (existsSync(temp_dir)) {
+			rmSync(temp_dir, { recursive: true, force: true });
 		}
 	}
 }

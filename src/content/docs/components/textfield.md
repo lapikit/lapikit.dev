@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Textfield'
   description: 'Explore the Textfield component of Lapikit: customizable input fields for Svelte with full styling, validation and theming support to build forms faster.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/textfield/preview.svelte';
 	import Variants from '$examples/components/textfield/variants.svelte';

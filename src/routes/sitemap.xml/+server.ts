@@ -1,13 +1,12 @@
-import manifest from '$lib/generated/manifest.json';
 import { PUBLIC_BASE_URL } from '$env/static/public';
-import type { DocSummary } from '$lib/@types';
+import { pages } from '$lib/pages';
 
 export const prerender = true;
 
 export async function GET() {
 	const baseUrl = PUBLIC_BASE_URL.replace(/\/$/, '');
 	// deprecated pages are noindex: listing them would send mixed signals to crawlers
-	const entries = (manifest as DocSummary[])
+	const entries = pages
 		.filter((entry) => entry.state !== 'deprecated')
 		.sort((left, right) => left.path.pathname.localeCompare(right.path.pathname));
 

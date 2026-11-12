@@ -4,7 +4,6 @@ category: 'Essentials'
 head:
   title: 'Customize'
   description: 'Customize your Svelte Lapikit components via configuration file: themes, styles, breakpoints. Fluid styling guaranteed.'
-layout: 'doc_page'
 keywords:
   - 'customize'
   - 'theming'
@@ -15,7 +14,7 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
   // examples
   import PerInstanceStyle from '$examples/started/per-instance-style.svelte';

@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsBySlug } from '$lib/markdown';
+import { docs, docsBySlug } from '$lib/pages';
 import { docToMarkdown } from '$lib/server/doc-markdown';
 
 export const prerender = true;

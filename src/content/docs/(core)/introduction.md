@@ -4,7 +4,6 @@ category: 'Getting Started'
 head:
   title: 'introduction'
   description: 'Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte.'
-layout: 'doc_page'
 keywords:
   - 'why lapikit'
   - 'acknowledgements'
@@ -13,7 +12,7 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
   // examples
   import IntroductionLapikit from '$examples/started/introduction-lapikit.svelte';

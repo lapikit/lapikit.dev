@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Appbar'
   description: 'Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/appbar/preview.svelte';
 	import Variants from '$examples/components/appbar/variants.svelte';

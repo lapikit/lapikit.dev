@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Aspect Ratio'
   description: 'Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/aspect-ratio/preview.svelte';
 	import Ratios from '$examples/components/aspect-ratio/ratios.svelte';

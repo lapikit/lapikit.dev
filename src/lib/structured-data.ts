@@ -1,11 +1,11 @@
 import type { DocSummary } from './@types';
 
-const SITE_NAME = 'Lapikit';
+const site_name = 'Lapikit';
 
 function organization(origin: string) {
 	return {
 		'@type': 'Organization',
-		name: SITE_NAME,
+		name: site_name,
 		url: `${origin}/`,
 		logo: `${origin}/icon-512.png`
 	};
@@ -16,7 +16,7 @@ export function getWebsiteStructuredData(origin: string) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
-		name: SITE_NAME,
+		name: site_name,
 		alternateName: ['Lapikit Svelte', 'lapikit.dev'],
 		url: `${origin}/`,
 		inLanguage: 'en'
@@ -46,6 +46,6 @@ export function getTechArticleStructuredData(
 		...(doc.lastModified && { dateModified: doc.lastModified }),
 		author: organization(origin),
 		publisher: organization(origin),
-		isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: `${origin}/` }
+		isPartOf: { '@type': 'WebSite', name: site_name, url: `${origin}/` }
 	};
 }

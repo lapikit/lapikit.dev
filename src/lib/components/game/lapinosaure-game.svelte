@@ -4,7 +4,7 @@
 
 	import spriteUrl from '$lib/assets/images/mascot/lapinosaure-with-glass.webp?url';
 	import {
-		WORLD_HEIGHT,
+		world_height,
 		createGame,
 		type GameInput,
 		type GameStatus,
@@ -13,9 +13,9 @@
 
 	let { onclose }: { onclose: () => void } = $props();
 
-	const STEP = 1 / 120;
-	const MAX_FRAME_TIME = 0.1;
-	const KEY_ACTIONS: Record<string, keyof GameInput> = {
+	const step = 1 / 120;
+	const max_frame_time = 0.1;
+	const key_actions: Record<string, keyof GameInput> = {
 		ArrowLeft: 'left',
 		KeyA: 'left',
 		ArrowRight: 'right',
@@ -78,7 +78,7 @@
 		}
 		if (event.target !== container) return;
 
-		const action = KEY_ACTIONS[event.code];
+		const action = key_actions[event.code];
 		if (!action) return;
 
 		event.preventDefault();
@@ -116,7 +116,7 @@
 			if (!canvas) return;
 			const { width, height } = canvas.getBoundingClientRect();
 			const ratio = window.devicePixelRatio || 1;
-			const scale = height / WORLD_HEIGHT;
+			const scale = height / world_height;
 
 			canvas.width = Math.round(width * ratio);
 			canvas.height = Math.round(height * ratio);
@@ -138,12 +138,12 @@
 		let frame = 0;
 
 		const loop = (now: number) => {
-			accumulator += Math.min((now - last) / 1000, MAX_FRAME_TIME);
+			accumulator += Math.min((now - last) / 1000, max_frame_time);
 			last = now;
 
-			while (accumulator >= STEP) {
-				instance.step(STEP, input);
-				accumulator -= STEP;
+			while (accumulator >= step) {
+				instance.step(step, input);
+				accumulator -= step;
 			}
 
 			const stats = instance.stats;

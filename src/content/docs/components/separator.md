@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Separator'
   description: 'Visually separate your UI blocks with customizable lines in size, color, orientation and opacity.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/separator/preview.svelte';
 	import Orientation from '$examples/components/separator/orientation.svelte';

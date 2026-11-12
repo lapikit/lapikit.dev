@@ -12,8 +12,8 @@ const manifest: { path: { pathname: string } }[] = JSON.parse(
 
 type Issue = { impact: string; help: string; url: string; pages: string[]; elements: string[] };
 
-const IMPACT_ORDER = ['critical', 'serious', 'moderate', 'minor'];
-const REPORTS_DIR = 'reports';
+const impact_order = ['critical', 'serious', 'moderate', 'minor'];
+const reports_dir = 'reports';
 
 // e.g. 2026-09-23_18-42, sortable so the latest report is the last one
 function timestamp(date = new Date()) {
@@ -23,14 +23,14 @@ function timestamp(date = new Date()) {
 
 // reads the elements count per rule from the table of the latest report
 function readPreviousReport(): { file: string; elements: Map<string, number> } | null {
-	const reports = readdirSync(REPORTS_DIR)
+	const reports = readdirSync(reports_dir)
 		.filter((file) => /^a11y-.+\.md$/.test(file))
 		.sort();
 	const file = reports.at(-1);
 	if (!file) return null;
 
 	const elements = new Map<string, number>();
-	for (const line of readFileSync(`${REPORTS_DIR}/${file}`, 'utf8').split('\n')) {
+	for (const line of readFileSync(`${reports_dir}/${file}`, 'utf8').split('\n')) {
 		const row = line.match(/^\| \w+ \| \[([\w-]+)\]\(.*?\) \| \d+ \| (\d+) \|/);
 		if (row) elements.set(row[1], Number(row[2]));
 	}
@@ -74,11 +74,11 @@ test('accessibility report @a11y', async ({ page }) => {
 
 	const sorted = [...issues.entries()].sort(
 		([, a], [, b]) =>
-			IMPACT_ORDER.indexOf(a.impact) - IMPACT_ORDER.indexOf(b.impact) ||
+			impact_order.indexOf(a.impact) - impact_order.indexOf(b.impact) ||
 			b.elements.length - a.elements.length
 	);
 
-	mkdirSync(REPORTS_DIR, { recursive: true });
+	mkdirSync(reports_dir, { recursive: true });
 	const previous = readPreviousReport();
 	const fixedRules = [...(previous?.elements.keys() ?? [])].filter((rule) => !issues.has(rule));
 
@@ -117,7 +117,7 @@ test('accessibility report @a11y', async ({ page }) => {
 	];
 	const report = lines.join('\n');
 
-	const file = `${REPORTS_DIR}/a11y-${timestamp()}.md`;
+	const file = `${reports_dir}/a11y-${timestamp()}.md`;
 	writeFileSync(file, report);
 
 	// on GitHub Actions, the report is shown on the run summary page

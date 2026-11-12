@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Field'
   description: 'The base of the Lapikit form fields: wrap any control (select, date picker, custom input) with the style, messages and states of a textfield.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/field/preview.svelte';
 	import previewCode from '$examples/components/field/preview.svelte?raw';

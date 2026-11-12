@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Button'
   description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/btn/preview.svelte';
 	import Variants from '$examples/components/btn/variants.svelte';

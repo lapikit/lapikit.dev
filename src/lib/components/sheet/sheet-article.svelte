@@ -7,7 +7,7 @@
 
 	import { ChevronDown, TextAlignStart } from 'lucide-svelte';
 
-	import TableOfContent from '$lib/components/table-of-content.svelte';
+	import TableOfContent from '$lib/components/sheet/table-of-content.svelte';
 
 	const noop: Action = () => {};
 

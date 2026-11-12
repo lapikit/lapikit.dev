@@ -7,7 +7,7 @@
 
 	let { items = [] }: { items?: BreadcrumbItem[] } = $props();
 
-	const HOME = 'Home';
+	const home = 'Home';
 </script>
 
 {#if items.length > 1}
@@ -18,8 +18,8 @@
 				<li>
 					{#if current}
 						<span class="sheet-breadcrumbs-current" aria-current="page">{capitalize(label)}</span>
-					{:else if href && label === HOME}
-						<a class="sheet-breadcrumbs-link" href={resolve('/')} aria-label={HOME}>
+					{:else if href && label === home}
+						<a class="sheet-breadcrumbs-link" href={resolve('/')} aria-label={home}>
 							<kit:icon size="xs"><House /></kit:icon>
 						</a>
 					{:else if href}

@@ -4,11 +4,10 @@ category: 'Essentials'
 head:
   title: 'Class and Style'
   description: 'With Lili, the Lapikit preprocessor, Lapikit components handle class (clsx), class: and style: exactly like native HTML elements in Svelte.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import classDirectiveCode from '$examples/essentials/class-directive.svelte?raw';
 	import styleDirectiveCode from '$examples/essentials/style-directive.svelte?raw';

@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Popover'
   description: 'Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/popover/preview.svelte';
 	import Position from '$examples/components/popover/position.svelte';

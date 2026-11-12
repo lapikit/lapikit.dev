@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsByPath, docsBySlug, loadDocComponent } from '$lib/markdown';
+import { docs, docsByPath, docsBySlug, loadDocContent } from '$lib/pages';
 import { docsNavigation } from '$lib/router';
 
 export const prerender = true;
@@ -24,9 +24,9 @@ export async function load({ params }) {
 	const prevDoc = prevPath ? toDocLink(prevPath) : null;
 	const nextDoc = nextPath ? toDocLink(nextPath) : null;
 
-	const component = await loadDocComponent(doc);
+	const content = await loadDocContent(doc);
 
-	return { doc: { ...doc, component }, prevDoc, nextDoc };
+	return { doc, content, prevDoc, nextDoc };
 }
 
 function toDocLink(pathname: string) {

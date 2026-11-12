@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Icon'
   description: 'Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/icon/preview.svelte';
 	import Size from '$examples/components/icon/size.svelte';

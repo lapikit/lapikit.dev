@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Tooltip'
   description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/tooltip/preview.svelte';
 	import Location from '$examples/components/tooltip/location.svelte';

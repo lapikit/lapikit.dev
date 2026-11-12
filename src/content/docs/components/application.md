@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Application'
   description: 'The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	// images
 	import picture from '$lib/assets/images/docs/use-kit-app.webp';

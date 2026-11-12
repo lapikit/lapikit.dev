@@ -4,7 +4,6 @@ category: 'Getting Started'
 head:
   title: 'quick start'
   description: 'Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast.'
-layout: 'doc_page'
 keywords:
   - 'install'
   - 'configuration'
@@ -13,8 +12,8 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
-	import CommandRepl from '$lib/components/command-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
+	import CommandRepl from '$lib/components/markdown/command-repl.svelte';
 	import { command } from '$lib/constants';
 	import { application } from '$lib/stores/app.svelte';
 

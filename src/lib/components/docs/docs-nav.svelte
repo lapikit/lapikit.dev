@@ -12,11 +12,11 @@
 
 	let { onnavigate }: { onnavigate?: () => void } = $props();
 
-	const DEPRECATED = 'Deprecated';
+	const deprecated_label = 'Deprecated';
 	const deprecatedIndex = 0;
 
-	const sections = docsNavigation.filter(({ label }) => label !== DEPRECATED);
-	const deprecated = docsNavigation.find(({ label }) => label === DEPRECATED)?.pages ?? [];
+	const sections = docsNavigation.filter(({ label }) => label !== deprecated_label);
+	const deprecated = docsNavigation.find(({ label }) => label === deprecated_label)?.pages ?? [];
 	const accordion = useAccordion();
 
 	const releases = $derived([
@@ -83,7 +83,7 @@
 			<kit:accordion class="docs-nav-deprecated" variant="text" density="compact" rounded="0">
 				<kit:accordion-item
 					index={deprecatedIndex}
-					text={DEPRECATED}
+					text={deprecated_label}
 					open={accordion.values.includes(deprecatedIndex)}
 					toggle={accordion.toggle}
 				>

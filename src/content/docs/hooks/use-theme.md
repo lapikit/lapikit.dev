@@ -4,11 +4,10 @@ category: 'Stores and Hooks'
 head:
   title: 'useTheme action'
   description: 'The useTheme hook from Lapikit simplifies theme management in Svelte: switch between dark and light modes and keep every component in sync.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import UseThemeToggle from '$examples/hooks/useTheme-toggle.svelte';
 

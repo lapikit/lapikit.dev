@@ -1,5 +1,5 @@
 node_modules
-# .git stays in the context: scripts/mdsvx reads the last commit date of each page
+# .git stays in the context: scripts/sync-content reads the last commit date of each page
 *.log
 .gitignore
 .github

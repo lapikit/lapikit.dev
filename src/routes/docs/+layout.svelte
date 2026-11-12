@@ -2,8 +2,8 @@
 	import { page } from '$app/state';
 
 	import DocsNav from '$lib/components/docs/docs-nav.svelte';
-	import FadeTransition from '$lib/components/animations/fade-transition.svelte';
-	import SheetSpacer from '$lib/components/modules/sheet-spacer.svelte';
+	import FadeTransition from '$lib/components/sheet/fade-transition.svelte';
+	import SheetSpacer from '$lib/components/sheet/sheet-spacer.svelte';
 
 	let { children } = $props();
 </script>

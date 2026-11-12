@@ -4,12 +4,12 @@ import { gzipSync } from 'node:zlib';
 
 // Performance budget, checked after `bun run build`.
 // If a limit is exceeded on purpose, raise it here. If the site gets lighter, lower it.
-const BUDGET = {
+const budget = {
 	homeJsKb: 175, // JavaScript loaded by the homepage, gzipped (currently ~154 KB)
 	clientMb: 3.5 // everything in build/client, uncompressed (currently ~3.0 MB)
 };
 
-const CLIENT_DIR = 'build/client';
+const client_dir = 'build/client';
 
 // JS files referenced by the prerendered homepage
 const homeHtml = readFileSync('build/prerendered/index.html', 'utf8');
@@ -18,7 +18,7 @@ const homeJsFiles = new Set(
 );
 const homeJsKb =
 	[...homeJsFiles].reduce(
-		(total, file) => total + gzipSync(readFileSync(join(CLIENT_DIR, file))).length,
+		(total, file) => total + gzipSync(readFileSync(join(client_dir, file))).length,
 		0
 	) / 1024;
 
@@ -30,11 +30,11 @@ function folderSize(dir: string): number {
 		return /\.(gz|br)$/.test(entry.name) ? total : total + statSync(path).size;
 	}, 0);
 }
-const clientMb = folderSize(CLIENT_DIR) / 1024 / 1024;
+const clientMb = folderSize(client_dir) / 1024 / 1024;
 
 const checks = [
-	{ label: 'Homepage JS (gzip)', value: homeJsKb, limit: BUDGET.homeJsKb, unit: 'KB' },
-	{ label: 'Client build', value: clientMb, limit: BUDGET.clientMb, unit: 'MB' }
+	{ label: 'Homepage JS (gzip)', value: homeJsKb, limit: budget.homeJsKb, unit: 'KB' },
+	{ label: 'Client build', value: clientMb, limit: budget.clientMb, unit: 'MB' }
 ];
 
 for (const { label, value, limit, unit } of checks) {

@@ -1,7 +1,6 @@
 import type { Pathname } from '$app/types';
 import type { BreadcrumbItem, BreadcrumbListSchema } from './@types';
-import { seoByPath } from './constants';
-import { docsByPath } from './markdown';
+import { docsByPath, pagesByPath } from './pages';
 
 export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 	const normalizedPath = normalizePath(pathname);
@@ -74,7 +73,7 @@ function getDocsBreadcrumbs(pathname: string) {
 
 function getPathLabel(pathname: string) {
 	return (
-		seoByPath[pathname]?.title ??
+		pagesByPath.get(pathname)?.title ??
 		formatSegmentLabel(pathname.split('/').filter(Boolean).at(-1) ?? '')
 	);
 }

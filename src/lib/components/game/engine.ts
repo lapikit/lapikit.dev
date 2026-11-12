@@ -1,6 +1,6 @@
-export const TILE = 32;
+export const tile = 32;
 
-const LEVEL = [
+const level = [
 	'',
 	'                                                                    C',
 	'                                                   C               BBB               C',
@@ -12,20 +12,20 @@ const LEVEL = [
 	'#################   #################     ########   ###################    ############################'
 ];
 
-const GRAVITY = 2000;
-const MAX_FALL_SPEED = 900;
-const MOVE_SPEED = 230;
-const GROUND_ACCELERATION = 2400;
-const AIR_ACCELERATION = 1400;
-const JUMP_VELOCITY = 680;
-const JUMP_CUT_VELOCITY = 300;
-const COYOTE_TIME = 0.08;
-const JUMP_BUFFER_TIME = 0.12;
-const PLAYER_WIDTH = 22;
-const PLAYER_HEIGHT = 38;
-const SPRITE_WIDTH = 30;
-const SPRITE_HEIGHT = 43;
-const FLAG_HEIGHT_IN_TILES = 5;
+const gravity = 2000;
+const max_fall_speed = 900;
+const move_speed = 230;
+const ground_acceleration = 2400;
+const air_acceleration = 1400;
+const jump_velocity = 680;
+const jump_cut_velocity = 300;
+const coyote_time = 0.08;
+const jump_buffer_time = 0.12;
+const player_width = 22;
+const player_height = 38;
+const sprite_width = 30;
+const sprite_height = 43;
+const flag_height_in_tiles = 5;
 
 export type GameInput = { left: boolean; right: boolean; jump: boolean };
 export type GameStatus = 'playing' | 'won';
@@ -44,9 +44,9 @@ export type Palette = {
 
 type Cell = { col: number; row: number };
 
-const rows = LEVEL.length;
-const cols = Math.max(...LEVEL.map((line) => line.length));
-const grid = LEVEL.map((line) => [...line.padEnd(cols)]);
+const rows = level.length;
+const cols = Math.max(...level.map((line) => line.length));
+const grid = level.map((line) => [...line.padEnd(cols)]);
 
 function findCells(char: string): Cell[] {
 	return grid.flatMap((line, row) =>
@@ -58,8 +58,8 @@ const [spawn] = findCells('P');
 const [flag] = findCells('F');
 const carrots = findCells('C');
 
-export const WORLD_WIDTH = cols * TILE;
-export const WORLD_HEIGHT = rows * TILE;
+export const world_width = cols * tile;
+export const world_height = rows * tile;
 
 function isSolid(col: number, row: number) {
 	if (col < 0 || col >= cols) return true;
@@ -82,8 +82,8 @@ export function createGame(sprite: HTMLImageElement) {
 	const player = {
 		x: 0,
 		y: 0,
-		w: PLAYER_WIDTH,
-		h: PLAYER_HEIGHT,
+		w: player_width,
+		h: player_height,
 		vx: 0,
 		vy: 0,
 		facing: 1,
@@ -96,8 +96,8 @@ export function createGame(sprite: HTMLImageElement) {
 	let time = 0;
 
 	function respawn() {
-		player.x = spawn.col * TILE + (TILE - PLAYER_WIDTH) / 2;
-		player.y = (spawn.row + 1) * TILE - PLAYER_HEIGHT;
+		player.x = spawn.col * tile + (tile - player_width) / 2;
+		player.y = (spawn.row + 1) * tile - player_height;
 		player.vx = 0;
 		player.vy = 0;
 		player.facing = 1;
@@ -113,14 +113,14 @@ export function createGame(sprite: HTMLImageElement) {
 
 	function moveX(dx: number) {
 		player.x += dx;
-		const top = Math.floor(player.y / TILE);
-		const bottom = Math.floor((player.y + player.h - 0.001) / TILE);
+		const top = Math.floor(player.y / tile);
+		const bottom = Math.floor((player.y + player.h - 0.001) / tile);
 		const col =
-			dx > 0 ? Math.floor((player.x + player.w - 0.001) / TILE) : Math.floor(player.x / TILE);
+			dx > 0 ? Math.floor((player.x + player.w - 0.001) / tile) : Math.floor(player.x / tile);
 
 		for (let row = top; row <= bottom; row++) {
 			if (!isSolid(col, row)) continue;
-			player.x = dx > 0 ? col * TILE - player.w : (col + 1) * TILE;
+			player.x = dx > 0 ? col * tile - player.w : (col + 1) * tile;
 			player.vx = 0;
 			return;
 		}
@@ -129,18 +129,18 @@ export function createGame(sprite: HTMLImageElement) {
 	function moveY(dy: number) {
 		player.y += dy;
 		player.onGround = false;
-		const left = Math.floor(player.x / TILE);
-		const right = Math.floor((player.x + player.w - 0.001) / TILE);
+		const left = Math.floor(player.x / tile);
+		const right = Math.floor((player.x + player.w - 0.001) / tile);
 		const row =
-			dy > 0 ? Math.floor((player.y + player.h - 0.001) / TILE) : Math.floor(player.y / TILE);
+			dy > 0 ? Math.floor((player.y + player.h - 0.001) / tile) : Math.floor(player.y / tile);
 
 		for (let col = left; col <= right; col++) {
 			if (!isSolid(col, row)) continue;
 			if (dy > 0) {
-				player.y = row * TILE - player.h;
+				player.y = row * tile - player.h;
 				player.onGround = true;
 			} else {
-				player.y = (row + 1) * TILE;
+				player.y = (row + 1) * tile;
 			}
 			player.vy = 0;
 			return;
@@ -150,23 +150,23 @@ export function createGame(sprite: HTMLImageElement) {
 	function collectCarrots() {
 		carrots.forEach(({ col, row }, index) => {
 			if (collected.has(index)) return;
-			const hitbox = { x: col * TILE + 8, y: row * TILE + 4, w: 16, h: 24 };
+			const hitbox = { x: col * tile + 8, y: row * tile + 4, w: 16, h: 24 };
 			if (overlaps(player, hitbox)) collected.add(index);
 		});
 	}
 
 	function reachFlag() {
 		const pole = {
-			x: flag.col * TILE + 12,
-			y: (flag.row + 1 - FLAG_HEIGHT_IN_TILES) * TILE,
+			x: flag.col * tile + 12,
+			y: (flag.row + 1 - flag_height_in_tiles) * tile,
 			w: 8,
-			h: FLAG_HEIGHT_IN_TILES * TILE
+			h: flag_height_in_tiles * tile
 		};
 		if (overlaps(player, pole)) status = 'won';
 	}
 
 	function pressJump() {
-		player.jumpBuffer = JUMP_BUFFER_TIME;
+		player.jumpBuffer = jump_buffer_time;
 	}
 
 	function step(dt: number, input: GameInput) {
@@ -174,58 +174,58 @@ export function createGame(sprite: HTMLImageElement) {
 		time += dt;
 
 		const direction = Number(input.right) - Number(input.left);
-		const acceleration = player.onGround ? GROUND_ACCELERATION : AIR_ACCELERATION;
-		player.vx = approach(player.vx, direction * MOVE_SPEED, acceleration * dt);
+		const acceleration = player.onGround ? ground_acceleration : air_acceleration;
+		player.vx = approach(player.vx, direction * move_speed, acceleration * dt);
 		if (direction) player.facing = direction;
 
-		player.coyote = player.onGround ? COYOTE_TIME : Math.max(0, player.coyote - dt);
+		player.coyote = player.onGround ? coyote_time : Math.max(0, player.coyote - dt);
 		player.jumpBuffer = Math.max(0, player.jumpBuffer - dt);
 
 		if (player.jumpBuffer > 0 && player.coyote > 0) {
-			player.vy = -JUMP_VELOCITY;
+			player.vy = -jump_velocity;
 			player.jumpBuffer = 0;
 			player.coyote = 0;
 		}
 
-		if (!input.jump && player.vy < -JUMP_CUT_VELOCITY) player.vy = -JUMP_CUT_VELOCITY;
-		player.vy = Math.min(player.vy + GRAVITY * dt, MAX_FALL_SPEED);
+		if (!input.jump && player.vy < -jump_cut_velocity) player.vy = -jump_cut_velocity;
+		player.vy = Math.min(player.vy + gravity * dt, max_fall_speed);
 
 		moveX(player.vx * dt);
 		moveY(player.vy * dt);
 
-		if (player.y > WORLD_HEIGHT + TILE * 2) respawn();
+		if (player.y > world_height + tile * 2) respawn();
 
 		collectCarrots();
 		reachFlag();
 	}
 
 	function drawTile(ctx: CanvasRenderingContext2D, col: number, row: number, palette: Palette) {
-		const x = col * TILE;
-		const y = row * TILE;
+		const x = col * tile;
+		const y = row * tile;
 		const value = grid[row][col];
 
 		if (value === '#') {
 			ctx.fillStyle = palette.ground;
-			ctx.fillRect(x, y, TILE, TILE);
+			ctx.fillRect(x, y, tile, tile);
 			if (!isSolid(col, row - 1)) {
 				ctx.fillStyle = palette.groundTop;
-				ctx.fillRect(x, y, TILE, 6);
+				ctx.fillRect(x, y, tile, 6);
 			}
 		}
 
 		if (value === 'B') {
 			ctx.fillStyle = palette.blockEdge;
-			ctx.fillRect(x, y, TILE, TILE);
+			ctx.fillRect(x, y, tile, tile);
 			ctx.fillStyle = palette.block;
-			ctx.fillRect(x + 3, y + 3, TILE - 6, TILE - 6);
+			ctx.fillRect(x + 3, y + 3, tile - 6, tile - 6);
 			ctx.fillStyle = palette.blockEdge;
 			ctx.fillRect(x + 12, y + 12, 8, 8);
 		}
 	}
 
 	function drawCarrot(ctx: CanvasRenderingContext2D, { col, row }: Cell, palette: Palette) {
-		const x = col * TILE + TILE / 2;
-		const y = row * TILE + 8 + Math.sin(time * 4 + col) * 2;
+		const x = col * tile + tile / 2;
+		const y = row * tile + 8 + Math.sin(time * 4 + col) * 2;
 
 		ctx.fillStyle = palette.leaf;
 		ctx.beginPath();
@@ -243,10 +243,10 @@ export function createGame(sprite: HTMLImageElement) {
 	}
 
 	function drawFlag(ctx: CanvasRenderingContext2D, palette: Palette) {
-		const x = flag.col * TILE + 14;
-		const bottom = (flag.row + 1) * TILE;
-		const top = bottom - FLAG_HEIGHT_IN_TILES * TILE;
-		const flagY = status === 'won' ? top + 4 : bottom - TILE * 1.5;
+		const x = flag.col * tile + 14;
+		const bottom = (flag.row + 1) * tile;
+		const top = bottom - flag_height_in_tiles * tile;
+		const flagY = status === 'won' ? top + 4 : bottom - tile * 1.5;
 
 		ctx.fillStyle = palette.pole;
 		ctx.fillRect(x, top, 4, bottom - top);
@@ -271,25 +271,25 @@ export function createGame(sprite: HTMLImageElement) {
 		ctx.translate(Math.round(centerX), Math.round(bottom));
 		ctx.scale(-player.facing, 1);
 		if (sprite.complete && sprite.naturalWidth) {
-			ctx.drawImage(sprite, -SPRITE_WIDTH / 2, -SPRITE_HEIGHT, SPRITE_WIDTH, SPRITE_HEIGHT);
+			ctx.drawImage(sprite, -sprite_width / 2, -sprite_height, sprite_width, sprite_height);
 		}
 		ctx.restore();
 	}
 
 	function render(ctx: CanvasRenderingContext2D, viewWidth: number, palette: Palette) {
 		const cameraX =
-			viewWidth >= WORLD_WIDTH
-				? (WORLD_WIDTH - viewWidth) / 2
-				: Math.min(Math.max(player.x + player.w / 2 - viewWidth / 2, 0), WORLD_WIDTH - viewWidth);
+			viewWidth >= world_width
+				? (world_width - viewWidth) / 2
+				: Math.min(Math.max(player.x + player.w / 2 - viewWidth / 2, 0), world_width - viewWidth);
 
 		ctx.fillStyle = palette.sky;
-		ctx.fillRect(0, 0, viewWidth, WORLD_HEIGHT);
+		ctx.fillRect(0, 0, viewWidth, world_height);
 
 		ctx.save();
 		ctx.translate(-Math.round(cameraX), 0);
 
-		const firstCol = Math.max(0, Math.floor(cameraX / TILE));
-		const lastCol = Math.min(cols - 1, Math.ceil((cameraX + viewWidth) / TILE));
+		const firstCol = Math.max(0, Math.floor(cameraX / tile));
+		const lastCol = Math.min(cols - 1, Math.ceil((cameraX + viewWidth) / tile));
 		for (let row = 0; row < rows; row++) {
 			for (let col = firstCol; col <= lastCol; col++) drawTile(ctx, col, row, palette);
 		}

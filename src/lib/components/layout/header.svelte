@@ -8,8 +8,8 @@
 
 	import { Menu, Star } from 'lucide-svelte';
 
-	import SearchBtn from '$lib/components/modules/search-btn.svelte';
-	import Settings from '$lib/components/settings.svelte';
+	import SearchBtn from '$lib/components/search/search-btn.svelte';
+	import Settings from '$lib/components/settings/settings.svelte';
 	import NavbarList from '$lib/components/layout/navbar-list.svelte';
 	import Brand from '$lib/components/layout/brand.svelte';
 

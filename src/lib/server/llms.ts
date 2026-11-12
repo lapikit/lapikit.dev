@@ -1,10 +1,10 @@
 import type { DocSummary } from '$lib/@types';
-import { docs, docsByPath } from '$lib/markdown';
+import { docs, docsByPath } from '$lib/pages';
 import { docsNavigation } from '$lib/router';
 import { siteUrl } from '$lib/utils';
 import { docToMarkdown } from './doc-markdown';
 
-const DEPRECATED = 'Deprecated';
+const deprecated = 'Deprecated';
 
 const intro = [
 	'# Lapikit',
@@ -31,7 +31,7 @@ function groupDocs() {
 	const listed = new Set<string>();
 
 	const sections = docsNavigation
-		.filter(({ label }) => label !== DEPRECATED)
+		.filter(({ label }) => label !== deprecated)
 		.map(({ label, pages }) => {
 			const sectionDocs = pages
 				.map(({ url }) => docsByPath.get(url))

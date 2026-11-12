@@ -4,11 +4,10 @@ category: 'Stores and Hooks'
 head:
   title: 'useAccordion'
   description: 'The useAccordion hook from Lapikit manages expandable sections in Svelte: synchronized state, no prop drilling and no manual event handling.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Multiple from '$examples/components/accordion/multiple.svelte';
 

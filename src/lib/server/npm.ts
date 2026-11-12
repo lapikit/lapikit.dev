@@ -1,32 +1,31 @@
 import type { NpmStats } from '$lib/@types';
-import { createCachedSource, fetchJson, formatCount } from './cached-source';
+import { fetchJson, formatCount } from './fetch-json';
 
 export const emptyNpmStats: NpmStats = {
 	version: { latest: '', insiders: '' },
-	publish: { latest: '', insiders: '' },
 	downloads: ''
 };
 
 async function collectStats(): Promise<NpmStats> {
-	const [packument, downloadStats] = await Promise.all([
-		fetchJson('https://registry.npmjs.org/lapikit'),
+	const [distTags, downloadStats] = await Promise.all([
+		fetchJson('https://registry.npmjs.org/-/package/lapikit/dist-tags'),
 		fetchJson('https://api.lapikit.dev/lapikit/nbDll')
 	]);
 
-	const distTagLatest = packument['dist-tags']?.latest;
-	const distTagInsider = packument['dist-tags']?.insiders;
-
 	return {
 		version: {
-			latest: distTagLatest ? `v${distTagLatest}` : '',
-			insiders: distTagInsider ? `v${distTagInsider}` : ''
-		},
-		publish: {
-			latest: packument.time?.[distTagLatest] ?? '',
-			insiders: packument.time?.[distTagInsider] ?? ''
+			latest: distTags.latest ? `v${distTags.latest}` : '',
+			insiders: distTags.insiders ? `v${distTags.insiders}` : ''
 		},
 		downloads: formatCount(downloadStats.downloads ?? 0)
 	};
 }
 
-export const getNpmStats = createCachedSource('npm', collectStats);
+export async function getNpmStats(): Promise<NpmStats | null> {
+	try {
+		return await collectStats();
+	} catch (error) {
+		console.warn('[npm] unable to load stats', error);
+		return null;
+	}
+}

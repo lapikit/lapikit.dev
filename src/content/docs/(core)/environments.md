@@ -4,7 +4,6 @@ category: 'Extra Topics'
 head:
   title: 'environments'
   description: "Configure ESLint and TypeScript for Lapikit's custom <kit:*> syntax. Fix false positives, suppress ts(6133) warnings, and set up your editor for the best DX."
-layout: 'doc_page'
 keywords:
   - 'eslint'
   - 'linter'
@@ -16,8 +15,8 @@ keywords:
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
-	import CommandRepl from '$lib/components/command-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
+	import CommandRepl from '$lib/components/markdown/command-repl.svelte';
 
 	// examples
 	import ComponentWithoutPreprocessor from '$examples/addons/component-without-preprocessor.svelte';

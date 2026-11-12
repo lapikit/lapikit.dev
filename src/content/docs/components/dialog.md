@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Dialog'
   description: 'Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/dialog/preview.svelte';
 	import Position from '$examples/components/dialog/position.svelte';

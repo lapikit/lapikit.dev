@@ -13,7 +13,7 @@ COPY . ./
 
 # changes on every deploy so the build (and the changelog clone) never comes from cache
 ARG BUILD_ID=local
-RUN echo "build ${BUILD_ID}" && bun run build-srv
+RUN echo "build ${BUILD_ID}" && bun run build:prod
 
 # ---------- STAGE 2: Runtime ----------
 FROM node:24-alpine AS runner

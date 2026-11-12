@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Toolbar'
   description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/toolbar/preview.svelte';
 	import Variants from '$examples/components/toolbar/variants.svelte';

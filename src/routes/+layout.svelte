@@ -10,8 +10,8 @@
 
 	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
 	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/structured-data';
-	import { seoByPath } from '$lib/constants';
-	import { capitalize } from '$lib/utils';
+	import { pagesByPath } from '$lib/pages';
+	import { capitalize, printConsoleMessage } from '$lib/utils';
 	import { setNpmStats } from '$lib/stores/npm.svelte';
 	import { setGithubStats } from '$lib/stores/github.svelte';
 	import { NavState, setNavContext } from '$lib/stores/nav.svelte';
@@ -19,8 +19,7 @@
 	// components
 	// consent stays static: for a new visitor it is the LCP element, a dynamic import would add
 	// a network round trip before it can paint
-	import ConsentModal from '$lib/components/consent-modal.svelte';
-	import ConsoleMessage from '$lib/components/console-message.svelte';
+	import ConsentModal from '$lib/components/layout/consent-modal.svelte';
 	import Header from '$lib/components/layout/header.svelte';
 	import Footer from '$lib/components/layout/footer.svelte';
 
@@ -31,12 +30,12 @@
 	import '$lib/styles/layout.scss';
 
 	// search and click spark are not needed for the first render: their JS loads on demand
-	const loadSearch = () => import('$lib/components/search.svelte');
-	const loadClickSpark = () => import('$lib/components/animations/click-spark.svelte');
+	const loadSearch = () => import('$lib/components/search/search.svelte');
+	const loadClickSpark = () => import('$lib/components/layout/click-spark.svelte');
 
 	const isDesktop = new MediaQuery('min-width: 1024px');
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
-	const seo = $derived(seoByPath[path] ?? seoByPath['/']);
+	const seo = $derived(pagesByPath.get(path) ?? pagesByPath.get('/')!);
 	const seoTitle = $derived(getHeadString(seo.head, 'title') ?? seo.title);
 	const seoDescription = $derived(getHeadString(seo.head, 'description') ?? `Read ${seo.title}.`);
 	const seoType = $derived(seo.type === 'website' ? 'website' : 'article');
@@ -118,6 +117,8 @@
 	}
 
 	onMount(() => {
+		printConsoleMessage();
+
 		const done = () => (idle = true);
 		if ('requestIdleCallback' in window) requestIdleCallback(done, { timeout: 2000 });
 		else setTimeout(done, 1000);
@@ -187,8 +188,6 @@
 </svelte:head>
 
 <svelte:window onkeydown={handleKeydown} />
-
-<ConsoleMessage />
 
 {#if isDesktop.current && idle}
 	{#await loadClickSpark() then { default: ClickSpark }}

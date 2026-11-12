@@ -4,7 +4,6 @@ category: 'Extra Topics'
 head:
   title: 'Migration Guide'
   description: 'Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit'
-layout: 'doc_page'
 keywords:
   - 'migration'
   - 'upgrade'

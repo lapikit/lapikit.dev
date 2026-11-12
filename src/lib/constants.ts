@@ -1,8 +1,4 @@
-// types
-import type { DocSummary } from './@types';
-
 // datas
-import manifest from '$lib/generated/manifest.json';
 import commandLine from '../content/command-line.json';
 
 // icons
@@ -21,11 +17,6 @@ import javascriptIcon from '$lib/assets/icons/javascript_color.svg?raw';
 // cookies & storage keys
 export const consent_cookie = '_lapikit_consent';
 
-export const seoByPath: Record<string, DocSummary> = Object.fromEntries(
-	(manifest as DocSummary[]).map((doc) => [doc.path.pathname, doc])
-);
-
-export const manifestPage = manifest as DocSummary[];
 export const command = commandLine;
 
 export const urlLapikitSiteRepo = 'https://github.com/lapikit/lapikit.dev';

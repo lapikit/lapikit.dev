@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Avatar'
   description: 'Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/avatar/preview.svelte';
 	import Label from '$examples/components/avatar/label.svelte';

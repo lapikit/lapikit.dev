@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Card'
   description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/card/preview.svelte';
 	import Variants from '$examples/components/card/variants.svelte';

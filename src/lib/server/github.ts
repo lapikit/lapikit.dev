@@ -1,14 +1,14 @@
 import { env } from '$env/dynamic/private';
 import type { GithubStats } from '$lib/@types';
-import { createCachedSource, fetchJson, formatCount } from './cached-source';
+import { fetchJson, formatCount } from './fetch-json';
 
-const REPOSITORY_API = 'https://api.github.com/repos/lapikit/lapikit';
+const repository_api = 'https://api.github.com/repos/lapikit/lapikit';
 
 export const emptyGithubStats: GithubStats = { stars: '' };
 
 async function collectStats(): Promise<GithubStats> {
 	const token = env.GITHUB_TOKEN?.trim();
-	const repository = await fetchJson(REPOSITORY_API, {
+	const repository = await fetchJson(repository_api, {
 		accept: 'application/vnd.github+json',
 		'user-agent': 'lapikit.dev',
 		...(token ? { authorization: `Bearer ${token}` } : {})
@@ -17,4 +17,11 @@ async function collectStats(): Promise<GithubStats> {
 	return { stars: formatCount(repository.stargazers_count ?? 0) };
 }
 
-export const getGithubStats = createCachedSource('github', collectStats);
+export async function getGithubStats(): Promise<GithubStats | null> {
+	try {
+		return await collectStats();
+	} catch (error) {
+		console.warn('[github] unable to load stats', error);
+		return null;
+	}
+}

@@ -11,10 +11,9 @@
 	import LapikitFooter from '$lib/assets/images/lapikit-footer-v2.svg?raw';
 	import { ExternalLink, Heart } from 'lucide-svelte';
 
-	import SocialLink from '$lib/components/modules/social-link.svelte';
-	import BtnGameLapinosaure from '$lib/components/modules/btn-game-lapinosaure.svelte';
-	import SheetSpacer from '$lib/components/modules/sheet-spacer.svelte';
-	import ThemeSwitcher from '$lib/components/modules/theme-switcher.svelte';
+	import BtnGameLapinosaure from '$lib/components/game/btn-game-lapinosaure.svelte';
+	import SheetSpacer from '$lib/components/sheet/sheet-spacer.svelte';
+	import ThemeSwitcher from '$lib/components/settings/theme-switcher.svelte';
 
 	const accordion = useAccordion();
 
@@ -135,7 +134,24 @@
 			</ul>
 
 			<div class="footer-socials">
-				<SocialLink data={socials} variant="plain" size="lg" monochrome />
+				{#each socials as name (name)}
+					{@const link = links[name]}
+					<kit:btn
+						href={link.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Lapikit on {link.name}"
+						density="compact"
+						variant="plain"
+						size="lg"
+						icon
+						noRipple
+					>
+						<kit:icon>
+							{@html link.icon}
+						</kit:icon>
+					</kit:btn>
+				{/each}
 			</div>
 
 			<div class="footer-game">

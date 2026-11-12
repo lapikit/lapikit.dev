@@ -4,11 +4,10 @@ category: 'Essentials'
 head:
   title: 'Template Syntax'
   description: 'How the Lapikit preprocessor extends Svelte templates: the <kit:*> component syntax, automatic imports and dynamic styling helpers.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import useComponentWithoutPreprocessorCode from '$examples/essentials/use-component-without-preprocessor.svelte?raw';
 	import useComponentWithPreprocessorCode from '$examples/essentials/use-component-with-preprocessor.svelte?raw';

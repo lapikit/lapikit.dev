@@ -1,20 +1,20 @@
 import type { Pathname } from '$app/types';
-import { manifestPage } from '$lib/constants';
+import { pages } from '$lib/pages';
 
 export type DocSuggestion = { title: string; path: Pathname };
 
-const MAX_SUGGESTIONS = 3;
+const max_suggestions = 3;
 
 export function getDocSuggestions(pathname: string): DocSuggestion[] {
 	const wanted = lastSegment(pathname);
 	if (!wanted) return [];
 
-	return manifestPage
+	return pages
 		.filter((doc) => doc.state !== 'deprecated' && doc.path.pathname !== '/')
 		.map((doc) => ({ doc, distance: distance(wanted, lastSegment(doc.path.pathname)) }))
 		.filter(({ distance }) => distance <= Math.max(2, Math.floor(wanted.length / 3)))
 		.sort((a, b) => a.distance - b.distance)
-		.slice(0, MAX_SUGGESTIONS)
+		.slice(0, max_suggestions)
 		.map(({ doc }) => ({
 			title: doc.head?.title || doc.title,
 			path: doc.path.pathname as Pathname

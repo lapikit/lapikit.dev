@@ -4,11 +4,10 @@ category: 'Essentials'
 head:
   title: 'Initialize Application'
   description: 'Initialize Lapikit in Svelte and SvelteKit with the <kit:app> component: application context, global styles and a shared app structure.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import useAppComponentCode from '$examples/essentials/use-app-component.svelte?raw';
 </script>

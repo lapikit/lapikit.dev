@@ -29,3 +29,13 @@ export type DocSummary = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type DocComponent = Component<any>;
+
+export type DocModule = {
+	default: DocComponent;
+	metadata?: { summary?: MarkdownHeading[] };
+};
+
+export type DocContent = {
+	component: DocComponent;
+	summary: MarkdownHeading[];
+};

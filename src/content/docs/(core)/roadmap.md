@@ -4,7 +4,6 @@ category: 'Release'
 head:
   title: 'roadmap'
   description: 'Discover the future developments and enhancements planned for Lapikit. Stay informed about upcoming features and improvements to our component library.'
-layout: 'doc_page'
 keywords:
   - 'lapikit production'
   - 'new components'

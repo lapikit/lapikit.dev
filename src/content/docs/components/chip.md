@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Chip'
   description: 'Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/chip/preview.svelte';
 	import Variants from '$examples/components/chip/variants.svelte';

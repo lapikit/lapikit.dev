@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Alert'
   description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/alert/preview.svelte';
 	import Tones from '$examples/components/alert/tones.svelte';

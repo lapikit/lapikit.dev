@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'Modal'
   description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/modal/preview.svelte';
 	import Position from '$examples/components/modal/position.svelte';

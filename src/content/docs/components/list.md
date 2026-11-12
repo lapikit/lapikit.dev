@@ -4,11 +4,10 @@ category: 'Components'
 head:
   title: 'List'
   description: 'Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements.'
-layout: 'doc_page'
 ---
 
 <script>
-	import LazyRepl from '$lib/components/lazy-repl.svelte';
+	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 
 	import Preview from '$examples/components/list/preview.svelte';
 	import Variants from '$examples/components/list/variants.svelte';

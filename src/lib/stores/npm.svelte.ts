@@ -6,10 +6,6 @@ export const npmState = $state({
 		latest: '',
 		insiders: ''
 	},
-	publish: {
-		latest: '',
-		insiders: ''
-	},
 	downloads: ''
 });
 
@@ -18,12 +14,9 @@ export const npmState = $state({
 export function setNpmStats(stats: NpmStats) {
 	if (stats.version.latest) npmState.version.latest = stats.version.latest;
 	if (stats.version.insiders) npmState.version.insiders = stats.version.insiders;
-	if (stats.publish.latest) npmState.publish.latest = stats.publish.latest;
-	if (stats.publish.insiders) npmState.publish.insiders = stats.publish.insiders;
 	if (stats.downloads) npmState.downloads = stats.downloads;
 }
 
-// the packument is fetched and cached by /api/npm: the browser only pulls the few fields it needs
 export async function loadNpmData() {
 	try {
 		const response = await fetch('/api/npm');

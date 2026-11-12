@@ -11,8 +11,8 @@
 
 	import Brand from '$lib/components/layout/brand.svelte';
 	import DocsNav from '$lib/components/docs/docs-nav.svelte';
-	import SearchBtn from '$lib/components/modules/search-btn.svelte';
-	import ThemeSwitcher from '$lib/components/modules/theme-switcher.svelte';
+	import SearchBtn from '$lib/components/search/search-btn.svelte';
+	import ThemeSwitcher from '$lib/components/settings/theme-switcher.svelte';
 
 	type DrawerItem = { label: string; path: Pathname };
 
