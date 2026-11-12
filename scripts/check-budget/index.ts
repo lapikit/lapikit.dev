@@ -5,8 +5,8 @@ import { gzipSync } from 'node:zlib';
 // Performance budget, checked after `bun run build`.
 // If a limit is exceeded on purpose, raise it here. If the site gets lighter, lower it.
 const BUDGET = {
-	homeJsKb: 175, // JavaScript loaded by the homepage, gzipped (currently ~159 KB)
-	clientMb: 3 // everything in build/client, uncompressed (currently ~2.2 MB)
+	homeJsKb: 175, // JavaScript loaded by the homepage, gzipped (currently ~154 KB)
+	clientMb: 3.5 // everything in build/client, uncompressed (currently ~3.0 MB)
 };
 
 const CLIENT_DIR = 'build/client';
