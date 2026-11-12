@@ -25,17 +25,17 @@ type SyncSource = {
 const SOURCES: SyncSource[] = [
 	{
 		file: 'CHANGELOG.md',
-		target: 'src/content/docs/changelog.md',
+		target: 'src/content/docs/(core)/changelog.md',
 		placeholder: '<p>Changelog Content</p>'
 	}
 	// {
 	// 	file: 'CONTRIBUTING.md',
-	// 	target: 'src/content/docs/contributing.md',
+	// 	target: 'src/content/docs/(core)/contributing.md',
 	// 	placeholder: '<p>Contributing Content</p>'
 	// },
 	// {
 	// 	file: 'CODE_OF_CONDUCT.md',
-	// 	target: 'src/content/docs/code-of-conduct.md',
+	// 	target: 'src/content/docs/(core)/code-of-conduct.md',
 	// 	placeholder: '<p>Code of Conduct Content</p>'
 	// }
 ];

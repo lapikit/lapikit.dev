@@ -5,6 +5,14 @@ head:
   title: 'environments'
   description: "Configure ESLint and TypeScript for Lapikit's custom <kit:*> syntax. Fix false positives, suppress ts(6133) warnings, and set up your editor for the best DX."
 layout: 'doc_page'
+keywords:
+  - 'eslint'
+  - 'linter'
+  - 'prettier'
+  - 'typescript'
+  - 'tsconfig'
+  - 'types'
+  - 'ts(6133)'
 ---
 
 <script>

@@ -8,6 +8,8 @@ layout: 'doc_page'
 keywords:
   - 'customize'
   - 'theming'
+  - 'theme'
+  - 'styles'
   - 'css variables'
   - 'design tokens'
 ---
