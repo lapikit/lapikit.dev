@@ -3,7 +3,8 @@
 	import { createTheme } from 'lapikit/actions';
 
 	import { Boxes, Rocket } from 'lucide-svelte';
-	import MascotStars from '$lib/assets/images/mascot/stars.webp?enhanced';
+	import MascotHappyAnimate from '$lib/assets/images/mascot/happy-animate.webp';
+	import MascotHappy from '$lib/assets/images/mascot/happy.webp';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';
@@ -47,7 +48,17 @@
 			</div>
 
 			<div class="cta-mascot">
-				<enhanced:img src={MascotStars} alt="" sizes="(min-width: 1124px) 320px, 0px" />
+				<picture>
+					<source srcset={MascotHappy} media="(prefers-reduced-motion: reduce)" />
+					<img
+						src={MascotHappyAnimate}
+						alt=""
+						width="429"
+						height="491"
+						loading="lazy"
+						decoding="async"
+					/>
+				</picture>
 			</div>
 		</div>
 	</SheetGrid>
@@ -129,17 +140,17 @@
 
 	.cta-mascot {
 		display: none;
-		flex: 0 0 auto;
-		width: clamp(200px, 18vw, 320px);
+		flex: 1 1 0;
+		justify-content: center;
 
-		:global(img) {
+		img {
 			display: block;
-			width: 100%;
+			width: clamp(240px, 24vw, 400px);
 			height: auto;
 		}
 
 		@include up(lg) {
-			display: block;
+			display: flex;
 		}
 	}
 </style>
