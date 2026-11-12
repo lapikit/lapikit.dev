@@ -5,7 +5,7 @@
 <kit:card style="max-width: 320px;">
 	<kit:card-media>
 		<kit:aspect-ratio ratio="16/9">
-			<img src="https://picsum.photos/seed/card3/400/225" alt="" />
+			<img src="/examples/card-city.webp" alt="" />
 		</kit:aspect-ratio>
 	</kit:card-media>
 

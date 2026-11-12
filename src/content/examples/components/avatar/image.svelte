@@ -1,7 +1,7 @@
 <div style="display: flex; align-items: center; gap: 0.75rem;">
-	{#each ['avatar1', 'avatar2', 'avatar3', 'avatar4'] as seed (seed)}
+	{#each [1, 2, 3, 4] as n (n)}
 		<kit:avatar>
-			<img src="https://picsum.photos/seed/{seed}/80/80" alt="" />
+			<img src="/examples/avatar-{n}.webp" alt="" />
 		</kit:avatar>
 	{/each}
 </div>

@@ -8,7 +8,7 @@
 	<kit:card>
 		<kit:card-media>
 			<kit:aspect-ratio ratio="16/9">
-				<img src="https://picsum.photos/seed/card1/400/225" alt="" />
+				<img src="/examples/card-mountain.webp" alt="" />
 			</kit:aspect-ratio>
 		</kit:card-media>
 		<kit:card-title>Mountain hike</kit:card-title>
@@ -29,7 +29,7 @@
 	<kit:card variant="outline">
 		<kit:card-media>
 			<kit:aspect-ratio ratio="16/9">
-				<img src="https://picsum.photos/seed/card2/400/225" alt="" />
+				<img src="/examples/card-forest.webp" alt="" />
 			</kit:aspect-ratio>
 		</kit:card-media>
 		<kit:card-title>Forest trail</kit:card-title>

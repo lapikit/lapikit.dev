@@ -5,6 +5,10 @@ const manifest: { path: { pathname: string } }[] = JSON.parse(
 	readFileSync('src/lib/generated/manifest.json', 'utf8')
 );
 
+test.beforeEach(async ({ page }) => {
+	await page.route(/^https?:\/\/(?!localhost[:/])/, (route) => route.abort());
+});
+
 for (const { path } of manifest) {
 	test(`${path.pathname} loads correctly`, async ({ page }) => {
 		const errors: string[] = [];
