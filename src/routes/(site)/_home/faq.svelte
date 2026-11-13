@@ -2,7 +2,7 @@
 	import type { ModelAccordionItemProps } from 'lapikit/components';
 	import { useAccordion } from 'lapikit/actions';
 	import { capitalize, isExternal } from '$lib/utils';
-	import { faqContact, faqHome } from '../../../content/app/faq-home';
+	import { faqContact, faqHome } from './faq-home';
 
 	import { ArrowUpRight, Minus, Plus } from 'lucide-svelte';
 

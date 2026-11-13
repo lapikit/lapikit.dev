@@ -24,7 +24,7 @@
 	import cssIcon from '$lib/assets/icons/vscode/css.svg?raw';
 	import eslintIcon from '$lib/assets/icons/vscode/eslint.svg?raw';
 	import viteIcon from '$lib/assets/icons/vscode/vite.svg?raw';
-	import { replVSCodeFiles } from '../../../../content/app/code';
+	import { replVSCodeFiles } from '../code';
 
 	import Explorer from './explorer.svelte';
 	import Render from './render.svelte';

@@ -1,12 +1,12 @@
 import type { DocContent, DocModule, DocSummary } from './@types';
 import manifest from '$lib/generated/manifest.json';
 
-const docModules = import.meta.glob<DocModule>('/src/content/docs/**/*.md');
+const docModules = import.meta.glob<DocModule>('/content/docs/**/*.md');
 
 export const pages = manifest as DocSummary[];
 export const pagesByPath = new Map(pages.map((page) => [page.path.pathname, page] as const));
 
-export const docs = pages.filter((page) => page.path.sourcePath.startsWith('src/content/docs/'));
+export const docs = pages.filter((page) => page.path.sourcePath.startsWith('content/docs/'));
 export const docsByPath = new Map(docs.map((doc) => [doc.path.pathname, doc] as const));
 export const docsBySlug = new Map(docs.map((doc) => [doc.path.slug, doc] as const));
 

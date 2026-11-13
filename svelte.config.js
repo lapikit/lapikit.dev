@@ -28,7 +28,12 @@ const config = {
 		// (130 -> 270/320 ms) and drops the scores to 86 mobile / 88 desktop. Keep 10240
 		inlineStyleThreshold: 10240,
 		alias: {
-			$examples: 'src/content/examples'
+			$examples: 'content/examples'
+		},
+		typescript: {
+			config: (tsconfig) => {
+				tsconfig.include.push('../content/**/*.svelte', '../content/**/*.ts', '../content/**/*.js');
+			}
 		}
 	},
 	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] }), vitePreprocess()],

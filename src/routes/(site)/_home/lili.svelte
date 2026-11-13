@@ -5,7 +5,7 @@
 		replComponentSvelte,
 		replDirectivePreCompil,
 		replDirectiveSvelte
-	} from '../../../content/app/code';
+	} from './code';
 
 	import { BookOpenText, Cog, PenLine, Send } from 'lucide-svelte';
 

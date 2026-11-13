@@ -6,7 +6,7 @@ import { deriveSource } from './source.ts';
 import type { FrontmatterData, ManifestEntry } from './types.ts';
 
 const folders = [
-	{ dir: 'routes', urlPrefix: '' },
+	{ dir: 'src/routes', urlPrefix: '' },
 	{ dir: 'content/docs', urlPrefix: '/docs' }
 ];
 const extensionsFile = ['md'];
@@ -32,7 +32,7 @@ await writeFile(manifestFile, `${JSON.stringify(entries, null, 2)}\n`, 'utf8');
 console.log(`Wrote ${entries.length} entries to src/lib/generated/manifest.json`);
 
 async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix: string }) {
-	const baseDir = join(process.cwd(), 'src', dir);
+	const baseDir = join(process.cwd(), dir);
 	const dirEntries = await readdir(baseDir, { withFileTypes: true, recursive: true });
 
 	const files = dirEntries.filter(
@@ -67,16 +67,25 @@ async function collectManualEntries(): Promise<ManifestEntry[]> {
 	});
 }
 
-// date of the last commit touching the file (sitemap lastmod, structured data).
-// Left out when git has no answer: untracked file, or no .git in the build context
+// date of the last commit changing the file content, pure renames skipped (sitemap lastmod,
+// structured data). Left out when git has no answer: untracked file, or no .git in the build context
 function getLastModified(sourcePath: string) {
 	try {
-		const date = execFileSync('git', ['log', '-1', '--format=%cI', '--', sourcePath], {
-			encoding: 'utf8',
-			stdio: ['ignore', 'pipe', 'ignore']
-		}).trim();
+		const history = execFileSync(
+			'git',
+			['log', '--follow', '--format=%x00%cI', '--name-status', '--', sourcePath],
+			{
+				encoding: 'utf8',
+				stdio: ['ignore', 'pipe', 'ignore']
+			}
+		);
 
-		return date || undefined;
+		const contentChange = history
+			.split('\0')
+			.map((commit) => commit.trim().split('\n'))
+			.find(([date, , status]) => date && !status?.startsWith('R100'));
+
+		return contentChange?.[0];
 	} catch {
 		return undefined;
 	}

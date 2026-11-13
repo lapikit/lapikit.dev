@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Check, Minus, X } from 'lucide-svelte';
 	import { capitalize } from '$lib/utils';
-	import { tableHome, tableHomeList } from '../../../content/app/libs';
+	import { tableHome, tableHomeList } from './libs';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';

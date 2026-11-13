@@ -2,13 +2,13 @@ import type { DocSummary } from '$lib/@types';
 import { command } from '$lib/constants';
 import { siteUrl } from '$lib/utils';
 
-const sources = import.meta.glob('/src/content/docs/**/*.md', {
+const sources = import.meta.glob('/content/docs/**/*.md', {
 	query: '?raw',
 	import: 'default',
 	eager: true
 }) as Record<string, string>;
 
-const examples = import.meta.glob('/src/content/examples/**/*.svelte', {
+const examples = import.meta.glob('/content/examples/**/*.svelte', {
 	query: '?raw',
 	import: 'default',
 	eager: true
@@ -37,7 +37,7 @@ const attribute = (attributes: string, name: string) =>
 function collectExampleCode(source: string) {
 	const code = new Map<string, string>();
 	for (const [, name, path] of source.matchAll(raw_example_import)) {
-		const example = examples[`/src/content/examples/${path}`];
+		const example = examples[`/content/examples/${path}`];
 		if (example) code.set(name, example);
 	}
 	return code;

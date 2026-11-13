@@ -9,6 +9,7 @@ export type SourceMeta = {
 };
 
 const route_group = /^\(.*\)$/;
+const order_prefix = /^\d+-/;
 
 export function deriveSource(filePath: string, baseDir: string, urlPrefix: string): SourceMeta {
 	const sourcePath = toPosixPath(relative(process.cwd(), filePath));
@@ -17,7 +18,7 @@ export function deriveSource(filePath: string, baseDir: string, urlPrefix: strin
 	const slugSegments = segments
 		.filter((segment) => !route_group.test(segment))
 		.filter((segment, index, all) => index !== all.length - 1 || !isIndexLike(segment))
-		.map(slugify)
+		.map((segment) => slugify(segment.replace(order_prefix, '')))
 		.filter(Boolean);
 
 	const slug = slugSegments.join('/');

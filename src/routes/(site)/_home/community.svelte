@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { links, urlJoinLapikitTeam } from '$lib/constants';
 	import { npmState } from '$lib/state/npm.svelte';
-	import { profilGithub } from '../../../content/app/profil-github';
+	import { profilGithub } from './profil-github';
 
 	import { Plus, Star } from 'lucide-svelte';
 
