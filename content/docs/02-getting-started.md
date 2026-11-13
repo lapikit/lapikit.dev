@@ -13,20 +13,6 @@ navigation:
   label: 'Quick Start'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-	import CommandRepl from '$lib/components/markdown/command-repl.svelte';
-	import { command } from '$lib/constants';
-	import { preferences } from '$lib/state/ui.svelte';
-
-  // examples
-  import configSvelteConfig from '$examples/config/config_svelte.config.js?raw';
-  import configViteConfigJS from '$examples/config/config_vite.config.js?raw';
-  import configViteConfigTS from '$examples/config/config_vite.config.ts?raw';
-
-	import startYourProjectWithLapikitCode from '$examples/started/start-your-project-with-lapikit.svelte?raw';
-</script>
-
 ## Install Lapikit in your Svelte project
 
 **Prerequisites**
@@ -51,11 +37,16 @@ That said, TypeScript is recommended for a smoother developer experience, especi
 
 To install Lapikit, run the following command in your project directory:
 
-<CommandRepl commandkey="install-lapikit" />
+```command
+install-lapikit
+```
 
 Once installed, run the setup CLI to automatically configure the required preprocessor:
 
-<LazyRepl lang="sh" content={command[preferences.pkg_selected]['launch-cli']} />
+```command
+/// selected
+launch-cli
+```
 
 **Note: If you are using SvelteKit, the CLI will detect your setup automatically and apply the recommended configuration. For other setups, follow the manual configuration steps below.**
 
@@ -67,7 +58,9 @@ Configure the preprocessor manually in 3 steps:
 
 1. Install Lapikit:
 
-<CommandRepl commandkey="install-lapikit" />
+```command
+install-lapikit
+```
 
 2. Update your configuration file to include the Lapikit preprocessor:
 
@@ -75,22 +68,11 @@ Configure the preprocessor manually in 3 steps:
 > Starting with SvelteKit 2.62, configuration lives in vite.config.(js|ts) rather than svelte.config.js.
 > Lapikit remains compatible with both.
 
-<LazyRepl
-content={{
-	'svelte.config.js': {
-		code: configSvelteConfig,
-		lang: 'js'
-	},
-	'vite.config.js': {
-		code: configViteConfigJS,
-		lang: 'js'
-	},
-	'vite.config.ts': {
-		code: configViteConfigTS,
-		lang: 'ts'
-	}
-}}
-/>
+```repl
+/// file: svelte.config.js | js | config/config_svelte.config.js
+/// file: vite.config.js | js | config/config_vite.config.js
+/// file: vite.config.ts | ts | config/config_vite.config.ts
+```
 
 If you're using packages like TypeScript and eSLint in your project, we recommend checking out the [page on configuring environments](/docs/environments) with Lapikit.
 
@@ -98,7 +80,10 @@ If you're using packages like TypeScript and eSLint in your project, we recommen
 
 You can now start using Lapikit components in your Svelte project. For example:
 
-<LazyRepl lang="svelte" title="+layout.svelte" content={startYourProjectWithLapikitCode} />
+```repl svelte
+/// title: +layout.svelte
+/// source: started/start-your-project-with-lapikit.svelte
+```
 
 ## Explore the Lapikit documentation
 

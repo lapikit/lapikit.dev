@@ -8,13 +8,11 @@ navigation:
   label: 'All components'
 ---
 
-<script>
-    import SummaryComponents from "$lib/components/docs/summary-components.svelte";
-</script>
-
 Components are at the heart of Lapikit. Without them, the library won’t exist. Each component is a reusable block of code that handles an entire user interface element, in perfect alignment with the design system defined by Lapikit.
 
-<SummaryComponents/>
+```component
+summary-components
+```
 
 Every component receives props (parameters) that allow you to customize its appearance and behavior.
 

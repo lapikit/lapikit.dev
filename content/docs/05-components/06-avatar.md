@@ -10,27 +10,13 @@ navigation:
   description: 'User profile picture with fallback initials.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/avatar/preview.svelte';
-	import Label from '$examples/components/avatar/label.svelte';
-	import Image from '$examples/components/avatar/image.svelte';
-	import Size from '$examples/components/avatar/size.svelte';
-	import Density from '$examples/components/avatar/density.svelte';
-
-	import previewCode from '$examples/components/avatar/preview.svelte?raw';
-	import labelCode from '$examples/components/avatar/label.svelte?raw';
-	import imageCode from '$examples/components/avatar/image.svelte?raw';
-	import sizeCode from '$examples/components/avatar/size.svelte?raw';
-	import densityCode from '$examples/components/avatar/density.svelte?raw';
-</script>
-
 The `kit:avatar` component is used to display images, icons or initials representing a person or object. It is often used in user interfaces to identify users, profiles or entities. Thanks to its many customization options, the `kit:avatar` component adapts easily to different styles and contexts.
 
-<LazyRepl title="avatar.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: avatar.svelte
+/// presentation
+/// example: components/avatar/preview.svelte
+```
 
 `kit:avatar` has two rendering modes:
 
@@ -47,17 +33,19 @@ Pass a string to `label` to display initials or short text. The value is trimmed
 
 - **label**: `string | undefined` = `undefined`
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={labelCode}>
-<Label/>
-</LazyRepl>
+```repl svelte
+/// title: avatar.svelte
+/// example: components/avatar/label.svelte
+```
 
 ### Image
 
 Without `label`, pass an `<img>` (or any element) as `children`. The image fills the circle via `object-fit: cover`.
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={imageCode}>
-<Image/>
-</LazyRepl>
+```repl svelte
+/// title: avatar.svelte
+/// example: components/avatar/image.svelte
+```
 
 ### size
 
@@ -65,9 +53,10 @@ Controls the diameter and font size in label mode.
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` = `'md'`
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={sizeCode}>
-<Size/>
-</LazyRepl>
+```repl svelte
+/// title: avatar.svelte
+/// example: components/avatar/size.svelte
+```
 
 ### density
 
@@ -75,15 +64,18 @@ Adjusts the diameter on top of `size`, from `-4px` (`dense`) to `+4px` (`spaciou
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="avatar.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: avatar.svelte
+/// example: components/avatar/density.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Avatar } from 'lapikit/components';"} />
+```repl js
+import { Avatar } from 'lapikit/components';
+```
 
 ## API Reference
 

@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { GithubStats } from '$lib/@types';
+import type { GithubStats } from '$lib/types';
 
 export const githubState = $state({ stars: '' });
 

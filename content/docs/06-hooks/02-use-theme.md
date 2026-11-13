@@ -9,23 +9,16 @@ navigation:
   description: 'Manages theme switching and keeps dark/light modes in sync across the app'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import UseThemeToggle from '$examples/hooks/useTheme-toggle.svelte';
-
-	import useThemeToggleCode from '$examples/hooks/useTheme-toggle.svelte?raw';
-</script>
-
 ## Discover the useTheme action in Lapikit
 
 The `useTheme` function changes the theme of your application: it sets the `data-kit-theme` attribute on the `<html>` element and keeps the choice in `localStorage`. Every Lapikit component follows it.
 
 Call `useTheme` with the name of the theme: `useTheme('dark')`, `useTheme('light')`, or `useTheme('system')` to follow the setting of the operating system (`prefers-color-scheme`).
 
-<LazyRepl title="useThemeToggle.svelte" lang="svelte" content={useThemeToggleCode}>
-<UseThemeToggle/>
-</LazyRepl>
+```repl svelte
+/// title: useThemeToggle.svelte
+/// example: hooks/useTheme-toggle.svelte
+```
 
 See the [themes](/docs/customize) documentation to learn about all the available options for customizing Lapikit for your application.
 

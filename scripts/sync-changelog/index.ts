@@ -93,28 +93,21 @@ function toDocContent(markdown: string): string {
 }
 
 function syncSource({ file, target, placeholder }: SyncSource) {
-	try {
-		const targetPath = join(root, target);
-		const current = readFileSync(targetPath, 'utf-8');
+	const targetPath = join(root, target);
+	const current = readFileSync(targetPath, 'utf-8');
 
-		if (!current.includes(placeholder)) {
-			console.warn(`[sync-changelog] Placeholder not found in ${target} — skipping replacement.`);
-			return;
-		}
-
-		const content = toDocContent(readFromRepository(file));
-		writeFileSync(
-			targetPath,
-			current.replace(placeholder, () => content),
-			'utf-8'
-		);
-		console.log(`[sync-changelog] ${file} synced successfully.`);
-	} catch (error) {
-		console.error(
-			`[sync-changelog] Failed to sync ${file}:`,
-			error instanceof Error ? error.message : String(error)
-		);
+	if (!current.includes(placeholder)) {
+		console.warn(`[sync-changelog] Placeholder not found in ${target} — skipping replacement.`);
+		return;
 	}
+
+	const content = toDocContent(readFromRepository(file));
+	writeFileSync(
+		targetPath,
+		current.replace(placeholder, () => content),
+		'utf-8'
+	);
+	console.log(`[sync-changelog] ${file} synced successfully.`);
 }
 
 async function syncChangelog() {
@@ -130,11 +123,6 @@ async function syncChangelog() {
 		for (const source of sources) {
 			syncSource(source);
 		}
-	} catch (error) {
-		console.error(
-			'[sync-changelog] Failed to sync changelog:',
-			error instanceof Error ? error.message : String(error)
-		);
 	} finally {
 		if (existsSync(temp_dir)) {
 			rmSync(temp_dir, { recursive: true, force: true });

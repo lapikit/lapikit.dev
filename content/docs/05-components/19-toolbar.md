@@ -10,25 +10,13 @@ navigation:
   description: 'Horizontal bar grouping actions and controls.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/toolbar/preview.svelte';
-	import Variants from '$examples/components/toolbar/variants.svelte';
-	import Density from '$examples/components/toolbar/density.svelte';
-	import Orientation from '$examples/components/toolbar/orientation.svelte';
-
-	import previewCode from '$examples/components/toolbar/preview.svelte?raw';
-	import variantsCode from '$examples/components/toolbar/variants.svelte?raw';
-	import densityCode from '$examples/components/toolbar/density.svelte?raw';
-	import orientationCode from '$examples/components/toolbar/orientation.svelte?raw';
-</script>
-
 The `kit:toolbar` component creates a flexible, customizable toolbar, ideal for organizing actions, titles, filters or other navigation content. It is designed to adapt to different contexts thanks to its layout, style and density options.
 
-<LazyRepl title="toolbar.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: toolbar.svelte
+/// presentation
+/// example: components/toolbar/preview.svelte
+```
 
 `kit:toolbar` renders as a `<div>` by default but can be changed to `<header>` or `<nav>`. It sets `role="toolbar"` automatically. Place [`kit:btn`](/docs/components/button), [`kit:separator`](/docs/components/separator), or any other element as children.
 
@@ -47,9 +35,10 @@ Visual variants adapt the style of the bar to different UI contexts.
 - **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
 - **color**: `string | false | { base?, active? }` = `undefined`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: toolbar.svelte
+/// example: components/toolbar/variants.svelte
+```
 
 ### density
 
@@ -57,9 +46,10 @@ Visual variants adapt the style of the bar to different UI contexts.
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: toolbar.svelte
+/// example: components/toolbar/density.svelte
+```
 
 ### orientation
 
@@ -67,9 +57,10 @@ The toolbar can be displayed horizontally (default) or vertically. This example 
 
 - **orientation**: `'horizontal' | 'vertical'` = `'horizontal'`
 
-<LazyRepl title="toolbar.svelte" lang="svelte" content={orientationCode}>
-<Orientation/>
-</LazyRepl>
+```repl svelte
+/// title: toolbar.svelte
+/// example: components/toolbar/orientation.svelte
+```
 
 ### location
 
@@ -81,7 +72,9 @@ Set `location` to `'top'` or `'bottom'` to pin the toolbar to the viewport edge 
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Toolbar } from 'lapikit/components';"} />
+```repl js
+import { Toolbar } from 'lapikit/components';
+```
 
 ## API Reference
 

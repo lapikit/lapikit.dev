@@ -10,27 +10,15 @@ navigation:
   description: 'Full-screen overlay for focused tasks or content.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/modal/preview.svelte';
-	import Position from '$examples/components/modal/position.svelte';
-	import Size from '$examples/components/modal/size.svelte';
-	import Persistent from '$examples/components/modal/persistent.svelte';
-
-	import previewCode from '$examples/components/modal/preview.svelte?raw';
-	import positionCode from '$examples/components/modal/position.svelte?raw';
-	import sizeCode from '$examples/components/modal/size.svelte?raw';
-	import persistentCode from '$examples/components/modal/persistent.svelte?raw';
-</script>
-
 The `kit:modal` component displays a floating window above the main content, without blocking the page: the user can still click, scroll and type behind it. It is designed for chat panels, tool panels, notices or any content that lives next to the page.
 
 The modal can be centered or fixed to a corner or an edge of the screen, and closes with the Escape key (the top modal first). When the page must wait for an answer, use [`kit:dialog`](/docs/components/dialog) instead: it blocks the page, traps the focus and has a backdrop.
 
-<LazyRepl title="modal.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: modal.svelte
+/// presentation
+/// example: components/modal/preview.svelte
+```
 
 `kit:modal` renders a native `<dialog>` opened with `show()`: it is announced as a dialog, takes the focus when it opens and gives it back when it closes, but it does not lock the scroll and has no backdrop. Use `contain` to embed the modal in its parent, with an overlay over that parent only.
 
@@ -46,9 +34,10 @@ Controls the vertical alignment of the content panel.
 
 - **position**: `'top' | 'center' | 'bottom'` = `'center'`
 
-<LazyRepl title="modal.svelte" lang="svelte" content={positionCode}>
-<Position/>
-</LazyRepl>
+```repl svelte
+/// title: modal.svelte
+/// example: components/modal/position.svelte
+```
 
 ### size
 
@@ -56,9 +45,10 @@ Controls the max-width of the content panel. `'full'` renders as a bottom sheet 
 
 - **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'` = `'md'`
 
-<LazyRepl title="modal.svelte" lang="svelte" content={sizeCode}>
-<Size/>
-</LazyRepl>
+```repl svelte
+/// title: modal.svelte
+/// example: components/modal/size.svelte
+```
 
 ### persistent
 
@@ -66,15 +56,18 @@ When `persistent` is set, pressing Escape does not close the modal. The user mus
 
 - **persitent**: `boolean` = `false`
 
-<LazyRepl title="modal.svelte" lang="svelte" content={persistentCode}>
-<Persistent/>
-</LazyRepl>
+```repl svelte
+/// title: modal.svelte
+/// example: components/modal/persistent.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Modal } from 'lapikit/components';"} />
+```repl js
+import { Modal } from 'lapikit/components';
+```
 
 ## API Reference
 

@@ -8,9 +8,8 @@
 	import { themeScript } from 'lapikit/actions';
 	import { MediaQuery } from 'svelte/reactivity';
 
-	import { getBreadcrumbStructuredData, getBreadcrumbs } from '$lib/breadcrumbs';
-	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/structured-data';
-	import { pagesByPath } from '$lib/pages';
+	import { getBreadcrumbStructuredData } from '$lib/seo/breadcrumbs';
+	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/seo/structured-data';
 	import { capitalize, printConsoleMessage } from '$lib/utils';
 	import { setNpmStats } from '$lib/state/npm.svelte';
 	import { setGithubStats } from '$lib/state/github.svelte';
@@ -35,7 +34,7 @@
 
 	const isDesktop = new MediaQuery('min-width: 1024px');
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');
-	const seo = $derived(pagesByPath.get(path) ?? pagesByPath.get('/')!);
+	const seo = $derived(page.data.seo);
 	const seoTitle = $derived(getHeadString(seo.head, 'title') ?? seo.title);
 	const seoDescription = $derived(getHeadString(seo.head, 'description') ?? `Read ${seo.title}.`);
 	const seoType = $derived(seo.type === 'website' ? 'website' : 'article');
@@ -48,7 +47,7 @@
 	// deprecated pages stay reachable for existing links but leave the index (and the sitemap)
 	const noIndex = $derived(isError || seo.state === 'deprecated');
 	const pageTitle = $derived(getPageTitle());
-	const breadcrumbs = $derived(getBreadcrumbs(path));
+	const breadcrumbs = $derived(page.data.breadcrumbs);
 	const breadcrumbSchema = $derived(getBreadcrumbStructuredData(breadcrumbs, origin));
 	const structuredData = $derived(
 		[

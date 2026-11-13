@@ -1,7 +1,7 @@
-import type { AppNavItem } from './@types';
+import type { AppNavItem } from '$lib/types';
 import { links, urlLapikitLicense } from './constants';
 
-const appNavigation: AppNavItem[] = [
+const app_links: AppNavItem[] = [
 	{
 		label: 'quick start',
 		path: '/docs/getting-started'
@@ -20,7 +20,7 @@ const appNavigation: AppNavItem[] = [
 	}
 ];
 
-const footerNavigation: AppNavItem[] = [
+const footer_links: AppNavItem[] = [
 	{
 		label: 'documentation',
 		child: [
@@ -103,7 +103,7 @@ const footerNavigation: AppNavItem[] = [
 	}
 ];
 
-export const router = {
-	app: appNavigation,
-	footer: footerNavigation
+export const site_links = {
+	app: app_links,
+	footer: footer_links
 };

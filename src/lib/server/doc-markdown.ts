@@ -1,6 +1,7 @@
-import type { DocSummary } from '$lib/@types';
+import type { DocSummary } from '$lib/types';
 import { command } from '$lib/constants';
 import { siteUrl } from '$lib/utils';
+import { exampleCode, parseFence, type DocFence } from './doc-fences';
 
 const sources = import.meta.glob('/content/docs/**/*.md', {
 	query: '?raw',
@@ -8,65 +9,60 @@ const sources = import.meta.glob('/content/docs/**/*.md', {
 	eager: true
 }) as Record<string, string>;
 
-const examples = import.meta.glob('/content/examples/**/*.svelte', {
-	query: '?raw',
-	import: 'default',
-	eager: true
-}) as Record<string, string>;
+const assets = import.meta.glob<string>('/content/docs/**/+assets/*', {
+	eager: true,
+	import: 'default'
+});
 
 const frontmatter = /^---\n[\s\S]*?\n---\n/;
-const script_block = /<script[\s\S]*?<\/script>/g;
-const raw_example_import = /import\s+(\w+)\s+from\s+['"]\$examples\/([^'"?]+)\?raw['"]/g;
 const code_segments = /(```[\s\S]*?```|`[^`\n]*`)/;
-const lazy_repl = /<LazyRepl\b((?:[^>{]|\{[^}]*\})*?)(?:\/>|>[\s\S]*?<\/LazyRepl>)/g;
-const inline_content = /content=\{(['"`])([\s\S]*?)\1\}/;
-const command_repl = /<CommandRepl\b[^>]*commandkey="([\w-]+)"[^>]*\/>/g;
-const component_paired = /<([A-Z]\w*)\b[^>]*>[\s\S]*?<\/\1>/g;
-const component_self_closing = /<[A-Z]\w*\b[^>]*\/>/g;
+const fence_block = /^```([^\n]*)\n([\s\S]*?)\n?```$/;
 const root_link = /\]\(\//g;
 const extra_blank_lines = /\n{3,}/g;
 
 const fence = (code: string, lang = '') => `\`\`\`${lang}\n${code.trim()}\n\`\`\``;
 
-const attribute = (attributes: string, name: string) =>
-	attributes
-		.match(new RegExp(`${name}=(?:"([^"]*)"|\\{(\\w+)\\})`))
-		?.slice(1)
-		.find(Boolean);
-
-function collectExampleCode(source: string) {
-	const code = new Map<string, string>();
-	for (const [, name, path] of source.matchAll(raw_example_import)) {
-		const example = examples[`/content/examples/${path}`];
-		if (example) code.set(name, example);
+function fenceToMarkdown(docFence: DocFence) {
+	switch (docFence.kind) {
+		case 'repl': {
+			if (docFence.files.length) return '';
+			const code = docFence.source ? exampleCode(docFence.source) : docFence.code;
+			return code ? fence(code, docFence.lang ?? 'svelte') : '';
+		}
+		case 'command':
+			return docFence.selected
+				? ''
+				: fence(command.npm[docFence.key as keyof (typeof command)['npm']], 'sh');
+		default:
+			return '';
 	}
-	return code;
 }
 
-function transformProse(text: string, exampleCode: Map<string, string>) {
+function transformCode(segment: string) {
+	const match = segment.match(fence_block);
+	const docFence = match ? parseFence(match[1], match[2]) : null;
+	return docFence ? fenceToMarkdown(docFence) : segment;
+}
+
+function transformProse(text: string, folder: string) {
 	return text
-		.replace(lazy_repl, (_, attributes: string) => {
-			const code =
-				attributes.match(inline_content)?.[2] ??
-				exampleCode.get(attribute(attributes, 'content') ?? '');
-			return code ? fence(code, attribute(attributes, 'lang') ?? 'svelte') : '';
+		.replace(/(["(])\+assets\/([^"')\s]+)/g, (_, prefix: string, name: string) => {
+			const url = assets[`/${folder}/+assets/${name}`];
+			return `${prefix}${url?.startsWith('/') ? siteUrl : ''}${url ?? `+assets/${name}`}`;
 		})
-		.replace(command_repl, (_, key: keyof (typeof command)['npm']) =>
-			command.npm[key] ? fence(command.npm[key], 'sh') : ''
-		)
-		.replace(component_paired, '')
-		.replace(component_self_closing, '')
 		.replace(root_link, `](${siteUrl}/`);
 }
 
 export function docToMarkdown(doc: DocSummary) {
-	const source = (sources[`/${doc.path.sourcePath}`] ?? '').replace(frontmatter, '');
-	const exampleCode = collectExampleCode(source);
+	const sourcePath = doc.path.sourcePath;
+	const folder = sourcePath.slice(0, sourcePath.lastIndexOf('/'));
+	const source = (sources[`/${sourcePath}`] ?? '').replace(frontmatter, '');
 
 	const body = source
-		.replace(script_block, '')
 		.split(code_segments)
-		.map((segment, index) => (index % 2 === 0 ? transformProse(segment, exampleCode) : segment))
+		.map((segment, index) =>
+			index % 2 === 0 ? transformProse(segment, folder) : transformCode(segment)
+		)
 		.join('')
 		.replace(extra_blank_lines, '\n\n')
 		.trim();

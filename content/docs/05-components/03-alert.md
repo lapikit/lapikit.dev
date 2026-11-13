@@ -10,33 +10,13 @@ navigation:
   description: 'Contextual feedback messages for user actions.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/alert/preview.svelte';
-	import Tones from '$examples/components/alert/tones.svelte';
-	import Variants from '$examples/components/alert/variants.svelte';
-	import Density from '$examples/components/alert/density.svelte';
-	import Closable from '$examples/components/alert/closable.svelte';
-	import PrependAppend from '$examples/components/alert/prepend-append.svelte';
-	import Close from '$examples/components/alert/close.svelte';
-	import Color from '$examples/components/alert/color.svelte';
-
-	import previewCode from '$examples/components/alert/preview.svelte?raw';
-	import tonesCode from '$examples/components/alert/tones.svelte?raw';
-	import variantsCode from '$examples/components/alert/variants.svelte?raw';
-	import densityCode from '$examples/components/alert/density.svelte?raw';
-	import closableCode from '$examples/components/alert/closable.svelte?raw';
-	import prependAppendCode from '$examples/components/alert/prepend-append.svelte?raw';
-	import closeCode from '$examples/components/alert/close.svelte?raw';
-	import colorCode from '$examples/components/alert/color.svelte?raw';
-</script>
-
 The `kit:alert` component displays a contextual message to the user. It supports multiple tones, visual variants, and optional snippets for custom prepend, append, and close content. It is ideal for providing feedback, warnings, or important information in a way that stands out from the rest of the interface.
 
-<LazyRepl title="alert.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// presentation
+/// example: components/alert/preview.svelte
+```
 
 `kit:alert` renders as a `<div>` by default. It has no internal logic beyond visibility: the `open` prop controls whether it is rendered, and `closable` adds a close button that sets `open` to `false`.
 
@@ -51,9 +31,10 @@ Each tone applies its color of the palette (`--kit-color-info`...) and the match
 
 - **tone**: `'default' | 'info' | 'success' | 'warning' | 'error'` = `'default'`
 
-<LazyRepl title="alert.svelte" lang="svelte" content={tonesCode}>
-<Tones/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/tones.svelte
+```
 
 ### Variants
 
@@ -71,9 +52,10 @@ These variants can be adapted to different visual contexts or levels of importan
 
 > The border thickness of `outline` and `surface` is set by the global variable `--kit-outline-weight` (`1px` by default).
 
-<LazyRepl title="alert.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/variants.svelte
+```
 
 ### Density
 
@@ -81,9 +63,10 @@ Props `density` adjusts the padding and the minimal height of the alert, from `-
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="alert.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/density.svelte
+```
 
 ### Colors and multiline
 
@@ -94,9 +77,10 @@ Props `density` adjusts the padding and the minimal height of the alert, from `-
 - **color**: `string | false | { base?: string | false; active?: string | false }` = `undefined`
 - **multiline**: `boolean` = `false`
 
-<LazyRepl title="alert.svelte" lang="svelte" content={colorCode}>
-<Color/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/color.svelte
+```
 
 ### closable
 
@@ -105,9 +89,10 @@ Add `closable` to display a close button. The `open` prop is bindable so you can
 - **open**: `boolean` = `true`
 - **closable**: `boolean` = `false`
 
-<LazyRepl title="alert.svelte" lang="svelte" content={closableCode}>
-<Closable/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/closable.svelte
+```
 
 ### prepend and append snippets
 
@@ -116,9 +101,10 @@ Use `prepend` to add an icon or element before the content, and `append` to add 
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="alert.svelte" lang="svelte" content={prependAppendCode}>
-<PrependAppend/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/prepend-append.svelte
+```
 
 ### close snippet
 
@@ -126,15 +112,18 @@ Use the `close` snippet to replace the default close icon with a custom element.
 
 - **close**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="alert.svelte" lang="svelte" content={closeCode}>
-<Close/>
-</LazyRepl>
+```repl svelte
+/// title: alert.svelte
+/// example: components/alert/close.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Alert } from 'lapikit/components';"} />
+```repl js
+import { Alert } from 'lapikit/components';
+```
 
 ## API Reference
 

@@ -10,25 +10,13 @@ navigation:
   description: 'Constrains content to a fixed width-to-height ratio.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/aspect-ratio/preview.svelte';
-	import Ratios from '$examples/components/aspect-ratio/ratios.svelte';
-	import Fit from '$examples/components/aspect-ratio/fit.svelte';
-	import Inline from '$examples/components/aspect-ratio/inline.svelte';
-
-	import previewCode from '$examples/components/aspect-ratio/preview.svelte?raw';
-	import ratiosCode from '$examples/components/aspect-ratio/ratios.svelte?raw';
-	import fitCode from '$examples/components/aspect-ratio/fit.svelte?raw';
-	import inlineCode from '$examples/components/aspect-ratio/inline.svelte?raw';
-</script>
-
 The `kit:aspect-ratio` component maintains a constant aspect ratio for an element, whatever its content. It is particularly useful for videos, images or any other content requiring a proportional layout. Thanks to its flexible options, it can be easily integrated into different design contexts
 
-<LazyRepl title="aspect-ratio.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: aspect-ratio.svelte
+/// presentation
+/// example: components/aspect-ratio/preview.svelte
+```
 
 `kit:aspect-ratio` sets `aspect-ratio` on the container and stretches its direct child media elements (`img`, `video`, `iframe`, `canvas`, `svg`, `picture`) to fill it via `object-fit`. A media deeper in the content (an icon over a video...) keeps its own size. The `ratio` prop accepts a number, a `/`-separated string (`"16/9"`), or a `:`-separated string (`"16:9"`). It falls back to `16/9` if the value is invalid.
 
@@ -43,9 +31,10 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 - **ratio**: `string | number` = `'16/9'`
 - **aspectRatio**: `string | number` = `'16/9'`
 
-<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={ratiosCode}>
-<Ratios/>
-</LazyRepl>
+```repl svelte
+/// title: aspect-ratio.svelte
+/// example: components/aspect-ratio/ratios.svelte
+```
 
 ### fit
 
@@ -53,9 +42,10 @@ Pass `ratio` as a string (`"16/9"`, `"4:3"`) or a plain number (`1.777`).
 
 - **fit**: `'cover' | 'contain' | 'fill'` = `'cover'`
 
-<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={fitCode}>
-<Fit/>
-</LazyRepl>
+```repl svelte
+/// title: aspect-ratio.svelte
+/// example: components/aspect-ratio/fit.svelte
+```
 
 ### inline
 
@@ -63,15 +53,18 @@ The `inline` property displays the component in the text flow, as an inline elem
 
 - **inline**: `boolean` = `false`
 
-<LazyRepl title="aspect-ratio.svelte" lang="svelte" content={inlineCode}>
-<Inline/>
-</LazyRepl>
+```repl svelte
+/// title: aspect-ratio.svelte
+/// example: components/aspect-ratio/inline.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { AspectRatio } from 'lapikit/components';"} />
+```repl js
+import { AspectRatio } from 'lapikit/components';
+```
 
 ## API Reference
 

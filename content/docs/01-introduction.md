@@ -13,17 +13,6 @@ navigation:
   label: 'Introduction'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-  // examples
-  import IntroductionLapikit from '$examples/started/introduction-lapikit.svelte';
-
-	import introductionLapikitCode from '$examples/started/introduction-lapikit.svelte?raw';
-	import sClassPreprocessorCode from '$examples/started/s-class-preprocessor.svelte?raw';
-	import sStylePreprocessorCode from '$examples/started/s-style-preprocessor.svelte?raw';
-</script>
-
 ## What is Lapikit?
 
 Lapikit is a mix of the French word lapin (rabbit), lapis lazuli - a deep blue stone - and the word kit, referring to a development toolkit.
@@ -40,14 +29,17 @@ All of this combined makes our Lapinausore an excellent tool for work that is si
 
 Want to learn more? Here's a quick example of how to use Lapikit
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={introductionLapikitCode}>
-</LazyRepl>
+```repl svelte
+/// title: lapikit.svelte
+/// source: started/introduction-lapikit.svelte
+```
 
 **Result**
 
-<LazyRepl title="lapikit.svelte" lang="svelte">
-<IntroductionLapikit/>
-</LazyRepl>
+```repl svelte
+/// title: lapikit.svelte
+/// demo: started/introduction-lapikit.svelte
+```
 
 This example shows how to configure the Lapikit preprocessor, which allows you to use the component library without having to import them manually. Imports are performed automatically and optimally during the compilation process.
 
@@ -88,13 +80,17 @@ Lapikit solves this problem by providing built-in styling properties for each co
 
 - **`s-class`** - conditionally apply classes, just like `class:{property}={condition}`:
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={sClassPreprocessorCode}>
-</LazyRepl>
+```repl svelte
+/// title: lapikit.svelte
+/// source: started/s-class-preprocessor.svelte
+```
 
 - **`s-style`** - conditionally apply inline styles, just like `style:{property}={value}`:
 
-<LazyRepl title="lapikit.svelte" lang="svelte" content={sStylePreprocessorCode}>
-</LazyRepl>
+```repl svelte
+/// title: lapikit.svelte
+/// source: started/s-style-preprocessor.svelte
+```
 
 Both props also accept a plain `string` or `string[]` when no conditions are needed.
 

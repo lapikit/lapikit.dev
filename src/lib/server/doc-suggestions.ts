@@ -1,7 +1,6 @@
 import type { Pathname } from '$app/types';
-import { pages } from '$lib/pages';
-
-export type DocSuggestion = { title: string; path: Pathname };
+import type { DocSuggestion } from '$lib/types';
+import { site } from './content';
 
 const max_suggestions = 3;
 
@@ -9,7 +8,7 @@ export function getDocSuggestions(pathname: string): DocSuggestion[] {
 	const wanted = lastSegment(pathname);
 	if (!wanted) return [];
 
-	return pages
+	return site.pages
 		.filter((doc) => doc.state !== 'deprecated' && doc.path.pathname !== '/')
 		.map((doc) => ({ doc, distance: distance(wanted, lastSegment(doc.path.pathname)) }))
 		.filter(({ distance }) => distance <= Math.max(2, Math.floor(wanted.length / 3)))

@@ -1,20 +1,20 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
-const manifest: { path: { pathname: string } }[] = JSON.parse(
-	readFileSync('src/lib/generated/manifest.json', 'utf8')
+const pages: { pathname: string }[] = JSON.parse(
+	readFileSync('build/prerendered/content.json', 'utf8')
 );
 
 test.beforeEach(async ({ page }) => {
 	await page.route(/^https?:\/\/(?!localhost[:/])/, (route) => route.abort());
 });
 
-for (const { path } of manifest) {
-	test(`${path.pathname} loads correctly`, async ({ page }) => {
+for (const { pathname } of pages) {
+	test(`${pathname} loads correctly`, async ({ page }) => {
 		const errors: string[] = [];
 		page.on('pageerror', (err) => errors.push(err.message));
 
-		const response = await page.goto(path.pathname);
+		const response = await page.goto(pathname);
 
 		expect(response?.status()).toBeLessThan(400);
 		expect(errors).toEqual([]);

@@ -10,38 +10,14 @@ navigation:
   description: 'Compact element for tags, filters or selections.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/chip/preview.svelte';
-	import Variants from '$examples/components/chip/variants.svelte';
-	import Size from '$examples/components/chip/size.svelte';
-	import PrependAppend from '$examples/components/chip/prepend-append.svelte';
-	import States from '$examples/components/chip/states.svelte';
-	import LabelStyle from '$examples/components/chip/label-style.svelte';
-	import Density from '$examples/components/chip/density.svelte';
-	import Color from '$examples/components/chip/color.svelte';
-	import Interactive from '$examples/components/chip/interactive.svelte';
-	import Input from '$examples/components/chip/input.svelte';
-
-	import previewCode from '$examples/components/chip/preview.svelte?raw';
-	import variantsCode from '$examples/components/chip/variants.svelte?raw';
-	import sizeCode from '$examples/components/chip/size.svelte?raw';
-	import prependAppendCode from '$examples/components/chip/prepend-append.svelte?raw';
-	import statesCode from '$examples/components/chip/states.svelte?raw';
-	import labelStyleCode from '$examples/components/chip/label-style.svelte?raw';
-	import densityCode from '$examples/components/chip/density.svelte?raw';
-	import colorCode from '$examples/components/chip/color.svelte?raw';
-	import interactiveCode from '$examples/components/chip/interactive.svelte?raw';
-	import inputCode from '$examples/components/chip/input.svelte?raw';
-</script>
-
 The `kit:chip` component displays small interactive labels, perfect for representing status, categories, filters or actions. Compact, stylable and highly flexible, it can be clicked, disabled, loaded, closed or enriched with snippets.
 It supports different variants, states, densities and sizes, to suit all UI contexts. It can be used alone, in groups, or as the basis for a tag or filter system.
 
-<LazyRepl title="chip.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// presentation
+/// example: components/chip/preview.svelte
+```
 
 `kit:chip` renders as a `<div>` by default. It becomes interactive automatically when `onclick` is attached, `href` is set, or `is="button"`. It is a pill by default (`rounded="full"`).
 
@@ -62,9 +38,10 @@ Variants adapt the overall appearance of the chip to graphic needs.
 
 > The border thickness of `outline` and `surface` is set by the global variable `--kit-outline-weight` (`1px` by default).
 
-<LazyRepl title="chip.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/variants.svelte
+```
 
 ### size
 
@@ -82,9 +59,10 @@ With `size`, adjust the chip's height, padding, font size and the gap between th
 
 > The sizes are in `rem`: the chip grows with the font size set in the browser. The values in px are for the default size (16px).
 
-<LazyRepl title="chip.svelte" lang="svelte" content={sizeCode}>
-<Size/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/size.svelte
+```
 
 ### Density
 
@@ -92,9 +70,10 @@ With `size`, adjust the chip's height, padding, font size and the gap between th
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/density.svelte
+```
 
 ### Colors
 
@@ -104,9 +83,10 @@ Pass an object to use another color when the chip is `active`, or `false` for no
 
 - **color**: `string | false | { base?: string | false; active?: string | false }` = `undefined`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={colorCode}>
-<Color/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/color.svelte
+```
 
 ### Interactive
 
@@ -118,9 +98,10 @@ An interactive chip changes its background on hover and pressed, and shows a rip
 - `true` - forced, without changing the element.
 - `false` - no visual feedback, the chip stays clickable.
 
-<LazyRepl title="chip.svelte" lang="svelte" content={interactiveCode}>
-<Interactive/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/interactive.svelte
+```
 
 ### prepend and append snippets
 
@@ -129,9 +110,10 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={prependAppendCode}>
-<PrependAppend/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/prepend-append.svelte
+```
 
 ### States
 
@@ -141,9 +123,10 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 - **disabled**: `boolean` = `false`
 - **readonly**: `boolean` = `false`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={statesCode}>
-<States/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/states.svelte
+```
 
 ### labelStyle
 
@@ -151,9 +134,10 @@ Use `prepend` for an icon before the label, and `append` for an action typically
 
 - **labelStyle**: `boolean` = `false`
 
-<LazyRepl title="chip.svelte" lang="svelte" content={labelStyleCode}>
-<LabelStyle/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/label-style.svelte
+```
 
 ### As an input
 
@@ -167,21 +151,26 @@ Add `input` (or `is="input"`) to render a native `<input>` styled as a chip, ins
 
 The other attributes (`name`, `onchange`...) go on the `<input>`, so the chip works in a form like a native input.
 
-<LazyRepl title="chip.svelte" lang="svelte" content={inputCode}>
-<Input/>
-</LazyRepl>
+```repl svelte
+/// title: chip.svelte
+/// example: components/chip/input.svelte
+```
 
 ### tooltip
 
 Add a tooltip to the chip with the `tooltip` prop: a text, or options (`location`, `variant`, `delayDuration`...). See [the tooltip prop](/docs/components/tooltip#the-tooltip-prop).
 
-<LazyRepl lang="svelte" content={'<kit:chip tooltip="More information">...</kit:chip>'} />
+```repl svelte
+<kit:chip tooltip="More information">...</kit:chip>
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Chip } from 'lapikit/components';"} />
+```repl js
+import { Chip } from 'lapikit/components';
+```
 
 ## API Reference
 

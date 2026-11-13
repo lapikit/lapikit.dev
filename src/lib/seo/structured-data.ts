@@ -1,4 +1,4 @@
-import type { DocSummary } from './@types';
+import type { DocSummary } from '$lib/types';
 
 const site_name = 'Lapikit';
 

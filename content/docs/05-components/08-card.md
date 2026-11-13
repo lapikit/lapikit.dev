@@ -10,31 +10,13 @@ navigation:
   description: 'Surface container for grouped, related content.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/card/preview.svelte';
-	import Variants from '$examples/components/card/variants.svelte';
-	import Density from '$examples/components/card/density.svelte';
-	import Interactive from '$examples/components/card/interactive.svelte';
-	import Structure from '$examples/components/card/structure.svelte';
-	import Elevation from '$examples/components/card/elevation.svelte';
-	import Color from '$examples/components/card/color.svelte';
-
-	import previewCode from '$examples/components/card/preview.svelte?raw';
-	import structureCode from '$examples/components/card/structure.svelte?raw';
-	import variantsCode from '$examples/components/card/variants.svelte?raw';
-	import densityCode from '$examples/components/card/density.svelte?raw';
-	import interactiveCode from '$examples/components/card/interactive.svelte?raw';
-	import elevationCode from '$examples/components/card/elevation.svelte?raw';
-	import colorCode from '$examples/components/card/color.svelte?raw';
-</script>
-
 The `kit:card` component is a versatile container used to group together information or actions in a user interface. It can be used to display content, images, buttons or links, while offering advanced customization to suit various styles and contexts.
 
-<LazyRepl title="card.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// presentation
+/// example: components/card/preview.svelte
+```
 
 `kit:card` is a layout container, it adds no heading or structure on its own. Use the following subcomponents to structure your card content:
 
@@ -46,9 +28,10 @@ The `kit:card` component is a versatile container used to group together informa
 | `kit:card-actions`   | Flex bar for action buttons.                                    |
 | `kit:card-container` | Main container for the card content.                            |
 
-<LazyRepl title="card.svelte" lang="svelte" content={structureCode}>
-<Structure/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// example: components/card/structure.svelte
+```
 
 ## Examples of card
 
@@ -65,9 +48,10 @@ The `kit:card` component is a versatile container used to group together informa
 
 > The border thickness of `outline` and `surface` is set by the global variable `--kit-outline-weight` (`1px` by default).
 
-<LazyRepl title="card.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// example: components/card/variants.svelte
+```
 
 ### Density
 
@@ -75,9 +59,10 @@ The `kit:card` component is a versatile container used to group together informa
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="card.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// example: components/card/density.svelte
+```
 
 ### Colors
 
@@ -89,9 +74,10 @@ Pass an object to use another color when the card is `active`.
 
 `kit:card-title` and `kit:card-content` also accept a `color` (a string) to change only their text color.
 
-<LazyRepl title="card.svelte" lang="svelte" content={colorCode}>
-<Color/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// example: components/card/color.svelte
+```
 
 ### Interactive
 
@@ -112,9 +98,10 @@ To add a shadow on hover, use the multi-state [elevation](#elevation).
 
 > When `disabled` is `true` on an `<a>` card, `href` is removed and `tabindex="-1"` is set.
 
-<LazyRepl title="card.svelte" lang="svelte" content={interactiveCode}>
-<Interactive/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// example: components/card/interactive.svelte
+```
 
 ### Elevation
 
@@ -123,15 +110,18 @@ The Elevation property allows you to apply a `box shadow` effect to the **Card**
 - **elevation**: `'0' | '1' | '2' | '3' | '4' | '5'` = `'undefined'`
 - **elevation** (multi-state): `{base: value, hover: value, active: value}`
 
-<LazyRepl title="card.svelte" lang="svelte" content={elevationCode}>
-<Elevation/>
-</LazyRepl>
+```repl svelte
+/// title: card.svelte
+/// example: components/card/elevation.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Card } from 'lapikit/components';"} />
+```repl js
+import { Card } from 'lapikit/components';
+```
 
 ## API Reference
 

@@ -1,20 +1,28 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsBySlug, loadDocContent } from '$lib/pages';
+import type { Component } from 'svelte';
 
 export const prerender = true;
 
-export function entries() {
-	return docs.map((doc) => ({ slug: doc.path.slug }));
-}
+const examples = import.meta.glob<{ default: Component }>('/content/examples/**/*.svelte');
 
-export async function load({ params, data }) {
-	const doc = docsBySlug.get(params.slug ?? '');
+export async function load({ data }) {
+	const { rendered, ...page } = data;
 
-	if (!doc) {
-		throw error(404, 'Documentation page not found');
-	}
+	const demoPaths = rendered.blocks.flatMap((block) => {
+		if (block.type === 'demo') return [block.path];
+		if (block.type === 'repl' && block.demo) return [block.demo];
+		return [];
+	});
 
-	const content = data.rendered ?? (await loadDocContent(doc));
+	const demos = Object.fromEntries(
+		await Promise.all(
+			demoPaths.map(async (path) => {
+				const loader = examples[`/content/examples/${path}`];
+				if (!loader) error(500, `Missing example: content/examples/${path}`);
+				return [path, (await loader()).default] as const;
+			})
+		)
+	);
 
-	return { doc, content, prevDoc: data.prev, nextDoc: data.next };
+	return { ...page, content: { ...rendered, demos } };
 }

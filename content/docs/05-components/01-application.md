@@ -10,16 +10,6 @@ navigation:
   description: 'Root wrapper that initializes the Lapikit theme and global styles.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	// images
-	import picture from '$lib/assets/images/docs/use-kit-app.webp';
-
-	import rootCode from '$examples/components/application/root.svelte?raw';
-	import withClassicImportCode from '$examples/components/application/with-classic-import.svelte?raw';
-</script>
-
 The `kit:app` component is an root layout for all component Lapikit. It acts as a global provider, initializing and centralizing everything Lapikit needs to function properly.
 
 **Role of the App component**
@@ -35,19 +25,23 @@ In Lapikit, the `kit:app` component serves as the entry point for all Lapikit ch
 
 If you're using SvelteKit, you can rely on the layout system. Each main layout can have its own `kit:app` configuration. Lapikit supports multiple configurations as long as you clearly define a separate configuration with variables and styles specific to each one. In principle, incrementing `kit:app` won’t crash your project, but it can cause duplications and conflicts in styles and assets (overlays, multi-modals). If you’re comfortable with the risk, it’s up to you.
 
-<img src={picture} alt="apply kit:app on your project" />
+<img src="+assets/use-kit-app.webp" alt="apply kit:app on your project" />
 
 ## Example to use `kit:app`
 
 To get started or continue your project with Lapikit, define the entry point where Lapikit components will be used. The most common approach is to initialize them directly in your project's root `+layout.svelte` file.
 
-<LazyRepl lang="svelte" content={rootCode} />
+```repl svelte
+/// source: components/application/root.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, you can import it the usual way with:
 
-<LazyRepl lang="svelte" content={withClassicImportCode} />
+```repl svelte
+/// source: components/application/with-classic-import.svelte
+```
 
 ## API References
 

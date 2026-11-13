@@ -10,25 +10,13 @@ navigation:
   description: 'SVG icon wrapper with size and color control.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/icon/preview.svelte';
-	import Size from '$examples/components/icon/size.svelte';
-	import Color from '$examples/components/icon/color.svelte';
-	import Src from '$examples/components/icon/src.svelte';
-
-	import previewCode from '$examples/components/icon/preview.svelte?raw';
-	import sizeCode from '$examples/components/icon/size.svelte?raw';
-	import colorCode from '$examples/components/icon/color.svelte?raw';
-	import srcCode from '$examples/components/icon/src.svelte?raw';
-</script>
-
 The `kit:icon` component is a sizing and accessibility wrapper for icons. It supports three rendering modes: SVG component via `children`, image via `src`, or CSS icon font via `name`.
 
-<LazyRepl title="icon.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: icon.svelte
+/// presentation
+/// example: components/icon/preview.svelte
+```
 
 `kit:icon` renders as an `<i>` by default. It sets a consistent `font-size` equal to the current size token, which becomes the `width` and `height` of the inner SVG or image. Child SVG components (e.g. lucide-svelte) inherit this size automatically.
 
@@ -52,9 +40,10 @@ When no `size` is set, the icon follows the size of the component around it: ins
 
 > The sizes are in `rem`: the icon grows with the font size set in the browser, like the text around it. Override them with the `--kit-icon-size-*` variables.
 
-<LazyRepl title="icon.svelte" lang="svelte" content={sizeCode}>
-<Size/>
-</LazyRepl>
+```repl svelte
+/// title: icon.svelte
+/// example: components/icon/size.svelte
+```
 
 ### color
 
@@ -62,9 +51,10 @@ Pass a color of the palette (`success`, `error`...) or any CSS color (`#f00`, `o
 
 - **color**: `string | false` = `undefined`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={colorCode}>
-<Color/>
-</LazyRepl>
+```repl svelte
+/// title: icon.svelte
+/// example: components/icon/color.svelte
+```
 
 ### src image icons
 
@@ -74,9 +64,10 @@ Pass an image URL to `src`. For SVG sources, `colorMode="mask"` applies `current
 - **colorMode**: `'auto' | 'mask' | 'filter' | 'none'` = `'auto'`
 - **imgFilter**: `string` = `''`
 
-<LazyRepl title="icon.svelte" lang="svelte" content={srcCode}>
-<Src/>
-</LazyRepl>
+```repl svelte
+/// title: icon.svelte
+/// example: components/icon/src.svelte
+```
 
 ### Accessibility
 
@@ -90,13 +81,17 @@ By default icons are hidden from assistive technologies (`decorative={true}`, `a
 
 Add a tooltip to the icon with the `tooltip` prop: a text, or options (`location`, `variant`, `delayDuration`...). See [the tooltip prop](/docs/components/tooltip#the-tooltip-prop).
 
-<LazyRepl lang="svelte" content={'<kit:icon tooltip="More information">...</kit:icon>'} />
+```repl svelte
+<kit:icon tooltip="More information">...</kit:icon>
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Icon } from 'lapikit/components';"} />
+```repl js
+import { Icon } from 'lapikit/components';
+```
 
 ## API Reference
 

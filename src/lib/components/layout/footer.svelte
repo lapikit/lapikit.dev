@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { tick } from 'svelte';
-	import type { AppNavChild } from '$lib/@types';
+	import type { AppNavChild } from '$lib/types';
 	import { capitalize, isExternal } from '$lib/utils';
 	import { useAccordion } from 'lapikit/actions';
 	import { openConsentPreferences } from '$lib/state/ui.svelte';
 
 	import { links, urlLapikitLicense, type LinkName } from '$lib/constants';
-	import { router } from '$lib/router';
+	import { site_links } from '$lib/site-links';
 
 	import LapikitFooter from '$lib/assets/images/lapikit-footer-v2.svg?raw';
 	import { ExternalLink, Heart } from 'lucide-svelte';
@@ -59,7 +59,7 @@
 			</div>
 
 			<kit:accordion class="footer-accordion" variant="text" rounded="0">
-				{#each router.footer as { label, child }, index (label)}
+				{#each site_links.footer as { label, child }, index (label)}
 					<kit:accordion-item
 						{index}
 						text={capitalize(label)}
@@ -75,7 +75,7 @@
 				{/each}
 			</kit:accordion>
 
-			{#each router.footer as { label, child } (label)}
+			{#each site_links.footer as { label, child } (label)}
 				<kit:list class="footer-column" variant="text" rounded="0">
 					<kit:list-item class="footer-column-title">{capitalize(label)}</kit:list-item>
 					{#each child ?? [] as link (link.label)}

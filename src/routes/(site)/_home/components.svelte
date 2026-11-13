@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import type { NavPage } from '$lib/@types';
+	import type { NavPage } from '$lib/types';
 
 	// states
 	const row_count = 3;

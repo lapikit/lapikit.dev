@@ -1,6 +1,6 @@
 import type { Pathname } from '$app/types';
-import type { BreadcrumbItem, BreadcrumbListSchema } from './@types';
-import { docsByPath, pagesByPath } from './pages';
+import type { BreadcrumbItem } from '$lib/types';
+import { docs, site } from './content';
 
 export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 	const normalizedPath = normalizePath(pathname);
@@ -24,33 +24,6 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 	];
 }
 
-export function getBreadcrumbStructuredData(
-	items: BreadcrumbItem[],
-	origin: string
-): BreadcrumbListSchema | null {
-	if (items.length < 2) {
-		return null;
-	}
-
-	const normalizedOrigin = origin.replace(/\/$/, '');
-	const schemaItems = items.filter((item, index) => item.href || index === items.length - 1);
-
-	if (schemaItems.length < 2) {
-		return null;
-	}
-
-	return {
-		'@context': 'https://schema.org',
-		'@type': 'BreadcrumbList',
-		itemListElement: schemaItems.map((item, index) => ({
-			'@type': 'ListItem',
-			position: index + 1,
-			name: item.label,
-			...(item.href ? { item: `${normalizedOrigin}${item.href}` } : {})
-		}))
-	};
-}
-
 function getDocsBreadcrumbs(pathname: string) {
 	const segments = pathname
 		.replace(/^\/docs\//, '')
@@ -64,7 +37,7 @@ function getDocsBreadcrumbs(pathname: string) {
 
 		items.push({
 			label: formatSegmentLabel(segments[index]),
-			href: isLast || docsByPath.has(href) ? toPathname(href) : undefined
+			href: isLast || href in docs.pages ? toPathname(href) : undefined
 		});
 	}
 
@@ -73,7 +46,7 @@ function getDocsBreadcrumbs(pathname: string) {
 
 function getPathLabel(pathname: string) {
 	return (
-		pagesByPath.get(pathname)?.title ??
+		site.byPath.get(pathname)?.title ??
 		formatSegmentLabel(pathname.split('/').filter(Boolean).at(-1) ?? '')
 	);
 }

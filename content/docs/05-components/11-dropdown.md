@@ -10,25 +10,15 @@ navigation:
   description: 'Floating menu triggered by a reference element.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/dropdown/preview.svelte';
-	import Position from '$examples/components/dropdown/position.svelte';
-	import Hover from '$examples/components/dropdown/hover.svelte';
-
-	import previewCode from '$examples/components/dropdown/preview.svelte?raw';
-	import positionCode from '$examples/components/dropdown/position.svelte?raw';
-	import hoverCode from '$examples/components/dropdown/hover.svelte?raw';
-</script>
-
 The `kit:dropdown` component displays a menu or contextual content when opened, positioned around a trigger element. It can be opened by clicking or hovering, and closes automatically according to selected parameters (**closeOnClick**, **openOnHover**, etc.).
 
 It's designed to offer great flexibility: configurable positioning, customizable appearance, and a `trigger` snippet to use any element as the trigger.
 
-<LazyRepl title="dropdown.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: dropdown.svelte
+/// presentation
+/// example: components/dropdown/preview.svelte
+```
 
 `kit:dropdown` has no visible element of its own: it renders the `trigger` snippet inline and the menu in the top layer when open. The `trigger` snippet receives the props to spread on your trigger element, and the state of the menu:
 
@@ -64,9 +54,10 @@ The `position` prop sets the preferred position of the dropdown panel relative t
 
 - **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="dropdown.svelte" lang="svelte" content={positionCode}>
-<Position/>
-</LazyRepl>
+```repl svelte
+/// title: dropdown.svelte
+/// example: components/dropdown/position.svelte
+```
 
 ### openOnHover
 
@@ -74,9 +65,10 @@ With `openOnHover`, the menu also opens when the pointer enters the trigger (not
 
 - **openOnHover**: `boolean` = `false`
 
-<LazyRepl title="dropdown.svelte" lang="svelte" content={hoverCode}>
-<Hover/>
-</LazyRepl>
+```repl svelte
+/// title: dropdown.svelte
+/// example: components/dropdown/hover.svelte
+```
 
 ### closeOnClick
 
@@ -103,7 +95,9 @@ Closes the dropdown automatically when any element inside the panel is clicked.
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Dropdown } from 'lapikit/components';"} />
+```repl js
+import { Dropdown } from 'lapikit/components';
+```
 
 ## API Reference
 

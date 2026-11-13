@@ -15,28 +15,6 @@ navigation:
   label: 'Customization'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-  // examples
-  import PerInstanceStyle from '$examples/started/per-instance-style.svelte';
-  import StyleRootVariables from '$examples/styles/root.css?raw';
-  import StyleThemeDefault from '$examples/styles/theme-default.css?raw';
-  import StyleThemeLight from '$examples/styles/theme-light.css?raw';
-  import StyleThemeDark from '$examples/styles/theme-dark.css?raw';
-  import StyleThemeSystem from '$examples/styles/theme-system.css?raw';
-
-	import overrideStyleCode from '$examples/started/override-style.css?raw';
-	import overrideStyleComponentCode from '$examples/started/override-style-component.css?raw';
-	import perInstanceStyleCode from '$examples/started/per-instance-style.svelte?raw';
-
-	// preview
-	import ElevationPreview from '$examples/started/elevation-preview.svelte';
-	import ElevationEventsPreview from '$examples/started/elevation-events-preview.svelte';
-	import ShapePreview from '$examples/started/shape-preview.svelte';
-	import KitThemeColor from '$examples/kit-theme-color.svelte';
-</script>
-
 ## Theme customization
 
 Lapikit is built on custom CSS properties. Colors, surfaces, spacing, radii, typography, and component states are all based on `--kit-*` variables.
@@ -49,28 +27,20 @@ Lapikit maintains a styling behavior similar to that of native CSS.
 
 Each component and theme value can be overridden directly using CSS variables. Here is a list of all the variables you can override:
 
-<LazyRepl
-content={{
-	'root': {
-		code: StyleRootVariables,
-		lang: 'css'
-	},
-	'light': {
-		code: StyleThemeDefault,
-		lang: 'css'
-	},
-	'dark': {
-		code: StyleThemeDark,
-		lang: 'css'
-	}
-}}
-/>
+```repl
+/// file: root | css | styles/root.css
+/// file: light | css | styles/theme-default.css
+/// file: dark | css | styles/theme-dark.css
+```
 
 **No additional compilation steps are required.**
 
 You can apply your own values directly in your stylesheet and integrate Lapikit into an existing design system **without having to rewrite the components.**
 
-<LazyRepl title="style.css" lang="css" content={overrideStyleCode} />
+```repl css
+/// title: style.css
+/// source: started/override-style.css
+```
 
 > A value set on `:root` applies to every theme: here the accent stays purple in light and dark mode, while the default accent switches from black to white. To keep a value per theme, override it inside the theme selectors described in [Theme mode support](#theme-mode-support).
 
@@ -84,26 +54,22 @@ Our recommendation is to base your approach on how you manage themes in your exi
 
 Lapikit resolves its color tokens through the data-kit-theme attribute. Set it to `light`, `dark` or `system` (follows `prefers-color-scheme`) on the element you want to theme usually `<html>`, but any container works. Because it's a plain attribute, you keep full control: toggle it from your own logic, persist the choice, or scope a dark section inside an otherwise light page with function [`useTheme()`](/docs/hooks/use-theme). With SSR, [`themeScript()`](/docs/hooks/use-theme#avoid-the-flash-of-the-wrong-theme) applies the stored theme before the first paint.
 
-<KitThemeColor/>
+```demo
+kit-theme-color.svelte
+```
 
-<LazyRepl
-content={{
-  'dark': {
-		code: StyleThemeDark,
-		lang: 'css'
-	},
-	'light': {
-		code: StyleThemeLight,
-		lang: 'css'
-	}
-}}
-/>
+```repl
+/// file: dark | css | styles/theme-dark.css
+/// file: light | css | styles/theme-light.css
+```
 
 ### Media color scheme support
 
 If you'd rather follow the operating system preference, override the tokens inside a `prefers-color-scheme` media query instead. No state to manage, no toggle to build:
 
-<LazyRepl lang="css" content={StyleThemeSystem} />
+```repl css
+/// source: styles/theme-system.css
+```
 
 The trade-off is that users can't switch themes from within your app the choice belongs to the system.
 
@@ -117,7 +83,9 @@ On top of colors, Lapikit ships two shared visual scales: elevation for depth an
 
 Elevation tells users which surfaces sit above others: a card above the page, a menu above the card, a dialog above everything. Lapikit gives you six shadow levels, from `0` (flat) to `5` (floating).
 
-<ElevationPreview/>
+```demo
+started/elevation-preview.svelte
+```
 
 Set the level with the `elevation` prop on any component that supports it, such as cards, buttons, chips, alerts, app bars, dropdowns and dialogs:
 
@@ -131,7 +99,9 @@ The elevation can change with the interaction state. Pass an object with `base`,
 <kit:card elevation={{ base: '1', hover: '3', active: '0' }}>Hover me</kit:card>
 ```
 
-<ElevationEventsPreview/>
+```demo
+started/elevation-events-preview.svelte
+```
 
 Under the hood, the prop sets `data-elevation`, `data-elevation-hover` and `data-elevation-active` attributes. The matching styles are global and loaded by [`<kit:app>`](/docs/essentials/initialize-application), so you can also put these attributes on your own HTML elements:
 
@@ -153,7 +123,9 @@ For example, raise both opacities in a dark theme, where shadows are harder to s
 
 Shape controls the corner radius of components. The scale goes from square corners to fully rounded pills, and each step is a `--kit-shape-*` CSS variable.
 
-<ShapePreview/>
+```demo
+started/shape-preview.svelte
+```
 
 Pick a step with the `rounded` prop:
 
@@ -192,7 +164,10 @@ Each Lapikit component uses variables prefixed with the component name (e.g. `--
 
 Example:
 
-<LazyRepl title="layout.css" lang="css" content={overrideStyleComponentCode} />
+```repl css
+/// title: layout.css
+/// source: started/override-style-component.css
+```
 
 This will apply to every instance of `<kit:btn>` across your app: `--kit-btn-color` is the color of the button (the same as the `color` prop), the text color follows it.
 
@@ -209,9 +184,10 @@ The styles that use these variables keep a normal specificity: the resets of oth
 
 For per-instance customization, use the props or the `style:` directive directly on the component instance:
 
-<LazyRepl title="button.svelte" lang="svelte" content={perInstanceStyleCode}>
-<PerInstanceStyle/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: started/per-instance-style.svelte
+```
 
 > [!NOTE]
 > Each component's documentation lists the variables it exposes.

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
-	import { getDocSuggestions } from '$lib/utils';
 
 	import { ArrowLeft, ArrowRight, BookMarked } from 'lucide-svelte';
 	import Mascot from '$lib/assets/images/mascot/default.webp?enhanced';
@@ -9,7 +8,7 @@
 	import SearchBtn from '$lib/components/search/search-btn.svelte';
 
 	const notFound = $derived(page.status === 404);
-	const suggestions = $derived(notFound ? getDocSuggestions(page.url.pathname) : []);
+	const suggestions = $derived(notFound ? (page.error?.suggestions ?? []) : []);
 </script>
 
 <div class="not-found">

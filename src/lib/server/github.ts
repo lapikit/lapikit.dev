@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import type { GithubStats } from '$lib/@types';
+import type { GithubStats } from '$lib/types';
 import { fetchJson, formatCount } from './fetch-json';
 
 const repository_api = 'https://api.github.com/repos/lapikit/lapikit';

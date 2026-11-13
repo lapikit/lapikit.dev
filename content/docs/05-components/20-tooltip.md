@@ -10,22 +10,6 @@ navigation:
   description: 'Short contextual hint shown on hover or focus.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/tooltip/preview.svelte';
-	import Location from '$examples/components/tooltip/location.svelte';
-	import Arrow from '$examples/components/tooltip/arrow.svelte';
-	import Custom from '$examples/components/tooltip/custom.svelte';
-	import Prop from '$examples/components/tooltip/prop.svelte';
-
-	import previewCode from '$examples/components/tooltip/preview.svelte?raw';
-	import locationCode from '$examples/components/tooltip/location.svelte?raw';
-	import arrowCode from '$examples/components/tooltip/arrow.svelte?raw';
-	import customCode from '$examples/components/tooltip/custom.svelte?raw';
-	import propCode from '$examples/components/tooltip/prop.svelte?raw';
-</script>
-
 Display elegant tooltips with `kit:tooltip`. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components
 The `kit:tooltip` component can be used to display a tooltip on hover, focus or via a controlled opening. It's designed to provide a simple, accessible way of delivering contextual information to the user, without cluttering up the interface.
 
@@ -33,9 +17,11 @@ The `kit:tooltip` component can be used to display a tooltip on hover, focus or 
 
 It is particularly useful for enhancing the user experience by explaining icons, specifying actions or providing secondary details.
 
-<LazyRepl title="tooltip.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: tooltip.svelte
+/// presentation
+/// example: components/tooltip/preview.svelte
+```
 
 `kit:tooltip` adds no element around its trigger: the `trigger` snippet receives the props to spread on your own element.
 
@@ -62,9 +48,10 @@ The tooltip can be positioned in four directions relative to the trigger element
 
 - **location**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={locationCode}>
-<Location/>
-</LazyRepl>
+```repl svelte
+/// title: tooltip.svelte
+/// example: components/tooltip/location.svelte
+```
 
 ### arrow variant
 
@@ -72,9 +59,10 @@ Add `variant="arrow"` to render a directional arrow on the tooltip panel.
 
 - **variant**: `'arrow' | undefined` = `''`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={arrowCode}>
-<Arrow/>
-</LazyRepl>
+```repl svelte
+/// title: tooltip.svelte
+/// example: components/tooltip/arrow.svelte
+```
 
 ### Custom content
 
@@ -82,9 +70,10 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 - **tooltip**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={customCode}>
-<Custom/>
-</LazyRepl>
+```repl svelte
+/// title: tooltip.svelte
+/// example: components/tooltip/custom.svelte
+```
 
 > The tooltip is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its trigger when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
 
@@ -92,9 +81,10 @@ Use the `tooltip` snippet to render any content inside the tooltip panel. When `
 
 `kit:btn`, `kit:chip` and `kit:icon` take a `tooltip` prop: a text, or the options `label`, `location`, `variant`, `density`, `rounded`, `delayDuration` and `closeDelay`.
 
-<LazyRepl title="tooltip.svelte" lang="svelte" content={propCode}>
-<Prop/>
-</LazyRepl>
+```repl svelte
+/// title: tooltip.svelte
+/// example: components/tooltip/prop.svelte
+```
 
 - One tooltip is shared by the whole page. It is loaded and added to the DOM on the first hover or focus: a page without hover adds no element and no code.
 - A button without text (an icon button) gets the text of the tooltip as its `aria-label`. The others get it as a description, while focused.
@@ -107,7 +97,9 @@ Use `kit:tooltip` for rich content, a controlled `open`, or any other element.
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Tooltip } from 'lapikit/components';"} />
+```repl js
+import { Tooltip } from 'lapikit/components';
+```
 
 ## API Reference
 

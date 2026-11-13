@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
-	import type { AppNavItem } from '$lib/@types';
+	import type { AppNavItem } from '$lib/types';
 	import { capitalize, isCurrentPath } from '$lib/utils';
 	import { links, type LinkName } from '$lib/constants';
 	import { getNavContext } from '$lib/state/nav.svelte';

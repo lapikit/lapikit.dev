@@ -1,7 +1,5 @@
-import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { mdsvexOptions } from './mdsvex.config.js';
 import { lapikitPreprocess } from 'lapikit/preprocess';
 
 const keyboardWidgetWarnings = [
@@ -36,8 +34,7 @@ const config = {
 			}
 		}
 	},
-	preprocess: [mdsvex(mdsvexOptions), lapikitPreprocess({ plugins: ['repl'] }), vitePreprocess()],
-	extensions: ['.svelte', '.svx', '.md']
+	preprocess: [lapikitPreprocess({ plugins: ['repl'] }), vitePreprocess()]
 };
 
 export default config;

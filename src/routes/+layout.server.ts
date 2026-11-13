@@ -1,5 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 import { docs } from '$lib/server/content';
+import { pageMeta } from '$lib/server/page-meta';
 import { emptyGithubStats, getGithubStats } from '$lib/server/github';
 import { emptyNpmStats, getNpmStats } from '$lib/server/npm';
 
@@ -10,6 +11,7 @@ export const load: LayoutServerLoad = async () => {
 		npm: npm ?? emptyNpmStats,
 		github: github ?? emptyGithubStats,
 		navigation: docs.navigation,
-		counts: docs.counts
+		counts: docs.counts,
+		...pageMeta('/')
 	};
 };

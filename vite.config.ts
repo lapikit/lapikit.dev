@@ -4,5 +4,10 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => ({
-	plugins: [enhancedImages(), sveltekit(), ...(command === 'serve' ? [devtoolsJson()] : [])]
+	plugins: [enhancedImages(), sveltekit(), ...(command === 'serve' ? [devtoolsJson()] : [])],
+	server: {
+		fs: {
+			allow: ['content']
+		}
+	}
 }));

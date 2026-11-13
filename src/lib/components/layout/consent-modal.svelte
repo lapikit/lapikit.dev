@@ -2,7 +2,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { PUBLIC_GTM_ID, PUBLIC_GTAG_ID } from '$env/static/public';
 	import { onMount } from 'svelte';
-	import type { ConsentState } from '$lib/hooks';
+	import type { ConsentState } from '$lib/analytics';
 	import {
 		loadGTM,
 		loadGtag,
@@ -10,7 +10,7 @@
 		sendPageViewGTM,
 		updateConsent,
 		updateConsentGTM
-	} from '$lib/hooks';
+	} from '$lib/analytics';
 	import { deleteCookie, getCookie, setCookie } from '$lib/utils';
 	import { consent_cookie } from '$lib/constants';
 	import { consentState } from '$lib/state/ui.svelte';

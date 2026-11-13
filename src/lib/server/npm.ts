@@ -1,4 +1,4 @@
-import type { NpmStats } from '$lib/@types';
+import type { NpmStats } from '$lib/types';
 import { fetchJson, formatCount } from './fetch-json';
 
 export const emptyNpmStats: NpmStats = {

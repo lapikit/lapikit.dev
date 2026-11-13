@@ -10,25 +10,13 @@ navigation:
   description: 'Top navigation bar with slots for branding and actions.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/appbar/preview.svelte';
-	import Variants from '$examples/components/appbar/variants.svelte';
-	import Density from '$examples/components/appbar/density.svelte';
-	import ClassContent from '$examples/components/appbar/class-content.svelte';
-
-	import previewCode from '$examples/components/appbar/preview.svelte?raw';
-	import variantsCode from '$examples/components/appbar/variants.svelte?raw';
-	import densityCode from '$examples/components/appbar/density.svelte?raw';
-	import classContentCode from '$examples/components/appbar/class-content.svelte?raw';
-</script>
-
 The `kit:appbar` is an essential component for structuring an application's header. It provides a dedicated space for displaying elements such as titles, icons, buttons or menus. Thanks to its many customization options, the `kit:appbar` integrates perfectly into a variety of designs, from minimalist to complex.
 
-<LazyRepl title="appbar.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: appbar.svelte
+/// presentation
+/// example: components/appbar/preview.svelte
+```
 
 `kit:appbar` renders as a `<header>` by default. It wraps your content in an inner `kit-appbar__wrapper` div that fills the full width and aligns items in a row. Use `classContent` to apply a class to that wrapper typically to constrain the max-width of the content while the background spans the full width.
 
@@ -47,9 +35,10 @@ The `variant` prop controls the background and border style, `color` gives the c
 - **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
 - **color**: `string | false | { base?, active? }` = `undefined`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: appbar.svelte
+/// example: components/appbar/variants.svelte
+```
 
 ### Density
 
@@ -57,9 +46,10 @@ The `variant` prop controls the background and border style, `color` gives the c
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: appbar.svelte
+/// example: components/appbar/density.svelte
+```
 
 ### classContent
 
@@ -67,15 +57,18 @@ The `variant` prop controls the background and border style, `color` gives the c
 
 - **classContent**: `string | array | object` = `undefined`
 
-<LazyRepl title="appbar.svelte" lang="svelte" content={classContentCode}>
-<ClassContent/>
-</LazyRepl>
+```repl svelte
+/// title: appbar.svelte
+/// example: components/appbar/class-content.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Appbar } from 'lapikit/components';"} />
+```repl js
+import { Appbar } from 'lapikit/components';
+```
 
 ## API Reference
 

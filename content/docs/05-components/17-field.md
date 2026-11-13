@@ -11,20 +11,15 @@ navigation:
   image: 'textfield'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/field/preview.svelte';
-	import previewCode from '$examples/components/field/preview.svelte?raw';
-</script>
-
 The `kit:field` component is the base of the Lapikit form fields. It draws the box of the field (variant, color, size, density, rounded), the snippets around the control, the clear button and the message line, and it manages the states (`error`, `disabled`, `readonly`, focus).
 
 It renders no control itself: you bring your own (a `select`, a date picker, a custom input...), and the field gives it the attributes to stay accessible. [Textfield](/docs/components/textfield) is a `kit:field` with an `<input>`.
 
-<LazyRepl title="field.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: field.svelte
+/// presentation
+/// example: components/field/preview.svelte
+```
 
 ## The control
 
@@ -66,7 +61,9 @@ The field does not know the value of the control: pass `dirty` to show the clear
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Field } from 'lapikit/components';"} />
+```repl js
+import { Field } from 'lapikit/components';
+```
 
 ## API Reference
 

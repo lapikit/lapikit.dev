@@ -10,25 +10,13 @@ navigation:
   description: 'Vertical list of items with optional leading and trailing slots.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/list/preview.svelte';
-	import Variants from '$examples/components/list/variants.svelte';
-	import PrependAppend from '$examples/components/list/prepend-append.svelte';
-	import Nav from '$examples/components/list/nav.svelte';
-
-	import previewCode from '$examples/components/list/preview.svelte?raw';
-	import variantsCode from '$examples/components/list/variants.svelte?raw';
-	import prependAppendCode from '$examples/components/list/prepend-append.svelte?raw';
-	import navCode from '$examples/components/list/nav.svelte?raw';
-</script>
-
 The `kit:list` and `kit:list-item` components render structured vertical lists. Items are interactive automatically when `onclick` is attached or `href` is set.
 
-<LazyRepl title="list.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: list.svelte
+/// presentation
+/// example: components/list/preview.svelte
+```
 
 `kit:list` is a layout container that sets size tokens consumed by its `kit:list-item` children. `kit:list-item` detects its tag automatically: it renders as `<a>` when `href` is set, `<button>` when an `onclick` is attached, or `<div>` otherwise.
 
@@ -48,9 +36,10 @@ The variant and the `color` of the list apply to all its items. A `kit:list-item
 - **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text' | 'plain'` = `'filled'`
 - **color**: `string | false` = `undefined`
 
-<LazyRepl title="list.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: list.svelte
+/// example: components/list/variants.svelte
+```
 
 ### prepend and append
 
@@ -59,9 +48,10 @@ The variant and the `color` of the list apply to all its items. A `kit:list-item
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="list.svelte" lang="svelte" content={prependAppendCode}>
-<PrependAppend/>
-</LazyRepl>
+```repl svelte
+/// title: list.svelte
+/// example: components/list/prepend-append.svelte
+```
 
 ### nav
 
@@ -69,16 +59,18 @@ Add `nav` to `kit:list` (and `is="nav"`) for a navigation list. This increases p
 
 - **nav**: `boolean` = `false`
 
-<LazyRepl title="list.svelte" lang="svelte" content={navCode}>
-
-<Nav/>
-</LazyRepl>
+```repl svelte
+/// title: list.svelte
+/// example: components/list/nav.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { List, ListItem } from 'lapikit/components';"} />
+```repl js
+import { List, ListItem } from 'lapikit/components';
+```
 
 ## API Reference
 

@@ -10,29 +10,15 @@ navigation:
   description: 'Text input with label, helper text and validation states.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/textfield/preview.svelte';
-	import Variants from '$examples/components/textfield/variants.svelte';
-	import Message from '$examples/components/textfield/message.svelte';
-	import PrependAppend from '$examples/components/textfield/prepend-append.svelte';
-	import Clearable from '$examples/components/textfield/clearable.svelte';
-
-	import previewCode from '$examples/components/textfield/preview.svelte?raw';
-	import variantsCode from '$examples/components/textfield/variants.svelte?raw';
-	import messageCode from '$examples/components/textfield/message.svelte?raw';
-	import prependAppendCode from '$examples/components/textfield/prepend-append.svelte?raw';
-	import clearableCode from '$examples/components/textfield/clearable.svelte?raw';
-</script>
-
 The `kit:textfield` component provides a versatile input solution for capturing user data. It supports various input types, validation states, and enhanced features like character counting and clearable functionality. Designed for i increase accessibility and user experience in mind in your interphase.
 
 Instead of reinventing textfield logic, Lapikit Textfield enables you to focus on behavior and data flow.
 
-<LazyRepl title="textfield.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: textfield.svelte
+/// presentation
+/// example: components/textfield/preview.svelte
+```
 
 `kit:textfield` is a [Field](/docs/components/field) with a native `<input>`: the field slots `prepend`/`append` (outside the box) and `prependInner`/`appendInner` (inside the box). The `value` prop is bindable.
 
@@ -53,9 +39,10 @@ Visual variants match different design systems and UI contexts.
 - **variant**: `'filled' | 'tonal' | 'outline' | 'surface' | 'text'` = `'filled'`
 - **color**: `string | false | { base?, active? }` = `undefined`
 
-<LazyRepl title="textfield.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: textfield.svelte
+/// example: components/textfield/variants.svelte
+```
 
 ### message and error
 
@@ -68,9 +55,10 @@ Show helper text or validation errors below the field. The message is visible on
 - **counter**: `boolean` => Shows the character count. Use with `maxlength` for a limit.
 - **minlength** / **maxlength**: `number` => Minimum and maximum character count, native attributes of the input.
 
-<LazyRepl title="textfield.svelte" lang="svelte" content={messageCode}>
-<Message/>
-</LazyRepl>
+```repl svelte
+/// title: textfield.svelte
+/// example: components/textfield/message.svelte
+```
 
 ### prependInner and appendInner
 
@@ -81,9 +69,10 @@ Place icons or buttons inside the field border using the `prependInner` and `app
 - **prepend**: `Snippet | undefined` = `undefined` => Content outside the field, before it.
 - **append**: `Snippet | undefined` = `undefined` => Content outside the field, after it.
 
-<LazyRepl title="textfield.svelte" lang="svelte" content={prependAppendCode}>
-<PrependAppend/>
-</LazyRepl>
+```repl svelte
+/// title: textfield.svelte
+/// example: components/textfield/prepend-append.svelte
+```
 
 ### clearable
 
@@ -92,15 +81,18 @@ Adds a clear button that appears when the field has a value.
 - **clearable**: `boolean` = `false`
 - **persistentClear**: `boolean` = `false`
 
-<LazyRepl title="textfield.svelte" lang="svelte" content={clearableCode}>
-<Clearable/>
-</LazyRepl>
+```repl svelte
+/// title: textfield.svelte
+/// example: components/textfield/clearable.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Textfield } from 'lapikit/components';"} />
+```repl js
+import { Textfield } from 'lapikit/components';
+```
 
 ## API Reference
 

@@ -10,23 +10,13 @@ navigation:
   description: 'Visual divider between sections or list items.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/separator/preview.svelte';
-	import Orientation from '$examples/components/separator/orientation.svelte';
-	import Inset from '$examples/components/separator/inset.svelte';
-
-	import previewCode from '$examples/components/separator/preview.svelte?raw';
-	import orientationCode from '$examples/components/separator/orientation.svelte?raw';
-	import insetCode from '$examples/components/separator/inset.svelte?raw';
-</script>
-
 The `kit:separator` component renders a thin horizontal or vertical dividing line.
 
-<LazyRepl title="separator.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: separator.svelte
+/// presentation
+/// example: components/separator/preview.svelte
+```
 
 `kit:separator` renders as `<hr>` by default, which is a separator natively; with `is="div"` it sets `role="separator"`. `aria-orientation` is set automatically. The color (`--kit-color-border`) and the thickness can be overridden per-instance with `color` and `thickness`, or globally with the `--kit-separator-color` and `--kit-separator-thickness` variables.
 
@@ -38,9 +28,10 @@ The `kit:separator` component renders a thin horizontal or vertical dividing lin
 
 Vertical separators are inline-flex and stretch to fill their container's height.
 
-<LazyRepl title="separator.svelte" lang="svelte" content={orientationCode}>
-<Orientation/>
-</LazyRepl>
+```repl svelte
+/// title: separator.svelte
+/// example: components/separator/orientation.svelte
+```
 
 ### inset
 
@@ -48,15 +39,18 @@ Adds a leading margin to indent the separator from the left edge useful inside l
 
 - **inset**: `boolean` = `false`
 
-<LazyRepl title="separator.svelte" lang="svelte" content={insetCode}>
-<Inset/>
-</LazyRepl>
+```repl svelte
+/// title: separator.svelte
+/// example: components/separator/inset.svelte
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Separator } from 'lapikit/components';"} />
+```repl js
+import { Separator } from 'lapikit/components';
+```
 
 ## API Reference
 

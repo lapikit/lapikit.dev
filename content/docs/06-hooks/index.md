@@ -8,14 +8,12 @@ navigation:
   label: 'All hooks'
 ---
 
-<script>
-    import SummaryHooks from "$lib/components/docs/summary-hooks.svelte";
-</script>
-
 Lapikit hooks integrate additional features directly onto your Svelte workflow. They manage internal states and background logic, allowing you to focus on developing important features. Instead of juggling event listeners or intricate prop chains, Lapikit hooks keep everything responsive and in sync with minimal effort on your part.
 
 ## Actions
 
 Lapikit hooks integrate additional features directly onto your Svelte workflow. They manage internal states and background logic, allowing you to focus on developing important features. Instead of juggling event listeners or intricate prop chains, Lapikit hooks keep everything responsive.
 
-<SummaryHooks key="Stores and Hooks"/>
+```component
+summary-hooks key="Stores and Hooks"
+```

@@ -1,4 +1,4 @@
-import type { DocCounts } from '$lib/@types';
+import type { DocCounts } from '$lib/types';
 
 // assets
 import LapikitLogo from '$lib/assets/images/lapikit.webp?h=124&format=webp';

@@ -10,41 +10,15 @@ navigation:
   description: 'Interactive element with multiple variants and sizes.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/btn/preview.svelte';
-	import Variants from '$examples/components/btn/variants.svelte';
-	import Size from '$examples/components/btn/size.svelte';
-	import Icon from '$examples/components/btn/icon.svelte';
-	import PrependAppend from '$examples/components/btn/prepend-append.svelte';
-	import States from '$examples/components/btn/states.svelte';
-	import Block from '$examples/components/btn/block.svelte';
-	import AsLink from '$examples/components/btn/as-link.svelte';
-	import Density from '$examples/components/btn/density.svelte';
-	import Color from '$examples/components/btn/color.svelte';
-	import Input from '$examples/components/btn/input.svelte';
-
-	import previewCode from '$examples/components/btn/preview.svelte?raw';
-	import variantsCode from '$examples/components/btn/variants.svelte?raw';
-	import sizeCode from '$examples/components/btn/size.svelte?raw';
-	import iconCode from '$examples/components/btn/icon.svelte?raw';
-	import prependAppendCode from '$examples/components/btn/prepend-append.svelte?raw';
-	import statesCode from '$examples/components/btn/states.svelte?raw';
-	import blockCode from '$examples/components/btn/block.svelte?raw';
-	import asLinkCode from '$examples/components/btn/as-link.svelte?raw';
-	import densityCode from '$examples/components/btn/density.svelte?raw';
-	import colorCode from '$examples/components/btn/color.svelte?raw';
-	import inputCode from '$examples/components/btn/input.svelte?raw';
-</script>
-
 The `kit:btn` component is a central component of Lapikit. It allows you to create buttons that are adaptable, accessible and easily customized, either via props or CSS variables.
 
 It automatically manages variants, states (`active`, `loading`, etc.), accessibility, colors, sizes, and integrates with icons or additional content (`prepend`, `append`, `load`).
 
-<LazyRepl title="button.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// presentation
+/// example: components/btn/preview.svelte
+```
 
 ## Examples of button
 
@@ -64,9 +38,10 @@ Variants control the overall style of the button. They enable adaptation to diff
 
 > The border thickness of `outline` and `surface` is set by the global variable `--kit-outline-weight` (`1px` by default).
 
-<LazyRepl title="button.svelte" lang="svelte" content={variantsCode}>
-<Variants/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/variants.svelte
+```
 
 ### size
 
@@ -84,9 +59,10 @@ The `size` prop adjusts the button's height, padding, font size and the gap betw
 
 > The sizes are in `rem`: the button grows with the font size set in the browser. The values in px are for the default size (16px).
 
-<LazyRepl title="button.svelte" lang="svelte" content={sizeCode}>
-<Size/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/size.svelte
+```
 
 ### Density
 
@@ -94,9 +70,10 @@ The `size` prop adjusts the button's height, padding, font size and the gap betw
 
 - **density**: `'dense' | 'compact' | 'default' | 'comfortable' | 'spacious'` = `'default'`
 
-<LazyRepl title="button.svelte" lang="svelte" content={densityCode}>
-<Density/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/density.svelte
+```
 
 ### Colors
 
@@ -108,9 +85,10 @@ Pass an object to use another color when the button is `active`, or `false` for 
 
 - **color**: `string | false | { base?: string | false; active?: string | false }` = `undefined`
 
-<LazyRepl title="button.svelte" lang="svelte" content={colorCode}>
-<Color/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/color.svelte
+```
 
 ### icon
 
@@ -118,9 +96,10 @@ Add `icon` to render a square button width equals height. Useful for icon-only a
 
 - **icon**: `boolean` = `false`
 
-<LazyRepl title="button.svelte" lang="svelte" content={iconCode}>
-<Icon/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/icon.svelte
+```
 
 ### prepend and append snippets
 
@@ -129,9 +108,10 @@ Use `prepend` and `append` to place icons or elements on either side of the labe
 - **prepend**: `Snippet | undefined` = `undefined`
 - **append**: `Snippet | undefined` = `undefined`
 
-<LazyRepl title="button.svelte" lang="svelte" content={prependAppendCode}>
-<PrependAppend/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/prepend-append.svelte
+```
 
 ### States
 
@@ -145,9 +125,10 @@ Here are the main states available:
 
 The button changes its background on hover and pressed, and shows a ripple on click (`noRipple` removes it). A disabled button is dimmed with `--kit-disabled-opacity`. While `loading`, `aria-busy` is set.
 
-<LazyRepl title="button.svelte" lang="svelte" content={statesCode}>
-<States/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/states.svelte
+```
 
 Use the `load` snippet to replace the default `...` spinner with custom content.
 
@@ -160,9 +141,10 @@ Use the `load` snippet to replace the default `...` spinner with custom content.
 - **block**: `boolean` = `false`
 - **wide**: `boolean` = `false`
 
-<LazyRepl title="button.svelte" lang="svelte" content={blockCode}>
-<Block/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/block.svelte
+```
 
 ### As a link
 
@@ -170,9 +152,10 @@ Pass `href` to render the button as an `<a>` element. The `disabled` prop remove
 
 - **href**: `string | undefined` = `undefined`
 
-<LazyRepl title="button.svelte" lang="svelte" content={asLinkCode}>
-<AsLink/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/as-link.svelte
+```
 
 ### As an input
 
@@ -186,21 +169,26 @@ Add `input` (or `is="input"`) to render a native `<input>` styled as a button, i
 
 The other attributes (`name`, `onchange`...) go on the `<input>`, so the button works in a form like a native input.
 
-<LazyRepl title="button.svelte" lang="svelte" content={inputCode}>
-<Input/>
-</LazyRepl>
+```repl svelte
+/// title: button.svelte
+/// example: components/btn/input.svelte
+```
 
 ### tooltip
 
 Add a tooltip to the button with the `tooltip` prop: a text, or options (`location`, `variant`, `delayDuration`...). An icon button gets the text as its accessible name. See [the tooltip prop](/docs/components/tooltip#the-tooltip-prop).
 
-<LazyRepl lang="svelte" content={'<kit:btn tooltip="More information">...</kit:btn>'} />
+```repl svelte
+<kit:btn tooltip="More information">...</kit:btn>
+```
 
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
 
-<LazyRepl lang="js" content={"import { Btn } from 'lapikit/components';"} />
+```repl js
+import { Btn } from 'lapikit/components';
+```
 
 ## API Reference
 

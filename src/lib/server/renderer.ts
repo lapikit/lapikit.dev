@@ -8,11 +8,17 @@ import 'prismjs/components/prism-javascript.js';
 import 'prismjs/components/prism-typescript.js';
 import 'prismjs/components/prism-json.js';
 import 'prism-svelte';
-import type { DocBlock, MarkdownHeading, RenderedDoc } from '$lib/@types';
+import type { DocBlock, MarkdownHeading, RenderedDoc } from '$lib/types';
 import { slugify } from '$lib/utils/slugify.js';
+import { exampleCode, parseFence, type DocFence } from './doc-fences';
+
+const assets = import.meta.glob<string>('/content/**/+assets/*', {
+	eager: true,
+	import: 'default'
+});
 
 const frontmatter_block = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/;
-const absolute_url = /^[a-z][a-z\d+\-.]*:/i;
+const external_url = /^https?:\/\//i;
 const union_separator = / \\\| | \| /;
 
 const typography = retext().use(smartypants);
@@ -61,7 +67,7 @@ function unionCode(code: string) {
 	if (values.length < 2 || literals.length === 0) return `<code>${code}</code>`;
 	if (types.length === 0) return enumChip(literals);
 
-	const separator = '<span class="type-sep" aria-hidden="true"> | </span>';
+	const separator = '<span class="type-sep" aria-hidden="true">|</span>';
 	const typeCodes = types.map((type) => `<code>${escapeHtml(type)}</code>`).join(separator);
 
 	return `<span class="type-union">${typeCodes}${separator}${enumChip(literals)}</span>`;
@@ -111,7 +117,7 @@ function createMarked(summary: MarkdownHeading[]) {
 			link({ href, title, tokens }) {
 				const text = this.parser.parseInline(tokens);
 				const titleAttribute = title ? ` title="${escapeHtml(title)}"` : '';
-				const rel = absolute_url.test(href) ? ' rel="nofollow"' : '';
+				const rel = external_url.test(href) ? ' rel="nofollow"' : '';
 
 				return `<a href="${escapeHtml(href)}"${titleAttribute}${rel}>${text}</a>`;
 			},
@@ -126,7 +132,46 @@ function createMarked(summary: MarkdownHeading[]) {
 	});
 }
 
-export function renderMarkdown(source: string): RenderedDoc {
+function toBlock(fence: DocFence): DocBlock {
+	switch (fence.kind) {
+		case 'repl': {
+			const content = fence.files.length
+				? Object.fromEntries(
+						fence.files.map(({ name, lang, path }) => [name, { code: exampleCode(path), lang }])
+					)
+				: fence.source
+					? exampleCode(fence.source)
+					: fence.code;
+
+			return {
+				type: 'repl',
+				content,
+				lang: fence.lang,
+				title: fence.title,
+				presentation: fence.presentation,
+				demo: fence.demo
+			};
+		}
+		case 'command':
+			return { type: 'command', key: fence.key, selected: fence.selected };
+		case 'demo':
+			return { type: 'demo', path: fence.path };
+		case 'component':
+			return { type: 'component', name: fence.name, props: fence.props };
+	}
+}
+
+function resolveAssets(html: string, file: string) {
+	const folder = file.slice(0, file.lastIndexOf('/'));
+
+	return html.replace(/(["(])\+assets\/([^"')\s]+)/g, (_, prefix: string, name: string) => {
+		const url = assets[`/${folder}/+assets/${name}`];
+		if (!url) throw new Error(`Missing asset: ${folder}/+assets/${name}`);
+		return `${prefix}${url}`;
+	});
+}
+
+export function renderMarkdown(source: string, file: string): RenderedDoc {
 	const summary: MarkdownHeading[] = [];
 	const marked = createMarked(summary);
 	const tokens = marked.lexer(source.replace(frontmatter_block, ''));
@@ -138,16 +183,22 @@ export function renderMarkdown(source: string): RenderedDoc {
 		marked.parser(Object.assign(list, { links: tokens.links }) as TokensList);
 
 	const flush = () => {
-		if (pending.length) blocks.push({ type: 'html', html: parse(pending) });
+		if (pending.length) blocks.push({ type: 'html', html: resolveAssets(parse(pending), file) });
 		pending = [];
 	};
 
 	marked.walkTokens(tokens, smartenTokens);
 
 	for (const token of tokens) {
-		if (token.type === 'blockquote') {
+		const fence = token.type === 'code' ? parseFence(token.lang, token.text) : null;
+
+		if (fence) {
 			flush();
-			blocks.push({ type: 'callout', html: parse((token as Tokens.Blockquote).tokens) });
+			blocks.push(toBlock(fence));
+		} else if (token.type === 'blockquote') {
+			flush();
+			const html = parse((token as Tokens.Blockquote).tokens);
+			blocks.push({ type: 'callout', html: resolveAssets(html, file) });
 		} else {
 			pending.push(token);
 		}

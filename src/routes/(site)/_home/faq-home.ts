@@ -1,4 +1,4 @@
-import type { DocCounts } from '$lib/@types';
+import type { DocCounts } from '$lib/types';
 import { links } from '$lib/constants';
 import type { Icon as IconType } from 'lucide-svelte';
 

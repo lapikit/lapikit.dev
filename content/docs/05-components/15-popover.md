@@ -10,23 +10,15 @@ navigation:
   description: 'Lightweight floating panel anchored to a trigger.'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import Preview from '$examples/components/popover/preview.svelte';
-	import Position from '$examples/components/popover/position.svelte';
-
-	import previewCode from '$examples/components/popover/preview.svelte?raw';
-	import positionCode from '$examples/components/popover/position.svelte?raw';
-</script>
-
 The `kit:popover` component displays contextual content next to a trigger. It is useful for providing additional information, options or secondary actions without overloading the main interface.
 
 Popovers open from a trigger and can be positioned in several directions: _top_, bottom, left or right. It is bindable and customizable in terms of theme, density, color, etc.
 
-<LazyRepl title="popover.svelte" presentation lang="svelte" content={previewCode}>
-<Preview/>
-</LazyRepl>
+```repl svelte
+/// title: popover.svelte
+/// presentation
+/// example: components/popover/preview.svelte
+```
 
 `kit:popover` renders the `trigger` snippet inline and the panel in the top layer when open. The `trigger` snippet receives the props to spread on your trigger element:
 
@@ -55,9 +47,10 @@ The panel is a `role="dialog"`. Give it a name with `aria-label` or `aria-labell
 
 - **position**: `'top' | 'bottom' | 'left' | 'right'` = `'bottom'`
 
-<LazyRepl title="popover.svelte" lang="svelte" content={positionCode}>
-<Position/>
-</LazyRepl>
+```repl svelte
+/// title: popover.svelte
+/// example: components/popover/position.svelte
+```
 
 > The popover is displayed in the top layer of the page (Popover API): it is never cut by an `overflow: hidden` parent nor hidden behind a modal. It follows its trigger when the page or a parent scrolls, flips to the opposite side when there is not enough space, and stays in the viewport.
 
@@ -65,7 +58,9 @@ The panel is a `role="dialog"`. Give it a name with `aria-label` or `aria-labell
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the components directly:
 
-<LazyRepl lang="js" content={"import { Popover } from 'lapikit/components';"} />
+```repl js
+import { Popover } from 'lapikit/components';
+```
 
 ## API Reference
 

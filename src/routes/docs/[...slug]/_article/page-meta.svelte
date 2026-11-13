@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DocSummary } from '$lib/@types';
+	import type { DocSummary } from '$lib/types';
 	import { links } from '$lib/constants';
 	import { docEditUrl, docIssueUrl } from '$lib/utils';
 

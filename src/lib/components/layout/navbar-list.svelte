@@ -3,7 +3,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { page } from '$app/state';
 	import { capitalize, isActivePath, isCurrentPath } from '$lib/utils';
-	import type { AppNavItem } from '$lib/@types';
+	import type { AppNavItem } from '$lib/types';
 
 	import { ChevronDown, ChevronUp, Ellipsis } from 'lucide-svelte';
 

@@ -8,24 +8,6 @@ navigation:
   label: 'Classes and Styles'
 ---
 
-<script>
-	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
-
-	import classDirectiveCode from '$examples/essentials/class-directive.svelte?raw';
-	import styleDirectiveCode from '$examples/essentials/style-directive.svelte?raw';
-	import classAttributeCode from '$examples/essentials/class-attribute.svelte?raw';
-	import sClassCode from '$examples/essentials/s-class.svelte?raw';
-	import sClassMultipleCode from '$examples/essentials/s-class-multiple.svelte?raw';
-	import sClassObjectConditionalCode from '$examples/essentials/s-class-object-conditional.svelte?raw';
-	import sClassDirectiveBooleanCode from '$examples/essentials/s-class-directive-boolean.svelte?raw';
-	import sClassDirectiveStringCode from '$examples/essentials/s-class-directive-string.svelte?raw';
-	import sStyleCode from '$examples/essentials/s-style.svelte?raw';
-	import sStyleDynamicCode from '$examples/essentials/s-style-dynamic.svelte?raw';
-	import sStyleDirectiveCode from '$examples/essentials/s-style-directive.svelte?raw';
-	import sStyleDirectiveCustomCode from '$examples/essentials/s-style-directive-custom.svelte?raw';
-	import sClassSStyleCombiningCode from '$examples/essentials/s-class-s-style-combining.svelte?raw';
-</script>
-
 With **Lili**, the Lapikit preprocessor, a `<kit:...>` component behaves exactly like a native HTML element in Svelte. No new syntax to learn, write your classes and styles as you already do:
 
 - the `class` attribute accepts a string, an array or an object, with the rules of Svelte (clsx);
@@ -37,7 +19,9 @@ With **Lili**, the Lapikit preprocessor, a `<kit:...>` component behaves exactly
 
 As on any element in Svelte, `class` takes a string, an array (nested too) or an object whose keys are added when their value is truthy:
 
-<LazyRepl lang="svelte" content={classAttributeCode} />
+```repl svelte
+/// source: essentials/class-attribute.svelte
+```
 
 ### Directive `class:`: Dynamic class binding
 
@@ -45,13 +29,17 @@ As on any element in Svelte, `class` takes a string, an array (nested too) or an
 - **Number or text** - appends the value to the name, joined by a dash: `class:gap={4}` gives `gap-4`. There is no dash when the name ends or the value starts with a separator (`-` `_` `:` `/` `.`), which is useful for BEM modifier patterns (`block--modifier`).
 - `false`, `null`, `undefined` and `''` add nothing.
 
-<LazyRepl lang="svelte" content={classDirectiveCode} />
+```repl svelte
+/// source: essentials/class-directive.svelte
+```
 
 ### Directive `style:`: Dynamic inline styles
 
 The part after `style:` is the CSS property name, CSS custom properties included.
 
-<LazyRepl lang="svelte" content={styleDirectiveCode} />
+```repl svelte
+/// source: essentials/style-directive.svelte
+```
 
 > Modifiers such as `style:color|important` are not supported on Lapikit components.
 
@@ -63,29 +51,39 @@ The part after `style:` is the CSS property name, CSS custom properties included
 
 The simplest form - adds a static class name:
 
-<LazyRepl lang="svelte" content={sClassCode} />
+```repl svelte
+/// source: essentials/s-class.svelte
+```
 
 **Array property `s-class`**
 
 Pass multiple class names at once:
 
-<LazyRepl lang="svelte" content={sClassMultipleCode} />
+```repl svelte
+/// source: essentials/s-class-multiple.svelte
+```
 
 **Object (conditional classes) property `s-class`**
 
 Use an object to conditionally apply class names: a key is added when its value is truthy.
 
-<LazyRepl lang="svelte" content={sClassObjectConditionalCode} />
+```repl svelte
+/// source: essentials/s-class-object-conditional.svelte
+```
 
 ### Property `s-style`: Dynamic inline styles
 
 The `style` attribute only accepts a string. Pass a CSS property object to `s-style` to apply one or more inline styles:
 
-<LazyRepl lang="svelte" content={sStyleCode} />
+```repl svelte
+/// source: essentials/s-style.svelte
+```
 
 Dynamic values work as expected:
 
-<LazyRepl lang="svelte" content={sStyleDynamicCode} />
+```repl svelte
+/// source: essentials/s-style-dynamic.svelte
+```
 
 > Values holding `;`, `{` or `}` are ignored, they could add other declarations.
 
@@ -97,19 +95,27 @@ Without the preprocessor in `svelte.config.js`, Svelte refuses the `class:` and 
 
 - **Boolean toggle** - adds the class name when `true`:
 
-<LazyRepl lang="svelte" content={sClassDirectiveBooleanCode} />
+```repl svelte
+/// source: essentials/s-class-directive-boolean.svelte
+```
 
 - **String modifier** - appends the value to the base name:
 
-<LazyRepl lang="svelte" content={sClassDirectiveStringCode} />
+```repl svelte
+/// source: essentials/s-class-directive-string.svelte
+```
 
 **Directive property with `s-style_*`**
 
-<LazyRepl lang="svelte" content={sStyleDirectiveCode} />
+```repl svelte
+/// source: essentials/s-style-directive.svelte
+```
 
 Particularly useful for CSS custom properties:
 
-<LazyRepl lang="svelte" content={sStyleDirectiveCustomCode} />
+```repl svelte
+/// source: essentials/s-style-directive-custom.svelte
+```
 
 ### Combining directives, `s-class` and `s-style`
 
@@ -124,7 +130,9 @@ This simplifies the management of:
 
 All binding methods work together and follow the same reactive behavior as standard Svelte templates.
 
-<LazyRepl lang="svelte" content={sClassSStyleCombiningCode} />
+```repl svelte
+/// source: essentials/s-class-s-style-combining.svelte
+```
 
 ## Continue styling your Lapikit components
 

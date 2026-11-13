@@ -3,8 +3,7 @@
 	import { mount, unmount } from 'svelte';
 	import type { ComponentProps, Snippet } from 'svelte';
 
-	import type { DocSummary, MarkdownHeading } from '$lib/@types';
-	import { getBreadcrumbs } from '$lib/breadcrumbs';
+	import type { DocSummary, MarkdownHeading } from '$lib/types';
 	import { capitalize, slugify } from '$lib/utils';
 
 	import EnumChip from './enum-chip.svelte';
@@ -31,8 +30,7 @@
 		children: Snippet;
 	} = $props();
 
-	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
-	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
+	const breadcrumbs = $derived(page.data.breadcrumbs);
 	const deprecated = $derived(doc.state === 'deprecated');
 	const hasPager = $derived(!deprecated && !!(prev || next));
 
