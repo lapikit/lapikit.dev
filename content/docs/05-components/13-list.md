@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'List'
   description: 'Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements.'
+navigation:
+  label: 'List'
+  name: 'kit:list'
+  description: 'Vertical list of items with optional leading and trailing slots.'
 ---
 
 <script>

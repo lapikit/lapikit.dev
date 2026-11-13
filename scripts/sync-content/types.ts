@@ -1,7 +1,6 @@
-export type FrontmatterValue =
-	string | number | boolean | null | FrontmatterValue[] | { [key: string]: FrontmatterValue };
+import type { FrontmatterData } from '../../src/lib/server/frontmatter.ts';
 
-export type FrontmatterData = Record<string, FrontmatterValue>;
+export type { FrontmatterData };
 
 export type ManifestPath = {
 	sourcePath: string;

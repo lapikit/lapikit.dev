@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { router } from '$lib/router';
+	import { page } from '$app/state';
 	import type { NavPage } from '$lib/@types';
 
 	// states
 	const row_count = 3;
 
-	const section = router.documentation.find((entry) => entry.label === 'Components');
+	const section = page.data.navigation.find((entry) => entry.label === 'Components');
 
-	const components: NavPage[] = (section?.pages ?? []).filter((page): page is NavPage =>
-		Boolean(page.image && page.name)
+	const components: NavPage[] = (section?.pages ?? []).filter((navPage): navPage is NavPage =>
+		Boolean(navPage.image && navPage.name)
 	);
 
 	function fill(items: NavPage[], min = 14): NavPage[] {

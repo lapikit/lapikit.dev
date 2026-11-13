@@ -1,4 +1,4 @@
-import { nbComponents, nbHooks } from '$lib/router';
+import type { DocCounts } from '$lib/@types';
 
 // assets
 import LapikitLogo from '$lib/assets/images/lapikit.webp?h=124&format=webp';
@@ -40,12 +40,12 @@ export const tableHome: TableHome[] = [
 	}
 ];
 
-export const tableHomeList: TableHomeList[] = [
+export const createTableHomeList = (counts: DocCounts): TableHomeList[] => [
 	{
 		title: 'Lapikit',
 		logo: LapikitLogo,
 		values: [
-			[nbComponents, 'yes', nbHooks, 'yes'],
+			[counts.components, 'yes', counts.hooks, 'yes'],
 			['yes', 'yes', 'yes', 'yes', 'yes', 2, 'yes'],
 			['yes', 'yes', 'Bi-Monthly']
 		]

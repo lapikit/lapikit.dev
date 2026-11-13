@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Application'
   description: 'The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity.'
+navigation:
+  label: 'Application'
+  name: 'kit:app'
+  description: 'Root wrapper that initializes the Lapikit theme and global styles.'
 ---
 
 <script>

@@ -12,6 +12,8 @@ keywords:
   - 'tsconfig'
   - 'types'
   - 'ts(6133)'
+navigation:
+  label: 'Typescripts and Linter'
 ---
 
 <script>

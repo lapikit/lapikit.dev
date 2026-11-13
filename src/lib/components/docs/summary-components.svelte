@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { docsNavigation } from '$lib/router';
+	import { page } from '$app/state';
 
-	const components = docsNavigation.find((section) => section.label === 'Components')?.pages ?? [];
+	const components = $derived(
+		page.data.navigation.find((section) => section.label === 'Components')?.pages ?? []
+	);
 </script>
 
 <div class="components-grid-evol">

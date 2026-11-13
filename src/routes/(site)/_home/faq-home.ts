@@ -1,5 +1,5 @@
+import type { DocCounts } from '$lib/@types';
 import { links } from '$lib/constants';
-import { nbComponents, nbHooks } from '$lib/router';
 import type { Icon as IconType } from 'lucide-svelte';
 
 // assets
@@ -19,11 +19,11 @@ type Contact = {
 	background: string;
 };
 
-export const faqHome: Faq[] = [
+export const createFaqHome = (counts: DocCounts): Faq[] => [
 	{
 		question: 'What is included in Lapikit?',
 		message: [
-			`You'll start with ${nbComponents} Lapikit components, ${nbHooks} utility functions, and a full-featured preprocessor that will allow you to harness the full power of Lapikit directly within your project.`,
+			`You'll start with ${counts.components} Lapikit components, ${counts.hooks} utility functions, and a full-featured preprocessor that will allow you to harness the full power of Lapikit directly within your project.`,
 			'The goal is to offer you new components with each release to ensure support for new needs. All of this is open-source and free.'
 		]
 	},

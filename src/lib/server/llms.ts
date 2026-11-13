@@ -1,7 +1,7 @@
 import type { DocSummary } from '$lib/@types';
 import { docs, docsByPath } from '$lib/pages';
-import { docsNavigation } from '$lib/router';
 import { siteUrl } from '$lib/utils';
+import { docs as content } from './content';
 import { docToMarkdown } from './doc-markdown';
 
 const deprecated = 'Deprecated';
@@ -30,7 +30,7 @@ function entry(doc: DocSummary) {
 function groupDocs() {
 	const listed = new Set<string>();
 
-	const sections = docsNavigation
+	const sections = content.navigation
 		.filter(({ label }) => label !== deprecated)
 		.map(({ label, pages }) => {
 			const sectionDocs = pages

@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Textfield'
   description: 'Explore the Textfield component of Lapikit: customizable input fields for Svelte with full styling, validation and theming support to build forms faster.'
+navigation:
+  label: 'Textfield'
+  name: 'kit:textfield'
+  description: 'Text input with label, helper text and validation states.'
 ---
 
 <script>

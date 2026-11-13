@@ -4,6 +4,8 @@ category: 'Essentials'
 head:
   title: 'Initialize Application'
   description: 'Initialize Lapikit in Svelte and SvelteKit with the <kit:app> component: application context, global styles and a shared app structure.'
+navigation:
+  label: 'Initialize application'
 ---
 
 <script>

@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Avatar'
   description: 'Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards.'
+navigation:
+  label: 'Avatar'
+  name: 'kit:avatar'
+  description: 'User profile picture with fallback initials.'
 ---
 
 <script>

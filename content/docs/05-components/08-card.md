@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Card'
   description: 'Organize and display content in visually coherent blocks. The Lapikit card component is easy to style.'
+navigation:
+  label: 'Card'
+  name: 'kit:card'
+  description: 'Surface container for grouped, related content.'
 ---
 
 <script>

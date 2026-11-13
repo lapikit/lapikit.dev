@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { docsNavigation } from '$lib/router';
+	import { page } from '$app/state';
 
 	let { key = 'Essentials' }: { key: string } = $props();
 
-	const hooks = docsNavigation.find((section) => section.label === key)?.pages ?? [];
+	const hooks = $derived(
+		page.data.navigation.find((section) => section.label === key)?.pages ?? []
+	);
 </script>
 
 <kit:list density="comfortable">

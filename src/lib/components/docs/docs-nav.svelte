@@ -4,19 +4,35 @@
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
 	import { useAccordion } from 'lapikit/actions';
-	import { docsNavigation } from '$lib/router';
 	import { npmState } from '$lib/state/npm.svelte';
 	import { isCurrentPath } from '$lib/utils';
 
-	import { GitMerge } from 'lucide-svelte';
+	import {
+		Container,
+		GitMerge,
+		Puzzle,
+		SquareFunction,
+		ToolCase,
+		VectorSquare
+	} from 'lucide-svelte';
 
 	let { onnavigate }: { onnavigate?: () => void } = $props();
 
 	const deprecated_label = 'Deprecated';
 	const deprecatedIndex = 0;
 
-	const sections = docsNavigation.filter(({ label }) => label !== deprecated_label);
-	const deprecated = docsNavigation.find(({ label }) => label === deprecated_label)?.pages ?? [];
+	const section_icons: Record<string, typeof Container> = {
+		'Getting Started': Container,
+		Essentials: ToolCase,
+		Components: Puzzle,
+		'Stores and Hooks': SquareFunction,
+		'Extra Topics': VectorSquare
+	};
+
+	const sections = $derived(page.data.navigation.filter(({ label }) => label !== deprecated_label));
+	const deprecated = $derived(
+		page.data.navigation.find(({ label }) => label === deprecated_label)?.pages ?? []
+	);
 	const accordion = useAccordion();
 
 	const releases = $derived([
@@ -58,14 +74,12 @@
 
 <div class="docs-nav">
 	<nav bind:this={nav} class="docs-nav-links" aria-label="Documentation">
-		{#each sections as { label, icon, pages } (label)}
+		{#each sections as { label, pages } (label)}
+			{@const Icon = section_icons[label]}
 			<div class="docs-nav-group">
 				<p class="docs-nav-group-title">
 					<kit:icon size="sm">
-						{#if typeof icon === 'string'}
-							{@html icon}
-						{:else}
-							{@const Icon = icon}
+						{#if Icon}
 							<Icon />
 						{/if}
 					</kit:icon>

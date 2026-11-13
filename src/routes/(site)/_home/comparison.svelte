@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Check, Minus, X } from 'lucide-svelte';
+	import { page } from '$app/state';
 	import { capitalize } from '$lib/utils';
-	import { tableHome, tableHomeList } from './libs';
+	import { createTableHomeList, tableHome } from './libs';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';
@@ -9,6 +10,8 @@
 
 	type Value = string | number;
 	type Edge = { value: string; label: string; text: string };
+
+	const tableHomeList = createTableHomeList(page.data.counts);
 
 	const [lapikit, ...others] = tableHomeList;
 

@@ -1,14 +1,17 @@
 <script lang="ts">
 	import type { ModelAccordionItemProps } from 'lapikit/components';
 	import { useAccordion } from 'lapikit/actions';
+	import { page } from '$app/state';
 	import { capitalize, isExternal } from '$lib/utils';
-	import { faqContact, faqHome } from './faq-home';
+	import { createFaqHome, faqContact } from './faq-home';
 
 	import { ArrowUpRight, Minus, Plus } from 'lucide-svelte';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';
 	import SheetHeading from '$lib/components/sheet/sheet-heading.svelte';
+
+	const faqHome = createFaqHome(page.data.counts);
 
 	const accordion = useAccordion();
 	accordion.toggle(0);

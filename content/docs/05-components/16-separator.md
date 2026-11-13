@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Separator'
   description: 'Visually separate your UI blocks with customizable lines in size, color, orientation and opacity.'
+navigation:
+  label: 'Separator'
+  name: 'kit:separator'
+  description: 'Visual divider between sections or list items.'
 ---
 
 <script>

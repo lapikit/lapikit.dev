@@ -9,6 +9,8 @@ keywords:
   - 'acknowledgements'
   - 'discover'
   - 'lapikit'
+navigation:
+  label: 'Introduction'
 ---
 
 <script>

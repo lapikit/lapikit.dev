@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { siteUrl } from '$lib/utils';
 	import DocArticle from './_article/doc-article.svelte';
+	import DocBlocks from './_article/doc-blocks.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-
-	const Content = $derived(data.content.component);
 </script>
 
 <svelte:head>
@@ -13,5 +12,10 @@
 </svelte:head>
 
 <DocArticle doc={data.doc} summary={data.content.summary} prev={data.prevDoc} next={data.nextDoc}>
-	<Content />
+	{#if 'blocks' in data.content}
+		<DocBlocks blocks={data.content.blocks} />
+	{:else}
+		{@const Content = data.content.component}
+		<Content />
+	{/if}
 </DocArticle>

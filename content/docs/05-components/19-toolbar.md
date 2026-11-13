@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Toolbar'
   description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
+navigation:
+  label: 'Toolbar'
+  name: 'kit:toolbar'
+  description: 'Horizontal bar grouping actions and controls.'
 ---
 
 <script>

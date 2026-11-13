@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Tooltip'
   description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
+navigation:
+  label: 'Tooltip'
+  name: 'kit:tooltip'
+  description: 'Short contextual hint shown on hover or focus.'
 ---
 
 <script>

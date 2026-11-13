@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Dialog'
   description: 'Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management.'
+navigation:
+  label: 'Dialog'
+  name: 'kit:dialog'
+  description: 'Accessible modal dialog for confirmations and forms.'
 ---
 
 <script>

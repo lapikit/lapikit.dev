@@ -9,6 +9,8 @@ keywords:
   - 'configuration'
   - 'preprocessor'
   - 'vite'
+navigation:
+  label: 'Quick Start'
 ---
 
 <script>

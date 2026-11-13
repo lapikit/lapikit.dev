@@ -7,13 +7,20 @@ export type NavPage = {
 	icon?: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type IconComponent = new (...args: any[]) => any;
-
 export type NavSection = {
 	label: string;
-	icon: string | IconComponent;
 	pages: NavPage[];
+};
+
+export type DocLink = {
+	slug: string;
+	title: string;
+	path: string;
+};
+
+export type DocCounts = {
+	components: number;
+	hooks: number;
 };
 
 export type AppNavChild = {

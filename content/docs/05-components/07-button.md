@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Button'
   description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
+navigation:
+  label: 'Button'
+  name: 'kit:btn'
+  description: 'Interactive element with multiple variants and sizes.'
 ---
 
 <script>

@@ -1,4 +1,7 @@
-import type { FrontmatterData, FrontmatterValue } from './types.ts';
+export type FrontmatterValue =
+	string | number | boolean | null | FrontmatterValue[] | { [key: string]: FrontmatterValue };
+
+export type FrontmatterData = Record<string, FrontmatterValue>;
 
 const frontmatter_block = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
 

@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Appbar'
   description: 'Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones.'
+navigation:
+  label: 'Appbar'
+  name: 'kit:appbar'
+  description: 'Top navigation bar with slots for branding and actions.'
 ---
 
 <script>

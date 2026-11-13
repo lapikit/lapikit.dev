@@ -4,6 +4,8 @@ category: 'Essentials'
 head:
   title: 'Template Syntax'
   description: 'How the Lapikit preprocessor extends Svelte templates: the <kit:*> component syntax, automatic imports and dynamic styling helpers.'
+navigation:
+  label: 'Template syntax'
 ---
 
 <script>

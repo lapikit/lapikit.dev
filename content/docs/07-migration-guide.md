@@ -9,6 +9,8 @@ keywords:
   - 'upgrade'
   - 'changelog'
   - 'breaking changes'
+navigation:
+  label: 'Migration Guide'
 ---
 
 Learn how to migrate from older Lapikit versions to the latest release.

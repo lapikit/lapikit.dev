@@ -1,40 +1,20 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsByPath, docsBySlug, loadDocContent } from '$lib/pages';
-import { docsNavigation } from '$lib/router';
+import { docs, docsBySlug, loadDocContent } from '$lib/pages';
 
 export const prerender = true;
-
-const navPaths = docsNavigation.flatMap((section) => section.pages.map((page) => page.url));
 
 export function entries() {
 	return docs.map((doc) => ({ slug: doc.path.slug }));
 }
 
-export async function load({ params }) {
+export async function load({ params, data }) {
 	const doc = docsBySlug.get(params.slug ?? '');
 
 	if (!doc) {
 		throw error(404, 'Documentation page not found');
 	}
 
-	const index = navPaths.indexOf(doc.path.pathname);
-	const prevPath = index > 0 ? navPaths[index - 1] : null;
-	const nextPath = index !== -1 && index < navPaths.length - 1 ? navPaths[index + 1] : null;
+	const content = data.rendered ?? (await loadDocContent(doc));
 
-	const prevDoc = prevPath ? toDocLink(prevPath) : null;
-	const nextDoc = nextPath ? toDocLink(nextPath) : null;
-
-	const content = await loadDocContent(doc);
-
-	return { doc, content, prevDoc, nextDoc };
-}
-
-function toDocLink(pathname: string) {
-	const doc = docsByPath.get(pathname);
-	if (!doc) return null;
-	return {
-		slug: doc.path.slug,
-		title: doc?.head?.title || doc.title,
-		path: doc.path.pathname
-	};
+	return { doc, content, prevDoc: data.prev, nextDoc: data.next };
 }

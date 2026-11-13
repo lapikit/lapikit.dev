@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, extname, join } from 'node:path';
-import { readFrontmatter } from './frontmatter.ts';
+import { readFrontmatter } from '../../src/lib/server/frontmatter.ts';
 import { deriveSource } from './source.ts';
 import type { FrontmatterData, ManifestEntry } from './types.ts';
 
@@ -44,6 +44,7 @@ async function collectFolderEntries({ dir, urlPrefix }: { dir: string; urlPrefix
 			const filePath = join(entry.parentPath, entry.name);
 			const content = await readFile(filePath, 'utf8');
 			const frontmatter = readFrontmatter(content);
+			delete frontmatter.navigation;
 			const path = deriveSource(filePath, baseDir, urlPrefix);
 			const title = asOptionalTitle(frontmatter.title) ?? fallbackTitle(path.slugSegments);
 			const lastModified = getLastModified(path.sourcePath);

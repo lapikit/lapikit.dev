@@ -4,6 +4,9 @@ category: 'Stores and Hooks'
 head:
   title: 'useAccordion'
   description: 'The useAccordion hook from Lapikit manages expandable sections in Svelte: synchronized state, no prop drilling and no manual event handling.'
+navigation:
+  label: 'useAccordion'
+  description: 'Controls accordion open/close states and syncs sections automatically'
 ---
 
 <script>

@@ -11,6 +11,8 @@ keywords:
   - 'styles'
   - 'css variables'
   - 'design tokens'
+navigation:
+  label: 'Customization'
 ---
 
 <script>

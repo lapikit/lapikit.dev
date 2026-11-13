@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Alert'
   description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
+navigation:
+  label: 'Alert'
+  name: 'kit:alert'
+  description: 'Contextual feedback messages for user actions.'
 ---
 
 <script>

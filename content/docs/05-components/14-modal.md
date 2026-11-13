@@ -4,6 +4,10 @@ category: 'Components'
 head:
   title: 'Modal'
   description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
+navigation:
+  label: 'Modal'
+  name: 'kit:modal'
+  description: 'Full-screen overlay for focused tasks or content.'
 ---
 
 <script>
