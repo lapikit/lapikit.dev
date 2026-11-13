@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { command, pkg_manager } from '$lib/constants';
-	import { application, type PkgManager } from '$lib/stores/app.svelte';
+	import { preferences, type PkgManager } from '$lib/state/ui.svelte';
 
 	// modules
 	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
@@ -29,7 +29,7 @@
 	}
 
 	$effect(() => {
-		const pkg = application.pkg_selected;
+		const pkg = preferences.pkg_selected;
 		if (!wrapper) return;
 
 		selectTab(pkg);
@@ -49,7 +49,7 @@
 				?.querySelector('span')
 				?.textContent?.trim();
 			if (name && managers.includes(name as PkgManager)) {
-				application.pkg_selected = name as PkgManager;
+				preferences.pkg_selected = name as PkgManager;
 			}
 		};
 

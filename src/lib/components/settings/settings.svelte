@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PopoverTriggerProps } from 'lapikit/components';
 	import { lang_manager, pkg_manager } from '$lib/constants';
-	import { application, type LangManager, type PkgManager } from '$lib/stores/app.svelte';
+	import { preferences, type LangManager, type PkgManager } from '$lib/state/ui.svelte';
 
 	import { Settings } from 'lucide-svelte';
 
@@ -58,8 +58,8 @@
 		<p id="settings-package" class="settings-label">Package manager</p>
 		<div class="settings-options" role="group" aria-labelledby="settings-package">
 			{#each managers as [key, { label, icon }] (key)}
-				{@render option(label, icon, key === application.pkg_selected, () => {
-					application.pkg_selected = key;
+				{@render option(label, icon, key === preferences.pkg_selected, () => {
+					preferences.pkg_selected = key;
 				})}
 			{/each}
 		</div>
@@ -72,7 +72,7 @@
 		</p>
 		<div class="settings-options" role="group" aria-labelledby="settings-language">
 			{#each languages as [key, { label, icon }] (key)}
-				{@render option(label, icon, key === application.lang_selected)}
+				{@render option(label, icon, key === preferences.lang_selected)}
 			{/each}
 		</div>
 	</section>

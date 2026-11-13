@@ -3,7 +3,7 @@
 	import type { AppNavChild } from '$lib/@types';
 	import { capitalize, isExternal } from '$lib/utils';
 	import { useAccordion } from 'lapikit/actions';
-	import { openConsentPreferences } from '$lib/stores/consent.svelte';
+	import { openConsentPreferences } from '$lib/state/ui.svelte';
 
 	import { links, urlLapikitLicense, type LinkName } from '$lib/constants';
 	import { router } from '$lib/router';

@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
 	import { nbComponents } from '$lib/router';
-	import { npmState } from '$lib/stores/npm.svelte';
+	import { npmState } from '$lib/state/npm.svelte';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';

@@ -12,9 +12,9 @@
 	import { getTechArticleStructuredData, getWebsiteStructuredData } from '$lib/structured-data';
 	import { pagesByPath } from '$lib/pages';
 	import { capitalize, printConsoleMessage } from '$lib/utils';
-	import { setNpmStats } from '$lib/stores/npm.svelte';
-	import { setGithubStats } from '$lib/stores/github.svelte';
-	import { NavState, setNavContext } from '$lib/stores/nav.svelte';
+	import { setNpmStats } from '$lib/state/npm.svelte';
+	import { setGithubStats } from '$lib/state/github.svelte';
+	import { NavState, setNavContext } from '$lib/state/nav.svelte';
 
 	// components
 	// consent stays static: for a new visitor it is the LCP element, a dynamic import would add

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { npmState } from '$lib/stores/npm.svelte';
+	import { npmState } from '$lib/state/npm.svelte';
 
 	import SheetSpacer from '$lib/components/sheet/sheet-spacer.svelte';
 	import Hero from './_home/hero.svelte';

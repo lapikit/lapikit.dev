@@ -15,7 +15,7 @@ keywords:
 	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 	import CommandRepl from '$lib/components/markdown/command-repl.svelte';
 	import { command } from '$lib/constants';
-	import { application } from '$lib/stores/app.svelte';
+	import { preferences } from '$lib/state/ui.svelte';
 
   // examples
   import configSvelteConfig from '$examples/config/config_svelte.config.js?raw';
@@ -53,7 +53,7 @@ To install Lapikit, run the following command in your project directory:
 
 Once installed, run the setup CLI to automatically configure the required preprocessor:
 
-<LazyRepl lang="sh" content={command[application.pkg_selected]['launch-cli']} />
+<LazyRepl lang="sh" content={command[preferences.pkg_selected]['launch-cli']} />
 
 **Note: If you are using SvelteKit, the CLI will detect your setup automatically and apply the recommended configuration. For other setups, follow the manual configuration steps below.**
 

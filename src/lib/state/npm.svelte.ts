@@ -17,7 +17,7 @@ export function setNpmStats(stats: NpmStats) {
 	if (stats.downloads) npmState.downloads = stats.downloads;
 }
 
-export async function loadNpmData() {
+async function loadNpmData() {
 	try {
 		const response = await fetch('/api/npm');
 		if (!response.ok) throw new Error(String(response.status));

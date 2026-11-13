@@ -5,7 +5,7 @@
 	import type { Pathname } from '$app/types';
 	import { useAccordion } from 'lapikit/actions';
 	import { docsNavigation } from '$lib/router';
-	import { npmState } from '$lib/stores/npm.svelte';
+	import { npmState } from '$lib/state/npm.svelte';
 	import { isCurrentPath } from '$lib/utils';
 
 	import { GitMerge } from 'lucide-svelte';

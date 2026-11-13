@@ -3,8 +3,8 @@
 	import { resolve } from '$app/paths';
 	import { links } from '$lib/constants';
 	import { router } from '$lib/router';
-	import { githubState } from '$lib/stores/github.svelte';
-	import { getNavContext } from '$lib/stores/nav.svelte';
+	import { githubState } from '$lib/state/github.svelte';
+	import { getNavContext } from '$lib/state/nav.svelte';
 
 	import { Menu, Star } from 'lucide-svelte';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { command, pkg_manager } from '$lib/constants';
-	import { application, type PkgManager } from '$lib/stores/app.svelte';
+	import { preferences, type PkgManager } from '$lib/state/ui.svelte';
 	import { copyToClipboard } from '$lib/utils';
 
 	import { Check, Copy } from 'lucide-svelte';
@@ -8,7 +8,7 @@
 	const copied_duration = 2000;
 
 	const managers = Object.keys(pkg_manager) as PkgManager[];
-	const line = $derived(command[application.pkg_selected]['install-lapikit']);
+	const line = $derived(command[preferences.pkg_selected]['install-lapikit']);
 
 	let copied = $state(false);
 	let resetTimer: ReturnType<typeof setTimeout> | undefined;
@@ -24,7 +24,7 @@
 <div class="install-command">
 	<div class="install-command-managers" role="group" aria-label="Package manager">
 		{#each managers as manager (manager)}
-			{@const selected = manager === application.pkg_selected}
+			{@const selected = manager === preferences.pkg_selected}
 			<kit:btn
 				size="sm"
 				density="compact"
@@ -32,7 +32,7 @@
 				variant={selected ? 'tonal' : 'text'}
 				active={selected}
 				aria-pressed={selected}
-				onclick={() => (application.pkg_selected = manager)}
+				onclick={() => (preferences.pkg_selected = manager)}
 			>
 				{manager}
 			</kit:btn>

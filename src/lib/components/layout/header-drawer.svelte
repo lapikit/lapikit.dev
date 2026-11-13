@@ -5,7 +5,7 @@
 	import type { AppNavItem } from '$lib/@types';
 	import { capitalize, isCurrentPath } from '$lib/utils';
 	import { links, type LinkName } from '$lib/constants';
-	import { getNavContext } from '$lib/stores/nav.svelte';
+	import { getNavContext } from '$lib/state/nav.svelte';
 
 	import { ArrowRight, X } from 'lucide-svelte';
 

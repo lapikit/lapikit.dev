@@ -13,7 +13,7 @@
 	} from '$lib/hooks';
 	import { deleteCookie, getCookie, setCookie } from '$lib/utils';
 	import { consent_cookie } from '$lib/constants';
-	import { consentState } from '$lib/stores/consent.svelte';
+	import { consentState } from '$lib/state/ui.svelte';
 
 	import { ArrowLeft } from 'lucide-svelte';
 
