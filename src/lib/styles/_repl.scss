@@ -11,6 +11,7 @@
 	}
 
 	div.kit-repl-container .kit-repl-wrapper-playground,
+	.kit-repl-content--playground > .wrapper-playground,
 	.lazy-repl__preview {
 		padding: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
 		background-color: var(--kit-color-surface);
