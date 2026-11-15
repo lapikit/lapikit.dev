@@ -1,6 +1,13 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
-import type { BreadcrumbItem, DocCounts, DocSuggestion, DocSummary, NavSection } from '$lib/types';
+import type {
+	BreadcrumbItem,
+	DocCounts,
+	DocSuggestion,
+	DocSummary,
+	GitCommit,
+	NavSection
+} from '$lib/types';
 
 declare global {
 	namespace App {
@@ -14,6 +21,7 @@ declare global {
 			counts: DocCounts;
 			seo: DocSummary;
 			breadcrumbs: BreadcrumbItem[];
+			commits?: GitCommit[];
 		}
 		// interface PageState {}
 		// interface Platform {}

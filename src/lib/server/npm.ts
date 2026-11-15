@@ -1,4 +1,5 @@
 import type { NpmStats } from '$lib/types';
+import { cached } from './cache';
 import { fetchJson, formatCount } from './fetch-json';
 
 export const emptyNpmStats: NpmStats = {
@@ -21,11 +22,11 @@ async function collectStats(): Promise<NpmStats> {
 	};
 }
 
-export async function getNpmStats(): Promise<NpmStats | null> {
+export const getNpmStats = cached(async (): Promise<NpmStats | null> => {
 	try {
 		return await collectStats();
 	} catch (error) {
 		console.warn('[npm] unable to load stats', error);
 		return null;
 	}
-}
+});

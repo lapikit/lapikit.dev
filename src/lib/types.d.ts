@@ -121,3 +121,9 @@ export type NpmStats = {
 export type GithubStats = {
 	stars: string;
 };
+
+export type GitCommit = {
+	hash: string;
+	message: string;
+	tag?: string;
+};
