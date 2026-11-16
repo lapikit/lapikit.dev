@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Aspect Ratio'
   description: 'Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component.'
+keywords:
+  - 'kit:aspect-ratio'
+  - 'ratio'
+  - 'responsive'
+  - 'video'
+  - 'embed'
 navigation:
   label: 'Aspect ratio'
   name: 'kit:aspect-ratio'

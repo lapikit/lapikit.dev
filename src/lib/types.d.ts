@@ -1,5 +1,16 @@
 import type { Pathname } from '$app/types';
 
+export type PageSeo = {
+	title: string;
+	type?: string;
+	state?: 'deprecated';
+	lastModified?: string;
+	head?: {
+		title?: string;
+		description?: string;
+	};
+};
+
 export type MarkdownHeading = {
 	depth: 1 | 2 | 3;
 	slug: string;
@@ -29,13 +40,16 @@ export type DocSummary = {
 
 export type ReplFile = { code: string; lang: string };
 
+export type ReplContent = string | Record<string, ReplFile>;
+
 export type DocBlock =
 	| { type: 'html'; html: string }
 	| { type: 'callout'; html: string }
 	| {
 			type: 'repl';
-			content: string | Record<string, ReplFile>;
+			content: ReplContent;
 			lang?: string;
+			javascript?: { content: ReplContent; lang?: string };
 			title?: string;
 			presentation: boolean;
 			demo?: string;
@@ -120,6 +134,12 @@ export type NpmStats = {
 
 export type GithubStats = {
 	stars: string;
+};
+
+export type MarqueeComponent = {
+	name: string;
+	url: string;
+	image: string;
 };
 
 export type GitCommit = {

@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Popover'
   description: 'Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements.'
+keywords:
+  - 'kit:popover'
+  - 'floating'
+  - 'popup'
+  - 'overlay'
+  - 'anchor'
 navigation:
   label: 'Popover'
   name: 'kit:popover'

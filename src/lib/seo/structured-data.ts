@@ -1,4 +1,4 @@
-import type { DocSummary } from '$lib/types';
+import type { PageSeo } from '$lib/types';
 
 const site_name = 'Lapikit';
 
@@ -25,7 +25,7 @@ export function getWebsiteStructuredData(origin: string) {
 
 // documentation pages: dateModified comes from the last commit on the source file
 export function getTechArticleStructuredData(
-	doc: DocSummary,
+	doc: PageSeo,
 	{
 		origin,
 		url,

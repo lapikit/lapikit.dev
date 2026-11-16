@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Separator'
   description: 'Visually separate your UI blocks with customizable lines in size, color, orientation and opacity.'
+keywords:
+  - 'kit:separator'
+  - 'divider'
+  - 'hr'
+  - 'line'
+  - 'rule'
 navigation:
   label: 'Separator'
   name: 'kit:separator'

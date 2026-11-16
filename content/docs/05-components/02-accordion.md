@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Accordion'
   description: 'Display expandable content in a seamless interface. The Lapikit accordion component is lightweight, accessible, and customizable.'
+keywords:
+  - 'kit:accordion'
+  - 'collapse'
+  - 'expand'
+  - 'disclosure'
+  - 'faq'
 navigation:
   label: 'Accordion'
   name: 'kit:accordion'

@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'List'
   description: 'Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements.'
+keywords:
+  - 'kit:list'
+  - 'menu'
+  - 'items'
+  - 'list item'
 navigation:
   label: 'List'
   name: 'kit:list'

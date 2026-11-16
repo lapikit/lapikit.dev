@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Dropdown'
   description: 'Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning.'
+keywords:
+  - 'kit:dropdown'
+  - 'menu'
+  - 'select'
+  - 'options'
+  - 'context menu'
 navigation:
   label: 'Dropdown'
   name: 'kit:dropdown'

@@ -8,9 +8,10 @@ import 'prismjs/components/prism-javascript.js';
 import 'prismjs/components/prism-typescript.js';
 import 'prismjs/components/prism-json.js';
 import 'prism-svelte';
-import type { DocBlock, MarkdownHeading, RenderedDoc } from '$lib/types';
+import type { DocBlock, MarkdownHeading, RenderedDoc, ReplContent } from '$lib/types';
 import { slugify } from '$lib/utils/slugify.js';
 import { exampleCode, parseFence, type DocFence } from './doc-fences';
+import { javascriptFileName, stripTypes } from './strip-types';
 
 const assets = import.meta.glob<string>('/content/**/+assets/*', {
 	eager: true,
@@ -132,10 +133,34 @@ function createMarked(summary: MarkdownHeading[]) {
 	});
 }
 
-function toBlock(fence: DocFence): DocBlock {
+function javascriptContent(content: ReplContent, lang: string | undefined, origin: string) {
+	if (typeof content === 'string') {
+		const code = stripTypes(content, lang, origin);
+		return code === null || code === content ? undefined : code;
+	}
+
+	let changed = false;
+	const files = Object.entries(content).map(([name, file]) => {
+		const code = stripTypes(file.code, file.lang, `${origin} (${name})`) ?? file.code;
+		const javascriptName = javascriptFileName(name);
+		changed ||= code !== file.code || javascriptName !== name;
+		return [javascriptName, { code, lang: file.lang === 'ts' ? 'js' : file.lang }];
+	});
+
+	return changed ? Object.fromEntries(files) : undefined;
+}
+
+function javascriptVariant(content: ReplContent, lang: string | undefined, origin: string) {
+	const javascript = javascriptContent(content, lang, origin);
+	if (javascript === undefined) return {};
+
+	return { javascript: { content: javascript, lang: lang === 'ts' ? 'js' : lang } };
+}
+
+function toBlock(fence: DocFence, file: string): DocBlock {
 	switch (fence.kind) {
 		case 'repl': {
-			const content = fence.files.length
+			const content: ReplContent = fence.files.length
 				? Object.fromEntries(
 						fence.files.map(({ name, lang, path }) => [name, { code: exampleCode(path), lang }])
 					)
@@ -149,7 +174,8 @@ function toBlock(fence: DocFence): DocBlock {
 				lang: fence.lang,
 				title: fence.title,
 				presentation: fence.presentation,
-				demo: fence.demo
+				demo: fence.demo,
+				...javascriptVariant(content, fence.lang, fence.source ?? file)
 			};
 		}
 		case 'command':
@@ -194,7 +220,7 @@ export function renderMarkdown(source: string, file: string): RenderedDoc {
 
 		if (fence) {
 			flush();
-			blocks.push(toBlock(fence));
+			blocks.push(toBlock(fence, file));
 		} else if (token.type === 'blockquote') {
 			flush();
 			const html = parse((token as Tokens.Blockquote).tokens);

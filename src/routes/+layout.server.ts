@@ -10,7 +10,6 @@ export const load: LayoutServerLoad = async () => {
 	return {
 		npm: npm ?? emptyNpmStats,
 		github: github ?? emptyGithubStats,
-		navigation: docs.navigation,
 		counts: docs.counts,
 		...pageMeta('/')
 	};

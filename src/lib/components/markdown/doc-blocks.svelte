@@ -22,10 +22,12 @@
 		<Blockquote>{@html block.html}</Blockquote>
 	{:else if block.type === 'repl'}
 		{@const Demo = block.demo ? demos[block.demo] : undefined}
+		{@const code =
+			preferences.lang_selected === 'javascript' && block.javascript ? block.javascript : block}
 		{#if Demo}
 			<LazyRepl
-				content={block.content}
-				lang={block.lang as ReplLang}
+				content={code.content}
+				lang={code.lang as ReplLang}
 				title={block.title}
 				presentation={block.presentation}
 			>
@@ -33,8 +35,8 @@
 			</LazyRepl>
 		{:else}
 			<LazyRepl
-				content={block.content}
-				lang={block.lang as ReplLang}
+				content={code.content}
+				lang={code.lang as ReplLang}
 				title={block.title}
 				presentation={block.presentation}
 			/>

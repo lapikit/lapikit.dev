@@ -4,6 +4,13 @@ category: 'Components'
 head:
   title: 'Alert'
   description: 'Display alert or status messages. Manage variants, densities and info types for effective user feedback.'
+keywords:
+  - 'kit:alert'
+  - 'banner'
+  - 'notification'
+  - 'message'
+  - 'warning'
+  - 'dismiss'
 navigation:
   label: 'Alert'
   name: 'kit:alert'

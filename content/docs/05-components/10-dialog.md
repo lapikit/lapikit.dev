@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Dialog'
   description: 'Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management.'
+keywords:
+  - 'kit:dialog'
+  - 'popup'
+  - 'overlay'
+  - 'window'
+  - 'confirm'
 navigation:
   label: 'Dialog'
   name: 'kit:dialog'

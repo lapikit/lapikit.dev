@@ -4,6 +4,13 @@ category: 'Essentials'
 head:
   title: 'Class and Style'
   description: 'With Lili, the Lapikit preprocessor, Lapikit components handle class (clsx), class: and style: exactly like native HTML elements in Svelte.'
+keywords:
+  - 'class:'
+  - 'style:'
+  - 'directive'
+  - 's-class'
+  - 's-style'
+  - 'css'
 navigation:
   label: 'Classes and Styles'
 ---

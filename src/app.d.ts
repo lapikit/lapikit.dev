@@ -4,9 +4,10 @@ import type {
 	BreadcrumbItem,
 	DocCounts,
 	DocSuggestion,
-	DocSummary,
 	GitCommit,
-	NavSection
+	MarqueeComponent,
+	NavSection,
+	PageSeo
 } from '$lib/types';
 
 declare global {
@@ -17,11 +18,12 @@ declare global {
 		}
 		// interface Locals {}
 		interface PageData {
-			navigation: NavSection[];
+			navigation?: NavSection[];
 			counts: DocCounts;
-			seo: DocSummary;
+			seo: PageSeo;
 			breadcrumbs: BreadcrumbItem[];
 			commits?: GitCommit[];
+			components?: MarqueeComponent[];
 		}
 		// interface PageState {}
 		// interface Platform {}

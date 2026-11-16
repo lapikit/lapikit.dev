@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Field'
   description: 'The base of the Lapikit form fields: wrap any control (select, date picker, custom input) with the style, messages and states of a textfield.'
+keywords:
+  - 'kit:field'
+  - 'form'
+  - 'input'
+  - 'label'
+  - 'validation'
 navigation:
   label: 'Field'
   name: 'kit:field'

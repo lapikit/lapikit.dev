@@ -4,7 +4,7 @@
 	let { key = 'Essentials' }: { key: string } = $props();
 
 	const hooks = $derived(
-		page.data.navigation.find((section) => section.label === key)?.pages ?? []
+		(page.data.navigation ?? []).find((section) => section.label === key)?.pages ?? []
 	);
 </script>
 

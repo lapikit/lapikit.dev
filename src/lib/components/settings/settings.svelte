@@ -66,13 +66,12 @@
 	</section>
 
 	<section class="settings-section" aria-labelledby="settings-language">
-		<p id="settings-language" class="settings-label">
-			Language
-			<span class="settings-soon">Soon</span>
-		</p>
+		<p id="settings-language" class="settings-label">Language</p>
 		<div class="settings-options" role="group" aria-labelledby="settings-language">
 			{#each languages as [key, { label, icon }] (key)}
-				{@render option(label, icon, key === preferences.lang_selected)}
+				{@render option(label, icon, key === preferences.lang_selected, () => {
+					preferences.lang_selected = key;
+				})}
 			{/each}
 		</div>
 	</section>
@@ -106,15 +105,6 @@
 		color: var(--kit-color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-	}
-
-	.settings-soon {
-		padding: 1px 6px;
-		border: 1px solid var(--kit-color-border);
-		border-radius: 999px;
-		font-size: var(--text-2xs);
-		letter-spacing: 0.04em;
-		text-transform: none;
 	}
 
 	.settings-options {

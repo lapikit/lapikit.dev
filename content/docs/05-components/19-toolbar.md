@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'Toolbar'
   description: 'Group actions in a compact, coherent space. Ideal for headers, lists or content filters.'
+keywords:
+  - 'kit:toolbar'
+  - 'actions'
+  - 'bar'
+  - 'button group'
 navigation:
   label: 'Toolbar'
   name: 'kit:toolbar'

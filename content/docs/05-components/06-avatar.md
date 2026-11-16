@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Avatar'
   description: 'Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards.'
+keywords:
+  - 'kit:avatar'
+  - 'profile'
+  - 'user'
+  - 'picture'
+  - 'initials'
 navigation:
   label: 'Avatar'
   name: 'kit:avatar'

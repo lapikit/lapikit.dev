@@ -14,6 +14,7 @@
 	import { setNpmStats } from '$lib/state/npm.svelte';
 	import { setGithubStats } from '$lib/state/github.svelte';
 	import { NavState, setNavContext } from '$lib/state/nav.svelte';
+	import { persistPreferences } from '$lib/state/ui.svelte';
 
 	// components
 	// consent stays static: for a new visitor it is the LCP element, a dynamic import would add
@@ -31,6 +32,8 @@
 	// search and click spark are not needed for the first render: their JS loads on demand
 	const loadSearch = () => import('$lib/components/search/search.svelte');
 	const loadClickSpark = () => import('$lib/components/layout/click-spark.svelte');
+
+	persistPreferences();
 
 	const isDesktop = new MediaQuery('min-width: 1024px');
 	const path = $derived(page.url.pathname.replace(/\/$/, '') || '/');

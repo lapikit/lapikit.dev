@@ -4,6 +4,11 @@ category: 'Stores and Hooks'
 head:
   title: 'Hooks stores and actions'
   description: 'Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluent.'
+keywords:
+  - 'actions'
+  - 'stores'
+  - 'runes'
+  - 'utilities'
 navigation:
   label: 'All hooks'
 ---

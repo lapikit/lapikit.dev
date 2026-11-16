@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'Tooltip'
   description: 'Provide additional info without cluttering the UI. Display on hover with intelligent positioning.'
+keywords:
+  - 'kit:tooltip'
+  - 'hint'
+  - 'hover'
+  - 'title'
 navigation:
   label: 'Tooltip'
   name: 'kit:tooltip'

@@ -4,6 +4,11 @@ category: 'Stores and Hooks'
 head:
   title: 'useTheme action'
   description: 'The useTheme hook from Lapikit simplifies theme management in Svelte: switch between dark and light modes and keep every component in sync.'
+keywords:
+  - 'dark mode'
+  - 'light mode'
+  - 'theme switcher'
+  - 'color scheme'
 navigation:
   label: 'useTheme'
   description: 'Manages theme switching and keeps dark/light modes in sync across the app'

@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'Modal'
   description: 'Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking.'
+keywords:
+  - 'kit:modal'
+  - 'popup'
+  - 'overlay'
+  - 'lightbox'
 navigation:
   label: 'Modal'
   name: 'kit:modal'

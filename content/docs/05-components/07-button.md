@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'Button'
   description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
+keywords:
+  - 'kit:btn'
+  - 'click'
+  - 'cta'
+  - 'link'
 navigation:
   label: 'Button'
   name: 'kit:btn'

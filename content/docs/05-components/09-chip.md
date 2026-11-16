@@ -4,6 +4,12 @@ category: 'Components'
 head:
   title: 'Chip'
   description: 'Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants.'
+keywords:
+  - 'kit:chip'
+  - 'tag'
+  - 'badge'
+  - 'pill'
+  - 'filter'
 navigation:
   label: 'Chip'
   name: 'kit:chip'

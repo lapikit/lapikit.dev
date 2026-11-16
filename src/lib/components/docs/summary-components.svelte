@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 
 	const components = $derived(
-		page.data.navigation.find((section) => section.label === 'Components')?.pages ?? []
+		(page.data.navigation ?? []).find((section) => section.label === 'Components')?.pages ?? []
 	);
 </script>
 

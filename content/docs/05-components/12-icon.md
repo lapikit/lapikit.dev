@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'Icon'
   description: 'Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components.'
+keywords:
+  - 'kit:icon'
+  - 'svg'
+  - 'lucide'
+  - 'glyph'
 navigation:
   label: 'Icon'
   name: 'kit:icon'

@@ -29,9 +29,10 @@
 		'Extra Topics': VectorSquare
 	};
 
-	const sections = $derived(page.data.navigation.filter(({ label }) => label !== deprecated_label));
+	const navigation = $derived(page.data.navigation ?? []);
+	const sections = $derived(navigation.filter(({ label }) => label !== deprecated_label));
 	const deprecated = $derived(
-		page.data.navigation.find(({ label }) => label === deprecated_label)?.pages ?? []
+		navigation.find(({ label }) => label === deprecated_label)?.pages ?? []
 	);
 	const accordion = useAccordion();
 

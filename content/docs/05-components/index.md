@@ -4,6 +4,11 @@ category: 'Components'
 head:
   title: 'Components'
   description: 'Browse every Lapikit Svelte component: buttons, cards, dialogs, text fields and more. Accessible, lightweight and customizable for Svelte 5 and SvelteKit.'
+keywords:
+  - 'ui'
+  - 'catalog'
+  - 'library'
+  - 'widgets'
 navigation:
   label: 'All components'
 ---
