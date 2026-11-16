@@ -54,13 +54,15 @@ for (const pathname of ['/this-page-does-not-exist', '/docs/this-page-does-not-e
 	});
 }
 
-test('structured data is valid JSON with the expected types', async ({ page }) => {
-	const typesOn = async (pathname: string) => {
+const structured_data_types = {
+	'/': ['WebSite'],
+	'/docs/components/button': ['BreadcrumbList', 'TechArticle']
+};
+
+for (const [pathname, types] of Object.entries(structured_data_types)) {
+	test(`structured data on ${pathname} is valid JSON with the expected types`, async ({ page }) => {
 		await page.goto(pathname);
 		const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
-		return blocks.map((block) => JSON.parse(block)['@type']);
-	};
-
-	expect(await typesOn('/')).toEqual(['WebSite']);
-	expect(await typesOn('/docs/components/button')).toEqual(['BreadcrumbList', 'TechArticle']);
-});
+		expect(blocks.map((block) => JSON.parse(block)['@type'])).toEqual(types);
+	});
+}
