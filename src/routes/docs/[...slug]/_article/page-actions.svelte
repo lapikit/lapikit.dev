@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
-	import type { DocSummary } from '$lib/@types';
+	import type { DocSummary } from '$lib/types';
 	import { copyToClipboard, docEditUrl, docIssueUrl } from '$lib/utils';
 
 	import {

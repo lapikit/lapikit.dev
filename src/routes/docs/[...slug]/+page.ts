@@ -1,40 +1,28 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsByPath, docsBySlug, loadDocContent } from '$lib/pages';
-import { docsNavigation } from '$lib/router';
+import type { Component } from 'svelte';
 
 export const prerender = true;
 
-const navPaths = docsNavigation.flatMap((section) => section.pages.map((page) => page.url));
+const examples = import.meta.glob<{ default: Component }>('/content/examples/**/*.svelte');
 
-export function entries() {
-	return docs.map((doc) => ({ slug: doc.path.slug }));
-}
+export async function load({ data }) {
+	const { rendered, ...page } = data;
 
-export async function load({ params }) {
-	const doc = docsBySlug.get(params.slug ?? '');
+	const demoPaths = rendered.blocks.flatMap((block) => {
+		if (block.type === 'demo') return [block.path];
+		if (block.type === 'repl' && block.demo) return [block.demo];
+		return [];
+	});
 
-	if (!doc) {
-		throw error(404, 'Documentation page not found');
-	}
+	const demos = Object.fromEntries(
+		await Promise.all(
+			demoPaths.map(async (path) => {
+				const loader = examples[`/content/examples/${path}`];
+				if (!loader) error(500, `Missing example: content/examples/${path}`);
+				return [path, (await loader()).default] as const;
+			})
+		)
+	);
 
-	const index = navPaths.indexOf(doc.path.pathname);
-	const prevPath = index > 0 ? navPaths[index - 1] : null;
-	const nextPath = index !== -1 && index < navPaths.length - 1 ? navPaths[index + 1] : null;
-
-	const prevDoc = prevPath ? toDocLink(prevPath) : null;
-	const nextDoc = nextPath ? toDocLink(nextPath) : null;
-
-	const content = await loadDocContent(doc);
-
-	return { doc, content, prevDoc, nextDoc };
-}
-
-function toDocLink(pathname: string) {
-	const doc = docsByPath.get(pathname);
-	if (!doc) return null;
-	return {
-		slug: doc.path.slug,
-		title: doc?.head?.title || doc.title,
-		path: doc.path.pathname
-	};
+	return { ...page, content: { ...rendered, demos } };
 }

@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { page } from '$app/state';
-	import type { MarkdownHeading } from '$lib/@types';
+	import type { MarkdownHeading } from '$lib/types';
 	import { capitalize, slugify } from '$lib/utils';
-	import { getBreadcrumbs } from '$lib/breadcrumbs';
 
 	import SheetArticle from '$lib/components/sheet/sheet-article.svelte';
 	import SheetBreadcrumbs from '$lib/components/sheet/sheet-breadcrumbs.svelte';
@@ -20,8 +19,7 @@
 		children: Snippet;
 	} = $props();
 
-	const normalizedPath = $derived(page.url.pathname.replace(/\/$/, ''));
-	const breadcrumbs = $derived(getBreadcrumbs(normalizedPath));
+	const breadcrumbs = $derived(page.data.breadcrumbs);
 </script>
 
 {#snippet pageHeader()}

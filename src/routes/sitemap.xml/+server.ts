@@ -1,14 +1,12 @@
 import { PUBLIC_BASE_URL } from '$env/static/public';
-import { pages } from '$lib/pages';
+import { site } from '$lib/server/content';
 
 export const prerender = true;
 
 export async function GET() {
 	const baseUrl = PUBLIC_BASE_URL.replace(/\/$/, '');
 	// deprecated pages are noindex: listing them would send mixed signals to crawlers
-	const entries = pages
-		.filter((entry) => entry.state !== 'deprecated')
-		.sort((left, right) => left.path.pathname.localeCompare(right.path.pathname));
+	const entries = site.pages.filter((entry) => entry.state !== 'deprecated');
 
 	const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

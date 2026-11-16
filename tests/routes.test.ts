@@ -1,20 +1,20 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
-const manifest: { path: { pathname: string } }[] = JSON.parse(
-	readFileSync('src/lib/generated/manifest.json', 'utf8')
+const pages: { pathname: string }[] = JSON.parse(
+	readFileSync('build/prerendered/content.json', 'utf8')
 );
 
 test.beforeEach(async ({ page }) => {
 	await page.route(/^https?:\/\/(?!localhost[:/])/, (route) => route.abort());
 });
 
-for (const { path } of manifest) {
-	test(`${path.pathname} loads correctly`, async ({ page }) => {
+for (const { pathname } of pages) {
+	test(`${pathname} loads correctly`, async ({ page }) => {
 		const errors: string[] = [];
 		page.on('pageerror', (err) => errors.push(err.message));
 
-		const response = await page.goto(path.pathname);
+		const response = await page.goto(pathname);
 
 		expect(response?.status()).toBeLessThan(400);
 		expect(errors).toEqual([]);
@@ -54,13 +54,15 @@ for (const pathname of ['/this-page-does-not-exist', '/docs/this-page-does-not-e
 	});
 }
 
-test('structured data is valid JSON with the expected types', async ({ page }) => {
-	const typesOn = async (pathname: string) => {
+const structured_data_types = {
+	'/': ['WebSite'],
+	'/docs/components/button': ['BreadcrumbList', 'TechArticle']
+};
+
+for (const [pathname, types] of Object.entries(structured_data_types)) {
+	test(`structured data on ${pathname} is valid JSON with the expected types`, async ({ page }) => {
 		await page.goto(pathname);
 		const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
-		return blocks.map((block) => JSON.parse(block)['@type']);
-	};
-
-	expect(await typesOn('/')).toEqual(['WebSite']);
-	expect(await typesOn('/docs/components/button')).toEqual(['BreadcrumbList', 'TechArticle']);
-});
+		expect(blocks.map((block) => JSON.parse(block)['@type'])).toEqual(types);
+	});
+}

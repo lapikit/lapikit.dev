@@ -6,8 +6,8 @@ import { appendFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync } f
 // Run it with `bun run test:a11y`: each run writes reports/a11y-<date>_<time>.md
 // and compares its numbers with the previous report to show the evolution.
 
-const manifest: { path: { pathname: string } }[] = JSON.parse(
-	readFileSync('src/lib/generated/manifest.json', 'utf8')
+const pages: { pathname: string }[] = JSON.parse(
+	readFileSync('build/prerendered/content.json', 'utf8')
 );
 
 type Issue = { impact: string; help: string; url: string; pages: string[]; elements: string[] };
@@ -44,15 +44,15 @@ function formatChange(current: number, previous: number | undefined) {
 }
 
 test('accessibility report @a11y', async ({ page }) => {
-	test.setTimeout(manifest.length * 15_000);
+	test.setTimeout(pages.length * 15_000);
 
 	// no animations so the audited page is always the same
 	await page.emulateMedia({ reducedMotion: 'reduce' });
 
 	const issues = new Map<string, Issue>();
 
-	for (const { path } of manifest) {
-		await page.goto(path.pathname, { waitUntil: 'networkidle' });
+	for (const { pathname } of pages) {
+		await page.goto(pathname, { waitUntil: 'networkidle' });
 
 		const { violations } = await new AxeBuilder({ page })
 			.withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
@@ -66,7 +66,7 @@ test('accessibility report @a11y', async ({ page }) => {
 				pages: [],
 				elements: []
 			};
-			issue.pages.push(path.pathname);
+			issue.pages.push(pathname);
 			issue.elements.push(...violation.nodes.map((node) => node.target.join(' ')));
 			issues.set(violation.id, issue);
 		}
@@ -87,7 +87,7 @@ test('accessibility report @a11y', async ({ page }) => {
 			.replace('_', ' ')
 			.replace(/-(\d\d)$/, ':$1')}`,
 		'',
-		`${sorted.length} rules violated on ${manifest.length} pages (WCAG 2.1 AA).`,
+		`${sorted.length} rules violated on ${pages.length} pages (WCAG 2.1 AA).`,
 		previous ? `Evolution compared with \`${previous.file}\`.` : 'First report: no evolution yet.',
 		'',
 		'| Impact | Rule | Pages | Elements | Evolution | Problem |',

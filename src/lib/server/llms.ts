@@ -1,10 +1,11 @@
-import type { DocSummary } from '$lib/@types';
-import { docs, docsByPath } from '$lib/pages';
-import { docsNavigation } from '$lib/router';
+import type { DocSummary } from '$lib/types';
 import { siteUrl } from '$lib/utils';
+import { docs as content, site } from './content';
 import { docToMarkdown } from './doc-markdown';
 
 const deprecated = 'Deprecated';
+
+const docs = site.pages.filter((page) => page.path.sourcePath.startsWith('content/docs/'));
 
 const intro = [
 	'# Lapikit',
@@ -30,11 +31,11 @@ function entry(doc: DocSummary) {
 function groupDocs() {
 	const listed = new Set<string>();
 
-	const sections = docsNavigation
+	const sections = content.navigation
 		.filter(({ label }) => label !== deprecated)
 		.map(({ label, pages }) => {
 			const sectionDocs = pages
-				.map(({ url }) => docsByPath.get(url))
+				.map(({ url }) => content.pages[url]?.summary)
 				.filter((doc): doc is DocSummary => !!doc);
 			sectionDocs.forEach((doc) => listed.add(doc.path.pathname));
 			return { label, docs: sectionDocs };

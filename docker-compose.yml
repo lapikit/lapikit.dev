@@ -9,6 +9,8 @@ services:
       args:
         BUILD_ID: ${BUILD_ID:-local}
     restart: unless-stopped
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.services.lapikit_${LAPIKIT_ENV}.loadbalancer.server.port=3000'

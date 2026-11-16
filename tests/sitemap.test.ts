@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
-import type { DocSummary } from '../src/lib/@types';
+import type { SearchEntry } from '../src/lib/types';
 
-const manifest: DocSummary[] = JSON.parse(readFileSync('src/lib/generated/manifest.json', 'utf8'));
+const pages: SearchEntry[] = JSON.parse(readFileSync('build/prerendered/content.json', 'utf8'));
 
 test('sitemap only lists live pages', async ({ request }) => {
 	const response = await request.get('/sitemap.xml');
@@ -10,10 +10,10 @@ test('sitemap only lists live pages', async ({ request }) => {
 
 	const xml = await response.text();
 	const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => new URL(loc).pathname);
-	const deprecated = manifest.filter((doc) => doc.state === 'deprecated');
+	const deprecated = pages.filter((page) => page.deprecated);
 
-	expect(urls.length).toBe(manifest.length - deprecated.length);
-	for (const doc of deprecated) expect(urls).not.toContain(doc.path.pathname);
+	expect(urls.length).toBe(pages.length - deprecated.length);
+	for (const page of deprecated) expect(urls).not.toContain(page.pathname);
 
 	for (const [, date] of xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
 		expect(Number.isNaN(Date.parse(date))).toBe(false);

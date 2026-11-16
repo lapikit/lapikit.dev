@@ -1,5 +1,5 @@
 // datas
-import commandLine from '../content/command-line.json';
+import commandLine from './command-line.json';
 
 // icons
 import { Moon, Sun, SunMoon } from 'lucide-svelte';

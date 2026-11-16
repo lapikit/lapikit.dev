@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { MarkdownHeading } from '$lib/@types';
+	import type { MarkdownHeading } from '$lib/types';
 	import { capitalize, slugify } from '$lib/utils';
 	import { page } from '$app/state';
 

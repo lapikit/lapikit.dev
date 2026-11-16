@@ -1,0 +1,110 @@
+---
+title: 'Getting Started with Lapikit library for Svelte Projects'
+category: 'Getting Started'
+head:
+  title: 'quick start'
+  description: 'Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast.'
+keywords:
+  - 'install'
+  - 'configuration'
+  - 'preprocessor'
+  - 'vite'
+navigation:
+  label: 'Quick Start'
+---
+
+## Install Lapikit in your Svelte project
+
+**Prerequisites**
+
+Before installing Lapikit, make sure you have:
+
+- basic familiarity with the command line
+- an existing Svelte project (SvelteKit, Vite, or another Svelte setup) with Svelte 5.20 or later
+- Node 20.19 or later (Node 22.12 or later on the 22 branch), as required by Vite 7
+
+SvelteKit is recommended for the best experience, but Lapikit works with any Svelte project.
+
+Lapikit is written in TypeScript and fully supports TypeScript environments.
+
+JavaScript projects are also supported. You can ignore type annotations if needed.
+
+That said, TypeScript is recommended for a smoother developer experience, especially when working with advanced component props, stores, and hooks.
+
+## Install and configure Lapikit
+
+### Install Lapikit in your project directory
+
+To install Lapikit, run the following command in your project directory:
+
+```command
+install-lapikit
+```
+
+Once installed, run the setup CLI to automatically configure the required preprocessor:
+
+```command
+/// selected
+launch-cli
+```
+
+**Note: If you are using SvelteKit, the CLI will detect your setup automatically and apply the recommended configuration. For other setups, follow the manual configuration steps below.**
+
+If your project goes beyond the standard SvelteKit setup (routes, lib), we recommend using the manual installation process to minimize potential errors and, most importantly, to specify exactly where Lapikit should run. Otherwise, using the CLI will allow you to get Lapikit up and running in less than 5 minutes
+
+### Manual installation and configuration
+
+Configure the preprocessor manually in 3 steps:
+
+1. Install Lapikit:
+
+```command
+install-lapikit
+```
+
+2. Update your configuration file to include the Lapikit preprocessor:
+
+> [!NOTE]
+> Starting with SvelteKit 2.62, configuration lives in vite.config.(js|ts) rather than svelte.config.js.
+> Lapikit remains compatible with both.
+
+```repl
+/// file: svelte.config.js | js | config/config_svelte.config.js
+/// file: vite.config.js | js | config/config_vite.config.js
+/// file: vite.config.ts | ts | config/config_vite.config.ts
+```
+
+If you're using packages like TypeScript and eSLint in your project, we recommend checking out the [page on configuring environments](/docs/environments) with Lapikit.
+
+3. Restart your development server to apply the changes.
+
+You can now start using Lapikit components in your Svelte project. For example:
+
+```repl svelte
+/// title: +layout.svelte
+/// source: started/start-your-project-with-lapikit.svelte
+```
+
+## Explore the Lapikit documentation
+
+Once Lapikit is installed, you can start exploring the documentation to understand how components, stores, hooks, and themes work together.
+
+Each component includes examples, usage guides, and API references to help you integrate it quickly into your Svelte or SvelteKit project.
+
+### Integrate Lapikit into your design system
+
+Lapikit is built to adapt to your existing design system rather than replace it.
+
+You can customize components with styling props, CSS variables, or themes to keep a consistent visual language across your application.
+
+The customization guides explain how to configure themes, styles, dropdown, and global components.
+
+### Use Lapikit components
+
+Lapikit includes a growing collection of components for common interface patterns such as buttons, dialogs, dropdowns, tooltips, and forms.
+
+Components are designed to stay close to native HTML behavior while providing additional styling and reactive features.
+
+A helpful starting point is the documentation for the `kit:app` component, which describes the main wrapper component used to initialize the app's styles, themes, and overall behavior.
+
+Refer to the [`kit:app`](/docs/components/application) component documentation to learn more about how to use it and the features.

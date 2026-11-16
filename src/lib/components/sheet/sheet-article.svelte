@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { Action } from 'svelte/action';
 	import type { DropdownTriggerModel, DropdownTriggerProps } from 'lapikit/components';
-	import type { MarkdownHeading } from '$lib/@types';
+	import type { MarkdownHeading } from '$lib/types';
 	import { capitalize, slugify } from '$lib/utils';
 
 	import { ChevronDown, TextAlignStart } from 'lucide-svelte';

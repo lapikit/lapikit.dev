@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import type { Pathname } from '$app/types';
-	import { nbComponents } from '$lib/router';
 	import { npmState } from '$lib/state/npm.svelte';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
@@ -10,7 +10,11 @@
 	type Stat = { value: string; label: string; path?: Pathname };
 
 	const stats: Stat[] = $derived([
-		{ value: String(nbComponents), label: 'Svelte components', path: '/docs/components' },
+		{
+			value: String(page.data.counts.components),
+			label: 'Svelte components',
+			path: '/docs/components'
+		},
 		{ value: npmState.downloads || '—', label: 'Downloads on npm' },
 		{ value: npmState.version.latest || '—', label: 'Latest release', path: '/docs/changelog' },
 		{ value: 'MIT', label: 'Free and open source' }

@@ -2,8 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
-	import type { DocSummary } from '$lib/@types';
-	import { pages } from '$lib/pages';
+	import { onMount } from 'svelte';
+	import type { SearchEntry } from '$lib/types';
 	import { capitalize } from '$lib/utils';
 	import {
 		CornerDownLeft,
@@ -40,9 +40,13 @@
 
 	const normalize = (str: string) => str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
-	const searchablePages = pages.filter(
-		(page) => page.path.pathname !== '/' && page.state !== 'deprecated'
-	);
+	let searchablePages: SearchEntry[] = $state([]);
+
+	onMount(async () => {
+		const response = await fetch('/content.json');
+		const entries: SearchEntry[] = await response.json();
+		searchablePages = entries.filter((entry) => entry.pathname !== '/' && !entry.deprecated);
+	});
 
 	const trimmedQuery = $derived(query.trim());
 
@@ -51,7 +55,7 @@
 		if (!q) return [];
 
 		return searchablePages.filter((page) => {
-			const haystack = [page.title, page.category, page.head?.title, ...(page.keywords ?? [])]
+			const haystack = [page.title, page.category, page.label, ...(page.keywords ?? [])]
 				.filter(Boolean)
 				.map((s) => normalize(s as string));
 
@@ -110,9 +114,9 @@
 		open = false;
 	}
 
-	function navigateTo(page: DocSummary) {
+	function navigateTo(page: SearchEntry) {
 		handleClose();
-		goto(resolve(page.path.pathname as Pathname));
+		goto(resolve(page.pathname as Pathname));
 	}
 </script>
 
@@ -159,12 +163,12 @@
 
 	{#if results.length > 0}
 		<ul bind:this={listboxRef} id={listboxId} class="search-results" role="listbox">
-			{#each results as result, index (result.path.pathname)}
+			{#each results as result, index (result.pathname)}
 				{@const Icon = categoryIcons[result.category ?? ''] ?? StickyNote}
 				<li id={optionId(index)} role="option" aria-selected={index === selectedIndex}>
 					<a
 						class="search-result"
-						href={resolve(result.path.pathname as Pathname)}
+						href={resolve(result.pathname as Pathname)}
 						tabindex="-1"
 						onclick={handleClose}
 						onmouseenter={() => (selectedIndex = index)}
@@ -173,11 +177,9 @@
 							<kit:icon size="sm"><Icon /></kit:icon>
 						</span>
 						<span class="search-result-body">
-							<span class="search-result-title"
-								>{capitalize(result.head?.title ?? result.title)}</span
-							>
-							{#if result.head?.description}
-								<span class="search-result-text">{result.head.description}</span>
+							<span class="search-result-title">{capitalize(result.label)}</span>
+							{#if result.description}
+								<span class="search-result-text">{result.description}</span>
 							{/if}
 						</span>
 						{#if result.category}

@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { links, urlJoinLapikitTeam } from '$lib/constants';
 	import { npmState } from '$lib/state/npm.svelte';
-	import { profilGithub } from '../../../content/app/profil-github';
+	import { profilGithub } from './profil-github';
 
 	import { Plus, Star } from 'lucide-svelte';
 
 	import SheetSection from '$lib/components/sheet/sheet-section.svelte';
 	import SheetGrid from '$lib/components/sheet/sheet-grid.svelte';
 	import SheetHeading from '$lib/components/sheet/sheet-heading.svelte';
+	import GitLog from './git-log.svelte';
 
 	const downloadsText = $derived(
 		npmState.downloads ? ` and already counts ${npmState.downloads} downloads on npm` : ''
@@ -69,15 +70,7 @@
 
 		<div class="community-visual">
 			<kit:aspect-ratio ratio="4/3">
-				<img
-					src="https://picsum.photos/seed/lapikit-community/960/720"
-					alt="Lapikit community placeholder"
-					title="To replace: a collage of projects built with Lapikit or a photo of the community (4:3, about 960×720)"
-					width="960"
-					height="720"
-					loading="lazy"
-					decoding="async"
-				/>
+				<GitLog />
 			</kit:aspect-ratio>
 
 			<div class="community-contributors">

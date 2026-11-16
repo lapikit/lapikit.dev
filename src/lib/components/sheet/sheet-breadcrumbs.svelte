@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import type { BreadcrumbItem } from '$lib/@types';
+	import type { BreadcrumbItem } from '$lib/types';
 	import { capitalize } from '$lib/utils';
 
 	import { House } from 'lucide-svelte';

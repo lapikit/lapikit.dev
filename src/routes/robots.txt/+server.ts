@@ -1,7 +1,7 @@
 import { PUBLIC_BASE_URL, PUBLIC_DEV } from '$env/static/public';
 
-import robotsProduction from '../../content/robots/production.txt?raw';
-import robotsDevelopment from '../../content/robots/development.txt?raw';
+import robotsProduction from './production.txt?raw';
+import robotsDevelopment from './development.txt?raw';
 
 export const prerender = true;
 

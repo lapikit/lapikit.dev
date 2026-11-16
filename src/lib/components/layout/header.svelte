@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { links } from '$lib/constants';
-	import { router } from '$lib/router';
+	import { site_links } from '$lib/site-links';
 	import { githubState } from '$lib/state/github.svelte';
 	import { getNavContext } from '$lib/state/nav.svelte';
 
@@ -32,7 +32,7 @@
 	<Brand />
 
 	<nav class="header-nav" aria-label="Main">
-		<NavbarList data={router.app} />
+		<NavbarList data={site_links.app} />
 	</nav>
 
 	<div class="header-actions">
@@ -97,7 +97,7 @@
 
 {#if headerDrawerRequested}
 	{#await loadHeaderDrawer() then { default: HeaderDrawer }}
-		<HeaderDrawer data={router.app} />
+		<HeaderDrawer data={site_links.app} />
 	{/await}
 {/if}
 

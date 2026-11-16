@@ -1,28 +1,24 @@
 <script lang="ts">
-	import { router } from '$lib/router';
-	import type { NavPage } from '$lib/@types';
+	import { page } from '$app/state';
+	import type { MarqueeComponent } from '$lib/types';
 
 	// states
 	const row_count = 3;
 
-	const section = router.documentation.find((entry) => entry.label === 'Components');
+	const components = page.data.components ?? [];
 
-	const components: NavPage[] = (section?.pages ?? []).filter((page): page is NavPage =>
-		Boolean(page.image && page.name)
-	);
-
-	function fill(items: NavPage[], min = 14): NavPage[] {
+	function fill(items: MarqueeComponent[], min = 14): MarqueeComponent[] {
 		if (items.length === 0) return items;
-		const out: NavPage[] = [];
+		const out: MarqueeComponent[] = [];
 		while (out.length < min) out.push(...items);
 		return out;
 	}
 
 	const rows = Array.from({ length: row_count }, (_, row) => {
-		const offset = row * 3;
-		const ordered = [...components.slice(offset), ...components.slice(0, offset)];
+		const unique = components.filter((_, index) => index % row_count === row);
 		return {
-			items: fill(ordered.filter((_, index) => index % row_count === row)),
+			items: fill(unique),
+			uniqueCount: unique.length,
 			duration: [46, 62, 54][row] ?? 50,
 			reverse: row % 2 === 1
 		};
@@ -31,15 +27,15 @@
 
 <div id="list-components">
 	<div>
-		{#each rows as { items, duration, reverse }, row (row)}
+		{#each rows as { items, uniqueCount, duration, reverse }, row (row)}
 			<div class:reverse style:--duration="{duration}s">
 				<ul>
 					{#each [...items, ...items] as component, index (row + '-' + index)}
-						<li>
+						<li class:copy={index >= uniqueCount}>
 							<kit:chip
 								href={component.url}
-								aria-hidden={index >= items.length}
-								tabindex={index >= items.length ? -1 : 0}
+								aria-hidden={index >= uniqueCount}
+								tabindex={index >= uniqueCount ? -1 : 0}
 								density="comfortable"
 								rounded="md"
 								size="lg"
@@ -52,7 +48,7 @@
 										style:margin-right="4px"
 									>
 										<img
-											src={component.icon ? component.icon : component.image}
+											src={component.image}
 											alt={component.name}
 											loading="lazy"
 											decoding="async"
@@ -98,17 +94,24 @@
 					animation: scroll-horizontal-chip var(--duration, 50s) linear infinite;
 					will-change: transform;
 
-					&:hover {
+					&:hover,
+					&:focus-within {
 						animation-play-state: paused;
 					}
 				}
-			}
-		}
-	}
 
-	@media (prefers-reduced-motion: reduce) {
-		ul {
-			animation: none;
+				@media (prefers-reduced-motion: reduce) {
+					overflow-x: auto;
+
+					ul {
+						animation: none;
+					}
+
+					.copy {
+						display: none;
+					}
+				}
+			}
 		}
 	}
 </style>

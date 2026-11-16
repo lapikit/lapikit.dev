@@ -1,21 +1,21 @@
 import { error } from '@sveltejs/kit';
-import { docs, docsBySlug } from '$lib/pages';
+import { docs } from '$lib/server/content';
 import { docToMarkdown } from '$lib/server/doc-markdown';
 
 export const prerender = true;
 
 export function entries() {
-	return docs.map((doc) => ({ slug: doc.path.slug }));
+	return Object.values(docs.pages).map(({ slug }) => ({ slug }));
 }
 
 export function GET({ params }) {
-	const doc = docsBySlug.get(params.slug);
+	const page = docs.pages[`/docs/${params.slug}`];
 
-	if (!doc) {
-		throw error(404, 'Documentation page not found');
+	if (!page) {
+		error(404, 'Documentation page not found');
 	}
 
-	return new Response(docToMarkdown(doc), {
+	return new Response(docToMarkdown(page.summary), {
 		headers: { 'content-type': 'text/markdown; charset=utf-8' }
 	});
 }

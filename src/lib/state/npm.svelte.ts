@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { NpmStats } from '$lib/@types';
+import type { NpmStats } from '$lib/types';
 
 export const npmState = $state({
 	version: {
