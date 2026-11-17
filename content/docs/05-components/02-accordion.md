@@ -33,7 +33,7 @@ An `kit:accordion` lets you group content into collapsible sections. It improves
 
 `kit:accordion` is a controlled component: it has no internal state. You manage open/close externally and pass two props to each item - `open` (boolean) and `toggle` (function called with the item's `index` on click).
 
-The recommended way is the [`useAccordion`](/docs/hooks/use-accordion) hook from `lapikit/actions`, which handles the reactive state for you.
+The recommended way is the [`useAccordion`](/docs/hooks/use-accordion) hook from `lapikit/hooks`, which handles the reactive state for you.
 
 Each `kit:accordion-item` requires a unique `index` (string or number).
 
@@ -132,7 +132,7 @@ If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the c
 
 ```repl js
 import { Accordion, AccordionItem } from 'lapikit/components';
-import { useAccordion } from 'lapikit/actions';
+import { useAccordion } from 'lapikit/hooks';
 ```
 
 ## API References

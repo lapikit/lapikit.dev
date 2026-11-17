@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { createTheme } from 'lapikit/actions';
+	import { createTheme } from 'lapikit/hooks';
 
 	import { Boxes, Rocket } from 'lucide-svelte';
 	import MascotHappyAnimate from '$lib/assets/images/mascot/happy-animate.webp';

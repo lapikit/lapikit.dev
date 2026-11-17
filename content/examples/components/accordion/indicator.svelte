@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Anvil, BadgeMinus, BadgePlus, ChessRook } from 'lucide-svelte';
-	import { useAccordion } from 'lapikit/actions';
+	import { useAccordion } from 'lapikit/hooks';
 	import type { ModelAccordionItemProps } from 'lapikit/components';
 
 	const accordion = useAccordion();

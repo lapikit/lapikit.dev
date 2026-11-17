@@ -16,7 +16,7 @@ const intro = [
 	'',
 	'- Install with `npm install -D lapikit`, then add `lapikitPreprocess()` (from `lapikit/preprocess`) to the `preprocess` array of `svelte.config.js`.',
 	'- Use components as `<kit:btn>`, `<kit:card>`, `<kit:accordion>`… without importing them.',
-	'- Hooks and actions come from `lapikit/actions`, component types from `lapikit/components`.',
+	'- Hooks come from `lapikit/hooks`, component types from `lapikit/components`, formatting helpers (`upperFirst`, `compactNumber`) from `lapikit/helpers`.',
 	'- Theming relies on CSS custom properties (`--kit-*`) and the `data-kit-theme` attribute.',
 	'- The `class:` and `style:` directives work on any `<kit:*>` tag, like on native elements. Without the preprocessor, use the `s-class` and `s-style` props.'
 ].join('\n');

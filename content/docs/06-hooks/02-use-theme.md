@@ -39,7 +39,7 @@ Lapikit keeps the selected theme between page reloads and browser sessions, unde
 
 ```svelte
 <script>
-	import { createGlobalTheme } from 'lapikit/actions';
+	import { createGlobalTheme } from 'lapikit/hooks';
 
 	createGlobalTheme({ key: 'my-app/theme', name: 'system' });
 </script>
@@ -60,7 +60,7 @@ With SSR, the page is painted before Svelte runs: the default theme shows for a 
 
 ```svelte
 <script>
-	import { themeScript } from 'lapikit/actions';
+	import { themeScript } from 'lapikit/hooks';
 </script>
 
 <svelte:head>

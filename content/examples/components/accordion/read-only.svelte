@@ -1,5 +1,5 @@
 <script>
-	import { useAccordion } from 'lapikit/actions';
+	import { useAccordion } from 'lapikit/hooks';
 
 	const accordion = useAccordion();
 </script>

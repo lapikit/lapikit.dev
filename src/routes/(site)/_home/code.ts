@@ -404,7 +404,7 @@ export const replVSCodeFiles: Record<string, VsLine[]> = {
 			' ',
 			span('from', 'import'),
 			' ',
-			span("'lapikit/actions'", 'path'),
+			span("'lapikit/hooks'", 'path'),
 			';'
 		),
 		blank,

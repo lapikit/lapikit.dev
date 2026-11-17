@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createTheme } from 'lapikit/actions';
+	import { createTheme } from 'lapikit/hooks';
 
 	// assets
 	import { ArrowRight, Moon, Sun } from 'lucide-svelte';

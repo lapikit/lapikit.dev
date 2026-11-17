@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { capitalize } from '$lib/utils';
-	import { createGlobalTheme, useTheme } from 'lapikit/actions';
+	import { createGlobalTheme, useTheme } from 'lapikit/hooks';
 
 	import { themes, type ThemeManager } from '$lib/constants';
 

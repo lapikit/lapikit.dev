@@ -6,6 +6,7 @@
 	import type { SearchEntry } from '$lib/types';
 	import { capitalize } from '$lib/utils';
 	import {
+		Braces,
 		CornerDownLeft,
 		Gavel,
 		GitFork,
@@ -28,6 +29,7 @@
 		Components: Puzzle,
 		Essentials: ToolCase,
 		'Stores and Hooks': SquareFunction,
+		Helpers: Braces,
 		'Extra Topics': VectorSquare,
 		Release: GitFork,
 		Terms: Gavel

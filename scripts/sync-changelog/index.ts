@@ -25,7 +25,7 @@ type SyncSource = {
 const sources: SyncSource[] = [
 	{
 		file: 'CHANGELOG.md',
-		target: 'content/docs/09-changelog.md',
+		target: 'content/docs/90-changelog.md',
 		placeholder: '<p>Changelog Content</p>'
 	}
 	// {

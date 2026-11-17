@@ -3,13 +3,13 @@
 
 	let { key = 'Essentials' }: { key: string } = $props();
 
-	const hooks = $derived(
+	const pages = $derived(
 		(page.data.navigation ?? []).find((section) => section.label === key)?.pages ?? []
 	);
 </script>
 
 <kit:list density="comfortable">
-	{#each hooks as { label, url, description } (label)}
+	{#each pages as { label, url, description } (label)}
 		{#if description}
 			<kit:list-item href={url}>
 				<div class="item">

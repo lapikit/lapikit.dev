@@ -5,7 +5,7 @@
 		TooltipTriggerProps
 	} from 'lapikit/components';
 	import { resolve } from '$app/paths';
-	import { useAccordion } from 'lapikit/actions';
+	import { useAccordion } from 'lapikit/hooks';
 
 	import {
 		Bold,

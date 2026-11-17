@@ -20,5 +20,5 @@ Lapikit hooks integrate additional features directly onto your Svelte workflow. 
 Lapikit hooks integrate additional features directly onto your Svelte workflow. They manage internal states and background logic, allowing you to focus on developing important features. Instead of juggling event listeners or intricate prop chains, Lapikit hooks keep everything responsive.
 
 ```component
-summary-hooks key="Stores and Hooks"
+summary-section key="Stores and Hooks"
 ```

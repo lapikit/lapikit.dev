@@ -14,10 +14,10 @@ navigation:
   description: 'Controls accordion open/close states and syncs sections automatically'
 ---
 
-`useAccordion` is a state hook from `lapikit/actions` that manages the open/close state of a [`kit:accordion`](/docs/components/accordion). It returns a reactive `values` array and a `toggle` function to wire up to your accordion items.
+`useAccordion` is a state hook from `lapikit/hooks` that manages the open/close state of a [`kit:accordion`](/docs/components/accordion). It returns a reactive `values` array and a `toggle` function to wire up to your accordion items.
 
 ```js
-import { useAccordion } from 'lapikit/actions';
+import { useAccordion } from 'lapikit/hooks';
 
 const accordion = useAccordion();
 ```

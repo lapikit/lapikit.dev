@@ -5,7 +5,7 @@
 	import { page } from '$app/state';
 	import { afterNavigate } from '$app/navigation';
 	import { onMount, setContext, untrack } from 'svelte';
-	import { themeScript } from 'lapikit/actions';
+	import { themeScript } from 'lapikit/hooks';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { getBreadcrumbStructuredData } from '$lib/seo/breadcrumbs';

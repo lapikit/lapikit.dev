@@ -15,6 +15,20 @@ navigation:
 
 Learn how to migrate from older Lapikit versions to the latest release.
 
+## Updating to the next version (insiders)
+
+### `lapikit/actions` is removed
+
+`lapikit/actions` was an alias of `lapikit/hooks`: both pointed to the same functions. Only `lapikit/hooks` remains. Replace the path in your imports, the functions do not change:
+
+```js
+// before
+import { useAccordion, useTheme } from 'lapikit/actions';
+
+// after
+import { useAccordion, useTheme } from 'lapikit/hooks';
+```
+
 ## Updating to version 0.8.0
 
 ### `trigger` replaces `activator` and the `children` of `kit:tooltip`
@@ -91,7 +105,7 @@ The `theme` store of `lapikit/actions` never followed the active theme. Read the
 
 ```svelte
 <script>
-	import { createGlobalTheme, useTheme } from 'lapikit/actions';
+	import { createGlobalTheme, useTheme } from 'lapikit/hooks';
 
 	const app = createGlobalTheme();
 </script>

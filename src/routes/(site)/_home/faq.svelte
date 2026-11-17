@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ModelAccordionItemProps } from 'lapikit/components';
-	import { useAccordion } from 'lapikit/actions';
+	import { useAccordion } from 'lapikit/hooks';
 	import { page } from '$app/state';
 	import { capitalize, isExternal } from '$lib/utils';
 	import { createFaqHome, faqContact } from './faq-home';

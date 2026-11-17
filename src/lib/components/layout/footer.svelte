@@ -2,7 +2,7 @@
 	import { tick } from 'svelte';
 	import type { AppNavChild } from '$lib/types';
 	import { capitalize, isExternal } from '$lib/utils';
-	import { useAccordion } from 'lapikit/actions';
+	import { useAccordion } from 'lapikit/hooks';
 	import { openConsentPreferences } from '$lib/state/ui.svelte';
 
 	import { links, urlLapikitLicense, type LinkName } from '$lib/constants';

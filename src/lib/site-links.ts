@@ -15,8 +15,12 @@ const app_links: AppNavItem[] = [
 		path: '/docs/components'
 	},
 	{
-		label: 'tools',
+		label: 'hooks',
 		path: '/docs/hooks'
+	},
+	{
+		label: 'helpers',
+		path: '/docs/helpers'
 	}
 ];
 
@@ -37,8 +41,12 @@ const footer_links: AppNavItem[] = [
 				path: '/docs/components'
 			},
 			{
-				label: 'stores and hooks',
+				label: 'hooks',
 				path: '/docs/hooks'
+			},
+			{
+				label: 'helpers',
+				path: '/docs/helpers'
 			}
 		]
 	},

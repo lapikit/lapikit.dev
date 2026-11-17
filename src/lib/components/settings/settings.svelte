@@ -40,7 +40,7 @@
 	</kit:btn>
 {/snippet}
 
-<kit:popover class="settings-panel" rounded="0" color="surface">
+<kit:popover class="settings-panel" rounded="md" color="surface">
 	{#snippet trigger(props: PopoverTriggerProps)}
 		<kit:btn {variant} {density} icon aria-label="Settings" {...props}>
 			<kit:icon>

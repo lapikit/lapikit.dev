@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { useTheme } from 'lapikit/actions';
+	import { useTheme } from 'lapikit/hooks';
 	import { Moon, Sun } from 'lucide-svelte';
 
 	let mode = $state<'light' | 'dark'>('light');

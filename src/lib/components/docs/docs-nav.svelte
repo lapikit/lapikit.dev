@@ -3,11 +3,12 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
-	import { useAccordion } from 'lapikit/actions';
+	import { useAccordion } from 'lapikit/hooks';
 	import { npmState } from '$lib/state/npm.svelte';
 	import { isCurrentPath } from '$lib/utils';
 
 	import {
+		Braces,
 		Container,
 		GitMerge,
 		Puzzle,
@@ -26,6 +27,7 @@
 		Essentials: ToolCase,
 		Components: Puzzle,
 		'Stores and Hooks': SquareFunction,
+		Helpers: Braces,
 		'Extra Topics': VectorSquare
 	};
 

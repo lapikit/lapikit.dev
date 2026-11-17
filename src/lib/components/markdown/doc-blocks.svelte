@@ -5,7 +5,7 @@
 	import CommandRepl from '$lib/components/markdown/command-repl.svelte';
 	import LazyRepl from '$lib/components/markdown/lazy-repl.svelte';
 	import SummaryComponents from '$lib/components/docs/summary-components.svelte';
-	import SummaryHooks from '$lib/components/docs/summary-hooks.svelte';
+	import SummarySection from '$lib/components/docs/summary-section.svelte';
 	import { command } from '$lib/constants';
 	import { preferences } from '$lib/state/ui.svelte';
 
@@ -52,7 +52,7 @@
 		<Demo />
 	{:else if block.type === 'component' && block.name === 'summary-components'}
 		<SummaryComponents />
-	{:else if block.type === 'component' && block.name === 'summary-hooks'}
-		<SummaryHooks key={block.props.key} />
+	{:else if block.type === 'component' && block.name === 'summary-section'}
+		<SummarySection key={block.props.key} />
 	{/if}
 {/each}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { createTheme } from 'lapikit/actions';
+	import { createTheme } from 'lapikit/hooks';
 
 	import { Bell, Check, Moon, Palette, Sun, SwatchBook } from 'lucide-svelte';
 
