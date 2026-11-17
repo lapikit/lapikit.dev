@@ -19,8 +19,6 @@ Lapikit helpers are small pure functions for the formatting jobs you repeat in e
 import { upperFirst, compactNumber } from 'lapikit/helpers';
 ```
 
-> Helpers are available in the insiders release: `npm install -D lapikit@insiders`.
-
 ## Available helpers
 
 ```component
