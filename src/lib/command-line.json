@@ -5,6 +5,12 @@
 		"launch-cli": "npx lapikit",
 		"run-project": "npm run dev"
 	},
+	"pnpm": {
+		"install-lapikit": "pnpm add -D lapikit",
+		"install-eslint-lapikit": "pnpm add -D eslint-config-lapikit",
+		"launch-cli": "pnpm dlx lapikit",
+		"run-project": "pnpm dev"
+	},
 	"yarn": {
 		"install-lapikit": "yarn add -D lapikit",
 		"install-eslint-lapikit": "yarn add -D eslint-config-lapikit",
@@ -14,7 +20,7 @@
 	"bun": {
 		"install-lapikit": "bun add -D lapikit",
 		"install-eslint-lapikit": "bun add -D eslint-config-lapikit",
-		"launch-cli": "npx lapikit",
+		"launch-cli": "bunx lapikit",
 		"run-project": "bun dev"
 	}
 }

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { createTheme } from 'lapikit/hooks';
+	import { command } from '$lib/constants';
+	import { preferences } from '$lib/state/ui.svelte';
 
 	import { Boxes, Rocket } from 'lucide-svelte';
 	import MascotHappyAnimate from '$lib/assets/images/mascot/happy-animate.webp';
@@ -11,6 +13,7 @@
 	import InstallCommand from './install-command.svelte';
 
 	const banner = createTheme();
+	const launch_cli = $derived(command[preferences.pkg_selected]['launch-cli']);
 </script>
 
 <SheetSection labelledby="cta-title">
@@ -24,7 +27,7 @@
 				</h2>
 				<p class="cta-description">
 					Add Lapikit to an existing Svelte or SvelteKit project, then run
-					<code>npx lapikit</code> to set everything up.
+					<code>{launch_cli}</code> to set everything up.
 				</p>
 
 				<div class="cta-install">

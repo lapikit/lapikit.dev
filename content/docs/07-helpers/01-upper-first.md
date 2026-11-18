@@ -11,7 +11,8 @@ keywords:
   - 'helper'
 navigation:
   label: 'upperFirst'
-  description: 'Uppercases the first character of a string and keeps the rest as is'
+  description: 'Uppercases the first character of a string and keeps the rest as is.'
+  symbol: 'Aa'
 ---
 
 `upperFirst` is a helper from `lapikit/helpers` that uppercases the first character of a string. The rest of the string is left unchanged.

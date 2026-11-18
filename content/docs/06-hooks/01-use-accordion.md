@@ -11,7 +11,8 @@ keywords:
   - 'hook'
 navigation:
   label: 'useAccordion'
-  description: 'Controls accordion open/close states and syncs sections automatically'
+  description: 'Controls accordion open/close states and syncs sections automatically.'
+  symbol: 'list-collapse'
 ---
 
 `useAccordion` is a state hook from `lapikit/hooks` that manages the open/close state of a [`kit:accordion`](/docs/components/accordion). It returns a reactive `values` array and a `toggle` function to wire up to your accordion items.

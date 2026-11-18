@@ -11,7 +11,8 @@ keywords:
   - 'color scheme'
 navigation:
   label: 'useTheme'
-  description: 'Manages theme switching and keeps dark/light modes in sync across the app'
+  description: 'Manages theme switching and keeps dark/light modes in sync across the app.'
+  symbol: 'sun-moon'
 ---
 
 ## Discover the useTheme action in Lapikit

@@ -9,6 +9,7 @@ import buymyecoffeeIcon from '$lib/assets/icons/buymeacoffee.svg?raw';
 import instagramIcon from '$lib/assets/icons/instagram.svg?raw';
 import npmIcon from '$lib/assets/icons/npm_color.svg?raw';
 import npmIconMono from '$lib/assets/icons/npm.svg?raw';
+import pnpmIcon from '$lib/assets/icons/pnpm_color.svg?raw';
 import yarnIcon from '$lib/assets/icons/yarn_color.svg?raw';
 import bunIcon from '$lib/assets/icons/bun_color.svg?raw';
 import typescriptIcon from '$lib/assets/icons/typescript_color.svg?raw';
@@ -101,6 +102,10 @@ export const pkg_manager = {
 	npm: {
 		label: 'npm',
 		icon: npmIcon
+	},
+	pnpm: {
+		label: 'pnpm',
+		icon: pnpmIcon
 	},
 	yarn: {
 		label: 'yarn',

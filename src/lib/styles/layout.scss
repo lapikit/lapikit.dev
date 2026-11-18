@@ -53,21 +53,44 @@
 	--kit-color-on-accent: hsl(240 3% 11%);
 }
 
+@mixin code-light {
+	--code-keyword: #cf222e;
+	--code-string: #0a3069;
+	--code-function: #8250df;
+	--code-constant: #0550ae;
+	--code-tag: #116329;
+	--code-variable: #953800;
+	--code-comment: #6e7781;
+}
+
+@mixin code-dark {
+	--code-keyword: #ff7b72;
+	--code-string: #a5d6ff;
+	--code-function: #d2a8ff;
+	--code-constant: #79c0ff;
+	--code-tag: #7ee787;
+	--code-variable: #ffa657;
+	--code-comment: #8b949e;
+}
+
 html:not([data-kit-theme]),
 html[data-kit-theme='light'],
 .brand-theme[data-kit-theme='light'] {
 	@include brand-accent-light;
+	@include code-light;
 }
 
 html[data-kit-theme='dark'],
 .brand-theme[data-kit-theme='dark'] {
 	@include brand-accent-dark;
+	@include code-dark;
 }
 
 @media (prefers-color-scheme: light) {
 	html[data-kit-theme='system'],
 	.brand-theme[data-kit-theme='system'] {
 		@include brand-accent-light;
+		@include code-light;
 	}
 }
 
@@ -75,6 +98,7 @@ html[data-kit-theme='dark'],
 	html[data-kit-theme='system'],
 	.brand-theme[data-kit-theme='system'] {
 		@include brand-accent-dark;
+		@include code-dark;
 	}
 }
 

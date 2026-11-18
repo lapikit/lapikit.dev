@@ -69,9 +69,11 @@
 		</div>
 
 		<div class="community-visual">
-			<kit:aspect-ratio ratio="4/3">
-				<GitLog />
-			</kit:aspect-ratio>
+			<div class="community-log">
+				<kit:aspect-ratio ratio="4/3">
+					<GitLog />
+				</kit:aspect-ratio>
+			</div>
 
 			<div class="community-contributors">
 				<p class="community-contributors-label">Contributors</p>
@@ -107,6 +109,8 @@
 </SheetSection>
 
 <style lang="scss">
+	@use '$lib/styles/breakpoints' as *;
+
 	.community-text {
 		display: grid;
 		align-content: center;
@@ -140,6 +144,14 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+	}
+
+	.community-log {
+		display: none;
+
+		@include up(md) {
+			display: block;
 		}
 	}
 

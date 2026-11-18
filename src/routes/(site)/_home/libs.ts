@@ -20,7 +20,7 @@ type TableHomeList = {
 export const tableHome: TableHome[] = [
 	{
 		text: 'Features',
-		subject: ['Svelte Components', 'Theming support', 'Hooks and actions', 'Preprocessor']
+		subject: ['Svelte Components', 'Theming support', 'Hooks and helpers', 'Preprocessor']
 	},
 	{
 		text: 'Environments',
@@ -45,7 +45,7 @@ export const createTableHomeList = (counts: DocCounts): TableHomeList[] => [
 		title: 'Lapikit',
 		logo: LapikitLogo,
 		values: [
-			[counts.components, 'yes', counts.hooks, 'yes'],
+			[counts.components, 'yes', counts.hooks + counts.helpers, 'yes'],
 			['yes', 'yes', 'yes', 'yes', 'yes', 2, 'yes'],
 			['yes', 'yes', 'Bi-Monthly']
 		]

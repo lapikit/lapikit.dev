@@ -208,6 +208,47 @@
 			font-size: inherit;
 			white-space: pre;
 		}
+
+		:where(.token.keyword, .token.operator, .token.atrule, .token.important) {
+			color: var(--code-keyword);
+		}
+
+		:where(.token.string, .token.char, .token.attr-value, .token.url, .token.inserted) {
+			color: var(--code-string);
+		}
+
+		:where(.token.function, .token.class-name) {
+			color: var(--code-function);
+		}
+
+		:where(
+			.token.number,
+			.token.boolean,
+			.token.constant,
+			.token.property,
+			.token.attr-name,
+			.token.builtin,
+			.token.selector
+		) {
+			color: var(--code-constant);
+		}
+
+		:where(.token.tag, .token.deleted) {
+			color: var(--code-tag);
+		}
+
+		:where(.token.variable, .token.regex, .token.parameter) {
+			color: var(--code-variable);
+		}
+
+		:where(.token.comment, .token.prolog, .token.doctype, .token.cdata) {
+			color: var(--code-comment);
+			font-style: italic;
+		}
+
+		:where(.token.punctuation, .token.tag .token.punctuation) {
+			color: var(--kit-color-text-muted);
+		}
 	}
 
 	blockquote {

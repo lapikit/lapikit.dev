@@ -293,7 +293,7 @@
 
 	@media (max-width: 1279px) {
 		.vs-code-frame:not(.measured) #vs-code {
-			visibility: hidden;
+			display: none;
 		}
 	}
 

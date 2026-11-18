@@ -82,6 +82,7 @@ export type NavPage = {
 	description?: string;
 	image?: string;
 	icon?: string;
+	symbol?: string;
 };
 
 export type NavSection = {
@@ -98,6 +99,7 @@ export type DocLink = {
 export type DocCounts = {
 	components: number;
 	hooks: number;
+	helpers: number;
 };
 
 export type AppNavChild = {

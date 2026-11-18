@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { PopoverTriggerProps } from 'lapikit/components';
+	import type { FieldControlProps, PopoverTriggerProps } from 'lapikit/components';
 	import { lang_manager, pkg_manager } from '$lib/constants';
 	import { preferences, type LangManager, type PkgManager } from '$lib/state/ui.svelte';
 
-	import { Settings } from 'lucide-svelte';
+	import { ChevronDown, Settings } from 'lucide-svelte';
 
 	import ThemeSwitcher from '$lib/components/settings/theme-switcher.svelte';
 
@@ -16,6 +16,7 @@
 	} = $props();
 
 	const managers = Object.entries(pkg_manager) as [PkgManager, (typeof pkg_manager)[PkgManager]][];
+	const selected_manager = $derived(pkg_manager[preferences.pkg_selected]);
 	const languages = Object.entries(lang_manager) as [
 		LangManager,
 		(typeof lang_manager)[LangManager]
@@ -56,13 +57,25 @@
 
 	<section class="settings-section" aria-labelledby="settings-package">
 		<p id="settings-package" class="settings-label">Package manager</p>
-		<div class="settings-options" role="group" aria-labelledby="settings-package">
-			{#each managers as [key, { label, icon }] (key)}
-				{@render option(label, icon, key === preferences.pkg_selected, () => {
-					preferences.pkg_selected = key;
-				})}
-			{/each}
-		</div>
+		<kit:field variant="outline" size="sm" class="settings-select">
+			{#snippet prependInner()}
+				<kit:icon size="sm">{@html selected_manager.icon}</kit:icon>
+			{/snippet}
+			{#snippet children(control: FieldControlProps)}
+				<select
+					{...control}
+					aria-labelledby="settings-package"
+					bind:value={preferences.pkg_selected}
+				>
+					{#each managers as [key, { label }] (key)}
+						<option value={key}>{label}</option>
+					{/each}
+				</select>
+			{/snippet}
+			{#snippet appendInner()}
+				<kit:icon size="sm" class="settings-select-chevron"><ChevronDown /></kit:icon>
+			{/snippet}
+		</kit:field>
 	</section>
 
 	<section class="settings-section" aria-labelledby="settings-language">
@@ -105,6 +118,39 @@
 		color: var(--kit-color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
+	}
+
+	:global(.settings-select) {
+		--settings-select-chevron: 28px;
+
+		position: relative;
+
+		select {
+			flex: 1;
+			min-width: 0;
+			margin: 0 calc(-1 * var(--settings-select-chevron)) 0 0;
+			padding: 0 var(--settings-select-chevron) 0 0;
+			border: 0;
+			background: none;
+			color: inherit;
+			font: inherit;
+			appearance: none;
+			cursor: pointer;
+			outline: none;
+		}
+
+		option {
+			background-color: var(--kit-color-surface);
+			color: var(--kit-color-text);
+		}
+	}
+
+	:global(.settings-select .kit-field__append-inner) {
+		pointer-events: none;
+	}
+
+	:global(.settings-select-chevron) {
+		color: var(--kit-color-text-muted);
 	}
 
 	.settings-options {

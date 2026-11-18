@@ -11,7 +11,8 @@ keywords:
   - 'helper'
 navigation:
   label: 'compactNumber'
-  description: 'Formats a number in compact notation with a k, M, B or T suffix'
+  description: 'Formats a number in compact notation with a k, M, B or T suffix.'
+  symbol: '1k'
 ---
 
 `compactNumber` is a helper from `lapikit/helpers` that formats a number in compact notation with a unit suffix, to keep counters short in tight spaces.

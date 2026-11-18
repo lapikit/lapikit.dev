@@ -8,6 +8,7 @@ type DocNavigation = {
 	name?: string;
 	description?: string;
 	image?: string;
+	symbol?: string;
 };
 
 type DocMetadata = {
@@ -152,7 +153,8 @@ function toNavPage({ path, slug }: DocPage, navigation: DocNavigation): NavPage 
 			image: component_images[`${asset}.webp`],
 			icon: component_icons[`${asset}_icon.png`]
 		}),
-		...(navigation.description && { description: navigation.description })
+		...(navigation.description && { description: navigation.description }),
+		...(navigation.symbol && { symbol: navigation.symbol })
 	};
 }
 
@@ -196,7 +198,8 @@ function countPages(navigation: NavSection[]): DocCounts {
 
 	return {
 		components: sectionPages('Components').filter((page) => page.name).length,
-		hooks: sectionPages('Stores and Hooks').filter((page) => page.description).length
+		hooks: sectionPages('Stores and Hooks').filter((page) => page.description).length,
+		helpers: sectionPages('Helpers').filter((page) => page.description).length
 	};
 }
 

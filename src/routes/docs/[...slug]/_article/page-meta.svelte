@@ -48,7 +48,7 @@
 				rel="noopener noreferrer"
 				size="sm"
 				variant="outline"
-				rounded="0"
+				rounded="sm"
 			>
 				{#snippet prepend()}
 					<kit:icon size="sm">{@html links.github.icon}</kit:icon>
@@ -61,7 +61,7 @@
 				rel="noopener noreferrer"
 				size="sm"
 				variant="outline"
-				rounded="0"
+				rounded="sm"
 			>
 				{#snippet prepend()}
 					<kit:icon size="sm">{@html links.discord.icon}</kit:icon>
