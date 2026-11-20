@@ -15,7 +15,7 @@ navigation:
 
 Learn how to migrate from older Lapikit versions to the latest release.
 
-## Updating to the next version (insiders)
+## Updating to version 0.8.5
 
 ### `lapikit/actions` is removed
 

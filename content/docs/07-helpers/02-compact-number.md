@@ -24,8 +24,6 @@ compactNumber(1234); // '1.2k'
 compactNumber(2500000); // '2.5M'
 ```
 
-> Available in the insiders release: `npm install -D lapikit@insiders`.
-
 ## Guide and overview
 
 Use `compactNumber` for stars, downloads, followers or views: anywhere the order of magnitude matters more than the exact value.

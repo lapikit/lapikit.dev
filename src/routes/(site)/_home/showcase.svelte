@@ -6,10 +6,11 @@
 	} from 'lapikit/components';
 	import { resolve } from '$app/paths';
 	import { useAccordion } from 'lapikit/hooks';
+	import { links, urlLapikitLibraryRepo } from '$lib/constants';
 
 	import {
+		ArrowRight,
 		Bold,
-		BookOpen,
 		Boxes,
 		ChevronDown,
 		Italic,
@@ -51,6 +52,8 @@
 	];
 
 	const filters = ['Svelte', 'TypeScript', 'Themes', 'Accessible'];
+
+	const profile_tags = ['Svelte 5', 'TypeScript', 'CSS variables'];
 
 	let email = $state('');
 	const emailError = $derived(email.length > 0 && !email.includes('@'));
@@ -216,49 +219,88 @@
 		<BentoCell tag="card" name="Card" path="/docs/components/card" wide>
 			<div class="showcase-cards-container">
 				<div class="showcase-cards">
-					<kit:card variant="outline">
-						<kit:card-media>
-							<kit:aspect-ratio ratio="16/9">
-								<img
-									src="https://picsum.photos/seed/lapikit-card/640/360"
-									alt="Placeholder cover"
-									title="To replace: a screenshot of a project built with Lapikit (16:9, about 640×360)"
-									width="640"
-									height="360"
-									loading="lazy"
-									decoding="async"
-								/>
-							</kit:aspect-ratio>
+					<kit:card variant="outline" class="showcase-card">
+						<kit:card-media class="showcase-cover">
+							<kit:chip size="sm" rounded="full" class="showcase-cover-chip">Guide</kit:chip>
+							<div class="showcase-cover-window" aria-hidden="true">
+								<div class="showcase-cover-bar">
+									<span></span><span></span><span></span>
+									<span class="showcase-cover-cta"></span>
+								</div>
+								<div class="showcase-cover-body">
+									<div class="showcase-cover-nav">
+										<span></span><span class="active"></span><span></span><span></span>
+									</div>
+									<div class="showcase-cover-grid">
+										<span></span><span></span><span class="filled"></span><span></span>
+									</div>
+								</div>
+							</div>
 						</kit:card-media>
-						<kit:card-title>Getting started</kit:card-title>
-						<kit:card-actions>
-							<span class="showcase-meta">5 min read</span>
+						<kit:card-content class="showcase-card-body">
+							<span class="showcase-eyebrow">Docs · 5 min read</span>
+							<h3 class="showcase-card-title">Getting started</h3>
+							<p class="showcase-meta">
+								Install Lapikit, add the preprocessor and render your first component.
+							</p>
+						</kit:card-content>
+						<kit:card-actions class="showcase-card-footer">
+							<kit:avatar label="LK" size="xs" color="accent" />
+							<span class="showcase-meta">Lapikit team</span>
 							<kit:spacer />
-							<kit:btn size="sm" variant="tonal" href={resolve('/docs/getting-started')}>
-								{#snippet prepend()}
-									<kit:icon size="sm"><BookOpen /></kit:icon>
-								{/snippet}
+							<kit:btn
+								size="sm"
+								variant="tonal"
+								color="accent"
+								href={resolve('/docs/getting-started')}
+							>
 								Read
+								{#snippet append()}
+									<kit:icon size="sm"><ArrowRight /></kit:icon>
+								{/snippet}
 							</kit:btn>
 						</kit:card-actions>
 					</kit:card>
 
-					<kit:card variant="outline">
-						<kit:card-content>
-							<div class="showcase-profile">
-								<kit:avatar label="NY" size="lg" color="accent" />
-								<div>
-									<p class="showcase-profile-name">Nycolaide</p>
-									<p class="showcase-meta">Creator of Lapikit</p>
-								</div>
+					<kit:card variant="outline" class="showcase-card">
+						<div class="showcase-banner" aria-hidden="true"></div>
+						<kit:card-content class="showcase-profile">
+							<div class="showcase-profile-head">
+								<kit:avatar label="NY" size="xl" color="accent" class="showcase-profile-avatar" />
+								<kit:chip size="sm" rounded="full" variant="outline">Maintainer</kit:chip>
+							</div>
+							<div>
+								<h3 class="showcase-card-title">Nycolaide</h3>
+								<p class="showcase-meta">Creator of Lapikit</p>
+							</div>
+							<p class="showcase-profile-bio">
+								Building a Svelte UI kit that stays out of your way.
+							</p>
+							<div class="showcase-profile-tags">
+								{#each profile_tags as tag (tag)}
+									<kit:chip size="sm" rounded="full" variant="tonal">{tag}</kit:chip>
+								{/each}
 							</div>
 						</kit:card-content>
-						<kit:card-content>
-							Building a Svelte UI kit that stays out of your way.
-						</kit:card-content>
-						<kit:card-actions>
-							<kit:spacer />
-							<kit:btn size="sm" variant="outline">Follow</kit:btn>
+						<kit:card-actions class="showcase-profile-actions">
+							<kit:btn
+								size="sm"
+								color="accent"
+								href={links['github'].url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Follow
+							</kit:btn>
+							<kit:btn
+								size="sm"
+								variant="outline"
+								href={urlLapikitLibraryRepo}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								GitHub
+							</kit:btn>
 						</kit:card-actions>
 					</kit:card>
 				</div>
@@ -339,12 +381,126 @@
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		img {
-			display: block;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
+		:global(.showcase-card) {
+			box-shadow:
+				0 1px 2px color-mix(in oklab, var(--kit-color-text), transparent 96%),
+				0 8px 24px -16px color-mix(in oklab, var(--kit-color-text), transparent 82%);
 		}
+	}
+
+	.showcase-cards :global(.showcase-cover) {
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		height: 196px;
+		padding: 24px 20px 0;
+		box-sizing: border-box;
+		background-color: color-mix(in oklab, var(--kit-color-accent), transparent 90%);
+	}
+
+	.showcase-cards :global(.showcase-cover-chip) {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+	}
+
+	.showcase-cover-window {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 150px;
+		border: var(--lapikit-border);
+		border-bottom: 0;
+		border-radius: 8px 8px 0 0;
+		background-color: var(--kit-color-surface-1);
+		overflow: hidden;
+	}
+
+	.showcase-cover-bar {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		height: 26px;
+		padding-inline: 10px;
+		border-bottom: var(--lapikit-border);
+
+		span {
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background-color: var(--kit-color-fill);
+		}
+
+		.showcase-cover-cta {
+			width: 54px;
+			height: 12px;
+			margin-left: auto;
+			border-radius: 4px;
+			background-color: var(--kit-color-accent);
+		}
+	}
+
+	.showcase-cover-body {
+		display: flex;
+		flex-grow: 1;
+		gap: 10px;
+		padding: 12px;
+	}
+
+	.showcase-cover-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		width: 70px;
+
+		span {
+			height: 8px;
+			border-radius: 3px;
+			background-color: var(--kit-color-fill);
+		}
+
+		.active {
+			background-color: color-mix(in oklab, var(--kit-color-accent), transparent 75%);
+		}
+	}
+
+	.showcase-cover-grid {
+		display: grid;
+		flex-grow: 1;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+
+		span {
+			border: var(--lapikit-border);
+			border-radius: 6px;
+		}
+
+		.filled {
+			background-color: var(--kit-color-fill);
+		}
+	}
+
+	.showcase-cards :global(.showcase-card-body),
+	.showcase-cards :global(.showcase-profile) {
+		display: grid;
+		gap: 6px;
+	}
+
+	.showcase-eyebrow {
+		font-size: var(--text-xs);
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--kit-color-text-muted);
+	}
+
+	.showcase-card-title {
+		font-size: var(--text-lg);
+		font-weight: 700;
+	}
+
+	.showcase-cards :global(.showcase-card-footer) {
+		margin-top: auto;
 	}
 
 	.showcase-meta {
@@ -352,14 +508,50 @@
 		color: var(--kit-color-text-muted);
 	}
 
-	.showcase-profile {
-		display: flex;
-		align-items: center;
-		gap: 12px;
+	.showcase-banner {
+		height: 92px;
+		border-radius: min(
+			var(--kit-card-radius),
+			max(calc(var(--kit-card-radius) - var(--kit-card-padding)), var(--kit-shape-xs))
+		);
+		background-color: color-mix(in oklab, var(--kit-color-accent), transparent 90%);
+		background-image: radial-gradient(
+			color-mix(in oklab, var(--kit-color-accent), transparent 70%) 1px,
+			transparent 1px
+		);
+		background-size: 14px 14px;
 	}
 
-	.showcase-profile-name {
-		font-weight: 700;
+	.showcase-cards :global(.showcase-profile) {
+		gap: 12px;
+		margin-top: -44px;
+		padding-inline: 8px;
+	}
+
+	.showcase-profile-bio {
+		font-size: var(--text-sm);
+	}
+
+	.showcase-profile-head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+
+		:global(.showcase-profile-avatar) {
+			box-shadow: 0 0 0 4px var(--kit-color-surface);
+		}
+	}
+
+	.showcase-profile-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+
+	.showcase-cards :global(.showcase-profile-actions) {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		margin-top: auto;
 	}
 
 	.showcase-marquee {

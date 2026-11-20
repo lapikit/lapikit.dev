@@ -23,8 +23,6 @@ import { upperFirst } from 'lapikit/helpers';
 upperFirst('hello world'); // 'Hello world'
 ```
 
-> Available in the insiders release: `npm install -D lapikit@insiders`.
-
 ## Guide and overview
 
 Use `upperFirst` to display a value as a label or a title without changing how it is stored: a status, a category name, a value typed by the user.

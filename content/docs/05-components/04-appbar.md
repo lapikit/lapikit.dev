@@ -68,6 +68,42 @@ The `variant` prop controls the background and border style, `color` gives the c
 /// example: components/appbar/class-content.svelte
 ```
 
+### Sticky
+
+`sticky` keeps the appbar at the top of its scroll container while the page scrolls, without writing `position: sticky` yourself. Set the offset with `--kit-appbar-top` and the stacking order with `--kit-appbar-z-index`.
+
+- **sticky**: `boolean` = `false`
+
+```svelte
+<kit:appbar sticky style="--kit-appbar-top: 8px;">
+	<span>Lapikit</span>
+	<kit:spacer />
+	<kit:btn variant="text">Docs</kit:btn>
+</kit:appbar>
+```
+
+The appbar sticks only while its parent is on screen, so place it at the top of the element that scrolls (the page, or a scrolling panel). A parent with `overflow: hidden` or `overflow: auto` becomes the scroll container: the appbar sticks inside it, not to the window.
+
+### Padding
+
+The padding follows the `size` and the `density`. To change it, set these CSS variables on the appbar:
+
+| variable               | description                          | default               |
+| ---------------------- | ------------------------------------ | --------------------- |
+| `--kit-appbar-p`       | Padding on every side.               | From the `size`.      |
+| `--kit-appbar-px`      | Horizontal padding.                  | `var(--kit-appbar-p)` |
+| `--kit-appbar-py`      | Vertical padding.                    | `var(--kit-appbar-p)` |
+| `--kit-appbar-top`     | Offset of a `sticky` appbar.         | `0`                   |
+| `--kit-appbar-z-index` | Stacking order of a `sticky` appbar. | `1000`                |
+
+```svelte
+<kit:appbar s-style={{ '--kit-appbar-px': '24px', '--kit-appbar-py': '0px' }}>
+	<span>Lapikit</span>
+</kit:appbar>
+```
+
+The `density` offset is added to both, so a `compact` appbar stays tighter than a `default` one.
+
 ### Without preprocess Lapikit
 
 If you aren't using the Lapikit preprocessor in `svelte.config.js`, import the component directly:
@@ -96,5 +132,6 @@ import { Appbar } from 'lapikit/components';
 | children      | `Snippet`                                                          | Appbar content.                                         |             |
 | elevation     | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| ElevationState`         | Add shadow effect.                                      |             |
 | size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                             | Sizing height, font and gap for appbar.                 | `'md'`      |
+| sticky        | `boolean`                                                          | Keeps the appbar at the top of its scroll container.    | `false`     |
 
 An effective `kit:appbar` goes well with [Dropdown](/docs/components/dropdown) for menus and [Avatars](/docs/components/avatar) for identification.
