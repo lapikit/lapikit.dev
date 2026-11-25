@@ -21,6 +21,7 @@
 	const topic = $derived(doc.head?.title || doc.title);
 	const markdownUrl = $derived(resolve('/docs/[...slug].md', { slug: doc.path.slug }));
 	const issueUrl = $derived(docIssueUrl(topic, doc.path.pathname));
+	const editUrl = $derived(docEditUrl(doc.path.sourcePath));
 	const fileName = $derived(`lapikit-${doc.path.slugSegments.join('-')}.md`);
 
 	let copied = $state(false);
@@ -93,18 +94,24 @@
 				{/snippet}
 				View as Markdown
 			</kit:list-item>
-			<kit:separator />
+			<kit:separator class="page-actions-github" />
 			<kit:list-item
-				href={docEditUrl(doc.path.sourcePath)}
+				href={editUrl}
 				target="_blank"
 				rel="noopener noreferrer"
+				class="page-actions-github"
 			>
 				{#snippet prepend()}
 					<kit:icon size="sm"><Pencil /></kit:icon>
 				{/snippet}
 				Edit this page on GitHub
 			</kit:list-item>
-			<kit:list-item href={issueUrl} target="_blank" rel="noopener noreferrer">
+			<kit:list-item
+				href={issueUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="page-actions-github"
+			>
 				{#snippet prepend()}
 					<kit:icon size="sm"><MessageCircleQuestion /></kit:icon>
 				{/snippet}
@@ -113,14 +120,46 @@
 		</kit:list>
 	</kit:dropdown>
 
+	<span class="page-actions-inline">
+		<kit:btn size="sm" variant="text" href={editUrl} target="_blank" rel="noopener noreferrer">
+			{#snippet prepend()}
+				<kit:icon size="sm"><Pencil /></kit:icon>
+			{/snippet}
+			Edit on GitHub
+		</kit:btn>
+		<kit:btn size="sm" variant="text" href={issueUrl} target="_blank" rel="noopener noreferrer">
+			{#snippet prepend()}
+				<kit:icon size="sm"><MessageCircleQuestion /></kit:icon>
+			{/snippet}
+			Ask on GitHub
+		</kit:btn>
+	</span>
+
 	<p class="sr-only" aria-live="polite">{copied ? 'Page copied to clipboard' : ''}</p>
 </div>
 
 <style lang="scss">
+	@use '$lib/styles/breakpoints' as *;
+
 	.page-actions {
 		display: inline-flex;
 		align-items: center;
 		gap: 6px;
 		margin-top: 20px;
+	}
+
+	.page-actions-inline {
+		display: none;
+	}
+
+	@include up(md) {
+		.page-actions-inline {
+			display: contents;
+		}
+
+		:global(.kit-list.page-actions-menu > :has(> .page-actions-github)),
+		:global(.kit-list.page-actions-menu > .page-actions-github) {
+			display: none;
+		}
 	}
 </style>

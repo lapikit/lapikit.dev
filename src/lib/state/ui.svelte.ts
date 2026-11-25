@@ -14,6 +14,8 @@ export const preferences: {
 
 const preferences_key = 'lapikit.dev:preferences';
 
+export const code_lang_script = `<script>try{var p=JSON.parse(localStorage.getItem('${preferences_key}')||'{}');if(p.lang_selected==='javascript')document.documentElement.dataset.codeLang='javascript'}catch(e){}</script>`;
+
 const isPkgManager = (value: unknown): value is PkgManager =>
 	typeof value === 'string' && value in pkg_manager;
 
@@ -43,6 +45,10 @@ export function persistPreferences() {
 		restorePreferences();
 
 		return $effect.root(() => {
+			$effect(() => {
+				document.documentElement.dataset.codeLang = preferences.lang_selected;
+			});
+
 			$effect(() => {
 				savePreferences(
 					JSON.stringify({

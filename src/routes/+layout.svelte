@@ -14,7 +14,7 @@
 	import { setNpmStats } from '$lib/state/npm.svelte';
 	import { setGithubStats } from '$lib/state/github.svelte';
 	import { NavState, setNavContext } from '$lib/state/nav.svelte';
-	import { persistPreferences } from '$lib/state/ui.svelte';
+	import { code_lang_script, persistPreferences } from '$lib/state/ui.svelte';
 
 	// components
 	// consent stays static: for a new visitor it is the LCP element, a dynamic import would add
@@ -144,6 +144,7 @@
 
 <svelte:head>
 	{@html themeScript()}
+	{@html code_lang_script}
 	<title>{pageTitle}</title>
 	<link rel="icon" href="/favicon.ico" sizes="48x48" />
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />

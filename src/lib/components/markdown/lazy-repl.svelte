@@ -1,38 +1,54 @@
 <script lang="ts">
 	import { onMount, type Snippet } from 'svelte';
+	import { preferences } from '$lib/state/ui.svelte';
 
 	type FileContent = { code: string; lang?: string };
 	type ContentMap = Record<string, string | FileContent>;
 	type ContentType = string | ContentMap;
+	type Lang = 'sh' | 'svelte' | 'js' | 'html' | 'css' | 'json' | 'bash';
+	type CodeVariant = { content: ContentType; lang?: string };
 
 	let {
 		content = '' as ContentType,
 		presentation = false,
 		title = '',
 		children,
-		lang = 'sh'
+		lang = 'sh',
+		javascript
 	}: {
 		content?: ContentType;
 		presentation?: boolean;
 		title?: string;
 		children?: Snippet;
-		lang?: 'sh' | 'svelte' | 'js' | 'html' | 'css' | 'json' | 'bash';
+		lang?: Lang;
+		javascript?: CodeVariant;
 	} = $props();
 
 	let container = $state<HTMLElement | null>(null);
 	let loaded = $state(false);
 
-	// Flatten content to plain text for SEO (rendered during SSR, indexed by crawlers)
-	const staticCode = $derived(
-		typeof content === 'string'
-			? content
-			: Object.entries(content)
+	const typescript = $derived<CodeVariant>({ content, lang });
+	const active = $derived(
+		preferences.lang_selected === 'javascript' && javascript ? javascript : typescript
+	);
+	const skeleton_variants = $derived(
+		javascript
+			? [
+					{ key: 'typescript', ...typescript },
+					{ key: 'javascript', ...javascript }
+				]
+			: [{ key: 'any', ...typescript }]
+	);
+
+	const flattenCode = (value: ContentType) =>
+		typeof value === 'string'
+			? value
+			: Object.entries(value)
 					.map(([name, file]) => {
 						const code = typeof file === 'string' ? file : file.code;
 						return `// ${name}\n${code}`;
 					})
-					.join('\n\n')
-	);
+					.join('\n\n');
 
 	onMount(() => {
 		const observer = new IntersectionObserver(
@@ -53,7 +69,9 @@
 <div bind:this={container} class="lazy-repl">
 	{#if loaded}
 		{@const replContent =
-			typeof content === 'string' ? { Root: { code: content, lang: lang } } : content}
+			typeof active.content === 'string'
+				? { Root: { code: active.content, lang: active.lang } }
+				: active.content}
 		{#if children}
 			<kit:repl content={replContent} {presentation} {title}>
 				{@render children()}
@@ -77,13 +95,15 @@
 				</div>
 			{/if}
 
-			<div class="lazy-repl__code">
-				<div class="lazy-repl__toolbar">
-					<span class="lazy-repl__title">{title || lang}</span>
-				</div>
+			{#each skeleton_variants as variant (variant.key)}
+				<div class="lazy-repl__code" data-code-variant={variant.key}>
+					<div class="lazy-repl__toolbar">
+						<span class="lazy-repl__title">{title || variant.lang}</span>
+					</div>
 
-				<pre><code>{staticCode}</code></pre>
-			</div>
+					<pre><code>{flattenCode(variant.content)}</code></pre>
+				</div>
+			{/each}
 		</div>
 	{/if}
 </div>
@@ -91,6 +111,11 @@
 <style>
 	.lazy-repl {
 		position: relative;
+	}
+
+	:global(html[data-code-lang='javascript']) [data-code-variant='typescript'],
+	:global(html:not([data-code-lang='javascript'])) [data-code-variant='javascript'] {
+		display: none;
 	}
 
 	.lazy-repl__skeleton {

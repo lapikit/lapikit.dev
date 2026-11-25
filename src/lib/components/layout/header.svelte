@@ -28,7 +28,12 @@
 	}
 </script>
 
-<kit:appbar class="app-header" class:has-docs-menu={hasDocsMenu} classContent="app-header-bar">
+<kit:appbar
+	sticky
+	class="app-header"
+	class:has-docs-menu={hasDocsMenu}
+	classContent="app-header-bar"
+>
 	<Brand />
 
 	<nav class="header-nav" aria-label="Main">
@@ -108,12 +113,10 @@
 		--kit-appbar-bg: color-mix(in oklab, var(--kit-color-surface), transparent 15%);
 		--kit-appbar-h: 64px;
 		--kit-appbar-gap: 0;
+		--kit-appbar-px: var(--lapikit-spacing-block);
+		--kit-appbar-py: 0;
+		--kit-appbar-z-index: 2000;
 
-		position: sticky;
-		top: 0;
-		z-index: 2000;
-		padding-block: 0;
-		padding-inline: var(--lapikit-spacing-block);
 		border-bottom: var(--lapikit-border);
 		backdrop-filter: blur(12px);
 

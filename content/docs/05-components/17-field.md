@@ -14,7 +14,6 @@ navigation:
   label: 'Field'
   name: 'kit:field'
   description: 'Base of the form fields, wraps any control.'
-  image: 'textfield'
 ---
 
 The `kit:field` component is the base of the Lapikit form fields. It draws the box of the field (variant, color, size, density, rounded), the snippets around the control, the clear button and the message line, and it manages the states (`error`, `disabled`, `readonly`, focus).
