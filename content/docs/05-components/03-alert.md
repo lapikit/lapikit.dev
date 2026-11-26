@@ -93,8 +93,11 @@ Props `density` adjusts the padding and the minimal height of the alert, from `-
 
 Add `closable` to display a close button. The `open` prop is bindable so you can react to the dismissal externally.
 
+`onclose` is called when the close button is pressed, after `open` is set to `false`. Use it to clear the message in the state of your app.
+
 - **open**: `boolean` = `true`
 - **closable**: `boolean` = `false`
+- **onclose**: `() => void` = `undefined`
 
 ```repl svelte
 /// title: alert.svelte
@@ -147,6 +150,7 @@ import { Alert } from 'lapikit/components';
 | open $bindable | `boolean`                                                          | Controls visibility. Bindable.                         | `true`      |
 | closable       | `boolean`                                                          | Adds a close button that sets `open` to `false`.       | `false`     |
 | closeLabel     | `string`                                                           | Accessible name of the close button.                   | `'Close'`   |
+| onclose        | `() => void`                                                       | Called when the close button is pressed.               |             |
 | variant        | `'filled' \| 'tonal' \| 'outline' \| 'surface' \| 'text'`          | Visual style of the alert.                             | `'filled'`  |
 | density        | `'dense' \| 'compact' \| 'default' \| 'comfortable' \| 'spacious'` | Padding and minimal height.                            | `'default'` |
 | tone           | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'`         | Semantic tone: default color and role.                 | `'default'` |

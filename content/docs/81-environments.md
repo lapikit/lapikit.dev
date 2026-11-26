@@ -60,7 +60,7 @@ This config handles the `@typescript-eslint/no-unused-vars` rule for lapikit-spe
 </kit:btn>
 ```
 
-The labs components export theirs from `lapikit/labs/components` (`SheetProps`).
+The labs components export theirs from `lapikit/labs/components` (`SheetProps`, `SpinnerProps`).
 
 ## Known TypeScript and editor limitations
 

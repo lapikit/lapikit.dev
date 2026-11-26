@@ -34,6 +34,27 @@ See the [themes](/docs/customize) documentation to learn about all the available
 | --------- | -------- | -------------------------------------------------- | ------- |
 | name      | `string` | The theme name: `'light'`, `'dark'`, `'system'`... |         |
 
+## Read the displayed theme
+
+`createGlobalTheme` and `createTheme` return two reactive getters:
+
+- **active**: the name of the selected theme (`'light'`, `'dark'`, `'system'`...).
+- **resolved**: the theme actually displayed. With `'system'`, it gives `'light'` or `'dark'` and follows the operating system live. Any other theme gives its own name.
+
+```svelte
+<script>
+	import { createGlobalTheme } from 'lapikit/hooks';
+
+	const theme = createGlobalTheme({ name: 'system' });
+</script>
+
+<p>Selected: {theme.active}, displayed: {theme.resolved}</p>
+```
+
+Use `resolved` to pick an icon, a code highlighting theme or an image that depends on light or dark.
+
+> With SSR, the server cannot read the preference of the operating system: `resolved` gives `'light'` until the page is hydrated.
+
 ## Choose where Lapikit stores the theme
 
 Lapikit keeps the selected theme between page reloads and browser sessions, under the `@lapikit/theme` key of `localStorage`. To change the key, pass it once to `createGlobalTheme`:

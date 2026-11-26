@@ -135,7 +135,7 @@ The button changes its background on hover and pressed, and shows a ripple on cl
 /// example: components/btn/states.svelte
 ```
 
-Use the `load` snippet to replace the default `...` spinner with custom content.
+Use the `load` snippet to replace the default spinner with custom content.
 
 - **load**: `Snippet | undefined` = `undefined`
 
