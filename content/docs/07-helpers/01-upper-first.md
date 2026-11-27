@@ -3,7 +3,7 @@ title: 'upperFirst: Capitalize the first letter of a string'
 category: 'Helpers'
 head:
   title: 'upperFirst'
-  description: 'The upperFirst helper from Lapikit uppercases the first character of a string and leaves the rest unchanged, accents and emojis included.'
+  description: 'Capitalize the first character of a string in Svelte with upperFirst. Preserve the remaining characters and handle Unicode, null and undefined values.'
 keywords:
   - 'capitalize'
   - 'uppercase'
@@ -13,6 +13,9 @@ navigation:
   label: 'upperFirst'
   description: 'Uppercases the first character of a string and keeps the rest as is.'
   symbol: 'Aa'
+  preview:
+    from: 'hello'
+    to: 'Hello'
 ---
 
 `upperFirst` is a helper from `lapikit/helpers` that converts the first character of a string to uppercase while leaving the rest unchanged.

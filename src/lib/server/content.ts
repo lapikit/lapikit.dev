@@ -1,5 +1,5 @@
 import { building } from '$app/environment';
-import type { DocCounts, DocLink, DocSummary, NavPage, NavSection } from '$lib/types';
+import type { DocCounts, DocLink, DocSummary, NavPage, NavPreview, NavSection } from '$lib/types';
 import last_modified from '$lib/generated/last-modified.json';
 import { readFrontmatter, type FrontmatterData } from './frontmatter';
 
@@ -9,6 +9,7 @@ type DocNavigation = {
 	description?: string;
 	image?: string;
 	symbol?: string;
+	preview?: NavPreview;
 };
 
 type DocMetadata = {
@@ -154,7 +155,8 @@ function toNavPage({ path, slug }: DocPage, navigation: DocNavigation): NavPage 
 			icon: component_icons[`${asset}_icon.png`]
 		}),
 		...(navigation.description && { description: navigation.description }),
-		...(navigation.symbol && { symbol: navigation.symbol })
+		...(navigation.symbol && { symbol: navigation.symbol }),
+		...(navigation.preview && { preview: navigation.preview })
 	};
 }
 

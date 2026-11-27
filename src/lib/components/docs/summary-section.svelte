@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { ListCollapse, SunMoon } from 'lucide-svelte';
+	import { ArrowRight, ArrowUpRight, ListCollapse, SunMoon } from 'lucide-svelte';
 
 	let { key = 'Essentials' }: { key: string } = $props();
 
@@ -17,21 +17,28 @@
 </script>
 
 <div class="summary-section">
-	{#each pages as { label, url, description, symbol } (label)}
+	{#each pages as { label, url, description, symbol, preview } (label)}
 		<kit:card href={url} variant="outline" class="summary-section-card">
-			{#if symbol}
-				{@const Icon = symbol_icons[symbol]}
-				<span class="summary-section-symbol" aria-hidden="true">
+			<span class="summary-section-preview" aria-hidden="true">
+				{#if preview}
+					<span class="summary-section-from">{preview.from}</span>
+					<kit:icon size="xs" class="summary-section-arrow"><ArrowRight /></kit:icon>
+					<span class="summary-section-to">{preview.to}</span>
+				{:else if symbol}
+					{@const Icon = symbol_icons[symbol]}
 					{#if Icon}
-						<kit:icon><Icon /></kit:icon>
+						<kit:icon size="lg" class="summary-section-symbol"><Icon /></kit:icon>
 					{:else}
-						{symbol}
+						<span class="summary-section-to">{symbol}</span>
 					{/if}
-				</span>
-			{/if}
-			<span class="summary-section-name">{label}()</span>
+				{/if}
+			</span>
+			<span class="summary-section-name">{label}</span>
 			<span class="summary-section-description">{description}</span>
-			<span class="summary-section-more" aria-hidden="true">Read the docs →</span>
+			<span class="summary-section-more">
+				Documentation
+				<kit:icon size="xs"><ArrowUpRight /></kit:icon>
+			</span>
 		</kit:card>
 	{/each}
 </div>
@@ -48,9 +55,8 @@
 		--kit-card-hover: var(--kit-color-surface);
 		display: grid;
 		grid-template-rows: auto auto 1fr auto;
-		justify-items: start;
 		gap: 10px;
-		padding: 20px;
+		padding: 14px;
 		text-decoration: none;
 		transition:
 			border-color 0.15s ease,
@@ -63,24 +69,41 @@
 		}
 	}
 
-	.summary-section-symbol {
-		display: grid;
-		place-items: center;
-		width: 32px;
-		height: 32px;
-		border-radius: 8px;
-		background-color: color-mix(in oklab, var(--kit-color-accent), transparent 90%);
-		color: var(--kit-color-accent);
-		font-family: var(--font-mono);
-		font-size: var(--text-sm);
-		font-weight: 600;
+	.summary-section-preview {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		min-height: 112px;
+		margin-bottom: 6px;
+		border-radius: 10px;
+		background-color: color-mix(in oklab, var(--kit-color-fill), transparent 50%);
+		font-size: var(--text-xl);
+
+		:global(.summary-section-arrow) {
+			color: var(--kit-color-text-muted);
+		}
+
+		:global(.summary-section-symbol) {
+			--kit-icon-size-lg: 2rem;
+			color: var(--kit-color-accent);
+		}
+	}
+
+	.summary-section-from {
+		color: var(--kit-color-text-muted);
+	}
+
+	.summary-section-to {
+		font-weight: 700;
+		color: var(--kit-color-text);
 	}
 
 	.summary-section-name {
-		font-family: var(--font-mono);
 		font-size: var(--text-md);
-		font-weight: 600;
+		font-weight: 700;
 		color: var(--kit-color-text);
+		padding-inline: 4px;
 	}
 
 	.summary-section-description {
@@ -89,13 +112,22 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
 		line-clamp: 2;
+		padding-inline: 4px;
 		font-size: var(--text-sm);
 		color: var(--kit-color-text-muted);
 	}
 
 	.summary-section-more {
-		font-size: var(--text-xs);
-		font-weight: 500;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-inline: 4px;
+		font-size: var(--text-sm);
+		font-weight: 700;
+		color: var(--kit-color-text);
+	}
+
+	.summary-section :global(.summary-section-card:is(:hover, :focus-visible) .summary-section-more) {
 		color: var(--kit-color-accent);
 	}
 

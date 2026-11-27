@@ -83,7 +83,10 @@ export type NavPage = {
 	image?: string;
 	icon?: string;
 	symbol?: string;
+	preview?: NavPreview;
 };
+
+export type NavPreview = { from: string; to: string };
 
 export type NavSection = {
 	label: string;
