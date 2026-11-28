@@ -96,7 +96,7 @@ upperFirst(''); // ''
 upperFirst(null); // undefined
 
 upperFirst(undefined); // undefined
-``
+```
 
 This allows optional values to be passed directly to the helper without adding a separate guard.
 
@@ -124,4 +124,7 @@ The parameters required by the reference API
 | value     | `string \| null \| undefined` | The string to transform |         |
 
 Returns the string with its first character converted to uppercase, or `undefined` when the input is `null` or `undefined`.
+
+```
+
 ```
