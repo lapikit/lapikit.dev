@@ -74,7 +74,7 @@ The helper uses four unit suffixes to represent large numbers.
 
 | Unit     | Value             | Suffix | Example |
 | -------- | ----------------- | ------ | ------- |
-| Thousand | 1,00              | k      | 1k      |
+| Thousand | 1,000             | k      | 1k      |
 | Million  | 1,000,000         | M      | 1M      |
 | Billion  | 1,000,000,000     | B      | 1B      |
 | Trillion | 1,000,000,000,000 | T      | 1T      |
@@ -115,6 +115,29 @@ compactNumber(null); // undefined
 compactNumber(undefined); // undefined
 ```
 
+### Locale
+
+By default, `compactNumber` formats in English. Pass `locale` to follow the conventions of another language: decimal separator, spaces and suffixes.
+
+```js
+compactNumber(1234, { locale: 'fr' }); // '1,2 k'
+compactNumber(2500000, { locale: 'fr' }); // '2,5 M'
+compactNumber(1234, { locale: 'de' }); // '1234'
+```
+
+Each language keeps its own rules: German and Japanese, for example, don't shorten thousands. The lowercase **k** only applies to English.
+
+> The default stays `'en'` instead of the language of the browser, so the server and the client render the same value.
+
+### Number of decimals
+
+`maximumFractionDigits` sets the maximum number of decimals, `1` by default.
+
+```js
+compactNumber(1234567, { maximumFractionDigits: 2 }); // '1.23M'
+compactNumber(1234567, { maximumFractionDigits: 0 }); // '1M'
+```
+
 ## Input and output examples
 
 | input        | output      |
@@ -132,9 +155,11 @@ compactNumber(undefined); // undefined
 
 ## API References
 
-| parameter | type                          | description          | default |
-| --------- | ----------------------------- | -------------------- | ------- |
-| value     | `number \| null \| undefined` | The number to format |         |
+| parameter                     | type                          | description                    | default |
+| ----------------------------- | ----------------------------- | ------------------------------ | ------- |
+| value                         | `number \| null \| undefined` | The number to format           |         |
+| options.locale                | `string \| string[]`          | The language of the formatting | `'en'`  |
+| options.maximumFractionDigits | `number`                      | The maximum number of decimals | `1`     |
 
 Returns the formatted number as a string, or `undefined` when the input is `null` or `undefined`.
 
